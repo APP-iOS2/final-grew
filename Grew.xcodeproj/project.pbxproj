@@ -45,10 +45,6 @@
 		99D2C6402ACD4043001FEC20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99D2C63F2ACD4043001FEC20 /* GoogleService-Info.plist */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
-		99D2C6462ACD495D001FEC20 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6452ACD495D001FEC20 /* MapView.swift */; };
-		99D2C6482ACD49C3001FEC20 /* NewGrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6472ACD49C3001FEC20 /* NewGrewView.swift */; };
-		99D2C64A2ACD4A78001FEC20 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6492ACD4A78001FEC20 /* ChatView.swift */; };
-		99D2C64C2ACD4A99001FEC20 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C64B2ACD4A99001FEC20 /* ProfileView.swift */; };
 		F2E20584B15966D0028FE8B5 /* Pods_Grew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D1665606D5C84E091AB4CB /* Pods_Grew.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,10 +69,7 @@
 		99D2C63F2ACD4043001FEC20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		99D2C6452ACD495D001FEC20 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		99D2C6472ACD49C3001FEC20 /* NewGrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGrewView.swift; sourceTree = "<group>"; };
-		99D2C6492ACD4A78001FEC20 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		99D2C64B2ACD4A99001FEC20 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,7 +457,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
-				99D2C6462ACD495D001FEC20 /* MapView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
 				99D2C64A2ACD4A78001FEC20 /* ChatView.swift in Sources */,
