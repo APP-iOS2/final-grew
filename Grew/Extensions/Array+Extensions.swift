@@ -7,16 +7,16 @@
 
 import Foundation
 
-//안전하게 추출
+// 안전하게 추출
 extension Array {
-  public subscript(safe index: Int) -> Element? {
-    get {
-      indices ~= index ? self[index] : nil
+    public subscript(safe index: Int) -> Element? {
+        get {
+            indices ~= index ? self[index] : nil
+        }
+        set(newValue) {
+            if let newValue = newValue, indices.contains(index) {
+                self[index] = newValue
+            }
+        }
     }
-    set(newValue) {
-      if let newValue = newValue, indices.contains(index) {
-        self[index] = newValue
-      }
-    }
-  }
 }
