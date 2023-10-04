@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-    
+
     var body: some View {
         
         TabView {
@@ -18,7 +18,7 @@ struct MainTabView: View {
                     Image(systemName: "house")
                     Text("홈")
                 }
-            
+
             Text("내 주변")
                 .tabItem {
                     Image(systemName: "location.fill")
@@ -30,13 +30,13 @@ struct MainTabView: View {
                     Image(systemName: "plus.circle")
                         .font(.largeTitle)
                 }
-            
+
             Text("채팅")
                 .tabItem {
                     Image(systemName: "ellipsis.message")
                     Text("채팅")
                 }
-            
+
             Text("프로필")
                 .tabItem {
                     Image(systemName: "person")

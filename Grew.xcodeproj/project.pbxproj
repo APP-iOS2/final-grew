@@ -44,6 +44,7 @@
 		312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */; };
 		64CEF8362ACD4846002CBCC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64CEF8352ACD4846002CBCC7 /* GoogleService-Info.plist */; };
 		64CEF8382ACD5C07002CBCC7 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEF8372ACD5C06002CBCC7 /* MainTabView.swift */; };
+		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
 		F2E20584B15966D0028FE8B5 /* Pods_Grew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D1665606D5C84E091AB4CB /* Pods_Grew.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,10 @@
 		64CEF8352ACD4846002CBCC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		64CEF8372ACD5C06002CBCC7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99D2C63F2ACD4043001FEC20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +230,7 @@
 		312E98E82ACD309D00E38626 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				99D2C6452ACD495D001FEC20 /* MapView.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -232,6 +238,7 @@
 		312E98E92ACD30A300E38626 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				99D2C6492ACD4A78001FEC20 /* ChatView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -239,6 +246,7 @@
 		312E98EA2ACD30A600E38626 /* Grew */ = {
 			isa = PBXGroup;
 			children = (
+				99D2C6472ACD49C3001FEC20 /* NewGrewView.swift */,
 			);
 			path = Grew;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 		312E98EB2ACD30A800E38626 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				99D2C6432ACD4913001FEC20 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -253,6 +262,7 @@
 		312E98EC2ACD30AB00E38626 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				99D2C64B2ACD4A99001FEC20 /* ProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -448,10 +458,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
+				99D2C64A2ACD4A78001FEC20 /* ChatView.swift in Sources */,
+				99D2C6482ACD49C3001FEC20 /* NewGrewView.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
+				99D2C64C2ACD4A99001FEC20 /* ProfileView.swift in Sources */,
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
+				99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
 				312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */,
