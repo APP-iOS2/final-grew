@@ -18,10 +18,8 @@ struct MainTabView: View {
                     Image(systemName: "house")
                     Text("홈")
                 }
-            
 
             Text("내 주변")
-
                 .tabItem {
                     Image(systemName: "location.fill")
                     Text("내 주변")
@@ -31,6 +29,7 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "plus.circle")
                         .font(.largeTitle)
+                }
 
             Text("채팅")
                 .tabItem {
@@ -39,11 +38,9 @@ struct MainTabView: View {
                 }
 
             Text("프로필")
-
                 .tabItem {
                     Image(systemName: "person")
                     Text("프로필")
-                    
                 }
         }
     }
