@@ -12,13 +12,13 @@ struct MainTabView: View {
     var body: some View {
         
         TabView {
-            
+          
             Text("홈")
                 .tabItem {
                     Image(systemName: "house")
                     Text("홈")
                 }
-
+          
             Text("내 주변")
                 .tabItem {
                     Image(systemName: "location.fill")
