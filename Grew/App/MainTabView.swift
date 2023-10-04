@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @State private var isFullScreenCoverPresented = false
-    
     var body: some View {
         
         TabView {
             
-            HomeView()
+            Text("홈")
                 .tabItem {
                     Image(systemName: "house")
                     Text("홈")
                 }
             
-            MapView()
+            Text("내 주변")
                 .tabItem {
                     Image(systemName: "location.fill")
                     Text("내 주변")
@@ -30,22 +28,15 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "plus.circle")
                         .font(.largeTitle)
-                        
-                }
-                .onTapGesture {
-                    isFullScreenCoverPresented = true
-                }
-                .fullScreenCover(isPresented: $isFullScreenCoverPresented) {
-                    NewGrewView()
                 }
             
-            ChatView()
+            Text("채팅")
                 .tabItem {
                     Image(systemName: "ellipsis.message")
                     Text("채팅")
                 }
             
-            ProfileView()
+            Text("프로필")
                 .tabItem {
                     Image(systemName: "person")
                     Text("프로필")
