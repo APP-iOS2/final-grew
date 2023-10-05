@@ -45,6 +45,20 @@
 		64CEF8362ACD4846002CBCC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64CEF8352ACD4846002CBCC7 /* GoogleService-Info.plist */; };
 		64CEF8382ACD5C07002CBCC7 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEF8372ACD5C06002CBCC7 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
+		9FAC89B22ACE74AA00780FA6 /* GroupAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89A92ACE74AA00780FA6 /* GroupAlertView.swift */; };
+		9FAC89B32ACE74AA00780FA6 /* GrewProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AA2ACE74AA00780FA6 /* GrewProgressViewStyle.swift */; };
+		9FAC89B42ACE74AA00780FA6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AB2ACE74AA00780FA6 /* LocationView.swift */; };
+		9FAC89B52ACE74AA00780FA6 /* GroupMembersEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AC2ACE74AA00780FA6 /* GroupMembersEditView.swift */; };
+		9FAC89B62ACE74AA00780FA6 /* GroupNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AD2ACE74AA00780FA6 /* GroupNameView.swift */; };
+		9FAC89B72ACE74AA00780FA6 /* GroupAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AE2ACE74AA00780FA6 /* GroupAddressView.swift */; };
+		9FAC89B82ACE74AA00780FA6 /* GroupCheckFeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AF2ACE74AA00780FA6 /* GroupCheckFeeView.swift */; };
+		9FAC89B92ACE74AA00780FA6 /* GroupCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89B02ACE74AA00780FA6 /* GroupCategoryView.swift */; };
+		9FAC89BA2ACE74AA00780FA6 /* NewGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89B12ACE74AA00780FA6 /* NewGroupView.swift */; };
+		9FAC89BC2ACE74C600780FA6 /* Grew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89BB2ACE74C600780FA6 /* Grew.swift */; };
+		9FAC89BE2ACE77AF00780FA6 /* GrewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89BD2ACE77AF00780FA6 /* GrewViewModel.swift */; };
+		9FDC02B72ACE8FE300F6EABF /* AnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC02B62ACE8FE300F6EABF /* AnimationModifier.swift */; };
+		9FDC02B92ACEA71F00F6EABF /* Categories.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 9FDC02B82ACEA71F00F6EABF /* Categories.geojson */; };
+		9FDC02BB2ACEAD9100F6EABF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC02BA2ACEAD9100F6EABF /* Category.swift */; };
 		F2E20584B15966D0028FE8B5 /* Pods_Grew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D1665606D5C84E091AB4CB /* Pods_Grew.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,10 +82,21 @@
 		64CEF8352ACD4846002CBCC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		64CEF8372ACD5C06002CBCC7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		99D2C63F2ACD4043001FEC20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-
+		9FAC89A92ACE74AA00780FA6 /* GroupAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupAlertView.swift; sourceTree = "<group>"; };
+		9FAC89AA2ACE74AA00780FA6 /* GrewProgressViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewProgressViewStyle.swift; sourceTree = "<group>"; };
+		9FAC89AB2ACE74AA00780FA6 /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		9FAC89AC2ACE74AA00780FA6 /* GroupMembersEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMembersEditView.swift; sourceTree = "<group>"; };
+		9FAC89AD2ACE74AA00780FA6 /* GroupNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupNameView.swift; sourceTree = "<group>"; };
+		9FAC89AE2ACE74AA00780FA6 /* GroupAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupAddressView.swift; sourceTree = "<group>"; };
+		9FAC89AF2ACE74AA00780FA6 /* GroupCheckFeeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCheckFeeView.swift; sourceTree = "<group>"; };
+		9FAC89B02ACE74AA00780FA6 /* GroupCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCategoryView.swift; sourceTree = "<group>"; };
+		9FAC89B12ACE74AA00780FA6 /* NewGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupView.swift; sourceTree = "<group>"; };
+		9FAC89BB2ACE74C600780FA6 /* Grew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grew.swift; sourceTree = "<group>"; };
+		9FAC89BD2ACE77AF00780FA6 /* GrewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewViewModel.swift; sourceTree = "<group>"; };
+		9FDC02B62ACE8FE300F6EABF /* AnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifier.swift; sourceTree = "<group>"; };
+		9FDC02B82ACEA71F00F6EABF /* Categories.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Categories.geojson; sourceTree = "<group>"; };
+		9FDC02BA2ACEAD9100F6EABF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +139,7 @@
 			children = (
 				312E98992ACCF54A00E38626 /* .swiftlint.yml */,
 				64CEF8352ACD4846002CBCC7 /* GoogleService-Info.plist */,
+				9FDC02B82ACEA71F00F6EABF /* Categories.geojson */,
 				312E98652ACCED3600E38626 /* Grew */,
 				312E98642ACCED3600E38626 /* Products */,
 				61CFCD3C7F3028095662F46E /* Pods */,
@@ -188,6 +214,9 @@
 		312E98D32ACD26F400E38626 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9FDC02BA2ACEAD9100F6EABF /* Category.swift */,
+				9FAC89BB2ACE74C600780FA6 /* Grew.swift */,
+				9FAC89BD2ACE77AF00780FA6 /* GrewViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +245,7 @@
 		312E98D62ACD2A7C00E38626 /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
+				9FDC02B62ACE8FE300F6EABF /* AnimationModifier.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -230,7 +260,6 @@
 		312E98E82ACD309D00E38626 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				99D2C6452ACD495D001FEC20 /* MapView.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -238,7 +267,6 @@
 		312E98E92ACD30A300E38626 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				99D2C6492ACD4A78001FEC20 /* ChatView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -246,7 +274,15 @@
 		312E98EA2ACD30A600E38626 /* Grew */ = {
 			isa = PBXGroup;
 			children = (
-				99D2C6472ACD49C3001FEC20 /* NewGrewView.swift */,
+				9FAC89B12ACE74AA00780FA6 /* NewGroupView.swift */,
+				9FAC89B02ACE74AA00780FA6 /* GroupCategoryView.swift */,
+				9FAC89AD2ACE74AA00780FA6 /* GroupNameView.swift */,
+				9FAC89AC2ACE74AA00780FA6 /* GroupMembersEditView.swift */,
+				9FAC89AF2ACE74AA00780FA6 /* GroupCheckFeeView.swift */,
+				9FAC89AE2ACE74AA00780FA6 /* GroupAddressView.swift */,
+				9FAC89A92ACE74AA00780FA6 /* GroupAlertView.swift */,
+				9FAC89AA2ACE74AA00780FA6 /* GrewProgressViewStyle.swift */,
+				9FAC89AB2ACE74AA00780FA6 /* LocationView.swift */,
 			);
 			path = Grew;
 			sourceTree = "<group>";
@@ -262,7 +298,6 @@
 		312E98EC2ACD30AB00E38626 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				99D2C64B2ACD4A99001FEC20 /* ProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -386,6 +421,7 @@
 			files = (
 				312E989A2ACCF54A00E38626 /* .swiftlint.yml in Resources */,
 				64CEF8362ACD4846002CBCC7 /* GoogleService-Info.plist in Resources */,
+				9FDC02B92ACEA71F00F6EABF /* Categories.geojson in Resources */,
 				312E986E2ACCED3800E38626 /* Preview Assets.xcassets in Resources */,
 				312E986B2ACCED3800E38626 /* Assets.xcassets in Resources */,
 			);
@@ -458,21 +494,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
+				9FAC89B52ACE74AA00780FA6 /* GroupMembersEditView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
-				99D2C64A2ACD4A78001FEC20 /* ChatView.swift in Sources */,
-				99D2C6482ACD49C3001FEC20 /* NewGrewView.swift in Sources */,
+				9FAC89B92ACE74AA00780FA6 /* GroupCategoryView.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
-				99D2C64C2ACD4A99001FEC20 /* ProfileView.swift in Sources */,
+				9FAC89B82ACE74AA00780FA6 /* GroupCheckFeeView.swift in Sources */,
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
 				99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */,
+				9FDC02B72ACE8FE300F6EABF /* AnimationModifier.swift in Sources */,
+				9FAC89BC2ACE74C600780FA6 /* Grew.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
+				9FAC89B72ACE74AA00780FA6 /* GroupAddressView.swift in Sources */,
+				9FAC89B62ACE74AA00780FA6 /* GroupNameView.swift in Sources */,
+				9FAC89B32ACE74AA00780FA6 /* GrewProgressViewStyle.swift in Sources */,
+				9FAC89BE2ACE77AF00780FA6 /* GrewViewModel.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
+				9FAC89B22ACE74AA00780FA6 /* GroupAlertView.swift in Sources */,
 				312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */,
+				9FAC89BA2ACE74AA00780FA6 /* NewGroupView.swift in Sources */,
 				312E98E12ACD2EAA00E38626 /* Array+Extensions.swift in Sources */,
+				9FAC89B42ACE74AA00780FA6 /* LocationView.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
 				64CEF8382ACD5C07002CBCC7 /* MainTabView.swift in Sources */,
+				9FDC02BB2ACEAD9100F6EABF /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

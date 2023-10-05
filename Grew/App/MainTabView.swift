@@ -8,40 +8,44 @@
 import SwiftUI
 
 struct MainTabView: View {
-
+    @State private var isNewGrewViewPresented = false
     var body: some View {
-        
-        TabView {
-            
-            Text("홈")
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("홈")
-                }
+        NavigationStack {
+            TabView {
+                
+                Text("홈")
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("홈")
+                    }
 
-            Text("내 주변")
-                .tabItem {
-                    Image(systemName: "location.fill")
-                    Text("내 주변")
-                }
-            
-            Text("모임 추가")
-                .tabItem {
-                    Image(systemName: "plus.circle")
-                        .font(.largeTitle)
-                }
+                Text("내 주변")
+                    .tabItem {
+                        Image(systemName: "location.fill")
+                        Text("내 주변")
+                    }
+                Text("")
+                    .tabItem {
+                        Image(systemName: "plus.circle")
+                            .font(.largeTitle)
+                    }
+                    .onAppear(perform: {
+                        
+                    })
 
-            Text("채팅")
-                .tabItem {
-                    Image(systemName: "ellipsis.message")
-                    Text("채팅")
-                }
+                Text("채팅")
+                    .tabItem {
+                        Image(systemName: "ellipsis.message")
+                        Text("채팅")
+                    }
 
-            Text("프로필")
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("프로필")
-                }
+                Text("프로필")
+                    .tabItem {
+                        Image(systemName: "person")
+                        Text("프로필")
+                    }
+            }
+            .toolbar(.hidden)
         }
     }
 }
