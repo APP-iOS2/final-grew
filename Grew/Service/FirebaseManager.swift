@@ -5,10 +5,10 @@
 //  Created by cha_nyeong on 2023/09/27.
 //
 
-import Foundation
 import Firebase
 import FirebaseAuth
 import FirebaseStorage
+import Foundation
 
 /// 파이어베이스 서비스화
 class FirebaseManager {
@@ -26,7 +26,7 @@ class FirebaseManager {
         self.firestore = Firestore.firestore()
     }
     
-    func saveFireStoreData<T:Codable>(collection: String, data: T) async throws {
+    func saveFireStoreData<T: Codable>(collection: String, data: T) async throws {
         do {
             try firestore.collection(collection).addDocument(from: data)
             print("Success in \(#function) : collection is \(collection)")
@@ -36,7 +36,7 @@ class FirebaseManager {
         }
     }
     
-    func saveFireStoreData<T:Codable>(path: String, documentId: String, data: T) async throws {
+    func saveFireStoreData<T: Codable>(path: String, documentId: String, data: T) async throws {
         do {
             try firestore.collection(path).addDocument(from: data)
             print("Success in \(#function) : collection is \(path)")
@@ -46,7 +46,7 @@ class FirebaseManager {
         }
     }
     
-    func saveFireStoreData<T:Codable>(collection: String, documentId: String, subCollection: String, data: T) async throws {
+    func saveFireStoreData<T: Codable>(collection: String, documentId: String, subCollection: String, data: T) async throws {
         do {
             try firestore.collection(collection).addDocument(from: data)
             print("Success in \(#function) : collection is \(collection)")

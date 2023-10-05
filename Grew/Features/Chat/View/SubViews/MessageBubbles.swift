@@ -15,15 +15,15 @@ struct MessageBubbles: View {
     var body: some View {
         switch selectedBubble {
         case .my:
-            MyBubble
+            myBubble
         case .other:
-            OtherBubble
+            otherBubble
         case .admin:
-            AdminBubble
+            adminBubble
         }
     }
     
-    private var MyBubble: some View {
+    private var myBubble: some View {
         HStack{
             Spacer()
             Text("8시 8분")
@@ -39,7 +39,7 @@ struct MessageBubbles: View {
         }
     }
     
-    private var OtherBubble: some View {
+    private var otherBubble: some View {
         HStack{
             CircularProfileImageView(chatMessage: chatMessage, url: nil, imagesize: .bubble)
             VStack(alignment: .leading){
@@ -55,7 +55,7 @@ struct MessageBubbles: View {
                         RoundedRectangle(cornerRadius: 25)
                             .stroke(Color("CustomGray"), lineWidth: 1)
                     )
-                //.background(Color("CustomGray"))
+                // .background(Color("CustomGray"))
             }
             
             Text("8시 7분").font(.caption).padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0)).foregroundColor(.gray)
@@ -63,14 +63,14 @@ struct MessageBubbles: View {
         }
     }
     
-    private var AdminBubble: some View {
-        VStack(){
+    private var adminBubble: some View {
+        VStack {
             Text(chatMessage.text)
                 .font(.caption)
                 .foregroundColor(.gray)
                 .bold()
                 .padding(10)
-                //.background(Color("CustomGray"))
+                // .background(Color("CustomGray"))
                 .cornerRadius(25)
         }
     }

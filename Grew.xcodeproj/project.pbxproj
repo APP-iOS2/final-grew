@@ -24,6 +24,10 @@
 		311097212ACDD43E000D85AD /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110971F2ACDD43E000D85AD /* ChatListView.swift */; };
 		311097222ACDD43E000D85AD /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097202ACDD43E000D85AD /* ChatDetailView.swift */; };
 		311097242ACDD4A3000D85AD /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097232ACDD4A3000D85AD /* FirebaseManager.swift */; };
+		311097262ACE7DAA000D85AD /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097252ACE7DAA000D85AD /* FirestoreService.swift */; };
+		311097292ACE7F9A000D85AD /* FirebaseEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097282ACE7F9A000D85AD /* FirebaseEnums.swift */; };
+		3110972C2ACE8C47000D85AD /* FireCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110972B2ACE8C47000D85AD /* FireCodable.swift */; };
+		3110972E2ACEA6D2000D85AD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110972D2ACEA6D2000D85AD /* User.swift */; };
 		312E98672ACCED3600E38626 /* GrewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98662ACCED3600E38626 /* GrewApp.swift */; };
 		312E986B2ACCED3800E38626 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312E986A2ACCED3800E38626 /* Assets.xcassets */; };
 		312E986E2ACCED3800E38626 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312E986D2ACCED3800E38626 /* Preview Assets.xcassets */; };
@@ -84,6 +88,10 @@
 		3110971F2ACDD43E000D85AD /* ChatListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		311097202ACDD43E000D85AD /* ChatDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
 		311097232ACDD4A3000D85AD /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		311097252ACE7DAA000D85AD /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		311097282ACE7F9A000D85AD /* FirebaseEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEnums.swift; sourceTree = "<group>"; };
+		3110972B2ACE8C47000D85AD /* FireCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCodable.swift; sourceTree = "<group>"; };
+		3110972D2ACEA6D2000D85AD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		312E98632ACCED3600E38626 /* Grew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		312E98662ACCED3600E38626 /* GrewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewApp.swift; sourceTree = "<group>"; };
 		312E986A2ACCED3800E38626 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -180,6 +188,23 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		311097272ACE7F82000D85AD /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				311096FF2ACDCD35000D85AD /* Constants.swift */,
+				311097282ACE7F9A000D85AD /* FirebaseEnums.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		3110972A2ACE8C2A000D85AD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3110972B2ACE8C47000D85AD /* FireCodable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		312E985A2ACCED3600E38626 = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +277,8 @@
 		312E98D12ACD26CF00E38626 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				311096FF2ACDCD35000D85AD /* Constants.swift */,
+				3110972A2ACE8C2A000D85AD /* Protocols */,
+				311097272ACE7F82000D85AD /* Enums */,
 				311097032ACDCE87000D85AD /* CircularProfileImageView.swift */,
 				3110971B2ACDD426000D85AD /* LoadingView.swift */,
 			);
@@ -263,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				3110970D2ACDD032000D85AD /* AppState.swift */,
+				3110972D2ACEA6D2000D85AD /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +313,7 @@
 			children = (
 				311097012ACDCD4B000D85AD /* DateService.swift */,
 				311097232ACDD4A3000D85AD /* FirebaseManager.swift */,
+				311097252ACE7DAA000D85AD /* FirestoreService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -538,11 +566,14 @@
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
 				311097222ACDD43E000D85AD /* ChatDetailView.swift in Sources */,
+				3110972E2ACEA6D2000D85AD /* User.swift in Sources */,
 				3110970E2ACDD032000D85AD /* AppState.swift in Sources */,
+				311097262ACE7DAA000D85AD /* FirestoreService.swift in Sources */,
 				311097082ACDCEBC000D85AD /* ChatMessage.swift in Sources */,
 				3110971C2ACDD426000D85AD /* LoadingView.swift in Sources */,
 				311097102ACDD04D000D85AD /* ChatSegment.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
+				3110972C2ACE8C47000D85AD /* FireCodable.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
 				3110970A2ACDD01D000D85AD /* ChatRoom.swift in Sources */,
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
@@ -560,6 +591,7 @@
 				312E98E12ACD2EAA00E38626 /* Array+Extensions.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
 				311097182ACDD40F000D85AD /* ChatSideMenuView.swift in Sources */,
+				311097292ACE7F9A000D85AD /* FirebaseEnums.swift in Sources */,
 				3110971A2ACDD40F000D85AD /* ChatRoomCell.swift in Sources */,
 				311097002ACDCD35000D85AD /* Constants.swift in Sources */,
 			);

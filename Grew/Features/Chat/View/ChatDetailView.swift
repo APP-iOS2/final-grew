@@ -14,20 +14,20 @@ struct ChatDetailView: View {
     
     var body: some View {
         ZStack{
-            //채팅
-            MessageView
+            // 채팅
+            messageView
                 .zIndex(1)
                 .onTapGesture {
-                    if(isMenuOpen){
+                    if isMenuOpen {
                         withAnimation(.easeInOut){
                             isMenuOpen.toggle()
                         }
                     }
                 }
             
-            //사이드 메뉴 바
-            if(isMenuOpen){
-                HStack(){
+            // 사이드 메뉴 바
+            if isMenuOpen {
+                HStack {
                     Spacer()
                     ChatSideMenuView(isMenuOpen: $isMenuOpen)
                 }.transition(.move(edge: .trailing))
@@ -44,8 +44,8 @@ struct ChatDetailView: View {
         }
     }
     
-    private var MessageView: some View {
-        ScrollView(){
+    private var messageView: some View {
+        ScrollView {
             MessageBubbles(chatMessage: ChatMessage.dummyChat, selectedBubble: .admin)
             MessageBubbles(chatMessage: ChatMessage.dummyChat1, selectedBubble: .my)
             MessageBubbles(chatMessage: ChatMessage.dummyChat2, selectedBubble: .other)
@@ -53,37 +53,38 @@ struct ChatDetailView: View {
             MessageBubbles(chatMessage: ChatMessage.dummyChat4, selectedBubble: .my)
             MessageBubbles(chatMessage: ChatMessage.dummyChat1, selectedBubble: .other)
             MessageBubbles(chatMessage: ChatMessage.dummyChat2, selectedBubble: .other)
-            
         }.padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             .safeAreaInset(edge: .bottom) {
-                ChatBar
+                chatBar
                     .background(Color(.systemBackground).ignoresSafeArea())
                     .shadow(radius: 0.5)
-            }.navigationBarItems(trailing: (
+            }
+            .navigationBarItems(trailing: (
                 Button(action: {
                     withAnimation {
                         isMenuOpen.toggle()
                     }
                 }) {
-                    if(!isMenuOpen){
+                    if !isMenuOpen {
                         Image(systemName: "line.horizontal.3")
                             .imageScale(.large).foregroundColor(Color("ChatGreen"))
                     }
                 }
-            )).navigationTitle(isMenuOpen ? "" : "정금쪽")
+            ))
+            .navigationTitle(isMenuOpen ? "" : "정금쪽")
             .navigationBarTitleDisplayMode(.inline)
     }
     
-    private var ChatBar: some View {
+    private var chatBar: some View {
         HStack{
             TextField("메세지 보내기", text: $text)
             Button {
                 text=""
             } label: {
-                Image(systemName: "arrow.up.circle.fill").font(.title).foregroundColor(text=="" ? .gray : Color("ChatGreen"))
+                Image(systemName: "arrow.up.circle.fill").font(.title).foregroundColor(text.isEmpty ? .gray : Color("ChatGreen"))
             }
         }.padding()
-           
+        
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserContentListView: View {
-    var user : User?
+    var user: User?
     
     @State private var selectedFilter: ChatSegment = .group
     @Namespace var animation
@@ -19,7 +19,7 @@ struct UserContentListView: View {
     }
     
     var body: some View {
-        //user content list view
+        // user content list view
         VStack {
             HStack{
                 ForEach(ChatSegment.allCases) { filter in
@@ -46,7 +46,7 @@ struct UserContentListView: View {
                     }
                 }
             }
-            //임시로 뷰 나눠뒀지만 필터링으로 개인이랑 그룹 나눠서 패치만 하면 될듯?
+            // 임시로 뷰 나눠뒀지만 필터링으로 개인이랑 그룹 나눠서 패치만 하면 될듯?
             switch selectedFilter {
             case .group:
                 ChatListView()

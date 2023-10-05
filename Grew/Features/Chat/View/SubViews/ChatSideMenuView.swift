@@ -15,12 +15,14 @@ struct ChatSideMenuView: View {
             sideBackground
             sideMainMenu
         }
-        .frame(width: ((UIScreen.main.bounds.width/3)*2), height:UIScreen.main.bounds.height-30, alignment: .leading)
+        .frame(width: ((UIScreen.main.bounds.width / 3) * 2),
+               height: UIScreen.main.bounds.height - 30,
+               alignment: .leading)
     }
     
-    //사이드 메인
+    // 사이드 메인
     private var sideMainMenu: some View {
-        VStack(alignment:.leading){
+        VStack(alignment: .leading){
             Text("멋쟁이보드게임").bold().padding(.top, 50)
             Divider()
             ScrollView{
@@ -42,14 +44,14 @@ struct ChatSideMenuView: View {
         } .padding()
     }
     
-    //사이드 바텀
+    // 사이드 바텀
     private var sideBottomItems: some View {
         HStack{
             Image(systemName: "rectangle.portrait.and.arrow.right")
         }.shadow(radius: 2).padding()
     }
     
-    //사이드 백그라운드
+    // 사이드 백그라운드
     private var sideBackground: some View {
         Rectangle()
             .frame(width: ((UIScreen.main.bounds.width/4)*3), height: UIScreen.main.bounds.height)

@@ -5,10 +5,10 @@
 //  Created by cha_nyeong on 2023/09/26.
 //
 
-import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import Foundation
 
 @MainActor
 class ChatStore: ObservableObject {
@@ -37,7 +37,7 @@ class ChatStore: ObservableObject {
         }
     }
     
-    //닉네임 변경 + 업데이트
+    // 닉네임 변경 + 업데이트
     /* func updateDisplayName(for user: User, displayName: String) async throws {
      let request = user.createProfileChangeRequest()
      request.displayName = displayName
@@ -45,17 +45,17 @@ class ChatStore: ObservableObject {
      try await updateUserInfoForAllMessages(uid: user.uid, updatedInfo: ["displayName": user.displayName ?? "Guest"])
      } */
     
-    ///제거하기
+    /// 제거하기
     func detachFirebaseChatListener() {
         self.firestoreChatListener?.remove()
     }
     
-    ///리스너 제거하기
+    /// 리스너 제거하기
     func detachFirebaseGroupListener() {
         self.firestoreGroupListener?.remove()
     }
     
-    ///Firebase프로필 사진 변경
+    /// Firebase프로필 사진 변경
     func updatePhotoURL(for user: FirebaseAuth.User, photoURL: URL) async throws {
         
         let request = user.createProfileChangeRequest()
@@ -66,7 +66,7 @@ class ChatStore: ObservableObject {
         try await updateUserInfoForAllMessages(uid: user.uid, updatedInfo: ["profilePhotoURL": photoURL.absoluteString])
     }
     
-    ///채팅메시지용 리스너 설정
+    /// 채팅메시지용 리스너 설정
     func listenForChatMessages(in chatroom: ChatRoom) {
         
         let db = Firestore.firestore()
@@ -163,7 +163,7 @@ class ChatStore: ObservableObject {
         
         let db = Firestore.firestore()
         guard let groupDocumentId = group.id else { return }
-        let _ = try db.collection("chatrooms")
+        try db.collection("chatrooms")
             .document(groupDocumentId)
             .collection("chatmessages")
             .document(chatMessage.id ?? "error")

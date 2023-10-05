@@ -7,7 +7,7 @@
 
 import Foundation
  
-//로딩 상태 열거형
+// 로딩 상태 열거형
 enum LoadingState: Hashable, Identifiable {
     case idle
     case loading(String)
@@ -17,14 +17,14 @@ enum LoadingState: Hashable, Identifiable {
     }
 }
 
-//라우팅 처리 (탭 뷰 처리)
+// 라우팅 처리 (탭 뷰 처리)
 enum Route: Hashable {
     case initial
     case login
     case signUp
     case main
 }
-//현재 앱 상태 로딩 여부 값
+// 현재 앱 상태 로딩 여부 값
 class AppState: ObservableObject {
     @Published var loadingState: LoadingState = .idle
     @Published var routes: [Route] = []
