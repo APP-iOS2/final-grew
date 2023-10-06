@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct GroupCategoryView: View {
-    @StateObject var grewViewModel = GrewViewModel()
-    private let grewExample: Grew = Grew(category: "0202",
-                                         title: "배고파용",
-                                         description: "어쩌구",
-                                         isOnline: false,
-                                         location: "서울특별시 동대문구 회기동",
-                                         gender: .any,
-                                         minimumAge: 22,
-                                         maximumAge: 29,
-                                         maximumMembers: 20,
-                                         currentMembers: [],
-                                         isNeedFee: true,
-                                         fee: 16000)
+    @EnvironmentObject var viewModel: GrewViewModel
+    private let grewExample: Grew = Grew(
+        categoryIndex: "101",
+        title: "배고파용",
+        description: "어쩌구",
+        isOnline: false,
+        location: "서울특별시 동대문구 회기동",
+        gender: .any,
+        minimumAge: 22,
+        maximumAge: 29,
+        maximumMembers: 20,
+        currentMembers: [],
+        isNeedFee: true,
+        fee: 16000)
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 4) {
@@ -29,7 +30,7 @@ struct GroupCategoryView: View {
                     .padding(.bottom, 10)
                 Spacer()
                 Button(action: {
-                    grewViewModel.addGrew(grewExample)
+                    viewModel.addGrew(grewExample)
                 }, label: {
                     Text("가랏 가라 데이터")
                 })

@@ -16,7 +16,7 @@ import SwiftUI
 struct GrewApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+    @StateObject var grewViewModel = GrewViewModel()
     // 카카오 로그인 키 값
     init() {
         KakaoSDK.initSDK(appKey: "93a5453be087d1c02859e56e80132f73")
@@ -26,6 +26,7 @@ struct GrewApp: App {
         WindowGroup {
             NavigationView {
                 MainTabView()
+                    .environmentObject(grewViewModel)
             }
         }
     }

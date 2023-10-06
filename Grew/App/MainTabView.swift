@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @State private var isNewGrewViewPresented = false
+    
     var body: some View {
         NavigationStack {
             TabView {
@@ -24,14 +25,14 @@ struct MainTabView: View {
                         Image(systemName: "location.fill")
                         Text("내 주변")
                     }
-                Text("")
+                NewGrewView()
                     .tabItem {
                         Image(systemName: "plus.circle")
                             .font(.largeTitle)
                     }
-                    .onAppear(perform: {
-                        
-                    })
+//                    .onAppear(perform: {
+//                        
+//                    })
 
                 Text("채팅")
                     .tabItem {

@@ -47,7 +47,7 @@ struct Grew: Identifiable, Codable {
     /// 활동비
     var fee: Int = 0
     /// 모임 생성 시간
-    var createdTime: String {
+    var createdAt: String {
         let nowDate = Date()
         let dateFormatter = DateFormatter()
         
@@ -56,6 +56,8 @@ struct Grew: Identifiable, Codable {
         
         return dateFormatter.string(from: nowDate)
     }
+    /// 좋아요 눌린 횟수
+    var heartTapped: Int = 0
 }
 
 /// 성별
