@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-
+    
     var body: some View {
         
         TabView {
@@ -19,9 +19,9 @@ struct MainTabView: View {
                     Text("홈")
                 }
             
-
+            
             Text("내 주변")
-
+            
                 .tabItem {
                     Image(systemName: "location.fill")
                     Text("내 주변")
@@ -31,24 +31,24 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "plus.circle")
                         .font(.largeTitle)
-
-            Text("채팅")
-                .tabItem {
-                    Image(systemName: "ellipsis.message")
+                    
                     Text("채팅")
-                }
-
-            Text("프로필")
-
-                .tabItem {
-                    Image(systemName: "person")
+                        .tabItem {
+                            Image(systemName: "ellipsis.message")
+                            Text("채팅")
+                        }
+                    
                     Text("프로필")
                     
+                        .tabItem {
+                            Image(systemName: "person")
+                            Text("프로필")
+                            
+                        }
                 }
         }
     }
 }
-
 #Preview {
     MainTabView()
 }
