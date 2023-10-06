@@ -2,13 +2,13 @@
 //  TempHomeCategory.swift
 //  Grew
 //
-//  Created by 정유진 on 2023/10/05.
+//  Created by 정유진 on 2023/10/06.
 //
 
 import Foundation
 import SwiftUI
 
-
+/// 지워야할 임시 카테고리
 enum TempHomeCategory: String, CaseIterable{
     
     case all = "전체"
@@ -22,10 +22,9 @@ enum TempHomeCategory: String, CaseIterable{
     case drive = "드라이브"
     case meeting = "미팅"
     
-    
     var image: Image {
         switch self {
-        case .all: return Image(systemName: "person")
+        case .all: return Image(systemName: "pencil")
         case .activity: return Image(systemName: "figure.run")
         case .foodDrink: return Image(systemName: "fork.knife")
         case .travel: return Image(systemName: "figure.hiking")
@@ -35,8 +34,7 @@ enum TempHomeCategory: String, CaseIterable{
         case .game: return Image(systemName: "gamecontroller.fill")
         case .drive: return Image(systemName: "car.fill")
         case .meeting: return Image(systemName: "figure.2.arms.open")
-            
+ 
         }
     }
 }
-

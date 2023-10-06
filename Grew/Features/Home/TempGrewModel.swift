@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/// 지워야할 구조체
 struct TempGrew: Identifiable, Codable {
     
     let id: String = UUID().uuidString

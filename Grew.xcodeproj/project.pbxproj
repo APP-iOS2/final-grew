@@ -42,7 +42,8 @@
 		312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98DD2ACD2EAA00E38626 /* Date+Extensions.swift */; };
 		312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98DE2ACD2EAA00E38626 /* Encodable+Extensions.swift */; };
 		312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */; };
-		99CD9C0A2ACE70C900CA6658 /* TempHomeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD9C092ACE70C900CA6658 /* TempHomeCategory.swift */; };
+		99B2840C2ACFEDAD0058B174 /* HomeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2840B2ACFEDAD0058B174 /* HomeBannerView.swift */; };
+		99B2840E2ACFFA230058B174 /* TempHomeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2840D2ACFFA230058B174 /* TempHomeCategory.swift */; };
 		99CD9C0C2ACE710800CA6658 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD9C0B2ACE710800CA6658 /* CategoryButtonView.swift */; };
 		99CD9C0E2ACE808800CA6658 /* PostCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD9C0D2ACE808800CA6658 /* PostCellView.swift */; };
 		99CD9C102ACE80AD00CA6658 /* TempGrewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD9C0F2ACE80AD00CA6658 /* TempGrewViewModel.swift */; };
@@ -74,7 +75,8 @@
 		312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController.SourceType+Extensions.swift"; sourceTree = "<group>"; };
 		5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.release.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		99CD9C092ACE70C900CA6658 /* TempHomeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempHomeCategory.swift; sourceTree = "<group>"; };
+		99B2840B2ACFEDAD0058B174 /* HomeBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerView.swift; sourceTree = "<group>"; };
+		99B2840D2ACFFA230058B174 /* TempHomeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempHomeCategory.swift; sourceTree = "<group>"; };
 		99CD9C0B2ACE710800CA6658 /* CategoryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		99CD9C0D2ACE808800CA6658 /* PostCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellView.swift; sourceTree = "<group>"; };
 		99CD9C0F2ACE80AD00CA6658 /* TempGrewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempGrewViewModel.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				99D2C6432ACD4913001FEC20 /* HomeView.swift */,
+				99B2840B2ACFEDAD0058B174 /* HomeBannerView.swift */,
 				99CD9C0B2ACE710800CA6658 /* CategoryButtonView.swift */,
 				99CD9C192ACEAD8600CA6658 /* CategoryDetailView.swift */,
 				99CD9C132ACE82BF00CA6658 /* PostListView.swift */,
@@ -272,7 +275,7 @@
 				99CD9C152ACE89A800CA6658 /* PostImageView.swift */,
 				99CD9C112ACE80F200CA6658 /* TempGrewModel.swift */,
 				99CD9C0F2ACE80AD00CA6658 /* TempGrewViewModel.swift */,
-				99CD9C092ACE70C900CA6658 /* TempHomeCategory.swift */,
+				99B2840D2ACFFA230058B174 /* TempHomeCategory.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 			files = (
 				99CD9C102ACE80AD00CA6658 /* TempGrewViewModel.swift in Sources */,
 				99CD9C122ACE80F200CA6658 /* TempGrewModel.swift in Sources */,
+				99B2840E2ACFFA230058B174 /* TempHomeCategory.swift in Sources */,
 				99CD9C0E2ACE808800CA6658 /* PostCellView.swift in Sources */,
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				99CD9C0C2ACE710800CA6658 /* CategoryButtonView.swift in Sources */,
@@ -491,7 +495,7 @@
 				312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */,
 				99CD9C142ACE82BF00CA6658 /* PostListView.swift in Sources */,
 				312E98E12ACD2EAA00E38626 /* Array+Extensions.swift in Sources */,
-				99CD9C0A2ACE70C900CA6658 /* TempHomeCategory.swift in Sources */,
+				99B2840C2ACFEDAD0058B174 /* HomeBannerView.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
 				99CD9C1A2ACEAD8600CA6658 /* CategoryDetailView.swift in Sources */,
 			);

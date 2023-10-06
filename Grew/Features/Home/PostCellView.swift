@@ -90,7 +90,7 @@ struct PostCellView: View {
     PostCellView(grew: TempGrew(category: "123",
     title: "123",
     description: "123",
-    imageURL: "123",
+    imageURL: "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg",
     isOnline: true,
     location: "123",
     gender: .male,

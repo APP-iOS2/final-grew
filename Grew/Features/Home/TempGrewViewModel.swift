@@ -7,13 +7,12 @@
 
 import FirebaseFirestore
 import FirebaseFirestoreSwift
-
+/// 지워야할 뷰모델
 final class TempGrewViewModel: ObservableObject {
-    
-    let db = Firestore.firestore()
     
     @Published var grewList: [TempGrew] = []
     
+    let db = Firestore.firestore()
     func fetchGrew() {
         
         db.collection("grews").getDocuments { snapshot, error in

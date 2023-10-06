@@ -38,18 +38,9 @@ struct CategoryDetailView: View {
             }
             .scrollIndicators(.hidden)
             // 좌우에 패딩주기
-            
-            
             .padding(.bottom, 12)
-            
-            
-            
             ScrollView {
-                
-            
                 PostListView(grewList: grewList)
-                
-                
             }
         }
     }
