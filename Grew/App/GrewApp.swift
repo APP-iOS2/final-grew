@@ -16,6 +16,8 @@ import SwiftUI
 struct GrewApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var authStore: AuthStore = AuthStore()
+    @StateObject var userStore: UserStore = UserStore()
     
     // 카카오 로그인 키 값
     init() {
@@ -25,6 +27,9 @@ struct GrewApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
+//                LaunchView()
+//                    .environmentObject(authStore)
+//                    .environmentObject(userStore)
                 MainTabView()
             }
         }
