@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21C1F1842ACE74B70029E436 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1832ACE74B70029E436 /* Announcement.swift */; };
+		21C1F1862ACE9E000029E436 /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1852ACE9E000029E436 /* SettingStore.swift */; };
+		21C1F1882ACE9E150029E436 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1872ACE9E150029E436 /* ImagePicker.swift */; };
+		21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AA2ACFEE670029E436 /* ProfileView.swift */; };
+		21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */; };
+		21C1F1AF2ACFEE980029E436 /* RoundSpecificCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */; };
+		21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1B02ACFEEAB0029E436 /* EditProfileView.swift */; };
+		21C1F1B32ACFEEC10029E436 /* MyGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1B22ACFEEC10029E436 /* MyGroupView.swift */; };
+		21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */; };
+		21C1F1B82ACFEEEC0029E436 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1B72ACFEEEC0029E436 /* SettingView.swift */; };
+		21C1F1BA2ACFEFA00029E436 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1B92ACFEFA00029E436 /* User.swift */; };
+		21C1F1BC2ACFEFB50029E436 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1BB2ACFEFB50029E436 /* Group.swift */; };
 		312E98672ACCED3600E38626 /* GrewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98662ACCED3600E38626 /* GrewApp.swift */; };
 		312E986B2ACCED3800E38626 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312E986A2ACCED3800E38626 /* Assets.xcassets */; };
 		312E986E2ACCED3800E38626 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312E986D2ACCED3800E38626 /* Preview Assets.xcassets */; };
@@ -50,6 +62,18 @@
 
 /* Begin PBXFileReference section */
 		1EEADA76F4AB5F4F868CFB93 /* Pods-Grew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.debug.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.debug.xcconfig"; sourceTree = "<group>"; };
+		21C1F1832ACE74B70029E436 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		21C1F1852ACE9E000029E436 /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
+		21C1F1872ACE9E150029E436 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		21C1F1AA2ACFEE670029E436 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentListView.swift; sourceTree = "<group>"; };
+		21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundSpecificCorners.swift; sourceTree = "<group>"; };
+		21C1F1B02ACFEEAB0029E436 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		21C1F1B22ACFEEC10029E436 /* MyGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupView.swift; sourceTree = "<group>"; };
+		21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupScheduleView.swift; sourceTree = "<group>"; };
+		21C1F1B72ACFEEEC0029E436 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		21C1F1B92ACFEFA00029E436 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		21C1F1BB2ACFEFB50029E436 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		312E98632ACCED3600E38626 /* Grew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		312E98662ACCED3600E38626 /* GrewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewApp.swift; sourceTree = "<group>"; };
 		312E986A2ACCED3800E38626 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,7 +95,6 @@
 		99D2C63F2ACD4043001FEC20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +211,11 @@
 		312E98D32ACD26F400E38626 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				21C1F1832ACE74B70029E436 /* Announcement.swift */,
+				21C1F1852ACE9E000029E436 /* SettingStore.swift */,
+				21C1F1872ACE9E150029E436 /* ImagePicker.swift */,
+				21C1F1B92ACFEFA00029E436 /* User.swift */,
+				21C1F1BB2ACFEFB50029E436 /* Group.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,7 +258,6 @@
 		312E98E82ACD309D00E38626 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				99D2C6452ACD495D001FEC20 /* MapView.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -238,7 +265,6 @@
 		312E98E92ACD30A300E38626 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				99D2C6492ACD4A78001FEC20 /* ChatView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -246,7 +272,6 @@
 		312E98EA2ACD30A600E38626 /* Grew */ = {
 			isa = PBXGroup;
 			children = (
-				99D2C6472ACD49C3001FEC20 /* NewGrewView.swift */,
 			);
 			path = Grew;
 			sourceTree = "<group>";
@@ -262,7 +287,13 @@
 		312E98EC2ACD30AB00E38626 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				99D2C64B2ACD4A99001FEC20 /* ProfileView.swift */,
+				21C1F1AA2ACFEE670029E436 /* ProfileView.swift */,
+				21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */,
+				21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */,
+				21C1F1B02ACFEEAB0029E436 /* EditProfileView.swift */,
+				21C1F1B22ACFEEC10029E436 /* MyGroupView.swift */,
+				21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */,
+				21C1F1B72ACFEEEC0029E436 /* SettingView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -458,21 +489,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */,
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
+				21C1F1B82ACFEEEC0029E436 /* SettingView.swift in Sources */,
+				21C1F1842ACE74B70029E436 /* Announcement.swift in Sources */,
+				21C1F1882ACE9E150029E436 /* ImagePicker.swift in Sources */,
+				21C1F1B32ACFEEC10029E436 /* MyGroupView.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
-				99D2C64A2ACD4A78001FEC20 /* ChatView.swift in Sources */,
-				99D2C6482ACD49C3001FEC20 /* NewGrewView.swift in Sources */,
+				21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
-				99D2C64C2ACD4A99001FEC20 /* ProfileView.swift in Sources */,
+				21C1F1BA2ACFEFA00029E436 /* User.swift in Sources */,
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
+				21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */,
 				99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
+				21C1F1862ACE9E000029E436 /* SettingStore.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
+				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
 				312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */,
+				21C1F1BC2ACFEFB50029E436 /* Group.swift in Sources */,
 				312E98E12ACD2EAA00E38626 /* Array+Extensions.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
-				64CEF8382ACD5C07002CBCC7 /* MainTabView.swift in Sources */,
+				21C1F1AF2ACFEE980029E436 /* RoundSpecificCorners.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +651,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Grew/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -646,6 +686,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Grew/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
