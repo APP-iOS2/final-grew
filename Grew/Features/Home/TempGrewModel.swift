@@ -34,7 +34,7 @@ struct TempGrew: Identifiable, Codable {
         }
     }
     /// 멤버 성별
-    var gender: Gender
+    var gender: TempGender
     /// 멤버 최소 나이
     var minimumAge: Int // pickerStyle(.wheel)
     /// 멤버 최대 나이
@@ -50,7 +50,7 @@ struct TempGrew: Identifiable, Codable {
 }
 
 /// 성별
-enum Gender: String, CaseIterable, Codable {
+enum TempGender: String, CaseIterable, Codable {
     case any = "누구나"
     case female = "여자"
     case male = "남자"
