@@ -13,7 +13,7 @@ struct MainTabView: View {
         
         TabView {
           
-            Text("홈")
+            HomeView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("홈")
