@@ -54,6 +54,16 @@
 		312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98DD2ACD2EAA00E38626 /* Date+Extensions.swift */; };
 		312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98DE2ACD2EAA00E38626 /* Encodable+Extensions.swift */; };
 		312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */; };
+		64123E312ACE3AD400D23585 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64123E302ACE3AD300D23585 /* User.swift */; };
+		64123E352ACE3B8600D23585 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64123E342ACE3B8600D23585 /* AuthStore.swift */; };
+		64123E372ACE3C1600D23585 /* AuthStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64123E362ACE3C1600D23585 /* AuthStartView.swift */; };
+		64123E392ACE3D1500D23585 /* AuthSignEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64123E382ACE3D1500D23585 /* AuthSignEmailView.swift */; };
+		64123E3B2ACE3D4D00D23585 /* AuthAddEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64123E3A2ACE3D4D00D23585 /* AuthAddEmailView.swift */; };
+		64123E3D2ACE3D7B00D23585 /* AuthAddPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64123E3C2ACE3D7B00D23585 /* AuthAddPasswordView.swift */; };
+		64123E3F2ACE3D9800D23585 /* AuthAddDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64123E3E2ACE3D9800D23585 /* AuthAddDetailView.swift */; };
+		64123E412ACE3DBE00D23585 /* AuthCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64123E402ACE3DBE00D23585 /* AuthCompleteView.swift */; };
+		64123E432ACE9E6300D23585 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64123E422ACE9E6200D23585 /* LaunchView.swift */; };
+		64123E452ACF890900D23585 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64123E442ACF890900D23585 /* UserStore.swift */; };
 		99B2840C2ACFEDAD0058B174 /* HomeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2840B2ACFEDAD0058B174 /* HomeBannerView.swift */; };
 		99B2840E2ACFFA230058B174 /* TempHomeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2840D2ACFFA230058B174 /* TempHomeCategory.swift */; };
 		99CD9C0C2ACE710800CA6658 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD9C0B2ACE710800CA6658 /* CategoryButtonView.swift */; };
@@ -98,6 +108,16 @@
 		312E98DE2ACD2EAA00E38626 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
 		312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController.SourceType+Extensions.swift"; sourceTree = "<group>"; };
 		5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.release.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
+		64123E302ACE3AD300D23585 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		64123E342ACE3B8600D23585 /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
+		64123E362ACE3C1600D23585 /* AuthStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStartView.swift; sourceTree = "<group>"; };
+		64123E382ACE3D1500D23585 /* AuthSignEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSignEmailView.swift; sourceTree = "<group>"; };
+		64123E3A2ACE3D4D00D23585 /* AuthAddEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAddEmailView.swift; sourceTree = "<group>"; };
+		64123E3C2ACE3D7B00D23585 /* AuthAddPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAddPasswordView.swift; sourceTree = "<group>"; };
+		64123E3E2ACE3D9800D23585 /* AuthAddDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAddDetailView.swift; sourceTree = "<group>"; };
+		64123E402ACE3DBE00D23585 /* AuthCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCompleteView.swift; sourceTree = "<group>"; };
+		64123E422ACE9E6200D23585 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		64123E442ACF890900D23585 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99B2840B2ACFEDAD0058B174 /* HomeBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerView.swift; sourceTree = "<group>"; };
 		99B2840D2ACFFA230058B174 /* TempHomeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempHomeCategory.swift; sourceTree = "<group>"; };
@@ -152,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				312E98992ACCF54A00E38626 /* .swiftlint.yml */,
-				99D2C63F2ACD4043001FEC20 /* GoogleService-Info.plist */,
+				64123E2E2ACE395600D23585 /* GoogleService-Info.plist */,
 				312E98652ACCED3600E38626 /* Grew */,
 				312E98642ACCED3600E38626 /* Products */,
 				61CFCD3C7F3028095662F46E /* Pods */,
@@ -197,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				312E98662ACCED3600E38626 /* GrewApp.swift */,
+				64123E422ACE9E6200D23585 /* LaunchView.swift */,
 				99D2C6412ACD4332001FEC20 /* MainTabView.swift */,
 			);
 			path = App;
@@ -227,10 +248,10 @@
 		312E98D32ACD26F400E38626 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				64123E302ACE3AD300D23585 /* User.swift */,
 				21C1F1832ACE74B70029E436 /* Announcement.swift */,
 				21C1F1852ACE9E000029E436 /* SettingStore.swift */,
 				21C1F1872ACE9E150029E436 /* ImagePicker.swift */,
-				21C1F1B92ACFEFA00029E436 /* User.swift */,
 				21C1F1BB2ACFEFB50029E436 /* Group.swift */,
 			);
 			path = Model;
@@ -267,6 +288,8 @@
 		312E98D72ACD2B0800E38626 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				64123E332ACE3B5F00D23585 /* Store */,
+				64123E322ACE3B5100D23585 /* View */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -319,7 +342,6 @@
 				21C1F1B22ACFEEC10029E436 /* MyGroupView.swift */,
 				21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */,
 				21C1F1B72ACFEEEC0029E436 /* SettingView.swift */,
-
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -338,6 +360,28 @@
 				5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		64123E322ACE3B5100D23585 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				64123E362ACE3C1600D23585 /* AuthStartView.swift */,
+				64123E382ACE3D1500D23585 /* AuthSignEmailView.swift */,
+				64123E3A2ACE3D4D00D23585 /* AuthAddEmailView.swift */,
+				64123E3C2ACE3D7B00D23585 /* AuthAddPasswordView.swift */,
+				64123E3E2ACE3D9800D23585 /* AuthAddDetailView.swift */,
+				64123E402ACE3DBE00D23585 /* AuthCompleteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		64123E332ACE3B5F00D23585 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				64123E342ACE3B8600D23585 /* AuthStore.swift */,
+				64123E442ACF890900D23585 /* UserStore.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		A38141B78C32AAF7DF33A628 /* Frameworks */ = {
@@ -442,7 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				312E989A2ACCF54A00E38626 /* .swiftlint.yml in Resources */,
-				99D2C6402ACD4043001FEC20 /* GoogleService-Info.plist in Resources */,
+				64123E2F2ACE395600D23585 /* GoogleService-Info.plist in Resources */,
 				312E986E2ACCED3800E38626 /* Preview Assets.xcassets in Resources */,
 				312E986B2ACCED3800E38626 /* Assets.xcassets in Resources */,
 			);
@@ -515,6 +559,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64123E392ACE3D1500D23585 /* AuthSignEmailView.swift in Sources */,
+				64123E432ACE9E6300D23585 /* LaunchView.swift in Sources */,
 				99CD9C102ACE80AD00CA6658 /* TempGrewViewModel.swift in Sources */,
 				99CD9C122ACE80F200CA6658 /* TempGrewModel.swift in Sources */,
 				99B2840E2ACFFA230058B174 /* TempHomeCategory.swift in Sources */,
@@ -528,11 +574,12 @@
 				21C1F1882ACE9E150029E436 /* ImagePicker.swift in Sources */,
 				21C1F1B32ACFEEC10029E436 /* MyGroupView.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
-
+				64123E372ACE3C1600D23585 /* AuthStartView.swift in Sources */,
+				64123E3D2ACE3D7B00D23585 /* AuthAddPasswordView.swift in Sources */,
+				64123E412ACE3DBE00D23585 /* AuthCompleteView.swift in Sources */,
 				21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
 				21C1F1BA2ACFEFA00029E436 /* User.swift in Sources */,
-
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
 				21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */,
 				99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */,
@@ -540,14 +587,19 @@
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
 				21C1F1862ACE9E000029E436 /* SettingStore.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
+				64123E312ACE3AD400D23585 /* User.swift in Sources */,
+				312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */,
+				64123E452ACF890900D23585 /* UserStore.swift in Sources */,
+				64123E3F2ACE3D9800D23585 /* AuthAddDetailView.swift in Sources */,
+				64123E352ACE3B8600D23585 /* AuthStore.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
 				312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */,
-
 				99CD9C142ACE82BF00CA6658 /* PostListView.swift in Sources */,
 				21C1F1BC2ACFEFB50029E436 /* Group.swift in Sources */,
 				312E98E12ACD2EAA00E38626 /* Array+Extensions.swift in Sources */,
 				99B2840C2ACFEDAD0058B174 /* HomeBannerView.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
+				64123E3B2ACE3D4D00D23585 /* AuthAddEmailView.swift in Sources */,
 				99CD9C1A2ACEAD8600CA6658 /* CategoryDetailView.swift in Sources */,
 				21C1F1AF2ACFEE980029E436 /* RoundSpecificCorners.swift in Sources */,
 			);
