@@ -76,6 +76,20 @@
 		99D2C6402ACD4043001FEC20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99D2C63F2ACD4043001FEC20 /* GoogleService-Info.plist */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
+		9FAC89B22ACE74AA00780FA6 /* GroupAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89A92ACE74AA00780FA6 /* GroupAlertView.swift */; };
+		9FAC89B32ACE74AA00780FA6 /* GrewProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AA2ACE74AA00780FA6 /* GrewProgressViewStyle.swift */; };
+		9FAC89B42ACE74AA00780FA6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AB2ACE74AA00780FA6 /* LocationView.swift */; };
+		9FAC89B52ACE74AA00780FA6 /* GroupMembersEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AC2ACE74AA00780FA6 /* GroupMembersEditView.swift */; };
+		9FAC89B62ACE74AA00780FA6 /* GroupNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AD2ACE74AA00780FA6 /* GroupNameView.swift */; };
+		9FAC89B72ACE74AA00780FA6 /* GroupAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AE2ACE74AA00780FA6 /* GroupAddressView.swift */; };
+		9FAC89B82ACE74AA00780FA6 /* GroupCheckFeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89AF2ACE74AA00780FA6 /* GroupCheckFeeView.swift */; };
+		9FAC89B92ACE74AA00780FA6 /* GroupCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89B02ACE74AA00780FA6 /* GroupCategoryView.swift */; };
+		9FAC89BA2ACE74AA00780FA6 /* NewGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89B12ACE74AA00780FA6 /* NewGroupView.swift */; };
+		9FAC89BC2ACE74C600780FA6 /* Grew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89BB2ACE74C600780FA6 /* Grew.swift */; };
+		9FAC89BE2ACE77AF00780FA6 /* GrewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAC89BD2ACE77AF00780FA6 /* GrewViewModel.swift */; };
+		9FDC02B72ACE8FE300F6EABF /* AnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC02B62ACE8FE300F6EABF /* AnimationModifier.swift */; };
+		9FDC02B92ACEA71F00F6EABF /* Categories.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 9FDC02B82ACEA71F00F6EABF /* Categories.geojson */; };
+		9FDC02BB2ACEAD9100F6EABF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC02BA2ACEAD9100F6EABF /* Category.swift */; };
 		F2E20584B15966D0028FE8B5 /* Pods_Grew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D1665606D5C84E091AB4CB /* Pods_Grew.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +133,20 @@
 		64123E422ACE9E6200D23585 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		64123E442ACF890900D23585 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FAC89A92ACE74AA00780FA6 /* GroupAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupAlertView.swift; sourceTree = "<group>"; };
+		9FAC89AA2ACE74AA00780FA6 /* GrewProgressViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewProgressViewStyle.swift; sourceTree = "<group>"; };
+		9FAC89AB2ACE74AA00780FA6 /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		9FAC89AC2ACE74AA00780FA6 /* GroupMembersEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMembersEditView.swift; sourceTree = "<group>"; };
+		9FAC89AD2ACE74AA00780FA6 /* GroupNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupNameView.swift; sourceTree = "<group>"; };
+		9FAC89AE2ACE74AA00780FA6 /* GroupAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupAddressView.swift; sourceTree = "<group>"; };
+		9FAC89AF2ACE74AA00780FA6 /* GroupCheckFeeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCheckFeeView.swift; sourceTree = "<group>"; };
+		9FAC89B02ACE74AA00780FA6 /* GroupCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCategoryView.swift; sourceTree = "<group>"; };
+		9FAC89B12ACE74AA00780FA6 /* NewGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupView.swift; sourceTree = "<group>"; };
+		9FAC89BB2ACE74C600780FA6 /* Grew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grew.swift; sourceTree = "<group>"; };
+		9FAC89BD2ACE77AF00780FA6 /* GrewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewViewModel.swift; sourceTree = "<group>"; };
+		9FDC02B62ACE8FE300F6EABF /* AnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifier.swift; sourceTree = "<group>"; };
+		9FDC02B82ACEA71F00F6EABF /* Categories.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Categories.geojson; sourceTree = "<group>"; };
+		9FDC02BA2ACEAD9100F6EABF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		99B2840B2ACFEDAD0058B174 /* HomeBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerView.swift; sourceTree = "<group>"; };
 		99B2840D2ACFFA230058B174 /* TempHomeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempHomeCategory.swift; sourceTree = "<group>"; };
 		99CD9C0B2ACE710800CA6658 /* CategoryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
@@ -172,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				312E98992ACCF54A00E38626 /* .swiftlint.yml */,
+				9FDC02B82ACEA71F00F6EABF /* Categories.geojson */,
 				64123E2E2ACE395600D23585 /* GoogleService-Info.plist */,
 				312E98652ACCED3600E38626 /* Grew */,
 				312E98642ACCED3600E38626 /* Products */,
@@ -248,6 +277,9 @@
 		312E98D32ACD26F400E38626 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9FDC02BA2ACEAD9100F6EABF /* Category.swift */,
+				9FAC89BB2ACE74C600780FA6 /* Grew.swift */,
+				9FAC89BD2ACE77AF00780FA6 /* GrewViewModel.swift */,
 				64123E302ACE3AD300D23585 /* User.swift */,
 				21C1F1832ACE74B70029E436 /* Announcement.swift */,
 				21C1F1852ACE9E000029E436 /* SettingStore.swift */,
@@ -281,6 +313,7 @@
 		312E98D62ACD2A7C00E38626 /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
+				9FDC02B62ACE8FE300F6EABF /* AnimationModifier.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -311,6 +344,15 @@
 		312E98EA2ACD30A600E38626 /* Grew */ = {
 			isa = PBXGroup;
 			children = (
+				9FAC89B12ACE74AA00780FA6 /* NewGroupView.swift */,
+				9FAC89B02ACE74AA00780FA6 /* GroupCategoryView.swift */,
+				9FAC89AD2ACE74AA00780FA6 /* GroupNameView.swift */,
+				9FAC89AC2ACE74AA00780FA6 /* GroupMembersEditView.swift */,
+				9FAC89AF2ACE74AA00780FA6 /* GroupCheckFeeView.swift */,
+				9FAC89AE2ACE74AA00780FA6 /* GroupAddressView.swift */,
+				9FAC89A92ACE74AA00780FA6 /* GroupAlertView.swift */,
+				9FAC89AA2ACE74AA00780FA6 /* GrewProgressViewStyle.swift */,
+				9FAC89AB2ACE74AA00780FA6 /* LocationView.swift */,
 			);
 			path = Grew;
 			sourceTree = "<group>";
@@ -486,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				312E989A2ACCF54A00E38626 /* .swiftlint.yml in Resources */,
+				9FDC02B92ACEA71F00F6EABF /* Categories.geojson in Resources */,
 				64123E2F2ACE395600D23585 /* GoogleService-Info.plist in Resources */,
 				312E986E2ACCED3800E38626 /* Preview Assets.xcassets in Resources */,
 				312E986B2ACCED3800E38626 /* Assets.xcassets in Resources */,
@@ -559,6 +602,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FAC89B52ACE74AA00780FA6 /* GroupMembersEditView.swift in Sources */,
 				64123E392ACE3D1500D23585 /* AuthSignEmailView.swift in Sources */,
 				64123E432ACE9E6300D23585 /* LaunchView.swift in Sources */,
 				99CD9C102ACE80AD00CA6658 /* TempGrewViewModel.swift in Sources */,
@@ -574,6 +618,8 @@
 				21C1F1882ACE9E150029E436 /* ImagePicker.swift in Sources */,
 				21C1F1B32ACFEEC10029E436 /* MyGroupView.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
+				9FAC89B92ACE74AA00780FA6 /* GroupCategoryView.swift in Sources */,
+				9FAC89B82ACE74AA00780FA6 /* GroupCheckFeeView.swift in Sources */,
 				64123E372ACE3C1600D23585 /* AuthStartView.swift in Sources */,
 				64123E3D2ACE3D7B00D23585 /* AuthAddPasswordView.swift in Sources */,
 				64123E412ACE3DBE00D23585 /* AuthCompleteView.swift in Sources */,
@@ -583,6 +629,17 @@
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
 				21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */,
 				99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */,
+				9FDC02B72ACE8FE300F6EABF /* AnimationModifier.swift in Sources */,
+				9FAC89BC2ACE74C600780FA6 /* Grew.swift in Sources */,
+				9FAC89B72ACE74AA00780FA6 /* GroupAddressView.swift in Sources */,
+				9FAC89B62ACE74AA00780FA6 /* GroupNameView.swift in Sources */,
+				9FAC89B32ACE74AA00780FA6 /* GrewProgressViewStyle.swift in Sources */,
+				9FAC89BE2ACE77AF00780FA6 /* GrewViewModel.swift in Sources */,
+				9FAC89B22ACE74AA00780FA6 /* GroupAlertView.swift in Sources */,
+				9FAC89BA2ACE74AA00780FA6 /* NewGroupView.swift in Sources */,
+				9FAC89B42ACE74AA00780FA6 /* LocationView.swift in Sources */,
+				64CEF8382ACD5C07002CBCC7 /* MainTabView.swift in Sources */,
+				9FDC02BB2ACEAD9100F6EABF /* Category.swift in Sources */,
 				99CD9C162ACE89A800CA6658 /* PostImageView.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
 				21C1F1862ACE9E000029E436 /* SettingStore.swift in Sources */,
