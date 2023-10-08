@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct MainTabView: View {
-
+    
     var body: some View {
         
         TabView {
           
-            Text("홈")
+            HomeView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("홈")
@@ -45,7 +45,6 @@ struct MainTabView: View {
         }
     }
 }
-
 #Preview {
     MainTabView()
 }
