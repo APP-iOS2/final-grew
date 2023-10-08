@@ -4,7 +4,6 @@
 //
 //  Created by cha_nyeong on 10/4/23.
 //
-
 import FacebookCore
 import FBSDKCoreKit
 import FirebaseCore
@@ -59,9 +58,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         )
     }
     
-    func application(_ application: UIApplication,
-                     configurationForConnecting connectingSceneSession: UISceneSession,
-                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         let sceneConfiguration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
         
         sceneConfiguration.delegateClass = SceneDelegate.self
