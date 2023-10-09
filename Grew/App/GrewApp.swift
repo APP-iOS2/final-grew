@@ -57,7 +57,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             annotation: options[UIApplication.OpenURLOptionsKey.annotation]
         )
     }
-    
+  
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         let sceneConfiguration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
         
