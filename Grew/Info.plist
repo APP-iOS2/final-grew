@@ -4,6 +4,11 @@
 <dict>
 	<key>NMFClientId</key>
 	<string>ntd4im5sbw</string>
-    
+	<key>UIAppFonts</key>
+	<array>
+		<string>SCDream3.otf</string>
+		<string>SCDream5.otf</string>
+		<string>SCDream7.otf</string>
+	</array>
 </dict>
 </plist>
