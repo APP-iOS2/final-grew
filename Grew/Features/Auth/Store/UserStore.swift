@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseAuth
 import Foundation
 
 class UserStore: ObservableObject {
@@ -13,10 +14,10 @@ class UserStore: ObservableObject {
     // 싱글톤 패턴
     static let shared = UserStore()
     
-    @Published var user: User?
+    @Published var currentUser: User?
     
     init() {
-        user = User(id: "", nickName: "", email: "", gender: .female, dob: "", userImageURLString: "", introduce: "", searchHistory: [])
+        currentUser = User(id: "", nickName: "", email: "", gender: .female, dob: "", userImageURLString: "", introduce: "", searchHistory: [])
     }
     
     // Firebase에 있는 유저정보 불러오기
@@ -32,7 +33,7 @@ class UserStore: ObservableObject {
                 let dob = userData?["dob"] as? String ?? ""
                 let searchHistory = userData?["searchHistory"] as? [String] ?? []
                 
-                self.user = User(nickName: nickName, email: email, gender: gender, dob: dob, searchHistory: searchHistory)
+                self.currentUser = User(nickName: nickName, email: email, gender: gender, dob: dob, searchHistory: searchHistory)
             }
         }
     }

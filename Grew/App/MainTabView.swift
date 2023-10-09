@@ -31,7 +31,7 @@ struct MainTabView: View {
                             .font(.largeTitle)
                     }
 //                    .onAppear(perform: {
-//                        
+//
 //                    })
 
                 Text("채팅")

@@ -60,9 +60,3 @@ struct Grew: Identifiable, Codable {
     var heartTapped: Int = 0
 }
 
-/// 성별
-enum Gender: String, CaseIterable, Codable {
-    case any = "누구나"
-    case female = "여자"
-    case male = "남자"
-}

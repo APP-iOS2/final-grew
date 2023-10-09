@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UserContentListView: View {
+struct ChatUserContentListView: View {
     var user: User?
     
     @State private var selectedFilter: ChatSegment = .group
