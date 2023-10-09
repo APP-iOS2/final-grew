@@ -23,7 +23,7 @@ struct EditProfileView: View {
                     self.openPhoto = true
 
                 } label: {
-                    AsyncImage(url: URL(string: userStore.currentUser.userImageURLString ?? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")) { img in
+                    AsyncImage(url: URL(string: userStore.currentUser?.userImageURLString ?? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")) { img in
                         img
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -47,7 +47,7 @@ struct EditProfileView: View {
                         .bold()
                         .font(.title3)
                     
-                    TextField("\(userStore.currentUser.nickName)", text: $username)
+                    TextField("\(userStore.currentUser?.nickName ?? "")", text: $username)
                         .padding(10)
                         .overlay(RoundedRectangle(cornerRadius: 7)
                             .stroke(Color.gray))
@@ -60,7 +60,7 @@ struct EditProfileView: View {
                         .bold()
                         .font(.title3)
                     
-                    TextEditor(text: .constant("\(userStore.currentUser.introduce ?? "")"))
+                    TextEditor(text: .constant("\(userStore.currentUser?.introduce ?? "")"))
                         .overlay(RoundedRectangle(cornerRadius: 7)
                             .stroke(Color.gray))
                         .frame(height: 150)
