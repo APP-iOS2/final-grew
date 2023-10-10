@@ -114,6 +114,8 @@
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
 		CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467AD62AD5061C00143213 /* GrewSearchView.swift */; };
 		CE467AD92AD506B200143213 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE467AD82AD506B100143213 /* GoogleService-Info.plist */; };
+		CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADA2AD530CA00143213 /* View+Extensions.swift */; };
+		CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */; };
 		F2E20584B15966D0028FE8B5 /* Pods_Grew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D1665606D5C84E091AB4CB /* Pods_Grew.framework */; };
 /* End PBXBuildFile section */
 
@@ -207,6 +209,8 @@
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CE467AD62AD5061C00143213 /* GrewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSearchView.swift; sourceTree = "<group>"; };
 		CE467AD82AD506B100143213 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE467ADA2AD530CA00143213 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewAlertModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +395,7 @@
 				312E98DB2ACD2EAA00E38626 /* UIImage+Extensions.swift */,
 				312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */,
 				3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */,
+				CE467ADA2AD530CA00143213 /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				311097BF2AD418C1000D85AD /* AnimationModifier.swift */,
+				CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -758,6 +764,7 @@
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
 				311097B12AD4188E000D85AD /* FirestoreService.swift in Sources */,
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
+				CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddEmailView.swift in Sources */,
 				311097582AD417ED000D85AD /* MessageBubbles.swift in Sources */,
 				311097AC2AD41882000D85AD /* User.swift in Sources */,
@@ -773,6 +780,7 @@
 				3110976F2AD4180F000D85AD /* NewGroupView.swift in Sources */,
 				CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */,
 				311097BA2AD418A6000D85AD /* Constants.swift in Sources */,
+				CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */,
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,
 				311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */,
