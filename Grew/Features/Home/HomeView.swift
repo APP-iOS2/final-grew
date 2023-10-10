@@ -43,7 +43,7 @@ struct HomeView: View {
                 // 신규모임, 인기모임
                 Divider()
                 VStack(alignment: .leading) {
-                    Text("신규모임")
+                    Text("신규 모임")
                         .font(.largeTitle)
                         .bold()
                         .padding(.leading, 16)
@@ -51,7 +51,7 @@ struct HomeView: View {
                 }
                 Divider()
                 VStack(alignment: .leading) {
-                    Text("인기모임")
+                    Text("인기 모임")
                         .font(.largeTitle)
                         .bold()
                         .padding(.leading, 16)
@@ -59,7 +59,7 @@ struct HomeView: View {
                 }
                 // 전체 모임 일정, 전체 모임
                 VStack(alignment: .leading) {
-                    Text("모임일정")
+                    Text("곧 시작하는 모임")
                         .font(.largeTitle)
                         .bold()
                         .padding(.leading, 16)
