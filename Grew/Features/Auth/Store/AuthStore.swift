@@ -20,17 +20,19 @@ class AuthStore: ObservableObject {
     @Published var currentUser: FirebaseAuth.User?
     @Published var signState: SignState = .signOut
     
+    static let shared = AuthStore()
+    
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var nickName: String = ""
-    @Published var gender: Gender = .female
+    @Published var gender: String = ""
     @Published var dob: String = ""
     @Published var searchHistory: [String] = []
     
     let userStore: UserStore = UserStore()
     
     init() {
-        currentUser = Auth.auth().currentUser
+        self.currentUser = Auth.auth().currentUser
     }
     
     enum SignState {
@@ -62,7 +64,7 @@ class AuthStore: ObservableObject {
             self.signState = .email
             print("email Signin success")
             print(currentUser?.uid)
-            userStore.loadUserData(userId: currentUser?.uid ?? "")
+            try await userStore.loadUserData()
         } catch {
             print("email SignIn error: \(error.localizedDescription)")
         }
@@ -83,14 +85,14 @@ class AuthStore: ObservableObject {
     // MARK: - Firebase 정보 관련
     // 유저정보 Firebase에 업데이트
     @MainActor
-    func uploadUserData(uid: String, email: String, nickName: String, gender: Gender, dob: String) async {
+    func uploadUserData(uid: String, email: String, nickName: String, gender: String, dob: String) async {
         let user = User(id: uid, nickName: nickName, email: email, gender: gender, dob: dob, searchHistory: [])
         
         let userDict = [
             "id": user.id,
             "nickName": user.nickName,
             "email": user.email,
-            "gender": user.gender.rawValue,
+            "gender": user.gender,
             "dob": user.dob,
             "searchHistory": user.searchHistory
         ] as [String: Any]

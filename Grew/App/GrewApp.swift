@@ -26,11 +26,11 @@ struct GrewApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-//                LaunchView()
-//                    .environmentObject(authStore)
-//                    .environmentObject(userStore)
-                MainTabView()
-                    .environmentObject(grewViewModel)
+                LaunchView()
+                    .environmentObject(authStore)
+                    .environmentObject(userStore)
+//                MainTabView()
+//                    .environmentObject(grewViewModel)
             }
         }
     }

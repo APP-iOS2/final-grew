@@ -51,7 +51,6 @@
 		311097882AD41816000D85AD /* HomeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110977E2AD41816000D85AD /* HomeBannerView.swift */; };
 		311097892AD41816000D85AD /* TempGrewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110977F2AD41816000D85AD /* TempGrewModel.swift */; };
 		3110978A2AD41816000D85AD /* TempGrewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097802AD41816000D85AD /* TempGrewViewModel.swift */; };
-		3110978C2AD4181D000D85AD /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110978B2AD4181D000D85AD /* MapView.swift */; };
 		311097A42AD41882000D85AD /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110979B2AD41881000D85AD /* Announcement.swift */; };
 		311097A52AD41882000D85AD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110979C2AD41881000D85AD /* Category.swift */; };
 		311097A62AD41882000D85AD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110979D2AD41881000D85AD /* AppState.swift */; };
@@ -164,7 +163,6 @@
 		3110977E2AD41816000D85AD /* HomeBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBannerView.swift; sourceTree = "<group>"; };
 		3110977F2AD41816000D85AD /* TempGrewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempGrewModel.swift; sourceTree = "<group>"; };
 		311097802AD41816000D85AD /* TempGrewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempGrewViewModel.swift; sourceTree = "<group>"; };
-		3110978B2AD4181D000D85AD /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = "../../../../../../Downloads/final-grew-dev/Grew/Features/Maps/MapView.swift"; sourceTree = "<group>"; };
 		3110979B2AD41881000D85AD /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		3110979C2AD41881000D85AD /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		3110979D2AD41881000D85AD /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -204,8 +202,6 @@
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
 		3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
 		5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.release.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
-		64CEF8352ACD4846002CBCC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		64CEF8372ACD5C06002CBCC7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D2C63F2ACD4043001FEC20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -469,7 +465,6 @@
 		312E98E82ACD309D00E38626 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				3110978B2AD4181D000D85AD /* MapView.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -756,8 +751,6 @@
 				21C1F1B32ACFEEC10029E436 /* MyGroupView.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
 				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
-				99D2C64A2ACD4A78001FEC20 /* ChatView.swift in Sources */,
-				99D2C6482ACD49C3001FEC20 /* NewGrewView.swift in Sources */,
 				21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
 				311097462AD417AD000D85AD /* AuthStartView.swift in Sources */,
@@ -777,7 +770,6 @@
 				311097892AD41816000D85AD /* TempGrewModel.swift in Sources */,
 				311097822AD41816000D85AD /* TempHomeCategory.swift in Sources */,
 				3110976F2AD4180F000D85AD /* NewGroupView.swift in Sources */,
-				3110978C2AD4181D000D85AD /* MapView.swift in Sources */,
 				311097BA2AD418A6000D85AD /* Constants.swift in Sources */,
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,

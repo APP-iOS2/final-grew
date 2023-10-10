@@ -40,7 +40,7 @@ struct AuthAddDetailView: View {
             .padding()
             
             Button {
-                authStore.gender = gender
+                authStore.gender = gender.rawValue
                 Task {
                     try await authStore.emailAuthSignUp()
                 }

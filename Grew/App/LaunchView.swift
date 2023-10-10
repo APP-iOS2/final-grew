@@ -14,10 +14,10 @@ struct LaunchView: View {
     @EnvironmentObject var userStore: UserStore
     
     var body: some View {
-        if authStore.signState == .email {
-            MainTabView()
-        } else {
+        if authStore.currentUser == nil {
             AuthStartView()
+        } else {
+            AuthCompleteView()
         }
     }
 }
