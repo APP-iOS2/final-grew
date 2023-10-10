@@ -71,7 +71,7 @@ struct GroupMembersEditView: View {
                             .font(.caption)
                             .foregroundColor(.gray)
                             .padding(.trailing)
-                            .padding(.top,4)
+                            .padding(.top, 4)
                     }
                 }
                 .padding(10)

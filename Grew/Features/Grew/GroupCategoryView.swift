@@ -11,17 +11,13 @@ struct GroupCategoryView: View {
     @EnvironmentObject var viewModel: GrewViewModel
     private let grewExample: Grew = Grew(
         categoryIndex: "101",
-        title: "배고파용",
-        description: "어쩌구",
-        isOnline: false,
-        location: "서울특별시 동대문구 회기동",
-        gender: .any,
-        minimumAge: 22,
-        maximumAge: 29,
+        title: "테스트 그루1",
+        isOnline: true,
+        gender: Gender.male,
+        minimumAge: 20,
+        maximumAge: 25,
         maximumMembers: 20,
-        currentMembers: [],
-        isNeedFee: true,
-        fee: 16000)
+        isNeedFee: false)
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 4) {

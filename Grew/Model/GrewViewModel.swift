@@ -22,12 +22,12 @@ class GrewViewModel: ObservableObject {
     }
     
     func fetchGrew() {
-            db.collection("grews").getDocuments { snapshot, error in
-                guard let documents = snapshot?.documents, error == nil else {
-                    if let error = error { print(error) }
-                    return
-                }
-                
+        db.collection("grews").getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents, error == nil else {
+                if let error = error { print(error) }
+                return
+            }
+            
             var fetchData: [Grew] = []
             
             for document in documents {

@@ -41,7 +41,7 @@ struct GroupNameView: View {
                     Button(action: { isOnline = true }, label: {
                         Text("온라인")
                             .font(.title2.bold())
-                            .frame(width: 100,height: 50)
+                            .frame(width: 100, height: 50)
                             .foregroundColor(.white)
                             .background(isOnline ? Color.green : Color.gray)
                             .cornerRadius(10)
@@ -53,7 +53,7 @@ struct GroupNameView: View {
                     }, label: {
                         Text("오프라인")
                             .font(.title2.bold())
-                            .frame(width: 100,height: 50)
+                            .frame(width: 100, height: 50)
                             .foregroundColor(.white)
                             .background(isOnline ? Color.gray : Color.green)
                             .cornerRadius(10)

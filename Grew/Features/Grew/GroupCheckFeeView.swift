@@ -29,7 +29,7 @@ struct GroupCheckFeeView: View {
                     }, label: {
                         Text("있음")
                             .font(.title2.bold())
-                            .frame(width: 100,height: 50)
+                            .frame(width: 100, height: 50)
                             .foregroundColor(.white)
                             .background(isNeedFee ? Color.green : Color.gray)
                             .cornerRadius(10)
@@ -40,7 +40,7 @@ struct GroupCheckFeeView: View {
                     }, label: {
                         Text("없음")
                             .font(.title2.bold())
-                            .frame(width: 100,height: 50)
+                            .frame(width: 100, height: 50)
                             .foregroundColor(.white)
                             .background(isNeedFee ? Color.gray : Color.green)
                             .cornerRadius(10)
@@ -53,7 +53,7 @@ struct GroupCheckFeeView: View {
             if isNeedFee {
                 VStack(alignment: .leading) {
                     Divider()
-                        .padding(.bottom,20)
+                        .padding(.bottom, 20)
                     HStack {
                         Image(systemName: "dollarsign.circle.fill")
                         Text("활동비")
@@ -61,12 +61,12 @@ struct GroupCheckFeeView: View {
                     TextField("활동비를 입력하세요", text: $fee)
                         .onChange(of: fee) { oldValue, newValue in
                             if Int(newValue) != nil {
-                           
-                        } else {
-                            fee = ""
+                                
+                            } else {
+                                fee = ""
+                            }
                         }
-                    }
-                    .keyboardType(.numberPad)
+                        .keyboardType(.numberPad)
                         .padding(10)
                         .overlay{
                             RoundedRectangle(cornerRadius: 5)
