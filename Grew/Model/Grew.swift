@@ -14,7 +14,7 @@ struct Grew: Identifiable, Codable {
     /// 모임 이름
     let title: String
     /// 모임 설명
-    var description: String
+    var description: String = ""
     /// 모임 썸네일 이미지
     var imageURL: String = "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg"
     /// 온라인, 오프라인 여부
@@ -47,16 +47,11 @@ struct Grew: Identifiable, Codable {
     /// 활동비
     var fee: Int = 0
     /// 모임 생성 시간
-    var createdAt: String {
-        let nowDate = Date()
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        dateFormatter.locale = Locale(identifier: "ko")
-        
-        return dateFormatter.string(from: nowDate)
+    var createdAt: Date = Date()
+    /// 모임 생성 시간 String 값 변환
+    var createdAtString: String {
+        DateService.shared.grewFormat(createdAt)
     }
     /// 좋아요 눌린 횟수
     var heartTapped: Int = 0
 }
-
