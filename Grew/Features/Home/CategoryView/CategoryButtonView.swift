@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoryButtonView: View {
     
-    @ObservedObject var postViewModel: TempGrewViewModel
+    @ObservedObject var grewViewModel: GrewViewModel
     
     private let gridItems: [GridItem] = [
 //        GridItem(.adaptive(minimum: 60))
@@ -26,7 +26,7 @@ struct CategoryButtonView: View {
                 ForEach(TempHomeCategory.allCases, id: \.rawValue) { category in
                     NavigationLink {
                         
-                        CategoryDetailView(grewList: postViewModel.grewList)
+                        CategoryDetailView(grewList: grewViewModel.grewList)
                             .navigationTitle(category.rawValue)
                         
                     } label: {
@@ -60,5 +60,5 @@ struct CategoryButtonView: View {
 }
 
 #Preview {
-    CategoryButtonView(postViewModel: TempGrewViewModel())
+    CategoryButtonView(grewViewModel: GrewViewModel())
 }
