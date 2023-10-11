@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PostCellView: View {
+struct GrewCellView: View {
     
-    let grew: TempGrew
+    let grew: Grew
     /// 즐겨찾기? 버튼이 유저, Grew 각각 들어가야함
     @State private var heartButton: Bool = false
     
@@ -19,7 +19,7 @@ struct PostCellView: View {
             
             ZStack(alignment: .bottomLeading){
                 
-                PostImageView(image: grew.imageURL)
+                GrewImageView(image: grew.imageURL)
                 
                 Button {
                     heartButton.toggle()
@@ -36,7 +36,7 @@ struct PostCellView: View {
             VStack(alignment: .leading) {
                 
                 // 모임 카테고리
-                Text("\(grew.category)")
+                Text("\(grew.categoryIndex)")
                     .padding(.horizontal, 10)
                     .padding(.vertical, 2)
                     .background(.pink)
@@ -87,7 +87,7 @@ struct PostCellView: View {
 }
 
 #Preview {
-    PostCellView(grew: TempGrew(category: "123",
+    GrewCellView(grew: Grew(categoryIndex: "123",
     title: "123",
     description: "123",
     imageURL: "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg",
