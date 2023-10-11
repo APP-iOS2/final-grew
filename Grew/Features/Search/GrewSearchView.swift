@@ -35,9 +35,9 @@ struct GrewSearchView: View {
                 }
             }
             .padding()
-//            .onAppear {
-//                grewViewModel.fetchGrew()
-//            }
+            .onAppear {
+                grewViewModel.fetchGrew()
+            }
         }
     }
     
