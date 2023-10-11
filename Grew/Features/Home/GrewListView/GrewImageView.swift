@@ -9,7 +9,7 @@ import Kingfisher
 import SwiftUI
 
 
-struct PostImageView: View {
+struct GrewImageView: View {
     let image: String
     var body: some View {
         KFImage(URL(string: image))
@@ -21,5 +21,5 @@ struct PostImageView: View {
 }
 
 #Preview {
-    PostImageView(image: "")
+    GrewImageView(image: "")
 }
