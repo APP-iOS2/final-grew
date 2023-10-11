@@ -15,43 +15,46 @@ struct GrewAlertModifier: ViewModifier {
     let action: () -> Void
     
     func body(content: Content) -> some View {
-        ZStack {
-            if ispresented {
-                Rectangle()
-                    .fill(.black.opacity(0.2))
-                    .ignoresSafeArea()
-                
-                VStack(spacing: 30) {
-                    Text(title)
-                        .font(.h2_R)
-                        .foregroundStyle(.black)
+        GeometryReader { geometry in
+            ZStack {
+                if ispresented {
+                    Rectangle()
+                        .fill(.black.opacity(0.2))
+                        .ignoresSafeArea()
                     
-                    Button {
-                        action()
-                        ispresented.toggle()
-                    } label: {
-                        Text(buttonTitle)
+                    VStack(spacing: 30) {
+                        Text(title)
                             .font(.b1_R)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 60)
-                            .padding(.vertical, 10)
-                    }
-                    .background(buttonColor)
-                    .clipShape(
-                        RoundedRectangle(cornerRadius: 5)
-                    )
-                    
-                }
-                .padding(.horizontal, 40)
-                .padding(.vertical, 30)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.grewMainColor.opacity(0.5))
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(.white)
+                            .foregroundStyle(.black)
+                        
+                        Button {
+                            action()
+                            ispresented.toggle()
+                        } label: {
+                            Text(buttonTitle)
+                                .font(.b1_R)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 60)
+                                .padding(.vertical, 10)
+                        }
+                        .background(buttonColor)
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 5)
                         )
-                )
+                        
+                    }
+                    .padding(.horizontal, 40)
+                    .padding(.vertical, 30)
+                    .frame(width: geometry.size.width * 0.8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.white)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(.white)
+                            )
+                    )
+                }
             }
         }
     }
