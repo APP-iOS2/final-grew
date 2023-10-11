@@ -29,7 +29,7 @@ struct GrewSearchView: View {
                     .onSubmit {
                         searchGroup()
                     }
-                
+
                 ScrollView {
                     makeSearchHistoryView()
                 }

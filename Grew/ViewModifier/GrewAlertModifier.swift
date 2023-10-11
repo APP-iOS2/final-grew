@@ -32,6 +32,7 @@ struct GrewAlertModifier: ViewModifier {
                         Button {
                             action()
                             isPresented.toggle()
+
                         } label: {
                             Text(buttonTitle)
                                 .font(.b1_R)
@@ -84,4 +85,5 @@ struct GrewAlertModifier: ViewModifier {
     //                action: { }
     //            )
     //        )
+
 }

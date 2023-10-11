@@ -14,7 +14,7 @@ struct MainTabView: View {
         NavigationStack {
             TabView {
                 
-                Text("홈")
+                HomeView()
                     .tabItem {
                         Image(systemName: "house")
                         Text("홈")
@@ -30,9 +30,12 @@ struct MainTabView: View {
                         Image(systemName: "plus.circle")
                             .font(.largeTitle)
                     }
-//                    .onAppear(perform: {
-//
-//                    })
+                    .onAppear {
+                        isNewGrewViewPresented = true
+                    }
+                    .fullScreenCover(isPresented: $isNewGrewViewPresented){
+                        NewGrewView()
+                    }
 
                 Text("채팅")
                     .tabItem {

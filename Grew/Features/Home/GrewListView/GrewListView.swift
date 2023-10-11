@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PostListView: View {
+struct GrewListView: View {
     
-    let grewList: [TempGrew]
+    let grewList: [Grew]
     
     
     var body: some View {
@@ -18,7 +18,7 @@ struct PostListView: View {
                 NavigationLink{
                     Text("\(grew.title) 게시글")
                 } label: {
-                    PostCellView(grew: grew)
+                    GrewCellView(grew: grew)
                         .padding(.horizontal, 16)
                         .padding(.bottom, 12)
                         .foregroundColor(.black)
@@ -29,5 +29,5 @@ struct PostListView: View {
 }
 
 #Preview {
-    PostListView(grewList: [])
+    GrewListView(grewList: [])
 }

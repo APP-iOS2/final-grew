@@ -31,6 +31,9 @@ struct GrewApp: App {
 //                    .environmentObject(userStore)
                 MainTabView()
                     .environmentObject(grewViewModel)
+                    .onAppear {
+                        grewViewModel.fetchJsonData()
+                    }
             }
         }
     }
