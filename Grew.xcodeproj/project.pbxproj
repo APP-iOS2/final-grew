@@ -116,6 +116,7 @@
 		CE467AD92AD506B200143213 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE467AD82AD506B100143213 /* GoogleService-Info.plist */; };
 		CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADA2AD530CA00143213 /* View+Extensions.swift */; };
 		CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */; };
+		CEB6CBB92AD682DE00515EEA /* GrewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */; };
 		F2E20584B15966D0028FE8B5 /* Pods_Grew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D1665606D5C84E091AB4CB /* Pods_Grew.framework */; };
 /* End PBXBuildFile section */
 
@@ -211,6 +212,7 @@
 		CE467AD82AD506B100143213 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE467ADA2AD530CA00143213 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewAlertModifier.swift; sourceTree = "<group>"; };
+		CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -538,6 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				CE467AD62AD5061C00143213 /* GrewSearchView.swift */,
+				CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */,
 				311097C02AD418C1000D85AD /* AnimationModifier.swift in Sources */,
 				311097602AD417FD000D85AD /* ChatRoom.swift in Sources */,
+				CEB6CBB92AD682DE00515EEA /* GrewTextField.swift in Sources */,
 				3110975A2AD417ED000D85AD /* ChatSideMenuView.swift in Sources */,
 				311097C62AD41D92000D85AD /* GrewStore.swift in Sources */,
 				311097892AD41816000D85AD /* TempGrewModel.swift in Sources */,
