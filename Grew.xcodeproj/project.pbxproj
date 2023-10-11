@@ -104,6 +104,7 @@
 		3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */; };
 		3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2802AD62ED1000E9ADF /* GrewCellView.swift */; };
 		3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2842AD62EEE000E9ADF /* MapView.swift */; };
+		3137A2892AD6306E000E9ADF /* ChatRoomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2882AD6306E000E9ADF /* ChatRoomStore.swift */; };
 		3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
@@ -211,6 +212,7 @@
 		3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewImageView.swift; sourceTree = "<group>"; };
 		3137A2802AD62ED1000E9ADF /* GrewCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewCellView.swift; sourceTree = "<group>"; };
 		3137A2842AD62EEE000E9ADF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		3137A2882AD6306E000E9ADF /* ChatRoomStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomStore.swift; sourceTree = "<group>"; };
 		3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				3110974D2AD417DB000D85AD /* ChatStore.swift */,
+				3137A2882AD6306E000E9ADF /* ChatRoomStore.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -876,6 +879,7 @@
 				311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */,
 				311097B22AD4188E000D85AD /* DateService.swift in Sources */,
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
+				3137A2892AD6306E000E9ADF /* ChatRoomStore.swift in Sources */,
 				311097612AD417FD000D85AD /* Bubble.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
 				3110973A2AD417A1000D85AD /* UserStore.swift in Sources */,

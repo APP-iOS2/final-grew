@@ -112,14 +112,17 @@ struct ChatDetailView: View {
     
     
     private var chatBar: some View {
-        
-        HStack {
+        HStack{
+            Button {
+            } label: {
+                Image(systemName: "plus")
+            }
             TextField("메세지 보내기", text: $text)
             Button {
                 text = ""
             } label: {
-                Image(systemName: "arrow.up.circle.fill").font(.title).foregroundColor(text.isEmpty ? .gray : Color("chatGreen"))
-            }.disabled(text.isEmpty)
+                Image(systemName: "arrow.up.circle.fill").font(.title).foregroundColor(text.isEmpty ? .gray : Color.Main)
+            }
         }.padding()
         
     }
