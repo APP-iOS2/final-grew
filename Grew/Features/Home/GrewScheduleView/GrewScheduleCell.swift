@@ -83,6 +83,7 @@ struct GrewScheduleCell: View {
 #Preview {
     GrewScheduleCell(grew: Grew(
         categoryIndex: "123",
+        categorysubIndex: "345",
         title: "123",
         description: "123",
         imageURL: "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg",
