@@ -17,7 +17,7 @@ extension View {
     ) -> some View {
         return modifier(
             GrewAlertModifier(
-                ispresented: isPresented,
+                isPresented: isPresented,
                 title: title,
                 buttonTitle: buttonTitle,
                 buttonColor: buttonColor,

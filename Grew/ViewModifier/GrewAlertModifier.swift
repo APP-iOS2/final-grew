@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GrewAlertModifier: ViewModifier {
-    @Binding var ispresented: Bool
+    @Binding var isPresented: Bool
     let title: String
     let buttonTitle: String
     let buttonColor: Color
@@ -17,7 +17,9 @@ struct GrewAlertModifier: ViewModifier {
     func body(content: Content) -> some View {
         GeometryReader { geometry in
             ZStack {
-                if ispresented {
+                content
+                
+                if isPresented {
                     Rectangle()
                         .fill(.black.opacity(0.2))
                         .ignoresSafeArea()
@@ -29,7 +31,7 @@ struct GrewAlertModifier: ViewModifier {
                         
                         Button {
                             action()
-                            ispresented.toggle()
+                            isPresented.toggle()
                         } label: {
                             Text(buttonTitle)
                                 .font(.b1_R)
@@ -61,10 +63,10 @@ struct GrewAlertModifier: ViewModifier {
 }
 
 #Preview {
-    Text("Alert Test")
+    Text("Alert")
         .modifier(
             GrewAlertModifier(
-                ispresented: .constant(true),
+                isPresented: .constant(true),
                 title: "회원가입이 완료되었습니다! 🎉",
                 buttonTitle: "확인",
                 buttonColor: .grewMainColor,
@@ -72,14 +74,14 @@ struct GrewAlertModifier: ViewModifier {
             )
         )
     
-//    Text("Alert Test")
-//        .modifier(
-//            GrewAlertModifier(
-//                ispresented: .constant(true),
-//                title: "존재하지 않는 계정입니다.",
-//                buttonTitle: "확인",
-//                buttonColor: Color(hexCode: "F05650"),
-//                action: { }
-//            )
-//        )
+    //    Text("Alert Test")
+    //        .modifier(
+    //            GrewAlertModifier(
+    //                ispresented: .constant(true),
+    //                title: "존재하지 않는 계정입니다.",
+    //                buttonTitle: "확인",
+    //                buttonColor: Color(hexCode: "F05650"),
+    //                action: { }
+    //            )
+    //        )
 }
