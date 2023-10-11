@@ -42,11 +42,8 @@
 		311097742AD4180F000D85AD /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110976A2AD4180E000D85AD /* LocationView.swift */; };
 		311097752AD4180F000D85AD /* GroupNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110976B2AD4180F000D85AD /* GroupNameView.swift */; };
 		311097762AD4180F000D85AD /* GroupAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110976C2AD4180F000D85AD /* GroupAddressView.swift */; };
-		311097812AD41816000D85AD /* GrewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097772AD41815000D85AD /* GrewListView.swift */; };
 		311097822AD41816000D85AD /* TempHomeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097782AD41815000D85AD /* TempHomeCategory.swift */; };
 		311097842AD41816000D85AD /* CategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110977A2AD41815000D85AD /* CategoryDetailView.swift */; };
-		311097852AD41816000D85AD /* GrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110977B2AD41815000D85AD /* GrewCellView.swift */; };
-		311097862AD41816000D85AD /* GrewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110977C2AD41815000D85AD /* GrewImageView.swift */; };
 		311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110977D2AD41815000D85AD /* CategoryButtonView.swift */; };
 		311097882AD41816000D85AD /* HomeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110977E2AD41816000D85AD /* HomeBannerView.swift */; };
 		311097A42AD41882000D85AD /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110979B2AD41881000D85AD /* Announcement.swift */; };
@@ -104,6 +101,10 @@
 		312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98DD2ACD2EAA00E38626 /* Date+Extensions.swift */; };
 		312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98DE2ACD2EAA00E38626 /* Encodable+Extensions.swift */; };
 		312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */; };
+		3137A2812AD62ED1000E9ADF /* GrewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A27E2AD62ED1000E9ADF /* GrewListView.swift */; };
+		3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */; };
+		3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2802AD62ED1000E9ADF /* GrewCellView.swift */; };
+		3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2842AD62EEE000E9ADF /* MapView.swift */; };
 		3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
@@ -163,11 +164,8 @@
 		3110976A2AD4180E000D85AD /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		3110976B2AD4180F000D85AD /* GroupNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupNameView.swift; sourceTree = "<group>"; };
 		3110976C2AD4180F000D85AD /* GroupAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupAddressView.swift; sourceTree = "<group>"; };
-		311097772AD41815000D85AD /* GrewListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewListView.swift; sourceTree = "<group>"; };
 		311097782AD41815000D85AD /* TempHomeCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempHomeCategory.swift; sourceTree = "<group>"; };
 		3110977A2AD41815000D85AD /* CategoryDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailView.swift; sourceTree = "<group>"; };
-		3110977B2AD41815000D85AD /* GrewCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewCellView.swift; sourceTree = "<group>"; };
-		3110977C2AD41815000D85AD /* GrewImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewImageView.swift; sourceTree = "<group>"; };
 		3110977D2AD41815000D85AD /* CategoryButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		3110977E2AD41816000D85AD /* HomeBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBannerView.swift; sourceTree = "<group>"; };
 		3110979B2AD41881000D85AD /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
@@ -204,6 +202,10 @@
 		312E98DD2ACD2EAA00E38626 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		312E98DE2ACD2EAA00E38626 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
 		312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController.SourceType+Extensions.swift"; sourceTree = "<group>"; };
+		3137A27E2AD62ED1000E9ADF /* GrewListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewListView.swift; sourceTree = "<group>"; };
+		3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewImageView.swift; sourceTree = "<group>"; };
+		3137A2802AD62ED1000E9ADF /* GrewCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewCellView.swift; sourceTree = "<group>"; };
+		3137A2842AD62EEE000E9ADF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				312E98642ACCED3600E38626 /* Products */,
 				61CFCD3C7F3028095662F46E /* Pods */,
 				A38141B78C32AAF7DF33A628 /* Frameworks */,
+				3137A27D2AD62EB8000E9ADF /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -486,7 +489,7 @@
 		312E98E82ACD309D00E38626 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				3AF1D4B02AD50E6700ECE1A8 /* ViewModel */,
+				3137A2842AD62EEE000E9ADF /* MapView.swift */,
 				3AF1D4A72AD4D5F200ECE1A8 /* Views */,
 			);
 			path = Maps;
@@ -526,11 +529,6 @@
 				993274112AD531C70082FCEC /* GrewScheduleView */,
 				9932740F2AD530120082FCEC /* GrewListView */,
 				3110977E2AD41816000D85AD /* HomeBannerView.swift */,
-				3110977B2AD41815000D85AD /* PostCellView.swift */,
-				3110977C2AD41815000D85AD /* PostImageView.swift */,
-				311097772AD41815000D85AD /* PostListView.swift */,
-				3110977F2AD41816000D85AD /* TempGrewModel.swift */,
-				311097802AD41816000D85AD /* TempGrewViewModel.swift */,
 				99D2C6432ACD4913001FEC20 /* HomeView.swift */,
 				311097782AD41815000D85AD /* TempHomeCategory.swift */,
 			);
@@ -559,6 +557,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		3137A27D2AD62EB8000E9ADF /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				CE467AD82AD506B100143213 /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		3AF1D4A42AD41F3A00ECE1A8 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,13 +587,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3AF1D4B02AD50E6700ECE1A8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		61CFCD3C7F3028095662F46E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,9 +599,9 @@
 		9932740F2AD530120082FCEC /* GrewListView */ = {
 			isa = PBXGroup;
 			children = (
-				3110977B2AD41815000D85AD /* GrewCellView.swift */,
-				3110977C2AD41815000D85AD /* GrewImageView.swift */,
-				311097772AD41815000D85AD /* GrewListView.swift */,
+				3137A2802AD62ED1000E9ADF /* GrewCellView.swift */,
+				3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */,
+				3137A27E2AD62ED1000E9ADF /* GrewListView.swift */,
 			);
 			path = GrewListView;
 			sourceTree = "<group>";
@@ -809,14 +808,15 @@
 				3110976D2AD4180F000D85AD /* GrewProgressViewStyle.swift in Sources */,
 				21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */,
 				311097322AD41722000D85AD /* LaunchView.swift in Sources */,
-				311097862AD41816000D85AD /* GrewImageView.swift in Sources */,
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
 				311097542AD417E3000D85AD /* ChatListView.swift in Sources */,
 				3110974E2AD417DB000D85AD /* ChatStore.swift in Sources */,
+				3137A2812AD62ED1000E9ADF /* GrewListView.swift in Sources */,
 				21C1F1B82ACFEEEC0029E436 /* SettingView.swift in Sources */,
 				311097762AD4180F000D85AD /* GroupAddressView.swift in Sources */,
 				311097432AD417AD000D85AD /* AuthAddPasswordView.swift in Sources */,
+				3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */,
 				311097532AD417E3000D85AD /* ChatDetailView.swift in Sources */,
 				311097A62AD41882000D85AD /* AppState.swift in Sources */,
 				311097722AD4180F000D85AD /* GroupCheckFeeView.swift in Sources */,
@@ -830,6 +830,7 @@
 				993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */,
 				21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
+				3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */,
 				311097462AD417AD000D85AD /* AuthStartView.swift in Sources */,
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
 				3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */,
@@ -855,16 +856,15 @@
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,
 				311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */,
-				311097852AD41816000D85AD /* GrewCellView.swift in Sources */,
 				311097B22AD4188E000D85AD /* DateService.swift in Sources */,
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
 				311097612AD417FD000D85AD /* Bubble.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
 				3110973A2AD417A1000D85AD /* UserStore.swift in Sources */,
-				311097812AD41816000D85AD /* GrewListView.swift in Sources */,
 				311097A72AD41882000D85AD /* GrewViewModel.swift in Sources */,
 				311097712AD4180F000D85AD /* GroupAlertView.swift in Sources */,
 				311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */,
+				3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */,
 				311097702AD4180F000D85AD /* GroupMembersEditView.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
 				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
