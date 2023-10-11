@@ -28,7 +28,6 @@
 		311097542AD417E3000D85AD /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097512AD417E3000D85AD /* ChatListView.swift */; };
 		311097582AD417ED000D85AD /* MessageBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097552AD417ED000D85AD /* MessageBubbles.swift */; };
 		311097592AD417ED000D85AD /* ChatRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097562AD417ED000D85AD /* ChatRoomCell.swift */; };
-		3110975A2AD417ED000D85AD /* ChatSideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097572AD417ED000D85AD /* ChatSideMenuView.swift */; };
 		3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110975B2AD417FD000D85AD /* ChatSegment.swift */; };
 		311097602AD417FD000D85AD /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110975C2AD417FD000D85AD /* ChatRoom.swift */; };
 		311097612AD417FD000D85AD /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110975D2AD417FD000D85AD /* Bubble.swift */; };
@@ -116,6 +115,7 @@
 		3AF1D4AD2AD4D65900ECE1A8 /* NaverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */; };
 		3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AE2AD4D75A00ECE1A8 /* MapListItemView.swift */; };
 		99266D832AD635BA00FB6AC1 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 99266D822AD635BA00FB6AC1 /* ConfettiSwiftUI */; };
+		3E185AA42AD65B0000F7FC46 /* ChatSideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185AA32AD65B0000F7FC46 /* ChatSideBar.swift */; };
 		9932740E2AD50A380082FCEC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9932740D2AD50A380082FCEC /* GoogleService-Info.plist */; };
 		993274132AD531F40082FCEC /* GrewScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274122AD531F40082FCEC /* GrewScheduleCell.swift */; };
 		993274152AD5325B0082FCEC /* GrewScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274142AD5325B0082FCEC /* GrewScheduleListView.swift */; };
@@ -156,7 +156,6 @@
 		311097512AD417E3000D85AD /* ChatListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		311097552AD417ED000D85AD /* MessageBubbles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBubbles.swift; sourceTree = "<group>"; };
 		311097562AD417ED000D85AD /* ChatRoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomCell.swift; sourceTree = "<group>"; };
-		311097572AD417ED000D85AD /* ChatSideMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSideMenuView.swift; sourceTree = "<group>"; };
 		3110975B2AD417FD000D85AD /* ChatSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSegment.swift; sourceTree = "<group>"; };
 		3110975C2AD417FD000D85AD /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		3110975D2AD417FD000D85AD /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
@@ -221,6 +220,7 @@
 		3AF1D4AA2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapOverSheetView.swift; sourceTree = "<group>"; };
 		3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapView.swift; sourceTree = "<group>"; };
 		3AF1D4AE2AD4D75A00ECE1A8 /* MapListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListItemView.swift; sourceTree = "<group>"; };
+		3E185AA32AD65B0000F7FC46 /* ChatSideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSideBar.swift; sourceTree = "<group>"; };
 		5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.release.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 
@@ -332,8 +332,8 @@
 			isa = PBXGroup;
 			children = (
 				311097562AD417ED000D85AD /* ChatRoomCell.swift */,
-				311097572AD417ED000D85AD /* ChatSideMenuView.swift */,
 				311097552AD417ED000D85AD /* MessageBubbles.swift */,
+				3E185AA32AD65B0000F7FC46 /* ChatSideBar.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -821,6 +821,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E185AA42AD65B0000F7FC46 /* ChatSideBar.swift in Sources */,
 				3110976D2AD4180F000D85AD /* GrewProgressViewStyle.swift in Sources */,
 				21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */,
 				311097322AD41722000D85AD /* LaunchView.swift in Sources */,

@@ -20,7 +20,7 @@ struct ChatUserContentListView: View {
     
     var body: some View {
         // user content list view
-        VStack {
+        VStack{
             HStack{
                 ForEach(ChatSegment.allCases) { filter in
                     VStack {
@@ -30,13 +30,13 @@ struct ChatUserContentListView: View {
                         
                         if selectedFilter == filter {
                             Rectangle()
-                                .foregroundColor(.black)
-                                .frame(maxWidth: filterBarWidth, maxHeight: 2)
+                                .foregroundColor(Color("chatGreen"))
+                                .frame(maxWidth: filterBarWidth, maxHeight: 1)
                                 .matchedGeometryEffect(id: "item", in: animation)
                         } else {
                             Rectangle()
                                 .foregroundColor(.clear)
-                                .frame(maxWidth: filterBarWidth, maxHeight: 2)
+                                .frame(maxWidth: filterBarWidth, maxHeight: 1)
                         }
                     }
                     .onTapGesture {
@@ -46,7 +46,7 @@ struct ChatUserContentListView: View {
                     }
                 }
             }
-            // 임시로 뷰 나눠뒀지만 필터링으로 개인이랑 그룹 나눠서 패치만 하면 될듯?
+            
             switch selectedFilter {
             case .group:
                 ChatListView()
@@ -55,24 +55,26 @@ struct ChatUserContentListView: View {
             }
             Spacer()
         }
-        /* .gesture(
+        .highPriorityGesture(
             DragGesture(minimumDistance: 2, coordinateSpace: .local)
                 .onEnded { value in
-                    if ((selectedFilter == .group) && (value.translation.width < 0)) {
+                    if ((selectedFilter == .group) && (value.translation.width > 0)) {
                         withAnimation {
                             selectedFilter = .personal
                         }
                     }
-                    else if ((selectedFilter == .personal) && (value.translation.width > 0)) {
+                    else if ((selectedFilter == .personal) && (value.translation.width < 0)) {
                         withAnimation {
                             selectedFilter = .group
                         }
                     }
                 }
-        )*/
+        )
+        
+        
     }
 }
 
 #Preview {
-    UserContentListView()
+    ChatUserContentListView()
 }

@@ -37,7 +37,7 @@ struct MainTabView: View {
                         NewGrewView()
                     }
 
-                Text("채팅")
+                ChatUserContentListView()
                     .tabItem {
                         Image(systemName: "ellipsis.message")
                         Text("채팅")
