@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct GroupCheckFeeView: View {
-    @State private var isNeedFee = false
+    @EnvironmentObject var viewModel: GrewViewModel
     @State private var showsAlert = false
-    @State private var fee = ""
     @State private var isAnimating = false
     @State private var isAnimatingFeeView = false
     
@@ -25,24 +24,24 @@ struct GroupCheckFeeView: View {
                     Spacer()
                     // 있으면 금액 입력
                     Button(action: {
-                        isNeedFee = true
+                        viewModel.isNeedFee = true
                     }, label: {
                         Text("있음")
                             .font(.title2.bold())
                             .frame(width: 100, height: 50)
                             .foregroundColor(.white)
-                            .background(isNeedFee ? Color.green : Color.gray)
+                            .background(viewModel.isNeedFee ? Color.green : Color.gray)
                             .cornerRadius(10)
                     })
                     Button(action: {
-                        isNeedFee = false
+                        viewModel.isNeedFee = false
                         isAnimatingFeeView = false
                     }, label: {
                         Text("없음")
                             .font(.title2.bold())
                             .frame(width: 100, height: 50)
                             .foregroundColor(.white)
-                            .background(isNeedFee ? Color.gray : Color.green)
+                            .background(viewModel.isNeedFee ? Color.gray : Color.green)
                             .cornerRadius(10)
                     })
                     Spacer()
@@ -50,7 +49,7 @@ struct GroupCheckFeeView: View {
             }
             .padding()
             .animationModifier(isAnimating: isAnimating, delay: 0)
-            if isNeedFee {
+            if viewModel.isNeedFee {
                 VStack(alignment: .leading) {
                     Divider()
                         .padding(.bottom, 20)
@@ -58,12 +57,12 @@ struct GroupCheckFeeView: View {
                         Image(systemName: "dollarsign.circle.fill")
                         Text("활동비")
                     }
-                    TextField("활동비를 입력하세요", text: $fee)
-                        .onChange(of: fee) { oldValue, newValue in
+                    TextField("활동비를 입력하세요", text: $viewModel.fee)
+                        .onChange(of: viewModel.fee) { oldValue, newValue in
                             if Int(newValue) != nil {
                                 
                             } else {
-                                fee = ""
+                                viewModel.fee = ""
                             }
                         }
                         .keyboardType(.numberPad)

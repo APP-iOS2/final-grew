@@ -2,14 +2,13 @@
 //  GroupNameView.swift
 //  CircleRecruitment
 //
-//  Created by KangHo Kim on 2023/09/22.
+//  Created by 윤진영 on 2023/09/22.
 //
 
 import SwiftUI
 
 struct GroupNameView: View {
-    @State private var meetingTitle = ""
-    @State private var isOnline = true
+    @EnvironmentObject var viewModel: GrewViewModel
     @State private var isNextView = false
     @State private var isAnimating = false
     
@@ -20,7 +19,7 @@ struct GroupNameView: View {
                     .font(.title2).fontWeight(.semibold)
                     .padding(.bottom, 10)
                 HStack(spacing: 15) {
-                    TextField("모임이름을 입력해주세요", text: $meetingTitle)
+                    TextField("모임이름을 입력해주세요", text: $viewModel.meetingTitle)
                         .keyboardType(.namePhonePad)
                 }
                 .padding(10)
@@ -38,24 +37,24 @@ struct GroupNameView: View {
                     .padding(.bottom, 0)
                 HStack(spacing: 40) {
                     Spacer()
-                    Button(action: { isOnline = true }, label: {
+                    Button(action: { viewModel.isOnline = true }, label: {
                         Text("온라인")
                             .font(.title2.bold())
                             .frame(width: 100, height: 50)
                             .foregroundColor(.white)
-                            .background(isOnline ? Color.green : Color.gray)
+                            .background(viewModel.isOnline ? Color.green : Color.gray)
                             .cornerRadius(10)
                     })
 
                     Button(action: {
-                        isOnline = false
+                        viewModel.isOnline = false
                         isNextView = true
                     }, label: {
                         Text("오프라인")
                             .font(.title2.bold())
                             .frame(width: 100, height: 50)
                             .foregroundColor(.white)
-                            .background(isOnline ? Color.gray : Color.green)
+                            .background(viewModel.isOnline ? Color.gray : Color.green)
                             .cornerRadius(10)
                     })
                     Spacer()
