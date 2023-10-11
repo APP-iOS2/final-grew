@@ -9,8 +9,10 @@ import Foundation
 
 struct Grew: Identifiable, Codable {
     var id: String = UUID().uuidString
-    /// 카테고리
+    /// 1차 카테고리
     let categoryIndex: String
+    /// 2차 카테고리
+    let categorysubIndex: String
     /// 모임 이름
     let title: String
     /// 모임 설명
@@ -59,4 +61,5 @@ struct Grew: Identifiable, Codable {
     /// 좋아요 눌린 횟수
     var heartTapped: Int = 0
 }
+
 

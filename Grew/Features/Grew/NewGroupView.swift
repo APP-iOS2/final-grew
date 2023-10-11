@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct NewGrewView: View {
+    @EnvironmentObject var viewModel: GrewViewModel
     @State private var currentViewIndex: Int = 1
     @State private var progressBarValue: Double = 0
     @State private var progressBarTotal: Double = 100
-    
     var body: some View {
         VStack {
             VStack(spacing: 0) {
@@ -65,17 +65,33 @@ struct NewGrewView: View {
                     if currentViewIndex < 5 {
                         Button {
                             currentViewIndex += 1
-                        } label: {
-                            Text("다음")
-                                .font(.title2.bold())
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 60)
-                                .foregroundColor(.white)
-                                .background(Color.green)
-                                .cornerRadius(10)
-                                .padding(.horizontal)
-                        }//: Button
-                    }
+                            if currentViewIndex == 5 {
+                                let grew = Grew(categoryIndex: viewModel.selectedCategoryId,
+                                                categorysubIndex: viewModel.selectedSubCategoryId,
+                                                title: viewModel.meetingTitle,
+                                                description: "",
+                                                isOnline: viewModel.isOnline,
+                                                location: viewModel.isOnline ? "" : "Address",
+                                                gender: Gender(rawValue: viewModel.gender) ?? .any,
+                                                minimumAge: viewModel.minimumAge,
+                                                maximumAge: viewModel.maximumAge,
+                                                maximumMembers: Int(viewModel.maximumMembers) ?? 0,
+                                                isNeedFee: viewModel.fee.isEmpty ? false : true,
+                                                fee: Int(viewModel.fee) ?? 0)
+                                viewModel.addGrew(grew)
+                                print("\(grew)")
+                            }
+                            } label: {
+                                Text("다음")
+                                    .font(.title2.bold())
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 60)
+                                    .foregroundColor(.white)
+                                    .background(Color.green)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal)
+                            }//: Button
+                        }
                 }//: VStack
             }//: ZStack
         }//: VStack
@@ -84,4 +100,5 @@ struct NewGrewView: View {
 
 #Preview {
     NewGrewView()
+        .environmentObject(GrewViewModel())
 }

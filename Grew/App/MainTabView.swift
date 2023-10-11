@@ -19,7 +19,7 @@ struct MainTabView: View {
                         Image(systemName: "house")
                         Text("홈")
                     }
-
+                
                 Text("내 주변")
                     .tabItem {
                         Image(systemName: "location.fill")
@@ -30,16 +30,19 @@ struct MainTabView: View {
                         Image(systemName: "plus.circle")
                             .font(.largeTitle)
                     }
-//                    .onAppear(perform: {
-//
-//                    })
-
+                    .onAppear {
+                        isNewGrewViewPresented = true
+                    }
+                    .fullScreenCover(isPresented: $isNewGrewViewPresented){
+                        NewGrewView()
+                    }
+                
                 Text("채팅")
                     .tabItem {
                         Image(systemName: "ellipsis.message")
                         Text("채팅")
                     }
-
+                
                 Text("프로필")
                     .tabItem {
                         Image(systemName: "person")
