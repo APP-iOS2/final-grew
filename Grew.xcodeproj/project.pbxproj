@@ -108,6 +108,11 @@
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
 		3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */; };
+		3AF1D4A62AD4D5C000ECE1A8 /* MainMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4A52AD4D5C000ECE1A8 /* MainMapView.swift */; };
+		3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4A82AD4D60700ECE1A8 /* MainMapOverTopView.swift */; };
+		3AF1D4AB2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AA2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift */; };
+		3AF1D4AD2AD4D65900ECE1A8 /* NaverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */; };
+		3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AE2AD4D75A00ECE1A8 /* MapListItemView.swift */; };
 		9932740E2AD50A380082FCEC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9932740D2AD50A380082FCEC /* GoogleService-Info.plist */; };
 		993274132AD531F40082FCEC /* GrewScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274122AD531F40082FCEC /* GrewScheduleCell.swift */; };
 		993274152AD5325B0082FCEC /* GrewScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274142AD5325B0082FCEC /* GrewScheduleListView.swift */; };
@@ -199,6 +204,11 @@
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
 		3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
+		3AF1D4A52AD4D5C000ECE1A8 /* MainMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapView.swift; sourceTree = "<group>"; };
+		3AF1D4A82AD4D60700ECE1A8 /* MainMapOverTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapOverTopView.swift; sourceTree = "<group>"; };
+		3AF1D4AA2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapOverSheetView.swift; sourceTree = "<group>"; };
+		3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapView.swift; sourceTree = "<group>"; };
+		3AF1D4AE2AD4D75A00ECE1A8 /* MapListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListItemView.swift; sourceTree = "<group>"; };
 		5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.release.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9932740D2AD50A380082FCEC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -466,6 +476,8 @@
 		312E98E82ACD309D00E38626 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				3AF1D4B02AD50E6700ECE1A8 /* ViewModel */,
+				3AF1D4A72AD4D5F200ECE1A8 /* Views */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -539,6 +551,25 @@
 				3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		3AF1D4A72AD4D5F200ECE1A8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3AF1D4A52AD4D5C000ECE1A8 /* MainMapView.swift */,
+				3AF1D4A82AD4D60700ECE1A8 /* MainMapOverTopView.swift */,
+				3AF1D4AA2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift */,
+				3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */,
+				3AF1D4AE2AD4D75A00ECE1A8 /* MapListItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3AF1D4B02AD50E6700ECE1A8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		61CFCD3C7F3028095662F46E /* Pods */ = {
@@ -774,12 +805,17 @@
 				311097722AD4180F000D85AD /* GroupCheckFeeView.swift in Sources */,
 				21C1F1B32ACFEEC10029E436 /* MyGroupView.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
+				3AF1D4AB2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift in Sources */,
+				3AF1D4A62AD4D5C000ECE1A8 /* MainMapView.swift in Sources */,
+				3AF1D4AD2AD4D65900ECE1A8 /* NaverMapView.swift in Sources */,
+				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
 				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
 				993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */,
 				21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
 				311097462AD417AD000D85AD /* AuthStartView.swift in Sources */,
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
+				3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */,
 				993274132AD531F40082FCEC /* GrewScheduleCell.swift in Sources */,
 				311097B12AD4188E000D85AD /* FirestoreService.swift in Sources */,
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
@@ -811,6 +847,7 @@
 				311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */,
 				311097702AD4180F000D85AD /* GroupMembersEditView.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
+				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
 				311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */,
 				311097472AD417AD000D85AD /* AuthAddDetailView.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
