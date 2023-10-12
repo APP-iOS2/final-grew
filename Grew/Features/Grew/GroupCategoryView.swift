@@ -48,7 +48,7 @@ struct GroupCategoryView: View {
                                             Capsule()
                                                 .fill(isSelected ? Color.green : Color.white)
                                                 .stroke(Color.gray, lineWidth: 1.5)
-                                                .frame(width: 70,height: 40)
+                                                .frame(width: 70, height: 40)
                                                 .overlay(
                                                     Text(subCategory.name)
                                                         .font(.body)
