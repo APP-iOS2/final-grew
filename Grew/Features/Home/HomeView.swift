@@ -58,6 +58,7 @@ struct HomeView: View {
                     GrewListView(grewList: grewViewModel.grewList)
                 }
                 // 전체 모임 일정, 전체 모임
+                Divider()
                 VStack(alignment: .leading) {
                     Text("곧 시작하는 모임")
                         .font(.largeTitle)

@@ -35,17 +35,17 @@ enum BannerContentType: CaseIterable, Identifiable {
         switch self {
         case .first:
             ZStack {
-                Color.cyan
+                Color.Main
                 Text("1️⃣")
             }
         case .second:
             ZStack {
-                Color.green
+                Color.Sub
                 Text("2️⃣")
             }
         case .third:
             ZStack {
-                Color.orange
+                Color.DarkGray1
                 Text("3️⃣")
             }
         }
