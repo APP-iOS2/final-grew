@@ -22,6 +22,7 @@ struct MainTabView: View {
     
     var body: some View {
         NavigationStack {
+
             tabView
             //            .toolbar(.hidden)
             bottomTabs
@@ -29,6 +30,7 @@ struct MainTabView: View {
         }
     }
 }
+
 
 extension MainTabView {
     

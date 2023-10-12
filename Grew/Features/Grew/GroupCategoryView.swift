@@ -2,7 +2,7 @@
 //  GroupCategoryView.swift
 //  CircleRecruitment
 //
-//  Created by KangHo Kim on 2023/09/22.
+//  Created by 윤진영 on 2023/09/21.
 //
 
 import SwiftUI
@@ -13,15 +13,6 @@ struct GroupCategoryView: View {
     @State private var selectedCategoryIndex: Int?
     @State private var selectedSubCategory: Int?
     
-//    private let grewExample: Grew = Grew(
-//        categoryIndex: "101",
-//        title: "테스트 그루1",
-//        isOnline: true,
-//        gender: Gender.male,
-//        minimumAge: 20,
-//        maximumAge: 25,
-//        maximumMembers: 20,
-//        isNeedFee: false)
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 4) {
@@ -82,4 +73,5 @@ struct GroupCategoryView: View {
 
 #Preview {
     GroupCategoryView()
+        .environmentObject(GrewViewModel())
 }
