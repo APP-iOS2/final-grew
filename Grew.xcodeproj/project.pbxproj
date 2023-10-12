@@ -17,12 +17,11 @@
 		311097322AD41722000D85AD /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097312AD41722000D85AD /* LaunchView.swift */; };
 		3110973A2AD417A1000D85AD /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097382AD417A1000D85AD /* UserStore.swift */; };
 		3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097392AD417A1000D85AD /* AuthStore.swift */; };
-		311097432AD417AD000D85AD /* AuthAddPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110973D2AD417AD000D85AD /* AuthAddPasswordView.swift */; };
 		311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110973E2AD417AD000D85AD /* AuthCompleteView.swift */; };
 		311097452AD417AD000D85AD /* AuthSignEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110973F2AD417AD000D85AD /* AuthSignEmailView.swift */; };
 		311097462AD417AD000D85AD /* AuthStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097402AD417AD000D85AD /* AuthStartView.swift */; };
-		311097472AD417AD000D85AD /* AuthAddDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097412AD417AD000D85AD /* AuthAddDetailView.swift */; };
-		311097482AD417AD000D85AD /* AuthAddEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097422AD417AD000D85AD /* AuthAddEmailView.swift */; };
+		311097472AD417AD000D85AD /* AuthAddDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097412AD417AD000D85AD /* AuthAddDetailInfoView.swift */; };
+		311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097422AD417AD000D85AD /* AuthAddMainInfoView.swift */; };
 		3110974E2AD417DB000D85AD /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110974D2AD417DB000D85AD /* ChatStore.swift */; };
 		311097532AD417E3000D85AD /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097502AD417E3000D85AD /* ChatDetailView.swift */; };
 		311097542AD417E3000D85AD /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097512AD417E3000D85AD /* ChatListView.swift */; };
@@ -110,6 +109,12 @@
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
 		3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */; };
+		64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB12AD5145100192DB4 /* AuthAgreeView.swift */; };
+		64877CB42AD51A7100192DB4 /* AuthAgreeCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */; };
+		64877CB62AD5B2BD00192DB4 /* AuthProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */; };
+		64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB72AD5BF8E00192DB4 /* AuthRegisterEmailView.swift */; };
+		64AB27D62AD6683E004DE65F /* LaunchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB27D52AD6683E004DE65F /* LaunchVM.swift */; };
+		64AB27DA2AD6753B004DE65F /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB27D92AD6753A004DE65F /* RegisterVM.swift */; };
 		99D2C6402ACD4043001FEC20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99D2C63F2ACD4043001FEC20 /* GoogleService-Info.plist */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
@@ -128,12 +133,11 @@
 		311097312AD41722000D85AD /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		311097382AD417A1000D85AD /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		311097392AD417A1000D85AD /* AuthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
-		3110973D2AD417AD000D85AD /* AuthAddPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddPasswordView.swift; sourceTree = "<group>"; };
 		3110973E2AD417AD000D85AD /* AuthCompleteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCompleteView.swift; sourceTree = "<group>"; };
 		3110973F2AD417AD000D85AD /* AuthSignEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthSignEmailView.swift; sourceTree = "<group>"; };
 		311097402AD417AD000D85AD /* AuthStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStartView.swift; sourceTree = "<group>"; };
-		311097412AD417AD000D85AD /* AuthAddDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddDetailView.swift; sourceTree = "<group>"; };
-		311097422AD417AD000D85AD /* AuthAddEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddEmailView.swift; sourceTree = "<group>"; };
+		311097412AD417AD000D85AD /* AuthAddDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddDetailInfoView.swift; sourceTree = "<group>"; };
+		311097422AD417AD000D85AD /* AuthAddMainInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddMainInfoView.swift; sourceTree = "<group>"; };
 		3110974D2AD417DB000D85AD /* ChatStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
 		311097502AD417E3000D85AD /* ChatDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
 		311097512AD417E3000D85AD /* ChatListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
@@ -202,6 +206,12 @@
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
 		3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
 		5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.release.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
+		64877CB12AD5145100192DB4 /* AuthAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAgreeView.swift; sourceTree = "<group>"; };
+		64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAgreeCheckView.swift; sourceTree = "<group>"; };
+		64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProgressBar.swift; sourceTree = "<group>"; };
+		64877CB72AD5BF8E00192DB4 /* AuthRegisterEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRegisterEmailView.swift; sourceTree = "<group>"; };
+		64AB27D52AD6683E004DE65F /* LaunchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVM.swift; sourceTree = "<group>"; };
+		64AB27D92AD6753A004DE65F /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D2C63F2ACD4043001FEC20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -247,6 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				311097392AD417A1000D85AD /* AuthStore.swift */,
+				64AB27D92AD6753A004DE65F /* RegisterVM.swift */,
+				64AB27D52AD6683E004DE65F /* LaunchVM.swift */,
 				311097382AD417A1000D85AD /* UserStore.swift */,
 			);
 			path = Store;
@@ -255,10 +267,13 @@
 		3110973C2AD417A5000D85AD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				311097412AD417AD000D85AD /* AuthAddDetailView.swift */,
-				311097422AD417AD000D85AD /* AuthAddEmailView.swift */,
-				3110973D2AD417AD000D85AD /* AuthAddPasswordView.swift */,
+				311097412AD417AD000D85AD /* AuthAddDetailInfoView.swift */,
+				311097422AD417AD000D85AD /* AuthAddMainInfoView.swift */,
+				64877CB12AD5145100192DB4 /* AuthAgreeView.swift */,
+				64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */,
 				3110973E2AD417AD000D85AD /* AuthCompleteView.swift */,
+				64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */,
+				64877CB72AD5BF8E00192DB4 /* AuthRegisterEmailView.swift */,
 				3110973F2AD417AD000D85AD /* AuthSignEmailView.swift */,
 				311097402AD417AD000D85AD /* AuthStartView.swift */,
 			);
@@ -736,15 +751,16 @@
 				3110976D2AD4180F000D85AD /* GrewProgressViewStyle.swift in Sources */,
 				21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */,
 				311097322AD41722000D85AD /* LaunchView.swift in Sources */,
+				64AB27DA2AD6753B004DE65F /* RegisterVM.swift in Sources */,
 				311097862AD41816000D85AD /* PostImageView.swift in Sources */,
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
 				311097542AD417E3000D85AD /* ChatListView.swift in Sources */,
+				64877CB42AD51A7100192DB4 /* AuthAgreeCheckView.swift in Sources */,
 				3110978A2AD41816000D85AD /* TempGrewViewModel.swift in Sources */,
 				3110974E2AD417DB000D85AD /* ChatStore.swift in Sources */,
 				21C1F1B82ACFEEEC0029E436 /* SettingView.swift in Sources */,
 				311097762AD4180F000D85AD /* GroupAddressView.swift in Sources */,
-				311097432AD417AD000D85AD /* AuthAddPasswordView.swift in Sources */,
 				311097532AD417E3000D85AD /* ChatDetailView.swift in Sources */,
 				311097A62AD41882000D85AD /* AppState.swift in Sources */,
 				311097722AD4180F000D85AD /* GroupCheckFeeView.swift in Sources */,
@@ -757,7 +773,7 @@
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
 				311097B12AD4188E000D85AD /* FirestoreService.swift in Sources */,
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
-				311097482AD417AD000D85AD /* AuthAddEmailView.swift in Sources */,
+				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				311097582AD417ED000D85AD /* MessageBubbles.swift in Sources */,
 				311097AC2AD41882000D85AD /* User.swift in Sources */,
 				21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */,
@@ -772,8 +788,10 @@
 				3110976F2AD4180F000D85AD /* NewGroupView.swift in Sources */,
 				311097BA2AD418A6000D85AD /* Constants.swift in Sources */,
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
+				64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */,
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,
 				311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */,
+				64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */,
 				311097852AD41816000D85AD /* PostCellView.swift in Sources */,
 				311097B22AD4188E000D85AD /* DateService.swift in Sources */,
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
@@ -784,10 +802,11 @@
 				311097A72AD41882000D85AD /* GrewViewModel.swift in Sources */,
 				311097712AD4180F000D85AD /* GroupAlertView.swift in Sources */,
 				311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */,
+				64AB27D62AD6683E004DE65F /* LaunchVM.swift in Sources */,
 				311097702AD4180F000D85AD /* GroupMembersEditView.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
 				311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */,
-				311097472AD417AD000D85AD /* AuthAddDetailView.swift in Sources */,
+				311097472AD417AD000D85AD /* AuthAddDetailInfoView.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
 				311097C42AD41982000D85AD /* ChatUserContentListView.swift in Sources */,
 				311097742AD4180F000D85AD /* LocationView.swift in Sources */,
@@ -795,6 +814,7 @@
 				311097AA2AD41882000D85AD /* ImagePicker.swift in Sources */,
 				312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */,
 				311097A42AD41882000D85AD /* Announcement.swift in Sources */,
+				64877CB62AD5B2BD00192DB4 /* AuthProgressBar.swift in Sources */,
 				311097452AD417AD000D85AD /* AuthSignEmailView.swift in Sources */,
 				311097592AD417ED000D85AD /* ChatRoomCell.swift in Sources */,
 				312E98E12ACD2EAA00E38626 /* Array+Extensions.swift in Sources */,

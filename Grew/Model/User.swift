@@ -5,11 +5,13 @@
 //  Created by Chloe Chung on 2023/09/27.
 //
 
+import Firebase
+import FirebaseFirestoreSwift
 import Foundation
 
 struct User: Identifiable, Codable {
     /// 유저의 Auth 고유 아이디.
-    var id: String = UUID().uuidString
+    @DocumentID var id: String?
     /// 유저 이름
     var nickName: String
     /// 이메일

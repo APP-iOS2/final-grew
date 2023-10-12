@@ -10,8 +10,6 @@ import SwiftUI
 struct AuthCompleteView: View {
     
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var authStore: AuthStore
-    @EnvironmentObject var userStore: UserStore
     
     var body: some View {
         NavigationStack {
@@ -19,22 +17,11 @@ struct AuthCompleteView: View {
                 Text("Complete")
                     .font(.headline)
                 
-//                Text(userStore.user?.nickName ?? "")
-//                Text(userStore.user!.email)
-//                Text(userStore.user!.gender.rawValue)
-//                Text(userStore.user!.dob)
-                
-                NavigationLink {
-                    AuthSignEmailView()
+                Button {
+                    AuthStore.shared.emailAuthSignOut()
                 } label: {
                     Text("Logout")
                 }
-                .simultaneousGesture(TapGesture().onEnded{
-                    
-                    authStore.emailAuthSignOut()
-                    
-                    dismiss()
-                })
             }
         }
     }
@@ -42,5 +29,4 @@ struct AuthCompleteView: View {
 
 #Preview {
     AuthCompleteView()
-        .environmentObject(AuthStore())
 }

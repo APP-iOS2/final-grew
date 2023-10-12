@@ -9,71 +9,105 @@ import SwiftUI
 
 struct AuthStartView: View {
     
-    @EnvironmentObject var authStore: AuthStore
-    
     var body: some View {
-        VStack {
-            Spacer()
-            
-            //  앱 로고, 이미지 만들어지면 바꾸기
-            Text("Grew")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
-            Spacer()
-            
-            Group {
-                //                Button {
-                //                    authStore.facebookSignIn()
-                //                } label: {
-                //                    Image("facebooklogin")
-                //                        .resizable()
-                //                        .scaledToFit()
-                //                        .padding(.bottom, 10)
-                //                        .frame(width: 300)
-                //                }
-                //                Button {
-                //                    authStore.kakaoSignIn()
-                //                } label: {
-                //                    Image("kakaologin")
-                //                        .resizable()
-                //                        .scaledToFit()
-                //                        .padding(.bottom, 10)
-                //                        .frame(width: 300)
-                //                }
+        NavigationStack {
+            VStack {
+                Spacer()
                 
-                NavigationLink {
-                    AuthSignEmailView()
-                        .environmentObject(AuthStore())
-                } label: {
-                    Text("Continue with E-mail")
-                        .padding()
+                Image("grewMain")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
+                    .padding(.bottom, 10)
+                Text("그루")
+                    .font(Font.h2_B)
+                
+                Spacer()
+                
+                Group {
+                    NavigationLink {
+                        AuthSignEmailView()
+                            .navigationBarBackButtonHidden()
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 330, height: 45)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: 0x25C578))
+                            Text("이메일로 로그인 하기")
+                                .font(Font.b2_R)
+                                .foregroundStyle(.white)
+                        }
+                        .padding(.top, 10)
+                    }
+                    Button {
+                        
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 330, height: 45)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: 0x1877F2))
+                            Text("Facebook으로 로그인 하기")
+                                .font(Font.b2_R)
+                                .foregroundStyle(.white)
+                        }
+                        .padding(.top, 10)
+                    }
+                    Button {
+                        
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 330, height: 45)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: 0xFFD233))
+                            Text("Kakao로 로그인 하기")
+                                .font(Font.b2_R)
+                                .foregroundStyle(.black)
+                        }
+                        .padding(.top, 10)
+                    }
+                    Button {
+                        //
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 330, height: 45)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(.black))
+                            Text("Apple로 로그인 하기")
+                                .font(Font.b2_R)
+                                .foregroundStyle(.white)
+                        }
+                        .padding(.top, 10)
+                    }
+                    
+                    Button {
+                        //
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .stroke(.blue.opacity(0.5), lineWidth: 4)
+                                .frame(width: 330, height: 45)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(.white))
+                            Text("Google로 로그인 하기")
+                                .font(Font.b2_R)
+                                .foregroundStyle(.black)
+                        }
+                    }
+                    .padding(.top, 10)
                 }
                 
-//                Button {
-//                    //
-//                } label: {
-//                    Text("Continue with Google")
-//                        .padding()
-//                }
-//                
-//                Button {
-//                    //
-//                } label: {
-//                    Text("Continue with Apple")
-//                        .padding()
-//                }
+                Spacer()
                 
             }
-            
-            Spacer()
-            
+            .padding()
         }
-        .padding()
     }
 }
 
 #Preview {
     AuthStartView()
-        .environmentObject(AuthStore())
 }

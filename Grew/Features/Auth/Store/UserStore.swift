@@ -44,7 +44,7 @@ class UserStore: ObservableObject {
         let snapshot = try await userRef.getDocument()
         self.currentUser = try snapshot.data(as: User.self)
         
-        print(self.currentUser)
+//        print(self.currentUser!)
     }
     
     func updateSearchHistory() {
