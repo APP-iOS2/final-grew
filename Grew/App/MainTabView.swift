@@ -6,26 +6,23 @@
 //
 import SwiftUI
 
+// TabView에 쓰일 각 뷰들을 enum으로 정의
 enum SelectViews {
     case home, location, chat, profile
 }
-
 
 struct MainTabView: View {
     @State private var isNewGrewViewPresented = false
     @State private var selection: SelectViews = .home
     @EnvironmentObject var userViewModel: UserViewModel
     
-    init() {
-        UITabBar.appearance().backgroundColor = .red
-    }
-    
     var body: some View {
-        NavigationStack {
+        
+        VStack {
+            // 기능으로 사용하는 tabView와
             tabView
-            //            .toolbar(.hidden)
+            // 버튼으로 사용하는 tabBar
             bottomTabs
-            
         }
     }
 }
@@ -43,7 +40,7 @@ extension MainTabView {
             Text("내 주변")
                 .tag(SelectViews.location)
             
-//            Text("추가")
+            // Text("추가")
             
             Text("채팅")
                 .tag(SelectViews.chat)
@@ -57,6 +54,7 @@ extension MainTabView {
         
         HStack(spacing: 45) {
             
+            /// 탭바 - 홈 버튼
             Button {
                 self.selection = .home
             } label: {
@@ -66,11 +64,9 @@ extension MainTabView {
                         .font(.c2_B)
                         .foregroundStyle(self.selection == .home ? Color.Main : Color.DarkGray1)
                 }
-                
-                
             }
             
-            
+            /// 탭바 - 내 주변 버튼
             Button {
                 self.selection = .location
             } label: {
@@ -80,12 +76,9 @@ extension MainTabView {
                         .font(.c2_B)
                         .foregroundStyle(self.selection == .location ?  Color.Main : Color.DarkGray1)
                 }
-                
-                
-                
             }
             
-            
+            /// 탭바 - 모임 생성 버튼
             Image("plus")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -99,7 +92,7 @@ extension MainTabView {
                 }
             
             
-            
+            /// 탭바 - 채팅 버튼
             Button {
                 self.selection = .chat
             } label: {
@@ -109,10 +102,9 @@ extension MainTabView {
                         .font(.c2_B)
                         .foregroundStyle(self.selection == .chat ?  Color.Main : Color.DarkGray1)
                 }
-                
             }
             
-            
+            /// 탭바 - 프로필 버튼
             Button {
                 self.selection = .profile
             } label: {
