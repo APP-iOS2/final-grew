@@ -2,7 +2,7 @@
 //  GroupCheckFeeView.swift
 //  CircleRecruitment
 //
-//  Created by KangHo Kim on 2023/09/22.
+//  Created by 윤진영 on 2023/09/21.
 //
 
 import SwiftUI
@@ -89,4 +89,5 @@ struct GroupCheckFeeView: View {
 
 #Preview {
     GroupCheckFeeView()
+        .environmentObject(GrewViewModel())
 }

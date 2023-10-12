@@ -17,7 +17,7 @@ struct MainTabView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
-        
+   
         VStack {
             // 기능으로 사용하는 tabView와
             tabView
@@ -26,6 +26,7 @@ struct MainTabView: View {
         }
     }
 }
+
 
 extension MainTabView {
     

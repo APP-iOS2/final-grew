@@ -74,4 +74,5 @@ struct GroupNameView: View {
 
 #Preview {
     GroupNameView()
+        .environmentObject(GrewViewModel())
 }
