@@ -108,23 +108,23 @@
 		3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */; };
 		3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2802AD62ED1000E9ADF /* GrewCellView.swift */; };
 		3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2842AD62EEE000E9ADF /* MapView.swift */; };
+		3137A2912AD7C773000E9ADF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3137A2902AD7C773000E9ADF /* GoogleService-Info.plist */; };
 		3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
 		3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */; };
+		3AF1D4A62AD4D5C000ECE1A8 /* MainMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4A52AD4D5C000ECE1A8 /* MainMapView.swift */; };
+		3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4A82AD4D60700ECE1A8 /* MainMapOverTopView.swift */; };
+		3AF1D4AB2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AA2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift */; };
+		3AF1D4AD2AD4D65900ECE1A8 /* NaverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */; };
+		3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AE2AD4D75A00ECE1A8 /* MapListItemView.swift */; };
 		64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB12AD5145100192DB4 /* AuthAgreeView.swift */; };
 		64877CB42AD51A7100192DB4 /* AuthAgreeCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */; };
 		64877CB62AD5B2BD00192DB4 /* AuthProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */; };
 		64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB72AD5BF8E00192DB4 /* AuthRegisterEmailView.swift */; };
 		64AB27D62AD6683E004DE65F /* LaunchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB27D52AD6683E004DE65F /* LaunchVM.swift */; };
 		64AB27DA2AD6753B004DE65F /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB27D92AD6753A004DE65F /* RegisterVM.swift */; };
-		3AF1D4A62AD4D5C000ECE1A8 /* MainMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4A52AD4D5C000ECE1A8 /* MainMapView.swift */; };
-		3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4A82AD4D60700ECE1A8 /* MainMapOverTopView.swift */; };
-		3AF1D4AB2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AA2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift */; };
-		3AF1D4AD2AD4D65900ECE1A8 /* NaverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */; };
-		3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AE2AD4D75A00ECE1A8 /* MapListItemView.swift */; };
 		99266D832AD635BA00FB6AC1 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 99266D822AD635BA00FB6AC1 /* ConfettiSwiftUI */; };
-		9932740E2AD50A380082FCEC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9932740D2AD50A380082FCEC /* GoogleService-Info.plist */; };
 		993274132AD531F40082FCEC /* GrewScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274122AD531F40082FCEC /* GrewScheduleCell.swift */; };
 		993274152AD5325B0082FCEC /* GrewScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274142AD5325B0082FCEC /* GrewScheduleListView.swift */; };
 		993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274162AD5360E0082FCEC /* GrewScheduleImage.swift */; };
@@ -219,6 +219,7 @@
 		3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewImageView.swift; sourceTree = "<group>"; };
 		3137A2802AD62ED1000E9ADF /* GrewCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewCellView.swift; sourceTree = "<group>"; };
 		3137A2842AD62EEE000E9ADF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		3137A2902AD7C773000E9ADF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
@@ -236,21 +237,16 @@
 		64AB27D52AD6683E004DE65F /* LaunchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVM.swift; sourceTree = "<group>"; };
 		64AB27D92AD6753A004DE65F /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-
-		9932740D2AD50A380082FCEC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		993274122AD531F40082FCEC /* GrewScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleCell.swift; sourceTree = "<group>"; };
 		993274142AD5325B0082FCEC /* GrewScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleListView.swift; sourceTree = "<group>"; };
 		993274162AD5360E0082FCEC /* GrewScheduleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleImage.swift; sourceTree = "<group>"; };
-
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CE467AD62AD5061C00143213 /* GrewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSearchView.swift; sourceTree = "<group>"; };
 		CE467AD82AD506B100143213 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE467ADA2AD530CA00143213 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewAlertModifier.swift; sourceTree = "<group>"; };
-
 		CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewTextField.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,7 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				312E98992ACCF54A00E38626 /* .swiftlint.yml */,
-				9932740D2AD50A380082FCEC /* GoogleService-Info.plist */,
+				3137A2902AD7C773000E9ADF /* GoogleService-Info.plist */,
 				312E98652ACCED3600E38626 /* Grew */,
 				312E98642ACCED3600E38626 /* Products */,
 				61CFCD3C7F3028095662F46E /* Pods */,
@@ -612,7 +608,6 @@
 			children = (
 				CE467AD62AD5061C00143213 /* GrewSearchView.swift */,
 				CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */,
-
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -789,11 +784,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */,
-				9932740E2AD50A380082FCEC /* GoogleService-Info.plist in Resources */,
+				3137A2912AD7C773000E9ADF /* GoogleService-Info.plist in Resources */,
 				3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */,
 				312E989A2ACCF54A00E38626 /* .swiftlint.yml in Resources */,
 				311097C22AD418CF000D85AD /* Categories.json in Resources */,
-				CE467AD92AD506B200143213 /* GoogleService-Info.plist in Resources */,
 				312E986E2ACCED3800E38626 /* Preview Assets.xcassets in Resources */,
 				3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */,
 				312E986B2ACCED3800E38626 /* Assets.xcassets in Resources */,
@@ -871,17 +865,14 @@
 				21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */,
 				311097322AD41722000D85AD /* LaunchView.swift in Sources */,
 				64AB27DA2AD6753B004DE65F /* RegisterVM.swift in Sources */,
-				311097862AD41816000D85AD /* PostImageView.swift in Sources */,
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
 				311097542AD417E3000D85AD /* ChatListView.swift in Sources */,
 				64877CB42AD51A7100192DB4 /* AuthAgreeCheckView.swift in Sources */,
-				3110978A2AD41816000D85AD /* TempGrewViewModel.swift in Sources */,
 				3110974E2AD417DB000D85AD /* ChatStore.swift in Sources */,
 				3137A2812AD62ED1000E9ADF /* GrewListView.swift in Sources */,
 				21C1F1B82ACFEEEC0029E436 /* SettingView.swift in Sources */,
 				311097762AD4180F000D85AD /* GroupAddressView.swift in Sources */,
-				311097432AD417AD000D85AD /* AuthAddPasswordView.swift in Sources */,
 				215709662AD67625006ABE35 /* UserViewModel.swift in Sources */,
 				3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */,
 				311097532AD417E3000D85AD /* ChatDetailView.swift in Sources */,
@@ -906,7 +897,7 @@
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */,
-				311097482AD417AD000D85AD /* AuthAddEmailView.swift in Sources */,
+				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				311097582AD417ED000D85AD /* MessageBubbles.swift in Sources */,
 				311097AC2AD41882000D85AD /* User.swift in Sources */,
 				21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */,
@@ -927,7 +918,6 @@
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,
 				311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */,
 				64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */,
-				311097852AD41816000D85AD /* PostCellView.swift in Sources */,
 				311097B22AD4188E000D85AD /* DateService.swift in Sources */,
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
 				311097612AD417FD000D85AD /* Bubble.swift in Sources */,
@@ -943,7 +933,7 @@
 				2157096A2AD68960006ABE35 /* ImageEditModalView.swift in Sources */,
 				311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */,
 				2157096C2AD69246006ABE35 /* CameraView.swift in Sources */,
-				311097472AD417AD000D85AD /* AuthAddDetailView.swift in Sources */,
+				311097472AD417AD000D85AD /* AuthAddDetailInfoView.swift in Sources */,
 				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
 				311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */,
 				311097472AD417AD000D85AD /* AuthAddDetailInfoView.swift in Sources */,
@@ -1120,7 +1110,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.likelion.forrest.Grew;
+				PRODUCT_BUNDLE_IDENTIFIER = education.techit.forrest.grew.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1156,7 +1146,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.likelion.forrest.Grew;
+				PRODUCT_BUNDLE_IDENTIFIER = education.techit.forrest.grew.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
