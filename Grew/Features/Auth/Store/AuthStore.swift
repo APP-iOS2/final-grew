@@ -95,7 +95,7 @@ class AuthStore: ObservableObject {
             "searchHistory": user.searchHistory
         ] as [String: Any]
         
-        try? await Firestore.firestore().collection("users").document(user.id).setData(userDict)
+        try? await Firestore.firestore().collection("users").document(user.id ?? "").setData(userDict)
     }
     
     // 초기화

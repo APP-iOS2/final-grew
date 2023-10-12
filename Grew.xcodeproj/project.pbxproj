@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2157095F2AD530F8006ABE35 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157095E2AD530F8006ABE35 /* ProfileHeaderView.swift */; };
+		215709662AD67625006ABE35 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215709652AD67625006ABE35 /* UserViewModel.swift */; };
+		2157096A2AD68960006ABE35 /* ImageEditModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215709692AD68960006ABE35 /* ImageEditModalView.swift */; };
+		2157096C2AD69246006ABE35 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157096B2AD69246006ABE35 /* CameraView.swift */; };
 		21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AA2ACFEE670029E436 /* ProfileView.swift */; };
 		21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */; };
 		21C1F1AF2ACFEE980029E436 /* RoundSpecificCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */; };
@@ -118,6 +122,10 @@
 
 /* Begin PBXFileReference section */
 		1EEADA76F4AB5F4F868CFB93 /* Pods-Grew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.debug.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.debug.xcconfig"; sourceTree = "<group>"; };
+		2157095E2AD530F8006ABE35 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		215709652AD67625006ABE35 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		215709692AD68960006ABE35 /* ImageEditModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModalView.swift; sourceTree = "<group>"; };
+		2157096B2AD69246006ABE35 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		21C1F1AA2ACFEE670029E436 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentListView.swift; sourceTree = "<group>"; };
 		21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundSpecificCorners.swift; sourceTree = "<group>"; };
@@ -243,6 +251,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2157095D2AD530CE006ABE35 /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				2157095E2AD530F8006ABE35 /* ProfileHeaderView.swift */,
+				21C1F1B22ACFEEC10029E436 /* MyGroupView.swift */,
+				21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */,
+				215709602AD53484006ABE35 /* MyProfileEdit */,
+			);
+			path = MyProfile;
+			sourceTree = "<group>";
+		};
+		215709602AD53484006ABE35 /* MyProfileEdit */ = {
+			isa = PBXGroup;
+			children = (
+				21C1F1B02ACFEEAB0029E436 /* EditProfileView.swift */,
+				215709692AD68960006ABE35 /* ImageEditModalView.swift */,
+				311097A12AD41882000D85AD /* ImagePicker.swift */,
+				2157096B2AD69246006ABE35 /* CameraView.swift */,
+			);
+			path = MyProfileEdit;
+			sourceTree = "<group>";
+		};
+		215709612AD534AC006ABE35 /* MyProfileSetting */ = {
+			isa = PBXGroup;
+			children = (
+				21C1F1B72ACFEEEC0029E436 /* SettingView.swift */,
+			);
+			path = MyProfileSetting;
+			sourceTree = "<group>";
+		};
 		311097372AD41797000D85AD /* Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,9 +452,9 @@
 				3110979C2AD41881000D85AD /* Category.swift */,
 				3110979F2AD41881000D85AD /* Grew.swift */,
 				3110979E2AD41881000D85AD /* GrewViewModel.swift */,
-				311097A12AD41882000D85AD /* ImagePicker.swift */,
 				311097A02AD41882000D85AD /* SettingStore.swift */,
 				311097A32AD41882000D85AD /* User.swift */,
+				215709652AD67625006ABE35 /* UserViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -520,10 +558,8 @@
 				21C1F1AA2ACFEE670029E436 /* ProfileView.swift */,
 				21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */,
 				21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */,
-				21C1F1B02ACFEEAB0029E436 /* EditProfileView.swift */,
-				21C1F1B22ACFEEC10029E436 /* MyGroupView.swift */,
-				21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */,
-				21C1F1B72ACFEEEC0029E436 /* SettingView.swift */,
+				2157095D2AD530CE006ABE35 /* MyProfile */,
+				215709612AD534AC006ABE35 /* MyProfileSetting */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -745,6 +781,7 @@
 				21C1F1B82ACFEEEC0029E436 /* SettingView.swift in Sources */,
 				311097762AD4180F000D85AD /* GroupAddressView.swift in Sources */,
 				311097432AD417AD000D85AD /* AuthAddPasswordView.swift in Sources */,
+				215709662AD67625006ABE35 /* UserViewModel.swift in Sources */,
 				311097532AD417E3000D85AD /* ChatDetailView.swift in Sources */,
 				311097A62AD41882000D85AD /* AppState.swift in Sources */,
 				311097722AD4180F000D85AD /* GroupCheckFeeView.swift in Sources */,
@@ -786,7 +823,9 @@
 				311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */,
 				311097702AD4180F000D85AD /* GroupMembersEditView.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
+				2157096A2AD68960006ABE35 /* ImageEditModalView.swift in Sources */,
 				311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */,
+				2157096C2AD69246006ABE35 /* CameraView.swift in Sources */,
 				311097472AD417AD000D85AD /* AuthAddDetailView.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
 				311097C42AD41982000D85AD /* ChatUserContentListView.swift in Sources */,
@@ -800,6 +839,7 @@
 				312E98E12ACD2EAA00E38626 /* Array+Extensions.swift in Sources */,
 				311097622AD417FD000D85AD /* ChatMessage.swift in Sources */,
 				311097B62AD41897000D85AD /* LoadingView.swift in Sources */,
+				2157095F2AD530F8006ABE35 /* ProfileHeaderView.swift in Sources */,
 				3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */,
 				311097A82AD41882000D85AD /* Grew.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
@@ -943,6 +983,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Grew/Preview Content\"";
 				DEVELOPMENT_TEAM = 6R3M7VGRP2;
+				ENABLE_CODE_COVERAGE = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -978,6 +1019,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Grew/Preview Content\"";
 				DEVELOPMENT_TEAM = 6R3M7VGRP2;
+				ENABLE_CODE_COVERAGE = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

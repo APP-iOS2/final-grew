@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @State private var isNewGrewViewPresented = false
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
         NavigationStack {
@@ -40,7 +41,7 @@ struct MainTabView: View {
                         Text("채팅")
                     }
 
-                Text("프로필")
+                ProfileView(userStore: UserStore(), grewViewModel: GrewViewModel(), userViewModel: _userViewModel)
                     .tabItem {
                         Image(systemName: "person")
                         Text("프로필")
