@@ -8,7 +8,7 @@
 import Foundation
 
 struct Grew: Identifiable, Codable {
-    var id: String = UUID().uuidString
+    var id: String? = UUID().uuidString
     /// 1차 카테고리
     let categoryIndex: String
     /// 2차 카테고리

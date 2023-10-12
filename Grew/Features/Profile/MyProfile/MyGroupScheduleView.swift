@@ -9,10 +9,16 @@ import SwiftUI
 
 struct MyGroupScheduleView: View {
     var body: some View {
-        Text("MyGroupScheduleView")
+        NavigationStack {
+            ScrollView {
+                Text("MyGroupScheduleView")
+            }
+        }
     }
 }
 
 #Preview {
-    MyGroupScheduleView()
+    NavigationStack {
+        MyGroupScheduleView()
+    }
 }

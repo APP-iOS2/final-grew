@@ -8,10 +8,11 @@
 import Firebase
 import FirebaseFirestoreSwift
 import Foundation
+import FirebaseFirestoreSwift
 
 struct User: Identifiable, Codable {
     /// 유저의 Auth 고유 아이디.
-    @DocumentID var id: String?
+    @DocumentID var id: String? /*= UUID().uuidString*/
     /// 유저 이름
     var nickName: String
     /// 이메일
@@ -21,7 +22,7 @@ struct User: Identifiable, Codable {
     /// 생년월일
     var dob: String
     /// 프로필이미지
-    var userImageURLString: String? = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+    var userImageURLString: String?
     /// 자기소개
     var introduce: String?
     /// 검색 내역
