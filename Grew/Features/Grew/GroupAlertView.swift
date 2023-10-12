@@ -7,8 +7,10 @@
 
 import ConfettiSwiftUI
 import SwiftUI
+import ConfettiSwiftUI
 
 struct GroupAlertView: View {
+
     @EnvironmentObject var viewModel: GrewViewModel
     @State var showsAlert = false
     @State var counter1 = 1
@@ -51,6 +53,7 @@ struct GroupAlertView: View {
                 })
             }
         }
+
 }
 #Preview {
     GroupAlertView()

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserContentListView: View {
-    var user : Grew?
+    var user: Grew?
     
     @State private var selectedFilter: ProfileThreadFilter = .myGroup
     @Namespace var animation
@@ -41,15 +41,14 @@ struct UserContentListView: View {
                         }
                     }
                     .onTapGesture {
-                        //애니메이션 조금 가다듬기 ㄱ
                         withAnimation(.interactiveSpring(response: 0.5)) {
                             selectedFilter = filter
                         }
                     }
                 }
             }
-            
         }
+        
         switch selectedFilter {
         case .myGroup:
             MyGroupView()

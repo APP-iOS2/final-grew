@@ -25,6 +25,7 @@ class GrewViewModel: ObservableObject {
     @Published var maximumMembers = ""
     @Published var fee = ""
     @Published var isNeedFee = false
+
     
     private let db = Firestore.firestore()
     
@@ -75,6 +76,7 @@ class GrewViewModel: ObservableObject {
             return ""
         }
     
+
     func fetchJsonData() {
         do {
             categoryArray = try loadJson("Categories.json")
