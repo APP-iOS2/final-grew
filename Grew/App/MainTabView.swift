@@ -110,7 +110,6 @@ extension MainTabView {
                         .foregroundStyle(self.selection == .chat ?  Color.Main : Color.DarkGray1)
                 }
                 
-                
             }
             
             
