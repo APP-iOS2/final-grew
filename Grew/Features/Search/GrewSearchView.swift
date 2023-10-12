@@ -12,14 +12,24 @@ struct GrewSearchView: View {
     @State private var searchHistory: [String] = []
     @State private var searchedGrewList: [Grew] = []
     
-    @FocusState private var isTextFieldFocused: Bool
+    @FocusState var isTextFieldFocused: Bool
     
     @EnvironmentObject var grewViewModel: GrewViewModel
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                makeSearchBar()
+                GrewTextField(
+                    text: $searchText,
+                    isWrongText: .constant(false),
+                    isTextfieldDisabled: .constant(false),
+                    placeholderText: "검색어를 입력하세요.",
+                    isSearchBar: true
+                )
+                    .onSubmit {
+                        searchGroup()
+                    }
+
                 ScrollView {
                     makeSearchHistoryView()
                 }
@@ -27,44 +37,6 @@ struct GrewSearchView: View {
             .padding()
             .onAppear {
                 grewViewModel.fetchGrew()
-            }
-        }
-    }
-    
-    /// 검색 텍스트필드 View
-    func makeSearchBar() -> some View {
-        HStack {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                
-                TextField("검색어를 입력하세요.", text: $searchText)
-                    .submitLabel(.search)
-                    .focused($isTextFieldFocused)
-                    .onSubmit {
-                        searchGroup()
-                    }
-                
-                if !searchText.isEmpty {
-                    Button {
-                        searchText = ""
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(Color(hex: 666666))
-                    }
-                }
-            }
-            .padding(10)
-            .background(Color(red: 242, green: 242, blue: 242))
-            .cornerRadius(5)
-            
-            Spacer()
-            
-            if isTextFieldFocused {
-                Button {
-                    isTextFieldFocused = false
-                } label: {
-                    Text("취소")
-                }
             }
         }
     }
