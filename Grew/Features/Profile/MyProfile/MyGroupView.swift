@@ -9,10 +9,16 @@ import SwiftUI
 
 struct MyGroupView: View {
     var body: some View {
-        Text("MyGroupView")
+        NavigationStack {
+            ScrollView {
+                Text("MyGroupView")
+            }
+        }
     }
 }
 
 #Preview {
-    MyGroupView()
+    NavigationStack {
+        MyGroupView()
+    }
 }

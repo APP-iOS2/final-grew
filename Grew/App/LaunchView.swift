@@ -4,20 +4,25 @@
 //
 //  Created by 김종찬 on 10/5/23.
 //
-
 import FirebaseAuth
 import SwiftUI
 
 struct LaunchView: View {
     
-    @EnvironmentObject var authStore: AuthStore
-    @EnvironmentObject var userStore: UserStore
+    @StateObject var vm = LaunchVM()
+    @StateObject var grewViewModel = GrewViewModel()
+    @StateObject var userViewModel = UserViewModel()
     
     var body: some View {
-        if authStore.signState == .email {
-            MainTabView()
-        } else {
+        if vm.user == nil {
             AuthStartView()
+        } else {
+            MainTabView()
+                .environmentObject(grewViewModel)
+                .environmentObject(UserViewModel())
+                .onAppear {
+                    grewViewModel.fetchJsonData()
+                }
         }
     }
 }

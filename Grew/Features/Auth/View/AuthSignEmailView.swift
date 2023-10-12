@@ -9,57 +9,81 @@ import SwiftUI
 
 struct AuthSignEmailView: View {
     
-    @EnvironmentObject var authStore: AuthStore
-    @EnvironmentObject var userStore: UserStore
+    @Environment(\.dismiss) var dismiss
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @StateObject var registerVM = RegisterVM()
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 10) {
+                HStack {
+                    Spacer()
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 25))
+                            .foregroundStyle(Color.black)
+                            .padding()
+                    }
+                }
+
+                Text("로그인")
+                    .font(Font.b1_B)
+                
                 Spacer()
                 
-                //  앱 로고, 이미지 만들어지면 바꾸기
-                Text("Grew")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 50)
-                
-                Spacer()
-                
-                Group {
-                    TextField("email", text: $authStore.email, axis: .horizontal)
+                VStack(alignment: .leading) {
+                    Text("이메일(아이디)")
+                        .font(Font.b2_L)
+                    TextField("email", text: $email, axis: .horizontal)
                         .padding()
                         .background(Color(.systemGray6))
                         .cornerRadius(10)
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.never)
                     
-                    SecureField("password", text: $authStore.password)
+                    Text("비밀번호")
+                        .font(Font.b2_L)
+                        .padding(.top, 15)
+                    SecureField("password", text: $password)
                         .padding()
                         .background(Color(.systemGray6))
                         .cornerRadius(10)
                         .textInputAutocapitalization(.never)
                 }
+                .padding()
                 
                 Spacer()
                 
                 Group {
-                    NavigationLink {
-                        MainTabView()
-                            .navigationBarBackButtonHidden()
-                    } label: {
-                        Text("Login")
-                    }
-                    .simultaneousGesture(TapGesture().onEnded{
+                    Button {
                         Task {
-                            try await authStore.emailAuthSignIn()
+                            try await AuthStore.shared.emailAuthSignIn(withEmail: email, password: password)
                         }
-                    })
-                    .padding()
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 330, height: 45)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: 0x25C578))
+                            Text("로그인")
+                                .font(Font.b2_B)
+                                .foregroundStyle(.white)
+                        }
+                    }
                     
                     NavigationLink {
-                        AuthAddEmailView()
+                        AuthRegisterEmailView()
+                            .environmentObject(registerVM)
+                            .navigationBarBackButtonHidden()
                     } label: {
-                        Text("Signup")
+                        Text("회원가입")
+                            .underline()
+                            .font(Font.b2_B)
+                            .foregroundStyle(.gray)
+                            .padding(.top, 5)
                     }
                     
                 }
@@ -72,5 +96,4 @@ struct AuthSignEmailView: View {
 
 #Preview {
     AuthSignEmailView()
-        .environmentObject(AuthStore())
 }

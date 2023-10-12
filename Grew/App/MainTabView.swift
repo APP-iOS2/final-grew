@@ -4,12 +4,13 @@
 //
 //  Created by 정유진 on 2023/10/04.
 //
-
 import SwiftUI
 
 struct MainTabView: View {
     @State private var isNewGrewViewPresented = false
     @State private var selection: Int = 0
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     var body: some View {
         NavigationStack {
             TabView(selection: $selection) {
@@ -41,10 +42,15 @@ struct MainTabView: View {
                             .foregroundStyle(Color.DarkGray1)
                     }
                     .tag(2)
-//                    .onAppear(perform: {
-//
-//                    })
+                    .onAppear {
+                        isNewGrewViewPresented = true
+                    }
+                    .fullScreenCover(isPresented: $isNewGrewViewPresented){
+                        NewGrewView()
+                    }
 
+                
+                
                 Text("채팅")
                     .tabItem {
                         Image(selection == 3 ? "chat_fill" : "chat")
@@ -54,7 +60,7 @@ struct MainTabView: View {
                     }
                     .tag(3)
 
-                Text("프로필")
+                ProfileView(userStore: UserStore(), grewViewModel: GrewViewModel(), userViewModel: _userViewModel)
                     .tabItem {
                         Image(selection == 4 ? "profile_fill" : "profile")
                         Text("프로필")

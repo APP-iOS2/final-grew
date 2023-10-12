@@ -15,3 +15,11 @@ struct GrewCategory: Identifiable, Codable {
 struct SubCategory: Identifiable, Codable {
     let id, name: String
 }
+
+// 선택된 카테고리 ID
+struct Selection {
+    /// 선택된 1차 카테고리 ID
+    var categoryID: String?
+    /// 선택된 2차 카테고리 ID
+    var subCategoryID: String?
+}
