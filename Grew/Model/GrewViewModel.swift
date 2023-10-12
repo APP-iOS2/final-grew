@@ -15,14 +15,16 @@ class GrewViewModel: ObservableObject {
     @Published var selectedSubCategoryIndex = 0
     @Published var selectedCategoryId = ""
     @Published var selectedSubCategoryId = ""
+    @Published var categoryDisplayName = ""
+    @Published var categorysubDisplayName = ""
     @Published var meetingTitle = ""
     @Published var isOnline = true
     @Published var gender: Gender = .any
-    @Published var minimumAge = 0
-    @Published var maximumAge = 0
+    @Published var minimumAge = 20
+    @Published var maximumAge = 20
     @Published var maximumMembers = ""
     @Published var fee = ""
-    @Published var isNeedFee: Bool = false
+    @Published var isNeedFee = false
     
     private let db = Firestore.firestore()
     
@@ -55,6 +57,23 @@ class GrewViewModel: ObservableObject {
             self.grewList = fetchData
         }
     }
+    
+    // 선택된 1차 카테고리 이름 가져오기
+        func selectedCategoryName() -> String {
+            if let category = categoryArray.first(where: { $0.id == selectedCategoryId }) {
+                return category.name
+            }
+            return ""
+        }
+    // 선택된 2차 카테고리 이름 가져오기
+        func selectedSubCategoryName() -> String {
+            if let category = categoryArray.first(where: { $0.id == selectedCategoryId }) {
+                if let subCategory = category.subCategories.first(where: { $0.id == selectedSubCategoryId }) {
+                    return subCategory.name
+                }
+            }
+            return ""
+        }
     
     func fetchJsonData() {
         do {

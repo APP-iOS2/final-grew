@@ -12,7 +12,7 @@ struct NewGrewView: View {
     @State private var currentViewIndex: Int = 1
     @State private var progressBarValue: Double = 0
     @State private var progressBarTotal: Double = 100
-    
+    @Environment (\.dismiss) var dismiss
     var body: some View {
         VStack {
             VStack(spacing: 0) {
@@ -25,11 +25,19 @@ struct NewGrewView: View {
                     Button {
                         if currentViewIndex != 1 {
                             currentViewIndex -= 1
+                        } else if currentViewIndex == 1 {
+                            dismiss()
                         }
                     } label: {
-                        Image(systemName: "chevron.backward")
-                            .font(.system(size: 32))
-                            .foregroundColor(.gray)
+                        if currentViewIndex == 1 {
+                            Image(systemName: "xmark")
+                                .font(.system(size: 32))
+                                .foregroundColor(.gray)
+                        } else {
+                            Image(systemName: "chevron.backward")
+                                .font(.system(size: 32))
+                                .foregroundColor(.gray)
+                        }
                     }
                     Spacer()
                 }//: HStack
@@ -84,12 +92,7 @@ struct NewGrewView: View {
                             }
                         } label: {
                             Text("다음")
-                                .font(.title2.bold())
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 60)
-                                .foregroundColor(.white)
-                                .background(Color.green)
-                                .cornerRadius(10)
+                                .grewButtonModifier(width: 343, height: 44, buttonColor: .Main, font: .b1_B)
                                 .padding(.horizontal)
                         }//: Button
                     }
