@@ -12,9 +12,8 @@ struct Setting: Identifiable {
     var name: String
 }
 
-var intros: [Setting] = [
-    Setting(name: "공지사항"),
-    Setting(name: "FAQ"),
-    Setting(name: "고객센터"),
-    Setting(name: "이벤트")
+var appInfo: [Setting] = [
+    Setting(name: "오픈소스 라이센스"),
+    Setting(name: "개발자 정보"),
+    Setting(name: "문의하기")
 ]
