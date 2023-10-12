@@ -25,6 +25,14 @@ struct GrewApp: App {
         WindowGroup {
             NavigationView {
                 LaunchView()
+//                LaunchView()
+//                    .environmentObject(authStore)
+//                    .environmentObject(userStore)
+//                 MainTabView()
+//                     .environmentObject(grewViewModel)
+//                     .onAppear {
+//                         grewViewModel.fetchJsonData()
+//                     }
             }
         }
     }
