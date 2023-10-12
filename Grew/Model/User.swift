@@ -5,6 +5,8 @@
 //  Created by Chloe Chung on 2023/09/27.
 //
 
+import Firebase
+import FirebaseFirestoreSwift
 import Foundation
 import FirebaseFirestoreSwift
 
@@ -16,7 +18,7 @@ struct User: Identifiable, Codable {
     /// 이메일
     var email: String
     /// 성별
-    var gender: Gender
+    var gender: String
     /// 생년월일
     var dob: String
     /// 프로필이미지

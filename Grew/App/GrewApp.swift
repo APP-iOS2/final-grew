@@ -16,9 +16,6 @@ struct GrewApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var grewViewModel = GrewViewModel()
-    @StateObject var authStore: AuthStore = AuthStore()
-    @StateObject var userStore: UserStore = UserStore()
-    @StateObject var userViewModel = UserViewModel()
     // 카카오 로그인 키 값
     init() {
         KakaoSDK.initSDK(appKey: "93a5453be087d1c02859e56e80132f73")
@@ -27,12 +24,12 @@ struct GrewApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-//                LaunchView()
-//                    .environmentObject(authStore)
-//                    .environmentObject(userStore)
-                MainTabView()
-                    .environmentObject(grewViewModel)
-                    .environmentObject(userViewModel)
+                LaunchView()
+//                 MainTabView()
+//                     .environmentObject(grewViewModel)
+//                     .onAppear {
+//                         grewViewModel.fetchJsonData()
+//                     }
             }
         }
     }

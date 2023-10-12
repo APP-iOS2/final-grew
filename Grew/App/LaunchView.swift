@@ -10,14 +10,13 @@ import SwiftUI
 
 struct LaunchView: View {
     
-    @EnvironmentObject var authStore: AuthStore
-    @EnvironmentObject var userStore: UserStore
+    @StateObject var vm = LaunchVM()
     
     var body: some View {
-        if authStore.signState == .email {
-            MainTabView()
-        } else {
+        if vm.user == nil {
             AuthStartView()
+        } else {
+            MainTabView()
         }
     }
 }

@@ -4,8 +4,6 @@
 //
 //  Created by 김종찬 on 10/5/23.
 //
-// 다른 페이지에서 어떤식으로 데이터를 사용할 것인가
-// 자동 로그인을 어떻게 잘 활용할 것인가
 
 import FBSDKLoginKit
 import Firebase
@@ -20,17 +18,10 @@ class AuthStore: ObservableObject {
     @Published var currentUser: FirebaseAuth.User?
     @Published var signState: SignState = .signOut
     
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var nickName: String = ""
-    @Published var gender: Gender = .female
-    @Published var dob: String = ""
-    @Published var searchHistory: [String] = []
+    static let shared = AuthStore()
     
-    let userStore: UserStore = UserStore()
-    
-    init() {
-        currentUser = Auth.auth().currentUser
+    private init() {
+        self.currentUser = Auth.auth().currentUser
     }
     
     enum SignState {
@@ -43,11 +34,10 @@ class AuthStore: ObservableObject {
     // MARK: - email 로그인
     // 회원가입
     @MainActor
-    func emailAuthSignUp() async throws {
+    func emailAuthSignUp(withEmail email: String, password: String, nickName: String, gender: String, dob: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             await uploadUserData(uid: result.user.uid, email: email, nickName: nickName, gender: gender, dob: dob)
-            resetUserData()
         } catch {
             print("email SignUp error: \(error.localizedDescription)")
         }
@@ -55,14 +45,13 @@ class AuthStore: ObservableObject {
     
     // 로그인
     @MainActor
-    func emailAuthSignIn() async throws {
+    func emailAuthSignIn(withEmail email: String, password: String) async throws {
         do {
             let result =  try await Auth.auth().signIn(withEmail: email, password: password)
             self.currentUser = result.user
             self.signState = .email
             print("email Signin success")
-            print(currentUser?.uid)
-            userStore.loadUserData(userId: currentUser?.uid ?? "")
+            try await UserStore.shared.loadUserData()
         } catch {
             print("email SignIn error: \(error.localizedDescription)")
         }
@@ -73,8 +62,8 @@ class AuthStore: ObservableObject {
         do {
             try Auth.auth().signOut()
             self.currentUser = nil
+            print("Signout")
             self.signState = .signOut
-            resetUserData()
         } catch {
             print("email SignOut error: \(error.localizedDescription)")
         }
@@ -83,14 +72,14 @@ class AuthStore: ObservableObject {
     // MARK: - Firebase 정보 관련
     // 유저정보 Firebase에 업데이트
     @MainActor
-    func uploadUserData(uid: String, email: String, nickName: String, gender: Gender, dob: String) async {
+    func uploadUserData(uid: String, email: String, nickName: String, gender: String, dob: String) async {
         let user = User(id: uid, nickName: nickName, email: email, gender: gender, dob: dob, searchHistory: [])
         
         let userDict = [
             "id": user.id,
             "nickName": user.nickName,
             "email": user.email,
-            "gender": user.gender.rawValue,
+            "gender": user.gender,
             "dob": user.dob,
             "searchHistory": user.searchHistory
         ] as [String: Any]
@@ -98,12 +87,4 @@ class AuthStore: ObservableObject {
         try? await Firestore.firestore().collection("users").document(user.id ?? "").setData(userDict)
     }
     
-    // 초기화
-    func resetUserData() {
-        email = ""
-        password = ""
-        nickName = ""
-        dob = ""
-        searchHistory = []
-    }
 }
