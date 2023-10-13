@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserContentListView: View {
-    var user : Grew?
+    var user: Grew?
     
     @State private var selectedFilter: ProfileThreadFilter = .myGroup
     @Namespace var animation
@@ -19,7 +19,7 @@ struct UserContentListView: View {
     }
     
     var body: some View {
-        //user content list view
+        // user content list view
         VStack {
             HStack{
                 ForEach(ProfileThreadFilter.allCases) { filter in
@@ -41,7 +41,6 @@ struct UserContentListView: View {
                         }
                     }
                     .onTapGesture {
-                        //애니메이션 조금 가다듬기 ㄱ
                         withAnimation(.interactiveSpring(response: 0.5)) {
                             selectedFilter = filter
                         }

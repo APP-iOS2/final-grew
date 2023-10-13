@@ -5,10 +5,10 @@
 ////  Created by 김종찬 on 10/5/23.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct AuthCompleteView: View {
-//    
+// struct AuthCompleteView: View {
+//
 //    @Environment(\.dismiss) var dismiss
 //    @EnvironmentObject var authStore: AuthStore
 //    @EnvironmentObject var userStore: UserStore
@@ -45,9 +45,9 @@
 //            }
 //        }
 //    }
-//}
+// }
 //
-//#Preview {
+// #Preview {
 //    AuthCompleteView()
 //        .environmentObject(AuthStore())
-//}
+// }

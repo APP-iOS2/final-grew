@@ -5,9 +5,10 @@
 //  Created by 마경미 on 10.10.23.
 //
 
-import SwiftUI
-import NMapsMap
+
 import CoreLocation
+import NMapsMap
+import SwiftUI
 
 struct NaverMapView: UIViewRepresentable {
     internal func makeCoordinator() -> Coordinator {
@@ -56,12 +57,12 @@ struct NaverMapView: UIViewRepresentable {
         }
         
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-             if let location = locations.last {
-                 currentLocation.latitude = location.coordinate.latitude
-                 currentLocation.longitude = location.coordinate.longitude
-                 print("현재 위치 - 위도: \(currentLocation.latitude), 경도: \(currentLocation.longitude)")
-             }
-         }
+            if let location = locations.last {
+                currentLocation.latitude = location.coordinate.latitude
+                currentLocation.longitude = location.coordinate.longitude
+                print("현재 위치 - 위도: \(currentLocation.latitude), 경도: \(currentLocation.longitude)")
+            }
+        }
     }
 }
 #Preview {

@@ -12,6 +12,7 @@ struct ChatSideBar: View{
     @Binding var isExitButtonAlert: Bool
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     @State var show = true
+    
     var body: some View {
         HStack(spacing: 0){
             Spacer(minLength: 0)

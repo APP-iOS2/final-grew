@@ -9,16 +9,14 @@ import SwiftUI
 
 
 struct ChatListView: View {
+    let filter: ChatSegment
+    @EnvironmentObject var chatRoomStore: ChatRoomStore
     
     var body: some View {
-        mainContentView
-    }
-    
-    private var mainContentView: some View{
         ScrollView{
-            ForEach(0..<8){ i in
+            ForEach(chatRoomStore.chatRooms){ chatRoom in
                 NavigationLink {
-                    ChatDetailView()
+                    ChatDetailView(chatRoom: chatRoom)
                 } label: {
                     ChatRoomCell(chatMessage: ChatMessage.dummyChat1)
                 }
@@ -29,7 +27,6 @@ struct ChatListView: View {
             .foregroundColor(.black)
         }
     }
-    
 }
 
 
@@ -37,7 +34,7 @@ struct ChatListView: View {
 struct ChatListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack{
-            ChatListView()
+            ChatListView(filter: .group)
         }
     }
 }

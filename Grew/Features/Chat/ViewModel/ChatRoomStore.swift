@@ -58,7 +58,7 @@ class ChatRoomStore: ObservableObject {
         try await updateUserInfoForAllMessages(uid: user.uid, updatedInfo: ["profilePhotoURL": photoURL.absoluteString])
     }
     
-    ///현재 로그인 한 유저의 채팅방 패치 작업
+    /// 현재 로그인 한 유저의 채팅방 패치 작업
     func listenForChatRoom() async throws {
         
         let db = Firestore.firestore()

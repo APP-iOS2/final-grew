@@ -15,9 +15,12 @@ import SwiftUI
 struct GrewApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var grewViewModel = GrewViewModel()
-    @StateObject var authStore: AuthStore = AuthStore()
-    @StateObject var userStore: UserStore = UserStore()
+    @StateObject private var grewViewModel = GrewViewModel()
+    @StateObject private var authStore: AuthStore = AuthStore()
+    @StateObject private var userStore: UserStore = UserStore()
+    @StateObject private var chatStore = ChatStore()
+    @StateObject private var chatRoomStore = ChatRoomStore()
+    @StateObject private var appState = AppState()
     // 카카오 로그인 키 값
     init() {
         KakaoSDK.initSDK(appKey: "93a5453be087d1c02859e56e80132f73")
@@ -25,16 +28,29 @@ struct GrewApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-//                LaunchView()
-//                    .environmentObject(authStore)
-//                    .environmentObject(userStore)
+            NavigationStack {
+                //                LaunchView()
+                //                    .environmentObject(authStore)
+                //                    .environmentObject(userStore)
                 MainTabView()
-                    .environmentObject(grewViewModel)
                     .onAppear {
                         grewViewModel.fetchJsonData()
                     }
             }
+            .overlay(alignment: .top, content: {
+                switch appState.loadingState {
+                case .idle:
+                    EmptyView()
+                case .loading(let message):
+                    LoadingView(message: message)
+                }
+            })
+            .environmentObject(grewViewModel)
+            .environmentObject(chatStore)
+            .environmentObject(chatRoomStore)
+            .environmentObject(appState)
+            .environmentObject(authStore)
+            .environmentObject(userStore)
         }
     }
 }
@@ -60,7 +76,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             annotation: options[UIApplication.OpenURLOptionsKey.annotation]
         )
     }
-  
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         let sceneConfiguration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
         

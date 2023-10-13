@@ -24,7 +24,7 @@ struct MessageBubbles: View {
     }
     
     private var myBubble: some View {
-        HStack{
+        HStack {
             Spacer()
             Text("8시 8분")
                 .font(.caption2)
@@ -55,7 +55,7 @@ struct MessageBubbles: View {
                         RoundedRectangle(cornerRadius: 25)
                             .stroke(Color("chatGray"), lineWidth: 1)
                     )
-                 .background(Color("CustomGray"))
+                    .background(Color("CustomGray"))
             }
             
             Text("8시 7분").font(.caption).padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0)).foregroundColor(.gray)

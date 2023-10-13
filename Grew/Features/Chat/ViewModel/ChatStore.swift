@@ -13,12 +13,9 @@ import Foundation
 @MainActor
 class ChatStore: ObservableObject {
     
-    @Published var groups: [ChatRoom] = []
     @Published var chatMessages: [ChatMessage] = []
     
     var firestoreChatListener: ListenerRegistration?
-    var firestoreGroupListener: ListenerRegistration?
-    
     
     private func updateUserInfoForAllMessages(uid: String, updatedInfo: [AnyHashable: Any]) async throws {
         
@@ -37,22 +34,9 @@ class ChatStore: ObservableObject {
         }
     }
     
-    // 닉네임 변경 + 업데이트
-    /* func updateDisplayName(for user: User, displayName: String) async throws {
-     let request = user.createProfileChangeRequest()
-     request.displayName = displayName
-     try await request.commitChanges()
-     try await updateUserInfoForAllMessages(uid: user.uid, updatedInfo: ["displayName": user.displayName ?? "Guest"])
-     } */
-    
     /// 제거하기
     func detachFirebaseChatListener() {
         self.firestoreChatListener?.remove()
-    }
-    
-    /// 리스너 제거하기
-    func detachFirebaseGroupListener() {
-        self.firestoreGroupListener?.remove()
     }
     
     /// Firebase프로필 사진 변경
@@ -105,62 +89,8 @@ class ChatStore: ObservableObject {
                 }
             })
     }
-    /*
-    ///현재 로그인 한 유저의 채팅방 패치 작업
-    func listenForChatRoom() async throws {
-        
-        let db = Firestore.firestore()
-        
-        chatMessages.removeAll()
-        
-        guard let documentId =  else { return }
-        
-        self.firestoreChatListener = db.collection("users")
-            .document(documentId)
-            .collection("chatmessages")
-            .order(by: "createdDate", descending: false)
-            .addSnapshotListener({ [weak self] snapshot, error in
-                
-                guard let snapshot = snapshot else {
-                    print("Error fetching snapshots: \(error!)")
-                    return
-                }
-                
-                snapshot.documentChanges.forEach { diff in
-                    if diff.type == .added {
-                        do {
-                            let snapshot = diff.document
-                            let diffdata = try snapshot.data(as: ChatMessage.self)
-                            
-                            let exists = self?.chatMessages.contains(where: { cm in
-                                cm.id == diffdata.id
-                            })
-                            if !exists! {
-                                self?.chatMessages.append(diffdata)
-                            }
-                        } catch {
-                            print("error Decoding Data")
-                        }
-                    }
-                }
-            })
-    }
-     */
-    func populateGroups() async throws {
-        
-        let db = Firestore.firestore()
-        let snapshot = try await db.collection("chatrooms")
-            .getDocuments()
-        
-        groups = snapshot.documents.compactMap { try?
-            $0.data(as: ChatRoom.self)
-        }
-//        .filter({ $0.id != currentUid})
-    }
     
-    //
     func saveChatMessageToGroup(chatMessage: ChatMessage, group: ChatRoom) async throws {
-        
         let db = Firestore.firestore()
         guard let groupDocumentId = group.id else { return }
         try db.collection("chatrooms")
@@ -168,21 +98,8 @@ class ChatStore: ObservableObject {
             .collection("chatmessages")
             .document(chatMessage.id ?? "error")
             .setData(from: chatMessage)
-//            .addDocument(data: chatMessage.toDictionary())
+        //            .addDocument(data: chatMessage.toDictionary())
     }
-    
-    /*
-     func saveChatMessageToGroup(text: String, group: Group, completion: @escaping (Error?) -> Void) {
-     
-     let db = Firestore.firestore()
-     guard let groupDocumentId = group.documentId else { return }
-     db.collection("groups")
-     .document(groupDocumentId)
-     .collection("messages")
-     .addDocument(data: ["chatText": text]) { error in
-     completion(error)
-     }
-     } */
     
     
     func saveGroup(group: ChatRoom) {

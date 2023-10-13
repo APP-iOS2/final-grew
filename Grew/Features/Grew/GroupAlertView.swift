@@ -5,8 +5,8 @@
 //  Created by KangHo Kim on 2023/09/22.
 //
 
-import SwiftUI
 import ConfettiSwiftUI
+import SwiftUI
 
 struct GroupAlertView: View {
     
@@ -22,8 +22,8 @@ struct GroupAlertView: View {
                     
                 }
             }
-                ConfettiCannon(counter: $counter1, num:180,confettis: [.text("❤️"), .text("💙"), .text("💚"), .text("🧡")], openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 250)
-//        ConfettiCannon(counter: $counter1, num:180, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 300)
+        ConfettiCannon(counter: $counter1, num: 180 ,confettis: [.text("❤️"), .text("💙"), .text("💚"), .text("🧡")], openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 250)
+        //        ConfettiCannon(counter: $counter1, num: 180, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 300)
             .alert(isPresented: $showsAlert) {
                 Alert(title: Text("모임생성이 완료되었습니다."),
                       message: Text(""),

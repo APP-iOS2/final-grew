@@ -13,7 +13,6 @@ struct MainTabView: View {
     var body: some View {
         NavigationStack {
             TabView {
-                
                 HomeView()
                     .tabItem {
                         Image(systemName: "house")
@@ -37,7 +36,7 @@ struct MainTabView: View {
                         NewGrewView()
                     }
 
-                ChatUserContentListView()
+                MainChatView()
                     .tabItem {
                         Image(systemName: "ellipsis.message")
                         Text("채팅")

@@ -30,7 +30,12 @@ struct ChatMessage: Identifiable, Codable {
     var isRead: [String: Bool] = [:]
     /// 메시지 타입
     var contentType = ContentType.none
-    
+    /// 관리자 메시지 여부
+    var isAdmin: Bool = false
+    /// 말풍선 주인
+    var bubbleOwner: Bubble {
+        isAdmin ? .admin : uid == UserStore.shared.currentUser?.id ? .my : .other
+    }
     var displayProfilePhotoURL: URL? {
         profileImageURL.isEmpty ? nil: URL(string: profileImageURL)
     }
@@ -38,10 +43,10 @@ struct ChatMessage: Identifiable, Codable {
         attachImageURL.isEmpty ? nil: URL(string: attachImageURL)
     }
     
-    static let dummyChat = ChatMessage(text: "2023년 4월 4일", uid: "uid123", userName: "이름", profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/chattest-938f0.appspot.com/o/photos%2FPwqtVpH3GgdyvOCRJ0WIyOzk06O2.png?alt=media&token=799b7831-09fb-4952-b7a2-37736161025a")
+    static let dummyChat = ChatMessage(text: "2023년 4월 4일", uid: "uid123", userName: "이름", profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/chattest-938f0.appspot.com/o/photos%2FPwqtVpH3GgdyvOCRJ0WIyOzk06O2.png?alt=media&token=799b7831-09fb-4952-b7a2-37736161025a", isAdmin: true)
     static let dummyChat1 = ChatMessage(text: "안녕하세요", uid: "uid123", userName: "이름", profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/chattest-938f0.appspot.com/o/photos%2FPwqtVpH3GgdyvOCRJ0WIyOzk06O2.png?alt=media&token=799b7831-09fb-4952-b7a2-37736161025a")
     static let dummyChat2 = ChatMessage(text: "넹", uid: "uid123", userName: "이름", profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/chattest-938f0.appspot.com/o/photos%2FPwqtVpH3GgdyvOCRJ0WIyOzk06O2.png?alt=media&token=799b7831-09fb-4952-b7a2-37736161025a")
-    static let dummyChat3 = ChatMessage(text: "감자님이 들어오셨습니다.", uid: "uid123", userName: "이름", profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/chattest-938f0.appspot.com/o/photos%2FPwqtVpH3GgdyvOCRJ0WIyOzk06O2.png?alt=media&token=799b7831-09fb-4952-b7a2-37736161025a")
+    static let dummyChat3 = ChatMessage(text: "감자님이 들어오셨습니다.", uid: "uid123", userName: "이름", profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/chattest-938f0.appspot.com/o/photos%2FPwqtVpH3GgdyvOCRJ0WIyOzk06O2.png?alt=media&token=799b7831-09fb-4952-b7a2-37736161025a", isAdmin: true)
     static let dummyChat4 = ChatMessage(text: "안녕하세요", uid: "uid123", userName: "이름", profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/chattest-938f0.appspot.com/o/photos%2FPwqtVpH3GgdyvOCRJ0WIyOzk06O2.png?alt=media&token=799b7831-09fb-4952-b7a2-37736161025a")
 }
 

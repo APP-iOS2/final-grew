@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatUserContentListView: View {
+struct MainChatView: View {
     var user: User?
     
     @State private var selectedFilter: ChatSegment = .group
@@ -49,21 +49,21 @@ struct ChatUserContentListView: View {
             
             switch selectedFilter {
             case .group:
-                ChatListView()
+                ChatListView(filter: .group)
             case .personal:
-                ChatListView()
+                ChatListView(filter: .personal)
             }
             Spacer()
         }
         .highPriorityGesture(
             DragGesture(minimumDistance: 2, coordinateSpace: .local)
                 .onEnded { value in
-                    if ((selectedFilter == .group) && (value.translation.width > 0)) {
+                    if (selectedFilter == .group) && (value.translation.width > 0) {
                         withAnimation {
                             selectedFilter = .personal
                         }
                     }
-                    else if ((selectedFilter == .personal) && (value.translation.width < 0)) {
+                    else if (selectedFilter == .personal) && (value.translation.width < 0) {
                         withAnimation {
                             selectedFilter = .group
                         }
@@ -76,5 +76,5 @@ struct ChatUserContentListView: View {
 }
 
 #Preview {
-    ChatUserContentListView()
+    MainChatView()
 }
