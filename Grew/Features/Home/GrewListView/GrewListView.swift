@@ -15,6 +15,7 @@ struct GrewListView: View {
     var body: some View {
         VStack {
             ForEach(grewList) { grew in
+                // 그루 디테일 뷰
                 NavigationLink{
                     Text("\(grew.title) 게시글")
                 } label: {
