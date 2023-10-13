@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var grewViewModel = GrewViewModel()
+    @EnvironmentObject var grewViewModel: GrewViewModel
     
     //    신규 모임 연산프로퍼티
     //    @State var newGrewList: [TempGrew] {
@@ -31,10 +31,9 @@ struct HomeView: View {
                     .padding(.horizontal, 5)
                 
                 // 카테고리 버튼
-                CategoryButtonView(grewViewModel: grewViewModel)
+                CategoryButtonView()
                     .padding(.horizontal, 5)
                     .padding(.vertical, 10)
-                    .background(.gray)
                 
                 // 신규, 인기, 일정 어떻게 나눠서 할지, Grew의 구조체 User구조체에 하트를 눌렀을 때 반응할 프로퍼티 필요함
                 // 신규에 쓰일 Grew 생성 시간을 담을 프로퍼티 필요함
@@ -102,5 +101,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView().environmentObject(GrewViewModel())
 }

@@ -12,6 +12,7 @@ struct GrewCellView: View {
     let grew: Grew
     /// 즐겨찾기? 버튼이 유저, Grew 각각 들어가야함
     @State private var heartButton: Bool = false
+    @EnvironmentObject var grewViewModel: GrewViewModel
     
     var body: some View {
         
@@ -36,7 +37,7 @@ struct GrewCellView: View {
             VStack(alignment: .leading) {
                 
                 // 모임 카테고리
-                Text("\(grew.categoryIndex)")
+                Text(grewViewModel.categoryName(grew.categoryIndex, grew.categorysubIndex))
                     .padding(.horizontal, 10)
                     .padding(.vertical, 2)
                     .background(.pink)
@@ -88,17 +89,18 @@ struct GrewCellView: View {
 
 #Preview {
     GrewCellView(grew: Grew(categoryIndex: "123",
-        categorysubIndex: "456",
-        title: "123",
-        description: "123",
-        imageURL: "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg",
-        isOnline: true,
-        location: "123",
-        gender: .male,
-        minimumAge: 12,
-        maximumAge: 12,
-        maximumMembers: 12,
-        currentMembers: ["1", "2"],
-        isNeedFee: true,
-        fee: 0))
+    categorysubIndex: "456",
+    title: "123",
+    description: "123",
+    imageURL: "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg",
+    isOnline: true,
+    location: "123",
+    gender: .male,
+    minimumAge: 12,
+    maximumAge: 12,
+    maximumMembers: 12,
+    currentMembers: ["1", "2"],
+    isNeedFee: true,
+    fee: 0))
+    .environmentObject(GrewViewModel())
 }
