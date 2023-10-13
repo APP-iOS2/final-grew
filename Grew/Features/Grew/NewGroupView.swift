@@ -33,7 +33,7 @@ struct NewGrewView: View {
                             Image(systemName: "xmark")
                                 .font(.system(size: 32))
                                 .foregroundColor(.gray)
-                        } else {
+                        } else if currentViewIndex != 5 {
                             Image(systemName: "chevron.backward")
                                 .font(.system(size: 32))
                                 .foregroundColor(.gray)
@@ -76,17 +76,17 @@ struct NewGrewView: View {
                             currentViewIndex += 1
                             if currentViewIndex == 5 {
                                 let grew = Grew(categoryIndex: viewModel.selectedCategoryId,
-                                                categorysubIndex: viewModel.selectedSubCategoryId,
-                                                title: viewModel.meetingTitle,
-                                                description: "",
-                                                isOnline: viewModel.isOnline,
-                                                location: viewModel.isOnline ? "" : "Address",
-                                                gender: viewModel.gender,
-                                                minimumAge: viewModel.minimumAge,
-                                                maximumAge: viewModel.maximumAge,
-                                                maximumMembers: Int(viewModel.maximumMembers) ?? 0,
-                                                isNeedFee: viewModel.fee.isEmpty ? false : true,
-                                                fee: Int(viewModel.fee) ?? 0)
+                                categorysubIndex: viewModel.selectedSubCategoryId,
+                                title: viewModel.meetingTitle,
+                                description: "",
+                                isOnline: viewModel.isOnline,
+                                location: viewModel.isOnline ? "" : "Address",
+                                gender: viewModel.gender,
+                                minimumAge: viewModel.minimumAge,
+                                maximumAge: viewModel.maximumAge,
+                                maximumMembers: Int(viewModel.maximumMembers) ?? 0,
+                                isNeedFee: viewModel.fee.isEmpty ? false : true,
+                                fee: Int(viewModel.fee) ?? 0)
                                 viewModel.addGrew(grew)
                                 print("\(grew)")
                             }
