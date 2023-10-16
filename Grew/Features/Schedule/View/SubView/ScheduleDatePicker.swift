@@ -32,9 +32,7 @@ struct ScheduleDatePicker: View {
                 Text(titleName == "날짜" ? dateStringFromDate(date) : dateStrngFormTime(date))
                     .foregroundColor(.gray).padding()
             }
-            
-        }
-        .padding(.vertical,3)
+        }.padding(.vertical, 5)
         .bold()
     }
     

@@ -28,7 +28,7 @@ struct ScheduleOptionMenu: View {
                     
                 } label: {
                     Text("있음")
-                        .frame(width:100,height:35)
+                        .frame(width: 100, height: 35)
                         .background(hasOption ? Color.orange : Color("customGray"))
                         .foregroundColor(hasOption ? .white : .gray)
                         .bold()
@@ -41,7 +41,7 @@ struct ScheduleOptionMenu: View {
                     }
                 } label: {
                     Text("없음")
-                        .frame(width:100, height:35)
+                        .frame(width: 100, height: 35)
                         .background(!hasOption ? Color.orange : Color("customGray"))
                         .foregroundColor(!hasOption ? .white : .gray)
                         .bold()
@@ -70,8 +70,6 @@ struct ScheduleOptionMenu: View {
                         }
                 }
             }
-            
-            
         }.padding(.top, 15)
     }
     

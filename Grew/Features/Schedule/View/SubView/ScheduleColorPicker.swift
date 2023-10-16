@@ -34,7 +34,7 @@ struct ScheduleColorPicker: View {
             }//.padding(.vertical, 5)
                 .padding(.horizontal, 15)
             
-        }.padding(.top,20)
+        }.padding(.top, 20)
         
     }
 }
