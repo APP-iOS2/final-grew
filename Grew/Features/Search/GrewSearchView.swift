@@ -12,9 +12,18 @@ struct GrewSearchView: View {
     @State private var searchHistory: [String] = []
     @State private var searchedGrewList: [Grew] = []
     
+    @State private var selectedCategory: GrewCategory? = nil
+    
     @FocusState var isTextFieldFocused: Bool
     
     @EnvironmentObject var grewViewModel: GrewViewModel
+    
+    private let gridItems: [GridItem] = [
+        .init(.flexible()),
+        .init(.flexible()),
+        .init(.flexible()),
+        .init(.flexible()),
+    ]
     
     var body: some View {
         GeometryReader { geometry in
@@ -26,34 +35,42 @@ struct GrewSearchView: View {
                     placeholderText: "검색어를 입력하세요.",
                     isSearchBar: true
                 )
-                    .onSubmit {
-                        searchGroup()
-                    }
-
+                .onSubmit {
+                    searchGroup()
+                }
+                
                 ScrollView {
                     makeSearchHistoryView()
+                    makeCategorySelection()
                 }
             }
-            .padding()
+            .padding(.horizontal, 20)
+            .scrollDismissesKeyboard(.immediately)
+            .navigationTitle("Grew 검색")
             .onAppear {
                 grewViewModel.fetchGrew()
             }
         }
     }
-    
+
+}
+
+// View 반환 함수
+extension GrewSearchView {
     /// 검색 기록 View
-    func makeSearchHistoryView() -> some View {
+    private func makeSearchHistoryView() -> some View {
         VStack {
             if !searchHistory.isEmpty {
                 VStack(alignment: .leading) {
                     HStack {
                         Text("검색 내역")
-                            .bold()
+                            .font(.b1_B)
                         Spacer()
                         Button {
                             searchHistory.removeAll()
                         } label: {
                             Text("모두 삭제")
+                                .font(.b2_R)
                         }
                     }
                     .padding(5)
@@ -67,7 +84,8 @@ struct GrewSearchView: View {
                                 } label: {
                                     Text(history)
                                         .foregroundStyle(.white)
-                                        .padding(5)
+                                        .padding(.vertical, 5)
+                                        .padding(.horizontal, 8)
                                 }
                                 .background(
                                     RoundedRectangle(cornerRadius: 5)
@@ -82,8 +100,64 @@ struct GrewSearchView: View {
         }
     }
     
+    @ViewBuilder
+    private func makeCategorySelection() -> some View {
+        HStack {
+            Text("카테고리 선택")
+                .font(.b1_B)
+                .padding(5)
+            Spacer()
+            if selectedCategory != nil {
+                Button {
+                    selectedCategory = nil
+                } label: {
+                    Text("선택 취소")
+                        .font(.b2_R)
+                }
+            }
+        }
+        
+        LazyVGrid(columns: gridItems) {
+            ForEach(grewViewModel.categoryArray) { category in
+                VStack {
+                    Image("\(category.imageString)")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 25)
+                    
+                    Capsule()
+                        .foregroundColor(.clear)
+                        .overlay(
+                            Text(category.name)
+                                .font(.c1_R)
+                                .foregroundStyle(.black)
+                        )
+                }
+                .foregroundColor(.black)
+                .padding(.vertical)
+                .background(selectedCategory?.id == category.id ? Color(hexCode: "#FF7E00") : .white)
+                .cornerRadius(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.gray, lineWidth: 1.5)
+                )
+                .onTapGesture {
+                    if selectedCategory?.id == category.id {
+                        selectedCategory = nil
+                    } else {
+                        selectedCategory = category
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 기능 함수
+extension GrewSearchView {
+    
     /// Grew 검색 함수
-    func searchGroup() {
+    private func searchGroup() {
         if !searchText.trimmingCharacters(in: .whitespaces).isEmpty {
             
             searchText = searchText.trimmingCharacters(in: .whitespaces)
@@ -98,7 +172,12 @@ struct GrewSearchView: View {
             searchHistory.insert(searchText, at: 0)
             
             searchedGrewList = grewViewModel.grewList.filter {
-                $0.title.localizedStandardContains(searchText)
+                if let categoryId = selectedCategory?.id {
+                    $0.categoryIndex == categoryId &&
+                    $0.title.localizedStandardContains(searchText)
+                } else {
+                    $0.title.localizedStandardContains(searchText)
+                }
             }
         }
     }
@@ -106,4 +185,5 @@ struct GrewSearchView: View {
 
 #Preview {
     GrewSearchView()
+        .environmentObject(GrewViewModel())
 }

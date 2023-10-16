@@ -501,6 +501,7 @@
 				3110979D2AD41881000D85AD /* AppState.swift */,
 				3110979C2AD41881000D85AD /* Category.swift */,
 				3110979F2AD41881000D85AD /* Grew.swift */,
+				CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */,
 				3110979E2AD41881000D85AD /* GrewViewModel.swift */,
 				311097A02AD41882000D85AD /* SettingStore.swift */,
 				311097A32AD41882000D85AD /* User.swift */,
@@ -619,7 +620,6 @@
 			isa = PBXGroup;
 			children = (
 				CE467AD62AD5061C00143213 /* GrewSearchView.swift */,
-				CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
