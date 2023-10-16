@@ -15,29 +15,37 @@ struct MainMapOverSheetView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            VStack(spacing: 0) {
-                
-                // List Handle
-                HStack(alignment: .center) {
-                    Rectangle()
-                        .frame(width: 25, height: 4, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .cornerRadius(10)
-                        .opacity(0.25)
-                        .padding(.vertical, 8)
-                }
-                .frame(width: geometry.size.width, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .onTapGesture {
-                    handleAction()
-                }
-                
-                Image(systemName: "line.3.horizontal.circle")
-                List(0..<5) {_ in
-                    MapListItemView()
-                }
-            }.frame(maxWidth: .infinity)
-        }
-    }}
+        ZStack {
+               VStack {
+                   Spacer(minLength: 30)
+                   ScrollView {
+                       VStack {
+                           ForEach(0..<10) { index in
+                               MapListItemView()
+                                   .frame(height: 120)
+                           }
+                       }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                   }
+                   .padding(.bottom, 320)
+               }
+               GeometryReader { geometry in
+                   HStack(alignment: .center) {
+                       Rectangle()
+                           .frame(width: 25, height: 4, alignment: .center)
+                           .cornerRadius(10)
+                           .opacity(0.25)
+                           .padding(.vertical, 8)
+                   }
+                   .frame(width: geometry.size.width, height: 30, alignment: .center)
+                   .onTapGesture {
+                       handleAction()
+                   }
+               }
+           }
+           .frame(maxWidth: .infinity)
+//           .edgesIgnoringSafeArea(.all)
+    }
+}
 
 #Preview {
     MainMapOverSheetView(handleAction: {

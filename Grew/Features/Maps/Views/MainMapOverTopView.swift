@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct MainMapOverTopView: View {
+    private let mainCategories: [GrewMainCategory] = GrewMainCategory.allCases
+    
     var body: some View {
         VStack {
-            Text("")
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(mainCategories) { mainCategory in
+                        CategoryView(isSmall: false, text: mainCategory.categoryForKorean)
+                    }
+                }
+            }
         }
     }
 }
