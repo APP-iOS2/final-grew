@@ -108,7 +108,6 @@
 		3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */; };
 		3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2802AD62ED1000E9ADF /* GrewCellView.swift */; };
 		3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2842AD62EEE000E9ADF /* MapView.swift */; };
-		3137A2912AD7C773000E9ADF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3137A2902AD7C773000E9ADF /* GoogleService-Info.plist */; };
 		3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
@@ -132,6 +131,7 @@
 		993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274162AD5360E0082FCEC /* GrewScheduleImage.swift */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
+		9F70696B2ADCEED7000D724B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F70696A2ADCEED7000D724B /* GoogleService-Info.plist */; };
 		9FE5A6F22AD9299400AFAA02 /* ProfileCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE5A6F12AD9299400AFAA02 /* ProfileCircleImageView.swift */; };
 		9FE5A6F42AD9385E00AFAA02 /* ScheduleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE5A6F32AD9385E00AFAA02 /* ScheduleCellView.swift */; };
 		CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467AD62AD5061C00143213 /* GrewSearchView.swift */; };
@@ -223,7 +223,6 @@
 		3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewImageView.swift; sourceTree = "<group>"; };
 		3137A2802AD62ED1000E9ADF /* GrewCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewCellView.swift; sourceTree = "<group>"; };
 		3137A2842AD62EEE000E9ADF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		3137A2902AD7C773000E9ADF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
@@ -248,6 +247,7 @@
 		993274162AD5360E0082FCEC /* GrewScheduleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleImage.swift; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9F70696A2ADCEED7000D724B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9FE5A6F12AD9299400AFAA02 /* ProfileCircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCircleImageView.swift; sourceTree = "<group>"; };
 		9FE5A6F32AD9385E00AFAA02 /* ScheduleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCellView.swift; sourceTree = "<group>"; };
 		CE467AD62AD5061C00143213 /* GrewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSearchView.swift; sourceTree = "<group>"; };
@@ -411,7 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				312E98992ACCF54A00E38626 /* .swiftlint.yml */,
-				3137A2902AD7C773000E9ADF /* GoogleService-Info.plist */,
+				9F70696A2ADCEED7000D724B /* GoogleService-Info.plist */,
 				312E98652ACCED3600E38626 /* Grew */,
 				312E98642ACCED3600E38626 /* Products */,
 				61CFCD3C7F3028095662F46E /* Pods */,
@@ -804,7 +804,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */,
-				3137A2912AD7C773000E9ADF /* GoogleService-Info.plist in Resources */,
+				9F70696B2ADCEED7000D724B /* GoogleService-Info.plist in Resources */,
 				3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */,
 				312E989A2ACCF54A00E38626 /* .swiftlint.yml in Resources */,
 				311097C22AD418CF000D85AD /* Categories.json in Resources */,
