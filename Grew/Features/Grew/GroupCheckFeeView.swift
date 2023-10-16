@@ -30,7 +30,7 @@ struct GroupCheckFeeView: View {
                             .font(.title2.bold())
                             .frame(width: 100, height: 50)
                             .foregroundColor(.white)
-                            .background(viewModel.isNeedFee ? Color.green : Color.gray)
+                            .background(viewModel.isNeedFee ? Color.Sub : Color.BackgroundGray)
                             .cornerRadius(10)
                     })
                     Button(action: {
@@ -41,7 +41,7 @@ struct GroupCheckFeeView: View {
                             .font(.title2.bold())
                             .frame(width: 100, height: 50)
                             .foregroundColor(.white)
-                            .background(viewModel.isNeedFee ? Color.gray : Color.green)
+                            .background(viewModel.isNeedFee ? Color.BackgroundGray : Color.Sub)
                             .cornerRadius(10)
                     })
                     Spacer()
@@ -52,27 +52,34 @@ struct GroupCheckFeeView: View {
             if viewModel.isNeedFee {
                 VStack(alignment: .leading) {
                     Divider()
-                        .padding(.bottom, 20)
                     HStack {
                         Image(systemName: "dollarsign.circle.fill")
                         Text("활동비")
                     }
-                    TextField("활동비를 입력하세요", text: $viewModel.fee)
-                        .onChange(of: viewModel.fee) { oldValue, newValue in
-                            if Int(newValue) != nil {
-                                
-                            } else {
-                                viewModel.fee = ""
+                    HStack {
+                        TextField("활동비를 입력하세요", text: $viewModel.fee)
+                            .onChange(of: viewModel.fee) { oldValue, newValue in
+                                if Int(newValue) != nil {
+                                    
+                                } else {
+                                    viewModel.fee = ""
+                                }
                             }
+                            .keyboardType(.numberPad)
+                        HStack {
+                            Text("원")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                                .padding(.trailing)
+                                .padding(.top, 4)
                         }
-                        .keyboardType(.numberPad)
-                        .padding(10)
-                        .overlay{
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.gray, lineWidth: 2)
-                        }
-                        .cornerRadius(5)
-                        .keyboardType(.numberPad)
+                    }
+                            .padding(10)
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.gray, lineWidth: 2)
+                            }
+                            .cornerRadius(5)
                 }
                 .padding()
                 .animationModifier(isAnimating: isAnimatingFeeView, delay: 0)
