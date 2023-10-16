@@ -38,6 +38,7 @@ struct GrewTextField: View {
                     .focused($isTextFieldFocused)
                     .font(.b2_R)
                     .disabled(isTextfieldDisabled)
+                    .padding(.leading, isSearchBar ? 0 : 10)
                 
                 if !text.isEmpty {
                     Button {
@@ -77,6 +78,6 @@ struct GrewTextField: View {
         isTextfieldDisabled: .constant(true),
         isTextFieldFocused: FocusState(),
         placeholderText: "검색어를 입력하세요.",
-        isSearchBar: true
+        isSearchBar: false
     )
 }
