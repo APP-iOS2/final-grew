@@ -28,8 +28,3 @@ struct GrewButtonModifier: ViewModifier {
     }
 }
 
-extension View {
-    func grewButtonModifier(width: CGFloat, height: CGFloat, buttonColor: Color, font: Font, fontColor: Color, cornerRadius: CGFloat) -> some View {
-        modifier(GrewButtonModifier(width: width, height: height, buttonColor: buttonColor, font: font, fontColor: fontColor, cornerRadius: cornerRadius))
-    }
-}
