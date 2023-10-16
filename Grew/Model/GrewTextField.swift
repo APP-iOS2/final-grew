@@ -47,15 +47,15 @@ struct GrewTextField: View {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(Color.grewMainColor)
                     }
-                    .padding(.trailing, 5)
+                    .padding(.trailing, 16)
                 }
             }
             .frame(height: 44)
             .background(
-                RoundedRectangle(cornerRadius: 5)
+                RoundedRectangle(cornerRadius: 8)
                     .stroke(textFieldStrokeColor)
                     .background(
-                        RoundedRectangle(cornerRadius: 5)
+                        RoundedRectangle(cornerRadius: 8)
                             .fill(isTextfieldDisabled ? Color(hexCode: "D4D4D4"): Color(hexCode: "f2f2f2"))
                     )
             )
@@ -65,6 +65,7 @@ struct GrewTextField: View {
                     isTextFieldFocused = false
                 } label: {
                     Text("취소")
+                        .font(.b2_R)
                 }
             }
         }
@@ -75,9 +76,9 @@ struct GrewTextField: View {
     GrewTextField(
         text: .constant(""),
         isWrongText: .constant(true),
-        isTextfieldDisabled: .constant(true),
+        isTextfieldDisabled: .constant(false),
         isTextFieldFocused: FocusState(),
         placeholderText: "검색어를 입력하세요.",
-        isSearchBar: false
+        isSearchBar: true
     )
 }
