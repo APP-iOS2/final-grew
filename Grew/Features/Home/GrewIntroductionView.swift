@@ -52,7 +52,7 @@ struct GrewIntroductionView: View {
                     makeGrewInformation(
                         imageName: "wonsign.circle",
                         title: "활동비",
-                        description: "20000 원"
+                        description: "20,000 원"
                     )
                     makeGrewInformation(
                         imageName: "location.circle.fill",
@@ -68,38 +68,22 @@ struct GrewIntroductionView: View {
         
         Divider()
         
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 Text("소개글")
                     .font(.b3_B)
+                    .padding(EdgeInsets(top: 15, leading: 20, bottom: 10, trailing: 20))
                 Spacer()
             }
             
-            Text("""
-                asdfasdf
-                asdfasd
-                asdfasdf
-                asdf
-                asd
-                fasd
-                f
-                asdf
-                asd
-                f
-                asf
-                asd
-                fa
-                sdf
-                asd
-                fa
-                sdf
-                ad
-                s
-                
-                """)
-            .font(.b3_R)
+            HStack {
+                Text("안녕하세요! 보드게임을 잘 해야 한다 ❌ 보드게임을 좋아한다 🅾️  즐겁게 보드게임을 함께 할 친구들이 필요하다면, <멋쟁이 보드게임> 그루에 참여하세요! \n\n매주 수요일마다 모이는 정기 모임과 자유롭게 모이는 번개 모임을 통해 많은 즐거운 추억을 쌓을 수 있어요 ☺️")
+                    .font(.b3_R)
+                    .padding(.horizontal, 20)
+                    .lineSpacing(5)
+                Spacer()
+            }
         }
-        .padding(EdgeInsets(top: 15, leading: 25, bottom: 15, trailing: 25))
     }
     
     func makeGrewInformation(imageName: String, title: String, description: String) -> some View {
