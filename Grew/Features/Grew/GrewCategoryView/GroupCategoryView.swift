@@ -11,6 +11,7 @@ struct GroupCategoryView: View {
     @EnvironmentObject var viewModel: GrewViewModel
     @Binding var selection: Selection
     @Binding var showSubCategories: Bool
+    
     private let gridItems: [GridItem] = [
         //        GridItem(.adaptive(minimum: 60))
         .init(.flexible()),
@@ -19,7 +20,7 @@ struct GroupCategoryView: View {
     ]
     
     var body: some View {
-        ScrollView {
+        VStack {
             VStack(alignment: .leading) {
                 Text("그루의 카테고리를 선택해주세요")
                     .font(.b1_R)
@@ -34,16 +35,15 @@ struct GroupCategoryView: View {
                                 viewModel.selectedCategoryId = category.id
                                 showSubCategories = true
                             } label: {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundStyle(isSelected ? Color.Sub : Color.BackgroundGray)
-                                    .cornerRadius(12)
-                                    .overlay(
-                                        Text(category.name)
-                                            .font(.b1_B)
-                                            .foregroundStyle(isSelected ? Color.white : Color.black)
-                                    )
+                                Text(category.name)
+                                    .grewButtonModifier(
+                                        width: 90,
+                                        height: 41,
+                                        buttonColor: isSelected ? Color.Sub : Color.BackgroundGray,
+                                        font: .b3_B,
+                                        fontColor: isSelected ? Color.white : Color.black,
+                                        cornerRadius: 22)
                             }
-                            .frame(height: 30)
                             .padding(.leading, 10)
                             .padding(.trailing, 10)
                         }
@@ -60,3 +60,14 @@ struct GroupCategoryView: View {
     GroupCategoryView(selection: .constant(Selection(categoryID: "", subCategoryID: "")), showSubCategories: .constant(true))
         .environmentObject(GrewViewModel())
 }
+
+/*
+ RoundedRectangle(cornerRadius: 20)
+     .foregroundStyle(isSelected ? Color.Sub : Color.BackgroundGray)
+     .cornerRadius(12)
+     .overlay(
+         Text(category.name)
+             .font(.b3_B)
+             .foregroundStyle(isSelected ? Color.white : Color.black)
+     )
+ */

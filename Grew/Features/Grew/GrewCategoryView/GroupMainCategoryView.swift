@@ -14,7 +14,7 @@ struct GroupMainCategoryView: View {
     
     
     var body: some View {
-        VStack {
+        ScrollView {
             GroupCategoryView(selection: $selection, showSubCategories: .constant(true))
             GroupSubCategoryView(selection: $selection)
         }

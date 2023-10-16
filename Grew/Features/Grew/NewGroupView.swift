@@ -124,7 +124,7 @@ struct NewGrewView: View {
                             }
                         } label: {
                             Text("다음")
-                                .grewButtonModifier(width: 343, height: 60, buttonColor: .Main, font: .b1_B, fontColor: .white)
+                                .grewButtonModifier(width: 343, height: 60, buttonColor: .Main, font: .b1_B, fontColor: .white, cornerRadius: 8)
                         }
                     }
                 }//: VStack

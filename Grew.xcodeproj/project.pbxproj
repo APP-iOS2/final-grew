@@ -128,9 +128,9 @@
 		993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274162AD5360E0082FCEC /* GrewScheduleImage.swift */; };
 		995095302ADCBA77003A822E /* GroupSubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950952F2ADCBA77003A822E /* GroupSubCategoryView.swift */; };
 		995095322ADCD6D3003A822E /* GroupMainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995095312ADCD6D3003A822E /* GroupMainCategoryView.swift */; };
+		995095372ADD5D86003A822E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 995095362ADD5D86003A822E /* GoogleService-Info.plist */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
-		99EED12E2ADC3034000E7F0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99EED12D2ADC3034000E7F0C /* GoogleService-Info.plist */; };
 		CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467AD62AD5061C00143213 /* GrewSearchView.swift */; };
 		CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADA2AD530CA00143213 /* View+Extensions.swift */; };
 		CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */; };
@@ -241,9 +241,9 @@
 		993274162AD5360E0082FCEC /* GrewScheduleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleImage.swift; sourceTree = "<group>"; };
 		9950952F2ADCBA77003A822E /* GroupSubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSubCategoryView.swift; sourceTree = "<group>"; };
 		995095312ADCD6D3003A822E /* GroupMainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMainCategoryView.swift; sourceTree = "<group>"; };
+		995095362ADD5D86003A822E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		99EED12D2ADC3034000E7F0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE467AD62AD5061C00143213 /* GrewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSearchView.swift; sourceTree = "<group>"; };
 		CE467AD82AD506B100143213 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE467ADA2AD530CA00143213 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -405,7 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				312E98992ACCF54A00E38626 /* .swiftlint.yml */,
-				99EED12D2ADC3034000E7F0C /* GoogleService-Info.plist */,
+				995095362ADD5D86003A822E /* GoogleService-Info.plist */,
 				312E98652ACCED3600E38626 /* Grew */,
 				312E98642ACCED3600E38626 /* Products */,
 				61CFCD3C7F3028095662F46E /* Pods */,
@@ -795,7 +795,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */,
-				99EED12E2ADC3034000E7F0C /* GoogleService-Info.plist in Resources */,
+				995095372ADD5D86003A822E /* GoogleService-Info.plist in Resources */,
 				3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */,
 				312E989A2ACCF54A00E38626 /* .swiftlint.yml in Resources */,
 				311097C22AD418CF000D85AD /* Categories.json in Resources */,

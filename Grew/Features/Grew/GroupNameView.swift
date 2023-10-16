@@ -44,11 +44,7 @@ struct GroupNameView: View {
                         viewModel.isOnline = true
                     }, label: {
                         Text("온라인")
-                            .font(.title2.bold())
-                            .frame(width: 100, height: 50)
-                            .foregroundColor(.white)
-                            .background(viewModel.isOnline ? Color.Sub : Color.BackgroundGray)
-                            .cornerRadius(10)
+                            .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isOnline ? Color.Sub : Color.BackgroundGray, font: .b1_B, fontColor: .white, cornerRadius: 10)
                     })
                     
                     Button(action: {
@@ -56,11 +52,7 @@ struct GroupNameView: View {
                         isNextView = true
                     }, label: {
                         Text("오프라인")
-                            .font(.title2.bold())
-                            .frame(width: 100, height: 50)
-                            .foregroundColor(.white)
-                            .background(viewModel.isOnline ? Color.BackgroundGray : Color.Sub)
-                            .cornerRadius(10)
+                            .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isOnline ? Color.BackgroundGray : Color.Sub, font: .b1_B, fontColor: .white, cornerRadius: 10)
                     })
                     Spacer()
                 }//: HStack

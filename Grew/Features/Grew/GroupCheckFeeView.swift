@@ -27,22 +27,14 @@ struct GroupCheckFeeView: View {
                         viewModel.isNeedFee = true
                     }, label: {
                         Text("있음")
-                            .font(.title2.bold())
-                            .frame(width: 100, height: 50)
-                            .foregroundColor(.white)
-                            .background(viewModel.isNeedFee ? Color.Sub : Color.BackgroundGray)
-                            .cornerRadius(10)
+                            .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isNeedFee ? Color.Sub : Color.BackgroundGray, font: .b1_B, fontColor: .white, cornerRadius: 10)
                     })
                     Button(action: {
                         viewModel.isNeedFee = false
                         isAnimatingFeeView = false
                     }, label: {
                         Text("없음")
-                            .font(.title2.bold())
-                            .frame(width: 100, height: 50)
-                            .foregroundColor(.white)
-                            .background(viewModel.isNeedFee ? Color.BackgroundGray : Color.Sub)
-                            .cornerRadius(10)
+                            .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isNeedFee ? Color.BackgroundGray : Color.Sub, font: .b1_B, fontColor: .white, cornerRadius: 10)
                     })
                     Spacer()
                 }
