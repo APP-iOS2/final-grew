@@ -24,8 +24,28 @@ extension View {
                 action: action)
         )
     }
+
     
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
+
+    func grewButtonModifier(
+        width: CGFloat,
+        height: CGFloat,
+        buttonColor: Color,
+        font: Font,
+        fontColor: Color,
+        cornerRadius: CGFloat) -> some View {
+        modifier(
+            GrewButtonModifier(
+                width: width,
+                height: height,
+                buttonColor: buttonColor,
+                font: font,
+                fontColor: fontColor,
+                cornerRadius: cornerRadius))
+    }
+    
+
 }

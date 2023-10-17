@@ -26,25 +26,31 @@ enum GrewDetailFilter: Int, CaseIterable, Identifiable {
 
 struct GrewDetailView: View {
     @State private var selectedFilter: GrewDetailFilter = .introduction
-    @Namespace var animation
+    @Namespace private var animation
     
-    private let headerHeight: CGFloat = 262
+    private let headerHeight: CGFloat = 180
     
     var body: some View {
         VStack {
             ScrollView {
-                makeHeaderView()
+                makeHeaderImageView()
                 
-                switch selectedFilter {
-                case .introduction:
-                    GrewIntroductionView()
-                case .schedule:
-                    Text("일정 뷰")
-                case .groot:
-                    Text("그루트 뷰")
+                LazyVStack(pinnedViews: [.sectionHeaders]) {
+                    Section {
+                        switch selectedFilter {
+                        case .introduction:
+                            GrewIntroductionView()
+                        case .schedule:
+                            Text("일정 뷰")
+                        case .groot:
+                            Text("그루트 뷰")
+                        }
+                    } header: {
+                        makeHeaderFilterView()
+                    }
                 }
+                
             }
-            .edgesIgnoringSafeArea(.all)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     makeToolbarButtons()
@@ -58,10 +64,14 @@ struct GrewDetailView: View {
         }
     }
     
-    @ViewBuilder
-    func makeHeaderView() -> some View {
+}
+
+// View 반환 함수
+extension GrewDetailView {
+    /// 헤더 이미지뷰
+    private func makeHeaderImageView() -> some View {
         GeometryReader { geometry in
-            AsyncImage(url: URL(string: "https://m.picturemall.co.kr/web/product/big/202102/13d2dbec19d4f232833724454bb58671.jpg")) { image in
+            AsyncImage(url: URL(string: "https://images.unsplash.com/photo-1696757020926-d627b01c41cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=900&q=60")) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -71,13 +81,16 @@ struct GrewDetailView: View {
                     )
                     .clipped()
                     .offset(y: -geometry.frame(in: .global).minY)
+                
             } placeholder: {
                 ProgressView()
             }
         }
         .frame(height: headerHeight)
-        .padding(.bottom)
-        
+    }
+    
+    /// segment 필터 뷰
+    private func makeHeaderFilterView() -> some View {
         VStack {
             HStack(spacing: 0) {
                 ForEach(GrewDetailFilter.allCases, id: \.self) { segment in
@@ -104,14 +117,17 @@ struct GrewDetailView: View {
                     }
                 }
             }
+            .padding(.top)
+            
+            Rectangle()
+                .frame(height: 8)
+                .foregroundStyle(Color(hexCode: "ECECEC"))
         }
-        
-        Rectangle()
-            .frame(height: 8)
-            .foregroundStyle(Color(hexCode: "ECECEC"))
+        .background(.white)
     }
     
-    func makeToolbarButtons() -> some View {
+    /// 툴바 버튼
+    private func makeToolbarButtons() -> some View {
         HStack {
             Button {
                 
@@ -129,7 +145,8 @@ struct GrewDetailView: View {
         }
     }
     
-    func makeBottomButtons() -> some View {
+    /// 하단 하트, 참여하기 버튼
+    private func makeBottomButtons() -> some View {
         HStack(spacing: 20) {
             Button {
                 
@@ -145,7 +162,7 @@ struct GrewDetailView: View {
             } label: {
                 Text("참여하기")
             }
-            .grewButtonModifier(width: 260, height: 44, buttonColor: .Main, font: .b1_B)
+            .grewButtonModifier(width: 260, height: 44, buttonColor: .Main, font: .b1_B, fontColor: .white, cornerRadius: 8)
         }
         .padding(.horizontal)
     }
