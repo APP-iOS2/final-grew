@@ -42,9 +42,11 @@ struct GrewSearchView: View {
                 ScrollView {
                     makeSearchHistoryView()
                     makeCategorySelection()
+                    GrewListView(grewList: searchedGrewList)
+                        .padding(.horizontal, -16)
                 }
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 16)
             .scrollDismissesKeyboard(.immediately)
             .navigationTitle("Grew 검색")
             .onAppear {
@@ -52,7 +54,6 @@ struct GrewSearchView: View {
             }
         }
     }
-
 }
 
 // View 반환 함수
@@ -97,6 +98,9 @@ extension GrewSearchView {
                     .padding(.horizontal, 5)
                 }
             }
+            
+            Divider()
+                .padding(.vertical, 10)
         }
     }
     
