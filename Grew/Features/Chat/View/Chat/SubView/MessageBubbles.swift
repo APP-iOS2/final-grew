@@ -24,7 +24,7 @@ struct MessageBubbles: View {
     }
     
     private var myBubble: some View {
-        HStack{
+        HStack {
             Spacer()
             Text("8시 8분")
                 .font(.caption2)
@@ -34,7 +34,7 @@ struct MessageBubbles: View {
                 .font(.callout)
                 .foregroundColor(.white)
                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15) )
-                .background(Color("ChatGreen"))
+                .background(Color.Main)
                 .cornerRadius(25)
         }
     }
@@ -53,9 +53,9 @@ struct MessageBubbles: View {
                     .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
-                            .stroke(Color("CustomGray"), lineWidth: 1)
+                            .stroke(Color("chatGray"), lineWidth: 1)
                     )
-                // .background(Color("CustomGray"))
+                    .background(Color("CustomGray"))
             }
             
             Text("8시 7분").font(.caption).padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0)).foregroundColor(.gray)
@@ -64,13 +64,12 @@ struct MessageBubbles: View {
     }
     
     private var adminBubble: some View {
-        VStack {
+        VStack{
             Text(chatMessage.text)
                 .font(.caption)
                 .foregroundColor(.gray)
                 .bold()
                 .padding(10)
-                // .background(Color("CustomGray"))
                 .cornerRadius(25)
         }
     }
