@@ -119,4 +119,20 @@ class GrewViewModel: ObservableObject {
             fatalError("Unable to parse \(filename): \(error)")
         }
     }
+    
+    func popularFilter(grewList: [Grew]) -> [Grew] {
+        
+        let tempList = grewList.sorted(by: {$0.heartTapped > $1.heartTapped})
+        
+        if tempList.count < 5 {
+            return tempList
+        } else {
+            var resultList: [Grew] = []
+            for index in 0 ..< 5 {
+                resultList.append(tempList[index])
+            }
+            return resultList
+        }
+    }
+    
 }
