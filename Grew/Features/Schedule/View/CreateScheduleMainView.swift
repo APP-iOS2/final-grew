@@ -9,8 +9,6 @@
 
 // 참가비 콤마 추가
 // 오류시 빨간박스 처리 함수
-// safetyAreaInset 뒷부분 투명처리
-// GrewTextField로 바꾸기
 // 통신 후 showingWebSheet 닫기
 // 박스들 쩜 뚱뚱한가,,?
 // 패딩 리팩토링
@@ -21,12 +19,14 @@ import SwiftUI
 struct CreateScheduleMainView: View {
     
     @State private var scheduleName: String = ""
-    @State private var guestNum: String = "2"
+    @State private var date = Date()
+    @State private var guestNum: String = ""
+    @State private var fee: String = ""
+    @State private var location: String = ""
+    @State private var colorPick: String = ""
     
     @State private var isOpenForm: Bool = false
     @State private var hasEntryFee: Bool = false
-    
-    @State private var date = Date()
     @State private var isDatePickerVisible: Bool = false
     
     @State private var showingWebSheet: Bool = false
@@ -37,7 +37,6 @@ struct CreateScheduleMainView: View {
                 VStack(alignment: .leading){
                     // 일정 이름
                     scheduleNameField
-                   
                     
                     // 날짜, 시간
                     ScheduleDatePicker(titleName: "날짜", isDatePickerVisible: $isDatePickerVisible, date: $date)
@@ -47,11 +46,11 @@ struct CreateScheduleMainView: View {
                     guestNumField
                     
                     // 선택 메뉴
-                    ScheduleOptionMenu(menuName: "참가비", showingWebSheet: $showingWebSheet)
-                    ScheduleOptionMenu(menuName: "위치", showingWebSheet: $showingWebSheet)
+                    ScheduleOptionMenu(menuName: "참가비", option: $fee, showingWebSheet: $showingWebSheet)
+                    ScheduleOptionMenu(menuName: "위치", option: $location, showingWebSheet: $showingWebSheet)
                     
                     // 배너 색상 선택
-                    ScheduleColorPicker()
+                    ScheduleColorPicker(colorPick: $colorPick)
                 }
             }.navigationTitle("일정 생성")
                 .navigationBarTitleDisplayMode(.inline)
@@ -79,10 +78,8 @@ struct CreateScheduleMainView: View {
     /* 간단 하위뷰 */
     
     // 일정 이름 필드
-    
     @State private var isWrongScheduleName: Bool = false
     private var scheduleNameField: some View {
-        
         VStack(alignment: .leading){
             Text("일정 이름").bold()
             ZStack{
@@ -103,11 +100,12 @@ struct CreateScheduleMainView: View {
             Text("정원").padding(.trailing, 15)
             Spacer()
             
-            TextField("참가 인원", text: $guestNum)
+            TextField("정원", text: $guestNum)
                 .keyboardType(.numberPad)
                 .padding(12)
                 .cornerRadius(8)
                 .modifier(TextFieldErrorModifier(isError: $isWrongGuestNum))
+            
         }.padding(.top, 7)
     }
     

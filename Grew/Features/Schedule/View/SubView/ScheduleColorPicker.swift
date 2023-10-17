@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ScheduleColorPicker: View {
+    private let colors: [String] = ["7CDCAE", "50D093", "1FA866", "1A8C55", "157044", "0F5433", "0A3822", "051C11"]
+    
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
+    
     @State private var colorIndex: Int = 0
+    @Binding var colorPick: String
     
     var body: some View {
         VStack(alignment: .leading){
@@ -17,28 +21,35 @@ struct ScheduleColorPicker: View {
             LazyVGrid(columns: columns) {
                 ForEach((0..<8), id: \.self) { i in
                     ZStack{
-                        Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
+                        Color(hexCode: colors[i])
                             .frame(width: 70, height: 70)
                             .onTapGesture {
-                                colorIndex = i
+                                withAnimation(.easeIn){
+                                    colorIndex = i
+                                }
+                                colorPick = colors[colorIndex]
                             }
                             .padding(3)
                         
                         if(colorIndex == i){
-                            Image(systemName: "checkmark.square.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.orange)
+                            Image(systemName: "checkmark")
+                                .font(.title)
+                                .bold()
+                                .foregroundColor(.white)
                         }
                     }
                 }
-            }//.padding(.vertical, 5)
-                .padding(.horizontal, 15)
+            }
+            .padding(.horizontal, 15)
             
         }.padding(.top, 20)
+            .onAppear{
+                colorPick = colors[colorIndex]
+            }
         
     }
 }
 
 #Preview {
-    ScheduleColorPicker()
+    ScheduleColorPicker(colorPick: .constant("7CDCAE"))
 }

@@ -122,9 +122,10 @@
 		3E185AF12ADCC64400F7FC46 /* ScheduleOptionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185AF02ADCC64400F7FC46 /* ScheduleOptionMenu.swift */; };
 		3E185AF32ADCC66B00F7FC46 /* ScheduleDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185AF22ADCC66B00F7FC46 /* ScheduleDatePicker.swift */; };
 		3E185AF52ADCC69500F7FC46 /* ScheduleColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185AF42ADCC69500F7FC46 /* ScheduleColorPicker.swift */; };
-		3E185AF72ADCC72B00F7FC46 /* GrewSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185AF62ADCC72B00F7FC46 /* GrewSchedule.swift */; };
 		3E185B242ADDB35D00F7FC46 /* KakaoWebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */; };
 		3EC0F0582ADE597100D07009 /* TextFieldErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F0572ADE597100D07009 /* TextFieldErrorModifier.swift */; };
+		3EC0F05B2ADE6E1700D07009 /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05A2ADE6E1700D07009 /* ScheduleStore.swift */; };
+		3EC0F05D2ADE6E2900D07009 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05C2ADE6E2900D07009 /* Schedule.swift */; };
 		64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB12AD5145100192DB4 /* AuthAgreeView.swift */; };
 		64877CB42AD51A7100192DB4 /* AuthAgreeCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */; };
 		64877CB62AD5B2BD00192DB4 /* AuthProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */; };
@@ -242,9 +243,10 @@
 		3E185AF02ADCC64400F7FC46 /* ScheduleOptionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleOptionMenu.swift; sourceTree = "<group>"; };
 		3E185AF22ADCC66B00F7FC46 /* ScheduleDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePicker.swift; sourceTree = "<group>"; };
 		3E185AF42ADCC69500F7FC46 /* ScheduleColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleColorPicker.swift; sourceTree = "<group>"; };
-		3E185AF62ADCC72B00F7FC46 /* GrewSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSchedule.swift; sourceTree = "<group>"; };
 		3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoWebController.swift; sourceTree = "<group>"; };
 		3EC0F0572ADE597100D07009 /* TextFieldErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldErrorModifier.swift; sourceTree = "<group>"; };
+		3EC0F05A2ADE6E1700D07009 /* ScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStore.swift; sourceTree = "<group>"; };
+		3EC0F05C2ADE6E2900D07009 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.release.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
 		64877CB12AD5145100192DB4 /* AuthAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAgreeView.swift; sourceTree = "<group>"; };
 		64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAgreeCheckView.swift; sourceTree = "<group>"; };
@@ -666,8 +668,9 @@
 		3E185AED2ADCC5C900F7FC46 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				3E185AF82ADCC74A00F7FC46 /* View */,
 				3E185AF92ADCC75200F7FC46 /* Model */,
+				3EC0F0592ADE6D6F00D07009 /* ViewModel */,
+				3E185AF82ADCC74A00F7FC46 /* View */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -684,7 +687,7 @@
 		3E185AF92ADCC75200F7FC46 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3E185AF62ADCC72B00F7FC46 /* GrewSchedule.swift */,
+				3EC0F05C2ADE6E2900D07009 /* Schedule.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -699,6 +702,14 @@
 				3EC0F0572ADE597100D07009 /* TextFieldErrorModifier.swift */,
 			);
 			path = SubView;
+			sourceTree = "<group>";
+		};
+		3EC0F0592ADE6D6F00D07009 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3EC0F05A2ADE6E1700D07009 /* ScheduleStore.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		61CFCD3C7F3028095662F46E /* Pods */ = {
@@ -988,6 +999,7 @@
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
 				311097612AD417FD000D85AD /* Bubble.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
+				3EC0F05D2ADE6E2900D07009 /* Schedule.swift in Sources */,
 				3110973A2AD417A1000D85AD /* UserStore.swift in Sources */,
 				311097A72AD41882000D85AD /* GrewViewModel.swift in Sources */,
 				311097712AD4180F000D85AD /* GroupAlertView.swift in Sources */,
@@ -1003,7 +1015,6 @@
 				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
 				311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */,
 				311097472AD417AD000D85AD /* AuthAddDetailInfoView.swift in Sources */,
-				3E185AF72ADCC72B00F7FC46 /* GrewSchedule.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
 				311097C42AD41982000D85AD /* ChatUserContentListView.swift in Sources */,
 				311097742AD4180F000D85AD /* LocationView.swift in Sources */,
@@ -1022,6 +1033,7 @@
 				2157095F2AD530F8006ABE35 /* ProfileHeaderView.swift in Sources */,
 				3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */,
 				311097A82AD41882000D85AD /* Grew.swift in Sources */,
+				3EC0F05B2ADE6E1700D07009 /* ScheduleStore.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
 				21C1F1AF2ACFEE980029E436 /* RoundSpecificCorners.swift in Sources */,
 				311097752AD4180F000D85AD /* GroupNameView.swift in Sources */,

@@ -11,9 +11,10 @@ import SwiftUI
 struct ScheduleOptionMenu: View {
     
     var menuName: String
-    @State private var fee: String = ""
-    @State private var hasOption: Bool = false
+    @Binding var option: String
     @Binding var showingWebSheet: Bool
+    
+    @State private var hasOption: Bool = false
     
     var body: some View {
         VStack(alignment: .leading){
@@ -50,13 +51,13 @@ struct ScheduleOptionMenu: View {
             }
             
             if(hasOption && menuName == "참가비") {
-                TextField(menuName, text: $fee)
+                TextField(menuName, text: $option)
                     .keyboardType(.decimalPad)
                     .padding(12)
                     .background(Color("customGray"))
                     .cornerRadius(8)
-                    .onChange(of: fee){ newFee in
-                        fee = formatFee(newFee)
+                    .onChange(of: option){ newFee in
+                        option = formatFee(newFee)
                     }
             }
             else if(hasOption && menuName == "위치") {
@@ -94,5 +95,5 @@ extension Formatter {
 
 
 #Preview {
-    ScheduleOptionMenu(menuName: "참가비", showingWebSheet: .constant(false))
+    ScheduleOptionMenu(menuName: "참가비", option: .constant(""), showingWebSheet: .constant(false))
 }
