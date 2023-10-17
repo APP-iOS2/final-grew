@@ -17,9 +17,9 @@ struct ChatMessageListView: View {
             ScrollViewReader { proxy in
                 ScrollView {
                     VStack {
-                        ForEach(chatStore.chatMessages) { chatMessage in
-                            MessageBubbles(chatMessage: chatMessage, selectedBubble: chatMessage.bubbleOwner)
-                        }
+//                        ForEach(chatStore.chatMessages) { chatMessage in
+//                            MessageBubbles(chatMessage: chatMessage, selectedBubble: chatMessage.bubbleOwner)
+                        
                     }
                 }
             }
