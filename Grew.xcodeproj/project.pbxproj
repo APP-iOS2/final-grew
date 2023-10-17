@@ -20,6 +20,10 @@
 		21C1F1B82ACFEEEC0029E436 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1B72ACFEEEC0029E436 /* SettingView.swift */; };
 		21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A722ADEB9A800B3E1C5 /* SavedGrewView.swift */; };
 		21F32A752ADEB9D400B3E1C5 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A742ADEB9D400B3E1C5 /* CircleImage.swift */; };
+		21F32A782ADED63200B3E1C5 /* EnrollGTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A772ADED63200B3E1C5 /* EnrollGTView.swift */; };
+		21F32A7B2ADED65100B3E1C5 /* EnrollGTMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A7A2ADED65100B3E1C5 /* EnrollGTMemberView.swift */; };
+		21F32A7E2ADED6B100B3E1C5 /* ShowGTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A7D2ADED6B100B3E1C5 /* ShowGTView.swift */; };
+		21F32A802ADEDBFE00B3E1C5 /* EnrollGTMemberDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A7F2ADEDBFE00B3E1C5 /* EnrollGTMemberDetailView.swift */; };
 		311097322AD41722000D85AD /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097312AD41722000D85AD /* LaunchView.swift */; };
 		3110973A2AD417A1000D85AD /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097382AD417A1000D85AD /* UserStore.swift */; };
 		3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097392AD417A1000D85AD /* AuthStore.swift */; };
@@ -159,6 +163,10 @@
 		21C1F1B72ACFEEEC0029E436 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		21F32A722ADEB9A800B3E1C5 /* SavedGrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGrewView.swift; sourceTree = "<group>"; };
 		21F32A742ADEB9D400B3E1C5 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		21F32A772ADED63200B3E1C5 /* EnrollGTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollGTView.swift; sourceTree = "<group>"; };
+		21F32A7A2ADED65100B3E1C5 /* EnrollGTMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollGTMemberView.swift; sourceTree = "<group>"; };
+		21F32A7D2ADED6B100B3E1C5 /* ShowGTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGTView.swift; sourceTree = "<group>"; };
+		21F32A7F2ADEDBFE00B3E1C5 /* EnrollGTMemberDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollGTMemberDetailView.swift; sourceTree = "<group>"; };
 		311097312AD41722000D85AD /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		311097382AD417A1000D85AD /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		311097392AD417A1000D85AD /* AuthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
@@ -327,8 +335,20 @@
 			isa = PBXGroup;
 			children = (
 				21C1F1B72ACFEEEC0029E436 /* SettingView.swift */,
+				21F32A762ADED5C000B3E1C5 /* Grewteogi */,
 			);
 			path = MyProfileSetting;
+			sourceTree = "<group>";
+		};
+		21F32A762ADED5C000B3E1C5 /* Grewteogi */ = {
+			isa = PBXGroup;
+			children = (
+				21F32A7A2ADED65100B3E1C5 /* EnrollGTMemberView.swift */,
+				21F32A7F2ADEDBFE00B3E1C5 /* EnrollGTMemberDetailView.swift */,
+				21F32A772ADED63200B3E1C5 /* EnrollGTView.swift */,
+				21F32A7D2ADED6B100B3E1C5 /* ShowGTView.swift */,
+			);
+			path = Grewteogi;
 			sourceTree = "<group>";
 		};
 		311097372AD41797000D85AD /* Store */ = {
@@ -528,7 +548,6 @@
 				312E98EB2ACD30A800E38626 /* Home */,
 				312E98E82ACD309D00E38626 /* Maps */,
 				312E98EC2ACD30AB00E38626 /* Profile */,
-				312E98ED2ACD30AF00E38626 /* Search */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -619,6 +638,7 @@
 				21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */,
 				2157095D2AD530CE006ABE35 /* MyProfile */,
 				215709612AD534AC006ABE35 /* MyProfileSetting */,
+				312E98ED2ACD30AF00E38626 /* Search */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -928,6 +948,7 @@
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
 				21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
+				21F32A782ADED63200B3E1C5 /* EnrollGTView.swift in Sources */,
 				CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				311097582AD417ED000D85AD /* MessageBubbles.swift in Sources */,
@@ -939,11 +960,13 @@
 				311097C02AD418C1000D85AD /* AnimationModifier.swift in Sources */,
 				311097602AD417FD000D85AD /* ChatRoom.swift in Sources */,
 				CEB6CBB92AD682DE00515EEA /* GrewTextField.swift in Sources */,
+				21F32A7E2ADED6B100B3E1C5 /* ShowGTView.swift in Sources */,
 				3110975A2AD417ED000D85AD /* ChatSideMenuView.swift in Sources */,
 				311097822AD41816000D85AD /* TempHomeCategory.swift in Sources */,
 				3110976F2AD4180F000D85AD /* NewGroupView.swift in Sources */,
 				CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */,
 				311097BA2AD418A6000D85AD /* Constant.swift in Sources */,
+				21F32A802ADEDBFE00B3E1C5 /* EnrollGTMemberDetailView.swift in Sources */,
 				CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */,
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
 				64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */,
@@ -971,6 +994,7 @@
 				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
 				311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */,
 				311097472AD417AD000D85AD /* AuthAddDetailInfoView.swift in Sources */,
+				21F32A7B2ADED65100B3E1C5 /* EnrollGTMemberView.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
 				311097C42AD41982000D85AD /* ChatUserContentListView.swift in Sources */,
 				311097A52AD41882000D85AD /* Category.swift in Sources */,
