@@ -135,6 +135,10 @@
 		995095372ADD5D86003A822E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 995095362ADD5D86003A822E /* GoogleService-Info.plist */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
+		9F70696B2ADCEED7000D724B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F70696A2ADCEED7000D724B /* GoogleService-Info.plist */; };
+		9F70696D2ADCF445000D724B /* ScheduleCellEditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F70696C2ADCF445000D724B /* ScheduleCellEditSheetView.swift */; };
+		9FE5A6F22AD9299400AFAA02 /* ProfileCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE5A6F12AD9299400AFAA02 /* ProfileCircleImageView.swift */; };
+		9FE5A6F42AD9385E00AFAA02 /* ScheduleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE5A6F32AD9385E00AFAA02 /* ScheduleCellView.swift */; };
 		CE36B52F2ADE2A23004D2BC3 /* NewestGrewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36B52E2ADE2A23004D2BC3 /* NewestGrewCell.swift */; };
 		CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467AD62AD5061C00143213 /* GrewSearchView.swift */; };
 		CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADA2AD530CA00143213 /* View+Extensions.swift */; };
@@ -257,6 +261,10 @@
 		995095362ADD5D86003A822E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9F70696A2ADCEED7000D724B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9F70696C2ADCF445000D724B /* ScheduleCellEditSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCellEditSheetView.swift; sourceTree = "<group>"; };
+		9FE5A6F12AD9299400AFAA02 /* ProfileCircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCircleImageView.swift; sourceTree = "<group>"; };
+		9FE5A6F32AD9385E00AFAA02 /* ScheduleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCellView.swift; sourceTree = "<group>"; };
 		CE36B52E2ADE2A23004D2BC3 /* NewestGrewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestGrewCell.swift; sourceTree = "<group>"; };
 		CE467AD62AD5061C00143213 /* GrewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSearchView.swift; sourceTree = "<group>"; };
 		CE467AD82AD506B100143213 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -423,7 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				312E98992ACCF54A00E38626 /* .swiftlint.yml */,
-				995095362ADD5D86003A822E /* GoogleService-Info.plist */,
+				9F70696A2ADCEED7000D724B /* GoogleService-Info.plist */,
 				312E98652ACCED3600E38626 /* Grew */,
 				312E98642ACCED3600E38626 /* Products */,
 				61CFCD3C7F3028095662F46E /* Pods */,
@@ -587,6 +595,7 @@
 		312E98EA2ACD30A600E38626 /* Grew */ = {
 			isa = PBXGroup;
 			children = (
+				9FE5A6F02AD928B700AFAA02 /* GrewDetail */,
 				995095332ADCFBFA003A822E /* GrewCategoryView */,
 				311097632AD4180E000D85AD /* GrewProgressViewStyle.swift */,
 				311097672AD4180E000D85AD /* GroupAlertView.swift */,
@@ -703,6 +712,14 @@
 			path = GrewScheduleView;
 			sourceTree = "<group>";
 		};
+		9FE5A6F02AD928B700AFAA02 /* GrewDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9FE5A6F12AD9299400AFAA02 /* ProfileCircleImageView.swift */,
+				9FE5A6F32AD9385E00AFAA02 /* ScheduleCellView.swift */,
+				9F70696C2ADCF445000D724B /* ScheduleCellEditSheetView.swift */,
+			);
+			path = GrewDetail;
 		995095332ADCFBFA003A822E /* GrewCategoryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,7 +834,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */,
-				995095372ADD5D86003A822E /* GoogleService-Info.plist in Resources */,
+				9F70696B2ADCEED7000D724B /* GoogleService-Info.plist in Resources */,
 				3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */,
 				312E989A2ACCF54A00E38626 /* .swiftlint.yml in Resources */,
 				311097C22AD418CF000D85AD /* Categories.json in Resources */,
@@ -935,6 +952,7 @@
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				311097582AD417ED000D85AD /* MessageBubbles.swift in Sources */,
 				99266D872AD710D400FB6AC1 /* GrewButtonModifier.swift in Sources */,
+				9FE5A6F22AD9299400AFAA02 /* ProfileCircleImageView.swift in Sources */,
 				311097AC2AD41882000D85AD /* User.swift in Sources */,
 				21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */,
 				311097BB2AD418A6000D85AD /* FirebaseEnums.swift in Sources */,
@@ -980,11 +998,13 @@
 				311097C42AD41982000D85AD /* ChatUserContentListView.swift in Sources */,
 				311097A52AD41882000D85AD /* Category.swift in Sources */,
 				311097AA2AD41882000D85AD /* ImagePicker.swift in Sources */,
+				9FE5A6F42AD9385E00AFAA02 /* ScheduleCellView.swift in Sources */,
 				993274152AD5325B0082FCEC /* GrewScheduleListView.swift in Sources */,
 				CE5129422AD8D66700CE77C5 /* GrewDetailView.swift in Sources */,
 				312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */,
 				311097A42AD41882000D85AD /* Announcement.swift in Sources */,
 				64877CB62AD5B2BD00192DB4 /* AuthProgressBar.swift in Sources */,
+				9F70696D2ADCF445000D724B /* ScheduleCellEditSheetView.swift in Sources */,
 				311097452AD417AD000D85AD /* AuthSignEmailView.swift in Sources */,
 				311097592AD417ED000D85AD /* ChatRoomCell.swift in Sources */,
 				312E98E12ACD2EAA00E38626 /* Array+Extensions.swift in Sources */,
