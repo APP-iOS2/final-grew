@@ -64,9 +64,6 @@ struct DateForm: View {
             .background(Color.white)
             .cornerRadius(8)
           // 시간선택 후 자동으로 어떻게 바꿔준담?
-            .onChange(of: date){ _ in
-                isDatePickerVisible.toggle()
-            }
             .background{
                 Rectangle()
                     .cornerRadius(8)

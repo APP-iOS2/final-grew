@@ -9,11 +9,11 @@
 
 // 참가비 콤마 추가
 // 오류시 빨간박스 처리 함수
-// DatePicker 외부 클릭시 창 닫힘 처리
 // safetyAreaInset 뒷부분 투명처리
 // GrewTextField로 바꾸기
 // 통신 후 showingWebSheet 닫기
 // 박스들 쩜 뚱뚱한가,,?
+// 패딩 리팩토링
 
 
 import SwiftUI
@@ -37,7 +37,7 @@ struct CreateScheduleMainView: View {
                 VStack(alignment: .leading){
                     // 일정 이름
                     scheduleNameField
-                        
+                   
                     
                     // 날짜, 시간
                     ScheduleDatePicker(titleName: "날짜", isDatePickerVisible: $isDatePickerVisible, date: $date)
@@ -60,10 +60,16 @@ struct CreateScheduleMainView: View {
                 }
                 .background(Color.white.opacity(0.5))
                 .padding(EdgeInsets(top: 5, leading: 20, bottom: 20, trailing: 20))
-                //.disabled(isDatePickerVisible)
+                .disabled(isDatePickerVisible)
+                .onTapGesture {
+                    if isDatePickerVisible {
+                        isDatePickerVisible.toggle()
+                    }
+                }
             
             if isDatePickerVisible {
                 DateForm(isDatePickerVisible: $isDatePickerVisible, date: $date)
+                    
             }
         }.sheet(isPresented: $showingWebSheet, content: {
             WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!))
@@ -73,21 +79,24 @@ struct CreateScheduleMainView: View {
     /* 간단 하위뷰 */
     
     // 일정 이름 필드
+    
+    @State private var isWrongScheduleName: Bool = false
     private var scheduleNameField: some View {
+        
         VStack(alignment: .leading){
             Text("일정 이름").bold()
             ZStack{
                 TextField("일정 이름", text: $scheduleName)
                     .padding(12)
-                    .background(Color("customGray"))
                     .cornerRadius(8)
-                
-                RoundedRectangle(cornerRadius: 8).stroke(Color.pink, lineWidth: 1)
+                    .modifier(TextFieldErrorModifier(isError: $isWrongScheduleName))
             }.padding(1)
         }.padding(.bottom, 5)
+
     }
 
     // 정원 필드
+    @State private var isWrongGuestNum: Bool = false
     private var guestNumField: some View {
         HStack{
             Image(systemName: "person.2.fill")
@@ -97,9 +106,9 @@ struct CreateScheduleMainView: View {
             TextField("참가 인원", text: $guestNum)
                 .keyboardType(.numberPad)
                 .padding(12)
-                .background(Color("customGray"))
                 .cornerRadius(8)
-        }.padding(.top, 5)
+                .modifier(TextFieldErrorModifier(isError: $isWrongGuestNum))
+        }.padding(.top, 7)
     }
     
     // 일정 생성 버튼
@@ -116,6 +125,8 @@ struct CreateScheduleMainView: View {
         }
     }
 }
+
+
 
 #Preview {
     NavigationStack{
