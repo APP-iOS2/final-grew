@@ -48,7 +48,7 @@ struct ScheduleCellView: View {
         .background(Color.white)
         .cornerRadius(6)
         .frame(width: 160, height: 160)
-        .shadow(radius: 7)
+        .shadow(radius: 3)
     }
 }
 
