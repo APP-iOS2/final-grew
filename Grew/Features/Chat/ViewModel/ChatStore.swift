@@ -8,7 +8,6 @@
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
-import Foundation
 
 @MainActor
 class ChatStore: ObservableObject {

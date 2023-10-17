@@ -60,7 +60,7 @@
 		311097B22AD4188E000D85AD /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097AF2AD4188E000D85AD /* DateService.swift */; };
 		311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097B32AD41897000D85AD /* CircularProfileImageView.swift */; };
 		311097B62AD41897000D85AD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097B42AD41897000D85AD /* LoadingView.swift */; };
-		311097BA2AD418A6000D85AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097B82AD418A6000D85AD /* Constants.swift */; };
+		311097BA2AD418A6000D85AD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097B82AD418A6000D85AD /* Constant.swift */; };
 		311097BB2AD418A6000D85AD /* FirebaseEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097B92AD418A6000D85AD /* FirebaseEnums.swift */; };
 		311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097BD2AD418B3000D85AD /* FireCodable.swift */; };
 		311097C02AD418C1000D85AD /* AnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097BF2AD418C1000D85AD /* AnimationModifier.swift */; };
@@ -105,6 +105,7 @@
 		3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */; };
 		3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2802AD62ED1000E9ADF /* GrewCellView.swift */; };
 		3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2842AD62EEE000E9ADF /* MapView.swift */; };
+		319757422ADE552500696FF9 /* MessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757412ADE552500696FF9 /* MessageStore.swift */; };
 		3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
@@ -196,7 +197,7 @@
 		311097AF2AD4188E000D85AD /* DateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		311097B32AD41897000D85AD /* CircularProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		311097B42AD41897000D85AD /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		311097B82AD418A6000D85AD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		311097B82AD418A6000D85AD /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		311097B92AD418A6000D85AD /* FirebaseEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseEnums.swift; sourceTree = "<group>"; };
 		311097BD2AD418B3000D85AD /* FireCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireCodable.swift; sourceTree = "<group>"; };
 		311097BF2AD418C1000D85AD /* AnimationModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationModifier.swift; sourceTree = "<group>"; };
@@ -220,6 +221,7 @@
 		3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewImageView.swift; sourceTree = "<group>"; };
 		3137A2802AD62ED1000E9ADF /* GrewCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewCellView.swift; sourceTree = "<group>"; };
 		3137A2842AD62EEE000E9ADF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		319757412ADE552500696FF9 /* MessageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStore.swift; sourceTree = "<group>"; };
 		3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				3110974D2AD417DB000D85AD /* ChatStore.swift */,
+				319757412ADE552500696FF9 /* MessageStore.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -393,7 +396,7 @@
 		311097B72AD4189C000D85AD /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				311097B82AD418A6000D85AD /* Constants.swift */,
+				311097B82AD418A6000D85AD /* Constant.swift */,
 				311097B92AD418A6000D85AD /* FirebaseEnums.swift */,
 			);
 			path = Enums;
@@ -888,6 +891,7 @@
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
 				311097542AD417E3000D85AD /* ChatListView.swift in Sources */,
+				319757422ADE552500696FF9 /* MessageStore.swift in Sources */,
 				64877CB42AD51A7100192DB4 /* AuthAgreeCheckView.swift in Sources */,
 				3110974E2AD417DB000D85AD /* ChatStore.swift in Sources */,
 				995095302ADCBA77003A822E /* GroupSubCategoryView.swift in Sources */,
@@ -932,7 +936,7 @@
 				311097822AD41816000D85AD /* TempHomeCategory.swift in Sources */,
 				3110976F2AD4180F000D85AD /* NewGroupView.swift in Sources */,
 				CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */,
-				311097BA2AD418A6000D85AD /* Constants.swift in Sources */,
+				311097BA2AD418A6000D85AD /* Constant.swift in Sources */,
 				CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */,
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
 				64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */,
