@@ -9,11 +9,10 @@ import SwiftUI
 
 struct CategoryButtonView: View {
     
-    @ObservedObject var grewViewModel: GrewViewModel
+    @EnvironmentObject var grewViewModel: GrewViewModel
     
     private let gridItems: [GridItem] = [
 //        GridItem(.adaptive(minimum: 60))
-        .init(.flexible()),
         .init(.flexible()),
         .init(.flexible()),
         .init(.flexible()),
@@ -23,15 +22,17 @@ struct CategoryButtonView: View {
     var body: some View {
         VStack {
             LazyVGrid(columns: gridItems) {
-                ForEach(TempHomeCategory.allCases, id: \.rawValue) { category in
+                ForEach(grewViewModel.categoryArray) { category in
+                    
                     NavigationLink {
-                        
-                        CategoryDetailView(grewList: grewViewModel.grewList)
-                            .navigationTitle(category.rawValue)
+                        CategoryDetailView(grewList: grewViewModel.grewList.filter {
+                            $0.categoryIndex == category.id
+                        }, secondCategory: category.subCategories)
+                            .navigationTitle(category.name)
                         
                     } label: {
                         VStack {
-                            category.image
+                            Image("\(category.imageString)")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
@@ -39,8 +40,9 @@ struct CategoryButtonView: View {
                             Capsule()
                                 .foregroundColor(.clear)
                                 .overlay(
-                                    Text(category.rawValue)
-                                        .font(.body)
+                                    Text(category.name)
+                                        .font(.c1_R)
+                                        .foregroundStyle(.black)
                                 )
                                 
                         }
@@ -60,5 +62,6 @@ struct CategoryButtonView: View {
 }
 
 #Preview {
-    CategoryButtonView(grewViewModel: GrewViewModel())
+    CategoryButtonView()
+        .environmentObject(GrewViewModel())
 }
