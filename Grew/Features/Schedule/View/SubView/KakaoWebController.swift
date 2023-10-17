@@ -8,11 +8,31 @@
 import SwiftUI
 import WebKit
 
+
+class KakaoWebData: ObservableObject {
+    static let kakaoWebData = KakaoWebData()
+    
+    var messageText: String = ""
+
+    public func getKakaoMessage() -> String {
+        self.messageText
+    }
+    
+    func receiveMessage(_ message: String) {
+        DispatchQueue.main.async {
+            self.messageText = message
+            print("카카오 데이터 클래스 : \(self.messageText)")
+        }
+    }
+}
+
 class KakaoWebController: NSObject, WKScriptMessageHandler {
+  
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "callBackHandler" {
             print("message name : \(message.name)")
             print("post Message : \(message.body)")
+            KakaoWebData.kakaoWebData.receiveMessage("\(message.body)")
         }
     }
 }
@@ -66,3 +86,4 @@ extension WebView {
         }
     }
 }
+

@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct ScheduleDatePicker: View {
-    
     var titleName: String
     @Binding var isDatePickerVisible: Bool
     @Binding var date: Date
     
     var body: some View {
-        
-        //날짜
         HStack{
             Image(systemName: titleName == "날짜" ?  "calendar" : "clock")
             Text(titleName).padding(.trailing, 20)
@@ -25,30 +22,33 @@ struct ScheduleDatePicker: View {
                 Rectangle()
                     .frame(height: 45)
                     .cornerRadius(8)
-                    .foregroundColor(Color("customGray"))
+                    .foregroundColor(Color(hexCode: "f2f2f2"))
                     .onTapGesture {
                         isDatePickerVisible.toggle()
-                    }
-                Text(titleName == "날짜" ? dateStringFromDate(date) : dateStrngFormTime(date))
+                    }.padding(1)
+                Text(titleName == "날짜" ? dateStringFromDate(date) : dateStringFormTime(date))
                     .foregroundColor(.gray).padding()
             }
         }.padding(.vertical, 5)
         .bold()
     }
     
+    // 날짜 포맷
     func dateStringFromDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M월 d일" // 데이터 포맷
+        dateFormatter.dateFormat = "M월 d일"
         return dateFormatter.string(from: date)
     }
     
-    func dateStrngFormTime(_ date: Date) -> String {
+    // 시간 포맷
+    func dateStringFormTime(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h시 m분" // 데이터 포맷
+        dateFormatter.dateFormat = "h시 m분"
         return dateFormatter.string(from: date)
     }
 }
 
+// DatePicker
 struct DateForm: View {
     
     @Binding var isDatePickerVisible: Bool
@@ -56,18 +56,17 @@ struct DateForm: View {
     
     var body: some View {
         DatePicker("일정", selection: $date, in: Date()...)
-            .datePickerStyle(GraphicalDatePickerStyle())
-            
-            .tint(Color.red)
             .padding()
+            .datePickerStyle(GraphicalDatePickerStyle())
+            .tint(Color.red)
             .frame(width: 360, height: 400)
             .background(Color.white)
             .cornerRadius(8)
-          // 시간선택 후 자동으로 어떻게 바꿔준담?
             .background{
                 Rectangle()
                     .cornerRadius(8)
-                    .shadow(radius: 20)
+                    .shadow(radius: 5)
             }
+            .padding()
     }
 }

@@ -74,8 +74,8 @@ struct GrewTextField: View {
 #Preview {
     GrewTextField(
         text: .constant(""),
-        isWrongText: .constant(true),
-        isTextfieldDisabled: .constant(true),
+        isWrongText: .constant(false),
+        isTextfieldDisabled: .constant(false),
         isTextFieldFocused: FocusState(),
         placeholderText: "검색어를 입력하세요.",
         isSearchBar: true
