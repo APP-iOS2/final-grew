@@ -66,7 +66,6 @@ extension MainTabView {
                         .foregroundStyle(self.selection == .home ? Color.Main : Color.DarkGray1)
                 }
             }
-            .toolbar(.hidden)
             
             /// 탭바 - 내 주변 버튼
             Button {

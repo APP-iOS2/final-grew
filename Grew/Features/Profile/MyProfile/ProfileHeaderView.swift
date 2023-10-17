@@ -11,9 +11,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct ProfileHeaderView: View {
-    @State var name: String
-    @State var statusMessage: String
-    
     @ObservedObject var userStore: UserStore
     @ObservedObject var userViewModel: UserViewModel
     @ObservedObject var grewViewModel: GrewViewModel
@@ -27,54 +24,77 @@ struct ProfileHeaderView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                VStack(alignment: .leading) {
-                    ZStack(alignment: .leading) {
-                        RoundSpecificCorners()
-                            .offset(x: 0, y: 60.0)
+                ZStack(alignment: .topLeading) {
+                    VStack {
+                        Image("mainBackground")
+                            .resizable()
+                            .frame(width: UIScreen.main.bounds.width, height: backgroundHeight)
+                            .edgesIgnoringSafeArea(.all)
+                            .scaledToFill()
                         
-                        HStack(alignment: .bottom) {
-                            CircleImage(userViewModel: userViewModel)
-                            
-                            Spacer()
-                            
-                            NavigationLink { 
-                                EditProfileView(name: userStore.currentUser?.nickName ?? "",
-                                                statusMessage: userStore.currentUser?.introduce ?? "",
-                                                userStore: UserStore(),
-                                                userViewModel: UserViewModel())
-                            } label: {
-                                Text("프로필 수정")
-                                    .background(RoundedRectangle(cornerRadius: 7)
-                                        .foregroundColor(.LightGray2)
-                                        .frame(width: 101, height: 32)
-                                        .font(.c1_B))
-                            }
-                            .foregroundColor(.white)
-                            .padding()
-                        }
-                        .padding()
+                        Spacer()
+                        
                     }
                     
-                    Text(userStore.currentUser?.nickName ?? "이름없음")
-                        .padding(.horizontal)
-                        .bold()
-                    
-                    Text(userStore.currentUser?.introduce ?? "안녕하세요 \(userStore.currentUser?.nickName ?? "이름없음")입니다.")
-                        .padding(.horizontal)
-                        .font(.caption)
-                    
-                    Divider()
-                    
+                    VStack(alignment: .leading) {
+                        
+                        ZStack(alignment: .leading) {
+                            RoundSpecificCorners()
+                                .offset(x: 0, y: 37.0)
+                            
+                            
+                            ZStack(alignment: .bottomTrailing) {
+                                NavigationLink {
+                                    EditProfileView(userStore: UserStore(), userViewModel: UserViewModel())
+                                } label: {
+                                    //                                    AsyncImage(url: URL(string: userStore.currentUser?.userImageURLString ?? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")) { img in
+                                    //                                        img
+                                    //                                            .resizable()
+                                    //                                            .aspectRatio(contentMode: .fit)
+                                    //                                            .frame(width: 100)
+                                    //                                            .clipShape(Circle())
+                                    //                                    } placeholder: {
+                                    //                                        ProgressView()
+                                    //                                    }
+                                    
+                                    Image(userViewModel.currentUser?.userImageURLString ?? "defaultProfile")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 100)
+                                        .clipShape(Circle())
+                                    
+                                }
+                                .padding()
+                                
+                                Image("editIcon")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .aspectRatio(contentMode: .fill)
+                                    .offset(x: -10, y: -5)
+                                    .imageScale(.large)
+                                    .foregroundColor(.black)
+                                    .bold()
+                                    .padding()
+                            }
+                        }
+                        Text(userStore.currentUser?.nickName ?? "")
+                            .padding(.horizontal)
+                            .bold()
+                        
+                        Text(userStore.currentUser?.introduce ?? "")
+                            .padding(.horizontal)
+                            .font(.caption)
+                        
+                        Divider()
+                        
+                    }
                 }
             }
-            .background(Color.grewMainColor)
         }
     }
 }
-//}
-
 #Preview {
     NavigationStack {
-        ProfileHeaderView(name: "헬롱", statusMessage: "하위", userStore: UserStore(), userViewModel: UserViewModel(), grewViewModel: GrewViewModel())
+        ProfileHeaderView(userStore: UserStore(), userViewModel: UserViewModel(), grewViewModel: GrewViewModel())
     }
 }

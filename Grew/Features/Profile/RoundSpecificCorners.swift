@@ -29,7 +29,7 @@ struct RoundSpecificCorners: View {
         Rectangle()
             .font(.largeTitle)
             .foregroundColor(.white)
-            .frame(width: UIScreen.main.bounds.width, height: 150)
+            .frame(width: UIScreen.main.bounds.width, height: 110)
             .roundedCorner(20, corners: [.topLeft, .topRight])
             
     }
