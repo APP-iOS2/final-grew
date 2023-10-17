@@ -20,6 +20,7 @@ import SwiftUI
 struct CreateScheduleMainView: View {
     
     @ObservedObject var scheduleStore: ScheduleStore
+    //@EnvironmentObject var kakaoWebData: KakaoWebData
     
     @State private var scheduleName: String = ""
     @State private var date = Date()
@@ -53,8 +54,8 @@ struct CreateScheduleMainView: View {
                     guestNumField
                     
                     // 선택 메뉴
-                    ScheduleOptionMenu(menuName: "참가비", option: $fee, showingWebSheet: $showingWebSheet, isEmptyOptionError: $isEmptyFeeError)
-                    ScheduleOptionMenu(menuName: "위치", option: $location, showingWebSheet: $showingWebSheet, isEmptyOptionError: $isEmptyLocationError)
+                    ScheduleOptionMenu(menuName: "참가비", option: $fee, isEmptyOptionError: $isEmptyFeeError, isShowingWebSheet: $showingWebSheet)
+                    ScheduleOptionMenu(menuName: "위치", option: $location,isEmptyOptionError: $isEmptyLocationError, isShowingWebSheet: $showingWebSheet)
                     
                     // 배너 색상 선택
                     ScheduleColorPicker(colorPick: $colorPick)
@@ -124,7 +125,6 @@ struct CreateScheduleMainView: View {
             .padding(.bottom, 5)
     }
     
-    
     // 정원 필드
     @State private var isWrongGuestNum: Bool = false
     @State private var guestNumErrorMessage: String = ""
@@ -177,13 +177,11 @@ struct CreateScheduleMainView: View {
     // 일정 생성 버튼
     private var submitBtn: some View {
         Button {
-            location = KakaoWebData.kakaoWebData.messageText
+            //location = kakaoWebData.dataArrays[1]
             withAnimation(.easeOut){
                 showingFinishAlert.toggle()
             }
-            print("현재 위치 : \(location)")
-            print("객체로 가져온것 : \(KakaoWebData.kakaoWebData.messageText)")
-            
+           
         } label: {
             Text("일정 생성")
                 .frame(width: 350, height: 45)

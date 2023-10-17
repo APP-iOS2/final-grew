@@ -12,10 +12,9 @@ struct ScheduleOptionMenu: View {
     
     var menuName: String
     @Binding var option: String
-    @Binding var showingWebSheet: Bool
     @Binding var isEmptyOptionError: Bool
     @State private var hasOption: Bool = false
-    
+    @Binding var isShowingWebSheet: Bool
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -75,12 +74,14 @@ struct ScheduleOptionMenu: View {
                         .cornerRadius(8)
                         .foregroundColor(Color(hexCode: "f2f2f2"))
                         .onTapGesture {
-                            showingWebSheet = true
+                            isShowingWebSheet = true
                             isEmptyOptionError = false
+                            print(isShowingWebSheet)
                         }
                         .modifier(TextFieldErrorModifier(isError: $isEmptyOptionError))
                         .padding(1)
                     Text("\(option)")
+                        .padding(.leading, 15)
                 }
                 if isEmptyOptionError {
                     ErrorText(errorMessage: "위치를 선택해주세요.")
@@ -111,5 +112,5 @@ extension Formatter {
 
 
 #Preview {
-    ScheduleOptionMenu(menuName: "참가비", option: .constant(""), showingWebSheet: .constant(false), isEmptyOptionError: .constant(true))
+    ScheduleOptionMenu(menuName: "위치", option: .constant(""), isEmptyOptionError: .constant(true), isShowingWebSheet: .constant(false))
 }
