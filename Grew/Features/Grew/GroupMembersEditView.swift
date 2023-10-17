@@ -12,7 +12,7 @@ struct GroupMembersEditView: View {
     @State private var isShowingAlert = false
     @State private var isNavigatingToNextView = false
     @State private var isAnimating = false
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -47,11 +47,11 @@ struct GroupMembersEditView: View {
             .padding()
             .animationModifier(isAnimating: isAnimating, delay: 0)
             VStack(alignment: .leading) {
-                Text("최대 몇 명과 함께 할까요?")
+                Text("최대 인원을 입력해주세요")
                     .font(.title2).fontWeight(.semibold)
                     .padding(.bottom, 10)
                 HStack(spacing: 15) {
-                    TextField("최대 몇 명과 함께 할까요?", text: $viewModel.maximumMembers)
+                    TextField("최대 인원을 입력해주세요", text: $viewModel.maximumMembers)
                         .onChange(of: viewModel.maximumMembers) { oldValue, newValue in
                             if let numer = Int(newValue) {
                                 if numer > 200 {

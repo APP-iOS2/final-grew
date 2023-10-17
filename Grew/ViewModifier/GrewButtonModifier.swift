@@ -20,10 +20,10 @@ struct GrewButtonModifier: ViewModifier {
         ZStack {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .frame(width: width, height: height)
-                .tint(buttonColor)
+                .foregroundStyle(buttonColor)
             content
                 .font(font)
-                .foregroundColor(fontColor)
+                .foregroundStyle(fontColor)
         }
     }
 }

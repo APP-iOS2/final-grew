@@ -16,7 +16,7 @@ struct GroupNameView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("모임이름을 적어볼까요?")
+                Text("모임이름을 입력해주세요")
                     .font(.title2).fontWeight(.semibold)
                     .padding(.bottom, 10)
                 
@@ -35,17 +35,17 @@ struct GroupNameView: View {
             .animationModifier(isAnimating: isAnimating, delay: 0)
             
             VStack(alignment: .leading) {
-                Text("주로 어디에서 활동하세요?")
+                Text("활동방법을 선택해주세요")
                     .font(.title2).fontWeight(.semibold)
                     .padding(.bottom, 0)
                 HStack(spacing: 40) {
                     Spacer()
-                    Button(action: { 
+                    Button {
                         viewModel.isOnline = true
-                    }, label: {
+                    } label: {
                         Text("온라인")
                             .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isOnline ? Color.Sub : Color.BackgroundGray, font: .b1_B, fontColor: .white, cornerRadius: 10)
-                    })
+                    }
                     
                     Button(action: {
                         viewModel.isOnline = false
@@ -68,6 +68,7 @@ struct GroupNameView: View {
                         Text("장소")
                     }
                     TextField("장소를 입력하세요", text: $viewModel.location)
+                        .keyboardType(.namePhonePad)
                         .padding(10)
                         .overlay{
                             RoundedRectangle(cornerRadius: 5)

@@ -61,13 +61,3 @@ struct GroupCategoryView: View {
         .environmentObject(GrewViewModel())
 }
 
-/*
- RoundedRectangle(cornerRadius: 20)
-     .foregroundStyle(isSelected ? Color.Sub : Color.BackgroundGray)
-     .cornerRadius(12)
-     .overlay(
-         Text(category.name)
-             .font(.b3_B)
-             .foregroundStyle(isSelected ? Color.white : Color.black)
-     )
- */

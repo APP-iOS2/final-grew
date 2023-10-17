@@ -23,12 +23,12 @@ struct GroupCheckFeeView: View {
                 HStack(spacing: 40) {
                     Spacer()
                     // 있으면 금액 입력
-                    Button(action: {
+                    Button {
                         viewModel.isNeedFee = true
-                    }, label: {
+                    } label: {
                         Text("있음")
                             .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isNeedFee ? Color.Sub : Color.BackgroundGray, font: .b1_B, fontColor: .white, cornerRadius: 10)
-                    })
+                    }
                     Button(action: {
                         viewModel.isNeedFee = false
                         isAnimatingFeeView = false
@@ -66,8 +66,8 @@ struct GroupCheckFeeView: View {
                                 .padding(.top, 4)
                         }
                     }
-                            .padding(10)
-                            .overlay{
+                     .padding(10)
+                     .overlay{
                                 RoundedRectangle(cornerRadius: 5)
                                     .stroke(Color.gray, lineWidth: 2)
                             }
