@@ -10,7 +10,7 @@ import SwiftUI
 struct ChatInputView: View {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var chatStore: ChatStore
-    @EnvironmentObject var chatRoomStore: ChatRoomStore
+    @EnvironmentObject var messageStore: MessageStore
     let chatRoom: ChatRoom
     @Binding var groupDetailConfig: GroupDetailConfig
     @FocusState var isChatTextFieldFocused: Bool
@@ -27,8 +27,6 @@ struct ChatInputView: View {
             Button {
                 Task {
                     do {
-                        appState.loadingState = .loading("Sending...")
-                        try await chatStore.saveChatMessageToGroup(chatMessage: ChatMessage(text: "채팅 추가하기", uid: "testUser", userName: "차녕"), group: chatRoom)
                         clearFields()
                     } catch {
                         print(error.localizedDescription)
@@ -47,6 +45,3 @@ struct ChatInputView: View {
     }
 }
 
-#Preview {
-    ChatInputView(chatRoom: ChatRoom(members: ["aadsf", "basdf"], timestamp: Date()), groupDetailConfig: .constant(GroupDetailConfig()))
-}

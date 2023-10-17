@@ -93,29 +93,4 @@ struct ChatDetailView: View {
             })
         }
     }
-    
-    private func sendMessage() async throws {
-        guard let currentUser = UserStore.shared.currentUser else { return }
-        
-        var chatMessage = ChatMessage(
-            text: groupDetailConfig.chatText,
-            uid: currentUser.id,
-            groupId: chatRoom.id,
-            userName: currentUser.nickName,
-            profileImageURL: currentUser.userImageURLString ?? "",
-            isAdmin: false
-        )
-        
-        if let selectedImage = groupDetailConfig.selectedImage {
-            // resize the image
-            guard let resizedImage = selectedImage.resize(to: CGSize(width: 600, height: 600)), let imageData = resizedImage.pngData()
-            else {
-                return
-            }
-            let url = try await Storage.storage().uploadData(for: UUID().uuidString, data: imageData, bucket: .attachments)
-            chatMessage.attachImageURL = url.absoluteString
-        }
-        
-        try await chatStore.saveChatMessageToGroup(chatMessage: chatMessage, group: chatRoom)
-    }
 }

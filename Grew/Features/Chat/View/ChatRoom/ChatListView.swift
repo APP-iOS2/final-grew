@@ -7,14 +7,13 @@
 
 import SwiftUI
 
-
 struct ChatListView: View {
     let filter: ChatSegment
-    @EnvironmentObject var chatRoomStore: ChatRoomStore
+    @EnvironmentObject var chatStore: ChatStore
     
     var body: some View {
         ScrollView {
-            ForEach(chatRoomStore.chatRooms){ chatRoom in
+            ForEach(chatStore.chatRooms){ chatRoom in
                 NavigationLink {
                     ChatDetailView(chatRoom: chatRoom)
                 } label: {
