@@ -18,6 +18,8 @@
 		21C1F1B32ACFEEC10029E436 /* MyGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1B22ACFEEC10029E436 /* MyGroupView.swift */; };
 		21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */; };
 		21C1F1B82ACFEEEC0029E436 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1B72ACFEEEC0029E436 /* SettingView.swift */; };
+		21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A722ADEB9A800B3E1C5 /* SavedGrewView.swift */; };
+		21F32A752ADEB9D400B3E1C5 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A742ADEB9D400B3E1C5 /* CircleImage.swift */; };
 		311097322AD41722000D85AD /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097312AD41722000D85AD /* LaunchView.swift */; };
 		3110973A2AD417A1000D85AD /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097382AD417A1000D85AD /* UserStore.swift */; };
 		3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097392AD417A1000D85AD /* AuthStore.swift */; };
@@ -155,6 +157,8 @@
 		21C1F1B22ACFEEC10029E436 /* MyGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupView.swift; sourceTree = "<group>"; };
 		21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupScheduleView.swift; sourceTree = "<group>"; };
 		21C1F1B72ACFEEEC0029E436 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		21F32A722ADEB9A800B3E1C5 /* SavedGrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGrewView.swift; sourceTree = "<group>"; };
+		21F32A742ADEB9D400B3E1C5 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		311097312AD41722000D85AD /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		311097382AD417A1000D85AD /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		311097392AD417A1000D85AD /* AuthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 				2157095E2AD530F8006ABE35 /* ProfileHeaderView.swift */,
 				21C1F1B22ACFEEC10029E436 /* MyGroupView.swift */,
 				21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */,
+				21F32A722ADEB9A800B3E1C5 /* SavedGrewView.swift */,
 				215709602AD53484006ABE35 /* MyProfileEdit */,
 			);
 			path = MyProfile;
@@ -313,6 +318,7 @@
 				215709692AD68960006ABE35 /* ImageEditModalView.swift */,
 				311097A12AD41882000D85AD /* ImagePicker.swift */,
 				2157096B2AD69246006ABE35 /* CameraView.swift */,
+				21F32A742ADEB9D400B3E1C5 /* CircleImage.swift */,
 			);
 			path = MyProfileEdit;
 			sourceTree = "<group>";
@@ -920,6 +926,7 @@
 				993274132AD531F40082FCEC /* GrewScheduleCell.swift in Sources */,
 				311097B12AD4188E000D85AD /* FirestoreService.swift in Sources */,
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
+				21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
@@ -982,6 +989,7 @@
 				3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */,
 				311097A82AD41882000D85AD /* Grew.swift in Sources */,
 				CE36B52F2ADE2A23004D2BC3 /* NewestGrewCell.swift in Sources */,
+				21F32A752ADEB9D400B3E1C5 /* CircleImage.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
 				21C1F1AF2ACFEE980029E436 /* RoundSpecificCorners.swift in Sources */,
 				311097752AD4180F000D85AD /* GroupNameView.swift in Sources */,

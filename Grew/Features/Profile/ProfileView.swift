@@ -19,10 +19,23 @@ struct ProfileView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-                ProfileHeaderView(userStore: userStore, userViewModel: userViewModel, grewViewModel: grewViewModel)
+                ProfileHeaderView(name: userViewModel.currentUser?.nickName ?? "",
+                                  statusMessage: userViewModel.currentUser?.introduce ?? "",
+                                  userStore: userStore,
+                                  userViewModel: userViewModel,
+                                  grewViewModel: grewViewModel)
                 
                 UserContentListView()
-                    .padding()
+            }
+            .toolbar {
+                ToolbarItem {
+                    NavigationLink {
+                        SettingView()
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                    }
+                    .foregroundColor(.black)
+                }
             }
         }
         .onAppear {
@@ -31,16 +44,7 @@ struct ProfileView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .toolbar {
-            ToolbarItem {
-                NavigationLink {
-                    SettingView()
-                } label: {
-                    Image(systemName: "gearshape")
-                }
-                .foregroundColor(.gray)
-            }
-        }
+        
     }
 }
 
