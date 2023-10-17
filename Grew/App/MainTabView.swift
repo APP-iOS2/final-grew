@@ -49,7 +49,7 @@ struct MainTabView: View {
                         Text("프로필")
                     }
             }
-            .toolbar(.hidden)
+//            .toolbar(.hidden)
         }
     }
 }
