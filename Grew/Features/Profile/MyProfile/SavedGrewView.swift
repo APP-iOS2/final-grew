@@ -1,18 +1,17 @@
 //
-//  MyGroup.swift
+//  SavedGrewView.swift
 //  Grew
 //
-//  Created by Chloe Chung on 2023/09/22.
+//  Created by Chloe Chung on 2023/10/16.
 //
 
 import SwiftUI
 
-struct MyGroupView: View {
-    
+struct SavedGrewView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                Text("My Group View")
+                Text("Saved Grews")
             }
         }
     }
@@ -20,6 +19,6 @@ struct MyGroupView: View {
 
 #Preview {
     NavigationStack {
-        MyGroupView()
+        SavedGrewView()
     }
 }

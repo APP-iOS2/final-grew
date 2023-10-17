@@ -12,8 +12,8 @@ struct EditProfileView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State var image: UIImage = UIImage(named: "defaultProfile")!
-    @State var name: String = ""
-    @State var introduce: String = ""
+    @State var name: String /*= ""*/
+    @State var statusMessage: String /*= ""*/
     @State var showModal: Bool = false
     @State var showCamera: Bool = false
     @State var showImagePicker: Bool = false
@@ -24,7 +24,7 @@ struct EditProfileView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
                 Button {
                     showModal = true
                 } label: {
@@ -37,7 +37,7 @@ struct EditProfileView: View {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
                             .frame(width: 27, height: 27)
-                            .foregroundColor(Color(hex: 0x25C578)) // 이미지 색상 설정
+                            .foregroundColor(Color.grewMainColor) // 이미지 색상 설정
                             .overlay(
                                 Circle()
                                     .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
@@ -51,23 +51,62 @@ struct EditProfileView: View {
                         .bold()
                         .font(.title3)
                     
-                    TextField("\(userViewModel.currentUser?.nickName ?? "")", text: $name)
-                        .padding(10)
-                        .overlay(RoundedRectangle(cornerRadius: 7)
-                            .stroke(Color.gray))
-                        .frame(height: 50)
+                    RoundedRectangle(cornerRadius: 7)
+                        .frame(height: 60)
+                        .foregroundStyle(Color.LightGray2)
+                        .overlay(alignment: .leading) {
+                            Text("\(userStore.currentUser?.nickName ?? "알 수 없음")")
+                                .padding()
+                                .foregroundColor(Color.DarkGray1)
+                        }
+                    
+                    
                 }
                 .padding(.vertical)
                 
                 VStack(alignment: .leading) {
-                    Text("자기소개")
+                    Text("상태 메세지")
                         .bold()
                         .font(.title3)
+                      
+                    RoundedRectangle(cornerRadius: 7)
+                        .frame(height: 60)
+                        .foregroundColor(Color.BackgroundGray)
+                        .overlay(
+                            TextField("상태 메세지를 입력하세요", text: $statusMessage)
+                                .padding(.horizontal, 16)
+                                
+                        )
+                        .padding(.horizontal, 1)
+                        .padding(.vertical, 4)
                     
-                    TextEditor(text: .constant("\(userViewModel.currentUser?.introduce ?? "")"))
-                        .overlay(RoundedRectangle(cornerRadius: 7)
-                            .stroke(Color.gray))
-                        .frame(height: 150)
+                    Text("생년월일 및 성별")
+                        .bold()
+                        .font(.title3)
+                        .padding(.vertical, 5)
+                    
+                    HStack {
+                        RoundedRectangle(cornerRadius: 7)
+                            .frame(height: 60)
+                            .foregroundColor(Color.LightGray2)
+                            .overlay(
+                                Text("\(userStore.currentUser?.dob ?? "생년월일 정보없음")")
+                                    .padding(.horizontal, 16)
+                                    .foregroundColor(Color.DarkGray1)
+                            )
+                            .padding(.vertical, 10)
+                        
+                        RoundedRectangle(cornerRadius: 7)
+                            .frame(width: 100,height: 60)
+                            .foregroundColor(Color.LightGray2)
+                            .overlay(
+                                Text("\(userStore.currentUser?.gender ?? "성별없음")")
+                                    .padding(.horizontal, 16)
+                                    .foregroundColor(Color.DarkGray1)
+                                
+                            )
+                            .padding(.horizontal, 10)
+                    }
                     
                     Spacer()
                 }
@@ -92,7 +131,7 @@ struct EditProfileView: View {
                             .foregroundStyle(.white)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
-                            .background(Color(hex: 0x25C578))
+                            .background(Color.grewMainColor)
                             .cornerRadius(5)
                     }
                     .buttonStyle(.plain)
@@ -128,7 +167,7 @@ struct EditProfileView: View {
             .onAppear {
                 if let user = userViewModel.currentUser {
                     name = user.nickName
-                    introduce = user.introduce ?? ""
+                    statusMessage = user.introduce ?? ""
                 }
             }
         }
@@ -137,7 +176,7 @@ struct EditProfileView: View {
     func saveProfileChanges() {
         if var updatedUser = userViewModel.currentUser {
             updatedUser.nickName = name
-            updatedUser.introduce = introduce
+            updatedUser.introduce = statusMessage
             userViewModel.uploadProfileImage(image) { success in
                 if success {
                     print("Profile image uploaded successfully!")
@@ -151,5 +190,5 @@ struct EditProfileView: View {
 }
 
 #Preview {
-    EditProfileView(userStore: UserStore(), userViewModel: UserViewModel())
+    EditProfileView(name: "헬롱", statusMessage: "하위", userStore: UserStore(), userViewModel: UserViewModel())
 }

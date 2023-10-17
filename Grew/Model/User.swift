@@ -36,7 +36,7 @@ struct User: Identifiable, Codable {
 //        User(nickName: "서코", email: "seoko@grew.com", gender: .male, dob: "19901231", searchHistory: []),
 //        User(nickName: "차녕", email: "chan0@grew.com", gender: .male, dob: "19970831", userImageURLString: "https://i.pinimg.com/564x/9b/f3/22/9bf3220472aecf308ab5c3f5a1f6a7cd.jpg", searchHistory: [])
 //    ]
-//    
+//
 //    var currentUser: User {
 //        users.first!
 //    }
@@ -50,12 +50,14 @@ enum Gender: String, CaseIterable, Codable {
 enum ProfileThreadFilter: Int, CaseIterable, Identifiable {
     case myGroup
     case myGroupSchedule
+    case savedGrew
 //    case mentions
 
     var title: String {
         switch self {
         case .myGroup: return "내 모임"
         case .myGroupSchedule: return "내 모임 일정"
+        case .savedGrew: return "찜한 그루"
         }
     }
 
