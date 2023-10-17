@@ -50,12 +50,14 @@ enum Gender: String, CaseIterable, Codable {
 enum ProfileThreadFilter: Int, CaseIterable, Identifiable {
     case myGroup
     case myGroupSchedule
+    case savedGrew
 //    case mentions
 
     var title: String {
         switch self {
         case .myGroup: return "내 모임"
         case .myGroupSchedule: return "내 모임 일정"
+        case .savedGrew: return "찜한 그루"
         }
     }
 

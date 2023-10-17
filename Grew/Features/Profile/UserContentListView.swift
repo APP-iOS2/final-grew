@@ -15,11 +15,13 @@ struct UserContentListView: View {
     
     private var filterBarWidth: CGFloat {
         let count = CGFloat(ProfileThreadFilter.allCases.count)
-        return UIScreen.main.bounds.width / count - 100
+        return UIScreen.main.bounds.width / count /*- 30*/
     }
     
+    private let headerHeight: CGFloat = 262
+    
     var body: some View {
-        //user content list view
+        // user content list view
         VStack {
             HStack{
                 ForEach(ProfileThreadFilter.allCases) { filter in
@@ -30,7 +32,7 @@ struct UserContentListView: View {
                         
                         if selectedFilter == filter {
                             Rectangle()
-                                .foregroundColor(Color(hex: 0x25C578))
+                                .foregroundColor(Color.grewMainColor)
                                 .frame(maxWidth: filterBarWidth, maxHeight: 5)
                                 .cornerRadius(5)
                                 .matchedGeometryEffect(id: "item", in: animation)
@@ -48,12 +50,19 @@ struct UserContentListView: View {
                 }
             }
         }
+        .frame(height: 50, alignment: .center)
+        .background(Color.white)
         
         switch selectedFilter {
         case .myGroup:
             MyGroupView()
+                .background(Color.white)
         case .myGroupSchedule:
             MyGroupScheduleView()
+                .background(Color.white)
+        case .savedGrew:
+            SavedGrewView()
+                .background(Color.white)
         }
     }
 }

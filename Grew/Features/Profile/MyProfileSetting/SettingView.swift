@@ -33,7 +33,7 @@ struct SettingView: View {
                     // TODO: 로그인 연동하기
                     Section(header: Text("계정 설정")){
                         Button {
-                            
+                            AuthStore.shared.emailAuthSignOut()
                         } label: {
                             HStack {
                                 Text("로그아웃")

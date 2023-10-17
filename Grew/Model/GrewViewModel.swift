@@ -19,6 +19,7 @@ class GrewViewModel: ObservableObject {
     @Published var categorysubDisplayName = ""
     @Published var meetingTitle = ""
     @Published var isOnline = true
+    @Published var location = ""
     @Published var gender: Gender = .any
     @Published var minimumAge = 20
     @Published var maximumAge = 20
