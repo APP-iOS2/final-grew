@@ -44,7 +44,7 @@ struct NewGrewView: View {
                                 }
                             } label: {
                                 Image(systemName: "chevron.backward")
-                                    .font(.system(size: 32))
+                                    .font(.system(size: 25))
                                     .foregroundColor(.gray)
                             }
                         }
@@ -55,7 +55,7 @@ struct NewGrewView: View {
                                 dismiss()
                             } label: {
                                 Image(systemName: "xmark")
-                                    .font(.system(size: 32))
+                                    .font(.system(size: 25))
                                     .foregroundColor(.gray)
                             }
                         }
@@ -121,6 +121,8 @@ extension NewGrewView {
                             description: "",
                             isOnline: viewModel.isOnline,
                             location: viewModel.isOnline ? "" : viewModel.location,
+                            latitude: viewModel.latitude,
+                            longitude: viewModel.longitude,
                             gender: viewModel.gender,
                             minimumAge: viewModel.minimumAge,
                             maximumAge: viewModel.maximumAge,

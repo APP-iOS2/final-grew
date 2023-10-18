@@ -25,6 +25,10 @@ struct Grew: Identifiable, Codable {
     var isOnline: Bool
     /// 오프라인 주소
     var location: String = ""
+    /// 위도
+    var latitude: String?
+    /// 경도
+    var longitude: String?
     /// 활동 지역 (ex: 구로구, 수원시)
     var district: String {
         let locationArray = location.split(separator: " ")

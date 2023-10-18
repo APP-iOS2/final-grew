@@ -14,11 +14,15 @@ struct GroupMembersEditView: View {
     @State private var isAnimating = false
     @Binding var isMaximumMembersValid: Bool
     
+    @State private var isWrongname: Bool = false
+    @State private var isWrongdob: Bool = false
+    @State private var isMeetingTextfieldDisabled: Bool = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 Text("어떤 멤버를 모집할까요?")
-                    .font(.title2).fontWeight(.semibold)
+                    .font(.b1_R).fontWeight(.semibold)
                     .padding(.bottom, 10)
                 HStack(spacing: 15) {
                     Text("성별")
@@ -49,10 +53,11 @@ struct GroupMembersEditView: View {
             .animationModifier(isAnimating: isAnimating, delay: 0)
             VStack(alignment: .leading) {
                 Text("최대 인원을 입력해주세요")
-                    .font(.title2).fontWeight(.semibold)
+                    .font(.b1_R).fontWeight(.semibold)
                     .padding(.bottom, 10)
-                HStack(spacing: 15) {
-                    TextField("최대 인원을 입력해주세요", text: $viewModel.maximumMembers)
+                VStack(alignment: .leading) {
+                    
+                    GrewTextField(text: $viewModel.maximumMembers, isWrongText: isWrongname, isTextfieldDisabled: isMeetingTextfieldDisabled, placeholderText: "최대 인원을 입력해주세요", isSearchBar: false)
                         .onChange(of: viewModel.maximumMembers) { oldValue, newValue in
                             if let numer = Int(newValue) {
                                 if numer > 200 {
@@ -64,21 +69,7 @@ struct GroupMembersEditView: View {
                             isMaximumMembersValid = !newValue.isEmpty
                         }
                         .keyboardType(.numberPad)
-                    
-                    HStack {
-                        Text("\(viewModel.maximumMembers)/200")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                            .padding(.trailing)
-                            .padding(.top, 4)
-                    }
                 }
-                .padding(10)
-                .overlay{
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.gray, lineWidth: 2)
-                }
-                .cornerRadius(5)
             }
             .padding()
             .animationModifier(isAnimating: isAnimating, delay: 1)
