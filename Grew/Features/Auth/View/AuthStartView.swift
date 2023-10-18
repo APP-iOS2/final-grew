@@ -34,7 +34,7 @@ struct AuthStartView: View {
                             .navigationBarBackButtonHidden()
                     } label: {
                         Text("이메일로 로그인 하기")
-                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: .grewMainColor, font: Font.b2_R, fontColor: .white))
+                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: .grewMainColor, font: Font.b2_R, fontColor: .white, cornerRadius: 10))
                             .padding(.top, 10)
                     }
                     Button {
@@ -46,7 +46,7 @@ struct AuthStartView: View {
                         }
                     } label: {
                         Text("Facebook으로 로그인 하기")
-                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(hex: 0x1877F2), font: Font.b2_R, fontColor: .white))
+                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(hex: 0x1877F2), font: Font.b2_R, fontColor: .white, cornerRadius: 10))
                             .padding(.top, 10)
                     }
                     Button {
@@ -58,7 +58,7 @@ struct AuthStartView: View {
                         }
                     } label: {
                         Text("Kakao로 로그인 하기")
-                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(hex: 0xFFD233), font: Font.b2_R, fontColor: .black))
+                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(hex: 0xFFD233), font: Font.b2_R, fontColor: .black, cornerRadius: 10))
 //                            .padding(.top, 10)
                     }
 //                    Button {
