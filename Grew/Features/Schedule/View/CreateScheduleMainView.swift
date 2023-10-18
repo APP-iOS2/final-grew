@@ -8,51 +8,55 @@
 // TODO
 // 참가비 콤마 추가
 // 오류시 빨간박스 처리
-// safetyAreaInset 뒷부분 투명처리
-// 박스들 쩜 뚱뚱한가,,?
+// 데이터 잘 입력 돼있는지 어케처리할거야????????????????대체???????????????
+// 뷰 거지같다 정. 말.
+
 
 import SwiftUI
 
 struct CreateScheduleMainView: View {
-    
     @ObservedObject var scheduleStore: ScheduleStore
     
     @State private var scheduleName: String = ""
     @State private var date = Date()
-    @State private var maximumMenbers: String = "2"
+    @State private var maximumMenbers: String = ""
     @State private var fee: String = ""
     @State private var location: String = ""
     @State private var latitude: String = ""
     @State private var longitude: String = ""
     @State private var colorPick: String = ""
- 
-    @State private var isEmptyFeeError: Bool = false
-    @State private var isEmptyLocationError: Bool = false
-    
+
     @State private var isDatePickerVisible: Bool = false
     @State private var showingWebSheet: Bool = false
     @State private var showingFinishAlert: Bool = false
     
-    let meximumGrewMembers: Int = 20 //임시. 그루 최대 인원 받아와야함!
+    @State private var isWrongScheduleName: Bool = false
+    @State private var isEmptyFeeError: Bool = false
+    @State private var isEmptyLocationError: Bool = false
+    @State private var isWrongGuestNum: Bool = false
+    
+    @State private var hasFee: Bool = false
+    @State private var hasLocation: Bool = false
+    
+    @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
         ZStack {
             ScrollView{
                 VStack{
-                    
                     // 일정 이름
-                    scheduleNameField
+                    ScheduleNameField(isWrongScheduleName: $isWrongScheduleName, scheduleName: $scheduleName)
                     
                     // 날짜, 시간
                     ScheduleDatePicker(titleName: "날짜", isDatePickerVisible: $isDatePickerVisible, date: $date)
                     ScheduleDatePicker(titleName: "시간", isDatePickerVisible: $isDatePickerVisible, date: $date)
                     
                     // 정원
-                    guestNumField
+                    GuestNumField(isWrongGuestNum: $isWrongGuestNum, maximumMenbers: $maximumMenbers)
                     
                     // 선택 메뉴
-                    ScheduleOptionMenu(menuName: "참가비", option: $fee, isEmptyOptionError: $isEmptyFeeError, isShowingWebSheet: $showingWebSheet)
-                    ScheduleOptionMenu(menuName: "위치", option: $location,isEmptyOptionError: $isEmptyLocationError, isShowingWebSheet: $showingWebSheet)
+                    ScheduleOptionMenu(menuName: "참가비", option: $fee, isEmptyOptionError: $isEmptyFeeError, hasOption: $hasFee, isShowingWebSheet: $showingWebSheet)
+                    ScheduleOptionMenu(menuName: "위치", option: $location, isEmptyOptionError: $isEmptyLocationError, hasOption: $hasLocation, isShowingWebSheet: $showingWebSheet )
                     
                     // 배너 색상 선택
                     ScheduleColorPicker(colorPick: $colorPick)
@@ -90,8 +94,8 @@ struct CreateScheduleMainView: View {
             ZStack{
                 WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location, latitude: $latitude, longitude: $longitude)
                 /*if isLoading {
-                    ProgressView()
-                }*/
+                 ProgressView()
+                 }*/
             }
         })
         .task{
@@ -99,92 +103,10 @@ struct CreateScheduleMainView: View {
         }
     }
     
-    /* 간단 하위뷰 */
-    
-    // 일정 이름 필드
-    @State private var isWrongScheduleName: Bool = false
-    @FocusState var isTextFieldFocused: Bool
-    private var scheduleNameField: some View {
-        VStack(alignment: .leading){
-            Text("일정 이름").bold()
-
-            TextField("일정 이름", text: $scheduleName)
-                .padding(12)
-                .cornerRadius(8)
-                .modifier(TextFieldErrorModifier(isError: $isWrongScheduleName))
-                .onChange(of: scheduleName){
-                    withAnimation(.easeIn){
-                        if(scheduleName.count < 5){
-                            isWrongScheduleName = true
-                        }else{
-                            isWrongScheduleName = false
-                        }
-                    }
-                }
-                .focused($isTextFieldFocused)
-            if isWrongScheduleName {
-                ErrorText(errorMessage: "5자 이상 입력해주세요.")
-            }
-        }.padding(1)
-            .padding(.bottom, 5)
-    }
-    
-    // 정원 필드
-    @State private var isWrongGuestNum: Bool = false
-    @State private var guestNumErrorMessage: String = ""
-    
-    private var guestNumField: some View {
-        VStack{
-            HStack{
-                Image(systemName: "person.2.fill")
-                Text("정원")
-                    .padding(.trailing, 15)
-                Spacer()
-                
-                TextField("정원", text: $maximumMenbers)
-                    .keyboardType(.numberPad)
-                    .padding(12)
-                    .cornerRadius(8)
-                    .onChange(of: maximumMenbers){
-                        withAnimation(.easeIn){
-                            if let intValue = Int(maximumMenbers) {
-                                if intValue > meximumGrewMembers {
-                                    isWrongGuestNum = true
-                                    guestNumErrorMessage = "그룹 인원보다 많습니다."
-                                } else if intValue < 2 {
-                                    isWrongGuestNum = true
-                                    guestNumErrorMessage = "2명 이상 입력하세요."
-                                } else {
-                                    isWrongGuestNum = false
-                                    guestNumErrorMessage = ""
-                                }
-                            } else {
-                                isWrongGuestNum = true
-                                if maximumMenbers.isEmpty{
-                                    guestNumErrorMessage = "숫자를 입력해주세요."
-                                }
-                                else{
-                                    guestNumErrorMessage = "숫자만 입력하세요."
-                                }
-                            }
-                        }
-                    }
-                    .modifier(TextFieldErrorModifier(isError: $isWrongGuestNum))
-            }.padding(.top, 7)
-            
-            if isWrongGuestNum {
-                ErrorText(errorMessage: guestNumErrorMessage)
-            }
-        }.padding(1)
-    }
-    
     // 일정 생성 버튼
     private var submitBtn: some View {
         Button {
-            withAnimation(.easeOut){
-                showingFinishAlert.toggle()
-            }
-           
+            errorCheck()
         } label: {
             Text("일정 생성")
                 .frame(width: 350, height: 45)
@@ -195,11 +117,25 @@ struct CreateScheduleMainView: View {
         }
     }
     
+    //그냥 에러메세지가 있으면 오류, 없으면 입력 완료. 오류검사는 메인뷰에서.
+    
+    
     func errorCheck() {
+        if scheduleName.isEmpty {
+            isWrongScheduleName = true
+            return
+        }
+        if maximumMenbers.isEmpty {
+            isWrongGuestNum = true
+            return
+        }
+        
+        withAnimation(.easeOut){
+            showingFinishAlert.toggle()
+        }
         
     }
-    
-    public func finishCreate() {
+    func finishCreate() {
         
     }
 }

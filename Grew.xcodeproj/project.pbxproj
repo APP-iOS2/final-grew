@@ -810,12 +810,12 @@
 		3E185AFA2ADCC75E00F7FC46 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				3E185AF22ADCC66B00F7FC46 /* ScheduleDatePicker.swift */,
 				3E185AF02ADCC64400F7FC46 /* ScheduleOptionMenu.swift */,
-				3E185AF42ADCC69500F7FC46 /* ScheduleColorPicker.swift */,
 				3EC0F05E2ADEC9D300D07009 /* OtherTextFields.swift */,
-				3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */,
+				3E185AF22ADCC66B00F7FC46 /* ScheduleDatePicker.swift */,
+				3E185AF42ADCC69500F7FC46 /* ScheduleColorPicker.swift */,
 				3EC0F0572ADE597100D07009 /* TextFieldErrorModifier.swift */,
+				3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";

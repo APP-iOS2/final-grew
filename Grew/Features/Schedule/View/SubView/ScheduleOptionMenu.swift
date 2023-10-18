@@ -13,8 +13,12 @@ struct ScheduleOptionMenu: View {
     var menuName: String
     @Binding var option: String
     @Binding var isEmptyOptionError: Bool
-    @State private var hasOption: Bool = false
+    @Binding var hasOption: Bool
     @Binding var isShowingWebSheet: Bool
+    @State var errorMessage: String = "입력해주세요."
+    
+    @FocusState private var isTextFieldFocused: Bool
+    
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -40,6 +44,7 @@ struct ScheduleOptionMenu: View {
                         hasOption = false
                         isEmptyOptionError = false
                         option = ""
+                        errorMessage = ""
                     }
                 } label: {
                     Text("없음")
@@ -52,21 +57,50 @@ struct ScheduleOptionMenu: View {
             }
             
            if(hasOption && menuName == "참가비") {
-                TextField(menuName, text: $option)
-                    .keyboardType(.decimalPad)
-                    .padding(12)
-                    .cornerRadius(8)
-                    .onChange(of: option){ newFee in
-                        option = formatFee(newFee)
-                        if (!option.isEmpty){
-                            isEmptyOptionError = false
-                        }
-                    }
-                    .modifier(TextFieldErrorModifier(isError: $isEmptyOptionError))
+               ZStack{
+                   TextField(menuName, text: $option)
+                       .keyboardType(.decimalPad)
+                       .padding(12)
+                       .cornerRadius(8)
+                       .focused($isTextFieldFocused)
+                       .onChange(of: isTextFieldFocused){ focus in
+                           withAnimation(.easeIn){
+                               if !focus {
+                                   if (option.isEmpty){
+                                       isEmptyOptionError = true
+                                       errorMessage = "참가비를 입력해주세요."
+                                   }
+                                   if let intValue = Int(option) {
+                                       isEmptyOptionError = false
+                                   }else{
+                                       isEmptyOptionError = true
+                                       errorMessage = "숫자만 입력해주세요."
+                                   }
+                               }else {
+                                   isEmptyOptionError = false
+                               }
+                           }
+                       }
+                       .modifier(TextFieldErrorModifier(isError: $isEmptyOptionError, isTextFieldFocused: _isTextFieldFocused))
+                   
+                   if isTextFieldFocused {
+                       HStack{
+                           Spacer()
+                           Button {
+                               option = ""
+                           } label: {
+                               Image(systemName: "xmark.circle.fill")
+                                   .foregroundColor(.Main)
+                                   .padding()
+                           }
+                       }
+                   }
+               }
                 if isEmptyOptionError {
-                    ErrorText(errorMessage: "참가비를 입력해주세요.")
+                    ErrorText(errorMessage: errorMessage)
                 }
             }
+            
            else if(hasOption && menuName == "위치") {
                 ZStack(alignment: .leading){
                     Rectangle()
@@ -112,5 +146,5 @@ extension Formatter {
 
 
 #Preview {
-    ScheduleOptionMenu(menuName: "위치", option: .constant(""), isEmptyOptionError: .constant(true), isShowingWebSheet: .constant(false))
+    ScheduleOptionMenu(menuName: "위치", option: .constant(""), isEmptyOptionError: .constant(true), hasOption: .constant(true), isShowingWebSheet: .constant(false))
 }
