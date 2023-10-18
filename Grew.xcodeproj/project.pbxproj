@@ -149,6 +149,9 @@
 		CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */; };
 		CE5129422AD8D66700CE77C5 /* GrewDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5129412AD8D66700CE77C5 /* GrewDetailView.swift */; };
 		CE5A27B42AD9B0590014BE09 /* GrewIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A27B32AD9B0590014BE09 /* GrewIntroductionView.swift */; };
+		CE9292CF2ADF62EF005052AF /* StumpIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9292CE2ADF62EF005052AF /* StumpIntroductionView.swift */; };
+		CE9292D12ADF6966005052AF /* StumpMemberRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9292D02ADF6966005052AF /* StumpMemberRequestView.swift */; };
+		CE9292D32ADFADBC005052AF /* StumpRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9292D22ADFADBC005052AF /* StumpRegisterView.swift */; };
 		CEB6CBB92AD682DE00515EEA /* GrewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */; };
 		F2E20584B15966D0028FE8B5 /* Pods_Grew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D1665606D5C84E091AB4CB /* Pods_Grew.framework */; };
 /* End PBXBuildFile section */
@@ -278,6 +281,9 @@
 		CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewAlertModifier.swift; sourceTree = "<group>"; };
 		CE5129412AD8D66700CE77C5 /* GrewDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewDetailView.swift; sourceTree = "<group>"; };
 		CE5A27B32AD9B0590014BE09 /* GrewIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewIntroductionView.swift; sourceTree = "<group>"; };
+		CE9292CE2ADF62EF005052AF /* StumpIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumpIntroductionView.swift; sourceTree = "<group>"; };
+		CE9292D02ADF6966005052AF /* StumpMemberRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumpMemberRequestView.swift; sourceTree = "<group>"; };
+		CE9292D22ADFADBC005052AF /* StumpRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumpRegisterView.swift; sourceTree = "<group>"; };
 		CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -547,6 +553,7 @@
 				312E98EB2ACD30A800E38626 /* Home */,
 				312E98E82ACD309D00E38626 /* Maps */,
 				312E98EC2ACD30AB00E38626 /* Profile */,
+				CE9292CD2ADF61E9005052AF /* Stump */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -776,6 +783,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE9292CD2ADF61E9005052AF /* Stump */ = {
+			isa = PBXGroup;
+			children = (
+				CE9292CE2ADF62EF005052AF /* StumpIntroductionView.swift */,
+				CE9292D02ADF6966005052AF /* StumpMemberRequestView.swift */,
+				CE9292D22ADFADBC005052AF /* StumpRegisterView.swift */,
+			);
+			path = Stump;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -981,6 +998,7 @@
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
 				3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */,
 				311097462AD417AD000D85AD /* AuthStartView.swift in Sources */,
+				CE9292CF2ADF62EF005052AF /* StumpIntroductionView.swift in Sources */,
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
 				3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */,
 				993274132AD531F40082FCEC /* GrewScheduleCell.swift in Sources */,
@@ -1015,6 +1033,7 @@
 				319757582ADEF36600696FF9 /* MainChatView.swift in Sources */,
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,
 				311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */,
+				CE9292D32ADFADBC005052AF /* StumpRegisterView.swift in Sources */,
 				64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */,
 				311097B22AD4188E000D85AD /* DateService.swift in Sources */,
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
@@ -1030,6 +1049,7 @@
 				64AB27D62AD6683E004DE65F /* LaunchVM.swift in Sources */,
 				3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */,
 				311097702AD4180F000D85AD /* GroupMembersEditView.swift in Sources */,
+				CE9292D12ADF6966005052AF /* StumpMemberRequestView.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
 				2157096A2AD68960006ABE35 /* ImageEditModalView.swift in Sources */,
 				311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */,
