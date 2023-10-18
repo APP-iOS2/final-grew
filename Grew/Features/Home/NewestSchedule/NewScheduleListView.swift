@@ -1,5 +1,5 @@
 //
-//  NewGrewListView.swift
+//  NewestScheduleListView.swift
 //  Grew
 //
 //  Created by 정유진 on 2023/10/18.
@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct NewGrewListView: View {
+/// 최신 일정 뷰
+struct NewestScheduleListView: View {
     let colorList: [Color] = [.cyan, .yellow, .green, .mint, .orange, .purple]
     let quote: String = "\""
     var body: some View {
@@ -113,5 +114,5 @@ struct NewGrewListView: View {
 }
 
 #Preview {
-    NewGrewListView()
+    NewestScheduleListView()
 }

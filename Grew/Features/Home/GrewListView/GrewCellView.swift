@@ -37,7 +37,7 @@ struct GrewCellView: View {
             VStack(alignment: .leading) {
                 
                 // 모임 카테고리
-                Text(grewViewModel.categoryName(grew.categoryIndex, grew.categorysubIndex))
+                Text(grewViewModel.subCategoryName(grew.categoryIndex, grew.categorysubIndex))
                     .padding(.horizontal, 10)
                     .padding(.top, 5)
                     .padding(.bottom, 3)

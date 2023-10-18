@@ -31,59 +31,47 @@ struct HomeView: View {
             ScrollView {
                 VStack {
                     // 최신 일정
-                    NewGrewListView()
+                    NewestScheduleListView()
                     
                     // 카테고리 버튼
                     CategoryButtonView()
                         .padding(.horizontal, 5)
-                        .padding(.vertical)
+                        .padding(.top)
                         .background(.white)
                         .cornerRadius(20, corners: [.topRight, .topLeft])
                 }
                 .background(Color.Main)
                 
                 
-                // 신규, 인기, 일정 어떻게 나눠서 할지, Grew의 구조체 User구조체에 하트를 눌렀을 때 반응할 프로퍼티 필요함
-                // 신규에 쓰일 Grew 생성 시간을 담을 프로퍼티 필요함
-                // 목록마다 3개씩
-                // 모임 일정에 대한 자세한 정의 필요
-                
-                // 신규모임, 인기모임
-                
                 VStack(alignment: .leading) {
-                    //                    Divider()
-                    //                        .frame(height: 8)
-                    //                        .overlay(Color.BackgroundGray)
-                    //                        .padding(.bottom, 16)
-                    //
-                    //                    Text("신규 모임")
-                    //                        .font(.h1_B)
-                    //                        .padding(.leading, 16)
-                    //                    GrewListView(grewList: grewViewModel.grewList)
-                    //
+                    
+                    Divider()
+                        .frame(height: 8)
+                        .overlay(Color.BackgroundGray)
+                        .padding(.vertical)
+                    Text("최신 그루")
+                        .font(.b1_B)
+                        .padding(.leading, 16)
+                        .padding(.bottom)
+                    NewestGrewListView(grewList: grewViewModel.newestFilter(grewList: grewViewModel.grewList))
+                        .padding(.horizontal, 8)
+                        
+                   
                     Divider()
                         .frame(height: 8)
                         .overlay(Color.BackgroundGray)
                         .padding(.vertical)
                         .background(.white)
                     
-                    // 인기 모임 5개
+                    // 인기 모임
                     Text("인기 그루")
-                        .font(.h1_B)
+                        .font(.b1_B)
                         .padding(.leading, 16)
                     GrewListView(grewList: grewViewModel.popularFilter(grewList: grewViewModel.grewList))
                     
-                    //
-                    //                    Divider()
-                    //                        .frame(height: 8)
-                    //                        .overlay(Color.BackgroundGray)
-                    //                        .padding(.vertical)
                     
-                    // 전체 모임 일정, 전체 모임
-                    //                    Text("곧 시작하는 모임")
-                    //                        .font(.h1_B)
-                    //                        .padding(.leading, 16)
-                    //                    GrewScheduleListView(grewList: grewViewModel.grewList)
+                    
+                    
                 }
             } // ScrollView
             
