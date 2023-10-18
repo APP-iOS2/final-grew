@@ -29,11 +29,24 @@ struct SettingView: View {
                             
                         }
                     }.listRowSeparator(.hidden)
+                     
+                    Section(header: Text("그루터기")){
+                        
+                        ForEach(grewtoegi) { index in
+                            NavigationLink {
+                                
+                            } label: {
+                                Text("\(index.name)")
+                                
+                            }
+                        }
+                        
+                    }.listRowSeparator(.hidden)
                     
                     // TODO: 로그인 연동하기
                     Section(header: Text("계정 설정")){
                         Button {
-                            
+                            AuthStore.shared.emailAuthSignOut()
                         } label: {
                             HStack {
                                 Text("로그아웃")
@@ -81,7 +94,6 @@ struct SettingView: View {
                     .foregroundColor(.black)
             }))
         }
-        
     }
 }
 
