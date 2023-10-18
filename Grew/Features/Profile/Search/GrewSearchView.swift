@@ -30,8 +30,8 @@ struct GrewSearchView: View {
             VStack {
                 GrewTextField(
                     text: $searchText,
-                    isWrongText: .constant(false),
-                    isTextfieldDisabled: .constant(false),
+                    isWrongText: false,
+                    isTextfieldDisabled: false,
                     placeholderText: "검색어를 입력하세요.",
                     isSearchBar: true
                 )
