@@ -7,12 +7,14 @@
 
 import Firebase
 import FirebaseAuth
+import FirebaseFirestore
 import Foundation
 
 class UserStore: ObservableObject {
     
     // 싱글톤 패턴
     static let shared = UserStore()
+    private static let db = Firestore.firestore()
     
     @Published var currentUser: User?
     
@@ -41,5 +43,20 @@ class UserStore: ObservableObject {
         }
         let userRef = Firestore.firestore().collection("users").document(userId)
         userRef.updateData(["searchHistory": searchHistory])
+    }
+    
+    static func requestAndReturnUsers(userID: [String]) async -> [User]? {
+        var newUser: [User] = []
+        for user in userID {
+            let doc = db.collection("users").document(user)
+            do {
+                let user = try await doc.getDocument(as: User.self)
+                newUser.append(user)
+            } catch {
+                print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+                return nil
+            }
+        }
+        return newUser
     }
 }

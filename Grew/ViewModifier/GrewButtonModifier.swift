@@ -14,22 +14,16 @@ struct GrewButtonModifier: ViewModifier {
     var buttonColor: Color
     var font: Font
     var fontColor: Color
+    var cornerRadius: CGFloat
     
     func body(content: Content) -> some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: cornerRadius)
                 .frame(width: width, height: height)
-                .tint(buttonColor)
+                .foregroundStyle(buttonColor)
             content
                 .font(font)
-                .foregroundColor(fontColor)
-//                .colorInvert()
+                .foregroundStyle(fontColor)
         }
-    }
-}
-
-extension View {
-    func grewButtonModifier(width: CGFloat, height: CGFloat, buttonColor: Color, font: Font, fontColor: Color) -> some View {
-        modifier(GrewButtonModifier(width: width, height: height, buttonColor: buttonColor, font: font, fontColor: fontColor))
     }
 }

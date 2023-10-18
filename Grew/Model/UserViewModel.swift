@@ -18,7 +18,7 @@ class UserViewModel: ObservableObject {
         guard let currentUserId = UserDefaults.standard.string(forKey: "userId") else {
             return
         }
-//        self.fetchUser(userId: currentUserId)
+        self.fetchUser(userId: currentUserId)
     }
     
     func fetchUser(userId: String) {

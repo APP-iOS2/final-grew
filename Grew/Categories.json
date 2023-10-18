@@ -2,7 +2,7 @@
     {
         "id": "100",
         "name": "문화예술",
-        "imageString": "",
+        "imageString": "drawing",
         "subCategories": [
             {
                 "id": "101",
@@ -37,7 +37,7 @@
     {
         "id": "200",
         "name": "액티비티",
-        "imageString": "",
+        "imageString": "activity",
         "subCategories": [
             {
                 "id": "201",
@@ -96,7 +96,7 @@
     {
         "id": "300",
         "name": "여행",
-        "imageString": "",
+        "imageString": "travel",
         "subCategories": [
             {
                 "id": "301",
@@ -111,7 +111,7 @@
     {
         "id": "400",
         "name": "요리/제조",
-        "imageString": "",
+        "imageString": "cook",
         "subCategories": [
             {
                 "id": "401",
@@ -150,7 +150,7 @@
     {
         "id": "500",
         "name": "푸드/드링크",
-        "imageString": "",
+        "imageString": "food",
         "subCategories": [
             {
                 "id": "501",
@@ -185,7 +185,7 @@
     {
         "id": "600",
         "name": "게임/오락",
-        "imageString": "",
+        "imageString": "game",
         "subCategories": [
             {
                 "id": "601",
@@ -208,7 +208,7 @@
     {
         "id": "700",
         "name": "음악/악기",
-        "imageString": "",
+        "imageString": "music",
         "subCategories": [
             {
                 "id": "701",
@@ -259,7 +259,7 @@
     {
         "id": "800",
         "name": "차/오토바이",
-        "imageString": "",
+        "imageString": "drive",
         "subCategories": [
             {
                 "id": "801",
@@ -282,7 +282,7 @@
     {
         "id": "900",
         "name": "사진/영상",
-        "imageString": "",
+        "imageString": "camera",
         "subCategories": [
             {
                 "id": "901",
@@ -309,7 +309,7 @@
     {
         "id": "1000",
         "name": "동네/친목",
-        "imageString": "",
+        "imageString": "communication",
         "subCategories": [
             {
                 "id": "1001",
@@ -328,7 +328,7 @@
     {
         "id": "1100",
         "name": "스터디",
-        "imageString": "",
+        "imageString": "book",
         "subCategories": [
             {
                 "id": "1101",
@@ -375,7 +375,7 @@
     {
         "id": "1200",
         "name": "외국어",
-        "imageString": "",
+        "imageString": "language",
         "subCategories": [
             {
                 "id": "1201",

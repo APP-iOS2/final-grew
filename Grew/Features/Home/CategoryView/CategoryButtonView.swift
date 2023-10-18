@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoryButtonView: View {
     
-    @ObservedObject var grewViewModel: GrewViewModel
+    @EnvironmentObject var grewViewModel: GrewViewModel
     
     private let gridItems: [GridItem] = [
 //        GridItem(.adaptive(minimum: 60))
@@ -17,30 +17,38 @@ struct CategoryButtonView: View {
         .init(.flexible()),
         .init(.flexible()),
         .init(.flexible()),
-        .init(.flexible()),
     ]
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            Text("새로운 그루를 찾아보세요!")
+                .font(.b1_B)
+                .foregroundStyle(Color.black)
+                .padding()
+            
             LazyVGrid(columns: gridItems) {
-                ForEach(TempHomeCategory.allCases, id: \.rawValue) { category in
+                ForEach(grewViewModel.categoryArray) { category in
+                    
                     NavigationLink {
-                        
-                        CategoryDetailView(grewList: grewViewModel.grewList)
-                            .navigationTitle(category.rawValue)
+                        CategoryDetailView(grewList: grewViewModel.grewList.filter {
+                            $0.categoryIndex == category.id
+                        }, secondCategory: category.subCategories)
+                            .navigationTitle(category.name)
                         
                     } label: {
                         VStack {
-                            category.image
+                            Image("\(category.imageString)")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 25, height: 25)
+                                .frame(width: 32, height: 32)
                              
                             Capsule()
                                 .foregroundColor(.clear)
                                 .overlay(
-                                    Text(category.rawValue)
-                                        .font(.body)
+                                    Text(category.name)
+                                        .font(.c1_R)
+                                        .minimumScaleFactor(0.9)
+                                        .foregroundStyle(.black)
                                 )
                                 
                         }
@@ -48,17 +56,25 @@ struct CategoryButtonView: View {
                         .padding(.vertical)
                         .background(.white)
                         .cornerRadius(12)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color.gray, lineWidth: 1.5)
-                        )
+//                        .overlay(
+//                            RoundedRectangle(cornerRadius: 12)
+//                                .stroke(Color.gray, lineWidth: 1.5)
+//                        )
                     }
                 }
-            }
+                .padding(.horizontal)
+            } //: LazyGrid
+            
+            // 배너
+            PagingBannerView()
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .frame(height: 100)
+                .padding(.horizontal)
         }
     }
 }
 
 #Preview {
-    CategoryButtonView(grewViewModel: GrewViewModel())
+    CategoryButtonView()
+        .environmentObject(GrewViewModel())
 }
