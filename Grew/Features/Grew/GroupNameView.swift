@@ -12,6 +12,8 @@ struct GroupNameView: View {
     @State private var isNextView = false
     @State private var isAnimating = false
     @State private var groupNameView = false
+    @Binding var isNameValid: Bool
+    @Binding var isLocationValid: Bool
     
     var body: some View {
         ScrollView {
@@ -23,6 +25,9 @@ struct GroupNameView: View {
                 HStack(spacing: 15) {
                     TextField("모임이름을 입력해주세요", text: $viewModel.meetingTitle)
                         .keyboardType(.namePhonePad)
+                        .onChange(of: viewModel.meetingTitle) { oldValue, newValue in
+                            isNameValid = !newValue.isEmpty
+                        }
                 }
                 .padding(10)
                 .overlay{
@@ -55,6 +60,7 @@ struct GroupNameView: View {
                             .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isOnline ? Color.BackgroundGray : Color.Sub, font: .b1_B, fontColor: .white, cornerRadius: 10)
                     })
                     Spacer()
+                    
                 }//: HStack
             }//: VStack
             .padding()
@@ -69,6 +75,9 @@ struct GroupNameView: View {
                     }
                     TextField("장소를 입력하세요", text: $viewModel.location)
                         .keyboardType(.namePhonePad)
+                        .onChange(of: viewModel.location) { _, newValue in
+                            isLocationValid = !newValue.isEmpty
+                        }
                         .padding(10)
                         .overlay{
                             RoundedRectangle(cornerRadius: 5)
@@ -76,20 +85,25 @@ struct GroupNameView: View {
                         }
                         .cornerRadius(5)
                 }.padding()
-                .animationModifier(isAnimating: groupNameView, delay: 0)
-                .onAppear {
-                    groupNameView = true
-                }
+                    .animationModifier(isAnimating: groupNameView, delay: 0)
+                    .onAppear {
+                        groupNameView = true
+                    }
             }
             
         }//: ScrollView
         .onAppear(perform: {
             isAnimating = true
+            
+            if !isNameValid {
+                viewModel.meetingTitle = ""
+                viewModel.location = ""
+            }
         })
     }//: body
 }
 
 #Preview {
-    GroupNameView()
+    GroupNameView(isNameValid: .constant(true), isLocationValid: .constant(true))
         .environmentObject(GrewViewModel())
 }

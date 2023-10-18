@@ -12,7 +12,8 @@ struct GroupMembersEditView: View {
     @State private var isShowingAlert = false
     @State private var isNavigatingToNextView = false
     @State private var isAnimating = false
-
+    @Binding var isMaximumMembersValid: Bool
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -60,6 +61,7 @@ struct GroupMembersEditView: View {
                             } else {
                                 viewModel.maximumMembers = ""
                             }
+                            isMaximumMembersValid = !newValue.isEmpty
                         }
                         .keyboardType(.numberPad)
                     
@@ -83,11 +85,14 @@ struct GroupMembersEditView: View {
         }//: ScrollView
         .onAppear(perform: {
             isAnimating = true
+            if !isMaximumMembersValid {
+                viewModel.maximumMembers = ""
+            }
         })
     }//: body
 }
 
 #Preview {
-    GroupMembersEditView()
+    GroupMembersEditView(isMaximumMembersValid: .constant(true))
         .environmentObject(GrewViewModel())
 }
