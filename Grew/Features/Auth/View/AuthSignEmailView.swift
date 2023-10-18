@@ -57,7 +57,7 @@ struct AuthSignEmailView: View {
                         }
                     } label: {
                         Text("로그인")
-                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: .grewMainColor, font: Font.b2_B, fontColor: .white))
+                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: .grewMainColor, font: Font.b2_B, fontColor: .white, cornerRadius: 10))
                     }
                     
                     NavigationLink {

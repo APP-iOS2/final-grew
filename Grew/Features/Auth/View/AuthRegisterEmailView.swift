@@ -61,7 +61,7 @@ struct AuthRegisterEmailView: View {
                                 signIndex += 1
                             } label: {
                                 Text("다음")
-                                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: isButton1 ? .grewMainColor : Color.gray, font: Font.b2_B, fontColor: .white))
+                                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: isButton1 ? .grewMainColor : Color.gray, font: Font.b2_B, fontColor: .white, cornerRadius: 10))
                                     .padding(.bottom, 50)
                             }
                             .disabled(!isButton1)
@@ -74,7 +74,7 @@ struct AuthRegisterEmailView: View {
                                 signIndex += 1
                             } label: {
                                 Text("다음")
-                                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: isButton2 ? .grewMainColor : Color.gray, font: Font.b2_B, fontColor: .white))
+                                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: isButton2 ? .grewMainColor : Color.gray, font: Font.b2_B, fontColor: .white, cornerRadius: 10))
                                     .padding(.bottom, 50)
                             }
                             .disabled(!isButton2)
@@ -87,7 +87,7 @@ struct AuthRegisterEmailView: View {
                                 isAlert.toggle()
                             } label: {
                                 Text("회원가입 완료")
-                                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: isButton3 ? .grewMainColor : Color.gray, font: Font.b2_B, fontColor: .white))
+                                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: isButton3 ? .grewMainColor : Color.gray, font: Font.b2_B, fontColor: .white, cornerRadius: 10))
                                     .padding(.bottom, 50)
                             }
                             .disabled(!isButton3)
