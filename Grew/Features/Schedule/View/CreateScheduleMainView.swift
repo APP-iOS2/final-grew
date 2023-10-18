@@ -8,7 +8,6 @@
 // TODO
 
 // 참가비 천단위 콤마 추가
-// 통신 후 showingWebSheet 닫기
 // 오류시 빨간박스 처리 함수 만들기
 // 패딩 조절하기
 // 박스들 쩜 뚱뚱한가,,?
@@ -34,8 +33,6 @@ struct CreateScheduleMainView: View {
     @State private var isDatePickerVisible: Bool = false
     @State private var showingWebSheet: Bool = false
     @State private var showingFinishAlert: Bool = false
-    
-    @State private var isLoading: Bool = true
     
     let meximumGrewMembers: Int = 20 //임시. 그루 최대 인원 받아와야함!
     
@@ -101,7 +98,6 @@ struct CreateScheduleMainView: View {
         .task{
             print(showingWebSheet)
         }
-        // ondismiss써서 location 불러오기?
     }
     
     /* 간단 하위뷰 */
@@ -186,7 +182,6 @@ struct CreateScheduleMainView: View {
     // 일정 생성 버튼
     private var submitBtn: some View {
         Button {
-            //location = kakaoWebData.dataArrays[1]
             withAnimation(.easeOut){
                 showingFinishAlert.toggle()
             }

@@ -50,4 +50,3 @@ class ScheduleStore: ObservableObject {
         fetchSchedule()
     }
 }
-

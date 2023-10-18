@@ -10,7 +10,6 @@ import SwiftUI
 struct TextFieldErrorModifier: ViewModifier {
     
     @Binding var isError: Bool
-    //@Binding var isFocused: Bool
     
     func body(content: Content) -> some View {
         content
