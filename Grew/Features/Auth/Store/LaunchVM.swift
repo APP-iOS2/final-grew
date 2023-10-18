@@ -12,18 +12,25 @@ import Foundation
 
 class LaunchVM: ObservableObject {
     
-    private let service = AuthStore.shared
+    private let authService = AuthStore.shared
+    private let userService = UserStore.shared
     private var cancellables = Set<AnyCancellable>()
     
-    @Published var user: FirebaseAuth.User?
+    @Published var authuser: FirebaseAuth.User?
+    @Published var currentuser: User?
     
     init() {
         setupSubscribers()
     }
     
     func setupSubscribers() {
-        service.$currentUser.sink { [weak self] user in
-            self?.user = user
+        authService.$currentUser.sink { [weak self] user in
+            self?.authuser = user
+        }
+        .store(in: &cancellables)
+        
+        userService.$currentUser.sink { [weak self] user in
+            self?.currentuser = user
         }
         .store(in: &cancellables)
     }

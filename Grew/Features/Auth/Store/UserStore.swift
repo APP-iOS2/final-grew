@@ -25,32 +25,24 @@ class UserStore: ObservableObject {
     }
     
     // Firebase에 있는 유저정보 불러오기
+    @MainActor
     func loadUserData() async throws {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
         let userRef = Firestore.firestore().collection("users").document(userId)
-//        userRef.getDocument { snapshot, error in
-//            if let snapshot = snapshot, snapshot.exists {
-//                let userData = snapshot.data()
-//                let nickName = userData?["nickName"] as? String ?? ""
-//                let email = userData?["email"] as? String ?? ""
-//                let dbgender = userData?["gender"] as? String ?? ""
-//                let gender = Gender(rawValue: dbgender) ?? .female
-//                let dob = userData?["dob"] as? String ?? ""
-//                let searchHistory = userData?["searchHistory"] as? [String] ?? []
-//                
-//                self.currentUser = User(nickName: nickName, email: email, gender: gender, dob: dob, searchHistory: searchHistory)
-//            }
-//        }
         let snapshot = try await userRef.getDocument()
         self.currentUser = try snapshot.data(as: User.self)
         
-//        print(self.currentUser!)
     }
     
-    func updateSearchHistory() {
-        
+    // 검색기록 user 데이터에 업로드
+    func updateSearchHistory(searchHistory: [String]) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        let userRef = Firestore.firestore().collection("users").document(userId)
+        userRef.updateData(["searchHistory": searchHistory])
     }
     
     static func requestAndReturnUsers(userID: [String]) async -> [User]? {
