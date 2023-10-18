@@ -35,8 +35,7 @@ struct CircularProfileImageView: View {
     var body: some View {
         if let chatMessage {
             getProfilePhoto(chatMessage: chatMessage)
-        }
-        if let url {
+        } else {
             getProfilePhoto(url: url)
         }
     }

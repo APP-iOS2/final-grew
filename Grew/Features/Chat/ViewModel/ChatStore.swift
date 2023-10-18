@@ -15,7 +15,9 @@ final class ChatStore: ObservableObject {
     private var listener: ListenerRegistration?
     private var db = Firestore.firestore()
     
+    //해당 유저, 그루 값 들고 있기
     var targetUserInfoDict: [String: [User]]
+    var targetGrewInfoDict: [String: Grew]
     
     @Published var newChat: ChatRoom?
     @Published var chatRooms: [ChatRoom]
@@ -24,6 +26,7 @@ final class ChatStore: ObservableObject {
     
     init() {
         targetUserInfoDict = [:]
+        targetGrewInfoDict = [:]
         chatRooms = []
         isDoneFetch = false
     }
@@ -82,6 +85,9 @@ extension ChatStore {
             for document in snapshot.documents {
                 do {
                     let chatRoom: ChatRoom = try document.data(as: ChatRoom.self)
+                    if let grewId = chatRoom.grewId, let targetGrewInfo = await GrewViewModel.requestAndReturnGrew(grewId: grewId) {
+                        targetGrewInfoDict[grewId] = targetGrewInfo
+                    }
                     if let targetUserInfo = await UserStore.requestAndReturnUsers(userID: chatRoom.otherUserIDs) {
                         newChatRooms.append(chatRoom)
                         if !targetUserInfo.isEmpty {
