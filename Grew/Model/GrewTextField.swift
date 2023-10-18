@@ -51,6 +51,7 @@ struct GrewTextField: View {
                 }
             }
             .frame(height: 44)
+            
             .background(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(textFieldStrokeColor)
@@ -75,7 +76,7 @@ struct GrewTextField: View {
 #Preview {
     GrewTextField(
         text: .constant(""),
-        isWrongText: .constant(true),
+        isWrongText: .constant(false),
         isTextfieldDisabled: .constant(false),
         isTextFieldFocused: FocusState(),
         placeholderText: "검색어를 입력하세요.",
