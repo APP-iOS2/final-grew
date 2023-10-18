@@ -12,7 +12,7 @@ struct LaunchView: View {
     @StateObject var vm = LaunchVM()
     @StateObject var grewViewModel = GrewViewModel()
     @StateObject var userViewModel = UserViewModel()
-    @StateObject var kakaoWebData = KakaoWebData()
+  
     var body: some View {
         if vm.user == nil {
             AuthStartView()
@@ -20,7 +20,6 @@ struct LaunchView: View {
             MainTabView()
                 .environmentObject(grewViewModel)
                 .environmentObject(UserViewModel())
-                .environmentObject(kakaoWebData)
                 .onAppear {
                     grewViewModel.fetchJsonData()
                 }

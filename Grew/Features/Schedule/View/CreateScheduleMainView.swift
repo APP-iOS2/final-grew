@@ -20,7 +20,6 @@ import SwiftUI
 struct CreateScheduleMainView: View {
     
     @ObservedObject var scheduleStore: ScheduleStore
-    //@EnvironmentObject var kakaoWebData: KakaoWebData
     
     @State private var scheduleName: String = ""
     @State private var date = Date()
@@ -35,6 +34,8 @@ struct CreateScheduleMainView: View {
     @State private var isDatePickerVisible: Bool = false
     @State private var showingWebSheet: Bool = false
     @State private var showingFinishAlert: Bool = false
+    
+    @State private var isLoading: Bool = true
     
     let meximumGrewMembers: Int = 20 //임시. 그루 최대 인원 받아와야함!
     
@@ -90,9 +91,17 @@ struct CreateScheduleMainView: View {
             }
         }
         .sheet(isPresented: $showingWebSheet, content: {
-            WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!))
+            ZStack{
+                WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location)
+                /*if isLoading {
+                    ProgressView()
+                }*/
+            }
         })
-        
+        .task{
+            print(showingWebSheet)
+        }
+        // ondismiss써서 location 불러오기?
     }
     
     /* 간단 하위뷰 */
