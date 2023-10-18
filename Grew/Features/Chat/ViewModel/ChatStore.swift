@@ -9,7 +9,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-@MainActor
+
 final class ChatStore: ObservableObject {
     
     private var listener: ListenerRegistration?
@@ -27,20 +27,28 @@ final class ChatStore: ObservableObject {
         chatRooms = []
         isDoneFetch = false
     }
+    
+    var groupChatRooms: [ChatRoom] {
+        chatRooms.filter({ $0.chatRoomName != nil })
+    }
+    
+    var personalChatRooms: [ChatRoom] {
+        chatRooms.filter({ $0.chatRoomName == nil })
+    }
 }
 
 // CRUD 작업
 extension ChatStore {
-    
     // 채팅방 목록 가져오기
     func getChatRoomDocuments() async -> QuerySnapshot? {
         do {
-            guard let currentUid = UserStore.shared.currentUser?.id else {
+            print(UserStore.shared.currentUser)
+            guard let currentUser = UserStore.shared.currentUser else {
                 return nil
             }
             let snapshot = try await db
                 .collection("chatrooms")
-                .whereField("members", arrayContains: currentUid)
+                .whereField("members", arrayContains: currentUser.id ?? "")
                 .order(by: "lastMessageDate", descending: true)
                 .getDocuments()
             return snapshot
@@ -50,13 +58,16 @@ extension ChatStore {
         return nil
     }
     
+    
     // fetching만 빼기
+    @MainActor
     func allocateChatRooms(chatRooms: [ChatRoom]) {
         self.chatRooms = chatRooms
         self.isDoneFetch = true
     }
     
     // 채팅룸 목록 삭제하기
+    @MainActor
     func removeChatRoomsList() {
         chatRooms.removeAll()
     }
@@ -82,7 +93,7 @@ extension ChatStore {
             }
         }
         
-        allocateChatRooms(chatRooms: newChatRooms)
+        await allocateChatRooms(chatRooms: newChatRooms)
     }
     
     func addChatRoom(_ chatRoom: ChatRoom) async {
@@ -103,8 +114,7 @@ extension ChatStore {
                     "lastMessageDate": chatRoom.lastMessageDate,
                     "lastMessage": chatRoom.lastMessage,
                     "unreadMessageCount" : chatRoom.unreadMessageCount
-                ]
-                )
+                ])
         } catch {
             print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
         }
@@ -120,14 +130,14 @@ extension ChatStore {
         }
     }
     
-    func getUnreadMessageDictionary(chatRoomID: String) async -> [String : Int]? {
+    func getUnreadMessageDictionary(chatRoomID: String) async -> [String: Int]? {
         do {
             let snapshot = try await db.collection("chatrooms")
                 .document(chatRoomID)
                 .getDocument()
             
             if let data = snapshot.data() {
-                let dict = data["unreadMessageCount"] as? [String : Int] ?? ["no one" : 0]
+                let dict = data["unreadMessageCount"] as? [String: Int] ?? ["no one": 0]
                 return dict
             }
         } catch {
@@ -165,11 +175,12 @@ extension ChatStore {
         if let newChatRoom, let targetUserInfo = await UserStore.requestAndReturnUsers(userID: newChatRoom.otherUserIDs) {
             targetUserInfoDict[newChatRoom.id] = targetUserInfo
             
-            appendAndSortChats(newChatRoom: newChatRoom)
+            await appendAndSortChats(newChatRoom: newChatRoom)
         }
     }
     
-    //채팅방 정렬
+    // 채팅방 정렬
+    @MainActor
     func appendAndSortChats(newChatRoom: ChatRoom) {
         chatRooms.append(newChatRoom)
         sortChatRooms()
@@ -230,5 +241,3 @@ extension ChatStore {
         listener.remove()
     }
 }
-
-

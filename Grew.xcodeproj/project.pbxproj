@@ -30,8 +30,6 @@
 		311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110973E2AD417AD000D85AD /* AuthCompleteView.swift */; };
 		311097452AD417AD000D85AD /* AuthSignEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110973F2AD417AD000D85AD /* AuthSignEmailView.swift */; };
 		311097462AD417AD000D85AD /* AuthStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097402AD417AD000D85AD /* AuthStartView.swift */; };
-		311097472AD417AD000D85AD /* AuthAddDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097412AD417AD000D85AD /* AuthAddDetailInfoView.swift */; };
-		311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097422AD417AD000D85AD /* AuthAddMainInfoView.swift */; };
 		3110974E2AD417DB000D85AD /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110974D2AD417DB000D85AD /* ChatStore.swift */; };
 		3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110975B2AD417FD000D85AD /* ChatSegment.swift */; };
 		311097602AD417FD000D85AD /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110975C2AD417FD000D85AD /* ChatRoom.swift */; };
@@ -46,7 +44,6 @@
 		311097752AD4180F000D85AD /* GroupNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110976B2AD4180F000D85AD /* GroupNameView.swift */; };
 		311097822AD41816000D85AD /* TempHomeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097782AD41815000D85AD /* TempHomeCategory.swift */; };
 		311097842AD41816000D85AD /* CategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110977A2AD41815000D85AD /* CategoryDetailView.swift */; };
-		311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110977D2AD41815000D85AD /* CategoryButtonView.swift */; };
 		311097882AD41816000D85AD /* HomeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110977E2AD41816000D85AD /* HomeBannerView.swift */; };
 		311097A42AD41882000D85AD /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110979B2AD41881000D85AD /* Announcement.swift */; };
 		311097A52AD41882000D85AD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110979C2AD41881000D85AD /* Category.swift */; };
@@ -117,7 +114,15 @@
 		319757592ADEF36600696FF9 /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197574E2ADEF36600696FF9 /* ChatListView.swift */; };
 		3197575A2ADEF36600696FF9 /* ChatRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757502ADEF36600696FF9 /* ChatRoomCell.swift */; };
 		3197575C2ADEF38700696FF9 /* GroupDetailConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197575B2ADEF38700696FF9 /* GroupDetailConfig.swift */; };
-		3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */; };
+		319757682ADF6E7800696FF9 /* GrewSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757612ADF6E7800696FF9 /* GrewSchedule.swift */; };
+		319757692ADF6E7800696FF9 /* CreateScheduleMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757632ADF6E7800696FF9 /* CreateScheduleMainView.swift */; };
+		3197576A2ADF6E7800696FF9 /* ScheduleColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757652ADF6E7800696FF9 /* ScheduleColorPicker.swift */; };
+		3197576B2ADF6E7800696FF9 /* ScheduleDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757662ADF6E7800696FF9 /* ScheduleDatePicker.swift */; };
+		3197576C2ADF6E7800696FF9 /* ScheduleOptionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757672ADF6E7800696FF9 /* ScheduleOptionMenu.swift */; };
+		3197576E2ADFAAD800696FF9 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197576D2ADFAAD800696FF9 /* Font+Extensions.swift */; };
+		319757712ADFAB1000696FF9 /* AuthAddMainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197576F2ADFAB1000696FF9 /* AuthAddMainInfoView.swift */; };
+		319757722ADFAB1000696FF9 /* AuthAddDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757702ADFAB1000696FF9 /* AuthAddDetailInfoView.swift */; };
+		319757742ADFAB5A00696FF9 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757732ADFAB5A00696FF9 /* CategoryButtonView.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
 		3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */; };
@@ -180,8 +185,6 @@
 		3110973E2AD417AD000D85AD /* AuthCompleteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCompleteView.swift; sourceTree = "<group>"; };
 		3110973F2AD417AD000D85AD /* AuthSignEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthSignEmailView.swift; sourceTree = "<group>"; };
 		311097402AD417AD000D85AD /* AuthStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStartView.swift; sourceTree = "<group>"; };
-		311097412AD417AD000D85AD /* AuthAddDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddDetailInfoView.swift; sourceTree = "<group>"; };
-		311097422AD417AD000D85AD /* AuthAddMainInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddMainInfoView.swift; sourceTree = "<group>"; };
 		3110974D2AD417DB000D85AD /* ChatStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
 		3110975B2AD417FD000D85AD /* ChatSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSegment.swift; sourceTree = "<group>"; };
 		3110975C2AD417FD000D85AD /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
@@ -196,7 +199,6 @@
 		3110976B2AD4180F000D85AD /* GroupNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupNameView.swift; sourceTree = "<group>"; };
 		311097782AD41815000D85AD /* TempHomeCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempHomeCategory.swift; sourceTree = "<group>"; };
 		3110977A2AD41815000D85AD /* CategoryDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailView.swift; sourceTree = "<group>"; };
-		3110977D2AD41815000D85AD /* CategoryButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		3110977E2AD41816000D85AD /* HomeBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBannerView.swift; sourceTree = "<group>"; };
 		3110979B2AD41881000D85AD /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		3110979C2AD41881000D85AD /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -246,7 +248,15 @@
 		3197574E2ADEF36600696FF9 /* ChatListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		319757502ADEF36600696FF9 /* ChatRoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomCell.swift; sourceTree = "<group>"; };
 		3197575B2ADEF38700696FF9 /* GroupDetailConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailConfig.swift; sourceTree = "<group>"; };
-		3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
+		319757612ADF6E7800696FF9 /* GrewSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewSchedule.swift; sourceTree = "<group>"; };
+		319757632ADF6E7800696FF9 /* CreateScheduleMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateScheduleMainView.swift; sourceTree = "<group>"; };
+		319757652ADF6E7800696FF9 /* ScheduleColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleColorPicker.swift; sourceTree = "<group>"; };
+		319757662ADF6E7800696FF9 /* ScheduleDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDatePicker.swift; sourceTree = "<group>"; };
+		319757672ADF6E7800696FF9 /* ScheduleOptionMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOptionMenu.swift; sourceTree = "<group>"; };
+		3197576D2ADFAAD800696FF9 /* Font+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
+		3197576F2ADFAB1000696FF9 /* AuthAddMainInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddMainInfoView.swift; sourceTree = "<group>"; };
+		319757702ADFAB1000696FF9 /* AuthAddDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddDetailInfoView.swift; sourceTree = "<group>"; };
+		319757732ADFAB5A00696FF9 /* CategoryButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
 		3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
@@ -385,6 +395,8 @@
 				64877CB12AD5145100192DB4 /* AuthAgreeView.swift */,
 				64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */,
 				3110973E2AD417AD000D85AD /* AuthCompleteView.swift */,
+				319757702ADFAB1000696FF9 /* AuthAddDetailInfoView.swift */,
+				3197576F2ADFAB1000696FF9 /* AuthAddMainInfoView.swift */,
 				64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */,
 				64877CB72AD5BF8E00192DB4 /* AuthRegisterEmailView.swift */,
 				3110973F2AD417AD000D85AD /* AuthSignEmailView.swift */,
@@ -506,9 +518,9 @@
 				312E98DE2ACD2EAA00E38626 /* Encodable+Extensions.swift */,
 				312E98DC2ACD2EAA00E38626 /* Image+Extensions.swift */,
 				312E98DA2ACD2EAA00E38626 /* String+Extensions.swift */,
+				3197576D2ADFAAD800696FF9 /* Font+Extensions.swift */,
 				312E98DB2ACD2EAA00E38626 /* UIImage+Extensions.swift */,
 				312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */,
-				3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */,
 				CE467ADA2AD530CA00143213 /* View+Extensions.swift */,
 			);
 			path = Extensions;
@@ -546,6 +558,7 @@
 		312E98D42ACD271F00E38626 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				3197575F2ADF6E7800696FF9 /* Schedule */,
 				312E98D72ACD2B0800E38626 /* Auth */,
 				312E98E92ACD30A300E38626 /* Chat */,
 				312E98EA2ACD30A600E38626 /* Grew */,
@@ -703,6 +716,42 @@
 			path = SubView;
 			sourceTree = "<group>";
 		};
+		3197575F2ADF6E7800696FF9 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				319757602ADF6E7800696FF9 /* Model */,
+				319757622ADF6E7800696FF9 /* View */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		319757602ADF6E7800696FF9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				319757612ADF6E7800696FF9 /* GrewSchedule.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		319757622ADF6E7800696FF9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				319757632ADF6E7800696FF9 /* CreateScheduleMainView.swift */,
+				319757642ADF6E7800696FF9 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		319757642ADF6E7800696FF9 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				319757652ADF6E7800696FF9 /* ScheduleColorPicker.swift */,
+				319757662ADF6E7800696FF9 /* ScheduleDatePicker.swift */,
+				319757672ADF6E7800696FF9 /* ScheduleOptionMenu.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		3AF1D4A42AD41F3A00ECE1A8 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -757,7 +806,7 @@
 		993274102AD5307C0082FCEC /* CategoryView */ = {
 			isa = PBXGroup;
 			children = (
-				3110977D2AD41815000D85AD /* CategoryButtonView.swift */,
+				319757732ADFAB5A00696FF9 /* CategoryButtonView.swift */,
 				3110977A2AD41815000D85AD /* CategoryDetailView.swift */,
 			);
 			path = CategoryView;
@@ -973,6 +1022,7 @@
 				647462BB2ADFB1960054DA6D /* GrewSecureField.swift in Sources */,
 				319757572ADEF36600696FF9 /* ChatSideBar.swift in Sources */,
 				3110976D2AD4180F000D85AD /* GrewProgressViewStyle.swift in Sources */,
+				3197576A2ADF6E7800696FF9 /* ScheduleColorPicker.swift in Sources */,
 				21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */,
 				311097322AD41722000D85AD /* LaunchView.swift in Sources */,
 				64AB27DA2AD6753B004DE65F /* RegisterVM.swift in Sources */,
@@ -998,12 +1048,16 @@
 				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
 				99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */,
 				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
+				993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */,
 				319757552ADEF36600696FF9 /* ChatInputView.swift in Sources */,
+				319757712ADFAB1000696FF9 /* AuthAddMainInfoView.swift in Sources */,
+				319757692ADF6E7800696FF9 /* CreateScheduleMainView.swift in Sources */,
 				21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
 				3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */,
 				311097462AD417AD000D85AD /* AuthStartView.swift in Sources */,
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
+				3197576E2ADFAAD800696FF9 /* Font+Extensions.swift in Sources */,
 				3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */,
 				64D54B9A2ADD0E4B007753B2 /* AgreeLocationView.swift in Sources */,
 				311097B12AD4188E000D85AD /* FirestoreService.swift in Sources */,
@@ -1011,11 +1065,9 @@
 				319757542ADEF36600696FF9 /* MessageBubbles.swift in Sources */,
 				21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */,
 				3197575C2ADEF38700696FF9 /* GroupDetailConfig.swift in Sources */,
-				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				21F32A782ADED63200B3E1C5 /* EnrollGTView.swift in Sources */,
 				9989DA982ADF686900AC4917 /* NewScheduleListView.swift in Sources */,
 				CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */,
-				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				99266D872AD710D400FB6AC1 /* GrewButtonModifier.swift in Sources */,
 				311097AC2AD41882000D85AD /* User.swift in Sources */,
 				64D54B962ADD0DFF007753B2 /* AgreeUseView.swift in Sources */,
@@ -1029,6 +1081,7 @@
 				21F32A7E2ADED6B100B3E1C5 /* ShowGTView.swift in Sources */,
 				311097822AD41816000D85AD /* TempHomeCategory.swift in Sources */,
 				3110976F2AD4180F000D85AD /* NewGroupView.swift in Sources */,
+				319757742ADFAB5A00696FF9 /* CategoryButtonView.swift in Sources */,
 				CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */,
 				319757592ADEF36600696FF9 /* ChatListView.swift in Sources */,
 				311097BA2AD418A6000D85AD /* Constant.swift in Sources */,
@@ -1045,6 +1098,7 @@
 				311097612AD417FD000D85AD /* Bubble.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
 				3197575A2ADEF36600696FF9 /* ChatRoomCell.swift in Sources */,
+				3197576B2ADF6E7800696FF9 /* ScheduleDatePicker.swift in Sources */,
 				3110973A2AD417A1000D85AD /* UserStore.swift in Sources */,
 				311097A72AD41882000D85AD /* GrewViewModel.swift in Sources */,
 				CE5A27B42AD9B0590014BE09 /* GrewIntroductionView.swift in Sources */,
@@ -1056,17 +1110,14 @@
 				311097702AD4180F000D85AD /* GroupMembersEditView.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
 				2157096A2AD68960006ABE35 /* ImageEditModalView.swift in Sources */,
-				311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */,
 				2157096C2AD69246006ABE35 /* CameraView.swift in Sources */,
-				311097472AD417AD000D85AD /* AuthAddDetailInfoView.swift in Sources */,
 				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
-				311097872AD41816000D85AD /* CategoryButtonView.swift in Sources */,
-				311097472AD417AD000D85AD /* AuthAddDetailInfoView.swift in Sources */,
 				21F32A7B2ADED65100B3E1C5 /* EnrollGTMemberView.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
 				311097A52AD41882000D85AD /* Category.swift in Sources */,
 				311097AA2AD41882000D85AD /* ImagePicker.swift in Sources */,
 				CE5129422AD8D66700CE77C5 /* GrewDetailView.swift in Sources */,
+				319757722ADFAB1000696FF9 /* AuthAddDetailInfoView.swift in Sources */,
 				312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */,
 				311097A42AD41882000D85AD /* Announcement.swift in Sources */,
 				319757532ADEF36600696FF9 /* ChatImagePicker.swift in Sources */,
@@ -1080,10 +1131,12 @@
 				2157095F2AD530F8006ABE35 /* ProfileHeaderView.swift in Sources */,
 				3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */,
 				311097A82AD41882000D85AD /* Grew.swift in Sources */,
+				3197576C2ADF6E7800696FF9 /* ScheduleOptionMenu.swift in Sources */,
 				CE36B52F2ADE2A23004D2BC3 /* NewestGrewCell.swift in Sources */,
 				21F32A752ADEB9D400B3E1C5 /* CircleImage.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
 				21C1F1AF2ACFEE980029E436 /* RoundSpecificCorners.swift in Sources */,
+				319757682ADF6E7800696FF9 /* GrewSchedule.swift in Sources */,
 				311097752AD4180F000D85AD /* GroupNameView.swift in Sources */,
 				311097B02AD4188E000D85AD /* FirebaseManager.swift in Sources */,
 				311097882AD41816000D85AD /* HomeBannerView.swift in Sources */,

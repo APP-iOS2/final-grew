@@ -24,6 +24,12 @@ class UserStore: ObservableObject {
         }
     }
     
+    @MainActor
+    func fetchCurrentUser(_ user: User) {
+        self.currentUser = user
+        print(self.currentUser!)
+    }
+    
     // Firebase에 있는 유저정보 불러오기
     @MainActor
     func loadUserData() async throws {
@@ -32,7 +38,8 @@ class UserStore: ObservableObject {
         }
         let userRef = Firestore.firestore().collection("users").document(userId)
         let snapshot = try await userRef.getDocument()
-        self.currentUser = try snapshot.data(as: User.self)
+        let currentUser = try snapshot.data(as: User.self)
+        await fetchCurrentUser(currentUser)
         
     }
     

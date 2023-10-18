@@ -60,7 +60,7 @@ struct CreateScheduleMainView: View {
                 DateForm(isDatePickerVisible: $isDatePickerVisible, date: $date)
             }
         }.sheet(isPresented: $showingWebSheet) { //sheet로 사이트 열기
-            KakaoPostWebView(siteURL: "")
+//            KakaoPostWebView(siteURL: "")
         }
     }
  
