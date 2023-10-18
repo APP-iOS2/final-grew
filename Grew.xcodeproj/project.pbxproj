@@ -141,6 +141,7 @@
 		995095302ADCBA77003A822E /* GroupSubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950952F2ADCBA77003A822E /* GroupSubCategoryView.swift */; };
 		995095322ADCD6D3003A822E /* GroupMainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995095312ADCD6D3003A822E /* GroupMainCategoryView.swift */; };
 		995095372ADD5D86003A822E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 995095362ADD5D86003A822E /* GoogleService-Info.plist */; };
+		9989DA982ADF686900AC4917 /* NewGrewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989DA972ADF686900AC4917 /* NewGrewListView.swift */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
 		CE36B52F2ADE2A23004D2BC3 /* NewestGrewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36B52E2ADE2A23004D2BC3 /* NewestGrewCell.swift */; };
@@ -269,6 +270,7 @@
 		9950952F2ADCBA77003A822E /* GroupSubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSubCategoryView.swift; sourceTree = "<group>"; };
 		995095312ADCD6D3003A822E /* GroupMainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMainCategoryView.swift; sourceTree = "<group>"; };
 		995095362ADD5D86003A822E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9989DA972ADF686900AC4917 /* NewGrewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGrewListView.swift; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CE36B52E2ADE2A23004D2BC3 /* NewestGrewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestGrewCell.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				9932740F2AD530120082FCEC /* GrewListView */,
 				3110977E2AD41816000D85AD /* HomeBannerView.swift */,
 				99D2C6432ACD4913001FEC20 /* HomeView.swift */,
+				9989DA962ADF683600AC4917 /* NewGrewListView */,
 				311097782AD41815000D85AD /* TempHomeCategory.swift */,
 				CE5129412AD8D66700CE77C5 /* GrewDetailView.swift */,
 				CE5A27B32AD9B0590014BE09 /* GrewIntroductionView.swift */,
@@ -766,6 +769,14 @@
 				9950952F2ADCBA77003A822E /* GroupSubCategoryView.swift */,
 			);
 			path = GrewCategoryView;
+			sourceTree = "<group>";
+		};
+		9989DA962ADF683600AC4917 /* NewGrewListView */ = {
+			isa = PBXGroup;
+			children = (
+				9989DA972ADF686900AC4917 /* NewGrewListView.swift */,
+			);
+			path = NewGrewListView;
 			sourceTree = "<group>";
 		};
 		A38141B78C32AAF7DF33A628 /* Frameworks */ = {
@@ -991,6 +1002,7 @@
 				3197575C2ADEF38700696FF9 /* GroupDetailConfig.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				21F32A782ADED63200B3E1C5 /* EnrollGTView.swift in Sources */,
+				9989DA982ADF686900AC4917 /* NewGrewListView.swift in Sources */,
 				CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				99266D872AD710D400FB6AC1 /* GrewButtonModifier.swift in Sources */,

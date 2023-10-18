@@ -39,34 +39,48 @@ struct GrewCellView: View {
                 // 모임 카테고리
                 Text(grewViewModel.categoryName(grew.categoryIndex, grew.categorysubIndex))
                     .padding(.horizontal, 10)
-                    .padding(.vertical, 2)
-                    .background(.pink)
+                    .padding(.top, 5)
+                    .padding(.bottom, 3)
+                    .background(Color.BackgroundGray)
                     .cornerRadius(12)
-                    .foregroundColor(.white)
-                    .font(.footnote)
+                    .foregroundColor(.DarkGray2)
+                    .font(.c1_B)
                 
                 // 모임 제목
                 Text(grew.title)
-                    .font(.title3)
-                    .offset(y: -5)
+                    .font(.b2_B)
+                    .foregroundStyle(Color.black)
+//                    .offset(y: -5)
                 
                 Spacer()
                 HStack {
-                    // 모임 온/오프라인
-                    Text(grew.isOnline ? "온라인" : "오프라인")
-                    Image(systemName: "person.2.fill")
-                    // 모임 정원
-                    HStack {
-                        Text("\(grew.currentMembers.count)")
-                        
-                        Text("/")
-                            .padding(.horizontal, -5)
-                        Text("\(grew.maximumMembers)")
-                            .padding(.horizontal, -5)
+                    
+                    Spacer()
+                    
+                    Group {
+                        // 모임 이미지
+                        Image(systemName: "person.2.fill")
+                            .padding(.trailing, -5)
+                            .font(.c2_B)
+                            .foregroundStyle(Color.DarkGray1)
+                        // 모임 정원
+                        HStack {
+                            Text("\(grew.currentMembers.count)")
+                            Text("/")
+                                .padding(.horizontal, -5)
+                            Text("\(grew.maximumMembers)")
+                                .padding(.leading, -5)
+                        }
+                        .font(.c2_B)
+                        .foregroundStyle(Color.DarkGray1)
                     }
+                    
+                    
                 }
-                .font(.footnote)
-            }
+                
+            } //: VStack
+            .padding(.leading, 10)
+            
             .frame(height: 110)
             
             Spacer()
@@ -75,11 +89,11 @@ struct GrewCellView: View {
         .fontWeight(.heavy)
         .frame(maxWidth: .infinity)
         .frame(height: 130)
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.gray, lineWidth: 1.5)
-                .opacity(0.3)
-        )
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 12)
+//                .stroke(Color.gray, lineWidth: 1.5)
+//                .opacity(0.3)
+//        )
         
         
         
