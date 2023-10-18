@@ -30,14 +30,14 @@ struct AuthAddDetailInfoView: View {
             VStack(alignment: .leading) {
                 Text("이름")
                     .font(Font.b2_L)
-                GrewTextField(text: $registerVM.nickName, isWrongText: $isWrongname, isTextfieldDisabled: $isNameTextfieldDisabled, placeholderText: "이름", isSearchBar: false)
+                GrewTextField(text: $registerVM.nickName, isWrongText: isWrongname, isTextfieldDisabled: isNameTextfieldDisabled, placeholderText: "이름", isSearchBar: false)
 //                    .onChange(of: registerVM.nickName) {
 //                        isWrongname = !(registerVM.isValiddob(registerVM.nickName))
 //                    }
                 
                 Text("생년월일 (8자리)")
                     .font(Font.b2_L)
-                GrewTextField(text: $registerVM.dob, isWrongText: $isWrongdob, isTextfieldDisabled: $isTextfieldDisabled, placeholderText: "생년월일", isSearchBar: false)
+                GrewTextField(text: $registerVM.dob, isWrongText: isWrongdob, isTextfieldDisabled: isTextfieldDisabled, placeholderText: "생년월일", isSearchBar: false)
                     .onChange(of: registerVM.dob) {
                         isWrongdob = !(registerVM.isValiddob(registerVM.dob))
                     }

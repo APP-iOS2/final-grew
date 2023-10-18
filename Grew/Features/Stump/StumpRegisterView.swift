@@ -16,7 +16,7 @@ struct StumpRegisterView: View {
     @State private var deposit: String = ""
     @State private var location: String = ""
     @State private var phoneNumber: String = ""
-    @State private var image: UIImage = UIImage(systemName: "folder.fill")!
+    @State private var image: UIImage? = nil
     @State private var images: [UIImage?] = [nil, nil, nil]
     
     @State private var isShowingSelectionSheet: Bool = false

@@ -31,7 +31,7 @@ struct AuthAddMainInfoView: View {
             VStack(alignment: .leading) {
                 Text("이메일(아이디)")
                     .font(Font.b2_L)
-                GrewTextField(text: $registerVM.email, isWrongText: $isWrongEmail, isTextfieldDisabled: $isTextfieldDisabled, placeholderText: "이메일", isSearchBar: false)
+                GrewTextField(text: $registerVM.email, isWrongText: isWrongEmail, isTextfieldDisabled: isTextfieldDisabled, placeholderText: "이메일", isSearchBar: false)
                     .onChange(of: registerVM.email) {
                         isWrongEmail = !(registerVM.isValidEmail(registerVM.email))
                     }
