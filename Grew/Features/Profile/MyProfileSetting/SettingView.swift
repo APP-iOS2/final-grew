@@ -23,24 +23,30 @@ struct SettingView: View {
                         })
                         
                         NavigationLink {
-                            
+                            RemoveAdsView()
                         } label: {
                             Text("광고 제거")
                             
                         }
                     }.listRowSeparator(.hidden)
-                     
+                    
                     Section(header: Text("그루터기")){
-                        
-                        ForEach(grewtoegi) { index in
+                        ForEach(GTViewsName.allCases, id: \.self) { gtViewName in
+                            
                             NavigationLink {
-                                
+                                switch gtViewName {
+                                case .enrollGTMemberView:
+                                    EnrollGTMemberView()
+                                case .enrollGTView:
+                                    EnrollGTView()
+                                case .showGTView:
+                                    ShowGTView()
+                                }
                             } label: {
-                                Text("\(index.name)")
-                                
+                                Text(gtViewName.rawValue)
                             }
+                            
                         }
-                        
                     }.listRowSeparator(.hidden)
                     
                     // TODO: 로그인 연동하기
@@ -58,7 +64,7 @@ struct SettingView: View {
                                     .foregroundColor(.gray)
                             }
                         }
-
+                        
                         NavigationLink {
                             
                         } label: {
@@ -71,11 +77,18 @@ struct SettingView: View {
                     
                     
                     Section(header: Text("안내")) {
-                        ForEach(appInfo) { index in
+                        ForEach(InformViewsName.allCases, id:\.self) { informViewName in
                             NavigationLink {
-                                Text("\(index.name)")
+                                switch informViewName {
+                                case .opensourceLicenseView:
+                                    OpensourceLicenseView()
+                                case .developersView:
+                                    DevelopersView()
+                                case .inquireyView:
+                                    InquiryView()
+                                }
                             } label: {
-                                Text("\(index.name)")
+                                Text(informViewName.rawValue)
                                 
                             }.listRowSeparator(.hidden)
                         }
@@ -93,6 +106,34 @@ struct SettingView: View {
                 Image(systemName: "chevron.backward")
                     .foregroundColor(.black)
             }))
+        }
+    }
+    
+    enum GTViewsName: String, CaseIterable {
+        case enrollGTMemberView = "그루터기 멤버 신청하기"
+        case enrollGTView = "그루터기 등록하기"
+        case showGTView = "그루터기 보기"
+        
+        static var allCases: [GTViewsName] {
+            return [
+                .enrollGTMemberView,
+                .enrollGTView,
+                .showGTView,
+            ]
+        }
+    }
+    
+    enum InformViewsName: String, CaseIterable {
+        case opensourceLicenseView = "오픈소스 라이센스"
+        case developersView = "개발자 정보"
+        case inquireyView = "문의하기"
+        
+        static var allCases: [InformViewsName] {
+            return [
+                .opensourceLicenseView,
+                .developersView,
+                .inquireyView
+            ]
         }
     }
 }
