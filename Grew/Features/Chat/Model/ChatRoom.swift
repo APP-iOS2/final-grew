@@ -13,7 +13,7 @@ import Foundation
 struct ChatRoom: Identifiable, Codable, Equatable {
     /// 채팅방 ID
     var id: String
-    /// 채팅방 저장 이름
+    /// 채팅방 저장 이름 (그루 이름) // 그루 있으면 있고, 없는 경우에는 1:1 대화
     var chatRoomName: String?
     /// 참여자 UID 배열
     var members: [String]
