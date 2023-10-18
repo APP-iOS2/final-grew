@@ -7,22 +7,26 @@
 import SwiftUI
 
 struct Schedule: Identifiable, Decodable, Encodable {
-    var id: String = UUID().uuidString
     /// 스케쥴 아이디
-    var gid: String
+    var id: String = UUID().uuidString
     /// 그루아이디
-    var scheduleName: String
+    var gid: String
     /// 모임이름
-    var date: Date
+    var scheduleName: String
     /// 날짜, 시간
-    var maximumMember: Int
+    var date: Date
     /// 정원
-    var participants: [String]
+    var maximumMember: Int
     /// 현재 참여자
-    var fee: String?
+    var participants: [String]
     /// 참가비
-    var location: String?
+    var fee: String?
     /// 주소
+    var location: String?
+    /// 위도
+    var latitude: String?
+    /// 경도
+    var longitude: String?
+    /// hex 색상 값
     var color: String
-    /// hex
 }
