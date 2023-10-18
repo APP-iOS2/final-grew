@@ -75,9 +75,3 @@ struct MainChatView: View {
         }
     }
 }
-
-#Preview {
-    NavigationStack{
-        MainChatView()
-    }
-}

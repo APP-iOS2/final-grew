@@ -31,6 +31,7 @@ struct ChatRoom: Identifiable, Codable, Equatable {
 extension ChatRoom {
     // 로그인한 유저를 제외한 나머지 채팅방의 인원을 반환하는 연산 프로퍼티
     var otherUserIDs: [String] {
+        if members.count == 1 { return [] }
         if let currentUser = UserStore.shared.currentUser {
             return members.filter({$0 != currentUser.id})
         }

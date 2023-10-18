@@ -53,7 +53,6 @@ struct ChatListView: View {
             } label: {
                 Text("채팅방 추가")
             }
-
         }
         .task {
             if !chatStore.isDoneFetch {
@@ -77,8 +76,4 @@ struct ChatListView: View {
          .foregroundColor(.black) */
         Text("")
     }
-}
-
-#Preview {
-    ChatListView(filter: .group)
 }
