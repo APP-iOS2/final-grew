@@ -76,8 +76,18 @@ class GrewViewModel: ObservableObject {
             }
             return ""
         }
-    /// cell에 사용할 카테고리 이름 가져오기
-    func categoryName(_ firstIndex: String, _ secondIndex: String) -> String {
+    
+    /// NewestGrewCell에 사용할 카테고리 이름 가져오기
+    func categoryName(_ categoryIndex: String) -> String {
+        
+        if let category = categoryArray.first(where: { $0.id == categoryIndex}) {
+            return category.name
+        }
+        return ""
+    }
+    
+    /// GrewCelViewl에 사용할 카테고리 이름 가져오기
+    func subCategoryName(_ firstIndex: String, _ secondIndex: String) -> String {
         
         if let category = categoryArray.first(where: { $0.id == firstIndex }) {
             if let subCategory = category.subCategories.first(where: { $0.id == secondIndex }) {
@@ -119,5 +129,27 @@ class GrewViewModel: ObservableObject {
         catch {
             fatalError("Unable to parse \(filename): \(error)")
         }
+    }
+    
+    func popularFilter(grewList: [Grew]) -> [Grew] {
+        
+        let tempList = grewList.sorted(by: {$0.heartTapped > $1.heartTapped})
+       
+        if tempList.count < 5 {
+            return tempList
+        } else {
+            var resultList: [Grew] = []
+            for index in 0 ..< 5 {
+                resultList.append(tempList[index])
+            }
+            return resultList
+        }
+    }
+    
+    func newestFilter(grewList: [Grew]) -> [Grew] {
+        
+        let tempList = grewList.sorted(by: { $0.createdAt > $1.createdAt})
+        
+        return tempList
     }
 }

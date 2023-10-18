@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewestGrewCell: View {
     
+    @EnvironmentObject var grewViewModel: GrewViewModel
     let grew: Grew
     
     var body: some View {
@@ -25,19 +26,26 @@ struct NewestGrewCell: View {
                 RoundedRectangle(cornerRadius: 8)
             )
             .overlay(
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(grew.categoryIndex)
+                
+                HStack {
+                    VStack(alignment: .leading, spacing: 3) {
+                        Spacer()
+                        Text(grewViewModel.categoryName(grew.categoryIndex))
+                            .font(.c2_R)
+                        Text(grew.title)
+                            .font(.c1_R)
+                        HStack(spacing: 3) {
+                            Image(systemName: "person.2.fill")
+                            Text("\(grew.currentMembers.count) / \(grew.maximumMembers)")
+                        }
                         .font(.c2_R)
-                    Text(grew.title)
-                        .font(.c1_R)
-                    HStack(spacing: 3) {
-                        Image(systemName: "person.2.fill")
-                        Text("\(grew.currentMembers.count) / \(grew.maximumMembers)")
                     }
-                    .font(.c2_R)
-                }
+                    .padding(.leading, 10)
+                    .padding(.bottom, 10)
                     .foregroundColor(.white)
-                    .offset(y: 60)
+                    Spacer()
+                }
+                
             )
         }
     }
@@ -62,4 +70,5 @@ struct NewestGrewCell: View {
         fee: 0,
         createdAt: Date(),
         heartTapped: 0))
+        .environmentObject(GrewViewModel())
 }

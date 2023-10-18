@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MainChatView: View {
-    var user: User?
-    
     @State private var selectedFilter: ChatSegment = .group
     @Namespace var animation
     
@@ -19,33 +17,8 @@ struct MainChatView: View {
     }
     
     var body: some View {
-        // user content list view
         VStack{
-            HStack{
-                ForEach(ChatSegment.allCases) { filter in
-                    VStack {
-                        Text(filter.title)
-                            .font(.subheadline)
-                            .fontWeight(selectedFilter == filter ? .semibold : .regular)
-                        
-                        if selectedFilter == filter {
-                            Rectangle()
-                                .foregroundColor(Color("chatGreen"))
-                                .frame(maxWidth: filterBarWidth, maxHeight: 1)
-                                .matchedGeometryEffect(id: "item", in: animation)
-                        } else {
-                            Rectangle()
-                                .foregroundColor(.clear)
-                                .frame(maxWidth: filterBarWidth, maxHeight: 1)
-                        }
-                    }
-                    .onTapGesture {
-                        withAnimation(.interactiveSpring()) {
-                            selectedFilter = filter
-                        }
-                    }
-                }
-            }
+            segmentBar
             
             switch selectedFilter {
             case .group:
@@ -55,6 +28,7 @@ struct MainChatView: View {
             }
             Spacer()
         }
+        /*
         .highPriorityGesture(
             DragGesture(minimumDistance: 2, coordinateSpace: .local)
                 .onEnded { value in
@@ -70,7 +44,35 @@ struct MainChatView: View {
                     }
                 }
         )
-        
+         */
+    }
+    
+    private var segmentBar: some View {
+        HStack{
+            ForEach(ChatSegment.allCases) { filter in
+                VStack {
+                    Text(filter.title)
+                        .font(.subheadline)
+                        .fontWeight(selectedFilter == filter ? .semibold : .regular)
+                    
+                    if selectedFilter == filter {
+                        Rectangle()
+                            .foregroundColor(.Main)
+                            .frame(maxWidth: filterBarWidth, maxHeight: 1)
+                            .matchedGeometryEffect(id: "item", in: animation)
+                    } else {
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .frame(maxWidth: filterBarWidth, maxHeight: 1)
+                    }
+                }
+                .onTapGesture {
+                    withAnimation(.interactiveSpring()) {
+                        selectedFilter = filter
+                    }
+                }
+            }
+        }
     }
 }
 
