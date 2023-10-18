@@ -8,7 +8,6 @@
 import Firebase
 import FirebaseFirestoreSwift
 import Foundation
-import FirebaseFirestoreSwift
 
 struct User: Identifiable, Codable {
     /// 유저의 Auth 고유 아이디.
@@ -29,7 +28,7 @@ struct User: Identifiable, Codable {
     var searchHistory: [String]
 }
 
-//class UserStore: ObservableObject {
+// class UserStore: ObservableObject {
 //    @Published var users: [User] = [
 //        User(nickName: "설아", email: "seolah@grew.com", gender: .female, dob: "20000101", userImageURLString: "https://i.pinimg.com/564x/e9/9c/d7/e99cd7e40ebd13170431cfb76588a281.jpg", introduce: "싱싱미역 아니구 심신미약..", searchHistory: []),
 //        User(nickName: "jin0", email: "jin0@grew.com", gender: .female, dob: "19970123", userImageURLString: "https://i.pinimg.com/564x/d9/f9/7b/d9f97bf7a781afe05394aa277e4a1112.jpg", searchHistory: []),
@@ -40,7 +39,7 @@ struct User: Identifiable, Codable {
 //    var currentUser: User {
 //        users.first!
 //    }
-//}
+// }
 /// 성별
 enum Gender: String, CaseIterable, Codable {
     case any = "누구나"

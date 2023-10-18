@@ -13,6 +13,7 @@ struct GrewButtonModifier: ViewModifier {
     var height: CGFloat
     var buttonColor: Color
     var font: Font
+    var fontColor: Color
     
     func body(content: Content) -> some View {
         ZStack {
@@ -21,14 +22,14 @@ struct GrewButtonModifier: ViewModifier {
                 .tint(buttonColor)
             content
                 .font(font)
-                .foregroundColor(.primary)
-                .colorInvert()
+                .foregroundColor(fontColor)
+//                .colorInvert()
         }
     }
 }
 
 extension View {
-    func grewButtonModifier(width: CGFloat, height: CGFloat, buttonColor: Color, font: Font) -> some View {
-        modifier(GrewButtonModifier(width: width, height: height, buttonColor: buttonColor, font: font))
+    func grewButtonModifier(width: CGFloat, height: CGFloat, buttonColor: Color, font: Font, fontColor: Color) -> some View {
+        modifier(GrewButtonModifier(width: width, height: height, buttonColor: buttonColor, font: font, fontColor: fontColor))
     }
 }

@@ -92,7 +92,7 @@ struct NewGrewView: View {
                             }
                         } label: {
                             Text("다음")
-                                .grewButtonModifier(width: 343, height: 44, buttonColor: .Main, font: .b1_B)
+                                .grewButtonModifier(width: 343, height: 44, buttonColor: .Main, font: .b1_B, fontColor: .white)
                                 .padding(.horizontal)
                         }//: Button
                     }

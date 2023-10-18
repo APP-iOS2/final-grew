@@ -14,7 +14,7 @@ struct LaunchView: View {
     @StateObject var userViewModel = UserViewModel()
     
     var body: some View {
-        if vm.user == nil {
+        if vm.authuser == nil {
             AuthStartView()
         } else {
             MainTabView()

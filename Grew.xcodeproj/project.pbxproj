@@ -118,21 +118,19 @@
 		3AF1D4AB2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AA2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift */; };
 		3AF1D4AD2AD4D65900ECE1A8 /* NaverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */; };
 		3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AE2AD4D75A00ECE1A8 /* MapListItemView.swift */; };
-
-		99266D832AD635BA00FB6AC1 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 99266D822AD635BA00FB6AC1 /* ConfettiSwiftUI */; };
-		99266D872AD710D400FB6AC1 /* GrewButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99266D862AD710D400FB6AC1 /* GrewButtonModifier.swift */; };
-	
-
+		6468D28E2AD8FFA30069C290 /* GrewSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468D28D2AD8FFA30069C290 /* GrewSecureField.swift */; };
 		64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB12AD5145100192DB4 /* AuthAgreeView.swift */; };
 		64877CB42AD51A7100192DB4 /* AuthAgreeCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */; };
 		64877CB62AD5B2BD00192DB4 /* AuthProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */; };
 		64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB72AD5BF8E00192DB4 /* AuthRegisterEmailView.swift */; };
 		64AB27D62AD6683E004DE65F /* LaunchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB27D52AD6683E004DE65F /* LaunchVM.swift */; };
 		64AB27DA2AD6753B004DE65F /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB27D92AD6753A004DE65F /* RegisterVM.swift */; };
+		64D54B962ADD0DFF007753B2 /* AgreeUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D54B952ADD0DFF007753B2 /* AgreeUseView.swift */; };
+		64D54B982ADD0E31007753B2 /* AgreeUserDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D54B972ADD0E31007753B2 /* AgreeUserDataView.swift */; };
+		64D54B9A2ADD0E4B007753B2 /* AgreeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D54B992ADD0E4B007753B2 /* AgreeLocationView.swift */; };
 		991E7B922AD7D1BA002ECEE3 /* TabBarAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991E7B912AD7D1BA002ECEE3 /* TabBarAccessor.swift */; };
-
 		99266D832AD635BA00FB6AC1 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 99266D822AD635BA00FB6AC1 /* ConfettiSwiftUI */; };
-
+		99266D872AD710D400FB6AC1 /* GrewButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99266D862AD710D400FB6AC1 /* GrewButtonModifier.swift */; };
 		993274132AD531F40082FCEC /* GrewScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274122AD531F40082FCEC /* GrewScheduleCell.swift */; };
 		993274152AD5325B0082FCEC /* GrewScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274142AD5325B0082FCEC /* GrewScheduleListView.swift */; };
 		993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274162AD5360E0082FCEC /* GrewScheduleImage.swift */; };
@@ -238,21 +236,19 @@
 		3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapView.swift; sourceTree = "<group>"; };
 		3AF1D4AE2AD4D75A00ECE1A8 /* MapListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListItemView.swift; sourceTree = "<group>"; };
 		5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.release.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
+		6468D28D2AD8FFA30069C290 /* GrewSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSecureField.swift; sourceTree = "<group>"; };
 		64877CB12AD5145100192DB4 /* AuthAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAgreeView.swift; sourceTree = "<group>"; };
 		64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAgreeCheckView.swift; sourceTree = "<group>"; };
 		64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProgressBar.swift; sourceTree = "<group>"; };
 		64877CB72AD5BF8E00192DB4 /* AuthRegisterEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRegisterEmailView.swift; sourceTree = "<group>"; };
 		64AB27D52AD6683E004DE65F /* LaunchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVM.swift; sourceTree = "<group>"; };
 		64AB27D92AD6753A004DE65F /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
+		64D54B952ADD0DFF007753B2 /* AgreeUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeUseView.swift; sourceTree = "<group>"; };
+		64D54B972ADD0E31007753B2 /* AgreeUserDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeUserDataView.swift; sourceTree = "<group>"; };
+		64D54B992ADD0E4B007753B2 /* AgreeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeLocationView.swift; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-
-		99266D862AD710D400FB6AC1 /* GrewButtonModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewButtonModifier.swift; sourceTree = "<group>"; };
-
-
-
 		991E7B912AD7D1BA002ECEE3 /* TabBarAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAccessor.swift; sourceTree = "<group>"; };
-
-
+		99266D862AD710D400FB6AC1 /* GrewButtonModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewButtonModifier.swift; sourceTree = "<group>"; };
 		993274122AD531F40082FCEC /* GrewScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleCell.swift; sourceTree = "<group>"; };
 		993274142AD5325B0082FCEC /* GrewScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleListView.swift; sourceTree = "<group>"; };
 		993274162AD5360E0082FCEC /* GrewScheduleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleImage.swift; sourceTree = "<group>"; };
@@ -345,6 +341,7 @@
 		3110973C2AD417A5000D85AD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				64D54B942ADD0DCE007753B2 /* Agree */,
 				311097412AD417AD000D85AD /* AuthAddDetailInfoView.swift */,
 				311097422AD417AD000D85AD /* AuthAddMainInfoView.swift */,
 				64877CB12AD5145100192DB4 /* AuthAgreeView.swift */,
@@ -626,6 +623,7 @@
 			children = (
 				CE467AD62AD5061C00143213 /* GrewSearchView.swift */,
 				CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */,
+				6468D28D2AD8FFA30069C290 /* GrewSecureField.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -667,6 +665,16 @@
 				5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		64D54B942ADD0DCE007753B2 /* Agree */ = {
+			isa = PBXGroup;
+			children = (
+				64D54B952ADD0DFF007753B2 /* AgreeUseView.swift */,
+				64D54B972ADD0E31007753B2 /* AgreeUserDataView.swift */,
+				64D54B992ADD0E4B007753B2 /* AgreeLocationView.swift */,
+			);
+			path = Agree;
 			sourceTree = "<group>";
 		};
 		9932740F2AD530120082FCEC /* GrewListView */ = {
@@ -806,7 +814,6 @@
 				3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */,
 				312E989A2ACCF54A00E38626 /* .swiftlint.yml in Resources */,
 				311097C22AD418CF000D85AD /* Categories.json in Resources */,
-
 				312E986E2ACCED3800E38626 /* Preview Assets.xcassets in Resources */,
 				3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */,
 				312E986B2ACCED3800E38626 /* Assets.xcassets in Resources */,
@@ -896,6 +903,7 @@
 				3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */,
 				311097532AD417E3000D85AD /* ChatDetailView.swift in Sources */,
 				311097A62AD41882000D85AD /* AppState.swift in Sources */,
+				6468D28E2AD8FFA30069C290 /* GrewSecureField.swift in Sources */,
 				311097722AD4180F000D85AD /* GroupCheckFeeView.swift in Sources */,
 				21C1F1B32ACFEEC10029E436 /* MyGroupView.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
@@ -913,6 +921,7 @@
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
 				3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */,
 				993274132AD531F40082FCEC /* GrewScheduleCell.swift in Sources */,
+				64D54B9A2ADD0E4B007753B2 /* AgreeLocationView.swift in Sources */,
 				311097B12AD4188E000D85AD /* FirestoreService.swift in Sources */,
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
@@ -921,6 +930,7 @@
 				311097582AD417ED000D85AD /* MessageBubbles.swift in Sources */,
 				99266D872AD710D400FB6AC1 /* GrewButtonModifier.swift in Sources */,
 				311097AC2AD41882000D85AD /* User.swift in Sources */,
+				64D54B962ADD0DFF007753B2 /* AgreeUseView.swift in Sources */,
 				21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */,
 				311097BB2AD418A6000D85AD /* FirebaseEnums.swift in Sources */,
 				99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */,
@@ -968,6 +978,7 @@
 				311097A42AD41882000D85AD /* Announcement.swift in Sources */,
 				64877CB62AD5B2BD00192DB4 /* AuthProgressBar.swift in Sources */,
 				311097452AD417AD000D85AD /* AuthSignEmailView.swift in Sources */,
+				64D54B982ADD0E31007753B2 /* AgreeUserDataView.swift in Sources */,
 				311097592AD417ED000D85AD /* ChatRoomCell.swift in Sources */,
 				312E98E12ACD2EAA00E38626 /* Array+Extensions.swift in Sources */,
 				311097622AD417FD000D85AD /* ChatMessage.swift in Sources */,
