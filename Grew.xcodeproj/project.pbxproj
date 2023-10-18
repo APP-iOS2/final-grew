@@ -135,13 +135,11 @@
 		991E7B922AD7D1BA002ECEE3 /* TabBarAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991E7B912AD7D1BA002ECEE3 /* TabBarAccessor.swift */; };
 		99266D832AD635BA00FB6AC1 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 99266D822AD635BA00FB6AC1 /* ConfettiSwiftUI */; };
 		99266D872AD710D400FB6AC1 /* GrewButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99266D862AD710D400FB6AC1 /* GrewButtonModifier.swift */; };
-		993274132AD531F40082FCEC /* GrewScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274122AD531F40082FCEC /* GrewScheduleCell.swift */; };
-		993274152AD5325B0082FCEC /* GrewScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274142AD5325B0082FCEC /* GrewScheduleListView.swift */; };
-		993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993274162AD5360E0082FCEC /* GrewScheduleImage.swift */; };
 		995095302ADCBA77003A822E /* GroupSubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950952F2ADCBA77003A822E /* GroupSubCategoryView.swift */; };
 		995095322ADCD6D3003A822E /* GroupMainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995095312ADCD6D3003A822E /* GroupMainCategoryView.swift */; };
 		995095372ADD5D86003A822E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 995095362ADD5D86003A822E /* GoogleService-Info.plist */; };
-		9989DA982ADF686900AC4917 /* NewGrewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989DA972ADF686900AC4917 /* NewGrewListView.swift */; };
+		9989DA982ADF686900AC4917 /* NewScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989DA972ADF686900AC4917 /* NewScheduleListView.swift */; };
+		99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC42612ADF77E1005B70A0 /* NewestGrewListView.swift */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
 		CE36B52F2ADE2A23004D2BC3 /* NewestGrewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36B52E2ADE2A23004D2BC3 /* NewestGrewCell.swift */; };
@@ -264,13 +262,11 @@
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		991E7B912AD7D1BA002ECEE3 /* TabBarAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAccessor.swift; sourceTree = "<group>"; };
 		99266D862AD710D400FB6AC1 /* GrewButtonModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewButtonModifier.swift; sourceTree = "<group>"; };
-		993274122AD531F40082FCEC /* GrewScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleCell.swift; sourceTree = "<group>"; };
-		993274142AD5325B0082FCEC /* GrewScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleListView.swift; sourceTree = "<group>"; };
-		993274162AD5360E0082FCEC /* GrewScheduleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewScheduleImage.swift; sourceTree = "<group>"; };
 		9950952F2ADCBA77003A822E /* GroupSubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSubCategoryView.swift; sourceTree = "<group>"; };
 		995095312ADCD6D3003A822E /* GroupMainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMainCategoryView.swift; sourceTree = "<group>"; };
 		995095362ADD5D86003A822E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9989DA972ADF686900AC4917 /* NewGrewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGrewListView.swift; sourceTree = "<group>"; };
+		9989DA972ADF686900AC4917 /* NewScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleListView.swift; sourceTree = "<group>"; };
+		99BC42612ADF77E1005B70A0 /* NewestGrewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestGrewListView.swift; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CE36B52E2ADE2A23004D2BC3 /* NewestGrewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestGrewCell.swift; sourceTree = "<group>"; };
@@ -619,15 +615,14 @@
 			isa = PBXGroup;
 			children = (
 				993274102AD5307C0082FCEC /* CategoryView */,
-				993274112AD531C70082FCEC /* GrewScheduleView */,
 				9932740F2AD530120082FCEC /* GrewListView */,
 				3110977E2AD41816000D85AD /* HomeBannerView.swift */,
 				99D2C6432ACD4913001FEC20 /* HomeView.swift */,
-				9989DA962ADF683600AC4917 /* NewGrewListView */,
+				99BC42602ADF77B6005B70A0 /* NewestGrew */,
+				9989DA962ADF683600AC4917 /* NewestSchedule */,
 				311097782AD41815000D85AD /* TempHomeCategory.swift */,
 				CE5129412AD8D66700CE77C5 /* GrewDetailView.swift */,
 				CE5A27B32AD9B0590014BE09 /* GrewIntroductionView.swift */,
-				CE36B52E2ADE2A23004D2BC3 /* NewestGrewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -751,16 +746,6 @@
 			path = CategoryView;
 			sourceTree = "<group>";
 		};
-		993274112AD531C70082FCEC /* GrewScheduleView */ = {
-			isa = PBXGroup;
-			children = (
-				993274122AD531F40082FCEC /* GrewScheduleCell.swift */,
-				993274162AD5360E0082FCEC /* GrewScheduleImage.swift */,
-				993274142AD5325B0082FCEC /* GrewScheduleListView.swift */,
-			);
-			path = GrewScheduleView;
-			sourceTree = "<group>";
-		};
 		995095332ADCFBFA003A822E /* GrewCategoryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,12 +756,21 @@
 			path = GrewCategoryView;
 			sourceTree = "<group>";
 		};
-		9989DA962ADF683600AC4917 /* NewGrewListView */ = {
+		9989DA962ADF683600AC4917 /* NewestSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				9989DA972ADF686900AC4917 /* NewGrewListView.swift */,
+				9989DA972ADF686900AC4917 /* NewScheduleListView.swift */,
 			);
-			path = NewGrewListView;
+			path = NewestSchedule;
+			sourceTree = "<group>";
+		};
+		99BC42602ADF77B6005B70A0 /* NewestGrew */ = {
+			isa = PBXGroup;
+			children = (
+				CE36B52E2ADE2A23004D2BC3 /* NewestGrewCell.swift */,
+				99BC42612ADF77E1005B70A0 /* NewestGrewListView.swift */,
+			);
+			path = NewestGrew;
 			sourceTree = "<group>";
 		};
 		A38141B78C32AAF7DF33A628 /* Frameworks */ = {
@@ -985,8 +979,8 @@
 				3AF1D4AD2AD4D65900ECE1A8 /* NaverMapView.swift in Sources */,
 				991E7B922AD7D1BA002ECEE3 /* TabBarAccessor.swift in Sources */,
 				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
+				99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */,
 				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
-				993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */,
 				319757552ADEF36600696FF9 /* ChatInputView.swift in Sources */,
 				21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
@@ -994,7 +988,6 @@
 				311097462AD417AD000D85AD /* AuthStartView.swift in Sources */,
 				312E98E52ACD2EAA00E38626 /* Date+Extensions.swift in Sources */,
 				3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */,
-				993274132AD531F40082FCEC /* GrewScheduleCell.swift in Sources */,
 				311097B12AD4188E000D85AD /* FirestoreService.swift in Sources */,
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
 				319757542ADEF36600696FF9 /* MessageBubbles.swift in Sources */,
@@ -1002,7 +995,7 @@
 				3197575C2ADEF38700696FF9 /* GroupDetailConfig.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				21F32A782ADED63200B3E1C5 /* EnrollGTView.swift in Sources */,
-				9989DA982ADF686900AC4917 /* NewGrewListView.swift in Sources */,
+				9989DA982ADF686900AC4917 /* NewScheduleListView.swift in Sources */,
 				CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */,
 				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				99266D872AD710D400FB6AC1 /* GrewButtonModifier.swift in Sources */,
@@ -1054,7 +1047,6 @@
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
 				311097A52AD41882000D85AD /* Category.swift in Sources */,
 				311097AA2AD41882000D85AD /* ImagePicker.swift in Sources */,
-				993274152AD5325B0082FCEC /* GrewScheduleListView.swift in Sources */,
 				CE5129422AD8D66700CE77C5 /* GrewDetailView.swift in Sources */,
 				312E98E62ACD2EAA00E38626 /* Encodable+Extensions.swift in Sources */,
 				311097A42AD41882000D85AD /* Announcement.swift in Sources */,
