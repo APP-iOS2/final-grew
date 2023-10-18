@@ -11,7 +11,7 @@ struct EditProfileView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    @State var image: UIImage = UIImage(named: "defaultProfile")!
+    @State var image: UIImage? = UIImage(named: "defaultProfile")
     @State var name: String /*= ""*/
     @State var statusMessage: String /*= ""*/
     @State var showModal: Bool = false
@@ -29,19 +29,21 @@ struct EditProfileView: View {
                     showModal = true
                 } label: {
                     ZStack(alignment: .bottomTrailing) {
-                        Image(uiImage: image)
-                            .resizable()
-                            .frame(width: 120, height: 120)
-                            .cornerRadius(60)
-                        
-                        Image(systemName: "plus.circle.fill")
-                            .resizable()
-                            .frame(width: 27, height: 27)
-                            .foregroundColor(Color.grewMainColor) // 이미지 색상 설정
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
-                            )
+                        if let unwrappedImage = image {
+                            Image(uiImage: unwrappedImage)
+                                .resizable()
+                                .frame(width: 120, height: 120)
+                                .cornerRadius(60)
+                            
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .frame(width: 27, height: 27)
+                                .foregroundColor(Color.grewMainColor) // 이미지 색상 설정
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
+                                )
+                        }
                     }
                     .padding(.vertical)
                 }
@@ -117,7 +119,7 @@ struct EditProfileView: View {
                 self.mode.wrappedValue.dismiss()
             }, label: {
                 Image(systemName: "chevron.backward")
-                    .foregroundColor(Color(hex: 0x25C578))
+                    .foregroundColor(Color.black)
             }))
             .padding()
             .toolbar {
@@ -177,11 +179,13 @@ struct EditProfileView: View {
         if var updatedUser = userViewModel.currentUser {
             updatedUser.nickName = name
             updatedUser.introduce = statusMessage
-            userViewModel.uploadProfileImage(image) { success in
-                if success {
-                    print("Profile image uploaded successfully!")
-                } else {
-                    print("Failed to upload profile image.")
+            if let image = image {
+                userViewModel.uploadProfileImage(image) { success in
+                    if success {
+                        print("Profile image uploaded successfully!")
+                    } else {
+                        print("Failed to upload profile image.")
+                    }
                 }
             }
             userViewModel.updateUser(user: updatedUser)

@@ -12,17 +12,22 @@ struct GroupNameView: View {
     @State private var isNextView = false
     @State private var isAnimating = false
     @State private var groupNameView = false
+    @Binding var isNameValid: Bool
+    @Binding var isLocationValid: Bool
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("모임이름을 적어볼까요?")
+                Text("모임이름을 입력해주세요")
                     .font(.title2).fontWeight(.semibold)
                     .padding(.bottom, 10)
                 
                 HStack(spacing: 15) {
                     TextField("모임이름을 입력해주세요", text: $viewModel.meetingTitle)
                         .keyboardType(.namePhonePad)
+                        .onChange(of: viewModel.meetingTitle) { oldValue, newValue in
+                            isNameValid = !newValue.isEmpty
+                        }
                 }
                 .padding(10)
                 .overlay{
@@ -35,17 +40,17 @@ struct GroupNameView: View {
             .animationModifier(isAnimating: isAnimating, delay: 0)
             
             VStack(alignment: .leading) {
-                Text("주로 어디에서 활동하세요?")
+                Text("활동방법을 선택해주세요")
                     .font(.title2).fontWeight(.semibold)
                     .padding(.bottom, 0)
                 HStack(spacing: 40) {
                     Spacer()
-                    Button(action: { 
+                    Button {
                         viewModel.isOnline = true
-                    }, label: {
+                    } label: {
                         Text("온라인")
                             .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isOnline ? Color.Sub : Color.BackgroundGray, font: .b1_B, fontColor: .white, cornerRadius: 10)
-                    })
+                    }
                     
                     Button(action: {
                         viewModel.isOnline = false
@@ -55,6 +60,7 @@ struct GroupNameView: View {
                             .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isOnline ? Color.BackgroundGray : Color.Sub, font: .b1_B, fontColor: .white, cornerRadius: 10)
                     })
                     Spacer()
+                    
                 }//: HStack
             }//: VStack
             .padding()
@@ -68,6 +74,10 @@ struct GroupNameView: View {
                         Text("장소")
                     }
                     TextField("장소를 입력하세요", text: $viewModel.location)
+                        .keyboardType(.namePhonePad)
+                        .onChange(of: viewModel.location) { _, newValue in
+                            isLocationValid = !newValue.isEmpty
+                        }
                         .padding(10)
                         .overlay{
                             RoundedRectangle(cornerRadius: 5)
@@ -75,20 +85,25 @@ struct GroupNameView: View {
                         }
                         .cornerRadius(5)
                 }.padding()
-                .animationModifier(isAnimating: groupNameView, delay: 0)
-                .onAppear {
-                    groupNameView = true
-                }
+                    .animationModifier(isAnimating: groupNameView, delay: 0)
+                    .onAppear {
+                        groupNameView = true
+                    }
             }
             
         }//: ScrollView
         .onAppear(perform: {
             isAnimating = true
+            
+            if !isNameValid {
+                viewModel.meetingTitle = ""
+                viewModel.location = ""
+            }
         })
     }//: body
 }
 
 #Preview {
-    GroupNameView()
+    GroupNameView(isNameValid: .constant(true), isLocationValid: .constant(true))
         .environmentObject(GrewViewModel())
 }

@@ -10,9 +10,11 @@ import SwiftUI
 struct AuthSignEmailView: View {
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var registerVM: RegisterVM
     @State private var email: String = ""
     @State private var password: String = ""
-    @StateObject var registerVM = RegisterVM()
+    @State private var isWrongText: Bool = false
+    @State private var isTextfieldDisabled: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -37,21 +39,12 @@ struct AuthSignEmailView: View {
                 VStack(alignment: .leading) {
                     Text("이메일(아이디)")
                         .font(Font.b2_L)
-                    TextField("email", text: $email, axis: .horizontal)
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                        .keyboardType(.emailAddress)
-                        .textInputAutocapitalization(.never)
+                    GrewTextField(text: $email, isWrongText: isWrongText, isTextfieldDisabled: isTextfieldDisabled, placeholderText: "이메일", isSearchBar: false)
                     
                     Text("비밀번호")
                         .font(Font.b2_L)
                         .padding(.top, 15)
-                    SecureField("password", text: $password)
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                        .textInputAutocapitalization(.never)
+                    GrewSecureField(text: $password, isWrongText: $isWrongText, isTextfieldDisabled: $isTextfieldDisabled, placeholderText: "비밀번호")
                 }
                 .padding()
                 
@@ -63,15 +56,8 @@ struct AuthSignEmailView: View {
                             try await AuthStore.shared.emailAuthSignIn(withEmail: email, password: password)
                         }
                     } label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 330, height: 45)
-                                .cornerRadius(10)
-                                .foregroundColor(Color(hex: 0x25C578))
-                            Text("로그인")
-                                .font(Font.b2_B)
-                                .foregroundStyle(.white)
-                        }
+                        Text("로그인")
+                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: .grewMainColor, font: Font.b2_B, fontColor: .white, cornerRadius: 10))
                     }
                     
                     NavigationLink {
@@ -85,9 +71,10 @@ struct AuthSignEmailView: View {
                             .foregroundStyle(.gray)
                             .padding(.top, 5)
                     }
-                    
+                    .simultaneousGesture(TapGesture().onEnded {
+                        UserDefaults.standard.set("email", forKey: "SignType")
+                    })
                 }
-                
                 Spacer()
             }
         }
@@ -96,4 +83,5 @@ struct AuthSignEmailView: View {
 
 #Preview {
     AuthSignEmailView()
+        .environmentObject(RegisterVM())
 }

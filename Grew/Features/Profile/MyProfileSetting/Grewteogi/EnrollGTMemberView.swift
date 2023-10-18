@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct EnrollGTMemberView: View {
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -38,7 +41,7 @@ struct EnrollGTMemberView: View {
                 Spacer()
                 
                 NavigationLink {
-                    EnrollGTMemberView()
+                    EnrollGTMemberDetailView()
                 } label: {
                     Text("그루터기 멤버 신청하기")
                         .grewButtonModifier(width: 343, height: 60, buttonColor: .Main, font: .b1_B, fontColor: .white, cornerRadius: 8)
@@ -47,9 +50,15 @@ struct EnrollGTMemberView: View {
                 
                 
             }
-            .navigationTitle(Text("그루터기 멤버 신청").font(.b1_B))
-            
+            .navigationTitle("그루터기 멤버 신청")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: Button(action: {
+                self.mode.wrappedValue.dismiss()
+            }, label: {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(.black)
+            }))
         }
     }
 }

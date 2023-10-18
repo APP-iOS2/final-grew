@@ -13,7 +13,7 @@ struct StumpMemberRequestView: View {
     @State private var name: String = ""
     @State private var businessNumber: String = ""
     @State private var phoneNumber: String = ""
-    @State private var image: UIImage = UIImage(systemName: "newspaper")!
+    @State private var image: UIImage? = nil
     
     @State private var isShowingSelectionSheet: Bool = false
     @State private var isShowingCamera: Bool = false

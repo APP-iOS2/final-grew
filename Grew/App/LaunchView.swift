@@ -16,7 +16,7 @@ struct LaunchView: View {
     @StateObject var messageStore = MessageStore()
     
     var body: some View {
-        if vm.user == nil {
+        if vm.authuser == nil {
             AuthStartView()
         } else {
             MainTabView()

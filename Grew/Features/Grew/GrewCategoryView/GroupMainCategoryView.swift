@@ -11,16 +11,16 @@ struct GroupMainCategoryView: View {
     
     @EnvironmentObject var viewModel: GrewViewModel
     @State private var selection = Selection()
-    
+    @Binding var isCategoryValid: Bool
     
     var body: some View {
         ScrollView {
-            GroupCategoryView(selection: $selection, showSubCategories: .constant(true))
+            GroupCategoryView(selection: $selection, showSubCategories: .constant(true), isCategoryValid: $isCategoryValid)
             GroupSubCategoryView(selection: $selection)
         }
     }
 }
 
 #Preview {
-    GroupMainCategoryView()
+    GroupMainCategoryView(isCategoryValid: .constant(true))
 }

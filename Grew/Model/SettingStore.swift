@@ -10,6 +10,7 @@ import Foundation
 struct Setting: Identifiable {
     var id: UUID = UUID()
     var name: String
+    var viewName: String?
 }
 
 var appInfo: [Setting] = [
@@ -19,7 +20,13 @@ var appInfo: [Setting] = [
 ]
 
 var grewtoegi: [Setting] = [
-    Setting(name: "그루터기 멤버 신청하기"),
-    Setting(name: "그루터기 등록하기"),
-    Setting(name: "그루터기 보기"),
+    Setting(name: "그루터기 멤버 신청하기", viewName: "EnrollGTMemberView"),
+    Setting(name: "그루터기 등록하기", viewName: "EnrollGTView"),
+    Setting(name: "그루터기 보기", viewName: "ShowGTView"),
+]
+
+var gtEnrollViews: [Setting] = [
+    Setting(name: "EnrollGTMemberView"),
+    Setting(name: "EnrollGTView"),
+    Setting(name: "ShowGTView")
 ]

@@ -12,6 +12,8 @@ struct GroupCheckFeeView: View {
     @State private var showsAlert = false
     @State private var isAnimating = false
     @State private var isAnimatingFeeView = false
+    @Binding var isFeeValid: Bool
+    @Binding var isNeedFeeValid: Bool
     
     var body: some View {
         ScrollView {
@@ -23,12 +25,12 @@ struct GroupCheckFeeView: View {
                 HStack(spacing: 40) {
                     Spacer()
                     // 있으면 금액 입력
-                    Button(action: {
+                    Button {
                         viewModel.isNeedFee = true
-                    }, label: {
+                    } label: {
                         Text("있음")
                             .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isNeedFee ? Color.Sub : Color.BackgroundGray, font: .b1_B, fontColor: .white, cornerRadius: 10)
-                    })
+                    }
                     Button(action: {
                         viewModel.isNeedFee = false
                         isAnimatingFeeView = false
@@ -56,6 +58,7 @@ struct GroupCheckFeeView: View {
                                 } else {
                                     viewModel.fee = ""
                                 }
+                                isFeeValid = !newValue.isEmpty
                             }
                             .keyboardType(.numberPad)
                         HStack {
@@ -66,17 +69,20 @@ struct GroupCheckFeeView: View {
                                 .padding(.top, 4)
                         }
                     }
-                            .padding(10)
-                            .overlay{
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.gray, lineWidth: 2)
-                            }
-                            .cornerRadius(5)
+                    .padding(10)
+                    .overlay{
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.gray, lineWidth: 2)
+                    }
+                    .cornerRadius(5)
                 }
                 .padding()
                 .animationModifier(isAnimating: isAnimatingFeeView, delay: 0)
                 .onAppear {
                     isAnimatingFeeView = true
+                    if !isFeeValid {
+                        viewModel.fee = ""
+                    }
                 }
             }
         }//: ScrollView
@@ -87,6 +93,6 @@ struct GroupCheckFeeView: View {
 }
 
 #Preview {
-    GroupCheckFeeView()
+    GroupCheckFeeView(isFeeValid: .constant(true), isNeedFeeValid: .constant(true))
         .environmentObject(GrewViewModel())
 }

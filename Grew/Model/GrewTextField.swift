@@ -51,6 +51,7 @@ struct GrewTextField: View {
                 }
             }
             .frame(height: 44)
+            
             .background(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(textFieldStrokeColor)
