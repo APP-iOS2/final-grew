@@ -27,8 +27,7 @@ struct ScheduleColorPicker: View {
                                 withAnimation(.easeIn){
                                     colorIndex = i
                                 }
-                                colorPick = colors[colorIndex]
-                            }
+                                colorPick = colors[colorIndex]                            }
                             .padding(3)
                         
                         if(colorIndex == i){
