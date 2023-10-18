@@ -11,6 +11,10 @@
 		215709662AD67625006ABE35 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215709652AD67625006ABE35 /* UserViewModel.swift */; };
 		2157096A2AD68960006ABE35 /* ImageEditModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215709692AD68960006ABE35 /* ImageEditModalView.swift */; };
 		2157096C2AD69246006ABE35 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157096B2AD69246006ABE35 /* CameraView.swift */; };
+		2163156B2ADFA68000208CB4 /* RemoveAdsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2163156A2ADFA68000208CB4 /* RemoveAdsView.swift */; };
+		2163156E2ADFA6B100208CB4 /* OpensourceLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2163156D2ADFA6B100208CB4 /* OpensourceLicenseView.swift */; };
+		216315702ADFA6C000208CB4 /* DevelopersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2163156F2ADFA6C000208CB4 /* DevelopersView.swift */; };
+		216315722ADFA6CA00208CB4 /* InquiryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216315712ADFA6CA00208CB4 /* InquiryView.swift */; };
 		21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AA2ACFEE670029E436 /* ProfileView.swift */; };
 		21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */; };
 		21C1F1AF2ACFEE980029E436 /* RoundSpecificCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */; };
@@ -161,6 +165,10 @@
 		215709652AD67625006ABE35 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		215709692AD68960006ABE35 /* ImageEditModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModalView.swift; sourceTree = "<group>"; };
 		2157096B2AD69246006ABE35 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		2163156A2ADFA68000208CB4 /* RemoveAdsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAdsView.swift; sourceTree = "<group>"; };
+		2163156D2ADFA6B100208CB4 /* OpensourceLicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpensourceLicenseView.swift; sourceTree = "<group>"; };
+		2163156F2ADFA6C000208CB4 /* DevelopersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersView.swift; sourceTree = "<group>"; };
+		216315712ADFA6CA00208CB4 /* InquiryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryView.swift; sourceTree = "<group>"; };
 		21C1F1AA2ACFEE670029E436 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentListView.swift; sourceTree = "<group>"; };
 		21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundSpecificCorners.swift; sourceTree = "<group>"; };
@@ -349,9 +357,28 @@
 			isa = PBXGroup;
 			children = (
 				21C1F1B72ACFEEEC0029E436 /* SettingView.swift */,
+				216315672ADFA62100208CB4 /* AppSetting */,
 				21F32A762ADED5C000B3E1C5 /* Grewteogi */,
 			);
 			path = MyProfileSetting;
+			sourceTree = "<group>";
+		};
+		216315672ADFA62100208CB4 /* AppSetting */ = {
+			isa = PBXGroup;
+			children = (
+				2163156A2ADFA68000208CB4 /* RemoveAdsView.swift */,
+			);
+			path = AppSetting;
+			sourceTree = "<group>";
+		};
+		216315682ADFA62F00208CB4 /* Inform */ = {
+			isa = PBXGroup;
+			children = (
+				2163156D2ADFA6B100208CB4 /* OpensourceLicenseView.swift */,
+				2163156F2ADFA6C000208CB4 /* DevelopersView.swift */,
+				216315712ADFA6CA00208CB4 /* InquiryView.swift */,
+			);
+			path = Inform;
 			sourceTree = "<group>";
 		};
 		21F32A762ADED5C000B3E1C5 /* Grewteogi */ = {
@@ -642,6 +669,7 @@
 				21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */,
 				2157095D2AD530CE006ABE35 /* MyProfile */,
 				215709612AD534AC006ABE35 /* MyProfileSetting */,
+				216315682ADFA62F00208CB4 /* Inform */,
 				312E98ED2ACD30AF00E38626 /* Search */,
 			);
 			path = Profile;
@@ -1021,6 +1049,7 @@
 				64D54B962ADD0DFF007753B2 /* AgreeUseView.swift in Sources */,
 				21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */,
 				311097BB2AD418A6000D85AD /* FirebaseEnums.swift in Sources */,
+				216315722ADFA6CA00208CB4 /* InquiryView.swift in Sources */,
 				99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */,
 				319757522ADEF36600696FF9 /* SideBarShadowView.swift in Sources */,
 				311097C02AD418C1000D85AD /* AnimationModifier.swift in Sources */,
@@ -1036,9 +1065,11 @@
 				CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */,
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
 				64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */,
+				2163156B2ADFA68000208CB4 /* RemoveAdsView.swift in Sources */,
 				319757582ADEF36600696FF9 /* MainChatView.swift in Sources */,
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,
 				311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */,
+				2163156E2ADFA6B100208CB4 /* OpensourceLicenseView.swift in Sources */,
 				64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */,
 				311097B22AD4188E000D85AD /* DateService.swift in Sources */,
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
@@ -1084,6 +1115,7 @@
 				21F32A752ADEB9D400B3E1C5 /* CircleImage.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
 				21C1F1AF2ACFEE980029E436 /* RoundSpecificCorners.swift in Sources */,
+				216315702ADFA6C000208CB4 /* DevelopersView.swift in Sources */,
 				311097752AD4180F000D85AD /* GroupNameView.swift in Sources */,
 				311097B02AD4188E000D85AD /* FirebaseManager.swift in Sources */,
 				311097882AD41816000D85AD /* HomeBannerView.swift in Sources */,
