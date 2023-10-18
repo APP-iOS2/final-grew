@@ -31,7 +31,6 @@ class UserStore: ObservableObject {
     }
     
     // Firebase에 있는 유저정보 불러오기
-    @MainActor
     func loadUserData() async throws {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
@@ -40,7 +39,6 @@ class UserStore: ObservableObject {
         let snapshot = try await userRef.getDocument()
         let currentUser = try snapshot.data(as: User.self)
         await fetchCurrentUser(currentUser)
-        
     }
     
     // 검색기록 user 데이터에 업로드
