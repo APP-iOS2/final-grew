@@ -54,6 +54,7 @@ class UserStore: ObservableObject {
     }
     
     static func requestAndReturnUsers(userID: [String]) async -> [User]? {
+//        if userID.isEmpty { return nil }
         var newUser: [User] = []
         for user in userID {
             let doc = db.collection("users").document(user)

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatSideBar: View{
+struct ChatSideBar: View {
     @Binding var isMenuOpen: Bool
     @Binding var isExitButtonAlert: Bool
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
@@ -16,10 +16,11 @@ struct ChatSideBar: View{
     var body: some View {
         HStack(spacing: 0){
             Spacer(minLength: 0)
-            
             Divider()
             VStack(alignment: .leading){
-                Text("멋쟁이보드게임").bold().padding(.top, 20)
+                Text("멋쟁이보드게임")
+                    .bold()
+                    .padding(.top, 20)
                 Divider()
                 ScrollView{
                     Group{
@@ -32,22 +33,22 @@ struct ChatSideBar: View{
                                 Image(systemName: "person.crop.circle.fill").font(.system(size: 30))
                                 Text("정금쪽").font(.callout).padding(3)
                             }
-                                .padding(.top, 10)
+                            .padding(.top, 10)
                         }
                     }.frame(width: UIScreen.main.bounds.width - 120, alignment: .leading)
                 }.frame(height: (UIScreen.main.bounds.height/4)*3)
-                   
+                
                 Divider()
                 sideBottomItems
                 Spacer()
                 
-            }.padding(.horizontal, 20)
-                .padding(.top, edges!.top == 0 ? 15 : edges?.top)
-                .padding(.bottom, edges!.bottom == 0 ? 15 : edges?.bottom)
-                .frame(width: UIScreen.main.bounds.width - 90 )
-                .background(Color.white)
-                .ignoresSafeArea(.all, edges: .vertical)
-               
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, edges!.top == 0 ? 15 : edges?.top)
+            .padding(.bottom, edges!.bottom == 0 ? 15 : edges?.bottom)
+            .frame(width: UIScreen.main.bounds.width - 90 )
+            .background(Color.white)
+            
         }
     }
     

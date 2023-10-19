@@ -46,7 +46,7 @@ final class DateService {
     func lastMessageFormat(_ date: Date) -> String {
         dateFormatter.locale = Locale(identifier: "ko_kr")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "a hh:mm"
         
         return dateFormatter.string(from: date)
     }

@@ -182,3 +182,20 @@ class GrewViewModel: ObservableObject {
         }
     }
 }
+
+// static class Method
+extension GrewViewModel {
+    private static let db = Firestore.firestore()
+    
+    static func requestAndReturnGrew(grewId: String) async -> Grew? {
+        let doc = db.collection("grews").document(grewId)
+        do {
+            let grew = try await doc.getDocument(as: Grew.self)
+            return grew
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+}

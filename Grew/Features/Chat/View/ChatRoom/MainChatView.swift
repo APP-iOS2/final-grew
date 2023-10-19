@@ -28,33 +28,16 @@ struct MainChatView: View {
             }
             Spacer()
         }
-        /*
-        .highPriorityGesture(
-            DragGesture(minimumDistance: 2, coordinateSpace: .local)
-                .onEnded { value in
-                    if (selectedFilter == .group) && (value.translation.width > 0) {
-                        withAnimation {
-                            selectedFilter = .personal
-                        }
-                    }
-                    else if (selectedFilter == .personal) && (value.translation.width < 0) {
-                        withAnimation {
-                            selectedFilter = .group
-                        }
-                    }
-                }
-        )
-         */
     }
     
     private var segmentBar: some View {
         HStack{
             ForEach(ChatSegment.allCases) { filter in
-                VStack {
+                VStack(spacing: 8) {
                     Text(filter.title)
                         .font(.subheadline)
                         .fontWeight(selectedFilter == filter ? .semibold : .regular)
-                    
+                        .padding(.top, 8)
                     if selectedFilter == filter {
                         Rectangle()
                             .foregroundColor(.Main)
@@ -66,6 +49,12 @@ struct MainChatView: View {
                             .frame(maxWidth: filterBarWidth, maxHeight: 1)
                     }
                 }
+                .contentShape(.rect)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(selectedFilter == filter ? Color.Main.opacity(0.1) : Color.Main.opacity(0.03))
+                        .scaleEffect(selectedFilter == filter ? 1 : 0.8)
+                )
                 .onTapGesture {
                     withAnimation(.interactiveSpring()) {
                         selectedFilter = filter
@@ -76,8 +65,3 @@ struct MainChatView: View {
     }
 }
 
-#Preview {
-    NavigationStack{
-        MainChatView()
-    }
-}
