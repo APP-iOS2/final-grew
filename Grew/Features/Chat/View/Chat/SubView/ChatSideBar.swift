@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatSideBar: View{
+struct ChatSideBar: View {
     @Binding var isMenuOpen: Bool
     @Binding var isExitButtonAlert: Bool
     var edges = UIApplication.shared.windows.first?.safeAreaInsets

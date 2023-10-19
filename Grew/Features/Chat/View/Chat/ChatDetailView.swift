@@ -32,7 +32,7 @@ struct ChatDetailView: View {
             // 채팅
             ChatMessageListView(
                 chatRoom: chatRoom,
-                targetUserInfos: targetUserInfos, 
+                targetUserInfos: targetUserInfos,
                 groupDetailConfig: $groupDetailConfig,
                 isMenuOpen: $isMenuOpen,
                 x: $x,
@@ -49,28 +49,25 @@ struct ChatDetailView: View {
                     ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
                         .background(Color(.systemBackground).ignoresSafeArea())
                         .shadow(radius: 0.5)
-                    //                    ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
-                    //                        .background(Color(.systemBackground).ignoresSafeArea())
-                    //                        .shadow(radius: 0.5)
-                    //                        .position(x: geometry.size.width / 2, y: geometry.size.height-30)
                 }
-
-                    //
+                
+                //
             })
             .zIndex(1)
             
             // 채팅 입력창
             
-//            .zIndex(2)
+            //            .zIndex(2)
             
             // 사이드 메뉴 바
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
-                //                    .zIndex(3)
+                    .zIndex(3)
                 ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert)
+                    .safeAreaPadding(.top, 50)
                     .offset(x: x)
                     .transition(isMenuOpen ? .move(edge: .trailing) : .identity)
-                    .navigationBarHidden(isMenuOpen ? true : false)
+                //                    .navigationBarHidden(isMenuOpen ? true : false)
                     .gesture(DragGesture().onChanged({ (value) in
                         withAnimation(.easeInOut){
                             if value.translation.width < 0 {
@@ -112,12 +109,12 @@ struct ChatDetailView: View {
         .sheet(item: $groupDetailConfig.sourceType, content: { sourceType in
             ChatImagePicker(image: $groupDetailConfig.selectedImage, sourceType: sourceType)
         })
-//        .task {
-//            let unreadMessageCount = await getUnReadCount()
-//            messageStore.addListener(chatRoomID: chatRoom.id)
-//            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
-//            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
-//        }
+        //        .task {
+        //            let unreadMessageCount = await getUnReadCount()
+        //            messageStore.addListener(chatRoomID: chatRoom.id)
+        //            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
+        //            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
+        //        }
         .onDisappear {
             Task {
                 //리스너 삭제

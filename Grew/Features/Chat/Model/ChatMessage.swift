@@ -44,7 +44,7 @@ extension ChatMessage {
     }
     
     var createdDateString: String {
-        DateService.shared.createDateFormat(createdDate)
+        DateService.shared.lastMessageFormat(createdDate)
     }
 }
 

@@ -23,6 +23,11 @@ struct ChatInputView: View {
                 Image(systemName: "plus")
             }
             TextMaster(text: $groupDetailConfig.chatText, isFocused: $isChatTextFieldFocused, maxLine: 5, fontSize: 15)
+                .padding(.horizontal, 10)
+                .overlay(
+                    Capsule()
+                        .stroke(isChatTextFieldFocused ? Color.grewMainColor : Color.gray, lineWidth: 1)
+                )
             //            TextField("메세지 보내기", text: $groupDetailConfig.chatText)
             //                .focused($isChatTextFieldFocused)
             Button {

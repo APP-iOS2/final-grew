@@ -48,7 +48,7 @@ struct TextMaster: View {
             becomeFirstResponder: becomeFirstResponder)
         .frame(height: dynamicHeight)
         .focused(isFocused)
-        .border(isFocused.wrappedValue ? Color.grewMainColor : Color.gray, width: 1)
+//        .border(isFocused.wrappedValue ? Color.grewMainColor : Color.gray, width: 1)
     }
 }
 

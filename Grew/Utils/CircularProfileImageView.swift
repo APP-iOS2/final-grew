@@ -53,6 +53,7 @@ struct CircularProfileImageView: View {
                 .clipShape(Circle())
         } else {
             Image(systemName: "person.crop.circle")
+                .opacity(0.5)
                 .font(.system(size: imagesize.size.width))
         }
     }
