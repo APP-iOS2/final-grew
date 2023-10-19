@@ -31,6 +31,28 @@ struct TextFieldErrorModifier: ViewModifier {
     }
 }
 
+struct RectangleModifier: ViewModifier {
+    @Binding var isError: Bool
+    
+    private var textFieldStrokeColor: Color {
+     
+        return isError ? Color(hexCode: "F05650") : Color(hexCode: "f2f2f2")
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(lineWidth: 2)
+                    .stroke(textFieldStrokeColor)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(hexCode: "f2f2f2"))
+                    )
+            )
+    }
+}
+
 struct ErrorText: View {
     var errorMessage: String
     var body: some View {
@@ -42,4 +64,3 @@ struct ErrorText: View {
         }
     }
 }
-

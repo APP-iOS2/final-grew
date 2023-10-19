@@ -11,7 +11,7 @@ import Foundation
 import SwiftUI
 
 struct ScheduleNameField: View {
-    @Binding var isWrongScheduleName: Bool
+    @Binding var isScheduleNameError: Bool
     @Binding var scheduleName: String
     @FocusState var isTextFieldFocused: Bool
     
@@ -23,22 +23,22 @@ struct ScheduleNameField: View {
                     .padding(12)
                     .cornerRadius(8)
                     .focused($isTextFieldFocused)
-                    .modifier(TextFieldErrorModifier(isError: $isWrongScheduleName, isTextFieldFocused: _isTextFieldFocused))
+                    .modifier(TextFieldErrorModifier(isError: $isScheduleNameError, isTextFieldFocused: _isTextFieldFocused))
                     .onChange(of: isTextFieldFocused) { focused in
                         if !focused {
                             withAnimation(.easeIn){
                                 if(scheduleName.count < 5){
-                                    isWrongScheduleName = true
+                                    isScheduleNameError = true
                                 }else{
-                                    isWrongScheduleName = false
+                                    isScheduleNameError = false
                                 }
                             }
                         }else {
-                            isWrongScheduleName = false
+                            isScheduleNameError = false
                         }
                     }
                 
-                if isTextFieldFocused {
+                if isTextFieldFocused && !isScheduleNameError {
                     HStack{
                         Spacer()
                         Button {
@@ -51,7 +51,7 @@ struct ScheduleNameField: View {
                     }
                 }
             }
-            if isWrongScheduleName {
+            if isScheduleNameError {
                 ErrorText(errorMessage: "5자 이상 입력해주세요.")
             }
         }.padding(1)
@@ -61,8 +61,8 @@ struct ScheduleNameField: View {
 }
 
 struct GuestNumField: View {
-    @Binding var isWrongGuestNum: Bool
-    @State private var guestNumErrorMessage: String = ""
+    @Binding var isGuestNumError: Bool
+    @State private var guestNumErrorMessage: String = "정원을 입력해주세요."
     @Binding var maximumMenbers: String
     @FocusState var isTextFieldFocused: Bool
     let meximumGrewMembers: Int = 20 //임시 그루 최대 인원
@@ -84,11 +84,11 @@ struct GuestNumField: View {
                             if !focused {
                                 guestErrorCheck()
                             }else {
-                                isWrongGuestNum = false
+                                isGuestNumError = false
                             }
                         }
-                        .modifier(TextFieldErrorModifier(isError: $isWrongGuestNum, isTextFieldFocused: _isTextFieldFocused))
-                    if isTextFieldFocused {
+                        .modifier(TextFieldErrorModifier(isError: $isGuestNumError, isTextFieldFocused: _isTextFieldFocused))
+                    if isTextFieldFocused && !isGuestNumError {
                         HStack{
                             Spacer()
                             Button {
@@ -103,27 +103,27 @@ struct GuestNumField: View {
                 }
             }.padding(.top, 7)
             
-            if isWrongGuestNum {
+            if isGuestNumError {
                 ErrorText(errorMessage: guestNumErrorMessage)
             }
         }.padding(1)
     }
     
-    func guestErrorCheck() {
+    public func guestErrorCheck() {
         withAnimation(.easeIn){
             if let intValue = Int(maximumMenbers) {
                 if intValue > meximumGrewMembers {
-                    isWrongGuestNum = true
+                    isGuestNumError = true
                     guestNumErrorMessage = "그룹 인원보다 많습니다."
                 } else if intValue < 2 {
-                    isWrongGuestNum = true
+                    isGuestNumError = true
                     guestNumErrorMessage = "2명 이상 입력하세요."
                 } else {
-                    isWrongGuestNum = false
-                    guestNumErrorMessage = ""
+                    isGuestNumError = false
+                    guestNumErrorMessage = "정원을 입력해주세요."
                 }
             } else {
-                isWrongGuestNum = true
+                isGuestNumError = true
                 if maximumMenbers.isEmpty{
                     guestNumErrorMessage = "숫자를 입력해주세요."
                 }

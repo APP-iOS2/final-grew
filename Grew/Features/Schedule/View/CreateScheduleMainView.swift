@@ -7,10 +7,6 @@
 
 // TODO
 // 참가비 콤마 추가
-// 오류시 빨간박스 처리
-// 데이터 잘 입력 돼있는지 어케처리할거야????????????????대체???????????????
-// 뷰 거지같다 정. 말.
-
 
 import SwiftUI
 
@@ -30,14 +26,6 @@ struct CreateScheduleMainView: View {
     @State private var showingWebSheet: Bool = false
     @State private var showingFinishAlert: Bool = false
     
-    @State private var isWrongScheduleName: Bool = false
-    @State private var isEmptyFeeError: Bool = false
-    @State private var isEmptyLocationError: Bool = false
-    @State private var isWrongGuestNum: Bool = false
-    
-    @State private var hasFee: Bool = false
-    @State private var hasLocation: Bool = false
-    
     @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
@@ -45,18 +33,18 @@ struct CreateScheduleMainView: View {
             ScrollView{
                 VStack{
                     // 일정 이름
-                    ScheduleNameField(isWrongScheduleName: $isWrongScheduleName, scheduleName: $scheduleName)
+                    ScheduleNameField(isScheduleNameError: $isScheduleNameError, scheduleName: $scheduleName)
                     
                     // 날짜, 시간
                     ScheduleDatePicker(titleName: "날짜", isDatePickerVisible: $isDatePickerVisible, date: $date)
                     ScheduleDatePicker(titleName: "시간", isDatePickerVisible: $isDatePickerVisible, date: $date)
                     
                     // 정원
-                    GuestNumField(isWrongGuestNum: $isWrongGuestNum, maximumMenbers: $maximumMenbers)
+                    GuestNumField(isGuestNumError: $isGuestNumError, maximumMenbers: $maximumMenbers)
                     
                     // 선택 메뉴
-                    ScheduleOptionMenu(menuName: "참가비", option: $fee, isEmptyOptionError: $isEmptyFeeError, hasOption: $hasFee, isShowingWebSheet: $showingWebSheet)
-                    ScheduleOptionMenu(menuName: "위치", option: $location, isEmptyOptionError: $isEmptyLocationError, hasOption: $hasLocation, isShowingWebSheet: $showingWebSheet )
+                    ScheduleOptionMenu(menuName: "참가비", option: $fee, isOptionError: $isFeeError, hasOption: $hasFee, isShowingWebSheet: $showingWebSheet)
+                    ScheduleOptionMenu(menuName: "위치", option: $location, isOptionError: $isLocationError, hasOption: $hasLocation, isShowingWebSheet: $showingWebSheet )
                     
                     // 배너 색상 선택
                     ScheduleColorPicker(colorPick: $colorPick)
@@ -87,7 +75,7 @@ struct CreateScheduleMainView: View {
             // alert
             if showingFinishAlert {
                 Color.clear
-                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
+                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: createSchedule))
             }
         }
         .sheet(isPresented: $showingWebSheet, content: {
@@ -117,26 +105,57 @@ struct CreateScheduleMainView: View {
         }
     }
     
-    //그냥 에러메세지가 있으면 오류, 없으면 입력 완료. 오류검사는 메인뷰에서.
     
+    @State private var isScheduleNameError: Bool = false
+    @State private var isFeeError: Bool = false
+    @State private var isLocationError: Bool = false
+    @State private var isGuestNumError: Bool = false
+    
+    @State private var hasFee: Bool = false
+    @State private var hasLocation: Bool = false
     
     func errorCheck() {
-        if scheduleName.isEmpty {
-            isWrongScheduleName = true
-            return
-        }
-        if maximumMenbers.isEmpty {
-            isWrongGuestNum = true
-            return
-        }
-        
         withAnimation(.easeOut){
+            if scheduleName.isEmpty {
+                isScheduleNameError = true
+                return
+            }
+            if maximumMenbers.isEmpty {
+                isGuestNumError = true
+                return
+            }
+            if fee.isEmpty && hasFee {
+                isFeeError = true
+                return
+            }
+            if location.isEmpty && hasLocation {
+                isLocationError = true
+                return
+            }
             showingFinishAlert.toggle()
         }
-        
     }
-    func finishCreate() {
-        
+    
+    func createSchedule() {
+        let id = UUID().uuidString
+        do{
+            let newSchedule = Schedule(
+                id: id,
+                gid: "웅",
+                scheduleName: scheduleName,
+                date: date,
+                maximumMember: Int(maximumMenbers) ?? 2,
+                participants: [],
+                fee: fee,
+                location: location,
+                latitude: latitude,
+                longitude: longitude,
+                color: colorPick
+            )
+            scheduleStore.addSchedule(newSchedule)
+        }catch let error {
+            print(error.localizedDescription)
+        }
     }
 }
 

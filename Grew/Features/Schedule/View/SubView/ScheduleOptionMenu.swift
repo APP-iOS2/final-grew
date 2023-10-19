@@ -12,10 +12,10 @@ struct ScheduleOptionMenu: View {
     
     var menuName: String
     @Binding var option: String
-    @Binding var isEmptyOptionError: Bool
+    @Binding var isOptionError: Bool
     @Binding var hasOption: Bool
     @Binding var isShowingWebSheet: Bool
-    @State var errorMessage: String = "입력해주세요."
+    @State var errorMessage: String = "참가비를 입력해주세요."
     
     @FocusState private var isTextFieldFocused: Bool
     
@@ -26,7 +26,7 @@ struct ScheduleOptionMenu: View {
                 Spacer()
                 
                 Button {
-                    isEmptyOptionError = false
+                    isOptionError = false
                     withAnimation(.easeIn){
                         hasOption = true
                     }
@@ -42,7 +42,7 @@ struct ScheduleOptionMenu: View {
                 Button {
                     withAnimation(.easeIn){
                         hasOption = false
-                        isEmptyOptionError = false
+                        isOptionError = false
                         option = ""
                         errorMessage = ""
                     }
@@ -67,23 +67,23 @@ struct ScheduleOptionMenu: View {
                            withAnimation(.easeIn){
                                if !focus {
                                    if (option.isEmpty){
-                                       isEmptyOptionError = true
+                                       isOptionError = true
                                        errorMessage = "참가비를 입력해주세요."
                                    }
                                    if let intValue = Int(option) {
-                                       isEmptyOptionError = false
+                                       isOptionError = false
                                    }else{
-                                       isEmptyOptionError = true
+                                       isOptionError = true
                                        errorMessage = "숫자만 입력해주세요."
                                    }
                                }else {
-                                   isEmptyOptionError = false
+                                   isOptionError = false
                                }
                            }
                        }
-                       .modifier(TextFieldErrorModifier(isError: $isEmptyOptionError, isTextFieldFocused: _isTextFieldFocused))
+                       .modifier(TextFieldErrorModifier(isError: $isOptionError, isTextFieldFocused: _isTextFieldFocused))
                    
-                   if isTextFieldFocused {
+                   if isTextFieldFocused && !isOptionError{
                        HStack{
                            Spacer()
                            Button {
@@ -96,7 +96,7 @@ struct ScheduleOptionMenu: View {
                        }
                    }
                }
-                if isEmptyOptionError {
+                if isOptionError {
                     ErrorText(errorMessage: errorMessage)
                 }
             }
@@ -109,15 +109,15 @@ struct ScheduleOptionMenu: View {
                         .foregroundColor(Color(hexCode: "f2f2f2"))
                         .onTapGesture {
                             isShowingWebSheet = true
-                            isEmptyOptionError = false
+                            isOptionError = false
                             print(isShowingWebSheet)
                         }
-                        .modifier(TextFieldErrorModifier(isError: $isEmptyOptionError))
+                        .modifier(RectangleModifier(isError: $isOptionError))
                         .padding(1)
                     Text("\(option)")
                         .padding(.leading, 15)
                 }
-                if isEmptyOptionError {
+                if isOptionError {
                     ErrorText(errorMessage: "위치를 선택해주세요.")
                 }
             }
@@ -146,5 +146,5 @@ extension Formatter {
 
 
 #Preview {
-    ScheduleOptionMenu(menuName: "위치", option: .constant(""), isEmptyOptionError: .constant(true), hasOption: .constant(true), isShowingWebSheet: .constant(false))
+    ScheduleOptionMenu(menuName: "위치", option: .constant(""), isOptionError: .constant(true), hasOption: .constant(true), isShowingWebSheet: .constant(false))
 }
