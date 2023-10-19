@@ -25,7 +25,7 @@ struct GrewApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
+            NavigationView {
                 LaunchView()
             }
             .environmentObject(chatStore)

@@ -27,7 +27,7 @@ struct ChatMessage: Identifiable, Codable {
     /// 사진 첨부(사진 보내기)
     var attachImageURL: String = ""
     /// 읽음 여부
-    var isRead: [String: Bool] = [:]
+//    var isRead: [String: Bool] = [:]
     /// 시스템 메시지 여부
     var isSystem: Bool = false
 //    /// 메시지 타입

@@ -14,14 +14,15 @@ struct ChatMessageListView: View {
     let chatRoom: ChatRoom
     let targetUserInfos: [User]
     
+    @Binding var groupDetailConfig: GroupDetailConfig
     @Binding var isMenuOpen: Bool
     @Binding var x: CGFloat
     @Binding var unreadMessageIndex: Int?
     
     var chatRoomName: String {
         // 바꿀것
-//        if let chatGrewInfo {
-//            return chatGrewInfo.title
+        //        if let chatGrewInfo {
+        //            return chatGrewInfo.title
         if let chatRoomName = chatRoom.chatRoomName {
             return chatRoomName
         } else {
@@ -36,18 +37,17 @@ struct ChatMessageListView: View {
     var body: some View {
         VStack {
             ScrollViewReader { proxy in
-                ScrollView { 
+                ScrollView {
                     ForEach(messageStore.messages.indices, id: \.self) { index in
-                        MessageBubbles(chatMessage: messageStore.messages[index], 
-                                       targetUserInfos: targetUserInfos)
+                        MessageBubbles(
+                            chatMessage: messageStore.messages[index],
+                            targetUserInfos: targetUserInfos)
                         .id(index == unreadMessageIndex ? "start" : "")
-                        
                     }
-                    //                        ForEach(chatStore.chatMessages) { chatMessage in
-                    //                            MessageBubbles(chatMessage: chatMessage, selectedBubble: chatMessage.bubbleOwner)
                     Text("")
                         .id("bottom")
                 }
+                //안 읽은 메시지 개수 확인해서 해당 뷰로 스크롤
                 .onChange(of: unreadMessageIndex) { state, newState in
                     DispatchQueue.main.async {
                         Task {
@@ -59,6 +59,10 @@ struct ChatMessageListView: View {
                         }
                     }
                 }
+                .onChange(of: groupDetailConfig.selectedImage) { state, newState in
+                    proxy.scrollTo("bottom", anchor: .bottomTrailing)
+                }
+                //새로운 메시지 추가 여부 (보내거나, 받거나) 확인하여 최하단의 뷰로 스크롤 진행
                 .onChange(of: messageStore.isMessageAdded) { state, newState in
                     if messageStore.isFetchMessageDone {
                         proxy.scrollTo("bottom", anchor: .bottomTrailing)
@@ -86,14 +90,6 @@ struct ChatMessageListView: View {
             }
             .navigationTitle(isMenuOpen ? "" : chatRoomName)
             .navigationBarBackButtonHidden(isMenuOpen ? true : false)
-            // 이거 쓰고 뷰 덮었을때 안밀려나는거 어케함 대체????????
-            /*
-             .safeAreaInset(edge: .bottom) {
-             ChatBar
-             .background(Color(.systemBackground).ignoresSafeArea())
-             .shadow(radius: 0.5)
-             }
-             */
         }
         .task {
             let unreadMessageCount = await getUnReadCount()

@@ -32,36 +32,36 @@ struct ChatDetailView: View {
             // 채팅
             ChatMessageListView(
                 chatRoom: chatRoom,
-                targetUserInfos: targetUserInfos,
+                targetUserInfos: targetUserInfos, 
+                groupDetailConfig: $groupDetailConfig,
                 isMenuOpen: $isMenuOpen,
                 x: $x,
                 unreadMessageIndex: $unreadMessageIndex
             )
-            .zIndex(1)
-            
-            // 채팅 입력창
-            GeometryReader { geometry in
+            .safeAreaInset(edge: .bottom, content: {
                 VStack {
-                    Spacer()
                     if groupDetailConfig.selectedImage != nil {
                         HStack {
+                            Text("이만큼 줄어들 예정입니다.")
                             Spacer()
                         }
                     }
-//                    ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
-//                        .background(Color(.systemBackground).ignoresSafeArea())
-//                        .shadow(radius: 0.5)
-//                        .position(x: geometry.size.width / 2, y: geometry.size.height-30)
-                }
-                .safeAreaInset(edge: .bottom) {
                     ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
                         .background(Color(.systemBackground).ignoresSafeArea())
                         .shadow(radius: 0.5)
-//                        .position(x: geometry.size.width / 2, y: geometry.size.height-30)
+                    //                    ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
+                    //                        .background(Color(.systemBackground).ignoresSafeArea())
+                    //                        .shadow(radius: 0.5)
+                    //                        .position(x: geometry.size.width / 2, y: geometry.size.height-30)
                 }
-                
-            }
-            .zIndex(2)
+
+                    //
+            })
+            .zIndex(1)
+            
+            // 채팅 입력창
+            
+//            .zIndex(2)
             
             // 사이드 메뉴 바
             if isMenuOpen {
@@ -112,17 +112,37 @@ struct ChatDetailView: View {
         .sheet(item: $groupDetailConfig.sourceType, content: { sourceType in
             ChatImagePicker(image: $groupDetailConfig.selectedImage, sourceType: sourceType)
         })
-        .task {
-            let unreadMessageCount = await getUnReadCount()
-            messageStore.addListener(chatRoomID: chatRoom.id)
-            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
-            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
+//        .task {
+//            let unreadMessageCount = await getUnReadCount()
+//            messageStore.addListener(chatRoomID: chatRoom.id)
+//            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
+//            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
+//        }
+        .onDisappear {
+            Task {
+                //리스너 삭제
+                messageStore.removeListener()
+            }
         }
     }
     
+    // 안 읽은 메시지 개수 구하기
     private func getUnReadCount() async -> Int {
         let dict = await chatStore.getUnreadMessageDictionary(chatRoomID: chatRoom.id)
         let unreadCount = dict?[UserStore.shared.currentUser!.id! ] ?? 0
         return unreadCount
     }
+    
+    // 읽지 않은 메시지 개수 0으로 초기화 + 업데이트 (채팅방 입장 시, 퇴장 시)
+    private func clearUnreadMesageCount() async {
+        var newChat: ChatRoom = chatRoom
+        
+        var newDict: [String : Int] = chatRoom.unreadMessageCount
+        newDict[UserStore.shared.currentUser!.id!] = 0
+        newChat.unreadMessageCount = newDict
+        
+        await chatStore.updateChatRoom(chatRoom)
+    }
+    
+    
 }

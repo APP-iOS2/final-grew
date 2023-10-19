@@ -129,6 +129,8 @@
 		319757742ADFAB5A00696FF9 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757732ADFAB5A00696FF9 /* CategoryButtonView.swift */; };
 		319757782ADFB8B500696FF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 319757772ADFB8B500696FF9 /* GoogleService-Info.plist */; };
 		3197577E2AE16DD100696FF9 /* TextMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197577D2AE16DD100696FF9 /* TextMaster.swift */; };
+		319757802AE1853A00696FF9 /* Storage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */; };
+		319757822AE187AB00696FF9 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757812AE187AB00696FF9 /* ImageUploader.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
 		3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */; };
@@ -269,6 +271,8 @@
 		319757732ADFAB5A00696FF9 /* CategoryButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		319757772ADFB8B500696FF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3197577D2AE16DD100696FF9 /* TextMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMaster.swift; sourceTree = "<group>"; };
+		3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage+Extensions.swift"; sourceTree = "<group>"; };
+		319757812AE187AB00696FF9 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
 		3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
@@ -552,6 +556,7 @@
 				312E98DB2ACD2EAA00E38626 /* UIImage+Extensions.swift */,
 				312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */,
 				CE467ADA2AD530CA00143213 /* View+Extensions.swift */,
+				3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -606,6 +611,7 @@
 				311097AF2AD4188E000D85AD /* DateService.swift */,
 				311097AD2AD4188E000D85AD /* FirebaseManager.swift */,
 				311097AE2AD4188E000D85AD /* FirestoreService.swift */,
+				319757812AE187AB00696FF9 /* ImageUploader.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1094,6 +1100,7 @@
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
 				319757542ADEF36600696FF9 /* MessageBubbles.swift in Sources */,
 				21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */,
+				319757802AE1853A00696FF9 /* Storage+Extensions.swift in Sources */,
 				3197575C2ADEF38700696FF9 /* GroupDetailConfig.swift in Sources */,
 				21F32A782ADED63200B3E1C5 /* EnrollGTView.swift in Sources */,
 				9989DA982ADF686900AC4917 /* NewScheduleListView.swift in Sources */,
@@ -1128,6 +1135,7 @@
 				2163156E2ADFA6B100208CB4 /* OpensourceLicenseView.swift in Sources */,
 				64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */,
 				311097B22AD4188E000D85AD /* DateService.swift in Sources */,
+				319757822AE187AB00696FF9 /* ImageUploader.swift in Sources */,
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
 				311097612AD417FD000D85AD /* Bubble.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,

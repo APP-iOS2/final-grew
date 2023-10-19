@@ -34,7 +34,7 @@ struct MessageBubbles: View {
     private var myBubble: some View {
         HStack {
             Spacer()
-            Text("8시 8분")
+            Text(chatMessage.createdDateString)
                 .font(.caption2)
                 .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
                 .foregroundColor(.gray)
@@ -51,7 +51,7 @@ struct MessageBubbles: View {
         HStack{
             CircularProfileImageView(chatMessage: chatMessage, url: nil, imagesize: .bubble)
             VStack(alignment: .leading){
-                Text("정금쪽")
+                Text(chatMessage.userName)
                     .font(.caption)
                     .bold()
                     .padding(EdgeInsets(top: 0, leading: 3, bottom: -4, trailing: 0))
