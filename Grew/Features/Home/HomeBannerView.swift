@@ -23,13 +23,13 @@ extension CaseIterable where Self: Equatable{
 }
 
 enum BannerContentType: CaseIterable, Identifiable {
-    case first,
-    second,
-    third,
-    fouth,
-    fifth,
-    sixth,
-    seventh
+    case first
+    case second
+    case third
+    case fouth
+    case fifth
+    case sixth
+    case seventh
     
     var id: Self { self }
     
@@ -86,25 +86,21 @@ enum BannerContentType: CaseIterable, Identifiable {
 struct PagingBannerView: View {
     // 현재 선택된 아이템은 첫번째 인덱스
     @State var selectedItem: BannerContentType = .first
-    
     @StateObject var vm = PagingBannerViewModel()
     
     var body: some View {
         
         TabView(selection: $selectedItem) {
             ForEach(BannerContentType.allCases) { banner in
-                NavigationLink {
-                    banner.getView()
-                } label: {
-                    banner
-                        .getView()
-                        .tag(banner)
-                }
+                
+                banner
+                    .getView()
+                    .tag(banner)
                 
             }
         }
         /// 텝뷰를 페이지텝뷰로 스타일 변환
-        .tabViewStyle(PageTabViewStyle())
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         
         //            .frame(height: 200)
         /// 진행 되던 순서에서 내가 바꾼 현재의 순서로 수정함
