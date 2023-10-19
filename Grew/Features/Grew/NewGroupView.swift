@@ -17,6 +17,7 @@ struct NewGrewView: View {
     @State var isMaximumMembersValid = false
     @State var isFeeValid = false
     @State var isCategoryValid = false
+    @State var isSubCategoryValid = false
     @State var isLocationValid = false
     @State var isNeedFeeValid = false
     
@@ -44,7 +45,7 @@ struct NewGrewView: View {
                                 }
                             } label: {
                                 Image(systemName: "chevron.backward")
-                                    .font(.system(size: 32))
+                                    .font(.system(size: 25))
                                     .foregroundColor(.gray)
                             }
                         }
@@ -55,7 +56,7 @@ struct NewGrewView: View {
                                 dismiss()
                             } label: {
                                 Image(systemName: "xmark")
-                                    .font(.system(size: 32))
+                                    .font(.system(size: 25))
                                     .foregroundColor(.gray)
                             }
                         }
@@ -74,7 +75,7 @@ extension NewGrewView {
     var newGrewView: some View {
         VStack {
             if currentViewIndex == 1 {
-                GroupMainCategoryView(isCategoryValid: $isCategoryValid)
+                GroupMainCategoryView(isCategoryValid: $isCategoryValid, isSubCategoryValid: $isSubCategoryValid)
                     .onAppear(perform: {
                         progressBarValue = (100 / 5) * 1
                     })
@@ -103,7 +104,7 @@ extension NewGrewView {
             if currentViewIndex < 5 {
                 Button {
                     currentViewIndex += 1
-                    if currentViewIndex == 1 && isCategoryValid {
+                    if currentViewIndex == 1 && (isCategoryValid && isSubCategoryValid) {
                         currentViewIndex += 1
                     } else if currentViewIndex == 2 && (isNameValid || !viewModel.isOnline) && isLocationValid {
                         currentViewIndex += 1
@@ -121,6 +122,8 @@ extension NewGrewView {
                             description: "",
                             isOnline: viewModel.isOnline,
                             location: viewModel.isOnline ? "" : viewModel.location,
+                            latitude: viewModel.latitude,
+                            longitude: viewModel.longitude,
                             gender: viewModel.gender,
                             minimumAge: viewModel.minimumAge,
                             maximumAge: viewModel.maximumAge,
@@ -136,13 +139,13 @@ extension NewGrewView {
                             width: 343,
                             height: 60,
                             buttonColor:
-                                currentViewIndex == 1 && !isCategoryValid ||
+                                currentViewIndex == 1 && (!isCategoryValid || !isSubCategoryValid) ||
                             currentViewIndex == 2 && ((!isNameValid && viewModel.isOnline) || (!viewModel.isOnline && !isLocationValid)) ||
                             currentViewIndex == 3 && !isMaximumMembersValid && !isFeeValid ||
                             currentViewIndex == 4 && ((!isFeeValid && viewModel.isNeedFee) || (!viewModel.isNeedFee && isNeedFeeValid)) ? .LightGray2 : .Main,
                             font: .b1_B, fontColor: .white, cornerRadius: 8)
                 }.disabled(
-                    currentViewIndex == 1 && !isCategoryValid ||
+                    currentViewIndex == 1 && (!isCategoryValid || !isSubCategoryValid) ||
                     currentViewIndex == 2 && !isNameValid ||
                     currentViewIndex == 3 && !isMaximumMembersValid ||
                     currentViewIndex == 4 && !isFeeValid && viewModel.isNeedFee)

@@ -10,7 +10,7 @@ import SwiftUI
 struct AuthSignEmailView: View {
     
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var registerVM: RegisterVM
+    @EnvironmentObject var viewModel: RegisterViewModel
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isWrongText: Bool = false
@@ -39,7 +39,7 @@ struct AuthSignEmailView: View {
                 VStack(alignment: .leading) {
                     Text("이메일(아이디)")
                         .font(Font.b2_L)
-                    GrewTextField(text: $email, isWrongText: $isWrongText, isTextfieldDisabled: $isTextfieldDisabled, placeholderText: "이메일", isSearchBar: false)
+                    GrewTextField(text: $email, isWrongText: isWrongText, isTextfieldDisabled: isTextfieldDisabled, placeholderText: "이메일", isSearchBar: false)
                     
                     Text("비밀번호")
                         .font(Font.b2_L)
@@ -62,7 +62,7 @@ struct AuthSignEmailView: View {
                     
                     NavigationLink {
                         AuthRegisterEmailView()
-                            .environmentObject(registerVM)
+                            .environmentObject(viewModel)
                             .navigationBarBackButtonHidden()
                     } label: {
                         Text("회원가입")
@@ -83,5 +83,5 @@ struct AuthSignEmailView: View {
 
 #Preview {
     AuthSignEmailView()
-        .environmentObject(RegisterVM())
+        .environmentObject(RegisterViewModel())
 }

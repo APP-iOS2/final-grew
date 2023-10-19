@@ -30,6 +30,18 @@ class AuthStore: ObservableObject {
         case signIn
     }
     
+    // MARK: - 통합 로그아웃 로직
+    func signOut() {
+        let signtype = UserDefaults.standard.string(forKey: "SignType")
+        
+        if signtype == "email" {
+            emailAuthSignOut()
+        } else if signtype == "kakao" {
+            kakaoSignOut()
+        } else if signtype == "facebook" {
+            facebookSignOut()
+        }
+    }
     
     // MARK: - email 로그인
     // 회원가입
@@ -229,6 +241,7 @@ class AuthStore: ObservableObject {
         }
     }
     
+    // 회원가입
     func facebookSignUp(withEmail email: String, password: String, nickName: String, gender: String, dob: String) {
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
         Auth.auth().signIn(with: credential) {[unowned self] result, error in
@@ -259,18 +272,6 @@ class AuthStore: ObservableObject {
             UserDefaults.standard.removeObject(forKey: "SignType")
         } catch {
             print("Facebook signout error \(error.localizedDescription)")
-        }
-    }
-    
-    func signOut() {
-        let signtype = UserDefaults.standard.string(forKey: "SignType")
-        
-        if signtype == "email" {
-            emailAuthSignOut()
-        } else if signtype == "kakao" {
-            kakaoSignOut()
-        } else if signtype == "facebook" {
-            facebookSignOut()
         }
     }
     

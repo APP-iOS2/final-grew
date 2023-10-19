@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthStartView: View {
     
-    @StateObject var registerVM = RegisterVM()
+    @StateObject var viewModel = RegisterViewModel()
     @State private var navigate: Bool = false
     
     var body: some View {
@@ -30,7 +30,7 @@ struct AuthStartView: View {
                 Group {
                     NavigationLink {
                         AuthSignEmailView()
-                            .environmentObject(registerVM)
+                            .environmentObject(viewModel)
                             .navigationBarBackButtonHidden()
                     } label: {
                         Text("이메일로 로그인 하기")
@@ -41,7 +41,7 @@ struct AuthStartView: View {
                         AuthStore.shared.facebookSignIn {
                             if AuthStore.shared.signState == .signUp {
                                 navigate = true
-                                registerVM.facebookloadData()
+                                viewModel.facebookloadData()
                             }
                         }
                     } label: {
@@ -53,7 +53,7 @@ struct AuthStartView: View {
                         AuthStore.shared.kakaoSignIn {
                             if AuthStore.shared.signState == .signUp {
                                 navigate = true
-                                registerVM.kakaoloadData()
+                                viewModel.kakaoloadData()
                             }
                         }
                     } label: {
@@ -90,7 +90,7 @@ struct AuthStartView: View {
             }
             .navigationDestination(isPresented: $navigate) {
                 AuthRegisterEmailView()
-                    .environmentObject(registerVM)
+                    .environmentObject(viewModel)
                     .navigationBarBackButtonHidden()
             }
             .padding()

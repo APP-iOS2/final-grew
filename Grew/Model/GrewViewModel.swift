@@ -20,6 +20,8 @@ class GrewViewModel: ObservableObject {
     @Published var meetingTitle = ""
     @Published var isOnline = true
     @Published var location = ""
+    @Published var latitude = "" // 위도
+    @Published var longitude = ""  // 경도
     @Published var gender: Gender = .any
     @Published var minimumAge = 20
     @Published var maximumAge = 20
@@ -36,6 +38,26 @@ class GrewViewModel: ObservableObject {
             fetchGrew()
         } catch {
             print("Error: \(error)")
+        }
+    }
+    
+    func updateGrew(_ grew: Grew) {
+        db.collection("grews").whereField("id", isEqualTo: grew.id).getDocuments { snapshot, error in
+            if let error {
+                print("Error: \(error)")
+            } else if let snapshot {
+                for document in snapshot.documents {
+                    self.db.collection("grews").document(document.documentID).updateData([
+                        "currentMembers" : grew.currentMembers
+                    ]) { error in
+                        if let error {
+                            print("Grew Update Error: \(error)")
+                        } else {
+                            self.fetchGrew()
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -151,6 +173,13 @@ class GrewViewModel: ObservableObject {
         let tempList = grewList.sorted(by: { $0.createdAt > $1.createdAt})
         
         return tempList
+    }
+    
+    func addGrewMember(grewId: String, userId: String) {
+        if var grew = grewList.first(where: { $0.id == grewId }) {
+            grew.currentMembers.append(userId)
+            updateGrew(grew)
+        }
     }
 }
 
