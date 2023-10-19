@@ -43,6 +43,7 @@ struct ScheduleCellView: View {
                 }//: VStack
                 .font(.c1_B)
             }//: HStack
+            .foregroundStyle(.black)
             .padding(EdgeInsets(top: 8, leading: 16, bottom: 16, trailing: 16))
         }//: VStack
         .background(Color.white)
