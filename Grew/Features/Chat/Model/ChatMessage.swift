@@ -13,7 +13,7 @@ struct ChatMessage: Identifiable, Codable {
     /// 채팅 생성 ID
     var id: String = UUID().uuidString
     /// 채팅 내용
-    let text: String
+    var text: String
     /// 작성자
     let uid: String
     /// 작성일, 시간
