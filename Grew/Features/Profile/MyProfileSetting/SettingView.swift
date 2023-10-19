@@ -35,10 +35,10 @@ struct SettingView: View {
                             
                             NavigationLink {
                                 switch gtViewName {
-                                case .enrollGTMemberView:
-                                    EnrollGTMemberView()
-                                case .enrollGTView:
-                                    EnrollGTView()
+                                case .stumpIntroductionView:
+                                    StumpIntroductionView()
+                                case .stumpRegisterView:
+                                    StumpRegisterView()
                                 case .showGTView:
                                     ShowGTView()
                                 }
@@ -52,7 +52,7 @@ struct SettingView: View {
                     // TODO: 로그인 연동하기
                     Section(header: Text("계정 설정")){
                         Button {
-                            AuthStore.shared.emailAuthSignOut()
+                            AuthStore.shared.signOut()
                         } label: {
                             HStack {
                                 Text("로그아웃")
@@ -110,14 +110,14 @@ struct SettingView: View {
     }
     
     enum GTViewsName: String, CaseIterable {
-        case enrollGTMemberView = "그루터기 멤버 신청하기"
-        case enrollGTView = "그루터기 등록하기"
+        case stumpIntroductionView = "그루터기 멤버 신청하기"
+        case stumpRegisterView = "그루터기 등록하기"
         case showGTView = "그루터기 보기"
         
         static var allCases: [GTViewsName] {
             return [
-                .enrollGTMemberView,
-                .enrollGTView,
+                .stumpIntroductionView,
+                .stumpRegisterView,
                 .showGTView,
             ]
         }

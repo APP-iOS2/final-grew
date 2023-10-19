@@ -11,9 +11,13 @@ import SwiftUI
 struct ScheduleOptionMenu: View {
     
     var menuName: String
-    @State private var fee: String = ""
-    @State private var hasOption: Bool = false
-    @Binding var showingWebSheet: Bool
+    @Binding var option: String
+    @Binding var isOptionError: Bool
+    @Binding var hasOption: Bool
+    @Binding var isShowingWebSheet: Bool
+    @State var errorMessage: String = "참가비를 입력해주세요."
+    
+    @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
         VStack(alignment: .leading){
@@ -22,14 +26,14 @@ struct ScheduleOptionMenu: View {
                 Spacer()
                 
                 Button {
+                    isOptionError = false
                     withAnimation(.easeIn){
                         hasOption = true
                     }
-                    
                 } label: {
                     Text("있음")
-                        .frame(width:100,height:35)
-                        .background(hasOption ? Color.orange : Color("customGray"))
+                        .frame(width: 100, height: 32)
+                        .background(hasOption ? Color(hexCode: "FF7E00") : Color(hexCode: "f2f2f2"))
                         .foregroundColor(hasOption ? .white : .gray)
                         .bold()
                         .cornerRadius(8)
@@ -38,57 +42,109 @@ struct ScheduleOptionMenu: View {
                 Button {
                     withAnimation(.easeIn){
                         hasOption = false
+                        isOptionError = false
+                        option = ""
+                        errorMessage = ""
                     }
                 } label: {
                     Text("없음")
-                        .frame(width:100, height:35)
-                        .background(!hasOption ? Color.orange : Color("customGray"))
+                        .frame(width: 100, height: 32)
+                        .background(!hasOption ? Color(hexCode: "FF7E00") : Color(hexCode: "f2f2f2"))
                         .foregroundColor(!hasOption ? .white : .gray)
                         .bold()
                         .cornerRadius(8)
                 }
             }
             
-            if(hasOption && menuName == "참가비") {
-                TextField(menuName, text: $fee)
-                    .keyboardType(.numberPad)
-                    .padding(12)
-                    .background(Color("customGray"))
-                    .cornerRadius(8)
-                    .onChange(of: fee){ newFee in
-                        fee = formatFee(newFee)
-                    }
+           if(hasOption && menuName == "참가비") {
+               ZStack{
+                   TextField(menuName, text: $option)
+                       .keyboardType(.decimalPad)
+                       .padding(12)
+                       .cornerRadius(8)
+                       .focused($isTextFieldFocused)
+                       .onChange(of: isTextFieldFocused){ focus in
+                           withAnimation(.easeIn){
+                               if !focus {
+                                   if (option.isEmpty){
+                                       isOptionError = true
+                                       errorMessage = "참가비를 입력해주세요."
+                                   }
+                                   if let intValue = Int(option) {
+                                       isOptionError = false
+                                   }else{
+                                       isOptionError = true
+                                       errorMessage = "숫자만 입력해주세요."
+                                   }
+                               }else {
+                                   isOptionError = false
+                               }
+                           }
+                       }
+                       .modifier(TextFieldErrorModifier(isError: $isOptionError, isTextFieldFocused: _isTextFieldFocused))
+                   
+                   if isTextFieldFocused && !isOptionError{
+                       HStack{
+                           Spacer()
+                           Button {
+                               option = ""
+                           } label: {
+                               Image(systemName: "xmark.circle.fill")
+                                   .foregroundColor(.Main)
+                                   .padding()
+                           }
+                       }
+                   }
+               }
+                if isOptionError {
+                    ErrorText(errorMessage: errorMessage)
+                }
             }
-            else if(hasOption && menuName == "위치") {
+            
+           else if(hasOption && menuName == "위치") {
                 ZStack(alignment: .leading){
                     Rectangle()
                         .frame(height: 45)
                         .cornerRadius(8)
-                        .foregroundColor(Color("customGray"))
+                        .foregroundColor(Color(hexCode: "f2f2f2"))
                         .onTapGesture {
-                            showingWebSheet = true
+                            isShowingWebSheet = true
+                            isOptionError = false
+                            print(isShowingWebSheet)
                         }
+                        .modifier(RectangleModifier(isError: $isOptionError))
+                        .padding(1)
+                    Text("\(option)")
+                        .padding(.leading, 15)
+                }
+                if isOptionError {
+                    ErrorText(errorMessage: "위치를 선택해주세요.")
                 }
             }
-            
-            
         }.padding(.top, 15)
     }
     
     func formatFee(_ value: String) -> String {
         let formatter = NumberFormatter()
+        formatter.groupingSeparator = ","
         formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 0
-        
-        if let number = formatter.number(from: value), let formattedString = formatter.string(from: number) {
-            return formattedString
+        if let number = formatter.number(from: value) {
+            return formatter.string(from: number) ?? ""
         }
         return value
     }
 }
 
+extension Formatter {
+    static let withSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = " "
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+}
 
 
 #Preview {
-    ScheduleOptionMenu(menuName: "참가비", showingWebSheet: .constant(false))
+    ScheduleOptionMenu(menuName: "위치", option: .constant(""), isOptionError: .constant(true), hasOption: .constant(true), isShowingWebSheet: .constant(false))
 }

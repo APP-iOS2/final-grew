@@ -25,10 +25,16 @@ enum GrewDetailFilter: Int, CaseIterable, Identifiable {
 }
 
 struct GrewDetailView: View {
+    @EnvironmentObject var grewViewModel: GrewViewModel
     @State private var selectedFilter: GrewDetailFilter = .introduction
+    @State private var isShowingJoinConfirmAlert: Bool = false
+    @State private var isShowingJoinFinishAlert: Bool = false
+    
     @Namespace private var animation
     
     private let headerHeight: CGFloat = 180
+    
+    let grew: Grew
     
     var body: some View {
         VStack {
@@ -39,24 +45,47 @@ struct GrewDetailView: View {
                     Section {
                         switch selectedFilter {
                         case .introduction:
-                            GrewIntroductionView()
+                            GrewIntroductionView(grew: grew)
                         case .schedule:
-                            Text("일정 뷰")
+                            ScheduleListView()
                         case .groot:
-                            Text("그루트 뷰")
+                            GrootListView()
                         }
                     } header: {
                         makeHeaderFilterView()
                     }
                 }
-                
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     makeToolbarButtons()
                 }
             }
-            
+            .grewAlert(
+                isPresented: $isShowingJoinFinishAlert,
+                title: "\(grew.title)에 참여 완료!",
+                secondButtonTitle: nil,
+                secondButtonColor: nil,
+                secondButtonAction: nil,
+                buttonTitle: "확인",
+                buttonColor: .Main,
+                action: { }
+            )
+            .grewAlert(
+                isPresented: $isShowingJoinConfirmAlert,
+                title: "\(grew.title)에 참여하시겠습니까?",
+                secondButtonTitle: "취소",
+                secondButtonColor: .red,
+                secondButtonAction: { },
+                buttonTitle: "확인",
+                buttonColor: .Main,
+                action: {
+                    if let userId = UserStore.shared.currentUser?.id {
+                        grewViewModel.addGrewMember(grewId: grew.id, userId: userId)
+                    }
+                    isShowingJoinFinishAlert = true
+                }
+            )
             Divider()
                 .padding(.bottom)
             
@@ -71,7 +100,7 @@ extension GrewDetailView {
     /// 헤더 이미지뷰
     private func makeHeaderImageView() -> some View {
         GeometryReader { geometry in
-            AsyncImage(url: URL(string: "https://images.unsplash.com/photo-1696757020926-d627b01c41cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=900&q=60")) { image in
+            AsyncImage(url: URL(string: grew.imageURL)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -129,13 +158,8 @@ extension GrewDetailView {
     /// 툴바 버튼
     private func makeToolbarButtons() -> some View {
         HStack {
-            Button {
-                
-            } label: {
-                Image(systemName: "square.and.arrow.up")
-                    .foregroundStyle(.black)
-            }
-            
+            // 모임장: 모임 삭제(alert), user 구조체
+            // 모임원: 탈퇴하기
             Button {
                 
             } label: {
@@ -157,12 +181,39 @@ extension GrewDetailView {
             }
             .frame(width: 27, height: 24.19)
             
-            Button {
-                
-            } label: {
-                Text("참여하기")
+            if let currentUserId = UserStore.shared.currentUser?.id {
+                if grew.currentMembers.contains(currentUserId) {
+                    Button {
+                        
+                    } label: {
+                        Text("채팅 참여하기")
+                            .frame(width: 260, height: 44)
+                    }
+                    .grewButtonModifier(
+                        width: 260,
+                        height: 44,
+                        buttonColor: .Main,
+                        font: .b1_B,
+                        fontColor: .white,
+                        cornerRadius: 8
+                    )
+                } else {
+                    Button {
+                        isShowingJoinConfirmAlert = true
+                    } label: {
+                        Text("참여하기")
+                            .frame(width: 260, height: 44)
+                    }
+                    .grewButtonModifier(
+                        width: 260,
+                        height: 44,
+                        buttonColor: .Main,
+                        font: .b1_B,
+                        fontColor: .white,
+                        cornerRadius: 8
+                    )
+                }
             }
-            .grewButtonModifier(width: 260, height: 44, buttonColor: .Main, font: .b1_B, fontColor: .white, cornerRadius: 8)
         }
         .padding(.horizontal)
     }
@@ -172,6 +223,27 @@ extension GrewDetailView {
 
 #Preview {
     NavigationStack {
-        GrewDetailView()
+        GrewDetailView(
+            grew: Grew(
+                id: "id",
+                categoryIndex: "게임/오락",
+                categorysubIndex: "보드게임",
+                title: "멋쟁이 보드게임",
+                description: "안녕하세요!\n보드게임을 잘 해야 한다 ❌\n보드게임을 좋아한다 🅾️ \n\n즐겁게 보드게임을 함께 할 친구들이 필요하다면,\n<멋쟁이 보드게임> 그루에 참여하세요!\n\n매주 수요일마다 모이는 정기 모임과\n자유롭게 모이는 번개 모임을 통해\n많은 즐거운 추억을 쌓을 수 있어요 ☺️\n\n",
+                imageURL: "https://images.unsplash.com/photo-1696757020926-d627b01c41cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=900&q=60",
+                isOnline: false,
+                location: "서울",
+                gender: .any,
+                minimumAge: 20,
+                maximumAge: 40,
+                maximumMembers: 8,
+                currentMembers: ["id1", "id2"],
+                isNeedFee: false,
+                fee: 0,
+                createdAt: Date.now,
+                heartTapped: 0
+            )
+        )
     }
+    .environmentObject(GrewViewModel())
 }

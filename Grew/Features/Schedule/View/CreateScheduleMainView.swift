@@ -7,110 +7,171 @@
 
 // TODO
 // 참가비 콤마 추가
-// 오류시 빨간박스 처리
-// safetyAreaInset 뒷부분 투명처리
-// 박스들 쩜 뚱뚱한가,,?
 
 import SwiftUI
 
 struct CreateScheduleMainView: View {
+    @ObservedObject var scheduleStore: ScheduleStore
     
     @State private var scheduleName: String = ""
-    @State private var guestNum: String = "2"
-    
-    @State private var isOpenForm: Bool = false
-    @State private var hasEntryFee: Bool = false
-    
     @State private var date = Date()
+    @State private var maximumMenbers: String = ""
+    @State private var fee: String = ""
+    @State private var location: String = ""
+    @State private var latitude: String = ""
+    @State private var longitude: String = ""
+    @State private var colorPick: String = ""
+
     @State private var isDatePickerVisible: Bool = false
-    
     @State private var showingWebSheet: Bool = false
- 
+    @State private var showingFinishAlert: Bool = false
+    
+    @FocusState private var isTextFieldFocused: Bool
+    
     var body: some View {
-        ZStack{
+        ZStack {
             ScrollView{
                 VStack{
-                    //일정 이름
-                    scheduleNameField
+                    // 일정 이름
+                    ScheduleNameField(isScheduleNameError: $isScheduleNameError, scheduleName: $scheduleName)
                     
-                    //날짜, 시간
+                    // 날짜, 시간
                     ScheduleDatePicker(titleName: "날짜", isDatePickerVisible: $isDatePickerVisible, date: $date)
                     ScheduleDatePicker(titleName: "시간", isDatePickerVisible: $isDatePickerVisible, date: $date)
                     
-                    //정원
-                    guestNumField
+                    // 정원
+                    GuestNumField(isGuestNumError: $isGuestNumError, maximumMenbers: $maximumMenbers)
                     
-                    //선택 메뉴
-                    ScheduleOptionMenu(menuName: "참가비", showingWebSheet: $showingWebSheet)
-                    ScheduleOptionMenu(menuName: "위치", showingWebSheet: $showingWebSheet)
+                    // 선택 메뉴
+                    ScheduleOptionMenu(menuName: "참가비", option: $fee, isOptionError: $isFeeError, hasOption: $hasFee, isShowingWebSheet: $showingWebSheet)
+                    ScheduleOptionMenu(menuName: "위치", option: $location, isOptionError: $isLocationError, hasOption: $hasLocation, isShowingWebSheet: $showingWebSheet )
                     
-                    //배너 색상 선택
-                    ScheduleColorPicker()
-                }
+                    // 배너 색상 선택
+                    ScheduleColorPicker(colorPick: $colorPick)
+                    
+                    
+                }.padding(EdgeInsets(top: 5, leading: 20, bottom: 20, trailing: 20))
             }.navigationTitle("일정 생성")
                 .navigationBarTitleDisplayMode(.inline)
+                .onAppear{
+                    scheduleStore.fetchSchedule()
+                }
                 .safeAreaInset(edge: .bottom) {
                     submitBtn
+                        .background(Color.white.opacity(0.8))
                 }
-                .background(Color.white.opacity(0.5))
-                .padding(EdgeInsets(top: 5, leading: 20, bottom: 20, trailing: 20))
-                //.disabled(isDatePickerVisible)
+                .disabled(isDatePickerVisible)
+                .onTapGesture {
+                    if isDatePickerVisible {
+                        isDatePickerVisible.toggle()
+                    }
+                }
             
+            // DatePicker
             if isDatePickerVisible {
                 DateForm(isDatePickerVisible: $isDatePickerVisible, date: $date)
             }
-        }.sheet(isPresented: $showingWebSheet) { //sheet로 사이트 열기
-//            KakaoPostWebView(siteURL: "")
-        }
-    }
- 
-    
-    /* 하위뷰 */
-    
-    // 일정 이름 필드
-    private var scheduleNameField: some View {
-        VStack(alignment: .leading){
-            Text("일정 이름").bold()
-            TextField("일정 이름", text: $scheduleName)
-                .padding(12)
-                .background(Color("customGray"))
-                .cornerRadius(8)
-        }
-    }
-
-    // 정원 필드
-    private var guestNumField: some View {
-        HStack{
-            Image(systemName: "person.2.fill")
-            Text("정원").padding(.trailing,15)
-            Spacer()
             
-            TextField("참가 인원", text: $guestNum)
-                .keyboardType(.numberPad)
-                .padding(12)
-                .background(Color("customGray"))
-                .cornerRadius(8)
+            // alert
+            if showingFinishAlert {
+                Color.clear
+                    .grewAlert(
+                        isPresented: $showingFinishAlert,
+                        title: "일정 생성 완료!",
+                        secondButtonTitle: nil,
+                        secondButtonColor: nil,
+                        secondButtonAction: nil,
+                        buttonTitle: "확인",
+                        buttonColor: Color.grewMainColor
+                    ) {
+//                        finishCreate()
+                    }
+//                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
+            }
+        }
+        .sheet(isPresented: $showingWebSheet, content: {
+            ZStack{
+                WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location, latitude: $latitude, longitude: $longitude)
+                /*if isLoading {
+                 ProgressView()
+                 }*/
+            }
+        })
+        .task{
+            print(showingWebSheet)
         }
     }
     
     // 일정 생성 버튼
     private var submitBtn: some View {
         Button {
-            
+            errorCheck()
         } label: {
             Text("일정 생성")
-                .frame(width:350, height: 45)
+                .frame(width: 350, height: 45)
                 .foregroundColor(.white)
-                .background(Color.green)
+                .background(Color.grewMainColor)
                 .cornerRadius(8)
                 .bold()
         }
     }
+    
+    
+    @State private var isScheduleNameError: Bool = false
+    @State private var isFeeError: Bool = false
+    @State private var isLocationError: Bool = false
+    @State private var isGuestNumError: Bool = false
+    
+    @State private var hasFee: Bool = false
+    @State private var hasLocation: Bool = false
+    
+    func errorCheck() {
+        withAnimation(.easeOut){
+            if scheduleName.isEmpty {
+                isScheduleNameError = true
+                return
+            }
+            if maximumMenbers.isEmpty {
+                isGuestNumError = true
+                return
+            }
+            if fee.isEmpty && hasFee {
+                isFeeError = true
+                return
+            }
+            if location.isEmpty && hasLocation {
+                isLocationError = true
+                return
+            }
+            showingFinishAlert.toggle()
+        }
+    }
+    
+    func createSchedule() {
+        let id = UUID().uuidString
+        do{
+            let newSchedule = Schedule(
+                id: id,
+                gid: "그루 아이디 넣어야행",
+                scheduleName: scheduleName,
+                date: date,
+                maximumMember: Int(maximumMenbers) ?? 2,
+                participants: [],
+                fee: (hasFee ? fee : nil),
+                location: (hasLocation ? location : nil),
+                latitude:  (hasLocation ? latitude : nil),
+                longitude:  (hasLocation ? longitude : nil),
+                color: colorPick
+            )
+            scheduleStore.addSchedule(newSchedule)
+        }catch let error {
+            print(error.localizedDescription)
+        }
+    }
 }
-
 
 #Preview {
     NavigationStack{
-        CreateScheduleMainView()
+        CreateScheduleMainView(scheduleStore: ScheduleStore())
     }
 }

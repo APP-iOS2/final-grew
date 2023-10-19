@@ -10,9 +10,9 @@ import SwiftUI
 struct GrewTextField: View {
     @Binding var text: String
     /// 잘못된 입력값 여부
-    @Binding var isWrongText: Bool
+    let isWrongText: Bool
     /// Textfield 비활성화 여부
-    @Binding var isTextfieldDisabled: Bool
+    let isTextfieldDisabled: Bool
     @FocusState var isTextFieldFocused: Bool
     
     let placeholderText: String
@@ -22,7 +22,7 @@ struct GrewTextField: View {
         if isWrongText {
             return Color(hexCode: "F05650")
         }
-        return isTextFieldFocused ? Color.grewMainColor : Color(hexCode: "f2f2f2")
+        return isTextFieldFocused ? .Main : Color(hexCode: "f2f2f2")
     }
     
     var body: some View {
@@ -40,23 +40,24 @@ struct GrewTextField: View {
                     .disabled(isTextfieldDisabled)
                     .padding(.leading, isSearchBar ? 0 : 10)
                 
-                if !text.isEmpty {
+                if !text.isEmpty && isTextFieldFocused {
                     Button {
                         text = ""
                     } label: {
                         Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(Color.grewMainColor)
+                            .foregroundColor(isWrongText ? .Error : .Main)
                     }
                     .padding(.trailing, 16)
                 }
             }
             .frame(height: 44)
+            
             .background(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(textFieldStrokeColor)
                     .background(
                         RoundedRectangle(cornerRadius: 8)
-                            .fill(isTextfieldDisabled ? Color(hexCode: "D4D4D4"): Color(hexCode: "f2f2f2"))
+                            .fill(isTextfieldDisabled ? Color.LightGray2: Color.BackgroundGray)
                     )
             )
             
@@ -75,8 +76,8 @@ struct GrewTextField: View {
 #Preview {
     GrewTextField(
         text: .constant(""),
-        isWrongText: .constant(true),
-        isTextfieldDisabled: .constant(false),
+        isWrongText: false,
+        isTextfieldDisabled: false,
         isTextFieldFocused: FocusState(),
         placeholderText: "검색어를 입력하세요.",
         isSearchBar: true
