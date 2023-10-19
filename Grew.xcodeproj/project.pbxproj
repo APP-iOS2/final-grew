@@ -905,8 +905,8 @@
 				9FD050742ADFC25800A8735A /* ScheduleListView.swift */,
 			);
 			path = GrewDetail;
-      sourceTree = "<group>";
-    };
+      		sourceTree = "<group>";
+    	};
 		9989DA962ADF683600AC4917 /* NewestSchedule */ = {
 			isa = PBXGroup;
 			children = (
