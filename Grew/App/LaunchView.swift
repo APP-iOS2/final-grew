@@ -9,13 +9,13 @@ import SwiftUI
 
 struct LaunchView: View {
  
-    @StateObject private var vm = LaunchVM()
+    @StateObject private var vm = LaunchViewModel()
     @StateObject private var grewViewModel = GrewViewModel()
     @StateObject private var userViewModel = UserViewModel()
     @StateObject private var appState = AppState()
     
     var body: some View {
-        if viewModel.authuser == nil {
+        if vm.authuser == nil {
             AuthStartView()
         } else {
             MainTabView()
