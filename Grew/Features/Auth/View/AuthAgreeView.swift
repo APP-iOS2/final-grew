@@ -33,5 +33,5 @@ struct AuthAgreeView: View {
 
 #Preview {
     AuthAgreeView(isButton1: .constant(true))
-        .environmentObject(RegisterVM())
+        .environmentObject(RegisterViewModel())
 }
