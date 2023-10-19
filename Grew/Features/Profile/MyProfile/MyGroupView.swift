@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct MyGroupView: View {
+    
     var body: some View {
         NavigationStack {
             ScrollView {
-                Text("MyGroupView")
+                Text("My Group View")
             }
         }
     }

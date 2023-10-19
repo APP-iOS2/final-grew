@@ -30,6 +30,8 @@ struct GrewDetailView: View {
     
     private let headerHeight: CGFloat = 180
     
+    let grew: Grew
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -39,7 +41,7 @@ struct GrewDetailView: View {
                     Section {
                         switch selectedFilter {
                         case .introduction:
-                            GrewIntroductionView()
+                            GrewIntroductionView(grew: grew)
                         case .schedule:
                             ScheduleListView()
                         case .groot:
@@ -71,7 +73,7 @@ extension GrewDetailView {
     /// 헤더 이미지뷰
     private func makeHeaderImageView() -> some View {
         GeometryReader { geometry in
-            AsyncImage(url: URL(string: "https://images.unsplash.com/photo-1696757020926-d627b01c41cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=900&q=60")) { image in
+            AsyncImage(url: URL(string: grew.imageURL)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -129,13 +131,8 @@ extension GrewDetailView {
     /// 툴바 버튼
     private func makeToolbarButtons() -> some View {
         HStack {
-            Button {
-                
-            } label: {
-                Image(systemName: "square.and.arrow.up")
-                    .foregroundStyle(.black)
-            }
-            
+            // 모임장: 모임 삭제(alert), user 구조체
+            // 모임원: 탈퇴하기
             Button {
                 
             } label: {
@@ -172,6 +169,38 @@ extension GrewDetailView {
 
 #Preview {
     NavigationStack {
-        GrewDetailView()
+        GrewDetailView(
+            grew: Grew(
+                id: "id",
+                categoryIndex: "게임/오락",
+                categorysubIndex: "보드게임",
+                title: "멋쟁이 보드게임",
+                description: """
+                     안녕하세요! 보드게임을 잘 해야 한다 ❌ 보드게임을 좋아한다 🅾️
+                     즐겁게 보드게임을 함께 할 친구들이 필요하다면, <멋쟁이 보드게임> 그루에 참여하세요!
+                     매주 수요일마다 모이는 정기 모임과 자유롭게 모이는 번개 모임을 통해 많은 즐거운 추억을 쌓을 수 있어요 ☺️
+                     
+                     안녕하세요! 보드게임을 잘 해야 한다 ❌ 보드게임을 좋아한다 🅾️
+                     즐겁게 보드게임을 함께 할 친구들이 필요하다면, <멋쟁이 보드게임> 그루에 참여하세요!
+                     매주 수요일마다 모이는 정기 모임과 자유롭게 모이는 번개 모임을 통해 많은 즐거운 추억을 쌓을 수 있어요 ☺️
+                     
+                     안녕하세요! 보드게임을 잘 해야 한다 ❌ 보드게임을 좋아한다 🅾️
+                     즐겁게 보드게임을 함께 할 친구들이 필요하다면, <멋쟁이 보드게임> 그루에 참여하세요!
+                     매주 수요일마다 모이는 정기 모임과 자유롭게 모이는 번개 모임을 통해 많은 즐거운 추억을 쌓을 수 있어요 ☺️
+                     """,
+                imageURL: "https://images.unsplash.com/photo-1696757020926-d627b01c41cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=900&q=60",
+                isOnline: false,
+                location: "서울",
+                gender: .any,
+                minimumAge: 20,
+                maximumAge: 40,
+                maximumMembers: 8,
+                currentMembers: ["id1", "id2"],
+                isNeedFee: false,
+                fee: 0,
+                createdAt: Date.now,
+                heartTapped: 0
+            )
+        )
     }
 }

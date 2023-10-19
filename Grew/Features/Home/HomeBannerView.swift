@@ -26,6 +26,10 @@ enum BannerContentType: CaseIterable, Identifiable {
     case first
     case second
     case third
+    case fouth
+    case fifth
+    case sixth
+    case seventh
     
     var id: Self { self }
     
@@ -35,18 +39,45 @@ enum BannerContentType: CaseIterable, Identifiable {
         switch self {
         case .first:
             ZStack {
-                Color.Main
-                Text("1️⃣")
+                Image("banner1")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             }
         case .second:
             ZStack {
-                Color.Sub
-                Text("2️⃣")
+                Image("banner2")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             }
         case .third:
             ZStack {
-                Color.DarkGray1
-                Text("3️⃣")
+                Image("banner3")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+        case .fouth:
+            ZStack {
+                Image("banner4")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+        case .fifth:
+            ZStack {
+                Image("banner5")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+        case .sixth:
+            ZStack {
+                Image("banner6")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+        case .seventh:
+            ZStack {
+                Image("banner7")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             }
         }
     }
@@ -55,25 +86,21 @@ enum BannerContentType: CaseIterable, Identifiable {
 struct PagingBannerView: View {
     // 현재 선택된 아이템은 첫번째 인덱스
     @State var selectedItem: BannerContentType = .first
-    
     @StateObject var vm = PagingBannerViewModel()
     
     var body: some View {
         
         TabView(selection: $selectedItem) {
             ForEach(BannerContentType.allCases) { banner in
-                NavigationLink {
-                    banner.getView()
-                } label: {
-                    banner
-                        .getView()
-                        .tag(banner)
-                }
+                
+                banner
+                    .getView()
+                    .tag(banner)
                 
             }
         }
         /// 텝뷰를 페이지텝뷰로 스타일 변환
-        .tabViewStyle(PageTabViewStyle())
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         
         //            .frame(height: 200)
         /// 진행 되던 순서에서 내가 바꾼 현재의 순서로 수정함
