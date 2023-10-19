@@ -80,6 +80,9 @@ struct StumpRegisterView: View {
         .grewAlert(
             isPresented: $isShowingRegisterAlert,
             title: "그루터기 등록이 완료되었습니다!",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
             buttonTitle: "확인",
             buttonColor: .Main
         ) {
@@ -239,7 +242,7 @@ extension StumpRegisterView {
         }
         .background(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.Black)
+                .stroke(Color.DarkGray1)
         )
         
         HStack{

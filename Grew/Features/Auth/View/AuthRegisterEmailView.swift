@@ -99,7 +99,15 @@ struct AuthRegisterEmailView: View {
                 }
             }
         }
-        .grewAlert(isPresented: $isAlert, title: "회원가입이 완료되었습니다! 🎉", buttonTitle: "확인", buttonColor: .grewMainColor) {
+        .grewAlert(
+            isPresented: $isAlert,
+            title: "회원가입이 완료되었습니다! 🎉",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .grewMainColor
+        ) {
             let signtype = UserDefaults.standard.string(forKey: "SignType")
             if signtype == "kakao" {
                 viewModel.kakaoCreateUser()

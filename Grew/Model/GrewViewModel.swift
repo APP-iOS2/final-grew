@@ -41,6 +41,26 @@ class GrewViewModel: ObservableObject {
         }
     }
     
+    func updateGrew(_ grew: Grew) {
+        db.collection("grews").whereField("id", isEqualTo: grew.id).getDocuments { snapshot, error in
+            if let error {
+                print("Error: \(error)")
+            } else if let snapshot {
+                for document in snapshot.documents {
+                    self.db.collection("grews").document(document.documentID).updateData([
+                        "currentMembers" : grew.currentMembers
+                    ]) { error in
+                        if let error {
+                            print("Grew Update Error: \(error)")
+                        } else {
+                            self.fetchGrew()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func fetchGrew() {
         db.collection("grews").getDocuments { snapshot, error in
             guard let documents = snapshot?.documents, error == nil else {
@@ -153,5 +173,12 @@ class GrewViewModel: ObservableObject {
         let tempList = grewList.sorted(by: { $0.createdAt > $1.createdAt})
         
         return tempList
+    }
+    
+    func addGrewMember(grewId: String, userId: String) {
+        if var grew = grewList.first(where: { $0.id == grewId }) {
+            grew.currentMembers.append(userId)
+            updateGrew(grew)
+        }
     }
 }

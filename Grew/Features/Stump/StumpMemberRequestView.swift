@@ -90,6 +90,9 @@ struct StumpMemberRequestView: View {
         .grewAlert(
             isPresented: $isShowingFinishAlert,
             title: "그루터기 멤버 신청이 완료되었습니다!",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
             buttonTitle: "확인",
             buttonColor: .Main
         ) {
@@ -157,7 +160,7 @@ struct StumpMemberRequestView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.Black)
+                    .stroke(Color.DarkGray1)
             )
         }
         .padding(.horizontal, 20)
