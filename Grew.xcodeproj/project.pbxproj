@@ -144,8 +144,8 @@
 		64877CB42AD51A7100192DB4 /* AuthAgreeCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */; };
 		64877CB62AD5B2BD00192DB4 /* AuthProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */; };
 		64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB72AD5BF8E00192DB4 /* AuthRegisterEmailView.swift */; };
-		64AB27D62AD6683E004DE65F /* LaunchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB27D52AD6683E004DE65F /* LaunchVM.swift */; };
-		64AB27DA2AD6753B004DE65F /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB27D92AD6753A004DE65F /* RegisterVM.swift */; };
+		64AB27D62AD6683E004DE65F /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB27D52AD6683E004DE65F /* LaunchViewModel.swift */; };
+		64AB27DA2AD6753B004DE65F /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB27D92AD6753A004DE65F /* RegisterViewModel.swift */; };
 		64D54B962ADD0DFF007753B2 /* AgreeUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D54B952ADD0DFF007753B2 /* AgreeUseView.swift */; };
 		64D54B982ADD0E31007753B2 /* AgreeUserDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D54B972ADD0E31007753B2 /* AgreeUserDataView.swift */; };
 		64D54B9A2ADD0E4B007753B2 /* AgreeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D54B992ADD0E4B007753B2 /* AgreeLocationView.swift */; };
@@ -290,8 +290,8 @@
 		64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAgreeCheckView.swift; sourceTree = "<group>"; };
 		64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProgressBar.swift; sourceTree = "<group>"; };
 		64877CB72AD5BF8E00192DB4 /* AuthRegisterEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRegisterEmailView.swift; sourceTree = "<group>"; };
-		64AB27D52AD6683E004DE65F /* LaunchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVM.swift; sourceTree = "<group>"; };
-		64AB27D92AD6753A004DE65F /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
+		64AB27D52AD6683E004DE65F /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
+		64AB27D92AD6753A004DE65F /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		64D54B952ADD0DFF007753B2 /* AgreeUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeUseView.swift; sourceTree = "<group>"; };
 		64D54B972ADD0E31007753B2 /* AgreeUserDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeUserDataView.swift; sourceTree = "<group>"; };
 		64D54B992ADD0E4B007753B2 /* AgreeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeLocationView.swift; sourceTree = "<group>"; };
@@ -419,8 +419,8 @@
 			isa = PBXGroup;
 			children = (
 				311097392AD417A1000D85AD /* AuthStore.swift */,
-				64AB27D92AD6753A004DE65F /* RegisterVM.swift */,
-				64AB27D52AD6683E004DE65F /* LaunchVM.swift */,
+				64AB27D92AD6753A004DE65F /* RegisterViewModel.swift */,
+				64AB27D52AD6683E004DE65F /* LaunchViewModel.swift */,
 				311097382AD417A1000D85AD /* UserStore.swift */,
 			);
 			path = Store;
@@ -1086,7 +1086,7 @@
 				3110976D2AD4180F000D85AD /* GrewProgressViewStyle.swift in Sources */,
 				21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */,
 				311097322AD41722000D85AD /* LaunchView.swift in Sources */,
-				64AB27DA2AD6753B004DE65F /* RegisterVM.swift in Sources */,
+				64AB27DA2AD6753B004DE65F /* RegisterViewModel.swift in Sources */,
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
 				319757422ADE552500696FF9 /* MessageStore.swift in Sources */,
@@ -1171,7 +1171,7 @@
 				311097712AD4180F000D85AD /* GroupAlertView.swift in Sources */,
 				311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */,
 				995095322ADCD6D3003A822E /* GroupMainCategoryView.swift in Sources */,
-				64AB27D62AD6683E004DE65F /* LaunchVM.swift in Sources */,
+				64AB27D62AD6683E004DE65F /* LaunchViewModel.swift in Sources */,
 				3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */,
 				311097702AD4180F000D85AD /* GroupMembersEditView.swift in Sources */,
 				CE9292D12ADF6966005052AF /* StumpMemberRequestView.swift in Sources */,

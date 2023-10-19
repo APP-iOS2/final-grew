@@ -10,7 +10,7 @@ import Firebase
 import FirebaseAuth
 import Foundation
 
-class LaunchVM: ObservableObject {
+class LaunchViewModel: ObservableObject {
     
     private let authService = AuthStore.shared
     private let userService = UserStore.shared

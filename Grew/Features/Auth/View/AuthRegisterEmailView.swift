@@ -10,7 +10,7 @@ import SwiftUI
 struct AuthRegisterEmailView: View {
     
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var registerVM: RegisterVM
+    @EnvironmentObject var viewModel: RegisterViewModel
     @State private var signIndex: Int = 1
     @State private var progressBarValue: Double = 0
     @State private var progressBarTotal: Double = 100
@@ -102,13 +102,13 @@ struct AuthRegisterEmailView: View {
         .grewAlert(isPresented: $isAlert, title: "회원가입이 완료되었습니다! 🎉", buttonTitle: "확인", buttonColor: .grewMainColor) {
             let signtype = UserDefaults.standard.string(forKey: "SignType")
             if signtype == "kakao" {
-                registerVM.kakaoCreateUser()
+                viewModel.kakaoCreateUser()
             } else if signtype == "email" {
                 Task {
-                    try await registerVM.emailCreateUser()
+                    try await viewModel.emailCreateUser()
                 }
             } else if signtype == "facebook" {
-                registerVM.facebookCreateUser()
+                viewModel.facebookCreateUser()
             }
         }
     }
@@ -116,5 +116,5 @@ struct AuthRegisterEmailView: View {
 
 #Preview {
     AuthRegisterEmailView()
-        .environmentObject(RegisterVM())
+        .environmentObject(RegisterViewModel())
 }
