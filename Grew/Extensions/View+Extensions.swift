@@ -11,6 +11,9 @@ extension View {
     func grewAlert(
         isPresented: Binding<Bool>,
         title: String,
+        secondButtonTitle: String?,
+        secondButtonColor: Color?,
+        secondButtonAction: (() -> Void)?,
         buttonTitle: String,
         buttonColor: Color,
         action: @escaping () -> Void
@@ -21,7 +24,11 @@ extension View {
                 title: title,
                 buttonTitle: buttonTitle,
                 buttonColor: buttonColor,
-                action: action)
+                action: action,
+                secondButtonTitle: secondButtonTitle,
+                secondButtonColor: secondButtonColor,
+                secondButtonAction: secondButtonAction
+            )
         )
     }
     func grewButtonModifier(

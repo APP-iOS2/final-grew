@@ -83,7 +83,18 @@ struct CreateScheduleMainView: View {
             // alert
             if showingFinishAlert {
                 Color.clear
-                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
+                    .grewAlert(
+                        isPresented: $showingFinishAlert,
+                        title: "일정 생성 완료!",
+                        secondButtonTitle: nil,
+                        secondButtonColor: nil,
+                        secondButtonAction: nil,
+                        buttonTitle: "확인",
+                        buttonColor: Color.grewMainColor
+                    ) {
+                        finishCreate()
+                    }
+//                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
             }
         }
         .sheet(isPresented: $showingWebSheet, content: {
