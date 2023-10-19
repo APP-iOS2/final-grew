@@ -14,13 +14,14 @@ struct NewestGrewListView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
-                
                 ForEach(grewList) { grew in
-                    
-                    NewestGrewCell(grew: grew)
-                        .padding(.horizontal, 8)
+                    NavigationLink {
+                        GrewDetailView(grew: grew)
+                    } label: {
+                        NewestGrewCell(grew: grew)
+                            .padding(.horizontal, 8)
+                    }
                 }
-                
             } //: LazyHStack
         } //: ScrollView
     }
