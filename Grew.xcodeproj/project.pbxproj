@@ -158,6 +158,14 @@
 		99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC42612ADF77E1005B70A0 /* NewestGrewListView.swift */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
+		9FD050692ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD050662ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift */; };
+		9FD0506A2ADF5CAA00A8735A /* ProfileCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */; };
+		9FD0506B2ADF5CAA00A8735A /* ScheduleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD050682ADF5CAA00A8735A /* ScheduleCellView.swift */; };
+		9FD0506D2ADF5EB600A8735A /* ScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD0506C2ADF5EB600A8735A /* ScheduleDetailView.swift */; };
+		9FD0506F2ADF7C6200A8735A /* UIScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD0506E2ADF7C6200A8735A /* UIScreen+Extensions.swift */; };
+		9FD050712ADFBA2900A8735A /* GrootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD050702ADFBA2900A8735A /* GrootView.swift */; };
+		9FD050732ADFBD9800A8735A /* GrootListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD050722ADFBD9700A8735A /* GrootListView.swift */; };
+		9FD050752ADFC25800A8735A /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD050742ADFC25800A8735A /* ScheduleListView.swift */; };
 		CE36B52F2ADE2A23004D2BC3 /* NewestGrewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36B52E2ADE2A23004D2BC3 /* NewestGrewCell.swift */; };
 		CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467AD62AD5061C00143213 /* GrewSearchView.swift */; };
 		CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADA2AD530CA00143213 /* View+Extensions.swift */; };
@@ -304,6 +312,14 @@
 		99BC42612ADF77E1005B70A0 /* NewestGrewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestGrewListView.swift; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9FD050662ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCellEditSheetView.swift; sourceTree = "<group>"; };
+		9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCircleImageView.swift; sourceTree = "<group>"; };
+		9FD050682ADF5CAA00A8735A /* ScheduleCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCellView.swift; sourceTree = "<group>"; };
+		9FD0506C2ADF5EB600A8735A /* ScheduleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailView.swift; sourceTree = "<group>"; };
+		9FD0506E2ADF7C6200A8735A /* UIScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extensions.swift"; sourceTree = "<group>"; };
+		9FD050702ADFBA2900A8735A /* GrootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrootView.swift; sourceTree = "<group>"; };
+		9FD050722ADFBD9700A8735A /* GrootListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrootListView.swift; sourceTree = "<group>"; };
+		9FD050742ADFC25800A8735A /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		CE36B52E2ADE2A23004D2BC3 /* NewestGrewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestGrewCell.swift; sourceTree = "<group>"; };
 		CE467AD62AD5061C00143213 /* GrewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSearchView.swift; sourceTree = "<group>"; };
 		CE467ADA2AD530CA00143213 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -560,6 +576,8 @@
 				3197576D2ADFAAD800696FF9 /* Font+Extensions.swift */,
 				312E98DB2ACD2EAA00E38626 /* UIImage+Extensions.swift */,
 				312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */,
+				3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */,
+				9FD0506E2ADF7C6200A8735A /* UIScreen+Extensions.swift */,
 				CE467ADA2AD530CA00143213 /* View+Extensions.swift */,
 			);
 			path = Extensions;
@@ -675,6 +693,8 @@
 			isa = PBXGroup;
 			children = (
 				993274102AD5307C0082FCEC /* CategoryView */,
+				9FD050652ADF5C9300A8735A /* GrewDetail */,
+				993274112AD531C70082FCEC /* GrewScheduleView */,
 				9932740F2AD530120082FCEC /* GrewListView */,
 				3110977E2AD41816000D85AD /* HomeBannerView.swift */,
 				99D2C6432ACD4913001FEC20 /* HomeView.swift */,
@@ -873,6 +893,20 @@
 			path = GrewCategoryView;
 			sourceTree = "<group>";
 		};
+		9FD050652ADF5C9300A8735A /* GrewDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9FD050702ADFBA2900A8735A /* GrootView.swift */,
+				9FD050722ADFBD9700A8735A /* GrootListView.swift */,
+				9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */,
+				9FD050682ADF5CAA00A8735A /* ScheduleCellView.swift */,
+				9FD050662ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift */,
+				9FD0506C2ADF5EB600A8735A /* ScheduleDetailView.swift */,
+				9FD050742ADFC25800A8735A /* ScheduleListView.swift */,
+			);
+			path = GrewDetail;
+      sourceTree = "<group>";
+    };
 		9989DA962ADF683600AC4917 /* NewestSchedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1086,6 +1120,8 @@
 				3110976D2AD4180F000D85AD /* GrewProgressViewStyle.swift in Sources */,
 				21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */,
 				311097322AD41722000D85AD /* LaunchView.swift in Sources */,
+				9FD0506A2ADF5CAA00A8735A /* ProfileCircleImageView.swift in Sources */,
+				9FD050732ADFBD9800A8735A /* GrootListView.swift in Sources */,
 				64AB27DA2AD6753B004DE65F /* RegisterViewModel.swift in Sources */,
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
@@ -1105,7 +1141,11 @@
 				3AF1D4AB2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift in Sources */,
 				3AF1D4A62AD4D5C000ECE1A8 /* MainMapView.swift in Sources */,
 				3AF1D4AD2AD4D65900ECE1A8 /* NaverMapView.swift in Sources */,
+				9FD0506B2ADF5CAA00A8735A /* ScheduleCellView.swift in Sources */,
 				991E7B922AD7D1BA002ECEE3 /* TabBarAccessor.swift in Sources */,
+				9FD0506D2ADF5EB600A8735A /* ScheduleDetailView.swift in Sources */,
+				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
+				993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */,
 				99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */,
 				319757552ADEF36600696FF9 /* ChatInputView.swift in Sources */,
 				319757712ADFAB1000696FF9 /* AuthAddMainInfoView.swift in Sources */,
@@ -1123,6 +1163,8 @@
 				311097B12AD4188E000D85AD /* FirestoreService.swift in Sources */,
 				3E185AEF2ADCC5EA00F7FC46 /* CreateScheduleMainView.swift in Sources */,
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
+				9FD0506F2ADF7C6200A8735A /* UIScreen+Extensions.swift in Sources */,
+				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				319757542ADEF36600696FF9 /* MessageBubbles.swift in Sources */,
 				21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */,
 				3197575C2ADEF38700696FF9 /* GroupDetailConfig.swift in Sources */,
@@ -1160,9 +1202,11 @@
 				2163156E2ADFA6B100208CB4 /* OpensourceLicenseView.swift in Sources */,
 				64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */,
 				311097B22AD4188E000D85AD /* DateService.swift in Sources */,
+				9FD050712ADFBA2900A8735A /* GrootView.swift in Sources */,
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
 				311097612AD417FD000D85AD /* Bubble.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
+				9FD050752ADFC25800A8735A /* ScheduleListView.swift in Sources */,
 				3EC0F05D2ADE6E2900D07009 /* Schedule.swift in Sources */,
 				3197575A2ADEF36600696FF9 /* ChatRoomCell.swift in Sources */,
 				3110973A2AD417A1000D85AD /* UserStore.swift in Sources */,
@@ -1171,6 +1215,7 @@
 				311097712AD4180F000D85AD /* GroupAlertView.swift in Sources */,
 				311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */,
 				995095322ADCD6D3003A822E /* GroupMainCategoryView.swift in Sources */,
+				9FD050692ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift in Sources */,
 				64AB27D62AD6683E004DE65F /* LaunchViewModel.swift in Sources */,
 				3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */,
 				311097702AD4180F000D85AD /* GroupMembersEditView.swift in Sources */,
