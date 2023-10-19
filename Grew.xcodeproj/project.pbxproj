@@ -905,6 +905,8 @@
 				9FD050742ADFC25800A8735A /* ScheduleListView.swift */,
 			);
 			path = GrewDetail;
+      		sourceTree = "<group>";
+    	};
 		9989DA962ADF683600AC4917 /* NewestSchedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1118,9 +1120,9 @@
 				3110976D2AD4180F000D85AD /* GrewProgressViewStyle.swift in Sources */,
 				21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */,
 				311097322AD41722000D85AD /* LaunchView.swift in Sources */,
-				64AB27DA2AD6753B004DE65F /* RegisterVM.swift in Sources */,
 				9FD0506A2ADF5CAA00A8735A /* ProfileCircleImageView.swift in Sources */,
 				9FD050732ADFBD9800A8735A /* GrootListView.swift in Sources */,
+				64AB27DA2AD6753B004DE65F /* RegisterViewModel.swift in Sources */,
 				99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */,
 				312E98E22ACD2EAA00E38626 /* String+Extensions.swift in Sources */,
 				319757422ADE552500696FF9 /* MessageStore.swift in Sources */,
@@ -1142,7 +1144,6 @@
 				9FD0506B2ADF5CAA00A8735A /* ScheduleCellView.swift in Sources */,
 				991E7B922AD7D1BA002ECEE3 /* TabBarAccessor.swift in Sources */,
 				9FD0506D2ADF5EB600A8735A /* ScheduleDetailView.swift in Sources */,
-				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
 				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
 				993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */,
 				99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */,
