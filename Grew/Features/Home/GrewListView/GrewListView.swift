@@ -16,7 +16,7 @@ struct GrewListView: View {
             ForEach(0 ..< grewList.count, id: \.self) { index in
                 // 그루 디테일 뷰
                 NavigationLink{
-                    Text("\(grewList[index].title) 게시글")
+                    GrewDetailView(grew: grewList[index])
                 } label: {
                     HStack {
                         

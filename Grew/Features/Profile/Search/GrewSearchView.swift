@@ -35,6 +35,7 @@ struct GrewSearchView: View {
                     placeholderText: "검색어를 입력하세요.",
                     isSearchBar: true
                 )
+                .padding(.top)
                 .onSubmit {
                     searchGroup()
                 }
@@ -51,6 +52,7 @@ struct GrewSearchView: View {
             .navigationTitle("Grew 검색")
             .onAppear {
                 grewViewModel.fetchGrew()
+                searchHistory = UserStore.shared.currentUser?.searchHistory ?? []
             }
         }
     }
@@ -69,6 +71,7 @@ extension GrewSearchView {
                         Spacer()
                         Button {
                             searchHistory.removeAll()
+                            UserStore.shared.updateSearchHistory(searchHistory: searchHistory)
                         } label: {
                             Text("모두 삭제")
                                 .font(.b2_R)
@@ -99,17 +102,28 @@ extension GrewSearchView {
                 }
             }
             
-            Divider()
-                .padding(.vertical, 10)
         }
+        .padding(.bottom)
     }
     
     @ViewBuilder
     private func makeCategorySelection() -> some View {
         HStack {
-            Text("카테고리 선택")
-                .font(.b1_B)
-                .padding(5)
+            Button {
+                
+            } label: {
+                HStack {
+                    Text("카테고리 선택")
+                        .font(.b1_B)
+                        .foregroundStyle(.black)
+                        .padding(5)
+                    Image(systemName: "chevron.down")
+                }
+            }
+
+//            Text("카테고리 선택")
+//                .font(.b1_B)
+//                .padding(5)
             Spacer()
             if selectedCategory != nil {
                 Button {
@@ -154,6 +168,9 @@ extension GrewSearchView {
                 }
             }
         }
+        
+        Divider()
+            .padding(.vertical, 10)
     }
 }
 
@@ -174,6 +191,7 @@ extension GrewSearchView {
                 searchHistory.removeLast()
             }
             searchHistory.insert(searchText, at: 0)
+            UserStore.shared.updateSearchHistory(searchHistory: searchHistory)
             
             searchedGrewList = grewViewModel.grewList.filter {
                 if let categoryId = selectedCategory?.id {

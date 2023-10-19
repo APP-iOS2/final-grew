@@ -9,7 +9,7 @@ import FBSDKLoginKit
 import Foundation
 import KakaoSDKUser
 
-class RegisterVM: ObservableObject {
+class RegisterViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var checkPassword: String = ""

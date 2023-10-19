@@ -177,5 +177,5 @@ struct AuthAgreeCheckView: View {
 
 #Preview {
     AuthAgreeCheckView(isButton1: .constant(true))
-        .environmentObject(RegisterVM())
+        .environmentObject(RegisterViewModel())
 }

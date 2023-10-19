@@ -43,9 +43,9 @@ struct GrewDetailView: View {
                         case .introduction:
                             GrewIntroductionView(grew: grew)
                         case .schedule:
-                            Text("일정 뷰")
+                            ScheduleListView()
                         case .groot:
-                            Text("그루트 뷰")
+                            GrootListView()
                         }
                     } header: {
                         makeHeaderFilterView()
@@ -131,13 +131,8 @@ extension GrewDetailView {
     /// 툴바 버튼
     private func makeToolbarButtons() -> some View {
         HStack {
-            Button {
-                
-            } label: {
-                Image(systemName: "square.and.arrow.up")
-                    .foregroundStyle(.black)
-            }
-            
+            // 모임장: 모임 삭제(alert), user 구조체
+            // 모임원: 탈퇴하기
             Button {
                 
             } label: {

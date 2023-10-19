@@ -10,13 +10,13 @@ import SwiftUI
 struct AuthAddDetailInfoView: View {
     
     @Binding var isButton3: Bool
-    @EnvironmentObject var registerVM: RegisterVM
+    @EnvironmentObject var viewModel: RegisterViewModel
     @State private var isWrongname: Bool = false
     @State private var isWrongdob: Bool = false
     @State private var isNameTextfieldDisabled: Bool = false
     @State private var isTextfieldDisabled: Bool = false
     private var writeAllTextField: Bool {
-        if isWrongname || isWrongdob || registerVM.dob.isEmpty {
+        if isWrongname || isWrongdob || viewModel.dob.isEmpty {
             return false
         } else {
             return true
@@ -30,21 +30,21 @@ struct AuthAddDetailInfoView: View {
             VStack(alignment: .leading) {
                 Text("이름")
                     .font(Font.b2_L)
-                GrewTextField(text: $registerVM.nickName, isWrongText: isWrongname, isTextfieldDisabled: isNameTextfieldDisabled, placeholderText: "이름", isSearchBar: false)
-//                    .onChange(of: registerVM.nickName) {
-//                        isWrongname = !(registerVM.isValiddob(registerVM.nickName))
+                GrewTextField(text: $viewModel.nickName, isWrongText: isWrongname, isTextfieldDisabled: isNameTextfieldDisabled, placeholderText: "이름", isSearchBar: false)
+//                    .onChange(of: viewModel.nickName) {
+//                        isWrongname = !(viewModel.isValiddob(viewModel.nickName))
 //                    }
                 
                 Text("생년월일 (8자리)")
                     .font(Font.b2_L)
-                GrewTextField(text: $registerVM.dob, isWrongText: isWrongdob, isTextfieldDisabled: isTextfieldDisabled, placeholderText: "생년월일", isSearchBar: false)
-                    .onChange(of: registerVM.dob) {
-                        isWrongdob = !(registerVM.isValiddob(registerVM.dob))
+                GrewTextField(text: $viewModel.dob, isWrongText: isWrongdob, isTextfieldDisabled: isTextfieldDisabled, placeholderText: "생년월일", isSearchBar: false)
+                    .onChange(of: viewModel.dob) {
+                        isWrongdob = !(viewModel.isValiddob(viewModel.dob))
                     }
                 
                 Text("성별")
                     .font(Font.b2_L)
-                Picker("Gender", selection: $registerVM.gender) {
+                Picker("Gender", selection: $viewModel.gender) {
                     ForEach(Gender.allCases, id: \.self) { gender in
                         Text("\(gender.rawValue)")
                     }
@@ -67,5 +67,5 @@ struct AuthAddDetailInfoView: View {
 
 #Preview {
     AuthAddDetailInfoView(isButton3: .constant(true))
-        .environmentObject(RegisterVM())
+        .environmentObject(RegisterViewModel())
 }

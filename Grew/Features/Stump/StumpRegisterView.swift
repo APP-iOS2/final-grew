@@ -17,12 +17,25 @@ struct StumpRegisterView: View {
     @State private var location: String = ""
     @State private var phoneNumber: String = ""
     @State private var image: UIImage? = nil
-    @State private var images: [UIImage?] = [nil, nil, nil]
+    @State private var images: [UIImage?] = []
     
     @State private var isShowingSelectionSheet: Bool = false
     @State private var isShowingCamera: Bool = false
     @State private var isShowingPhotoLibrary: Bool = false
     @State private var isShowingRegisterAlert: Bool = false
+    
+    let imagesLength: Int = 3
+    
+    private var isRegisterButtonDisabled: Bool {
+        name.isEmpty ||
+        hours.isEmpty ||
+        minimumMembers.isEmpty ||
+        maximumMembers.isEmpty ||
+        location.isEmpty ||
+        phoneNumber.isEmpty ||
+        (isNeedDeposit ? deposit.isEmpty : false) ||
+        images.count < 3
+    }
     
     var body: some View {
         ScrollView {
@@ -50,14 +63,20 @@ struct StumpRegisterView: View {
             }
             .presentationDetents([.height(120), .height(120)])
         }
-        .sheet(isPresented: $isShowingPhotoLibrary, content: {
+        .sheet(isPresented: $isShowingPhotoLibrary) {
             ImagePicker(image: $image)
-        })
-        .sheet(isPresented: $isShowingCamera, content: {
+        }
+        .sheet(isPresented: $isShowingCamera) {
             CameraView(isPresented: $isShowingCamera) { uiImage in
                 image = uiImage
             }
-        })
+        }
+        .onReceive(image.publisher) { newImage in
+            if images.count < 3, newImage != images.last {
+                images.append(newImage)
+                image = nil
+            }
+        }
         .grewAlert(
             isPresented: $isShowingRegisterAlert,
             title: "그루터기 등록이 완료되었습니다!",
@@ -67,7 +86,10 @@ struct StumpRegisterView: View {
             // navigationPath
         }
     }
-    
+}
+
+// 뷰 반환 함수
+extension StumpRegisterView {
     // 입력 텍스트빌드 뷰
     @ViewBuilder
     private func makeInputView() -> some View {
@@ -186,10 +208,22 @@ struct StumpRegisterView: View {
         
     }
     
+    // 사진 추가 뷰
     @ViewBuilder
     private func makeAddImageView() -> some View {
-        Text("사진(3장)")
-            .font(.b2_R)
+        HStack {
+            Text("사진(3장)")
+            if !images.isEmpty {
+                Spacer()
+                Button {
+                    images.removeLast()
+                } label: {
+                    Text("마지막 사진 삭제")
+                        .foregroundStyle(.red)
+                }
+            }
+        }
+        .font(.b2_R)
         Button {
             isShowingSelectionSheet = true
         } label: {
@@ -210,11 +244,19 @@ struct StumpRegisterView: View {
         
         HStack{
             ForEach(0..<3) { index in
-                if let image = images[index] {
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 110)
+                if index < images.count {
+                    if let image = images[index] {
+                        ZStack {
+                            Rectangle()
+                                .stroke(Color.black)
+                                .frame(height: 110)
+                            
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 110, height: 110)
+                        }
+                    }
                 } else {
                     Rectangle()
                         .stroke(Color.black)
@@ -224,6 +266,7 @@ struct StumpRegisterView: View {
         }
     }
     
+    // 등록 버튼
     private func makeRegisterButton() -> some View {
         Button {
             isShowingRegisterAlert = true
@@ -233,22 +276,27 @@ struct StumpRegisterView: View {
         .grewButtonModifier(
             width: 343,
             height: 50,
-            buttonColor: .Main,
+            buttonColor: isRegisterButtonDisabled ? .LightGray2 : .Main,
             font: .b1_B,
-            fontColor: .white,
+            fontColor: isRegisterButtonDisabled ? .DarkGray1 : .white,
             cornerRadius: 8
         )
         .padding(.vertical)
-        .disabled(
-            name.isEmpty ||
-            hours.isEmpty ||
-            minimumMembers.isEmpty ||
-            maximumMembers.isEmpty ||
-            location.isEmpty ||
-            phoneNumber.isEmpty ||
-            (isNeedDeposit ? deposit.isEmpty : false)
-        )
+        .disabled(isRegisterButtonDisabled)
     }
+}
+
+struct Stump: Identifiable, Codable {
+    var id: String = UUID().uuidString
+    let name: String
+    let hours: String
+    let minimumMembers: String
+    let maximumMembers: String
+    let isNeedDeposit: Bool
+    let deposit: String
+    let location: String
+    let phoneNumber: String
+    let imageURL: String
 }
 
 #Preview {
