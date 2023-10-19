@@ -41,9 +41,9 @@ struct GrewDetailView: View {
                         case .introduction:
                             GrewIntroductionView()
                         case .schedule:
-                            Text("일정 뷰")
+                            ScheduleListView()
                         case .groot:
-                            Text("그루트 뷰")
+                            GrootListView()
                         }
                     } header: {
                         makeHeaderFilterView()
