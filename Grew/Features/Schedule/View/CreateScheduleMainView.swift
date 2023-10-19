@@ -7,52 +7,44 @@
 
 // TODO
 // 참가비 콤마 추가
-// 오류시 빨간박스 처리
-// safetyAreaInset 뒷부분 투명처리
-// 박스들 쩜 뚱뚱한가,,?
 
 import SwiftUI
 
 struct CreateScheduleMainView: View {
-    
     @ObservedObject var scheduleStore: ScheduleStore
     
     @State private var scheduleName: String = ""
     @State private var date = Date()
-    @State private var maximumMenbers: String = "2"
+    @State private var maximumMenbers: String = ""
     @State private var fee: String = ""
     @State private var location: String = ""
     @State private var latitude: String = ""
     @State private var longitude: String = ""
     @State private var colorPick: String = ""
- 
-    @State private var isEmptyFeeError: Bool = false
-    @State private var isEmptyLocationError: Bool = false
-    
+
     @State private var isDatePickerVisible: Bool = false
     @State private var showingWebSheet: Bool = false
     @State private var showingFinishAlert: Bool = false
     
-    let meximumGrewMembers: Int = 20 //임시. 그루 최대 인원 받아와야함!
+    @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
         ZStack {
             ScrollView{
                 VStack{
-                    
                     // 일정 이름
-                    scheduleNameField
+                    ScheduleNameField(isScheduleNameError: $isScheduleNameError, scheduleName: $scheduleName)
                     
                     // 날짜, 시간
                     ScheduleDatePicker(titleName: "날짜", isDatePickerVisible: $isDatePickerVisible, date: $date)
                     ScheduleDatePicker(titleName: "시간", isDatePickerVisible: $isDatePickerVisible, date: $date)
                     
                     // 정원
-                    guestNumField
+                    GuestNumField(isGuestNumError: $isGuestNumError, maximumMenbers: $maximumMenbers)
                     
                     // 선택 메뉴
-                    ScheduleOptionMenu(menuName: "참가비", option: $fee, isEmptyOptionError: $isEmptyFeeError, isShowingWebSheet: $showingWebSheet)
-                    ScheduleOptionMenu(menuName: "위치", option: $location,isEmptyOptionError: $isEmptyLocationError, isShowingWebSheet: $showingWebSheet)
+                    ScheduleOptionMenu(menuName: "참가비", option: $fee, isOptionError: $isFeeError, hasOption: $hasFee, isShowingWebSheet: $showingWebSheet)
+                    ScheduleOptionMenu(menuName: "위치", option: $location, isOptionError: $isLocationError, hasOption: $hasLocation, isShowingWebSheet: $showingWebSheet )
                     
                     // 배너 색상 선택
                     ScheduleColorPicker(colorPick: $colorPick)
@@ -83,15 +75,15 @@ struct CreateScheduleMainView: View {
             // alert
             if showingFinishAlert {
                 Color.clear
-                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
+                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: createSchedule))
             }
         }
         .sheet(isPresented: $showingWebSheet, content: {
             ZStack{
                 WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location, latitude: $latitude, longitude: $longitude)
                 /*if isLoading {
-                    ProgressView()
-                }*/
+                 ProgressView()
+                 }*/
             }
         })
         .task{
@@ -99,92 +91,10 @@ struct CreateScheduleMainView: View {
         }
     }
     
-    /* 간단 하위뷰 */
-    
-    // 일정 이름 필드
-    @State private var isWrongScheduleName: Bool = false
-    @FocusState var isTextFieldFocused: Bool
-    private var scheduleNameField: some View {
-        VStack(alignment: .leading){
-            Text("일정 이름").bold()
-
-            TextField("일정 이름", text: $scheduleName)
-                .padding(12)
-                .cornerRadius(8)
-                .modifier(TextFieldErrorModifier(isError: $isWrongScheduleName))
-                .onChange(of: scheduleName){
-                    withAnimation(.easeIn){
-                        if(scheduleName.count < 5){
-                            isWrongScheduleName = true
-                        }else{
-                            isWrongScheduleName = false
-                        }
-                    }
-                }
-                .focused($isTextFieldFocused)
-            if isWrongScheduleName {
-                ErrorText(errorMessage: "5자 이상 입력해주세요.")
-            }
-        }.padding(1)
-            .padding(.bottom, 5)
-    }
-    
-    // 정원 필드
-    @State private var isWrongGuestNum: Bool = false
-    @State private var guestNumErrorMessage: String = ""
-    
-    private var guestNumField: some View {
-        VStack{
-            HStack{
-                Image(systemName: "person.2.fill")
-                Text("정원")
-                    .padding(.trailing, 15)
-                Spacer()
-                
-                TextField("정원", text: $maximumMenbers)
-                    .keyboardType(.numberPad)
-                    .padding(12)
-                    .cornerRadius(8)
-                    .onChange(of: maximumMenbers){
-                        withAnimation(.easeIn){
-                            if let intValue = Int(maximumMenbers) {
-                                if intValue > meximumGrewMembers {
-                                    isWrongGuestNum = true
-                                    guestNumErrorMessage = "그룹 인원보다 많습니다."
-                                } else if intValue < 2 {
-                                    isWrongGuestNum = true
-                                    guestNumErrorMessage = "2명 이상 입력하세요."
-                                } else {
-                                    isWrongGuestNum = false
-                                    guestNumErrorMessage = ""
-                                }
-                            } else {
-                                isWrongGuestNum = true
-                                if maximumMenbers.isEmpty{
-                                    guestNumErrorMessage = "숫자를 입력해주세요."
-                                }
-                                else{
-                                    guestNumErrorMessage = "숫자만 입력하세요."
-                                }
-                            }
-                        }
-                    }
-                    .modifier(TextFieldErrorModifier(isError: $isWrongGuestNum))
-            }.padding(.top, 7)
-            
-            if isWrongGuestNum {
-                ErrorText(errorMessage: guestNumErrorMessage)
-            }
-        }.padding(1)
-    }
-    
     // 일정 생성 버튼
     private var submitBtn: some View {
         Button {
-            withAnimation(.easeOut){
-                showingFinishAlert.toggle()
-            }
-           
+            errorCheck()
         } label: {
             Text("일정 생성")
                 .frame(width: 350, height: 45)
@@ -195,12 +105,57 @@ struct CreateScheduleMainView: View {
         }
     }
     
+    
+    @State private var isScheduleNameError: Bool = false
+    @State private var isFeeError: Bool = false
+    @State private var isLocationError: Bool = false
+    @State private var isGuestNumError: Bool = false
+    
+    @State private var hasFee: Bool = false
+    @State private var hasLocation: Bool = false
+    
     func errorCheck() {
-        
+        withAnimation(.easeOut){
+            if scheduleName.isEmpty {
+                isScheduleNameError = true
+                return
+            }
+            if maximumMenbers.isEmpty {
+                isGuestNumError = true
+                return
+            }
+            if fee.isEmpty && hasFee {
+                isFeeError = true
+                return
+            }
+            if location.isEmpty && hasLocation {
+                isLocationError = true
+                return
+            }
+            showingFinishAlert.toggle()
+        }
     }
     
-    public func finishCreate() {
-        
+    func createSchedule() {
+        let id = UUID().uuidString
+        do{
+            let newSchedule = Schedule(
+                id: id,
+                gid: "웅",
+                scheduleName: scheduleName,
+                date: date,
+                maximumMember: Int(maximumMenbers) ?? 2,
+                participants: [],
+                fee: fee,
+                location: location,
+                latitude: latitude,
+                longitude: longitude,
+                color: colorPick
+            )
+            scheduleStore.addSchedule(newSchedule)
+        }catch let error {
+            print(error.localizedDescription)
+        }
     }
 }
 
