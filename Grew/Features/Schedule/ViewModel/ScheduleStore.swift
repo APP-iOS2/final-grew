@@ -10,7 +10,6 @@ import FirebaseFirestore
 
 class ScheduleStore: ObservableObject {
     @Published var schedules: [Schedule] = []
-    
     let dbRef = Firestore.firestore().collection("schedule")
     
     init(){
