@@ -128,6 +128,7 @@
 		319757722ADFAB1000696FF9 /* AuthAddDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757702ADFAB1000696FF9 /* AuthAddDetailInfoView.swift */; };
 		319757742ADFAB5A00696FF9 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757732ADFAB5A00696FF9 /* CategoryButtonView.swift */; };
 		319757782ADFB8B500696FF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 319757772ADFB8B500696FF9 /* GoogleService-Info.plist */; };
+		3197577E2AE16DD100696FF9 /* TextMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197577D2AE16DD100696FF9 /* TextMaster.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
 		3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */; };
@@ -267,6 +268,7 @@
 		319757702ADFAB1000696FF9 /* AuthAddDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddDetailInfoView.swift; sourceTree = "<group>"; };
 		319757732ADFAB5A00696FF9 /* CategoryButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		319757772ADFB8B500696FF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3197577D2AE16DD100696FF9 /* TextMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMaster.swift; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
 		3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				311097B72AD4189C000D85AD /* Enums */,
 				311097B32AD41897000D85AD /* CircularProfileImageView.swift */,
 				311097B42AD41897000D85AD /* LoadingView.swift */,
+				3197577D2AE16DD100696FF9 /* TextMaster.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1117,6 +1120,7 @@
 				CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */,
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
 				64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */,
+				3197577E2AE16DD100696FF9 /* TextMaster.swift in Sources */,
 				2163156B2ADFA68000208CB4 /* RemoveAdsView.swift in Sources */,
 				319757582ADEF36600696FF9 /* MainChatView.swift in Sources */,
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,

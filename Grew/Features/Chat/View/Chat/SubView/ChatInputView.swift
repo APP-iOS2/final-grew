@@ -22,8 +22,9 @@ struct ChatInputView: View {
             } label: {
                 Image(systemName: "plus")
             }
-            TextField("메세지 보내기", text: $groupDetailConfig.chatText)
-                .focused($isChatTextFieldFocused)
+            TextMaster(text: $groupDetailConfig.chatText, isFocused: $isChatTextFieldFocused, maxLine: 5, fontSize: 15)
+//            TextField("메세지 보내기", text: $groupDetailConfig.chatText)
+//                .focused($isChatTextFieldFocused)
             Button {
                 Task {
                     do {

@@ -28,15 +28,16 @@ struct ChatDetailView: View {
     let width = UIScreen.main.bounds.width
     
     var body: some View {
-        VStack {
+        ZStack {
             // 채팅
-            ChatMessageListView(chatRoom: chatRoom,
-                                targetUserInfos: targetUserInfos,
-                                isMenuOpen: $isMenuOpen,
-                                x: $x,
-                                unreadMessageIndex: $unreadMessageIndex
+            ChatMessageListView(
+                chatRoom: chatRoom,
+                targetUserInfos: targetUserInfos,
+                isMenuOpen: $isMenuOpen,
+                x: $x,
+                unreadMessageIndex: $unreadMessageIndex
             )
-            //            .zIndex(1)
+            .zIndex(1)
             
             // 채팅 입력창
             GeometryReader { geometry in
@@ -47,13 +48,20 @@ struct ChatDetailView: View {
                             Spacer()
                         }
                     }
+//                    ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
+//                        .background(Color(.systemBackground).ignoresSafeArea())
+//                        .shadow(radius: 0.5)
+//                        .position(x: geometry.size.width / 2, y: geometry.size.height-30)
+                }
+                .safeAreaInset(edge: .bottom) {
                     ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
                         .background(Color(.systemBackground).ignoresSafeArea())
                         .shadow(radius: 0.5)
-                        .position(x: geometry.size.width / 2, y: geometry.size.height-30)
+//                        .position(x: geometry.size.width / 2, y: geometry.size.height-30)
                 }
+                
             }
-            //            .zIndex(2)
+            .zIndex(2)
             
             // 사이드 메뉴 바
             if isMenuOpen {
@@ -61,7 +69,8 @@ struct ChatDetailView: View {
                 //                    .zIndex(3)
                 ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert)
                     .offset(x: x)
-                    .transition(isMenuOpen == true ? .move(edge: .trailing) : .identity)
+                    .transition(isMenuOpen ? .move(edge: .trailing) : .identity)
+                    .navigationBarHidden(isMenuOpen ? true : false)
                     .gesture(DragGesture().onChanged({ (value) in
                         withAnimation(.easeInOut){
                             if value.translation.width < 0 {
@@ -80,7 +89,7 @@ struct ChatDetailView: View {
                             }
                         }
                     }))
-                //                    .zIndex(4)
+                    .zIndex(4)
             }
         }
         .alert("채팅방 나가기", isPresented: $isExitButtonAlert) {

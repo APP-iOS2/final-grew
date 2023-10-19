@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ChatMessageListView: View {
+    
     @EnvironmentObject private var chatStore: ChatStore
     @EnvironmentObject private var messageStore: MessageStore
-    
     let chatRoom: ChatRoom
     let targetUserInfos: [User]
     
@@ -48,7 +48,6 @@ struct ChatMessageListView: View {
                     Text("")
                         .id("bottom")
                 }
-                /*
                 .onChange(of: unreadMessageIndex) { state, newState in
                     DispatchQueue.main.async {
                         Task {
@@ -68,7 +67,6 @@ struct ChatMessageListView: View {
                 .onTapGesture {
                     self.endTextEditing()
                 }
-                */
             }
             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             .toolbar {
