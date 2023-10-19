@@ -9,189 +9,235 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-@MainActor
-class ChatStore: ObservableObject {
+
+final class ChatStore: ObservableObject {
     
-    @Published var groups: [ChatRoom] = []
-    @Published var chatMessages: [ChatMessage] = []
+    private var listener: ListenerRegistration?
+    private var db = Firestore.firestore()
     
-    var firestoreChatListener: ListenerRegistration?
-    var firestoreGroupListener: ListenerRegistration?
+    var targetUserInfoDict: [String: [User]]
+    
+    @Published var newChat: ChatRoom?
+    @Published var chatRooms: [ChatRoom]
+    /// 스켈레톤 UI 즉 로딩 시간 사이에 패치를 나타내는 뷰를 잠시동안 보여줄 수 있는 Bool 값
+    @Published var isDoneFetch: Bool
+    
+    init() {
+        targetUserInfoDict = [:]
+        chatRooms = []
+        isDoneFetch = false
+    }
+    
+    var groupChatRooms: [ChatRoom] {
+        chatRooms.filter({ $0.chatRoomName != nil })
+    }
+    
+    var personalChatRooms: [ChatRoom] {
+        chatRooms.filter({ $0.chatRoomName == nil })
+    }
+}
+
+// CRUD 작업
+extension ChatStore {
+    // 채팅방 목록 가져오기
+    func getChatRoomDocuments() async -> QuerySnapshot? {
+        do {
+            print(UserStore.shared.currentUser)
+            guard let currentUser = UserStore.shared.currentUser else {
+                return nil
+            }
+            let snapshot = try await db
+                .collection("chatrooms")
+                .whereField("members", arrayContains: currentUser.id ?? "")
+                .order(by: "lastMessageDate", descending: true)
+                .getDocuments()
+            return snapshot
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+        }
+        return nil
+    }
     
     
-    private func updateUserInfoForAllMessages(uid: String, updatedInfo: [AnyHashable: Any]) async throws {
+    // fetching만 빼기
+    @MainActor
+    func allocateChatRooms(chatRooms: [ChatRoom]) {
+        self.chatRooms = chatRooms
+        self.isDoneFetch = true
+    }
+    
+    // 채팅룸 목록 삭제하기
+    @MainActor
+    func removeChatRoomsList() {
+        chatRooms.removeAll()
+    }
+    
+    // 채팅방 fetch하면서 연관된 User정보 값 가지고 있기
+    func fetchChatRooms() async {
+        let snapshot = await getChatRoomDocuments()
         
-        let db = Firestore.firestore()
+        var newChatRooms: [ChatRoom] = []
         
-        let groupDocuments = try await db.collection("chatrooms").getDocuments().documents
-        
-        for groupDoc in groupDocuments {
-            let messages = try await groupDoc.reference.collection("chatmessages")
-                .whereField("uid", isEqualTo: uid)
-                .getDocuments().documents
-            
-            for message in messages {
-                try await message.reference.updateData(updatedInfo)
+        if let snapshot {
+            for document in snapshot.documents {
+                do {
+                    let chatRoom: ChatRoom = try document.data(as: ChatRoom.self)
+                    if let targetUserInfo = await UserStore.requestAndReturnUsers(userID: chatRoom.otherUserIDs) {
+                        newChatRooms.append(chatRoom)
+                        
+                        targetUserInfoDict[chatRoom.id] = targetUserInfo
+                    }
+                } catch {
+                    print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+                }
             }
         }
+        
+        await allocateChatRooms(chatRooms: newChatRooms)
     }
     
-    // 닉네임 변경 + 업데이트
-    /* func updateDisplayName(for user: User, displayName: String) async throws {
-     let request = user.createProfileChangeRequest()
-     request.displayName = displayName
-     try await request.commitChanges()
-     try await updateUserInfoForAllMessages(uid: user.uid, updatedInfo: ["displayName": user.displayName ?? "Guest"])
-     } */
-    
-    /// 제거하기
-    func detachFirebaseChatListener() {
-        self.firestoreChatListener?.remove()
-    }
-    
-    /// 리스너 제거하기
-    func detachFirebaseGroupListener() {
-        self.firestoreGroupListener?.remove()
-    }
-    
-    /// Firebase프로필 사진 변경
-    func updatePhotoURL(for user: FirebaseAuth.User, photoURL: URL) async throws {
-        
-        let request = user.createProfileChangeRequest()
-        request.photoURL = photoURL
-        try await request.commitChanges()
-        
-        // update UserInf for all messages
-        try await updateUserInfoForAllMessages(uid: user.uid, updatedInfo: ["profilePhotoURL": photoURL.absoluteString])
-    }
-    
-    /// 채팅메시지용 리스너 설정
-    func listenForChatMessages(in chatroom: ChatRoom) {
-        
-        let db = Firestore.firestore()
-        
-        chatMessages.removeAll()
-        
-        guard let documentId = chatroom.id else { return }
-        
-        self.firestoreChatListener = db.collection("chatrooms")
-            .document(documentId)
-            .collection("chatmessages")
-            .order(by: "createdDate", descending: false)
-            .addSnapshotListener({ [weak self] snapshot, error in
-                
-                guard let snapshot = snapshot else {
-                    print("Error fetching snapshots: \(error!)")
-                    return
-                }
-                
-                snapshot.documentChanges.forEach { diff in
-                    if diff.type == .added {
-                        do {
-                            let snapshot = diff.document
-                            let diffdata = try snapshot.data(as: ChatMessage.self)
-                            
-                            let exists = self?.chatMessages.contains(where: { cm in
-                                cm.id == diffdata.id
-                            })
-                            if !exists! {
-                                self?.chatMessages.append(diffdata)
-                            }
-                        } catch {
-                            print("error Decoding Data")
-                        }
-                    }
-                }
-            })
-    }
-    /*
-    ///현재 로그인 한 유저의 채팅방 패치 작업
-    func listenForChatRoom() async throws {
-        
-        let db = Firestore.firestore()
-        
-        chatMessages.removeAll()
-        
-        guard let documentId =  else { return }
-        
-        self.firestoreChatListener = db.collection("users")
-            .document(documentId)
-            .collection("chatmessages")
-            .order(by: "createdDate", descending: false)
-            .addSnapshotListener({ [weak self] snapshot, error in
-                
-                guard let snapshot = snapshot else {
-                    print("Error fetching snapshots: \(error!)")
-                    return
-                }
-                
-                snapshot.documentChanges.forEach { diff in
-                    if diff.type == .added {
-                        do {
-                            let snapshot = diff.document
-                            let diffdata = try snapshot.data(as: ChatMessage.self)
-                            
-                            let exists = self?.chatMessages.contains(where: { cm in
-                                cm.id == diffdata.id
-                            })
-                            if !exists! {
-                                self?.chatMessages.append(diffdata)
-                            }
-                        } catch {
-                            print("error Decoding Data")
-                        }
-                    }
-                }
-            })
-    }
-     */
-    func populateGroups() async throws {
-        
-        let db = Firestore.firestore()
-        let snapshot = try await db.collection("chatrooms")
-            .getDocuments()
-        
-        groups = snapshot.documents.compactMap { try?
-            $0.data(as: ChatRoom.self)
-        }
-//        .filter({ $0.id != currentUid})
-    }
-    
-    //
-    func saveChatMessageToGroup(chatMessage: ChatMessage, group: ChatRoom) async throws {
-        
-        let db = Firestore.firestore()
-        guard let groupDocumentId = group.id else { return }
-        try db.collection("chatrooms")
-            .document(groupDocumentId)
-            .collection("chatmessages")
-            .document(chatMessage.id ?? "error")
-            .setData(from: chatMessage)
-//            .addDocument(data: chatMessage.toDictionary())
-    }
-    
-    /*
-     func saveChatMessageToGroup(text: String, group: Group, completion: @escaping (Error?) -> Void) {
-     
-     let db = Firestore.firestore()
-     guard let groupDocumentId = group.documentId else { return }
-     db.collection("groups")
-     .document(groupDocumentId)
-     .collection("messages")
-     .addDocument(data: ["chatText": text]) { error in
-     completion(error)
-     }
-     } */
-    
-    
-    func saveGroup(group: ChatRoom) {
+    func addChatRoom(_ chatRoom: ChatRoom) async {
         do {
-            let db = Firestore.firestore()
-            try db.collection("groups")
-                .document(group.id ?? "errorSaveGroup")
-                .setData(from: group)
+            try db.collection("chatrooms")
+                .document(chatRoom.id)
+                .setData(from: chatRoom.self)
         } catch {
-            print("Failed to SaveGroup")
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
         }
+    }
+    
+    func updateChatRoom(_ chatRoom: ChatRoom) async {
+        do {
+            try await db.collection("chatrooms")
+                .document(chatRoom.id)
+                .updateData([
+                    "lastMessageDate": chatRoom.lastMessageDate,
+                    "lastMessage": chatRoom.lastMessage,
+                    "unreadMessageCount" : chatRoom.unreadMessageCount
+                ])
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+        }
+    }
+    
+    func removeChatRoom(_ chatRoom: ChatRoom) async {
+        do {
+            try await db.collection("chatrooms")
+                .document(chatRoom.id)
+                .delete()
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+        }
+    }
+    
+    func getUnreadMessageDictionary(chatRoomID: String) async -> [String: Int]? {
+        do {
+            let snapshot = try await db.collection("chatrooms")
+                .document(chatRoomID)
+                .getDocument()
+            
+            if let data = snapshot.data() {
+                let dict = data["unreadMessageCount"] as? [String: Int] ?? ["no one": 0]
+                return dict
+            }
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+        }
+        return nil
+    }
+}
+
+// 리스너 관리
+
+extension ChatStore {
+    // 최신 메시지 온 순으로 정렬
+    func sortChatRooms() {
+        chatRooms.sort {
+            $0.lastMessageDate > $1.lastMessageDate
+        }
+    }
+    
+    // 리스너에서 스냅샷 데이터로 채팅방 인스턴스를 만드는 메서드
+    func newChatRoom(change: QueryDocumentSnapshot) -> ChatRoom? {
+        do {
+            let newChatRoom = try change.data(as: ChatRoom.self)
+            return newChatRoom
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    // 리스너에서 type = .added 처리
+    func listenerAddChatRoom(change: QueryDocumentSnapshot) async {
+        let newChatRoom = newChatRoom(change: change)
+        
+        if let newChatRoom, let targetUserInfo = await UserStore.requestAndReturnUsers(userID: newChatRoom.otherUserIDs) {
+            targetUserInfoDict[newChatRoom.id] = targetUserInfo
+            
+            await appendAndSortChats(newChatRoom: newChatRoom)
+        }
+    }
+    
+    // 채팅방 정렬
+    @MainActor
+    func appendAndSortChats(newChatRoom: ChatRoom) {
+        chatRooms.append(newChatRoom)
+        sortChatRooms()
+    }
+    
+    // 리스너에서 update 처리 ex)채팅방 내부에서 채팅이 입력되어서 채팅방에 마지막 메시지 갱신, 마지막 날짜 갱신, 유저별 안읽은 채팅 개수 갱신
+    func listenerUpdateChatRooms(change: QueryDocumentSnapshot) {
+        updateChatRooms(change: change)
+        sortChatRooms()
+    }
+    
+    // 업데이트
+    func updateChatRooms(change: QueryDocumentSnapshot) {
+        guard let index = chatRooms.firstIndex(where: {
+            $0.id == change.documentID}) else {
+            return
+        }
+        let newChatRoom = newChatRoom(change: change)
+        if let newChatRoom {
+            chatRooms[safe: index] = newChatRoom
+        }
+    }
+    
+    func addListener() {
+        guard let currentUid = UserStore.shared.currentUser?.id else {
+            return
+        }
+        
+        listener = db
+            .collection("chatrooms")
+            .whereField("members", arrayContains: currentUid)
+            .addSnapshotListener({ snapshot, error in
+                guard let snapshot else { return }
+                
+                snapshot.documentChanges.forEach { diff in
+                    switch diff.type {
+                    case .added:
+                        if self.isDoneFetch {
+                            Task {
+                                await
+                                self.listenerAddChatRoom(change: diff.document)
+                            }
+                        }
+                    case .modified:
+                        self.listenerUpdateChatRooms(change: diff.document)
+                    case .removed:
+                        _ = 0
+                    }
+                }
+                
+                
+            })
+    }
+    func removeListener() {
+        guard let listener else {
+            return
+        }
+        listener.remove()
     }
 }

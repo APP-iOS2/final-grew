@@ -11,6 +11,7 @@ struct GroupCategoryView: View {
     @EnvironmentObject var viewModel: GrewViewModel
     @Binding var selection: Selection
     @Binding var showSubCategories: Bool
+    @Binding var isCategoryValid: Bool
     
     private let gridItems: [GridItem] = [
         //        GridItem(.adaptive(minimum: 60))
@@ -34,6 +35,7 @@ struct GroupCategoryView: View {
                                 self.selection.subCategoryID = nil
                                 viewModel.selectedCategoryId = category.id
                                 showSubCategories = true
+                                isCategoryValid = true
                             } label: {
                                 Text(category.name)
                                     .grewButtonModifier(
@@ -57,17 +59,6 @@ struct GroupCategoryView: View {
 
 
 #Preview {
-    GroupCategoryView(selection: .constant(Selection(categoryID: "", subCategoryID: "")), showSubCategories: .constant(true))
+    GroupCategoryView(selection: .constant(Selection(categoryID: "", subCategoryID: "")), showSubCategories: .constant(true), isCategoryValid: .constant(true))
         .environmentObject(GrewViewModel())
 }
-
-/*
- RoundedRectangle(cornerRadius: 20)
-     .foregroundStyle(isSelected ? Color.Sub : Color.BackgroundGray)
-     .cornerRadius(12)
-     .overlay(
-         Text(category.name)
-             .font(.b3_B)
-             .foregroundStyle(isSelected ? Color.white : Color.black)
-     )
- */

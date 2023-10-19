@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct AuthAgreeView: View {
+    
+    @Binding var isButton1: Bool
+    
     var body: some View {
         VStack {
             Spacer()
@@ -21,7 +24,7 @@ struct AuthAgreeView: View {
             }
             .padding(.bottom, 10)
             
-            AuthAgreeCheckView()
+            AuthAgreeCheckView(isButton1: $isButton1)
             
             Spacer()
         }
@@ -29,5 +32,6 @@ struct AuthAgreeView: View {
 }
 
 #Preview {
-    AuthAgreeView()
+    AuthAgreeView(isButton1: .constant(true))
+        .environmentObject(RegisterViewModel())
 }

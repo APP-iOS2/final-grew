@@ -9,17 +9,21 @@ import SwiftUI
 
 struct LaunchView: View {
     
-    @StateObject var vm = LaunchVM()
+    @StateObject var viewModel = LaunchViewModel()
     @StateObject var grewViewModel = GrewViewModel()
     @StateObject var userViewModel = UserViewModel()
+    @StateObject var chatStore = ChatStore()
+    @StateObject var messageStore = MessageStore()
     
     var body: some View {
-        if vm.user == nil {
+        if viewModel.authuser == nil {
             AuthStartView()
         } else {
             MainTabView()
                 .environmentObject(grewViewModel)
                 .environmentObject(UserViewModel())
+                .environmentObject(chatStore)
+                .environmentObject(messageStore)
                 .onAppear {
                     grewViewModel.fetchJsonData()
                 }
