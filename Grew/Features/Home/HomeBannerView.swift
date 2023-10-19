@@ -23,9 +23,13 @@ extension CaseIterable where Self: Equatable{
 }
 
 enum BannerContentType: CaseIterable, Identifiable {
-    case first
-    case second
-    case third
+    case first,
+    second,
+    third,
+    fouth,
+    fifth,
+    sixth,
+    seventh
     
     var id: Self { self }
     
@@ -35,18 +39,45 @@ enum BannerContentType: CaseIterable, Identifiable {
         switch self {
         case .first:
             ZStack {
-                Color.Main
-                Text("1️⃣")
+                Image("banner1")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             }
         case .second:
             ZStack {
-                Color.Sub
-                Text("2️⃣")
+                Image("banner2")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             }
         case .third:
             ZStack {
-                Color.DarkGray1
-                Text("3️⃣")
+                Image("banner3")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+        case .fouth:
+            ZStack {
+                Image("banner4")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+        case .fifth:
+            ZStack {
+                Image("banner5")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+        case .sixth:
+            ZStack {
+                Image("banner6")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+        case .seventh:
+            ZStack {
+                Image("banner7")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             }
         }
     }
