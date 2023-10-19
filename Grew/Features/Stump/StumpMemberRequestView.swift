@@ -20,13 +20,21 @@ struct StumpMemberRequestView: View {
     @State private var isShowingPhotoLibrary: Bool = false
     @State private var isShowingFinishAlert: Bool = false
     
+    private var isFinishButtonDisabled: Bool {
+        name.isEmpty || 
+        businessNumber.isEmpty ||
+        !isBusinessNumberCorrect ||
+        phoneNumber.isEmpty ||
+        image == nil
+    }
+    
     var isBusinessNumberCorrect: Bool {
         if businessNumber.isEmpty {
             return true
         }
         let pattern = "^\\d{3}-\\d{2}-\\d{5}$"
-            let regex = try? NSRegularExpression(pattern: pattern)
-            let range = NSRange(location: 0, length: businessNumber.utf16.count)
+        let regex = try? NSRegularExpression(pattern: pattern)
+        let range = NSRange(location: 0, length: businessNumber.utf16.count)
         return regex?.firstMatch(in: businessNumber, options: [], range: range) != nil
     }
     
@@ -34,6 +42,7 @@ struct StumpMemberRequestView: View {
         NavigationStack {
             ScrollView {
                 makeInputView()
+                makeImageView()
             }
             VStack {
                 makeFinishButton()
@@ -71,35 +80,46 @@ struct StumpMemberRequestView: View {
             }
             .presentationDetents([.height(120), .height(120)])
         }
-        .sheet(isPresented: $isShowingPhotoLibrary, content: {
-            ImagePicker(image: $image)
-        })
-        .sheet(isPresented: $isShowingCamera, content: {
+        .sheet(isPresented: $isShowingPhotoLibrary) { ImagePicker(image: $image)
+        }
+        .sheet(isPresented: $isShowingCamera) {
             CameraView(isPresented: $isShowingCamera) { uiImage in
                 image = uiImage
             }
-        })
+        }
         .grewAlert(
             isPresented: $isShowingFinishAlert,
             title: "그루터기 멤버 신청이 완료되었습니다!",
             buttonTitle: "확인",
             buttonColor: .Main
         ) {
-            }
+        }
     }
     
     private func makeInputView() -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("그루터기장 이름(사업자 이름)")
                 .font(.b2_R)
-            GrewTextField(text: $name, isWrongText: false, isTextfieldDisabled: false, placeholderText: "이름", isSearchBar: false)
+            GrewTextField(
+                text: $name,
+                isWrongText: false,
+                isTextfieldDisabled: false,
+                placeholderText: "이름",
+                isSearchBar: false
+            )
                 .padding(.bottom, 18)
             
             Text("사업자 등록 번호")
                 .font(.b2_R)
-            GrewTextField(text: $businessNumber, isWrongText: !isBusinessNumberCorrect, isTextfieldDisabled: false, placeholderText: "000-00-0000", isSearchBar: false)
+            GrewTextField(
+                text: $businessNumber,
+                isWrongText: !isBusinessNumberCorrect,
+                isTextfieldDisabled: false,
+                placeholderText: "000-00-0000",
+                isSearchBar: false
+            )
                 .padding(.bottom, isBusinessNumberCorrect ? 18 : 0)
-                
+            
             if !isBusinessNumberCorrect {
                 HStack {
                     Spacer()
@@ -111,7 +131,13 @@ struct StumpMemberRequestView: View {
             
             Text("개인 전화번호")
                 .font(.b2_R)
-            GrewTextField(text: $phoneNumber, isWrongText: false, isTextfieldDisabled: false, placeholderText: "전화번호", isSearchBar: false)
+            GrewTextField(
+                text: $phoneNumber,
+                isWrongText: false,
+                isTextfieldDisabled: false,
+                placeholderText: "전화번호",
+                isSearchBar: false
+            )
                 .padding(.bottom, 18)
             
             Text("사업자 등록 이미지")
@@ -120,21 +146,32 @@ struct StumpMemberRequestView: View {
                 isShowingSelectionSheet = true
             } label: {
                 HStack {
+                    Spacer()
                     Image(systemName: "plus")
-                    Text("사진 추가하기")
+                    Text(image == nil ? "사진 추가하기" : "다시 추가하기")
+                    Spacer()
                 }
                 .font(.b1_B)
                 .foregroundStyle(Color.DarkGray1)
-                .frame(width: 343, height: 142)
+                .frame(height: 44)
             }
             .background(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.Black)
             )
-
-            
         }
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 20)
+    }
+    
+    @ViewBuilder
+    private func makeImageView() -> some View {
+        if let image {
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 300)
+                .padding(.bottom)
+        }
     }
     
     private func makeFinishButton() -> some View {
@@ -142,13 +179,23 @@ struct StumpMemberRequestView: View {
             isShowingFinishAlert = true
         } label: {
             Text("신청 완료")
+                .frame(width: 343, height: 50)
         }
-        .grewButtonModifier(width: 343, height: 50, buttonColor: .Main, font: .b1_B, fontColor: .white, cornerRadius: 8)
-        .padding(.bottom)
-        .disabled(
-            name.isEmpty || businessNumber.isEmpty || !isBusinessNumberCorrect || phoneNumber.isEmpty
+        .grewButtonModifier(
+            width: 343,
+            height: 50,
+            buttonColor: isFinishButtonDisabled ? .LightGray2 : .Main,
+            font: .b1_B,
+            fontColor: isFinishButtonDisabled ? .DarkGray1 : .white,
+            cornerRadius: 8
         )
+        .disabled(isFinishButtonDisabled)
     }
+}
+
+struct StumpMember: Identifiable, Codable {
+    var id: String = UUID().uuidString
+    
 }
 
 #Preview {
