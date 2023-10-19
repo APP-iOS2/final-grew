@@ -32,7 +32,11 @@ struct ChatInputView: View {
             //                .focused($isChatTextFieldFocused)
             Button {
                 Task {
-                    await sendMessage()
+                    if groupDetailConfig.selectedImage != nil, !groupDetailConfig.chatText.isEmptyOrWhiteSpace {
+                        await sendMessageAndPhoto()
+                    } else {
+                        await sendMessage()
+                    }
                 }
             } label: {
                 Image(systemName: "arrow.up.circle.fill").font(.title).foregroundColor(!groupDetailConfig.isValid ? .gray : Color.Main)
@@ -64,6 +68,27 @@ struct ChatInputView: View {
         clearFields()
     }
     
+    private func sendMessageAndPhoto() async {
+        var newPhotoMessage = makeMessage(config: groupDetailConfig)
+        var newMessage = makeMessage(config: groupDetailConfig)
+        let newChat = await makeChatRoomForSend()
+        
+        if let image = groupDetailConfig.selectedImage {
+            do {
+                let imageUrl =  try await ImageUploader.uploadImage(path: "attachment/\(UUID().uuidString)", image: image)
+                newPhotoMessage.attachImageURL = imageUrl ?? ""
+                newPhotoMessage.text = ""
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        messageStore.addMessage(newPhotoMessage, chatRoomID: chatRoom.id)
+        messageStore.addMessage(newMessage, chatRoomID: chatRoom.id)
+        await chatStore.updateChatRoom(newChat)
+        
+        clearFields()
+    }
+    
     private func makeMessage(config: GroupDetailConfig) -> ChatMessage {
         let newMessage = ChatMessage.init(
             text: config.chatText,
@@ -81,11 +106,10 @@ struct ChatInputView: View {
         for userID in chatRoom.otherUserIDs {
             newUnreadMessageCountDict[userID, default: 0] += 1
         }
-        newChatRoom.lastMessage = groupDetailConfig.chatText
+        newChatRoom.lastMessage = groupDetailConfig.chatText.isEmpty ? "사진을 보냈습니다." : groupDetailConfig.chatText
         newChatRoom.lastMessageDate = .now
         newChatRoom.unreadMessageCount = newUnreadMessageCountDict
         
         return newChatRoom
     }
 }
-
