@@ -41,7 +41,7 @@ struct ChatInputView: View {
     
     private func clearFields() {
         groupDetailConfig.clearForm()
-        appState.loadingState = .idle
+//        appState.loadingState = .idle
     }
 }
 

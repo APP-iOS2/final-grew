@@ -9,11 +9,12 @@ import SwiftUI
 
 struct LaunchView: View {
     
-    @StateObject var vm = LaunchVM()
-    @StateObject var grewViewModel = GrewViewModel()
-    @StateObject var userViewModel = UserViewModel()
-    @StateObject var chatStore = ChatStore()
-    @StateObject var messageStore = MessageStore()
+    @StateObject private var vm = LaunchVM()
+    @StateObject private var grewViewModel = GrewViewModel()
+    @StateObject private var userViewModel = UserViewModel()
+    @StateObject private var chatStore = ChatStore()
+    @StateObject private var messageStore = MessageStore()
+    @StateObject private var appState = AppState()
     
     var body: some View {
         if vm.authuser == nil {
@@ -22,6 +23,7 @@ struct LaunchView: View {
             MainTabView()
                 .environmentObject(grewViewModel)
                 .environmentObject(UserViewModel())
+                .environmentObject(AppState())
                 .environmentObject(chatStore)
                 .environmentObject(messageStore)
                 .onAppear {

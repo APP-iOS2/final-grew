@@ -8,18 +8,26 @@
 import SwiftUI
 
 struct MessageBubbles: View {
-    
     let chatMessage: ChatMessage
-    let selectedBubble: Bubble
+    let targetUserInfos: [User]
+    var bubbleOwner: Bubble {
+        if chatMessage.isSystem {
+            return .system
+        } else if chatMessage.uid == UserStore.shared.currentUser!.id! {
+            return .my
+        } else {
+            return .other
+        }
+    }
     
     var body: some View {
-        switch selectedBubble {
+        switch bubbleOwner {
         case .my:
             myBubble
         case .other:
             otherBubble
-        case .admin:
-            adminBubble
+        case .system:
+            systemBubble
         }
     }
     
@@ -63,7 +71,7 @@ struct MessageBubbles: View {
         }
     }
     
-    private var adminBubble: some View {
+    private var systemBubble: some View {
         VStack{
             Text(chatMessage.text)
                 .font(.caption)
@@ -75,8 +83,3 @@ struct MessageBubbles: View {
     }
 }
 
-struct MessageBubbles_Previews: PreviewProvider {
-    static var previews: some View {
-        MessageBubbles(chatMessage: ChatMessage.dummyChat, selectedBubble: .other)
-    }
-}

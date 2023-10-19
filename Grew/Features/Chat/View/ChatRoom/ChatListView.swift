@@ -17,7 +17,10 @@ struct ChatListView: View {
             case .group:
                 ForEach(chatStore.groupChatRooms){ chatRoom in
                     NavigationLink {
-                        ChatDetailView(chatRoom: chatRoom)
+                        ChatDetailView(
+                            chatRoom: chatRoom,
+                            targetUserInfos: chatStore.targetUserInfoDict[chatRoom.id] ?? []
+                        )
                     } label: {
                         ChatRoomCell(
                             chatRoom: chatRoom,
@@ -33,7 +36,7 @@ struct ChatListView: View {
             case .personal:
                 ForEach(chatStore.personalChatRooms){ chatRoom in
                     NavigationLink {
-                        ChatDetailView(chatRoom: chatRoom)
+                        ChatDetailView(chatRoom: chatRoom, targetUserInfos: chatStore.targetUserInfoDict[chatRoom.id] ?? [])
                     } label: {
                         ChatRoomCell(
                             chatRoom: chatRoom,
