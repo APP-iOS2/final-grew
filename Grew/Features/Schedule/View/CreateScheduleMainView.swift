@@ -84,7 +84,7 @@ struct CreateScheduleMainView: View {
                         buttonTitle: "확인",
                         buttonColor: Color.grewMainColor
                     ) {
-                        finishCreate()
+//                        finishCreate()
                     }
 //                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
             }
