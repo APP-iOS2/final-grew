@@ -48,6 +48,9 @@ class UserStore: ObservableObject {
         }
         let userRef = Firestore.firestore().collection("users").document(userId)
         userRef.updateData(["searchHistory": searchHistory])
+        Task {
+            try await loadUserData()
+        }
     }
     
     static func requestAndReturnUsers(userID: [String]) async -> [User]? {

@@ -9,97 +9,76 @@ import SwiftUI
 import WebKit
 
 /*
- dataArrays[0] = 지번주소
- dataArrays[1] = 도로명
- dataArrays[2] = 우편번호
+ jibunAddress : 지번주소
+ roadAddress : 도로명주소
+ zonecode : 우편번호
+ x(latitude) : 위도
+ y(longitude) : 경도
 */
 
 class KakaoWebController: NSObject, WKScriptMessageHandler {
-    
     @Binding var showingWebSheet: Bool
     @Binding var location: String
+    @Binding var latitude: String
+    @Binding var longitude: String
     
-    private var messageText: String = ""
-    private var dataArrays = Array(repeating: "", count: 3)
-    
-    init(showingWebSheet: Binding<Bool>, location: Binding<String>) {
+    init(showingWebSheet: Binding<Bool>, location: Binding<String>, latitude: Binding<String>, longitude: Binding<String>) {
         self._showingWebSheet = showingWebSheet
         self._location = location
+        self._latitude = latitude
+        self._longitude = longitude
     }
     
     // didReceive, 데이터 받아옴
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if message.name == "callBackHandler" {
+        
+        if message.name == "callBackHandler", let data = message.body as? [String: Any] {
             print("message name : \(message.name)")
             print("post Message : \(message.body)")
-
-            receiveMessage("\(message.body)")
-            print("변환 이전 : dataArray : \(dataArrays)")
-            print("변환 이전 : dataArrays[1] : \(dataArrays[1])")
-            print("변환 이전 : lacation: \(location)")
-        }
-    }
-    
-    // 받아온 데이터 저장, 데이터 처리함수 호출
-    func receiveMessage(_ message: String) {
-        DispatchQueue.main.async {
-            self.messageText = message
-            self.textConversion()
-        }
-    }
-    
-    // 데이터 처리함수
-    func textConversion() {
-        var decodedInput: String = ""
+            
+            print(data["jibunAddress"] as Any)
+            print(data["roadAddress"] as Any)
+            print(data["x"] as Any)
+            print(data["y"] as Any)
+            print(data["zonecode"] as Any)
         
-        // 유니코드 변환
-        if let data = messageText.data(using: .utf8), let decodedString = String(data: data, encoding: .nonLossyASCII) {
-            decodedInput = decodedString
-            print(decodedInput)
-        }
-        
-        // 데이터 나누기
-        let components = decodedInput.components(separatedBy: ";\n")
-       
-        for component in components {
-            if component.contains("jibunAddress") {
-                let data = component.replacingOccurrences(of: "jibunAddress = ", with: "")
-                if let data = data.split(separator: "\"").dropFirst().first {
-                    dataArrays[0] = String(data)
-                }
-            } else if component.contains("roadAddress") {
-                let data = component.replacingOccurrences(of: "roadAddress = ", with: "")
-                if let data = data.split(separator: "\"").dropFirst().first {
-                    dataArrays[1] = String(data)
-                }
-            } else if component.contains("zonecode = ") {
-                let data = component.replacingOccurrences(of: "zonecode = ", with: "")
-                if let data = data.split(separator: " = ").last {
-                    dataArrays[2] = String(data)
-                }
+            if let roadAddress = (data["roadAddress"]) as? String{
+                location = roadAddress
             }
+            if let roadLatitude = (data["x"]) as? String{
+                latitude = roadLatitude
+            }
+            if let roadLongitude = (data["y"]) as? String{
+                longitude = roadLongitude
+            }
+            
+            print("Binding lacation: \(String(describing: location))")
+            print("Binding latitude: \(String(describing: latitude))")
+            print("Binding longitude: \(String(describing: longitude))")
+            showingWebSheet.toggle()
         }
-        print("Conversion Data Arrays: \(dataArrays)")
-        print("변환 후 : dataArray : \(dataArrays)")
-        print("변환 후 : dataArrays[1] : \(dataArrays[1])")
-        print("변환 후 : lacation: \(location)")
-        location = dataArrays[1]
-        showingWebSheet.toggle()
     }
+   
 }
+
 
 struct WebView: UIViewRepresentable {
     let request: URLRequest
     private var webView: WKWebView?
     @Binding var showingWebSheet: Bool
     @Binding var location: String
+    @Binding var latitude: String
+    @Binding var longitude: String
     
-    init(request: URLRequest, showingWebSheet: Binding<Bool>, location: Binding<String>) {
+    init(request: URLRequest, showingWebSheet: Binding<Bool>, location: Binding<String>, latitude: Binding<String>, longitude: Binding<String>) {
         self.webView = WKWebView()
         self.request = request
         self._showingWebSheet = showingWebSheet
         self._location = location
-        self.webView?.configuration.userContentController.add(KakaoWebController(showingWebSheet: _showingWebSheet, location: _location), name: "callBackHandler")
+        self._latitude = latitude
+        self._longitude = longitude
+        self.webView?.configuration.userContentController
+            .add(KakaoWebController(showingWebSheet: _showingWebSheet, location: _location, latitude: _latitude, longitude: _longitude), name: "callBackHandler")
     }
     
     func makeUIView(context: Context) -> WKWebView {

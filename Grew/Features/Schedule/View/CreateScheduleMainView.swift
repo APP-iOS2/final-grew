@@ -22,6 +22,8 @@ struct CreateScheduleMainView: View {
     @State private var maximumMenbers: String = "2"
     @State private var fee: String = ""
     @State private var location: String = ""
+    @State private var latitude: String = ""
+    @State private var longitude: String = ""
     @State private var colorPick: String = ""
  
     @State private var isEmptyFeeError: Bool = false
@@ -86,7 +88,7 @@ struct CreateScheduleMainView: View {
         }
         .sheet(isPresented: $showingWebSheet, content: {
             ZStack{
-                WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location)
+                WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location, latitude: $latitude, longitude: $longitude)
                 /*if isLoading {
                     ProgressView()
                 }*/

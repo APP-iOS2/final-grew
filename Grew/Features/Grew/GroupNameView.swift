@@ -14,34 +14,30 @@ struct GroupNameView: View {
     @State private var groupNameView = false
     @Binding var isNameValid: Bool
     @Binding var isLocationValid: Bool
+    @State var isShowingSheet = false
     
+    @State private var isWrongname: Bool = false
+    @State private var isWrongdob: Bool = false
+    @State private var isMeetingTextfieldDisabled: Bool = false
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 Text("모임이름을 입력해주세요")
-                    .font(.title2).fontWeight(.semibold)
+                    .font(.b1_R).fontWeight(.semibold)
                     .padding(.bottom, 10)
-                
-                HStack(spacing: 15) {
-                    TextField("모임이름을 입력해주세요", text: $viewModel.meetingTitle)
-                        .keyboardType(.namePhonePad)
-                        .onChange(of: viewModel.meetingTitle) { oldValue, newValue in
+                VStack(alignment: .leading) {
+                    GrewTextField(text: $viewModel.meetingTitle, isWrongText: isWrongname, isTextfieldDisabled: isMeetingTextfieldDisabled, placeholderText: "모임이름을 입력해주세요", isSearchBar: false)
+                        .onChange(of: viewModel.meetingTitle){ oldValue, newValue in
                             isNameValid = !newValue.isEmpty
                         }
                 }
-                .padding(10)
-                .overlay{
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.gray, lineWidth: 2)
-                }
-                .cornerRadius(5)
             }//: VStack
             .padding()
             .animationModifier(isAnimating: isAnimating, delay: 0)
             
             VStack(alignment: .leading) {
                 Text("활동방법을 선택해주세요")
-                    .font(.title2).fontWeight(.semibold)
+                    .font(.b1_R).fontWeight(.semibold)
                     .padding(.bottom, 0)
                 HStack(spacing: 40) {
                     Spacer()
@@ -49,7 +45,7 @@ struct GroupNameView: View {
                         viewModel.isOnline = true
                     } label: {
                         Text("온라인")
-                            .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isOnline ? Color.Sub : Color.BackgroundGray, font: .b1_B, fontColor: .white, cornerRadius: 10)
+                            .grewButtonModifier(width: 90, height: 50, buttonColor: viewModel.isOnline ? Color.Sub : Color.BackgroundGray, font: .b2_B, fontColor: .white, cornerRadius: 10)
                     }
                     
                     Button(action: {
@@ -57,11 +53,12 @@ struct GroupNameView: View {
                         isNextView = true
                     }, label: {
                         Text("오프라인")
-                            .grewButtonModifier(width: 100, height: 50, buttonColor: viewModel.isOnline ? Color.BackgroundGray : Color.Sub, font: .b1_B, fontColor: .white, cornerRadius: 10)
+                            .grewButtonModifier(width: 90, height: 50, buttonColor: viewModel.isOnline ? Color.BackgroundGray : Color.Sub, font: .b2_B, fontColor: .white, cornerRadius: 10)
                     })
                     Spacer()
                     
                 }//: HStack
+                
             }//: VStack
             .padding()
             .animationModifier(isAnimating: isAnimating, delay: 1)
@@ -73,17 +70,19 @@ struct GroupNameView: View {
                         Image(systemName: "location.circle.fill")
                         Text("장소")
                     }
-                    TextField("장소를 입력하세요", text: $viewModel.location)
-                        .keyboardType(.namePhonePad)
+                    Button {
+                        isShowingSheet = true
+                    } label: {
+                        if viewModel.location.isEmpty {
+                            Image(systemName: "magnifyingglass")
+                            Text("장소를 입력해주세요")
+                        } else {
+                            Text(viewModel.location)
+                        }
+                    }.grewButtonModifier(width: 343, height: 40, buttonColor: .LightGray1, font: .b3_R, fontColor: .black, cornerRadius: 10)
                         .onChange(of: viewModel.location) { _, newValue in
                             isLocationValid = !newValue.isEmpty
                         }
-                        .padding(10)
-                        .overlay{
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.gray, lineWidth: 2)
-                        }
-                        .cornerRadius(5)
                 }.padding()
                     .animationModifier(isAnimating: groupNameView, delay: 0)
                     .onAppear {
@@ -92,6 +91,9 @@ struct GroupNameView: View {
             }
             
         }//: ScrollView
+        .sheet(isPresented: $isShowingSheet, content: {
+            WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $isShowingSheet, location: $viewModel.location, latitude: $viewModel.latitude, longitude: $viewModel.longitude)
+        })
         .onAppear(perform: {
             isAnimating = true
             
