@@ -22,7 +22,9 @@ struct MapListItemView: View {
             Spacer(minLength: 12)
             
             VStack(alignment: .leading) {
-                CategoryView(isSmall: true, text: "문화예술")
+                CategoryView(isSmall: true, text: "문화예술", handleAction: {
+                    
+                })
                 Text("보드게임")
                     .font(.b2_B)
                     .foregroundColor(Color.Black)

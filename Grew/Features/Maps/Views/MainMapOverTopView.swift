@@ -12,14 +12,20 @@ struct MainMapOverTopView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             ScrollView(.horizontal) {
                 HStack {
                     ForEach(mainCategories) { mainCategory in
-                        CategoryView(isSmall: false, text: mainCategory.categoryForKorean)
+                        CategoryView(isSmall: false, text: mainCategory.categoryForKorean, handleAction: {
+                            
+                        })
                     }
                 }
-            }
+            }.scrollIndicators(.hidden)
         }
+        .frame(height: 100)
+        .padding(.vertical, 20)
+        .background(Color.white)
     }
 }
 

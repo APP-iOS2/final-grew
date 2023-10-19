@@ -17,6 +17,7 @@ struct MapView: View {
         GeometryReader { geometry in
             ZStack(alignment: .top) {
                 NaverMapView()
+                MainMapOverTopView()
                 MainMapOverSheetView(handleAction: {
                     self.expandList.toggle()
                 }).frame(height: 800)

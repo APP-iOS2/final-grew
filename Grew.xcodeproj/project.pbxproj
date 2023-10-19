@@ -109,6 +109,7 @@
 		3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2802AD62ED1000E9ADF /* GrewCellView.swift */; };
 		3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2842AD62EEE000E9ADF /* MapView.swift */; };
 		3137A2912AD7C773000E9ADF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3137A2902AD7C773000E9ADF /* GoogleService-Info.plist */; };
+		3A6D59E02AE0351900627179 /* MapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D59DF2AE0351900627179 /* MapStore.swift */; };
 		3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */; };
 		3AA913C92ADCD9A000157973 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA913C82ADCD9A000157973 /* CategoryView.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
@@ -224,6 +225,7 @@
 		3137A2802AD62ED1000E9ADF /* GrewCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewCellView.swift; sourceTree = "<group>"; };
 		3137A2842AD62EEE000E9ADF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3137A2902AD7C773000E9ADF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A6D59DF2AE0351900627179 /* MapStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStore.swift; sourceTree = "<group>"; };
 		3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		3AA913C82ADCD9A000157973 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 			isa = PBXGroup;
 			children = (
 				3137A2842AD62EEE000E9ADF /* MapView.swift */,
+				3A6D59DE2AE0350700627179 /* ViewModel */,
 				3AF1D4A72AD4D5F200ECE1A8 /* Views */,
 			);
 			path = Maps;
@@ -630,6 +633,14 @@
 				CE467AD82AD506B100143213 /* GoogleService-Info.plist */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		3A6D59DE2AE0350700627179 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3A6D59DF2AE0351900627179 /* MapStore.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3AF1D4A42AD41F3A00ECE1A8 /* Font */ = {
@@ -968,6 +979,7 @@
 				311097622AD417FD000D85AD /* ChatMessage.swift in Sources */,
 				311097B62AD41897000D85AD /* LoadingView.swift in Sources */,
 				2157095F2AD530F8006ABE35 /* ProfileHeaderView.swift in Sources */,
+				3A6D59E02AE0351900627179 /* MapStore.swift in Sources */,
 				3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */,
 				311097A82AD41882000D85AD /* Grew.swift in Sources */,
 				312E98E02ACD2EAA00E38626 /* Color+Extensions.swift in Sources */,
