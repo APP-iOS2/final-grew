@@ -141,15 +141,15 @@ struct CreateScheduleMainView: View {
         do{
             let newSchedule = Schedule(
                 id: id,
-                gid: "웅",
+                gid: "그루 아이디 넣어야행",
                 scheduleName: scheduleName,
                 date: date,
                 maximumMember: Int(maximumMenbers) ?? 2,
                 participants: [],
-                fee: fee,
-                location: location,
-                latitude: latitude,
-                longitude: longitude,
+                fee: (hasFee ? fee : nil),
+                location: (hasLocation ? location : nil),
+                latitude:  (hasLocation ? latitude : nil),
+                longitude:  (hasLocation ? longitude : nil),
                 color: colorPick
             )
             scheduleStore.addSchedule(newSchedule)
