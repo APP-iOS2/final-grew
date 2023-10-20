@@ -11,10 +11,11 @@
 		215709662AD67625006ABE35 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215709652AD67625006ABE35 /* UserViewModel.swift */; };
 		2157096A2AD68960006ABE35 /* ImageEditModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215709692AD68960006ABE35 /* ImageEditModalView.swift */; };
 		2157096C2AD69246006ABE35 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2157096B2AD69246006ABE35 /* CameraView.swift */; };
-		2163156B2ADFA68000208CB4 /* RemoveAdsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2163156A2ADFA68000208CB4 /* RemoveAdsView.swift */; };
+		2163156B2ADFA68000208CB4 /* PurchaseAdsBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2163156A2ADFA68000208CB4 /* PurchaseAdsBannerView.swift */; };
 		2163156E2ADFA6B100208CB4 /* OpensourceLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2163156D2ADFA6B100208CB4 /* OpensourceLicenseView.swift */; };
 		216315702ADFA6C000208CB4 /* DevelopersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2163156F2ADFA6C000208CB4 /* DevelopersView.swift */; };
 		216315722ADFA6CA00208CB4 /* InquiryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216315712ADFA6CA00208CB4 /* InquiryView.swift */; };
+		21709BFC2AE1191E00FDA43D /* ShowStumpsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21709BFB2AE1191E00FDA43D /* ShowStumpsView.swift */; };
 		21C1F1AB2ACFEE670029E436 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AA2ACFEE670029E436 /* ProfileView.swift */; };
 		21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */; };
 		21C1F1AF2ACFEE980029E436 /* RoundSpecificCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */; };
@@ -24,10 +25,6 @@
 		21C1F1B82ACFEEEC0029E436 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1F1B72ACFEEEC0029E436 /* SettingView.swift */; };
 		21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A722ADEB9A800B3E1C5 /* SavedGrewView.swift */; };
 		21F32A752ADEB9D400B3E1C5 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A742ADEB9D400B3E1C5 /* CircleImage.swift */; };
-		21F32A782ADED63200B3E1C5 /* EnrollGTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A772ADED63200B3E1C5 /* EnrollGTView.swift */; };
-		21F32A7B2ADED65100B3E1C5 /* EnrollGTMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A7A2ADED65100B3E1C5 /* EnrollGTMemberView.swift */; };
-		21F32A7E2ADED6B100B3E1C5 /* ShowGTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A7D2ADED6B100B3E1C5 /* ShowGTView.swift */; };
-		21F32A802ADEDBFE00B3E1C5 /* EnrollGTMemberDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F32A7F2ADEDBFE00B3E1C5 /* EnrollGTMemberDetailView.swift */; };
 		311097322AD41722000D85AD /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097312AD41722000D85AD /* LaunchView.swift */; };
 		3110973A2AD417A1000D85AD /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097382AD417A1000D85AD /* UserStore.swift */; };
 		3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097392AD417A1000D85AD /* AuthStore.swift */; };
@@ -190,10 +187,11 @@
 		215709652AD67625006ABE35 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		215709692AD68960006ABE35 /* ImageEditModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditModalView.swift; sourceTree = "<group>"; };
 		2157096B2AD69246006ABE35 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		2163156A2ADFA68000208CB4 /* RemoveAdsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAdsView.swift; sourceTree = "<group>"; };
+		2163156A2ADFA68000208CB4 /* PurchaseAdsBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseAdsBannerView.swift; sourceTree = "<group>"; };
 		2163156D2ADFA6B100208CB4 /* OpensourceLicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpensourceLicenseView.swift; sourceTree = "<group>"; };
 		2163156F2ADFA6C000208CB4 /* DevelopersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersView.swift; sourceTree = "<group>"; };
 		216315712ADFA6CA00208CB4 /* InquiryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryView.swift; sourceTree = "<group>"; };
+		21709BFB2AE1191E00FDA43D /* ShowStumpsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStumpsView.swift; sourceTree = "<group>"; };
 		21C1F1AA2ACFEE670029E436 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentListView.swift; sourceTree = "<group>"; };
 		21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundSpecificCorners.swift; sourceTree = "<group>"; };
@@ -203,10 +201,6 @@
 		21C1F1B72ACFEEEC0029E436 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		21F32A722ADEB9A800B3E1C5 /* SavedGrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGrewView.swift; sourceTree = "<group>"; };
 		21F32A742ADEB9D400B3E1C5 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
-		21F32A772ADED63200B3E1C5 /* EnrollGTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollGTView.swift; sourceTree = "<group>"; };
-		21F32A7A2ADED65100B3E1C5 /* EnrollGTMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollGTMemberView.swift; sourceTree = "<group>"; };
-		21F32A7D2ADED6B100B3E1C5 /* ShowGTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGTView.swift; sourceTree = "<group>"; };
-		21F32A7F2ADEDBFE00B3E1C5 /* EnrollGTMemberDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollGTMemberDetailView.swift; sourceTree = "<group>"; };
 		311097312AD41722000D85AD /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		311097382AD417A1000D85AD /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		311097392AD417A1000D85AD /* AuthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
@@ -407,7 +401,6 @@
 			children = (
 				21C1F1B72ACFEEEC0029E436 /* SettingView.swift */,
 				216315672ADFA62100208CB4 /* AppSetting */,
-				21F32A762ADED5C000B3E1C5 /* Grewteogi */,
 			);
 			path = MyProfileSetting;
 			sourceTree = "<group>";
@@ -415,7 +408,7 @@
 		216315672ADFA62100208CB4 /* AppSetting */ = {
 			isa = PBXGroup;
 			children = (
-				2163156A2ADFA68000208CB4 /* RemoveAdsView.swift */,
+				2163156A2ADFA68000208CB4 /* PurchaseAdsBannerView.swift */,
 			);
 			path = AppSetting;
 			sourceTree = "<group>";
@@ -428,17 +421,6 @@
 				216315712ADFA6CA00208CB4 /* InquiryView.swift */,
 			);
 			path = Inform;
-			sourceTree = "<group>";
-		};
-		21F32A762ADED5C000B3E1C5 /* Grewteogi */ = {
-			isa = PBXGroup;
-			children = (
-				21F32A7A2ADED65100B3E1C5 /* EnrollGTMemberView.swift */,
-				21F32A7F2ADEDBFE00B3E1C5 /* EnrollGTMemberDetailView.swift */,
-				21F32A772ADED63200B3E1C5 /* EnrollGTView.swift */,
-				21F32A7D2ADED6B100B3E1C5 /* ShowGTView.swift */,
-			);
-			path = Grewteogi;
 			sourceTree = "<group>";
 		};
 		311097372AD41797000D85AD /* Store */ = {
@@ -906,20 +888,6 @@
 			path = GrewCategoryView;
 			sourceTree = "<group>";
 		};
-		9FD050652ADF5C9300A8735A /* GrewDetail */ = {
-			isa = PBXGroup;
-			children = (
-				9FD050702ADFBA2900A8735A /* GrootView.swift */,
-				9FD050722ADFBD9700A8735A /* GrootListView.swift */,
-				9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */,
-				9FD050682ADF5CAA00A8735A /* ScheduleCellView.swift */,
-				9FD050662ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift */,
-				9FD0506C2ADF5EB600A8735A /* ScheduleDetailView.swift */,
-				9FD050742ADFC25800A8735A /* ScheduleListView.swift */,
-			);
-			path = GrewDetail;
-      		sourceTree = "<group>";
-    	};
 		9989DA962ADF683600AC4917 /* NewestSchedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -965,6 +933,7 @@
 				CE9292CE2ADF62EF005052AF /* StumpIntroductionView.swift */,
 				CE9292D02ADF6966005052AF /* StumpMemberRequestView.swift */,
 				CE9292D22ADFADBC005052AF /* StumpRegisterView.swift */,
+				21709BFB2AE1191E00FDA43D /* ShowStumpsView.swift */,
 			);
 			path = Stump;
 			sourceTree = "<group>";
@@ -1194,7 +1163,6 @@
 				21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */,
 				319757802AE1853A00696FF9 /* Storage+Extensions.swift in Sources */,
 				3197575C2ADEF38700696FF9 /* GroupDetailConfig.swift in Sources */,
-				21F32A782ADED63200B3E1C5 /* EnrollGTView.swift in Sources */,
 				9989DA982ADF686900AC4917 /* NewScheduleListView.swift in Sources */,
 				CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */,
 				99266D872AD710D400FB6AC1 /* GrewButtonModifier.swift in Sources */,
@@ -1209,19 +1177,17 @@
 				311097602AD417FD000D85AD /* ChatRoom.swift in Sources */,
 				CEB6CBB92AD682DE00515EEA /* GrewTextField.swift in Sources */,
 				3E185B242ADDB35D00F7FC46 /* KakaoWebController.swift in Sources */,
-				21F32A7E2ADED6B100B3E1C5 /* ShowGTView.swift in Sources */,
 				3110976F2AD4180F000D85AD /* NewGroupView.swift in Sources */,
 				319757742ADFAB5A00696FF9 /* CategoryButtonView.swift in Sources */,
 				CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */,
 				319757592ADEF36600696FF9 /* ChatListView.swift in Sources */,
 				311097BA2AD418A6000D85AD /* Constant.swift in Sources */,
-				21F32A802ADEDBFE00B3E1C5 /* EnrollGTMemberDetailView.swift in Sources */,
 				CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */,
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
 				64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */,
 				3197577E2AE16DD100696FF9 /* TextMaster.swift in Sources */,
 				3E185AF12ADCC64400F7FC46 /* ScheduleOptionMenu.swift in Sources */,
-				2163156B2ADFA68000208CB4 /* RemoveAdsView.swift in Sources */,
+				2163156B2ADFA68000208CB4 /* PurchaseAdsBannerView.swift in Sources */,
 				319757582ADEF36600696FF9 /* MainChatView.swift in Sources */,
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,
 				311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */,
@@ -1252,7 +1218,6 @@
 				2157096A2AD68960006ABE35 /* ImageEditModalView.swift in Sources */,
 				2157096C2AD69246006ABE35 /* CameraView.swift in Sources */,
 				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
-				21F32A7B2ADED65100B3E1C5 /* EnrollGTMemberView.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
 				311097A52AD41882000D85AD /* Category.swift in Sources */,
 				311097AA2AD41882000D85AD /* ImagePicker.swift in Sources */,
@@ -1273,6 +1238,7 @@
 				2157095F2AD530F8006ABE35 /* ProfileHeaderView.swift in Sources */,
 				3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */,
 				311097A82AD41882000D85AD /* Grew.swift in Sources */,
+				21709BFC2AE1191E00FDA43D /* ShowStumpsView.swift in Sources */,
 				3EC0F05B2ADE6E1700D07009 /* ScheduleStore.swift in Sources */,
 				CE36B52F2ADE2A23004D2BC3 /* NewestGrewCell.swift in Sources */,
 				21F32A752ADEB9D400B3E1C5 /* CircleImage.swift in Sources */,

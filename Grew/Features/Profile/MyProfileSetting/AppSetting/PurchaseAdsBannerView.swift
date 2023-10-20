@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct RemoveAdsView: View {
+struct PurchaseAdsBannerView: View {
     var body: some View {
         Text("RemoveAdsView")
     }
 }
 
 #Preview {
-    RemoveAdsView()
+    PurchaseAdsBannerView()
 }
