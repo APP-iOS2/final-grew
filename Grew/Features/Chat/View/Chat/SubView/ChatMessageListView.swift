@@ -83,7 +83,7 @@ struct ChatMessageListView: View {
                     }, label: {
                         if !isMenuOpen {
                             Image(systemName: "line.horizontal.3")
-                                .imageScale(.large).foregroundColor(Color.Main)
+                                .imageScale(.large).foregroundColor(Color.gray)
                         }
                     })
                 }
