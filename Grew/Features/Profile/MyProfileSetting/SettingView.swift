@@ -77,7 +77,7 @@ struct SettingView: View {
                     
                     
                     Section(header: Text("안내")) {
-                        ForEach(InformViewsName.allCases, id:\.self) { informViewName in
+                        ForEach(InformViewsName.allCases, id: \.self) { informViewName in
                             NavigationLink {
                                 switch informViewName {
                                 case .opensourceLicenseView:

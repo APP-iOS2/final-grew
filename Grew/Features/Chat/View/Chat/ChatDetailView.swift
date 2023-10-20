@@ -46,7 +46,7 @@ struct ChatDetailView: View {
                     .safeAreaPadding(.top, 50)
                     .offset(x: x)
                     .transition(isMenuOpen ? .move(edge: .trailing) : .identity)
-                    //.navigationBarHidden(isMenuOpen ? true : false)
+                    // .navigationBarHidden(isMenuOpen ? true : false)
                     .gesture(DragGesture().onChanged({ (value) in
                         withAnimation(.easeInOut){
                             if value.translation.width < 0 {

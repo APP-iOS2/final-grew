@@ -5,10 +5,10 @@
 //  Created by Chloe Chung on 2023/10/10.
 //
 
-import SwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import SwiftUI
 
 struct ProfileHeaderView: View {
     @State var name: String
@@ -38,10 +38,11 @@ struct ProfileHeaderView: View {
                             Spacer()
                             
                             NavigationLink {
-                                EditProfileView(name: userStore.currentUser?.nickName ?? "",
-                                                statusMessage: userStore.currentUser?.introduce ?? "",
-                                                userStore: UserStore(),
-                                                userViewModel: UserViewModel())
+                                EditProfileView(
+                                    name: userStore.currentUser?.nickName ?? "",
+                                    statusMessage: userStore.currentUser?.introduce ?? "",
+                                    userStore: UserStore(),
+                                    userViewModel: UserViewModel())
                             } label: {
                                 Text("프로필 수정")
                                     .background(RoundedRectangle(cornerRadius: 7)
@@ -71,7 +72,6 @@ struct ProfileHeaderView: View {
         }
     }
 }
-//}
 
 #Preview {
     NavigationStack {

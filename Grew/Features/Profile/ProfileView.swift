@@ -19,11 +19,12 @@ struct ProfileView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-                ProfileHeaderView(name: userViewModel.currentUser?.nickName ?? "",
-                                  statusMessage: userViewModel.currentUser?.introduce ?? "",
-                                  userStore: userStore,
-                                  userViewModel: userViewModel,
-                                  grewViewModel: grewViewModel)
+                ProfileHeaderView(
+                    name: userViewModel.currentUser?.nickName ?? "",
+                    statusMessage: userViewModel.currentUser?.introduce ?? "",
+                    userStore: userStore,
+                    userViewModel: userViewModel,
+                    grewViewModel: grewViewModel)
                 
                 UserContentListView()
             }

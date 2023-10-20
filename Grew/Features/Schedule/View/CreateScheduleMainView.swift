@@ -159,12 +159,12 @@ struct CreateScheduleMainView: View {
                 participants: [],
                 fee: (hasFee ? fee : nil),
                 location: (hasLocation ? location : nil),
-                latitude:  (hasLocation ? latitude : nil),
-                longitude:  (hasLocation ? longitude : nil),
+                latitude: (hasLocation ? latitude : nil),
+                longitude: (hasLocation ? longitude : nil),
                 color: colorPick
             )
             scheduleStore.addSchedule(newSchedule)
-        }catch let error {
+        } catch let error {
             print(error.localizedDescription)
         }
     }

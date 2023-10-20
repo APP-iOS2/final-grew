@@ -5,8 +5,8 @@
 //  Created by daye on 2023/09/25.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct MessageBubbles: View {
     let chatMessage: ChatMessage
@@ -52,7 +52,7 @@ struct MessageBubbles: View {
                     
                 } else {
                     Text(chatMessage.text)
-                         .font(.c1_R)
+                        .font(.c1_R)
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15) )
                 }
@@ -82,10 +82,10 @@ struct MessageBubbles: View {
                     if chatMessage.text.isEmpty {
                         
                     } else {
-                         Text(chatMessage.text)
-                        .font(.c1_R)
-                        .foregroundColor(.black)
-                        .padding(EdgeInsets(top: 11, leading: 15, bottom: 10, trailing: 15))
+                        Text(chatMessage.text)
+                            .font(.c1_R)
+                            .foregroundColor(.black)
+                            .padding(EdgeInsets(top: 11, leading: 15, bottom: 10, trailing: 15))
                     }
                 }
                 //                    .background(Color.LightGray2)
@@ -114,4 +114,3 @@ struct MessageBubbles: View {
         }
     }
 }
-
