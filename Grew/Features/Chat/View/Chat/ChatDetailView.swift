@@ -38,47 +38,8 @@ struct ChatDetailView: View {
                 x: $x,
                 unreadMessageIndex: $unreadMessageIndex
             )
-            .safeAreaInset(edge: .bottom, content: {
-                VStack {
-                    if groupDetailConfig.selectedImage != nil {
-                        Divider()
-                        HStack {
-                            if let selectedImage = groupDetailConfig.selectedImage {
-                                ZStack{
-                                    Image(uiImage: selectedImage)
-                                        .resizable()
-                                        .frame(width: 70, height: 70)
-                                        .cornerRadius(8)
-                                        .padding(.top, 15)
-                                        .padding(.leading, 20)
-                                    Image(systemName: "xmark.circle.fill")
-                                        .font(.title3)
-                                        .foregroundColor(.Main)
-                                        .background(.white)
-                                        .cornerRadius(20)
-                                        .offset(x: 40, y: -25)
-                                }
-                                .onTapGesture {
-                                    groupDetailConfig.selectedImage = nil
-                                }
-                            }
-                            Spacer()
-                        }.background(Color.white)
-                    }
-                    ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
-                        .background(Color(.systemBackground).ignoresSafeArea())
-                        .shadow(radius: groupDetailConfig.selectedImage != nil ? 0 : 0.5)
-                }
-                
-                //
-            })
             .zIndex(1)
             
-            // 채팅 입력창
-            
-            //            .zIndex(2)
-            
-            // 사이드 메뉴 바
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
                     .zIndex(3)
