@@ -22,7 +22,7 @@ struct ScheduleOptionMenu: View {
     var body: some View {
         VStack(alignment: .leading){
             HStack{
-                Text(menuName).bold()
+                Text(menuName).font(.b2_R)
                 Spacer()
                 
                 Button {
@@ -35,7 +35,7 @@ struct ScheduleOptionMenu: View {
                         .frame(width: 100, height: 32)
                         .background(hasOption ? Color(hexCode: "FF7E00") : Color(hexCode: "f2f2f2"))
                         .foregroundColor(hasOption ? .white : .gray)
-                        .bold()
+                        .font(.b2_R)
                         .cornerRadius(8)
                 }
                 
@@ -51,7 +51,7 @@ struct ScheduleOptionMenu: View {
                         .frame(width: 100, height: 32)
                         .background(!hasOption ? Color(hexCode: "FF7E00") : Color(hexCode: "f2f2f2"))
                         .foregroundColor(!hasOption ? .white : .gray)
-                        .bold()
+                        .font(.b2_R)
                         .cornerRadius(8)
                 }
             }
@@ -60,6 +60,7 @@ struct ScheduleOptionMenu: View {
                ZStack{
                    TextField(menuName, text: $option)
                        .keyboardType(.decimalPad)
+                       .font(.b2_R)
                        .padding(12)
                        .cornerRadius(8)
                        .focused($isTextFieldFocused)
@@ -115,6 +116,8 @@ struct ScheduleOptionMenu: View {
                         .modifier(RectangleModifier(isError: $isOptionError))
                         .padding(1)
                     Text("\(option)")
+                        .foregroundColor(Color.gray)
+                        .font(.b2_R)
                         .padding(.leading, 15)
                 }
                 if isOptionError {

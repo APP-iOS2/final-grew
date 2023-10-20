@@ -17,9 +17,11 @@ struct ScheduleNameField: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("일정 이름").bold()
+            Text("일정 이름")
+                .font(.b2_R)
             ZStack{
                 TextField("일정 이름", text: $scheduleName)
+                    .font(.b2_R)
                     .padding(12)
                     .cornerRadius(8)
                     .focused($isTextFieldFocused)
@@ -72,6 +74,7 @@ struct GuestNumField: View {
             HStack{
                 Image(systemName: "person.2.fill")
                 Text("정원")
+                    .font(.b2_R)
                     .padding(.trailing, 15)
                 Spacer()
                 ZStack{
@@ -79,6 +82,7 @@ struct GuestNumField: View {
                         .keyboardType(.numberPad)
                         .padding(12)
                         .cornerRadius(8)
+                        .font(.b2_R)
                         .focused($isTextFieldFocused)
                         .onChange(of: isTextFieldFocused) { focused in
                             if !focused {
