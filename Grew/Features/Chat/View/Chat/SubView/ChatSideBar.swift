@@ -23,7 +23,7 @@ struct ChatSideBar: View {
             VStack(alignment: .leading){
                 Text(chatRoomName)
                     .font(.b1_B)
-                    .padding(.top, 20)
+                    .padding(.top, 30)
                 Divider()
                 ScrollView{
                     Group{
@@ -55,10 +55,11 @@ struct ChatSideBar: View {
                             .padding(.top, 10)
                         }
                     }.frame(width: UIScreen.main.bounds.width - 120, alignment: .leading)
-                }.frame(height: (UIScreen.main.bounds.height/4)*3)
+                }.frame(height: (UIScreen.main.bounds.height * 0.7))
                 
                 Divider()
                 sideBottomItems
+                    .padding(.bottom, 20)
                 Spacer()
                 
             }

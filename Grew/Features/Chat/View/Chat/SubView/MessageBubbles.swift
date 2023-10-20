@@ -35,10 +35,13 @@ struct MessageBubbles: View {
     private var myBubble: some View {
         HStack {
             Spacer()
-            Text(chatMessage.createdDateString)
-                .font(.c2_R)
-                .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
-                .foregroundColor(.gray)
+            VStack{
+                Spacer()
+                Text(chatMessage.createdDateString)
+                    .font(.c2_R)
+                    .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
+                    .foregroundColor(.gray)
+            }
             Text(chatMessage.text)
                 .font(.c1_R)
                 .foregroundColor(.white)
@@ -50,7 +53,10 @@ struct MessageBubbles: View {
     
     private var otherBubble: some View {
         HStack{
-            CircularProfileImageView(chatMessage: chatMessage, url: nil, imagesize: .bubble)
+            VStack{
+                CircularProfileImageView(chatMessage: chatMessage, url: nil, imagesize: .bubble)
+                Spacer()
+            }
             VStack(alignment: .leading){
                 Text(chatMessage.userName)
                     .font(.c1_B)
@@ -78,11 +84,13 @@ struct MessageBubbles: View {
                             .stroke(Color.LightGray2, lineWidth: 1)
                     )
             }
-            
-            Text(chatMessage.createdDateString)
-                .font(.c2_R)
-                .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
-                .foregroundColor(.gray)
+            VStack{
+                Spacer()
+                Text(chatMessage.createdDateString)
+                    .font(.c2_R)
+                    .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
+                    .foregroundColor(.gray)
+            }
             Spacer()
         }.padding(.top, 10)
     }

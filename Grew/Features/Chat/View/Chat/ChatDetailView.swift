@@ -38,21 +38,26 @@ struct ChatDetailView: View {
                 x: $x,
                 unreadMessageIndex: $unreadMessageIndex
             )
-            .padding(.bottom, 20)
-            .padding(.top, isMenuOpen ? 40 : 0)
+            .padding(.bottom, 25)
+            .padding(.top, 30)
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
                
                 ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert, chatRoomName: chatRoom.chatRoomName ?? "\(targetUserInfos[0].nickName)", targetUserInfos: targetUserInfos)
                     .offset(x: x)
-                    .transition(isMenuOpen ? .move(edge: .trailing) : .identity)
-                    .navigationBarHidden(isMenuOpen ? true : false)
+                    .transition(isMenuOpen ? .move(edge: .trailing) : .move(edge: .leading))
+                //  .navigationBarHidden(isMenuOpen ? true : false)
                     .safeAreaPadding(.top, 50)
-                    .gesture(DragGesture().onChanged({ (value) in
+                    .gesture(DragGesture().onEnded({ (value) in
+                        if value.translation.width > 0{
+                            isMenuOpen = false
+                        }
+                    }))
+                /* .gesture(DragGesture().onChanged({ (value) in
                         withAnimation(.easeInOut){
                             if value.translation.width < 0 {
                                 x = width + value.translation.width
-                            } else {
+                            } else if value.translation.width > 0 {
                                 x = value.translation.width
                             }
                         }
@@ -65,7 +70,7 @@ struct ChatDetailView: View {
                                 isMenuOpen = false
                             }
                         }
-                    }))
+                    }))*/
             }
         }
        
@@ -120,13 +125,4 @@ struct ChatDetailView: View {
         
         await chatStore.updateChatRoom(chatRoom)
     }
-    
-    @ViewBuilder
-    private var shad: some View {
-        if isMenuOpen {
-            SideBarShadowView(isMenuOpen: $isMenuOpen)
-        }
-    }
-    
-  
 }
