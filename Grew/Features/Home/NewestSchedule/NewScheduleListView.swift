@@ -9,7 +9,8 @@ import SwiftUI
 
 /// 최신 일정 뷰
 struct NewestScheduleListView: View {
-    let colorList: [Color] = [.cyan, .yellow, .green, .mint, .orange, .purple]
+
+    @State private var isShowingSheet: Bool = false
     let quote: String = "\""
     var body: some View {
         VStack {
@@ -38,36 +39,36 @@ struct NewestScheduleListView: View {
                 }
             }
             .foregroundStyle(.white)
-            .padding(.top, 50)
+            .padding(.top, 80)
             .padding(.horizontal)
             ScrollView(.horizontal, showsIndicators: false) {
                 
                 HStack(spacing: 20) {
-                    ForEach(colorList, id: \.self) { color in
+                    ForEach(0 ..< 6) { _ in
                         
                         GeometryReader { proxy in
                             let scale = getScale(proxy: proxy)
                             
                             VStack {
-                                color
-                                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                                // 가로 세로 비율을 유지하면서 이 뷰의 크기를 조정하여 상위 뷰를 채우는 뷰입니다.
-                                // .scaledToFill()
-                                    .frame(width: 120, height: 120)
-                                // 프레임 너머는 안보이게 자른다
-                                    .clipped()
+                                // Home - GrewDetail 폴더 
+                                ScheduleCellView()
+                                    .scaledToFill()
+                                    .frame(width: 160, height: 160)
                                     .shadow(radius: 6)
+                                    .padding(.vertical, 10)
+                                    .onTapGesture {
+                                        isShowingSheet = true
+                                    }
+                                
                             } // VStack
-                            
                             .scaleEffect(.init(width: scale, height: scale))
                             .animation(.easeOut(duration: 1))
                             .padding(.vertical)
                             
-                            
                         } // GeometryReader
                         // 지오메트리 자체에 프레임을 주는 것
                         // 하나 하나 지오메트리를 넣어 크기를준다
-                        .frame(width: 140, height: 160)
+                        .frame(width: 170, height: 260)
                         .padding(.horizontal)
                         .padding(.vertical)
                     } // ForEach
@@ -76,10 +77,14 @@ struct NewestScheduleListView: View {
                 
             } //: ScrollView
             
-            
         } //: VStack
-        .frame(height: 300)
+        .frame(height: 330)
         .background(Color.Main)
+        .sheet(isPresented: $isShowingSheet, content: {
+            ScheduleDetailView()
+        })
+        
+    
     } //: body
     
     // 뷰의 위치를 기반으로 스케일링 요소를 계산
@@ -88,7 +93,7 @@ struct NewestScheduleListView: View {
     func getScale(proxy: GeometryProxy) -> CGFloat {
         
         // 애니메이션을 트리거하거나 중앙에 위치시키려는 지점을 정의합니다.
-        let middlePoint: CGFloat = 230
+        let middlePoint: CGFloat = 225
         
         // GeometryProxy를 사용하여 뷰의 프레임을 전역 좌표 공간에서 가져옵니다.
         let viewFrame = proxy.frame(in: CoordinateSpace.global)

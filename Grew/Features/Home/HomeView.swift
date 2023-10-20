@@ -10,21 +10,6 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var grewViewModel: GrewViewModel
     
-    init() {
-        //        UINavigationBar.appearance().backgroundColor = UIColor(Color.Main)
-        let navBarAppearance = UINavigationBarAppearance()
-        // 객체 생성
-        //        navBarAppearance.backgroundColor = UIColor(Color.Main)
-        navBarAppearance.shadowColor = .clear
-        // 객체 속성 변경
-        // 첫 화면으로 가만히 있을 때 - 없으면 스크롤 하게되면 사라짐
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        // 생성한 객체를 각각의 appearance에 할당
-        
-    }
-    
     var body: some View {
         ScrollView {
             VStack {

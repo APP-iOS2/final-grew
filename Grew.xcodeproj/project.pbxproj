@@ -152,12 +152,14 @@
 		64D54B962ADD0DFF007753B2 /* AgreeUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D54B952ADD0DFF007753B2 /* AgreeUseView.swift */; };
 		64D54B982ADD0E31007753B2 /* AgreeUserDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D54B972ADD0E31007753B2 /* AgreeUserDataView.swift */; };
 		64D54B9A2ADD0E4B007753B2 /* AgreeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D54B992ADD0E4B007753B2 /* AgreeLocationView.swift */; };
+		990380DB2AE244C800F6DEAE /* GrewSearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990380DA2AE244C800F6DEAE /* GrewSearchListView.swift */; };
 		991E7B922AD7D1BA002ECEE3 /* TabBarAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991E7B912AD7D1BA002ECEE3 /* TabBarAccessor.swift */; };
 		99266D832AD635BA00FB6AC1 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 99266D822AD635BA00FB6AC1 /* ConfettiSwiftUI */; };
 		99266D872AD710D400FB6AC1 /* GrewButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99266D862AD710D400FB6AC1 /* GrewButtonModifier.swift */; };
 		995095302ADCBA77003A822E /* GroupSubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9950952F2ADCBA77003A822E /* GroupSubCategoryView.swift */; };
 		995095322ADCD6D3003A822E /* GroupMainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995095312ADCD6D3003A822E /* GroupMainCategoryView.swift */; };
 		9989DA982ADF686900AC4917 /* NewScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989DA972ADF686900AC4917 /* NewScheduleListView.swift */; };
+		99B381152AE12358002AE684 /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B381142AE12358002AE684 /* CategoryListView.swift */; };
 		99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC42612ADF77E1005B70A0 /* NewestGrewListView.swift */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
@@ -310,11 +312,13 @@
 		64D54B972ADD0E31007753B2 /* AgreeUserDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeUserDataView.swift; sourceTree = "<group>"; };
 		64D54B992ADD0E4B007753B2 /* AgreeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeLocationView.swift; sourceTree = "<group>"; };
 		89D1665606D5C84E091AB4CB /* Pods_Grew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		990380DA2AE244C800F6DEAE /* GrewSearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSearchListView.swift; sourceTree = "<group>"; };
 		991E7B912AD7D1BA002ECEE3 /* TabBarAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAccessor.swift; sourceTree = "<group>"; };
 		99266D862AD710D400FB6AC1 /* GrewButtonModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewButtonModifier.swift; sourceTree = "<group>"; };
 		9950952F2ADCBA77003A822E /* GroupSubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSubCategoryView.swift; sourceTree = "<group>"; };
 		995095312ADCD6D3003A822E /* GroupMainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMainCategoryView.swift; sourceTree = "<group>"; };
 		9989DA972ADF686900AC4917 /* NewScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleListView.swift; sourceTree = "<group>"; };
+		99B381142AE12358002AE684 /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
 		99BC42612ADF77E1005B70A0 /* NewestGrewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestGrewListView.swift; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -582,7 +586,6 @@
 				3197576D2ADFAAD800696FF9 /* Font+Extensions.swift */,
 				312E98DB2ACD2EAA00E38626 /* UIImage+Extensions.swift */,
 				312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */,
-				3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */,
 				9FD0506E2ADF7C6200A8735A /* UIScreen+Extensions.swift */,
 				CE467ADA2AD530CA00143213 /* View+Extensions.swift */,
 				3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */,
@@ -703,7 +706,6 @@
 			children = (
 				993274102AD5307C0082FCEC /* CategoryView */,
 				9FD050652ADF5C9300A8735A /* GrewDetail */,
-				993274112AD531C70082FCEC /* GrewScheduleView */,
 				9932740F2AD530120082FCEC /* GrewListView */,
 				3110977E2AD41816000D85AD /* HomeBannerView.swift */,
 				99D2C6432ACD4913001FEC20 /* HomeView.swift */,
@@ -733,6 +735,7 @@
 			isa = PBXGroup;
 			children = (
 				CE467AD62AD5061C00143213 /* GrewSearchView.swift */,
+				990380DA2AE244C800F6DEAE /* GrewSearchListView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -888,6 +891,7 @@
 			children = (
 				319757732ADFAB5A00696FF9 /* CategoryButtonView.swift */,
 				3110977A2AD41815000D85AD /* CategoryDetailView.swift */,
+				99B381142AE12358002AE684 /* CategoryListView.swift */,
 			);
 			path = CategoryView;
 			sourceTree = "<group>";
@@ -931,6 +935,20 @@
 				99BC42612ADF77E1005B70A0 /* NewestGrewListView.swift */,
 			);
 			path = NewestGrew;
+			sourceTree = "<group>";
+		};
+		9FD050652ADF5C9300A8735A /* GrewDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9FD050702ADFBA2900A8735A /* GrootView.swift */,
+				9FD050722ADFBD9700A8735A /* GrootListView.swift */,
+				9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */,
+				9FD050682ADF5CAA00A8735A /* ScheduleCellView.swift */,
+				9FD050662ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift */,
+				9FD0506C2ADF5EB600A8735A /* ScheduleDetailView.swift */,
+				9FD050742ADFC25800A8735A /* ScheduleListView.swift */,
+			);
+			path = GrewDetail;
 			sourceTree = "<group>";
 		};
 		A38141B78C32AAF7DF33A628 /* Frameworks */ = {
@@ -1129,6 +1147,7 @@
 				3110976D2AD4180F000D85AD /* GrewProgressViewStyle.swift in Sources */,
 				21C1F1B12ACFEEAB0029E436 /* EditProfileView.swift in Sources */,
 				311097322AD41722000D85AD /* LaunchView.swift in Sources */,
+				990380DB2AE244C800F6DEAE /* GrewSearchListView.swift in Sources */,
 				9FD0506A2ADF5CAA00A8735A /* ProfileCircleImageView.swift in Sources */,
 				9FD050732ADFBD9800A8735A /* GrootListView.swift in Sources */,
 				64AB27DA2AD6753B004DE65F /* RegisterViewModel.swift in Sources */,
@@ -1153,8 +1172,6 @@
 				9FD0506B2ADF5CAA00A8735A /* ScheduleCellView.swift in Sources */,
 				991E7B922AD7D1BA002ECEE3 /* TabBarAccessor.swift in Sources */,
 				9FD0506D2ADF5EB600A8735A /* ScheduleDetailView.swift in Sources */,
-				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
-				993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */,
 				99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */,
 				319757552ADEF36600696FF9 /* ChatInputView.swift in Sources */,
 				319757712ADFAB1000696FF9 /* AuthAddMainInfoView.swift in Sources */,
@@ -1173,7 +1190,6 @@
 				3E185AEF2ADCC5EA00F7FC46 /* CreateScheduleMainView.swift in Sources */,
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
 				9FD0506F2ADF7C6200A8735A /* UIScreen+Extensions.swift in Sources */,
-				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				319757542ADEF36600696FF9 /* MessageBubbles.swift in Sources */,
 				21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */,
 				319757802AE1853A00696FF9 /* Storage+Extensions.swift in Sources */,
@@ -1250,6 +1266,7 @@
 				64D54B982ADD0E31007753B2 /* AgreeUserDataView.swift in Sources */,
 				312E98E12ACD2EAA00E38626 /* Array+Extensions.swift in Sources */,
 				3E185AF32ADCC66B00F7FC46 /* ScheduleDatePicker.swift in Sources */,
+				99B381152AE12358002AE684 /* CategoryListView.swift in Sources */,
 				319757562ADEF36600696FF9 /* ChatMessageListView.swift in Sources */,
 				311097622AD417FD000D85AD /* ChatMessage.swift in Sources */,
 				311097B62AD41897000D85AD /* LoadingView.swift in Sources */,
