@@ -39,7 +39,6 @@ struct MessageBubbles: View {
                 .font(.c2_R)
                 .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
                 .foregroundColor(.gray)
-
             VStack{
                 if !chatMessage.attachImageURL.isEmpty {
                     KFImage.url(URL(string: chatMessage.attachImageURL))
@@ -80,7 +79,6 @@ struct MessageBubbles: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
-
                     if chatMessage.text.isEmpty {
                         
                     } else {
@@ -89,7 +87,6 @@ struct MessageBubbles: View {
                         .foregroundColor(.black)
                         .padding(EdgeInsets(top: 11, leading: 15, bottom: 10, trailing: 15))
                     }
-
                 }
                 //                    .background(Color.LightGray2)
                 .overlay(

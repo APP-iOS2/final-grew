@@ -13,6 +13,7 @@ struct LaunchView: View {
     @StateObject private var grewViewModel = GrewViewModel()
     @StateObject private var userViewModel = UserViewModel()
     @StateObject private var appState = AppState()
+    @StateObject var stumpStore = StumpStore()
     
     var body: some View {
         if vm.authuser == nil {
@@ -22,6 +23,7 @@ struct LaunchView: View {
                 .environmentObject(grewViewModel)
                 .environmentObject(UserViewModel())
                 .environmentObject(AppState())
+                .environmentObject(stumpStore)
                 .onAppear {
                     grewViewModel.fetchJsonData()
                 }

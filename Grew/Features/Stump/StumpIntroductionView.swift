@@ -10,6 +10,8 @@ import SwiftUI
 struct StumpIntroductionView: View {
     
     @State private var isShowingRequestSheet: Bool = false
+    @State private var isShowingAlreadyMemberAlert: Bool = false
+    @State private var isShowingFaliureAlert: Bool = false
     
     var body: some View {
         VStack {
@@ -41,7 +43,15 @@ struct StumpIntroductionView: View {
             }
             VStack {
                 Button {
-                    isShowingRequestSheet.toggle()
+                    if let isStumpMember = UserStore.shared.currentUser?.isStumpMember {
+                        if isStumpMember {
+                            isShowingAlreadyMemberAlert = true
+                        } else {
+                            isShowingRequestSheet = true
+                        }
+                    } else {
+                        isShowingFaliureAlert = true
+                    }
                 } label: {
                     Text("그루터기 멤버 신청하기")
                 }
@@ -53,6 +63,26 @@ struct StumpIntroductionView: View {
         .fullScreenCover(isPresented: $isShowingRequestSheet) {
             StumpMemberRequestView(isShowingRequestSheet: $isShowingRequestSheet)
         }
+        .grewAlert(
+            isPresented: $isShowingAlreadyMemberAlert,
+            title: "이미 그루터기 멤버입니다.",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Main,
+            action: {}
+        )
+        .grewAlert(
+            isPresented: $isShowingFaliureAlert,
+            title: "회원 정보를 가져오는 데 실패했습니다.",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Error,
+            action: {}
+        )
     }
 }
 
