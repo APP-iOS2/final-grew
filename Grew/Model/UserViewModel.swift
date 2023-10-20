@@ -5,9 +5,9 @@
 //  Created by Chloe Chung on 2023/10/11.
 //
 
-import UIKit
 import Firebase
 import FirebaseStorage
+import UIKit
 
 class UserViewModel: ObservableObject {
     @Published var currentUser: User?
