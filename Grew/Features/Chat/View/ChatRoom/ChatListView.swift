@@ -49,28 +49,6 @@ struct ChatListView: View {
                     .foregroundColor(.black)
                 }
             }
-            
-            /*
-             Button {
-             Task {
-             guard let currentUser = UserStore.shared.currentUser else { return }
-             var chatroom = ChatRoom(id: UUID().uuidString, chatRoomName: "나무심기", members: [currentUser.id ?? ""], createdDate: Date(), lastMessage: "\(currentUser.nickName)님이 입장하셨습니다.", lastMessageDate: Date(), unreadMessageCount: [:])
-             await chatStore.addChatRoom(chatroom)
-             chatroom = ChatRoom(id: UUID().uuidString, members: [currentUser.id ?? ""], createdDate: Date(), lastMessage: "\(currentUser.nickName)님이 입장하셨습니다.", lastMessageDate: Date(), unreadMessageCount: [:])
-             await chatStore.addChatRoom(chatroom)
-             chatroom = ChatRoom(id: UUID().uuidString, chatRoomName: "라즈베리 크로넛 마시따", members: [currentUser.id ?? ""], createdDate: Date(), lastMessage: "\(currentUser.nickName)님이 입장하셨습니다.", lastMessageDate: Date(), unreadMessageCount: [:])
-             await chatStore.addChatRoom(chatroom)
-             chatroom = ChatRoom(id: UUID().uuidString, chatRoomName: "히힛", members: [currentUser.id ?? ""], createdDate: Date(), lastMessage: "\(currentUser.nickName)님이 입장하셨습니다.", lastMessageDate: Date(), unreadMessageCount: [:])
-             await chatStore.addChatRoom(chatroom)
-             chatroom = ChatRoom(id: UUID().uuidString, chatRoomName: "엽떡 탐방", members: [currentUser.id ?? ""], createdDate: Date(), lastMessage: "\(currentUser.nickName)님이 입장하셨습니다.", lastMessageDate: Date(), unreadMessageCount: [:])
-             await chatStore.addChatRoom(chatroom)
-             chatroom = ChatRoom(id: UUID().uuidString, members: [currentUser.id ?? ""], createdDate: Date(), lastMessage: "\(currentUser.nickName)님이 입장하셨습니다.", lastMessageDate: Date(), unreadMessageCount: [:])
-             await chatStore.addChatRoom(chatroom)
-             }
-             } label: {
-             Text("채팅방 추가")
-             }
-             */
         }
         .task {
             if !chatStore.isDoneFetch {

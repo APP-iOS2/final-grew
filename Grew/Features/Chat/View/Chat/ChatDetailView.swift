@@ -95,9 +95,12 @@ struct ChatDetailView: View {
         //            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
         //            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
         //        }
+        .task {
+        }
         .onDisappear {
             Task {
-                //리스너 삭제
+                await clearUnreadMesageCount()
+                // 리스너 삭제
                 messageStore.removeListener()
             }
         }
@@ -110,16 +113,16 @@ struct ChatDetailView: View {
         return unreadCount
     }
     
-    // 읽지 않은 메시지 개수 0으로 초기화 + 업데이트 (채팅방 입장 시, 퇴장 시)
     private func clearUnreadMesageCount() async {
         var newChat: ChatRoom = chatRoom
         
-        var newDict: [String : Int] = chatRoom.unreadMessageCount
+        var newDict: [String: Int] = chatRoom.unreadMessageCount
         newDict[UserStore.shared.currentUser!.id!] = 0
         newChat.unreadMessageCount = newDict
         
         await chatStore.updateChatRoom(chatRoom)
     }
+    
     
     
 }
