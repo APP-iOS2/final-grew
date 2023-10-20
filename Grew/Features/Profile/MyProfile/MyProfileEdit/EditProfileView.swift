@@ -167,20 +167,23 @@ struct EditProfileView: View {
             .navigationTitle("프로필 편집")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
-                if let user = userViewModel.currentUser {
+                if let user = userStore.currentUser {
                     name = user.nickName
                     statusMessage = user.introduce ?? ""
                 }
+            }
+            .refreshable {
+                
             }
         }
     }
     
     func saveProfileChanges() {
-        if var updatedUser = userViewModel.currentUser {
+        if var updatedUser = userStore.currentUser {
             updatedUser.nickName = name
             updatedUser.introduce = statusMessage
             if let image = image {
-                userViewModel.uploadProfileImage(image) { success in
+                userStore.uploadProfileImage(image) { success in
                     if success {
                         print("Profile image uploaded successfully!")
                     } else {
@@ -188,7 +191,7 @@ struct EditProfileView: View {
                     }
                 }
             }
-            userViewModel.updateUser(user: updatedUser)
+            userStore.updateUser(user: updatedUser)
         }
     }
 }
