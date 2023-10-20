@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GrewSearchView: View {
+    @Environment(\.dismiss) var dismiss
+    
     @State private var searchText: String = ""
     @State private var searchHistory: [String] = []
     @State private var searchedGrewList: [Grew] = []
@@ -44,7 +46,7 @@ struct GrewSearchView: View {
                 ScrollView {
                     makeSearchHistoryView()
                     makeCategorySelection()
-                    GrewListView(grewList: searchedGrewList)
+                    GrewSearchListView(grewList: searchedGrewList)
                         .padding(.horizontal, -16)
                 }
             }
@@ -54,6 +56,19 @@ struct GrewSearchView: View {
             .onAppear {
                 grewViewModel.fetchGrew()
                 searchHistory = UserStore.shared.currentUser?.searchHistory ?? []
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .font(.system(size: 25))
+                        .foregroundStyle(Color.black)
+                        .padding()
+                }
+                Spacer()
             }
         }
     }
@@ -125,9 +140,6 @@ extension GrewSearchView {
                 .padding(5)
             }
 
-//            Text("카테고리 선택")
-//                .font(.b1_B)
-//                .padding(5)
             Spacer()
             if selectedCategory != nil {
                 Button {
