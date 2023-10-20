@@ -9,6 +9,8 @@ import SwiftUI
 
 struct StumpMemberRequestView: View {
     
+    @EnvironmentObject var stumpStore: StumpStore
+    
     @Binding var isShowingRequestSheet: Bool
     @State private var name: String = ""
     @State private var businessNumber: String = ""
@@ -18,7 +20,8 @@ struct StumpMemberRequestView: View {
     @State private var isShowingSelectionSheet: Bool = false
     @State private var isShowingCamera: Bool = false
     @State private var isShowingPhotoLibrary: Bool = false
-    @State private var isShowingFinishAlert: Bool = false
+    @State private var isShowingSuccessAlert: Bool = false
+    @State private var isShowingFailureAlert: Bool = false
     
     private var isFinishButtonDisabled: Bool {
         name.isEmpty || 
@@ -50,7 +53,6 @@ struct StumpMemberRequestView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("그루터기 멤버 신청")
-                        .font(.b1_B)
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
@@ -88,7 +90,7 @@ struct StumpMemberRequestView: View {
             }
         }
         .grewAlert(
-            isPresented: $isShowingFinishAlert,
+            isPresented: $isShowingSuccessAlert,
             title: "그루터기 멤버 신청이 완료되었습니다!",
             secondButtonTitle: nil,
             secondButtonColor: nil,
@@ -96,7 +98,19 @@ struct StumpMemberRequestView: View {
             buttonTitle: "확인",
             buttonColor: .Main
         ) {
+            isShowingRequestSheet = false
         }
+        .grewAlert(
+            isPresented: $isShowingFailureAlert,
+            title: "그루터기 멤버 신청에 실패했습니다.",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Sub
+        ) {
+        }
+        
     }
     
     private func makeInputView() -> some View {
@@ -164,6 +178,7 @@ struct StumpMemberRequestView: View {
             )
         }
         .padding(.horizontal, 20)
+        .padding(.top)
     }
     
     @ViewBuilder
@@ -179,9 +194,9 @@ struct StumpMemberRequestView: View {
     
     private func makeFinishButton() -> some View {
         Button {
-            isShowingFinishAlert = true
+            requestStumpMember()
         } label: {
-            Text("신청 완료")
+            Text("신청 하기")
                 .frame(width: 343, height: 50)
         }
         .grewButtonModifier(
@@ -194,12 +209,36 @@ struct StumpMemberRequestView: View {
         )
         .disabled(isFinishButtonDisabled)
     }
+    
+    private func requestStumpMember() {
+        if let userId = UserStore.shared.currentUser?.id, let image {
+            stumpStore.uploadImage(image: image, path: "stumpMember") { imageURL in
+                if let imageURL {
+                    do {
+                        try stumpStore.addStumpMember(
+                            StumpMember(
+                                userId: userId,
+                                name: name,
+                                businessNumber: businessNumber,
+                                phoneNumber: phoneNumber,
+                                businessImageURL: imageURL,
+                                stumpIds: [])
+                        )
+                        UserStore.shared.currentUser?.isStumpMember = true
+                        isShowingSuccessAlert = true
+                        return
+                    } catch {
+                        isShowingFailureAlert = true
+                        return
+                    }
+                }
+            }
+        } else {
+            isShowingFailureAlert = true
+        }
+    }
 }
 
-struct StumpMember: Identifiable, Codable {
-    var id: String = UUID().uuidString
-    
-}
 
 #Preview {
     NavigationStack {

@@ -175,6 +175,9 @@
 		CE9292CF2ADF62EF005052AF /* StumpIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9292CE2ADF62EF005052AF /* StumpIntroductionView.swift */; };
 		CE9292D12ADF6966005052AF /* StumpMemberRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9292D02ADF6966005052AF /* StumpMemberRequestView.swift */; };
 		CE9292D32ADFADBC005052AF /* StumpRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9292D22ADFADBC005052AF /* StumpRegisterView.swift */; };
+		CE9292D52AE209A7005052AF /* Stump.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9292D42AE209A7005052AF /* Stump.swift */; };
+		CE9292D72AE20A2F005052AF /* StumpMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9292D62AE20A2F005052AF /* StumpMember.swift */; };
+		CE9292DA2AE20B64005052AF /* StumpStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9292D92AE20B64005052AF /* StumpStore.swift */; };
 		CEB6CBB92AD682DE00515EEA /* GrewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */; };
 		F2E20584B15966D0028FE8B5 /* Pods_Grew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D1665606D5C84E091AB4CB /* Pods_Grew.framework */; };
 /* End PBXBuildFile section */
@@ -329,6 +332,9 @@
 		CE9292CE2ADF62EF005052AF /* StumpIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumpIntroductionView.swift; sourceTree = "<group>"; };
 		CE9292D02ADF6966005052AF /* StumpMemberRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumpMemberRequestView.swift; sourceTree = "<group>"; };
 		CE9292D22ADFADBC005052AF /* StumpRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumpRegisterView.swift; sourceTree = "<group>"; };
+		CE9292D42AE209A7005052AF /* Stump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stump.swift; sourceTree = "<group>"; };
+		CE9292D62AE20A2F005052AF /* StumpMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumpMember.swift; sourceTree = "<group>"; };
+		CE9292D92AE20B64005052AF /* StumpStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumpStore.swift; sourceTree = "<group>"; };
 		CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -576,7 +582,6 @@
 				3197576D2ADFAAD800696FF9 /* Font+Extensions.swift */,
 				312E98DB2ACD2EAA00E38626 /* UIImage+Extensions.swift */,
 				312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */,
-				3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */,
 				9FD0506E2ADF7C6200A8735A /* UIScreen+Extensions.swift */,
 				CE467ADA2AD530CA00143213 /* View+Extensions.swift */,
 			);
@@ -608,6 +613,8 @@
 				311097A02AD41882000D85AD /* SettingStore.swift */,
 				311097A32AD41882000D85AD /* User.swift */,
 				215709652AD67625006ABE35 /* UserViewModel.swift */,
+				CE9292D42AE209A7005052AF /* Stump.swift */,
+				CE9292D62AE20A2F005052AF /* StumpMember.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -694,7 +701,6 @@
 			children = (
 				993274102AD5307C0082FCEC /* CategoryView */,
 				9FD050652ADF5C9300A8735A /* GrewDetail */,
-				993274112AD531C70082FCEC /* GrewScheduleView */,
 				9932740F2AD530120082FCEC /* GrewListView */,
 				3110977E2AD41816000D85AD /* HomeBannerView.swift */,
 				99D2C6432ACD4913001FEC20 /* HomeView.swift */,
@@ -893,20 +899,6 @@
 			path = GrewCategoryView;
 			sourceTree = "<group>";
 		};
-		9FD050652ADF5C9300A8735A /* GrewDetail */ = {
-			isa = PBXGroup;
-			children = (
-				9FD050702ADFBA2900A8735A /* GrootView.swift */,
-				9FD050722ADFBD9700A8735A /* GrootListView.swift */,
-				9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */,
-				9FD050682ADF5CAA00A8735A /* ScheduleCellView.swift */,
-				9FD050662ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift */,
-				9FD0506C2ADF5EB600A8735A /* ScheduleDetailView.swift */,
-				9FD050742ADFC25800A8735A /* ScheduleListView.swift */,
-			);
-			path = GrewDetail;
-      		sourceTree = "<group>";
-    	};
 		9989DA962ADF683600AC4917 /* NewestSchedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -924,6 +916,20 @@
 			path = NewestGrew;
 			sourceTree = "<group>";
 		};
+		9FD050652ADF5C9300A8735A /* GrewDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9FD050702ADFBA2900A8735A /* GrootView.swift */,
+				9FD050722ADFBD9700A8735A /* GrootListView.swift */,
+				9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */,
+				9FD050682ADF5CAA00A8735A /* ScheduleCellView.swift */,
+				9FD050662ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift */,
+				9FD0506C2ADF5EB600A8735A /* ScheduleDetailView.swift */,
+				9FD050742ADFC25800A8735A /* ScheduleListView.swift */,
+			);
+			path = GrewDetail;
+			sourceTree = "<group>";
+		};
 		A38141B78C32AAF7DF33A628 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -935,11 +941,20 @@
 		CE9292CD2ADF61E9005052AF /* Stump */ = {
 			isa = PBXGroup;
 			children = (
+				CE9292D82AE20B2B005052AF /* ViewModel */,
 				CE9292CE2ADF62EF005052AF /* StumpIntroductionView.swift */,
 				CE9292D02ADF6966005052AF /* StumpMemberRequestView.swift */,
 				CE9292D22ADFADBC005052AF /* StumpRegisterView.swift */,
 			);
 			path = Stump;
+			sourceTree = "<group>";
+		};
+		CE9292D82AE20B2B005052AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE9292D92AE20B64005052AF /* StumpStore.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1144,8 +1159,6 @@
 				9FD0506B2ADF5CAA00A8735A /* ScheduleCellView.swift in Sources */,
 				991E7B922AD7D1BA002ECEE3 /* TabBarAccessor.swift in Sources */,
 				9FD0506D2ADF5EB600A8735A /* ScheduleDetailView.swift in Sources */,
-				3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */,
-				993274172AD5360E0082FCEC /* GrewScheduleImage.swift in Sources */,
 				99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */,
 				319757552ADEF36600696FF9 /* ChatInputView.swift in Sources */,
 				319757712ADFAB1000696FF9 /* AuthAddMainInfoView.swift in Sources */,
@@ -1164,7 +1177,6 @@
 				3E185AEF2ADCC5EA00F7FC46 /* CreateScheduleMainView.swift in Sources */,
 				311097A92AD41882000D85AD /* SettingStore.swift in Sources */,
 				9FD0506F2ADF7C6200A8735A /* UIScreen+Extensions.swift in Sources */,
-				311097482AD417AD000D85AD /* AuthAddMainInfoView.swift in Sources */,
 				319757542ADEF36600696FF9 /* MessageBubbles.swift in Sources */,
 				21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */,
 				3197575C2ADEF38700696FF9 /* GroupDetailConfig.swift in Sources */,
@@ -1178,6 +1190,7 @@
 				311097BB2AD418A6000D85AD /* FirebaseEnums.swift in Sources */,
 				216315722ADFA6CA00208CB4 /* InquiryView.swift in Sources */,
 				99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */,
+				CE9292D72AE20A2F005052AF /* StumpMember.swift in Sources */,
 				319757522ADEF36600696FF9 /* SideBarShadowView.swift in Sources */,
 				311097C02AD418C1000D85AD /* AnimationModifier.swift in Sources */,
 				311097602AD417FD000D85AD /* ChatRoom.swift in Sources */,
@@ -1195,6 +1208,7 @@
 				64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */,
 				3E185AF12ADCC64400F7FC46 /* ScheduleOptionMenu.swift in Sources */,
 				2163156B2ADFA68000208CB4 /* RemoveAdsView.swift in Sources */,
+				CE9292D52AE209A7005052AF /* Stump.swift in Sources */,
 				319757582ADEF36600696FF9 /* MainChatView.swift in Sources */,
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,
 				311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */,
@@ -1253,6 +1267,7 @@
 				311097752AD4180F000D85AD /* GroupNameView.swift in Sources */,
 				311097B02AD4188E000D85AD /* FirebaseManager.swift in Sources */,
 				311097882AD41816000D85AD /* HomeBannerView.swift in Sources */,
+				CE9292DA2AE20B64005052AF /* StumpStore.swift in Sources */,
 				3EC0F05F2ADEC9D300D07009 /* OtherTextFields.swift in Sources */,
 				311097842AD41816000D85AD /* CategoryDetailView.swift in Sources */,
 			);

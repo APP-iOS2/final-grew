@@ -14,6 +14,7 @@ struct LaunchView: View {
     @StateObject var userViewModel = UserViewModel()
     @StateObject var chatStore = ChatStore()
     @StateObject var messageStore = MessageStore()
+    @StateObject var stumpStore = StumpStore()
     
     var body: some View {
         if viewModel.authuser == nil {
@@ -24,6 +25,7 @@ struct LaunchView: View {
                 .environmentObject(UserViewModel())
                 .environmentObject(chatStore)
                 .environmentObject(messageStore)
+                .environmentObject(stumpStore)
                 .onAppear {
                     grewViewModel.fetchJsonData()
                 }
