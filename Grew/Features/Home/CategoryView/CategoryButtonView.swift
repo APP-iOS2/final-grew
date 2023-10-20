@@ -34,6 +34,8 @@ struct CategoryButtonView: View {
                             $0.categoryIndex == category.id
                         }, secondCategory: category.subCategories)
                             .navigationTitle(category.name)
+                            .navigationBarTitleDisplayMode(.inline)
+                            .navigationBarBackButtonHidden(true)
                         
                     } label: {
                         VStack {
