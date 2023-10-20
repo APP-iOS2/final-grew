@@ -22,6 +22,9 @@ struct GroupAlertView: View {
             .grewAlert(
                 isPresented: $showsAlert,
                 title: "모임생성이 완료되었습니다! 🎉",
+                secondButtonTitle: nil,
+                secondButtonColor: nil,
+                secondButtonAction: nil,
                 buttonTitle: "확인",
                 buttonColor: .Main) {
                     dismiss()

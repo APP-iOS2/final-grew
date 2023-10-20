@@ -7,8 +7,8 @@
 import Foundation
 
 enum ChatSegment: Int, CaseIterable, Identifiable {
-    case personal = 0
-    case group = 1
+    case group = 0
+    case personal = 1
     
     var title: String {
         switch self {

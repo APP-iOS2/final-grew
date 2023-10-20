@@ -35,8 +35,7 @@ struct CircularProfileImageView: View {
     var body: some View {
         if let chatMessage {
             getProfilePhoto(chatMessage: chatMessage)
-        }
-        if let url {
+        } else {
             getProfilePhoto(url: url)
         }
     }
@@ -54,6 +53,7 @@ struct CircularProfileImageView: View {
                 .clipShape(Circle())
         } else {
             Image(systemName: "person.crop.circle")
+                .opacity(0.5)
                 .font(.system(size: imagesize.size.width))
         }
     }

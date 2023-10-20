@@ -122,6 +122,9 @@
 		319757722ADFAB1000696FF9 /* AuthAddDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757702ADFAB1000696FF9 /* AuthAddDetailInfoView.swift */; };
 		319757742ADFAB5A00696FF9 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757732ADFAB5A00696FF9 /* CategoryButtonView.swift */; };
 		319757782ADFB8B500696FF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 319757772ADFB8B500696FF9 /* GoogleService-Info.plist */; };
+		3197577E2AE16DD100696FF9 /* TextMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197577D2AE16DD100696FF9 /* TextMaster.swift */; };
+		319757802AE1853A00696FF9 /* Storage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */; };
+		319757822AE187AB00696FF9 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757812AE187AB00696FF9 /* ImageUploader.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
 		3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */; };
@@ -277,6 +280,9 @@
 		319757702ADFAB1000696FF9 /* AuthAddDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAddDetailInfoView.swift; sourceTree = "<group>"; };
 		319757732ADFAB5A00696FF9 /* CategoryButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
 		319757772ADFB8B500696FF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3197577D2AE16DD100696FF9 /* TextMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMaster.swift; sourceTree = "<group>"; };
+		3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage+Extensions.swift"; sourceTree = "<group>"; };
+		319757812AE187AB00696FF9 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
 		3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
@@ -582,6 +588,7 @@
 				312E98DF2ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift */,
 				9FD0506E2ADF7C6200A8735A /* UIScreen+Extensions.swift */,
 				CE467ADA2AD530CA00143213 /* View+Extensions.swift */,
+				3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -594,6 +601,7 @@
 				311097B72AD4189C000D85AD /* Enums */,
 				311097B32AD41897000D85AD /* CircularProfileImageView.swift */,
 				311097B42AD41897000D85AD /* LoadingView.swift */,
+				3197577D2AE16DD100696FF9 /* TextMaster.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -636,6 +644,7 @@
 				311097AF2AD4188E000D85AD /* DateService.swift */,
 				311097AD2AD4188E000D85AD /* FirebaseManager.swift */,
 				311097AE2AD4188E000D85AD /* FirestoreService.swift */,
+				319757812AE187AB00696FF9 /* ImageUploader.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -830,12 +839,12 @@
 		3E185AFA2ADCC75E00F7FC46 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				3E185AF22ADCC66B00F7FC46 /* ScheduleDatePicker.swift */,
 				3E185AF02ADCC64400F7FC46 /* ScheduleOptionMenu.swift */,
-				3E185AF42ADCC69500F7FC46 /* ScheduleColorPicker.swift */,
 				3EC0F05E2ADEC9D300D07009 /* OtherTextFields.swift */,
-				3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */,
+				3E185AF22ADCC66B00F7FC46 /* ScheduleDatePicker.swift */,
+				3E185AF42ADCC69500F7FC46 /* ScheduleColorPicker.swift */,
 				3EC0F0572ADE597100D07009 /* TextFieldErrorModifier.swift */,
+				3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -897,6 +906,20 @@
 			path = GrewCategoryView;
 			sourceTree = "<group>";
 		};
+		9FD050652ADF5C9300A8735A /* GrewDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9FD050702ADFBA2900A8735A /* GrootView.swift */,
+				9FD050722ADFBD9700A8735A /* GrootListView.swift */,
+				9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */,
+				9FD050682ADF5CAA00A8735A /* ScheduleCellView.swift */,
+				9FD050662ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift */,
+				9FD0506C2ADF5EB600A8735A /* ScheduleDetailView.swift */,
+				9FD050742ADFC25800A8735A /* ScheduleListView.swift */,
+			);
+			path = GrewDetail;
+      		sourceTree = "<group>";
+    	};
 		9989DA962ADF683600AC4917 /* NewestSchedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1169,6 +1192,7 @@
 				9FD0506F2ADF7C6200A8735A /* UIScreen+Extensions.swift in Sources */,
 				319757542ADEF36600696FF9 /* MessageBubbles.swift in Sources */,
 				21F32A732ADEB9A800B3E1C5 /* SavedGrewView.swift in Sources */,
+				319757802AE1853A00696FF9 /* Storage+Extensions.swift in Sources */,
 				3197575C2ADEF38700696FF9 /* GroupDetailConfig.swift in Sources */,
 				21F32A782ADED63200B3E1C5 /* EnrollGTView.swift in Sources */,
 				9989DA982ADF686900AC4917 /* NewScheduleListView.swift in Sources */,
@@ -1195,6 +1219,7 @@
 				CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */,
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
 				64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */,
+				3197577E2AE16DD100696FF9 /* TextMaster.swift in Sources */,
 				3E185AF12ADCC64400F7FC46 /* ScheduleOptionMenu.swift in Sources */,
 				2163156B2ADFA68000208CB4 /* RemoveAdsView.swift in Sources */,
 				319757582ADEF36600696FF9 /* MainChatView.swift in Sources */,
@@ -1204,6 +1229,7 @@
 				2163156E2ADFA6B100208CB4 /* OpensourceLicenseView.swift in Sources */,
 				64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */,
 				311097B22AD4188E000D85AD /* DateService.swift in Sources */,
+				319757822AE187AB00696FF9 /* ImageUploader.swift in Sources */,
 				9FD050712ADFBA2900A8735A /* GrootView.swift in Sources */,
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
 				311097612AD417FD000D85AD /* Bubble.swift in Sources */,
