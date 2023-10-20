@@ -38,16 +38,15 @@ struct ChatDetailView: View {
                 x: $x,
                 unreadMessageIndex: $unreadMessageIndex
             )
-            .zIndex(1)
             
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
-                    .zIndex(3)
+                  
                 ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert)
                     .safeAreaPadding(.top, 50)
                     .offset(x: x)
                     .transition(isMenuOpen ? .move(edge: .trailing) : .identity)
-                //                    .navigationBarHidden(isMenuOpen ? true : false)
+                    //.navigationBarHidden(isMenuOpen ? true : false)
                     .gesture(DragGesture().onChanged({ (value) in
                         withAnimation(.easeInOut){
                             if value.translation.width < 0 {
@@ -66,7 +65,6 @@ struct ChatDetailView: View {
                             }
                         }
                     }))
-                    .zIndex(4)
             }
         }
         .alert("채팅방 나가기", isPresented: $isExitButtonAlert) {

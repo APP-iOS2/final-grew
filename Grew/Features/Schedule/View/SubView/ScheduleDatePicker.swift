@@ -15,7 +15,9 @@ struct ScheduleDatePicker: View {
     var body: some View {
         HStack{
             Image(systemName: titleName == "날짜" ?  "calendar" : "clock")
-            Text(titleName).padding(.trailing, 20)
+            Text(titleName)
+                .font(.b2_R)
+                .padding(.trailing, 20)
             Spacer()
             
             ZStack(alignment: .leading){
@@ -27,7 +29,9 @@ struct ScheduleDatePicker: View {
                         isDatePickerVisible.toggle()
                     }.padding(1)
                 Text(titleName == "날짜" ? dateStringFromDate(date) : dateStringFormTime(date))
-                    .foregroundColor(.gray).padding()
+                    .font(.b2_L)
+                    .foregroundColor(.gray)
+                    .padding()
             }
         }.padding(.vertical, 5)
         .bold()

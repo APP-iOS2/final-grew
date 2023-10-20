@@ -19,7 +19,7 @@ struct ChatSideBar: View {
             Divider()
             VStack(alignment: .leading){
                 Text("멋쟁이보드게임")
-                    .bold()
+                    .font(.b1_B)
                     .padding(.top, 20)
                 Divider()
                 ScrollView{
@@ -27,11 +27,12 @@ struct ChatSideBar: View {
                         HStack{
                             Text("함께하는 멤버")
                             Text("6").foregroundColor(.gray)
-                        }.padding(.top, 10)
+                        }.font(.b3_R)
+                        .padding(.top, 10)
                         ForEach(0..<6) { i in
                             HStack {
                                 Image(systemName: "person.crop.circle.fill").font(.system(size: 30))
-                                Text("정금쪽").font(.callout).padding(3)
+                                Text("정금쪽").font(.c1_R).padding(3)
                             }
                             .padding(.top, 10)
                         }

@@ -59,7 +59,7 @@ struct ErrorText: View {
         HStack(alignment: .bottom){
             Spacer()
             Text(errorMessage)
-                .font(.footnote)
+                .font(.c2_R)
                 .foregroundColor(.pink)
         }
     }

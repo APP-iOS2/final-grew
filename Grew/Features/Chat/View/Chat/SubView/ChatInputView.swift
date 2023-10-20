@@ -30,6 +30,7 @@ struct ChatInputView: View {
                     Capsule()
                         .stroke(isChatTextFieldFocused ? Color.grewMainColor : Color.gray, lineWidth: 1)
                 )
+                .font(.c1_R)
             //            TextField("메세지 보내기", text: $groupDetailConfig.chatText)
             //                .focused($isChatTextFieldFocused)
             Button {
