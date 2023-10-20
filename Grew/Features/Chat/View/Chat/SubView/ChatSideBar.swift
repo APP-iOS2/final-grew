@@ -33,14 +33,22 @@ struct ChatSideBar: View {
                             Spacer()
                         }.font(.b2_R)
                             .padding(.vertical, 15)
+                        // 나
                         HStack{
-                            Image(systemName: "person.crop.circle.fill").font(.system(size: 30))
+                            CircularProfileImageView(
+                                chatMessage: nil,
+                                url: UserStore.shared.currentUser?.userImageURLString ?? "",
+                                imagesize: .bubble)
                             Text("\(UserStore.shared.currentUser?.nickName ?? "login error")").font(.b3_B).padding(3)
                             Spacer()
                         }
+                        // 딴사람
                         ForEach(targetUserInfos) { i in
                             HStack {
-                                Image(systemName: "person.crop.circle.fill").font(.system(size: 30))
+                                CircularProfileImageView(
+                                    chatMessage: nil,
+                                    url: i.userImageURLString,
+                                    imagesize: .bubble)
                                 Text(i.nickName).font(.b3_R).padding(3)
                                 Spacer()
                             }
