@@ -10,6 +10,9 @@ import SwiftUI
 struct ChatSideBar: View {
     @Binding var isMenuOpen: Bool
     @Binding var isExitButtonAlert: Bool
+    let chatRoomName: String
+    let targetUserInfos: [User]
+    
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     @State var show = true
     
@@ -18,7 +21,7 @@ struct ChatSideBar: View {
             Spacer(minLength: 0)
             Divider()
             VStack(alignment: .leading){
-                Text("멋쟁이보드게임")
+                Text(chatRoomName)
                     .font(.b1_B)
                     .padding(.top, 20)
                 Divider()
@@ -26,13 +29,20 @@ struct ChatSideBar: View {
                     Group{
                         HStack{
                             Text("함께하는 멤버")
-                            Text("6").foregroundColor(.gray)
-                        }.font(.b3_R)
-                        .padding(.top, 10)
-                        ForEach(0..<6) { i in
+                            Text("\(targetUserInfos.count+1)").foregroundColor(.gray)
+                            Spacer()
+                        }.font(.b2_R)
+                            .padding(.vertical, 15)
+                        HStack{
+                            Image(systemName: "person.crop.circle.fill").font(.system(size: 30))
+                            Text("\(UserStore.shared.currentUser?.nickName ?? "login error")").font(.b3_B).padding(3)
+                            Spacer()
+                        }
+                        ForEach(targetUserInfos) { i in
                             HStack {
                                 Image(systemName: "person.crop.circle.fill").font(.system(size: 30))
-                                Text("정금쪽").font(.c1_R).padding(3)
+                                Text(i.nickName).font(.b3_R).padding(3)
+                                Spacer()
                             }
                             .padding(.top, 10)
                         }
@@ -64,5 +74,5 @@ struct ChatSideBar: View {
 }
 
 #Preview {
-    ChatSideBar(isMenuOpen: .constant(true), isExitButtonAlert: .constant(true))
+    ChatSideBar(isMenuOpen: .constant(true), isExitButtonAlert: .constant(true),chatRoomName: "감자탕 모임", targetUserInfos: [User]())
 }

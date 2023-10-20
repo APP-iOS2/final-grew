@@ -41,8 +41,8 @@ struct ChatDetailView: View {
             
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
-                  
-                ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert)
+               
+                ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert, chatRoomName: chatRoom.chatRoomName ?? "\(targetUserInfos[0].nickName)", targetUserInfos: targetUserInfos)
                     .safeAreaPadding(.top, 50)
                     .offset(x: x)
                     .transition(isMenuOpen ? .move(edge: .trailing) : .identity)

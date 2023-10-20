@@ -53,7 +53,7 @@ struct MessageBubbles: View {
             CircularProfileImageView(chatMessage: chatMessage, url: nil, imagesize: .bubble)
             VStack(alignment: .leading){
                 Text(chatMessage.userName)
-                    .font(.c1_R)
+                    .font(.c1_B)
                     .padding(EdgeInsets(top: 0, leading: 3, bottom: -4, trailing: 0))
                 VStack{
                     // attachment photo URL
@@ -65,7 +65,7 @@ struct MessageBubbles: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
-                    
+                  
                     
                     Text(chatMessage.text)
                         .font(.c1_R)
