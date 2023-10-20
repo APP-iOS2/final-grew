@@ -40,10 +40,12 @@ struct ChatDetailView: View {
             )
             .padding(.bottom, 25)
             .padding(.top, 30)
+
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
                
                 ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert, chatRoomName: chatRoom.chatRoomName ?? "\(targetUserInfos[0].nickName)", targetUserInfos: targetUserInfos)
+
                     .offset(x: x)
                     .transition(isMenuOpen ? .move(edge: .trailing) : .move(edge: .leading))
                 //  .navigationBarHidden(isMenuOpen ? true : false)
@@ -71,6 +73,7 @@ struct ChatDetailView: View {
                             }
                         }
                     }))*/
+
             }
         }
        
@@ -100,9 +103,12 @@ struct ChatDetailView: View {
         //            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
         //            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
         //        }
+        .task {
+        }
         .onDisappear {
             Task {
-                //리스너 삭제
+                await clearUnreadMesageCount()
+                // 리스너 삭제
                 messageStore.removeListener()
             }
         }
@@ -115,14 +121,14 @@ struct ChatDetailView: View {
         return unreadCount
     }
     
-    // 읽지 않은 메시지 개수 0으로 초기화 + 업데이트 (채팅방 입장 시, 퇴장 시)
     private func clearUnreadMesageCount() async {
         var newChat: ChatRoom = chatRoom
         
-        var newDict: [String : Int] = chatRoom.unreadMessageCount
+        var newDict: [String: Int] = chatRoom.unreadMessageCount
         newDict[UserStore.shared.currentUser!.id!] = 0
         newChat.unreadMessageCount = newDict
         
         await chatStore.updateChatRoom(chatRoom)
     }
+
 }

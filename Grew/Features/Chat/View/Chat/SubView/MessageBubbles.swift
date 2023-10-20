@@ -33,8 +33,9 @@ struct MessageBubbles: View {
     }
     
     private var myBubble: some View {
-        HStack {
+        HStack(alignment: .bottom) {
             Spacer()
+
             VStack{
                 Spacer()
                 Text(chatMessage.createdDateString)
@@ -42,12 +43,28 @@ struct MessageBubbles: View {
                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
                     .foregroundColor(.gray)
             }
-            Text(chatMessage.text)
-                .font(.c1_R)
-                .foregroundColor(.white)
-                .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15) )
-                .background(Color.Main)
-                .cornerRadius(15)
+
+            VStack{
+                if !chatMessage.attachImageURL.isEmpty {
+                    KFImage.url(URL(string: chatMessage.attachImageURL))
+                        .placeholder({ _ in
+                            ProgressView("Loading...")
+                        })
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                if chatMessage.text.isEmpty {
+                    
+                } else {
+                    Text(chatMessage.text)
+                         .font(.c1_R)
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15) )
+                }
+            }
+            .background(Color.Main)
+            .cornerRadius(15)
+
         }
     }
     
@@ -63,26 +80,29 @@ struct MessageBubbles: View {
                     .padding(EdgeInsets(top: 0, leading: 3, bottom: -4, trailing: 0))
                 VStack{
                     // attachment photo URL
-                    if let attachmentPhotoURL = chatMessage.displayAttachmentPhotoURL {
-                        KFImage.url(attachmentPhotoURL)
+                    if !chatMessage.attachImageURL.isEmpty {
+                        KFImage.url(URL(string: chatMessage.attachImageURL))
                             .placeholder({ _ in
                                 ProgressView("Loading...")
                             })
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
-                  
-                    
-                    Text(chatMessage.text)
+
+                    if chatMessage.text.isEmpty {
+                        
+                    } else {
+                         Text(chatMessage.text)
                         .font(.c1_R)
                         .foregroundColor(.black)
                         .padding(EdgeInsets(top: 11, leading: 15, bottom: 10, trailing: 15))
+                    }
                 }
-//                    .background(Color.LightGray2)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 15)
-                            .stroke(Color.LightGray2, lineWidth: 1)
-                    )
+                //                    .background(Color.LightGray2)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Color.LightGray2, lineWidth: 1)
+                )
             }
             VStack{
                 Spacer()

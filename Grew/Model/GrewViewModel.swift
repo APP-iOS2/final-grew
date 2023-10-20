@@ -172,7 +172,15 @@ class GrewViewModel: ObservableObject {
         
         let tempList = grewList.sorted(by: { $0.createdAt > $1.createdAt})
         
-        return tempList
+        if tempList.count < 10 {
+            return tempList
+        } else {
+            var resultList: [Grew] = []
+            for index in 0 ..< 10 {
+                resultList.append(tempList[index])
+            }
+            return resultList
+        }
     }
     
     func addGrewMember(grewId: String, userId: String) {

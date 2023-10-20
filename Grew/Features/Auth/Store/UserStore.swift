@@ -68,4 +68,15 @@ class UserStore: ObservableObject {
         }
         return newUser
     }
+    
+    func updateUser(user: User) {
+        if let userId = currentUser?.id {
+            do {
+                try UserStore.db.collection("users").document(userId).setData(from: user)
+            } catch let error {
+                print("Error updating user: \(error)")
+            }
+        }
+    }
 }
+
