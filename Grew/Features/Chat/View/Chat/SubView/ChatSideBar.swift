@@ -23,7 +23,8 @@ struct ChatSideBar: View {
             VStack(alignment: .leading){
                 Text(chatRoomName)
                     .font(.b1_B)
-                    .padding(.top, 20)
+                    .padding(.top, 30)
+
                 Divider()
                 ScrollView{
                     Group{
@@ -33,24 +34,35 @@ struct ChatSideBar: View {
                             Spacer()
                         }.font(.b2_R)
                             .padding(.vertical, 15)
+
+                        // 나
                         HStack{
-                            Image(systemName: "person.crop.circle.fill").font(.system(size: 30))
+                            CircularProfileImageView(
+                                chatMessage: nil,
+                                url: UserStore.shared.currentUser?.userImageURLString ?? "",
+                                imagesize: .bubble)
                             Text("\(UserStore.shared.currentUser?.nickName ?? "login error")").font(.b3_B).padding(3)
                             Spacer()
                         }
+                        // 딴사람
                         ForEach(targetUserInfos) { i in
                             HStack {
-                                Image(systemName: "person.crop.circle.fill").font(.system(size: 30))
+                                CircularProfileImageView(
+                                    chatMessage: nil,
+                                    url: i.userImageURLString,
+                                    imagesize: .bubble)
+
                                 Text(i.nickName).font(.b3_R).padding(3)
                                 Spacer()
                             }
                             .padding(.top, 10)
                         }
                     }.frame(width: UIScreen.main.bounds.width - 120, alignment: .leading)
-                }.frame(height: (UIScreen.main.bounds.height/4)*3)
+                }.frame(height: (UIScreen.main.bounds.height * 0.7))
                 
                 Divider()
                 sideBottomItems
+                    .padding(.bottom, 20)
                 Spacer()
                 
             }

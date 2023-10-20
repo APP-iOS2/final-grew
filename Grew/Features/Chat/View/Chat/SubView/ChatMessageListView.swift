@@ -90,7 +90,8 @@ struct ChatMessageListView: View {
             }
             .navigationTitle(isMenuOpen ? "" : chatRoomName)
             .navigationBarBackButtonHidden(isMenuOpen ? true : false)
-            .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 300 :UIScreen.main.bounds.height - 200)
+
+            .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 280 :UIScreen.main.bounds.height - 180)
 
            if groupDetailConfig.selectedImage != nil {
                 chatImagePicked
@@ -119,7 +120,7 @@ struct ChatMessageListView: View {
         let unreadCount = dict?[UserStore.shared.currentUser!.id! ] ?? 0
         return unreadCount
     }
-   
+
     // 읽지 않은 메시지 개수 0으로 초기화 + 업데이트 (채팅방 입장 시, 퇴장 시)
     private func clearUnreadMesageCount() async {
         var newChat: ChatRoom = chatRoom

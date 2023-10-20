@@ -38,20 +38,28 @@ struct ChatDetailView: View {
                 x: $x,
                 unreadMessageIndex: $unreadMessageIndex
             )
-            
+            .padding(.bottom, 25)
+            .padding(.top, 30)
+
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
                
                 ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert, chatRoomName: chatRoom.chatRoomName ?? "\(targetUserInfos[0].nickName)", targetUserInfos: targetUserInfos)
-                    .safeAreaPadding(.top, 50)
+
                     .offset(x: x)
-                    .transition(isMenuOpen ? .move(edge: .trailing) : .identity)
-                    //.navigationBarHidden(isMenuOpen ? true : false)
-                    .gesture(DragGesture().onChanged({ (value) in
+                    .transition(isMenuOpen ? .move(edge: .trailing) : .move(edge: .leading))
+                //  .navigationBarHidden(isMenuOpen ? true : false)
+                    .safeAreaPadding(.top, 50)
+                    .gesture(DragGesture().onEnded({ (value) in
+                        if value.translation.width > 0{
+                            isMenuOpen = false
+                        }
+                    }))
+                /* .gesture(DragGesture().onChanged({ (value) in
                         withAnimation(.easeInOut){
                             if value.translation.width < 0 {
                                 x = width + value.translation.width
-                            } else {
+                            } else if value.translation.width > 0 {
                                 x = value.translation.width
                             }
                         }
@@ -64,9 +72,11 @@ struct ChatDetailView: View {
                                 isMenuOpen = false
                             }
                         }
-                    }))
+                    }))*/
+
             }
         }
+       
         .alert("채팅방 나가기", isPresented: $isExitButtonAlert) {
             Button("취소", role: .cancel) {}
             Button("확인", role: .destructive) {
@@ -120,7 +130,5 @@ struct ChatDetailView: View {
         
         await chatStore.updateChatRoom(chatRoom)
     }
-    
-    
-    
+
 }
