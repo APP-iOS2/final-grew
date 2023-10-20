@@ -91,11 +91,11 @@ struct ChatMessageListView: View {
             .navigationTitle(isMenuOpen ? "" : chatRoomName)
             .navigationBarBackButtonHidden(isMenuOpen ? true : false)
             .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 300 :UIScreen.main.bounds.height - 200)
-            
 
            if groupDetailConfig.selectedImage != nil {
                 chatImagePicked
            }
+
             ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
                 .background(Color(.systemBackground).ignoresSafeArea())
                 .shadow(radius: groupDetailConfig.selectedImage != nil ? 0 : 0.5)
@@ -106,12 +106,29 @@ struct ChatMessageListView: View {
             await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
             
             unreadMessageIndex = messageStore.messages.count - unreadMessageCount
+            
+            
+            if unreadMessageCount > 0 {
+                // 읽지 않은 메세지 갯수를 0으로 초기화
+                await clearUnreadMesageCount()
+            }
         }
     }
     private func getUnReadCount() async -> Int {
         let dict = await chatStore.getUnreadMessageDictionary(chatRoomID: chatRoom.id)
         let unreadCount = dict?[UserStore.shared.currentUser!.id! ] ?? 0
         return unreadCount
+    }
+   
+    // 읽지 않은 메시지 개수 0으로 초기화 + 업데이트 (채팅방 입장 시, 퇴장 시)
+    private func clearUnreadMesageCount() async {
+        var newChat: ChatRoom = chatRoom
+        
+        var newDict: [String: Int] = chatRoom.unreadMessageCount
+        newDict[UserStore.shared.currentUser!.id!] = 0
+        newChat.unreadMessageCount = newDict
+        
+        await chatStore.updateChatRoom(chatRoom)
     }
     
     private var chatImagePicked: some View {
