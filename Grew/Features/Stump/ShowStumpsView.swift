@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct ShowStumpsView: View {
+    
+    @EnvironmentObject var stumpStore: StumpStore
+    
     var body: some View {
-        Text("Hello, World!")
+        List {
+            ForEach(stumpStore.stumps) { stump in
+                Text(stump.name)
+            }
+        }
+        .onAppear {
+            Task {
+                await stumpStore.fetchStumps()
+            }
+        }
     }
 }
 

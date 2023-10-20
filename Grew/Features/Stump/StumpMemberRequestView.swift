@@ -22,9 +22,10 @@ struct StumpMemberRequestView: View {
     @State private var isShowingPhotoLibrary: Bool = false
     @State private var isShowingSuccessAlert: Bool = false
     @State private var isShowingFailureAlert: Bool = false
+    @State private var isLoading = false
     
     private var isFinishButtonDisabled: Bool {
-        name.isEmpty || 
+        name.isEmpty ||
         businessNumber.isEmpty ||
         !isBusinessNumberCorrect ||
         phoneNumber.isEmpty ||
@@ -47,24 +48,37 @@ struct StumpMemberRequestView: View {
                 makeInputView()
                 makeImageView()
             }
-            VStack {
-                makeFinishButton()
-            }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("그루터기 멤버 신청")
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        isShowingRequestSheet = false
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundStyle(Color.Black)
+            makeFinishButton()
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("그루터기 멤버 신청")
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            isShowingRequestSheet = false
+                        } label: {
+                            Image(systemName: "xmark")
+                                .foregroundStyle(Color.Black)
+                        }
                     }
                 }
-            }
         }
+        .overlay(
+            Group {
+                if isLoading {
+                    Color.black.opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                        .scaleEffect(2)
+                        .frame(
+                            width: UIScreen.screenWidth,
+                            height: UIScreen.screenHeight
+                        )
+                }
+            }
+        )
         .sheet(isPresented: $isShowingSelectionSheet) {
             ImageEditModalView(showModal: $isShowingSelectionSheet) { form in
                 switch form {
@@ -124,7 +138,7 @@ struct StumpMemberRequestView: View {
                 placeholderText: "이름",
                 isSearchBar: false
             )
-                .padding(.bottom, 18)
+            .padding(.bottom, 18)
             
             Text("사업자 등록 번호")
                 .font(.b2_R)
@@ -135,7 +149,7 @@ struct StumpMemberRequestView: View {
                 placeholderText: "000-00-0000",
                 isSearchBar: false
             )
-                .padding(.bottom, isBusinessNumberCorrect ? 18 : 0)
+            .padding(.bottom, isBusinessNumberCorrect ? 18 : 0)
             
             if !isBusinessNumberCorrect {
                 HStack {
@@ -155,7 +169,7 @@ struct StumpMemberRequestView: View {
                 placeholderText: "전화번호",
                 isSearchBar: false
             )
-                .padding(.bottom, 18)
+            .padding(.bottom, 18)
             
             Text("사업자 등록 이미지")
                 .font(.b2_R)
@@ -178,7 +192,6 @@ struct StumpMemberRequestView: View {
             )
         }
         .padding(.horizontal, 20)
-        .padding(.top)
     }
     
     @ViewBuilder
@@ -211,6 +224,8 @@ struct StumpMemberRequestView: View {
     }
     
     private func requestStumpMember() {
+        isLoading = true
+        
         if let userId = UserStore.shared.currentUser?.id, let image {
             stumpStore.uploadImage(image: image, path: "stumpMember") { imageURL in
                 if let imageURL {
@@ -225,9 +240,14 @@ struct StumpMemberRequestView: View {
                                 stumpIds: [])
                         )
                         UserStore.shared.currentUser?.isStumpMember = true
+                        if let user = UserStore.shared.currentUser {
+                            UserStore.shared.updateUser(user: user)
+                        }
+                        isLoading = false
                         isShowingSuccessAlert = true
                         return
                     } catch {
+                        isLoading = false
                         isShowingFailureAlert = true
                         return
                     }

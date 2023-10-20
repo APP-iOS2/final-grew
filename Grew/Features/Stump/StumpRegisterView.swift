@@ -28,6 +28,7 @@ struct StumpRegisterView: View {
     @State private var isShowingPhotoLibrary: Bool = false
     @State private var isShowingSuccessAlert: Bool = false
     @State private var isShowingFailureAlert: Bool = false
+    @State private var isLoading = false
     
     let imagesLength: Int = 3
     
@@ -53,6 +54,21 @@ struct StumpRegisterView: View {
         }
         .navigationTitle("그루터기 등록하기")
         .navigationBarTitleDisplayMode(.inline)
+        .overlay(
+            Group {
+                if isLoading {
+                    Color.black.opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                        .scaleEffect(2)
+                        .frame(
+                            width: UIScreen.screenWidth,
+                            height: UIScreen.screenHeight
+                        )
+                }
+            }
+        )
         .sheet(isPresented: $isShowingPhotoSelectionSheet) {
             ImageEditModalView(showModal: $isShowingPhotoSelectionSheet) { form in
                 switch form {
@@ -291,7 +307,7 @@ extension StumpRegisterView {
         }
     }
     
-    // 등록 버튼
+    // 등록 버튼 View
     private func makeRegisterButton() -> some View {
         Button {
             stumpRegister()
@@ -311,6 +327,8 @@ extension StumpRegisterView {
     }
     
     private func stumpRegister() {
+        isLoading = true
+        
         if let userId = UserStore.shared.currentUser?.id {
             let dispatchGroup = DispatchGroup()
             
@@ -345,8 +363,13 @@ extension StumpRegisterView {
                             imageURLs: imageURLs
                         )
                     )
+                    Task {
+                        await stumpStore.updateStumpMember(userId: userId)
+                    }
+                    isLoading = false
                     isShowingSuccessAlert = true
                 } catch {
+                    isLoading = false
                     isShowingFailureAlert = true
                     return
                 }

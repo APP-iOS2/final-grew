@@ -11,6 +11,8 @@ import Foundation
 
 final class StumpStore: ObservableObject {
     
+    @Published var stumps: [Stump] = []
+    
     private let db = Firestore.firestore()
     
     func addStumpMember(_ stumpMember: StumpMember) throws {
@@ -28,6 +30,27 @@ final class StumpStore: ObservableObject {
         } catch {
             print("Error: \(error)")
             throw error
+        }
+    }
+    
+    @MainActor
+    func fetchStumps() async {
+        do {
+            let snapshot = try await db.collection("stumps").getDocuments()
+            
+            var fetchData: [Stump] = []
+            
+            for document in snapshot.documents {
+                do {
+                    let temp = try document.data(as: Stump.self)
+                    fetchData.append(temp)
+                } catch {
+                    print("Fetch stumps error: \(error)")
+                }
+            }
+            self.stumps = fetchData
+        } catch {
+            print("Error fetching stumps: \(error)")
         }
     }
     
@@ -58,6 +81,26 @@ final class StumpStore: ObservableObject {
             }
         } else {
             completion(nil)
+        }
+    }
+    
+    func updateStumpMember(userId: String) async {
+        await fetchStumps()
+        
+        let stumpIds = stumps
+            .filter { $0.stumpMemberId == userId }
+            .map { $0.id }
+        
+        do {
+            let snapshot = try await db.collection("stumpMembers").whereField("userId", isEqualTo: userId).getDocuments()
+            
+            for document in snapshot.documents {
+                try await self.db.collection("stumpMembers").document(document.documentID).updateData([
+                    "stumpIds" : stumpIds
+                ])
+            }
+        } catch {
+            print("Error updating stumpMembers: \(error)")
         }
     }
 }
