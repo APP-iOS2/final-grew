@@ -90,7 +90,7 @@ struct ChatMessageListView: View {
             }
             .navigationTitle(isMenuOpen ? "" : chatRoomName)
             .navigationBarBackButtonHidden(isMenuOpen ? true : false)
-            .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 300 :UIScreen.main.bounds.height - 200)
+            .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 280 :UIScreen.main.bounds.height - 180)
             
 
            if groupDetailConfig.selectedImage != nil {

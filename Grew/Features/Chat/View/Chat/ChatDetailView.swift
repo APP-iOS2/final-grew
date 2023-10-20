@@ -38,15 +38,16 @@ struct ChatDetailView: View {
                 x: $x,
                 unreadMessageIndex: $unreadMessageIndex
             )
-            
+            .padding(.bottom, 20)
+            .padding(.top, isMenuOpen ? 40 : 0)
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
                
                 ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert, chatRoomName: chatRoom.chatRoomName ?? "\(targetUserInfos[0].nickName)", targetUserInfos: targetUserInfos)
-                    .safeAreaPadding(.top, 50)
                     .offset(x: x)
                     .transition(isMenuOpen ? .move(edge: .trailing) : .identity)
-                    //.navigationBarHidden(isMenuOpen ? true : false)
+                    .navigationBarHidden(isMenuOpen ? true : false)
+                    .safeAreaPadding(.top, 50)
                     .gesture(DragGesture().onChanged({ (value) in
                         withAnimation(.easeInOut){
                             if value.translation.width < 0 {
@@ -67,6 +68,7 @@ struct ChatDetailView: View {
                     }))
             }
         }
+       
         .alert("채팅방 나가기", isPresented: $isExitButtonAlert) {
             Button("취소", role: .cancel) {}
             Button("확인", role: .destructive) {
@@ -119,5 +121,12 @@ struct ChatDetailView: View {
         await chatStore.updateChatRoom(chatRoom)
     }
     
+    @ViewBuilder
+    private var shad: some View {
+        if isMenuOpen {
+            SideBarShadowView(isMenuOpen: $isMenuOpen)
+        }
+    }
     
+  
 }
