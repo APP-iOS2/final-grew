@@ -48,7 +48,7 @@ class UserViewModel: ObservableObject {
     }
 }
 
-extension UserViewModel {
+extension UserStore {
     func uploadProfileImage(_ image: UIImage, completion: @escaping (Bool) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             completion(false)

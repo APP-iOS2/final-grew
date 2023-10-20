@@ -54,6 +54,7 @@ class UserStore: ObservableObject {
     }
     
     static func requestAndReturnUsers(userID: [String]) async -> [User]? {
+//        if userID.isEmpty { return nil }
         var newUser: [User] = []
         for user in userID {
             let doc = db.collection("users").document(user)
@@ -67,4 +68,15 @@ class UserStore: ObservableObject {
         }
         return newUser
     }
+    
+    func updateUser(user: User) {
+        if let userId = currentUser?.id {
+            do {
+                try UserStore.db.collection("users").document(userId).setData(from: user)
+            } catch let error {
+                print("Error updating user: \(error)")
+            }
+        }
+    }
 }
+

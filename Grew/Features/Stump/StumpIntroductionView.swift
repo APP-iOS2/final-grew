@@ -12,10 +12,12 @@ struct StumpIntroductionView: View {
     @State private var isShowingRequestSheet: Bool = false
     
     var body: some View {
-        ZStack {
+        VStack {
             ScrollView {
+                Divider()
                 Text("그루터기 소개 및 설명")
                     .font(.b1_B)
+                    .padding(.top)
                 
                 Text("""
                 
@@ -30,6 +32,7 @@ struct StumpIntroductionView: View {
                 **🧑‍🌾그루터기**는 그루들에게 장소를 제공해주는
                 사장님들을 뜻해요.
                 
+                **그루터기 멤버**가 되어 그루들이 사용할 장소를 제공해보세요!
                 (어쩌구)
                 
                 """)
@@ -37,22 +40,16 @@ struct StumpIntroductionView: View {
                 .lineSpacing(10)
             }
             VStack {
-                Spacer()
                 Button {
                     isShowingRequestSheet.toggle()
                 } label: {
                     Text("그루터기 멤버 신청하기")
                 }
                 .grewButtonModifier(width: 343, height: 50, buttonColor: .Main, font: .b1_B, fontColor: .white, cornerRadius: 8)
-                .padding(.bottom)
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("그루터기 신청")
-                    .font(.b1_B)
-            }
-        }
+        .navigationTitle("그루터기 신청")
+        .navigationBarTitleDisplayMode(.inline)
         .fullScreenCover(isPresented: $isShowingRequestSheet) {
             StumpMemberRequestView(isShowingRequestSheet: $isShowingRequestSheet)
         }

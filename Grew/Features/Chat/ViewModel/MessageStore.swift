@@ -10,6 +10,7 @@
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseStorage
 
 final class MessageStore: ObservableObject {
     // 메시지
