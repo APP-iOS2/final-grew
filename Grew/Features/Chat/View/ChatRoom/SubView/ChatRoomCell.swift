@@ -47,18 +47,18 @@ struct ChatRoomCell: View {
                         
             VStack(alignment: .leading){
                 Text(chatRoomName)
-                    .bold()
+                    .font(.b2_R)
                     .padding(0.005)
                 Text(chatRoom.lastMessage)
                     .foregroundColor(.gray)
-                    .font(.callout)
+                    .font(.b3_R)
             }
             Spacer()
             
             VStack(alignment: .trailing){
                 Text(chatRoom.lastMessageTimeString)
                     .foregroundColor(.gray)
-                    .font(.callout)
+                    .font(.c1_R)
                 if let unCount = chatRoom.unreadMessageCount[UserStore.shared.currentUser!.id!] {
                     ZStack{
                         Text("\(unCount)")
