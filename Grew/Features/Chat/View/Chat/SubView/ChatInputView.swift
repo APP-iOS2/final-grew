@@ -20,7 +20,9 @@ struct ChatInputView: View {
             Button {
                 groupDetailConfig.showOptions = true
             } label: {
-                Image(systemName: "plus")
+                Image(systemName: "plus.circle.fill")
+                    .font(.title2)
+                    .foregroundColor(Color.Main)
             }
             TextMaster(text: $groupDetailConfig.chatText, isFocused: $isChatTextFieldFocused, maxLine: 5, fontSize: 15)
                 .padding(.horizontal, 10)
@@ -28,6 +30,7 @@ struct ChatInputView: View {
                     Capsule()
                         .stroke(isChatTextFieldFocused ? Color.grewMainColor : Color.gray, lineWidth: 1)
                 )
+                .font(.c1_R)
             //            TextField("메세지 보내기", text: $groupDetailConfig.chatText)
             //                .focused($isChatTextFieldFocused)
             Button {
@@ -39,7 +42,9 @@ struct ChatInputView: View {
                     }
                 }
             } label: {
-                Image(systemName: "arrow.up.circle.fill").font(.title).foregroundColor(!groupDetailConfig.isValid ? .gray : Color.Main)
+                Image(systemName: "arrow.up.circle.fill")
+                    .font(.title2)
+                    .foregroundColor(!groupDetailConfig.isValid ? .gray : Color.Main)
             }
             .disabled(!groupDetailConfig.isValid)
         }.padding()
