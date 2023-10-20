@@ -38,28 +38,8 @@ struct ChatDetailView: View {
                 x: $x,
                 unreadMessageIndex: $unreadMessageIndex
             )
-            .safeAreaInset(edge: .bottom, content: {
-                VStack {
-                    if groupDetailConfig.selectedImage != nil {
-                        HStack {
-                            Text("이만큼 줄어들 예정입니다.")
-                            Spacer()
-                        }
-                    }
-                    ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
-                        .background(Color(.systemBackground).ignoresSafeArea())
-                        .shadow(radius: 0.5)
-                }
-                
-                //
-            })
             .zIndex(1)
             
-            // 채팅 입력창
-            
-            //            .zIndex(2)
-            
-            // 사이드 메뉴 바
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
                     .zIndex(3)
