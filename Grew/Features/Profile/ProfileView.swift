@@ -2,7 +2,7 @@
 //  ProfileView.swift
 //  Grew
 //
-//  Created by Chloe Chung on 2023/09/21.
+//  Created by cha_nyeong on 2023/10/21
 //
 
 import SwiftUI
@@ -59,7 +59,6 @@ struct ProfileView: View {
                                 }
                                 .background(Color.white)
                             }
-                            
                         }
                     }
                 }
@@ -84,7 +83,6 @@ struct ProfileView: View {
                             }
                             .foregroundColor(.black)
                         }
-                        
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -114,10 +112,7 @@ struct ProfileView: View {
             .background(Color.Main)
             .navigationBarBackground(.Main)
         }
-        
     }
-    
-    
     @ViewBuilder
     private func headerView() -> some View {
         var backgroundHeight: CGFloat {

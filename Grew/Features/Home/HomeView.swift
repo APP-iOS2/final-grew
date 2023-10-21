@@ -22,7 +22,7 @@ struct HomeView: View {
                         .padding(.horizontal, 5)
                         .padding(.top)
                         .background(.white)
-                        .cornerRadius(20, corners: [.topRight, .topLeft])
+                        .cornerRadius(44, corners: [.topRight, .topLeft])
                 }
                 .background(Color.Main)
                 

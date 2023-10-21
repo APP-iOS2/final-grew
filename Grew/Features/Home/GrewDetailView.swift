@@ -25,6 +25,7 @@ enum GrewDetailFilter: Int, CaseIterable, Identifiable {
 }
 
 struct GrewDetailView: View {
+    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var grewViewModel: GrewViewModel
     @State private var selectedFilter: GrewDetailFilter = .introduction
     @State private var isShowingJoinConfirmAlert: Bool = false
@@ -47,13 +48,25 @@ struct GrewDetailView: View {
                         case .introduction:
                             GrewIntroductionView(grew: grew)
                         case .schedule:
-                            ScheduleListView()
+                            ScheduleListView(gid: grew.id)
                         case .groot:
                             GrootListView()
                         }
                     } header: {
                         makeHeaderFilterView()
                     }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                            .font(.system(size: 18))
+                            .foregroundStyle(Color.black)
+                    }
+                    Spacer()
                 }
             }
             .toolbar {
@@ -240,9 +253,7 @@ extension GrewDetailView {
                 maximumMembers: 8,
                 currentMembers: ["id1", "id2"],
                 isNeedFee: false,
-                fee: 0,
-                createdAt: Date.now,
-                heartTapped: 0
+                fee: 0
             )
         )
     }
