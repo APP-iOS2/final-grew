@@ -40,7 +40,7 @@ struct MainChatView: View {
                     if selectedFilter == filter {
                         Rectangle()
                             .foregroundColor(.Main)
-                            .frame(maxWidth: filterBarWidth, maxHeight: 1)
+                            .frame(maxWidth: filterBarWidth, maxHeight: 3)
                             .matchedGeometryEffect(id: "item", in: animation)
                     } else {
                         Rectangle()
