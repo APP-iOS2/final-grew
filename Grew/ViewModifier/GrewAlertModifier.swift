@@ -33,23 +33,10 @@ struct GrewAlertModifier: ViewModifier {
                         Text(title)
                             .font(.b1_R)
                             .foregroundStyle(.black)
+                            .lineSpacing(5)
+                            .multilineTextAlignment(.center)
                         
                         HStack {
-                            Button {
-                                action()
-                                isPresented.toggle()
-                                
-                            } label: {
-                                Text(buttonTitle)
-                                    .font(.b1_R)
-                                    .foregroundColor(.white)
-                                    .frame(width: 100, height: 44)
-                            }
-                            .background(buttonColor)
-                            .clipShape(
-                                RoundedRectangle(cornerRadius: 5)
-                            )
-                            
                             if let secondButtonTitle, let secondButtonColor, let secondButtonAction {
                                 Button {
                                     secondButtonAction()
@@ -65,6 +52,24 @@ struct GrewAlertModifier: ViewModifier {
                                     RoundedRectangle(cornerRadius: 5)
                                 )
                             }
+                            
+                            Button {
+                                action()
+                                isPresented.toggle()
+                                
+                            } label: {
+                                Text(buttonTitle)
+                                    .font(.b1_R)
+                                    .foregroundColor(.white)
+                                    .frame(
+                                        width: secondButtonTitle == nil ? 180 : 100,
+                                        height: 44
+                                    )
+                            }
+                            .background(buttonColor)
+                            .clipShape(
+                                RoundedRectangle(cornerRadius: 5)
+                            )
                         }
                         
                     }
@@ -90,7 +95,7 @@ struct GrewAlertModifier: ViewModifier {
         .modifier(
             GrewAlertModifier(
                 isPresented: .constant(true),
-                title: "회원가입이 완료되었습니다! 🎉",
+                title: "회원가입이 완료되었습니다! 🎉 \n완료되었습니다!",
                 buttonTitle: "확인",
                 buttonColor: .grewMainColor,
                 action: { },

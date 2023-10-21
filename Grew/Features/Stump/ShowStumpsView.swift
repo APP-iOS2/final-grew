@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShowStumpsView: View {
     
-    @EnvironmentObject var stumpStore: StumpStore
+    @EnvironmentObject private var stumpStore: StumpStore
     
     var body: some View {
         HStack {
@@ -60,6 +60,8 @@ struct ShowStumpsView: View {
 }
 
 #Preview {
-    ShowStumpsView()
-        .environmentObject(StumpStore())
+    NavigationStack {
+        ShowStumpsView()
+    }
+    .environmentObject(StumpStore())
 }

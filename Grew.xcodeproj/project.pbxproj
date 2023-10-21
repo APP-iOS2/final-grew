@@ -176,6 +176,7 @@
 		CE467AD72AD5061C00143213 /* GrewSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467AD62AD5061C00143213 /* GrewSearchView.swift */; };
 		CE467ADB2AD530CA00143213 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADA2AD530CA00143213 /* View+Extensions.swift */; };
 		CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */; };
+		CE48FAD82AE3C9A600712DD5 /* StumpInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE48FAD72AE3C9A600712DD5 /* StumpInputView.swift */; };
 		CE5129422AD8D66700CE77C5 /* GrewDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5129412AD8D66700CE77C5 /* GrewDetailView.swift */; };
 		CE5A27B42AD9B0590014BE09 /* GrewIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A27B32AD9B0590014BE09 /* GrewIntroductionView.swift */; };
 		CE9292CF2ADF62EF005052AF /* StumpIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9292CE2ADF62EF005052AF /* StumpIntroductionView.swift */; };
@@ -338,6 +339,7 @@
 		CE467AD62AD5061C00143213 /* GrewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSearchView.swift; sourceTree = "<group>"; };
 		CE467ADA2AD530CA00143213 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		CE467ADC2AD5316500143213 /* GrewAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewAlertModifier.swift; sourceTree = "<group>"; };
+		CE48FAD72AE3C9A600712DD5 /* StumpInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumpInputView.swift; sourceTree = "<group>"; };
 		CE5129412AD8D66700CE77C5 /* GrewDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewDetailView.swift; sourceTree = "<group>"; };
 		CE5A27B32AD9B0590014BE09 /* GrewIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewIntroductionView.swift; sourceTree = "<group>"; };
 		CE9292CE2ADF62EF005052AF /* StumpIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumpIntroductionView.swift; sourceTree = "<group>"; };
@@ -954,6 +956,7 @@
 				CE9292D02ADF6966005052AF /* StumpMemberRequestView.swift */,
 				CE9292D22ADFADBC005052AF /* StumpRegisterView.swift */,
 				21709BFB2AE1191E00FDA43D /* ShowStumpsView.swift */,
+				CE48FAD72AE3C9A600712DD5 /* StumpInputView.swift */,
 			);
 			path = Stump;
 			sourceTree = "<group>";
@@ -1240,6 +1243,7 @@
 				3110973A2AD417A1000D85AD /* UserStore.swift in Sources */,
 				311097A72AD41882000D85AD /* GrewViewModel.swift in Sources */,
 				CE5A27B42AD9B0590014BE09 /* GrewIntroductionView.swift in Sources */,
+				CE48FAD82AE3C9A600712DD5 /* StumpInputView.swift in Sources */,
 				311097712AD4180F000D85AD /* GroupAlertView.swift in Sources */,
 				311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */,
 				995095322ADCD6D3003A822E /* GroupMainCategoryView.swift in Sources */,
