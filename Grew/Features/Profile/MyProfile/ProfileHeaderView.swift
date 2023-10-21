@@ -26,11 +26,12 @@ struct ProfileHeaderView: View {
 
                 VStack(alignment: .leading) {
                     Spacer()
-                    // 이미지 안떠서 일단 뷰 패딩 안맞춰둠
+          
                     CircleImage()
                         .padding(50)
                    
                     HStack(alignment: .bottom){
+
                         VStack(alignment: .leading){
                             Text(UserStore.shared.currentUser?.nickName ?? "이름없음")
                                 .font(.b1_R)
@@ -39,7 +40,7 @@ struct ProfileHeaderView: View {
                                 .padding(.vertical, 5)
                         }
                         Spacer()
-                        
+
                         NavigationLink {
                             EditProfileView(name: UserStore.shared.currentUser?.nickName ?? "",
                                             statusMessage: UserStore.shared.currentUser?.introduce ?? "")
@@ -61,8 +62,7 @@ struct ProfileHeaderView: View {
                    
             }.background(Color.grewMainColor)
             .frame(height: UIScreen.main.bounds.height/7*2)
-        
-     
+
     }
     
 }

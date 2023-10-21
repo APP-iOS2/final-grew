@@ -28,7 +28,7 @@ struct UserContentListView: View {
                     VStack {
                         Text(filter.title)
                             .font(selectedFilter == filter ? .b2_B : .b2_R)
-                            .padding(.top,8)
+                            .padding(.top, 8)
                         
                         if selectedFilter == filter {
                             Rectangle()
