@@ -65,7 +65,13 @@ struct Grew: Identifiable, Codable, Hashable {
     /// 좋아요 눌린 횟수
     var heartTapped: Int = 0
     
-    init(categoryIndex: String, categorysubIndex: String, title: String, description: String, imageURL: String, isOnline: Bool, location: String, gender: Gender, minimumAge: Int, maximumAge: Int, maximumMembers: Int, currentMembers: [String], isNeedFee: Bool, fee: Int) {
+    init(categoryIndex: String, categorysubIndex: String, 
+         title: String, description: String,
+         imageURL: String, isOnline: Bool,
+         location: String, gender: Gender,
+         minimumAge: Int, maximumAge: Int,
+         maximumMembers: Int, currentMembers: [String],
+         isNeedFee: Bool, fee: Int) {
         self.categoryIndex = categoryIndex
         self.categorysubIndex = categorysubIndex
         self.title = title
@@ -82,7 +88,13 @@ struct Grew: Identifiable, Codable, Hashable {
         self.fee = fee
     }
     
-    init(categoryIndex: String, categorysubIndex: String, title: String, description: String, isOnline: Bool, location: String, latitude: String? = nil, longitude: String? = nil, gender: Gender, minimumAge: Int, maximumAge: Int, maximumMembers: Int, isNeedFee: Bool, fee: Int) {
+    init(categoryIndex: String, categorysubIndex: String, 
+         title: String, description: String,
+         isOnline: Bool, location: String,
+         latitude: String? = nil, longitude: String? = nil,
+         gender: Gender, minimumAge: Int,
+         maximumAge: Int, maximumMembers: Int,
+         isNeedFee: Bool, fee: Int) {
         self.categoryIndex = categoryIndex
         self.categorysubIndex = categorysubIndex
         self.title = title
@@ -99,7 +111,15 @@ struct Grew: Identifiable, Codable, Hashable {
         self.fee = fee
     }
     
-    init(id: String, categoryIndex: String, categorysubIndex: String, title: String, description: String, imageURL: String, isOnline: Bool, location: String, latitude: String? = nil, longitude: String? = nil, geoHash: String? = nil, gender: Gender, minimumAge: Int, maximumAge: Int, maximumMembers: Int, currentMembers: [String], isNeedFee: Bool, fee: Int) {
+    init(id: String, categoryIndex: String, 
+         categorysubIndex: String, title: String,
+         description: String, imageURL: String,
+         isOnline: Bool, location: String,
+         latitude: String? = nil, longitude: String? = nil,
+         geoHash: String? = nil, gender: Gender,
+         minimumAge: Int, maximumAge: Int,
+         maximumMembers: Int, currentMembers: [String],
+         isNeedFee: Bool, fee: Int) {
         self.id = id
         self.categoryIndex = categoryIndex
         self.categorysubIndex = categorysubIndex
@@ -154,6 +174,13 @@ struct Grew: Identifiable, Codable, Hashable {
 
 extension Grew {
     static var defaultGrew: Grew {
-        return Grew(categoryIndex: "100", categorysubIndex: "1100", title: "", description: "", imageURL: "", isOnline: true, location: "", gender: .any, minimumAge: 12, maximumAge: 20, maximumMembers: 10, currentMembers: [], isNeedFee: false, fee: 0)
+        return Grew(categoryIndex: "100", 
+                    categorysubIndex: "1100", 
+                    title: "",
+                    description: "",
+                    imageURL: "",
+                    isOnline: true,
+                    location: "",
+                    gender: .any, minimumAge: 12, maximumAge: 20, maximumMembers: 10, currentMembers: [], isNeedFee: false, fee: 0)
     }
 }

@@ -21,6 +21,8 @@ struct LaunchView: View {
         } else {
             MainTabView()
                 .environmentObject(grewViewModel)
+                .environmentObject(AppState())
+                .environmentObject(ScheduleStore())
                 .environmentObject(UserViewModel())
                 .environmentObject(chatStore)
                 .environmentObject(messageStore)

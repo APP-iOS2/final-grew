@@ -24,7 +24,9 @@ struct CategoryButtonView: View {
             Text("새로운 그루를 찾아보세요!")
                 .font(.b1_B)
                 .foregroundStyle(Color.black)
-                .padding()
+                .padding(.top, 40)
+                .padding(.bottom, 25)
+                .padding(.horizontal)
             
             LazyVGrid(columns: gridItems) {
                 ForEach(grewViewModel.categoryArray) { category in
@@ -55,7 +57,7 @@ struct CategoryButtonView: View {
                                 
                         }
                         .foregroundColor(.black)
-                        .padding(.vertical)
+                        .padding(.bottom, 15)
                         .background(.white)
                         .cornerRadius(12)
 //                        .overlay(
@@ -66,10 +68,10 @@ struct CategoryButtonView: View {
                 }
                 .padding(.horizontal)
             } //: LazyGrid
-            
+            .padding(.bottom, 25)
             // 배너
             PagingBannerView()
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
                 .frame(height: 100)
                 .padding(.horizontal)
         }
