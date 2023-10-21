@@ -102,6 +102,9 @@
 		3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */; };
 		3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2802AD62ED1000E9ADF /* GrewCellView.swift */; };
 		3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2842AD62EEE000E9ADF /* MapView.swift */; };
+		3A6D59E02AE0351900627179 /* MapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D59DF2AE0351900627179 /* MapStore.swift */; };
+		3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */; };
+		3AA913C92ADCD9A000157973 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA913C82ADCD9A000157973 /* CategoryView.swift */; };
 		319757422ADE552500696FF9 /* MessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757412ADE552500696FF9 /* MessageStore.swift */; };
 		319757512ADEF36600696FF9 /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757442ADEF36500696FF9 /* ChatDetailView.swift */; };
 		319757522ADEF36600696FF9 /* SideBarShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757462ADEF36500696FF9 /* SideBarShadowView.swift */; };
@@ -122,10 +125,11 @@
 		3197577E2AE16DD100696FF9 /* TextMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197577D2AE16DD100696FF9 /* TextMaster.swift */; };
 		319757802AE1853A00696FF9 /* Storage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */; };
 		319757822AE187AB00696FF9 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757812AE187AB00696FF9 /* ImageUploader.swift */; };
+		3A6D59E02AE0351900627179 /* MapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D59DF2AE0351900627179 /* MapStore.swift */; };
+		3AA913C92ADCD9A000157973 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA913C82ADCD9A000157973 /* CategoryView.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
 		3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */; };
-		3AF1D4A62AD4D5C000ECE1A8 /* MainMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4A52AD4D5C000ECE1A8 /* MainMapView.swift */; };
 		3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4A82AD4D60700ECE1A8 /* MainMapOverTopView.swift */; };
 		3AF1D4AB2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AA2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift */; };
 		3AF1D4AD2AD4D65900ECE1A8 /* NaverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */; };
@@ -141,7 +145,6 @@
 		3EC0F05D2ADE6E2900D07009 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05C2ADE6E2900D07009 /* Schedule.swift */; };
 		3EC0F05F2ADEC9D300D07009 /* OtherTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05E2ADEC9D300D07009 /* OtherTextFields.swift */; };
 		642A218D2AE1152F000A3D38 /* AcknowList in Frameworks */ = {isa = PBXBuildFile; productRef = 642A218C2AE1152F000A3D38 /* AcknowList */; };
-		642A218F2AE11E9B000A3D38 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 642A218E2AE11E9A000A3D38 /* Package.resolved */; };
 		647462BB2ADFB1960054DA6D /* GrewSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647462BA2ADFB1960054DA6D /* GrewSecureField.swift */; };
 		647D60D92AE23901001E8740 /* InformWebKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D60D82AE23900001E8740 /* InformWebKit.swift */; };
 		64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB12AD5145100192DB4 /* AuthAgreeView.swift */; };
@@ -266,6 +269,9 @@
 		3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewImageView.swift; sourceTree = "<group>"; };
 		3137A2802AD62ED1000E9ADF /* GrewCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewCellView.swift; sourceTree = "<group>"; };
 		3137A2842AD62EEE000E9ADF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		3A6D59DF2AE0351900627179 /* MapStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStore.swift; sourceTree = "<group>"; };
+		3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
+		3AA913C82ADCD9A000157973 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		319757412ADE552500696FF9 /* MessageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStore.swift; sourceTree = "<group>"; };
 		319757442ADEF36500696FF9 /* ChatDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
 		319757462ADEF36500696FF9 /* SideBarShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarShadowView.swift; sourceTree = "<group>"; };
@@ -286,10 +292,11 @@
 		3197577D2AE16DD100696FF9 /* TextMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMaster.swift; sourceTree = "<group>"; };
 		3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage+Extensions.swift"; sourceTree = "<group>"; };
 		319757812AE187AB00696FF9 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		3A6D59DF2AE0351900627179 /* MapStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStore.swift; sourceTree = "<group>"; };
+		3AA913C82ADCD9A000157973 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
 		3AF1D4972AD3F9FE00ECE1A8 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
-		3AF1D4A52AD4D5C000ECE1A8 /* MainMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapView.swift; sourceTree = "<group>"; };
 		3AF1D4A82AD4D60700ECE1A8 /* MainMapOverTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapOverTopView.swift; sourceTree = "<group>"; };
 		3AF1D4AA2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapOverSheetView.swift; sourceTree = "<group>"; };
 		3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapView.swift; sourceTree = "<group>"; };
@@ -305,7 +312,6 @@
 		3EC0F05C2ADE6E2900D07009 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		3EC0F05E2ADEC9D300D07009 /* OtherTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTextFields.swift; sourceTree = "<group>"; };
 		5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.release.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
-		642A218E2AE11E9A000A3D38 /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = Grew.xcworkspace/xcshareddata/swiftpm/Package.resolved; sourceTree = SOURCE_ROOT; };
 		647462BA2ADFB1960054DA6D /* GrewSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSecureField.swift; sourceTree = "<group>"; };
 		647D60D82AE23900001E8740 /* InformWebKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformWebKit.swift; sourceTree = "<group>"; };
 		64877CB12AD5145100192DB4 /* AuthAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAgreeView.swift; sourceTree = "<group>"; };
@@ -551,7 +557,6 @@
 				312E98D62ACD2A7C00E38626 /* ViewModifier */,
 				312E986A2ACCED3800E38626 /* Assets.xcassets */,
 				312E986C2ACCED3800E38626 /* Preview Content */,
-				642A218E2AE11E9A000A3D38 /* Package.resolved */,
 				312E98CD2ACD232800E38626 /* Info.plist */,
 				311097C12AD418CF000D85AD /* Categories.json */,
 			);
@@ -677,6 +682,7 @@
 			isa = PBXGroup;
 			children = (
 				3137A2842AD62EEE000E9ADF /* MapView.swift */,
+				3A6D59DE2AE0350700627179 /* ViewModel */,
 				3AF1D4A72AD4D5F200ECE1A8 /* Views */,
 			);
 			path = Maps;
@@ -752,6 +758,14 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		3A6D59DE2AE0350700627179 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3A6D59DF2AE0351900627179 /* MapStore.swift */,
+			);
+			path = ViewModel;
+            sourceTree = "<group>";
+        };
 		319757432ADEF36500696FF9 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,6 +806,14 @@
 			path = SubView;
 			sourceTree = "<group>";
 		};
+		3A6D59DE2AE0350700627179 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3A6D59DF2AE0351900627179 /* MapStore.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		3AF1D4A42AD41F3A00ECE1A8 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -805,11 +827,11 @@
 		3AF1D4A72AD4D5F200ECE1A8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3AF1D4A52AD4D5C000ECE1A8 /* MainMapView.swift */,
 				3AF1D4A82AD4D60700ECE1A8 /* MainMapOverTopView.swift */,
 				3AF1D4AA2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift */,
 				3AF1D4AC2AD4D65900ECE1A8 /* NaverMapView.swift */,
 				3AF1D4AE2AD4D75A00ECE1A8 /* MapListItemView.swift */,
+				3AA913C82ADCD9A000157973 /* CategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1076,7 +1098,6 @@
 				311097C22AD418CF000D85AD /* Categories.json in Resources */,
 				312E986E2ACCED3800E38626 /* Preview Assets.xcassets in Resources */,
 				3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */,
-				642A218F2AE11E9B000A3D38 /* Package.resolved in Resources */,
 				312E986B2ACCED3800E38626 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1173,7 +1194,6 @@
 				21C1F1B32ACFEEC10029E436 /* MyGroupView.swift in Sources */,
 				312E98E72ACD2EAA00E38626 /* UIImagePickerController.SourceType+Extensions.swift in Sources */,
 				3AF1D4AB2AD4D62C00ECE1A8 /* MainMapOverSheetView.swift in Sources */,
-				3AF1D4A62AD4D5C000ECE1A8 /* MainMapView.swift in Sources */,
 				3AF1D4AD2AD4D65900ECE1A8 /* NaverMapView.swift in Sources */,
 				9FD0506B2ADF5CAA00A8735A /* ScheduleCellView.swift in Sources */,
 				991E7B922AD7D1BA002ECEE3 /* TabBarAccessor.swift in Sources */,
@@ -1262,6 +1282,9 @@
 				2157096C2AD69246006ABE35 /* CameraView.swift in Sources */,
 				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
+				311097C42AD41982000D85AD /* ChatUserContentListView.swift in Sources */,
+				311097742AD4180F000D85AD /* LocationView.swift in Sources */,
+				3AA913C92ADCD9A000157973 /* CategoryView.swift in Sources */,
 				311097A52AD41882000D85AD /* Category.swift in Sources */,
 				311097AA2AD41882000D85AD /* ImagePicker.swift in Sources */,
 				CE5129422AD8D66700CE77C5 /* GrewDetailView.swift in Sources */,
@@ -1279,6 +1302,7 @@
 				311097622AD417FD000D85AD /* ChatMessage.swift in Sources */,
 				311097B62AD41897000D85AD /* LoadingView.swift in Sources */,
 				2157095F2AD530F8006ABE35 /* ProfileHeaderView.swift in Sources */,
+				3A6D59E02AE0351900627179 /* MapStore.swift in Sources */,
 				3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */,
 				311097A82AD41882000D85AD /* Grew.swift in Sources */,
 				21709BFC2AE1191E00FDA43D /* StumpCellView.swift in Sources */,
@@ -1425,6 +1449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Grew/Preview Content\"";
@@ -1434,6 +1459,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Grew/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "그루";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1447,6 +1473,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = education.techit.forrest.grew.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1462,6 +1489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Grew/Preview Content\"";
@@ -1471,6 +1499,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Grew/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "그루";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1484,6 +1513,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = education.techit.forrest.grew.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

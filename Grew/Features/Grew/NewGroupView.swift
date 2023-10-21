@@ -45,9 +45,8 @@ struct NewGrewView: View {
                                 }
                             } label: {
                                 Image(systemName: "chevron.backward")
-                                    .font(.system(size: 25))
+                                    .font(.system(size: 18))
                                     .foregroundStyle(Color.black)
-                                    .padding()
                             }
                         }
                     }
@@ -57,9 +56,8 @@ struct NewGrewView: View {
                                 dismiss()
                             } label: {
                                 Image(systemName: "xmark")
-                                    .font(.system(size: 25))
+                                    .font(.system(size: 18))
                                     .foregroundStyle(Color.black)
-                                    .padding()
                             }
                         }
                     }

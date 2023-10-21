@@ -8,36 +8,39 @@
 import SwiftUI
 
 struct MainMapOverSheetView: View {
-    private var handleAction: () -> Void
-    
-    init(handleAction: @escaping () -> Void) {
-        self.handleAction = handleAction
-    }
+    @EnvironmentObject var viewModel: MapStore
+    var handleAction: () -> Void
     
     var body: some View {
-        GeometryReader { geometry in
-            VStack(spacing: 0) {
-                
-                // List Handle
+        ZStack {
+            VStack {
+                Spacer(minLength: 30)
+                ScrollView {
+                    VStack {
+                        ForEach(Array(viewModel.filteredListItems)) { item in
+                            MapListItemView(item: item)
+                        }
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .padding(.bottom, 320)
+            }
+            GeometryReader { geometry in
                 HStack(alignment: .center) {
                     Rectangle()
-                        .frame(width: 25, height: 4, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .frame(width: 25, height: 4, alignment: .center)
                         .cornerRadius(10)
                         .opacity(0.25)
                         .padding(.vertical, 8)
                 }
-                .frame(width: geometry.size.width, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: geometry.size.width, height: 30, alignment: .center)
                 .onTapGesture {
                     handleAction()
                 }
-                
-                Image(systemName: "line.3.horizontal.circle")
-                List(0..<5) {_ in
-                    MapListItemView()
-                }
-            }.frame(maxWidth: .infinity)
+            }
         }
-    }}
+        .frame(maxWidth: .infinity)
+    }
+}
 
 #Preview {
     MainMapOverSheetView(handleAction: {

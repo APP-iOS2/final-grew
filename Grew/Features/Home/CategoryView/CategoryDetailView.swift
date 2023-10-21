@@ -35,9 +35,8 @@ struct CategoryDetailView: View {
                         dismiss()
                     } label: {
                         Image(systemName: "chevron.backward")
-                            .font(.system(size: 25))
+                            .font(.system(size: 18))
                             .foregroundStyle(Color.black)
-                            .padding()
                     }
                     Spacer()
                 }

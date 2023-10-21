@@ -67,8 +67,6 @@ struct NewestGrewCellView: View {
         maximumMembers: 10,
         currentMembers: [],
         isNeedFee: false,
-        fee: 0,
-        createdAt: Date(),
-        heartTapped: 0))
-        .environmentObject(GrewViewModel())
+        fee: 0
+    ))
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct UserContentListView: View {
     var user: Grew?
     
-    @State private var selectedFilter: ProfileThreadFilter = .myGroup
+    @Binding var selectedFilter: ProfileThreadFilter
     @Namespace var animation
     
     private var filterBarWidth: CGFloat {
@@ -57,21 +57,12 @@ struct UserContentListView: View {
         .frame(height: 50, alignment: .center)
         .background(Color.white)
         
-        switch selectedFilter {
-        case .myGroup:
-            MyGroupView()
-                .background(Color.white)
-        case .myGroupSchedule:
-            MyGroupScheduleView()
-                .background(Color.white)
-        case .savedGrew:
-            SavedGrewView()
-                .background(Color.white)
-        }
+        
     }
 }
 
 
 #Preview {
-    UserContentListView()
+    UserContentListView(
+        selectedFilter: .constant(ProfileThreadFilter.myGroup))
 }
