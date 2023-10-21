@@ -5,7 +5,7 @@
 //  Created by daye on 10/17/23.
 //
 
-//뷰를 거지같ㅌ이 짰어요 호호호호ㅗ호호호호ㅗㅎ호
+// 뷰를 거지같ㅌ이 짰어요 호호호호ㅗ호호호호ㅗㅎ호
 
 import Foundation
 import SwiftUI
@@ -29,13 +29,13 @@ struct ScheduleNameField: View {
                     .onChange(of: isTextFieldFocused) { focused in
                         if !focused {
                             withAnimation(.easeIn){
-                                if(scheduleName.count < 5){
+                                if (scheduleName.count < 5) {
                                     isScheduleNameError = true
-                                }else{
+                                } else{
                                     isScheduleNameError = false
                                 }
                             }
-                        }else {
+                        } else {
                             isScheduleNameError = false
                         }
                     }
@@ -67,7 +67,7 @@ struct GuestNumField: View {
     @State private var guestNumErrorMessage: String = "정원을 입력해주세요."
     @Binding var maximumMenbers: String
     @FocusState var isTextFieldFocused: Bool
-    let meximumGrewMembers: Int = 20 //임시 그루 최대 인원
+    let meximumGrewMembers: Int = 20 // 임시 그루 최대 인원
     
     var body: some View {
         VStack{

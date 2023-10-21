@@ -5,8 +5,8 @@
 //  Created by daye on 2023/09/25.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct MessageBubbles: View {
     let chatMessage: ChatMessage
@@ -35,7 +35,6 @@ struct MessageBubbles: View {
     private var myBubble: some View {
         HStack(alignment: .bottom) {
             Spacer()
-
             VStack{
                 Spacer()
                 Text(chatMessage.createdDateString)
@@ -43,7 +42,6 @@ struct MessageBubbles: View {
                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
                     .foregroundColor(.gray)
             }
-
             VStack{
                 if !chatMessage.attachImageURL.isEmpty {
                     KFImage.url(URL(string: chatMessage.attachImageURL))
@@ -57,7 +55,7 @@ struct MessageBubbles: View {
                     
                 } else {
                     Text(chatMessage.text)
-                         .font(.c1_R)
+                        .font(.c1_R)
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15) )
                 }
@@ -126,4 +124,3 @@ struct MessageBubbles: View {
         }
     }
 }
-

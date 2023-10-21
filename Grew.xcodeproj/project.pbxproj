@@ -139,7 +139,10 @@
 		3EC0F05B2ADE6E1700D07009 /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05A2ADE6E1700D07009 /* ScheduleStore.swift */; };
 		3EC0F05D2ADE6E2900D07009 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05C2ADE6E2900D07009 /* Schedule.swift */; };
 		3EC0F05F2ADEC9D300D07009 /* OtherTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05E2ADEC9D300D07009 /* OtherTextFields.swift */; };
+		642A218D2AE1152F000A3D38 /* AcknowList in Frameworks */ = {isa = PBXBuildFile; productRef = 642A218C2AE1152F000A3D38 /* AcknowList */; };
+		642A218F2AE11E9B000A3D38 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 642A218E2AE11E9A000A3D38 /* Package.resolved */; };
 		647462BB2ADFB1960054DA6D /* GrewSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647462BA2ADFB1960054DA6D /* GrewSecureField.swift */; };
+		647D60D92AE23901001E8740 /* InformWebKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D60D82AE23900001E8740 /* InformWebKit.swift */; };
 		64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB12AD5145100192DB4 /* AuthAgreeView.swift */; };
 		64877CB42AD51A7100192DB4 /* AuthAgreeCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */; };
 		64877CB62AD5B2BD00192DB4 /* AuthProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */; };
@@ -298,7 +301,9 @@
 		3EC0F05C2ADE6E2900D07009 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		3EC0F05E2ADEC9D300D07009 /* OtherTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTextFields.swift; sourceTree = "<group>"; };
 		5A7D7ADE29123FE30746CD7D /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grew.release.xcconfig"; path = "Target Support Files/Pods-Grew/Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
+		642A218E2AE11E9A000A3D38 /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = Grew.xcworkspace/xcshareddata/swiftpm/Package.resolved; sourceTree = SOURCE_ROOT; };
 		647462BA2ADFB1960054DA6D /* GrewSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewSecureField.swift; sourceTree = "<group>"; };
+		647D60D82AE23900001E8740 /* InformWebKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformWebKit.swift; sourceTree = "<group>"; };
 		64877CB12AD5145100192DB4 /* AuthAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAgreeView.swift; sourceTree = "<group>"; };
 		64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAgreeCheckView.swift; sourceTree = "<group>"; };
 		64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProgressBar.swift; sourceTree = "<group>"; };
@@ -372,6 +377,7 @@
 				312E98852ACCF35100E38626 /* FirebaseFirestoreSwift in Frameworks */,
 				312E989F2ACCF7E000E38626 /* FacebookBasics in Frameworks */,
 				312E98972ACCF35100E38626 /* FirebaseStorageCombine-Community in Frameworks */,
+				642A218D2AE1152F000A3D38 /* AcknowList in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +431,7 @@
 				2163156D2ADFA6B100208CB4 /* OpensourceLicenseView.swift */,
 				2163156F2ADFA6C000208CB4 /* DevelopersView.swift */,
 				216315712ADFA6CA00208CB4 /* InquiryView.swift */,
+				647D60D82AE23900001E8740 /* InformWebKit.swift */,
 			);
 			path = Inform;
 			sourceTree = "<group>";
@@ -537,6 +544,7 @@
 				312E98D62ACD2A7C00E38626 /* ViewModifier */,
 				312E986A2ACCED3800E38626 /* Assets.xcassets */,
 				312E986C2ACCED3800E38626 /* Preview Content */,
+				642A218E2AE11E9A000A3D38 /* Package.resolved */,
 				312E98CD2ACD232800E38626 /* Info.plist */,
 				311097C12AD418CF000D85AD /* Categories.json */,
 			);
@@ -999,6 +1007,7 @@
 				312E98C72ACD20FF00E38626 /* GoogleSignIn */,
 				312E98C92ACD20FF00E38626 /* GoogleSignInSwift */,
 				99266D822AD635BA00FB6AC1 /* ConfettiSwiftUI */,
+				642A218C2AE1152F000A3D38 /* AcknowList */,
 			);
 			productName = Grew;
 			productReference = 312E98632ACCED3600E38626 /* Grew.app */;
@@ -1035,6 +1044,7 @@
 				312E98A82ACCF80300E38626 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				312E98C62ACD20FF00E38626 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				99266D812AD635B900FB6AC1 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				642A218B2AE1152F000A3D38 /* XCRemoteSwiftPackageReference "AcknowList" */,
 			);
 			productRefGroup = 312E98642ACCED3600E38626 /* Products */;
 			projectDirPath = "";
@@ -1057,6 +1067,7 @@
 				311097C22AD418CF000D85AD /* Categories.json in Resources */,
 				312E986E2ACCED3800E38626 /* Preview Assets.xcassets in Resources */,
 				3AF1D4A12AD3F9FE00ECE1A8 /* SCDream7.otf in Resources */,
+				642A218F2AE11E9B000A3D38 /* Package.resolved in Resources */,
 				312E986B2ACCED3800E38626 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1161,6 +1172,7 @@
 				99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */,
 				319757552ADEF36600696FF9 /* ChatInputView.swift in Sources */,
 				319757712ADFAB1000696FF9 /* AuthAddMainInfoView.swift in Sources */,
+				647D60D92AE23901001E8740 /* InformWebKit.swift in Sources */,
 				21C1F1AD2ACFEE810029E436 /* UserContentListView.swift in Sources */,
 				312E98672ACCED3600E38626 /* GrewApp.swift in Sources */,
 				3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */,
@@ -1531,6 +1543,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		642A218B2AE1152F000A3D38 /* XCRemoteSwiftPackageReference "AcknowList" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vtourraine/AcknowList";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.1;
+			};
+		};
 		99266D812AD635B900FB6AC1 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
@@ -1656,6 +1676,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 312E98C62ACD20FF00E38626 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		642A218C2AE1152F000A3D38 /* AcknowList */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 642A218B2AE1152F000A3D38 /* XCRemoteSwiftPackageReference "AcknowList" */;
+			productName = AcknowList;
 		};
 		99266D822AD635BA00FB6AC1 /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

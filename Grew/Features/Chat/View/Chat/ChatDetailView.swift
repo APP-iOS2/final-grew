@@ -45,7 +45,6 @@ struct ChatDetailView: View {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
                
                 ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert, chatRoomName: chatRoom.chatRoomName ?? "\(targetUserInfos[0].nickName)", targetUserInfos: targetUserInfos)
-
                     .offset(x: x)
                     .transition(isMenuOpen ? .move(edge: .trailing) : .move(edge: .leading))
                 //  .navigationBarHidden(isMenuOpen ? true : false)
@@ -73,7 +72,6 @@ struct ChatDetailView: View {
                             }
                         }
                     }))*/
-
             }
         }
        
@@ -130,5 +128,4 @@ struct ChatDetailView: View {
         
         await chatStore.updateChatRoom(chatRoom)
     }
-
 }

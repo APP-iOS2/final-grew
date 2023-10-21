@@ -90,8 +90,9 @@ extension MessageStore {
                 .collection("chatmessages")
                 .document(message.id)
                 .updateData(
-                    ["text" : message.text,
-                     "createdDate" : message.createdDate])
+                    [
+                        "text" : message.text,
+                        "createdDate" : message.createdDate])
         } catch {
             print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
         }
@@ -114,7 +115,7 @@ extension MessageStore {
 extension MessageStore {
     
     // 리스너에서 값이 더해졌을때 메시지 객체로 변환해서 추가하는 메서드
-    func fetchNewMessage(change : QueryDocumentSnapshot) -> ChatMessage? {
+    func fetchNewMessage(change: QueryDocumentSnapshot) -> ChatMessage? {
         do {
             let newMessage = try change.data(as: ChatMessage.self)
             return newMessage
@@ -125,7 +126,7 @@ extension MessageStore {
     }
     
     // 리스너에서 삭제된 ID를 받아서 현재 Published 된 메시지 목록에서 삭제하는 메서드
-    func removeDeletedMessage(change : QueryDocumentSnapshot) {
+    func removeDeletedMessage(change: QueryDocumentSnapshot) {
         guard let index = messages.firstIndex(where: { $0.id == change.documentID}) else {
             return
         }

@@ -5,18 +5,14 @@
 //  Created by Chloe Chung on 2023/10/10.
 //
 
-import SwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import SwiftUI
 
 struct ProfileHeaderView: View {
     @State var name: String
     @State var statusMessage: String
-    
-    @ObservedObject var userStore: UserStore
-    @ObservedObject var userViewModel: UserViewModel
-    @ObservedObject var grewViewModel: GrewViewModel
     
     private var backgroundHeight: CGFloat {
         //        let count = CGFloat(ProfileThreadFilter.allCases.count)
@@ -33,15 +29,13 @@ struct ProfileHeaderView: View {
                             .offset(x: 0, y: 60.0)
                         
                         HStack(alignment: .bottom) {
-                            CircleImage(userViewModel: userViewModel)
+                            CircleImage()
                             
                             Spacer()
                             
                             NavigationLink {
-                                EditProfileView(name: userStore.currentUser?.nickName ?? "",
-                                                statusMessage: userStore.currentUser?.introduce ?? "",
-                                                userStore: UserStore(),
-                                                userViewModel: UserViewModel())
+                                EditProfileView(name: UserStore.shared.currentUser?.nickName ?? "",
+                                                statusMessage: UserStore.shared.currentUser?.introduce ?? "")
                             } label: {
                                 Text("프로필 수정")
                                     .background(RoundedRectangle(cornerRadius: 7)
@@ -55,11 +49,11 @@ struct ProfileHeaderView: View {
                         .padding()
                     }
                     
-                    Text(userStore.currentUser?.nickName ?? "이름없음")
+                    Text(UserStore.shared.currentUser?.nickName ?? "이름없음")
                         .padding(.horizontal)
                         .bold()
                     
-                    Text(userStore.currentUser?.introduce ?? "안녕하세요 \(userStore.currentUser?.nickName ?? "이름없음")입니다.")
+                    Text(UserStore.shared.currentUser?.introduce ?? "안녕하세요 \(UserStore.shared.currentUser?.nickName ?? "이름없음")입니다.")
                         .padding(.horizontal)
                         .font(.caption)
                     
@@ -71,10 +65,9 @@ struct ProfileHeaderView: View {
         }
     }
 }
-//}
 
 #Preview {
     NavigationStack {
-        ProfileHeaderView(name: "헬롱", statusMessage: "하위", userStore: UserStore(), userViewModel: UserViewModel(), grewViewModel: GrewViewModel())
+        ProfileHeaderView(name: "헬롱", statusMessage: "하위")
     }
 }

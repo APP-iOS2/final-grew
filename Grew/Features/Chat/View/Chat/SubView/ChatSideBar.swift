@@ -24,7 +24,6 @@ struct ChatSideBar: View {
                 Text(chatRoomName)
                     .font(.b1_B)
                     .padding(.top, 30)
-
                 Divider()
                 ScrollView{
                     Group{
@@ -34,7 +33,6 @@ struct ChatSideBar: View {
                             Spacer()
                         }.font(.b2_R)
                             .padding(.vertical, 15)
-
                         // 나
                         HStack{
                             CircularProfileImageView(
@@ -51,7 +49,6 @@ struct ChatSideBar: View {
                                     chatMessage: nil,
                                     url: i.userImageURLString,
                                     imagesize: .bubble)
-
                                 Text(i.nickName).font(.b3_R).padding(3)
                                 Spacer()
                             }
