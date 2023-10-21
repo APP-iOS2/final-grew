@@ -71,6 +71,17 @@ extension View {
 struct ColoredNavigationBar: ViewModifier {
     var background: Color
     
+    init(background: Color) {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.shadowColor = .clear
+        navBarAppearance.shadowImage = UIImage()
+        
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().compactAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        self.background = background
+    }
+    
     func body(content: Content) -> some View {
         content
             .toolbarBackground(

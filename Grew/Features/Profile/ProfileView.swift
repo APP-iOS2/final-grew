@@ -67,7 +67,6 @@ struct ProfileView: View {
                         
                     }
                 }
-                .navigationBarBackground(.Main)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .coordinateSpace(name: "SCROLL")
                 //            .ignoresSafeArea(.container, edges: .vertical)
@@ -90,7 +89,9 @@ struct ProfileView: View {
                     .offset(y: 100)
             }
             .background(Color.Main)
+            .navigationBarBackground(.Main)
         }
+        
     }
     // 1:1 메시지 생성
     private func startMessage() {
@@ -131,7 +132,7 @@ struct ProfileView: View {
                         
                         NavigationLink {
                             EditProfileView(
-                                user: user!
+                                user: user ?? User.dummyUser
                             )
                         } label: {
                             Text("프로필 수정")
