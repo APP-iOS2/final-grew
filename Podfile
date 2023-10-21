@@ -7,4 +7,5 @@ target 'Grew' do
 
   # Pods for Grew
   pod 'NMapsMap'
+  pod 'GeoFire/Utils'
 end
