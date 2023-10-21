@@ -11,6 +11,9 @@ struct MainChatView: View {
     @State private var selectedFilter: ChatSegment = .group
     @Namespace var animation
     
+    @State private var isLoading: Bool = false
+    @EnvironmentObject private var chatStore: ChatStore
+    
     private var filterBarWidth: CGFloat {
         let count = CGFloat(ChatSegment.allCases.count)
         return UIScreen.main.bounds.width / count - 16
@@ -28,6 +31,29 @@ struct MainChatView: View {
             }
             Spacer()
         }
+        .overlay {
+            if isLoading {
+                VStack {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.white)
+            }
+        }
+        .task {
+            if !chatStore.isDoneFetch {
+                chatStore.addListener()
+                isLoading = true
+                await chatStore.fetchChatRooms()
+                isLoading = false
+            }
+        }
+        .onDisappear {
+            chatStore.removeListener()
+            chatStore.isDoneFetch = false
+        }
     }
     
     private var segmentBar: some View {
@@ -40,7 +66,7 @@ struct MainChatView: View {
                     if selectedFilter == filter {
                         Rectangle()
                             .foregroundColor(.Main)
-                            .frame(maxWidth: filterBarWidth, maxHeight: 1)
+                            .frame(maxWidth: filterBarWidth, maxHeight: 3)
                             .matchedGeometryEffect(id: "item", in: animation)
                     } else {
                         Rectangle()
@@ -63,4 +89,3 @@ struct MainChatView: View {
         }
     }
 }
-

@@ -47,7 +47,7 @@ struct ChatMessageListView: View {
                     Text("")
                         .id("bottom")
                 }
-                //안 읽은 메시지 개수 확인해서 해당 뷰로 스크롤
+                // 안 읽은 메시지 개수 확인해서 해당 뷰로 스크롤
                 .onChange(of: unreadMessageIndex) { state, newState in
                     DispatchQueue.main.async {
                         Task {
@@ -62,7 +62,7 @@ struct ChatMessageListView: View {
                 .onChange(of: groupDetailConfig.selectedImage) { state, newState in
                     proxy.scrollTo("bottom", anchor: .bottomTrailing)
                 }
-                //새로운 메시지 추가 여부 (보내거나, 받거나) 확인하여 최하단의 뷰로 스크롤 진행
+                // 새로운 메시지 추가 여부 (보내거나, 받거나) 확인하여 최하단의 뷰로 스크롤 진행
                 .onChange(of: messageStore.isMessageAdded) { state, newState in
                     if messageStore.isFetchMessageDone {
                         proxy.scrollTo("bottom", anchor: .bottomTrailing)
@@ -90,28 +90,16 @@ struct ChatMessageListView: View {
             }
             .navigationTitle(isMenuOpen ? "" : chatRoomName)
             .navigationBarBackButtonHidden(isMenuOpen ? true : false)
-            .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 300 :UIScreen.main.bounds.height - 200)
+            .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 280 :UIScreen.main.bounds.height - 180)
 
            if groupDetailConfig.selectedImage != nil {
                 chatImagePicked
            }
-
             ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
                 .background(Color(.systemBackground).ignoresSafeArea())
                 .shadow(radius: groupDetailConfig.selectedImage != nil ? 0 : 0.5)
         }
         .task {
-            let unreadMessageCount = await getUnReadCount()
-            messageStore.addListener(chatRoomID: chatRoom.id)
-            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
-            
-            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
-            
-            
-            if unreadMessageCount > 0 {
-                // 읽지 않은 메세지 갯수를 0으로 초기화
-                await clearUnreadMesageCount()
-            }
         }
     }
     private func getUnReadCount() async -> Int {
@@ -119,7 +107,6 @@ struct ChatMessageListView: View {
         let unreadCount = dict?[UserStore.shared.currentUser!.id! ] ?? 0
         return unreadCount
     }
-   
     // 읽지 않은 메시지 개수 0으로 초기화 + 업데이트 (채팅방 입장 시, 퇴장 시)
     private func clearUnreadMesageCount() async {
         var newChat: ChatRoom = chatRoom
@@ -160,6 +147,6 @@ struct ChatMessageListView: View {
     }
 }
 //
-//#Preview {
+// #Preview {
 //    ChatMessageListView(isMenuOpen: .constant(true), x: .constant(450))
-//}
+// }

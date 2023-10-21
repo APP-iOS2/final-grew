@@ -5,9 +5,9 @@
 //  Created by Chloe Chung on 2023/10/11.
 //
 
-import UIKit
 import Firebase
 import FirebaseStorage
+import UIKit
 
 class UserViewModel: ObservableObject {
     @Published var currentUser: User?
@@ -43,52 +43,6 @@ class UserViewModel: ObservableObject {
                 try db.collection("users").document(userId).setData(from: user)
             } catch let error {
                 print("Error updating user: \(error)")
-            }
-        }
-    }
-}
-
-extension UserStore {
-    func uploadProfileImage(_ image: UIImage, completion: @escaping (Bool) -> Void) {
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-            completion(false)
-            return
-        }
-        
-        guard let userId = currentUser?.id else {
-            completion(false)
-            return
-        }
-        
-        let storageRef = Storage.storage().reference().child("userImageURLString/\(userId).jpg")
-        
-        storageRef.putData(imageData, metadata: nil) { (metadata, error) in
-            if let error = error {
-                print("Error uploading image: \(error)")
-                completion(false)
-                return
-            }
-            
-            storageRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    print("Error download URL: \(error?.localizedDescription ?? "No error description.")")
-                    completion(false)
-                    return
-                }
-                
-                self.currentUser?.userImageURLString = downloadURL.absoluteString
-            }
-        }
-    }
-    
-    func fetchProfileImage(userId: String, completion: @escaping (URL?) -> Void) {
-        let storageRef = Storage.storage().reference().child("userImageURLString/\(userId).jpg")
-        storageRef.downloadURL { (url, error) in
-            if let error = error {
-                print("Error fetching profile image: \(error)")
-                completion(nil)
-            } else {
-                completion(url)
             }
         }
     }
