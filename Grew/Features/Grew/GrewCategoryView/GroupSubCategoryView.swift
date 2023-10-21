@@ -11,6 +11,7 @@ struct GroupSubCategoryView: View {
     @EnvironmentObject var viewModel: GrewViewModel
     @Binding var selection: Selection
     @State private var showSubCategories = false
+    @Binding var isSubCategoryValid: Bool
     
     private let gridItems: [GridItem] = [
         //        GridItem(.adaptive(minimum: 60))
@@ -34,6 +35,7 @@ struct GroupSubCategoryView: View {
                                 Button {
                                     self.selection.subCategoryID = subcategory.id
                                     viewModel.selectedSubCategoryId = subcategory.id
+                                    isSubCategoryValid = true
                                 } label: {
                                     Text(subcategory.name)
                                         .grewButtonModifier(
@@ -61,7 +63,7 @@ struct GroupSubCategoryView: View {
 }
 
 #Preview {
-    GroupSubCategoryView(selection: .constant(Selection(categoryID: "", subCategoryID: "")))
+    GroupSubCategoryView(selection: .constant(Selection(categoryID: "", subCategoryID: "")), isSubCategoryValid: .constant(true))
         .environmentObject(GrewViewModel())
 }
 

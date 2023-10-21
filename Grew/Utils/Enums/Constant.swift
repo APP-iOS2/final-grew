@@ -12,7 +12,4 @@ public enum Constant {
     static let bubble: CGFloat = 40
     static let chatRoomList: CGFloat = 50
     static let profilePageImage: CGFloat = 70
-    
-    
 }
-

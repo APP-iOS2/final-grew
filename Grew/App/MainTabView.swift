@@ -14,7 +14,8 @@ enum SelectViews {
 struct MainTabView: View {
     @State private var isNewGrewViewPresented = false
     @State private var selection: SelectViews = .home
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject private var userStore: UserStore
+    @EnvironmentObject private var chatStore: ChatStore
     
     var body: some View {
         
@@ -26,7 +27,6 @@ struct MainTabView: View {
         }
     }
 }
-
 
 extension MainTabView {
     
@@ -45,10 +45,11 @@ extension MainTabView {
             
             MainChatView()
                 .tag(SelectViews.chat)
-            
-            ProfileView(userStore: UserStore(), grewViewModel: GrewViewModel(), userViewModel: _userViewModel)
+          
+            ProfileView(user: UserStore.shared.currentUser)
                 .tag(SelectViews.profile)
         }
+
     }
     
     var bottomTabs: some View {
@@ -180,5 +181,5 @@ struct EdgeBorder: Shape {
 
 #Preview {
     MainTabView()
-        .environmentObject(UserViewModel())
+        .environmentObject(UserStore())
 }

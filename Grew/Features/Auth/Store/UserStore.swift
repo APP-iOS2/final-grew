@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 import Foundation
 
 class UserStore: ObservableObject {
@@ -54,6 +55,7 @@ class UserStore: ObservableObject {
     }
     
     static func requestAndReturnUsers(userID: [String]) async -> [User]? {
+//        if userID.isEmpty { return nil }
         var newUser: [User] = []
         for user in userID {
             let doc = db.collection("users").document(user)
@@ -66,5 +68,62 @@ class UserStore: ObservableObject {
             }
         }
         return newUser
+    }
+    
+    func updateUser(user: User) {
+        if let userId = currentUser?.id {
+            do {
+                try UserStore.db.collection("users").document(userId).setData(from: user)
+            } catch let error {
+                print("Error updating user: \(error)")
+            }
+        }
+    }
+}
+
+
+extension UserStore {
+    func uploadProfileImage(_ image: UIImage, completion: @escaping (Bool) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+            completion(false)
+            return
+        }
+        
+        guard let userId = currentUser?.id else {
+            completion(false)
+            return
+        }
+        
+        let storageRef = Storage.storage().reference().child("userImageURLString/\(userId).jpg")
+        
+        storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+            if let error = error {
+                print("Error uploading image: \(error)")
+                completion(false)
+                return
+            }
+            
+            storageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    print("Error download URL: \(error?.localizedDescription ?? "No error description.")")
+                    completion(false)
+                    return
+                }
+                
+                self.currentUser?.userImageURLString = downloadURL.absoluteString
+            }
+        }
+    }
+    
+    func fetchProfileImage(userId: String, completion: @escaping (URL?) -> Void) {
+        let storageRef = Storage.storage().reference().child("userImageURLString/\(userId).jpg")
+        storageRef.downloadURL { (url, error) in
+            if let error = error {
+                print("Error fetching profile image: \(error)")
+                completion(nil)
+            } else {
+                completion(url)
+            }
+        }
     }
 }

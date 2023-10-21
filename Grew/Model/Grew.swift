@@ -11,7 +11,6 @@ import GeoFire
 struct Grew: Identifiable, Codable, Hashable {
 
     var id: String = UUID().uuidString
-
     /// 1차 카테고리
     let categoryIndex: String
     /// 2차 카테고리

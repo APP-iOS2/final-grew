@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct StumpRegisterView: View {
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var stumpStore: StumpStore
+    
     @State private var name: String = ""
     @State private var hours: String = ""
     @State private var minimumMembers: String = ""
@@ -18,11 +21,16 @@ struct StumpRegisterView: View {
     @State private var phoneNumber: String = ""
     @State private var image: UIImage? = nil
     @State private var images: [UIImage?] = []
+    @State private var imageURLs: [String] = []
     
-    @State private var isShowingSelectionSheet: Bool = false
+    @State private var isShowingPhotoSelectionSheet: Bool = false
     @State private var isShowingCamera: Bool = false
     @State private var isShowingPhotoLibrary: Bool = false
-    @State private var isShowingRegisterAlert: Bool = false
+    @State private var isShowingSuccessAlert: Bool = false
+    @State private var isShowingFailureAlert: Bool = false
+    @State private var isShowingNotStumpMemberAlert: Bool = false
+    @State private var isShowingUserFailureAlert: Bool = false
+    @State private var isLoading = false
     
     let imagesLength: Int = 3
     
@@ -40,22 +48,74 @@ struct StumpRegisterView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                makeInputView()
+//                makeInputView()
+                StumpInputView(
+                    name: $name,
+                    hours: $hours,
+                    minimumMembers: $minimumMembers,
+                    maximumMembers: $maximumMembers,
+                    isNeedDeposit: $isNeedDeposit,
+                    deposit: $deposit,
+                    location: $location,
+                    phoneNumber: $phoneNumber,
+                    isAllTextFieldDisabled: false
+                )
+                
                 makeAddImageView()
+                
                 makeRegisterButton()
             }
             .padding(.horizontal, 20)
         }
-        .sheet(isPresented: $isShowingSelectionSheet) {
-            ImageEditModalView(showModal: $isShowingSelectionSheet) { form in
+        .navigationTitle("그루터기 등록하기")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .font(.system(size: 18))
+                        .foregroundStyle(Color.black)
+                }
+                Spacer()
+            }
+        }
+        .overlay(
+            Group {
+                if isLoading {
+                    Color.black.opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                        .scaleEffect(2)
+                        .frame(
+                            width: UIScreen.screenWidth,
+                            height: UIScreen.screenHeight
+                        )
+                }
+            }
+        )
+        .onAppear {
+            if UserStore.shared.currentUser == nil {
+                isShowingUserFailureAlert = true
+            } else if let isStumpMember = UserStore.shared.currentUser?.isStumpMember, !isStumpMember {
+                isShowingNotStumpMemberAlert = true
+            } else {
+                isShowingNotStumpMemberAlert = false
+            }
+        }
+        .sheet(isPresented: $isShowingPhotoSelectionSheet) {
+            ImageEditModalView(showModal: $isShowingPhotoSelectionSheet) { form in
                 switch form {
                 case .camera:
-                    isShowingSelectionSheet = false
+                    isShowingPhotoSelectionSheet = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         isShowingCamera = true
                     }
                 case .picker:
-                    isShowingSelectionSheet = false
+                    isShowingPhotoSelectionSheet = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         isShowingPhotoLibrary = true
                     }
@@ -75,139 +135,57 @@ struct StumpRegisterView: View {
             if images.count < 3, newImage != images.last {
                 images.append(newImage)
                 image = nil
+            } else if images.count == 3 {
+                images.removeLast()
+                images.append(newImage)
+                image = nil
             }
         }
         .grewAlert(
-            isPresented: $isShowingRegisterAlert,
+            isPresented: $isShowingSuccessAlert,
             title: "그루터기 등록이 완료되었습니다!",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
             buttonTitle: "확인",
-            buttonColor: .Main
-        ) {
-            // navigationPath
-        }
+            buttonColor: .Main,
+            action: { dismiss() }
+        )
+        .grewAlert(
+            isPresented: $isShowingFailureAlert,
+            title: "그루터기 등록에 실패했습니다.",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Error,
+            action: {}
+        )
+        .grewAlert(
+            isPresented: $isShowingNotStumpMemberAlert,
+            title: "그루터기 멤버가 아닙니다.\n먼저 그루터기 멤버가\n되어주세요!",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Main,
+            action: { dismiss() }
+        )
+        .grewAlert(
+            isPresented: $isShowingUserFailureAlert,
+            title: "유저 정보를 가져오는 데 실패했습니다.",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Error,
+            action: { dismiss() }
+        )
     }
 }
 
 // 뷰 반환 함수
 extension StumpRegisterView {
-    // 입력 텍스트빌드 뷰
-    @ViewBuilder
-    private func makeInputView() -> some View {
-        Text("그루터기 이름")
-            .font(.b2_R)
-        GrewTextField(
-            text: $name,
-            isWrongText: false,
-            isTextfieldDisabled: false,
-            placeholderText: "이름",
-            isSearchBar: false
-        )
-        .padding(.bottom, 18)
-        
-        HStack {
-            Image(systemName: "stopwatch")
-                .font(.b2_R)
-            Text("운영 시간")
-                .font(.b2_R)
-            GrewTextField(
-                text: $hours,
-                isWrongText: false,
-                isTextfieldDisabled: false,
-                placeholderText: "00:00 ~ 00:00",
-                isSearchBar: false
-            )
-        }
-        .padding(.bottom, 18)
-        
-        HStack {
-            Image(systemName: "person.2.fill")
-                .font(.b2_R)
-            Text("적정 인원")
-                .font(.b2_R)
-            GrewTextField(
-                text: $minimumMembers,
-                isWrongText: false,
-                isTextfieldDisabled: false,
-                placeholderText: "최소 인원",
-                isSearchBar: false
-            )
-            GrewTextField(
-                text: $maximumMembers,
-                isWrongText: false,
-                isTextfieldDisabled: false,
-                placeholderText: "최대 인원",
-                isSearchBar: false
-            )
-        }
-        .padding(.bottom, 18)
-        
-        HStack {
-            Text("보증금")
-                .font(.b2_R)
-            Spacer()
-            Button {
-                isNeedDeposit = true
-            } label: {
-                Text("있음")
-                    .frame(width: 100, height: 32)
-            }
-            .grewButtonModifier(
-                width: 100,
-                height: 32,
-                buttonColor: isNeedDeposit ? .Sub : .BackgroundGray,
-                font: .b2_R,
-                fontColor: isNeedDeposit ? .white : .DarkGray1,
-                cornerRadius: 8
-            )
-            
-            Button {
-                isNeedDeposit = false
-            } label: {
-                Text("없음")
-                    .frame(width: 100, height: 32)
-            }
-            .grewButtonModifier(
-                width: 100,
-                height: 32,
-                buttonColor: !isNeedDeposit ? .Sub : .BackgroundGray,
-                font: .b2_R,
-                fontColor: !isNeedDeposit ? .white : .DarkGray1,
-                cornerRadius: 8
-            )
-        }
-        GrewTextField(
-            text: $deposit,
-            isWrongText: false,
-            isTextfieldDisabled: isNeedDeposit ? false : true,
-            placeholderText: "예: 50,000원",
-            isSearchBar: false
-        )
-        .padding(.bottom, 18)
-        
-        Text("위치")
-            .font(.b2_R)
-        GrewTextField(
-            text: $location,
-            isWrongText: false,
-            isTextfieldDisabled: false,
-            placeholderText: "00시 00구 00로 00길 00",
-            isSearchBar: false
-        )
-        .padding(.bottom, 18)
-        
-        Text("그루터기 전화번호")
-            .font(.b2_R)
-        GrewTextField(
-            text: $phoneNumber,
-            isWrongText: false,
-            isTextfieldDisabled: false,
-            placeholderText: "전화번호",
-            isSearchBar: false
-        )
-        .padding(.bottom, 18)
-        
-    }
-    
     // 사진 추가 뷰
     @ViewBuilder
     private func makeAddImageView() -> some View {
@@ -225,7 +203,7 @@ extension StumpRegisterView {
         }
         .font(.b2_R)
         Button {
-            isShowingSelectionSheet = true
+            isShowingPhotoSelectionSheet = true
         } label: {
             HStack {
                 Spacer()
@@ -239,7 +217,7 @@ extension StumpRegisterView {
         }
         .background(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.Black)
+                .stroke(Color.DarkGray1)
         )
         
         HStack{
@@ -266,10 +244,10 @@ extension StumpRegisterView {
         }
     }
     
-    // 등록 버튼
+    // 등록 버튼 View
     private func makeRegisterButton() -> some View {
         Button {
-            isShowingRegisterAlert = true
+            stumpRegister()
         } label: {
             Text("등록하기")
         }
@@ -286,21 +264,68 @@ extension StumpRegisterView {
     }
 }
 
-struct Stump: Identifiable, Codable {
-    var id: String = UUID().uuidString
-    let name: String
-    let hours: String
-    let minimumMembers: String
-    let maximumMembers: String
-    let isNeedDeposit: Bool
-    let deposit: String
-    let location: String
-    let phoneNumber: String
-    let imageURL: String
+// 기능 함수
+extension StumpRegisterView {
+    /// 그루터기 등록 함수
+    private func stumpRegister() {
+        isLoading = true
+        
+        if let userId = UserStore.shared.currentUser?.id {
+            let dispatchGroup = DispatchGroup()
+            
+            for image in images {
+                guard let image else {
+                    isShowingFailureAlert = true
+                    return
+                }
+                
+                dispatchGroup.enter()
+                stumpStore.uploadImage(image: image, path: "stumps") { imageURL in
+                    if let imageURL {
+                        imageURLs.append(imageURL)
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                do {
+                    try stumpStore.addStump(
+                        Stump(
+                            stumpMemberId: userId,
+                            name: name,
+                            hours: hours,
+                            minimumMembers: minimumMembers,
+                            maximumMembers: maximumMembers,
+                            isNeedDeposit: isNeedDeposit,
+                            deposit: deposit,
+                            location: location,
+                            phoneNumber: phoneNumber,
+                            imageURLs: imageURLs
+                        )
+                    )
+                    Task {
+                        await stumpStore.updateStumpMember(userId: userId)
+                    }
+                    isLoading = false
+                    isShowingSuccessAlert = true
+                } catch {
+                    isLoading = false
+                    isShowingFailureAlert = true
+                    return
+                }
+            }
+        } else {
+            isShowingFailureAlert = true
+            return
+        }
+    }
 }
 
 #Preview {
     NavigationStack {
         StumpRegisterView()
+            .navigationTitle("그루터기 등록하기")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }

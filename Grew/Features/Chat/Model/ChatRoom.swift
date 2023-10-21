@@ -13,6 +13,8 @@ import Foundation
 struct ChatRoom: Identifiable, Codable, Equatable {
     /// 채팅방 ID
     var id: String
+    /// 그루 id
+    var grewId: String?
     /// 채팅방 저장 이름 (그루 이름) // 그루 있으면 있고, 없는 경우에는 1:1 대화
     var chatRoomName: String?
     /// 참여자 UID 배열
@@ -31,6 +33,7 @@ struct ChatRoom: Identifiable, Codable, Equatable {
 extension ChatRoom {
     // 로그인한 유저를 제외한 나머지 채팅방의 인원을 반환하는 연산 프로퍼티
     var otherUserIDs: [String] {
+        if members.count == 1 { return [] }
         if let currentUser = UserStore.shared.currentUser {
             return members.filter({$0 != currentUser.id})
         }

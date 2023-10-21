@@ -75,7 +75,18 @@ struct CreateScheduleMainView: View {
             // alert
             if showingFinishAlert {
                 Color.clear
-                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: createSchedule))
+                    .grewAlert(
+                        isPresented: $showingFinishAlert,
+                        title: "일정 생성 완료!",
+                        secondButtonTitle: nil,
+                        secondButtonColor: nil,
+                        secondButtonAction: nil,
+                        buttonTitle: "확인",
+                        buttonColor: Color.grewMainColor
+                    ) {
+//                        finishCreate()
+                    }
+//                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
             }
         }
         .sheet(isPresented: $showingWebSheet, content: {
@@ -141,19 +152,19 @@ struct CreateScheduleMainView: View {
         do{
             let newSchedule = Schedule(
                 id: id,
-                gid: "웅",
+                gid: "그루 아이디 넣어야행",
                 scheduleName: scheduleName,
                 date: date,
                 maximumMember: Int(maximumMenbers) ?? 2,
                 participants: [],
-                fee: fee,
-                location: location,
-                latitude: latitude,
-                longitude: longitude,
+                fee: (hasFee ? fee : nil),
+                location: (hasLocation ? location : nil),
+                latitude: (hasLocation ? latitude : nil),
+                longitude: (hasLocation ? longitude : nil),
                 color: colorPick
             )
             scheduleStore.addSchedule(newSchedule)
-        }catch let error {
+        } catch let error {
             print(error.localizedDescription)
         }
     }

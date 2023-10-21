@@ -5,12 +5,15 @@
 //  Created by 마경미 on 10.10.23.
 //
 
-import SwiftUI
-import NMapsMap
 import CoreLocation
+<<<<<<< HEAD
 import GeoFire
 import Firebase
 import FirebaseFirestoreSwift
+=======
+import NMapsMap
+import SwiftUI
+>>>>>>> dev
 
 struct NaverMapView: UIViewRepresentable {
     @EnvironmentObject var viewModel: MapStore

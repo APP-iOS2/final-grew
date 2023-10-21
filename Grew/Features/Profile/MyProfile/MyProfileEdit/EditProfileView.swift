@@ -6,21 +6,21 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct EditProfileView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    @State var image: UIImage? = UIImage(named: "defaultProfile")
-    @State var name: String /*= ""*/
-    @State var statusMessage: String /*= ""*/
-    @State var showModal: Bool = false
-    @State var showCamera: Bool = false
-    @State var showImagePicker: Bool = false
-    @State private var openPhoto = false
+    let user: User
     
-    var userStore: UserStore
-    @ObservedObject var userViewModel: UserViewModel
+    @State private var image: UIImage?
+    @State private var name: String = "" /*= ""*/
+    @State private var statusMessage: String = "" /*= ""*/
+    @State private var showModal: Bool = false
+    @State private var showCamera: Bool = false
+    @State private var showImagePicker: Bool = false
+    @State private var openPhoto = false
     
     var body: some View {
         NavigationStack {
@@ -30,7 +30,11 @@ struct EditProfileView: View {
                 } label: {
                     ZStack(alignment: .bottomTrailing) {
                         if let unwrappedImage = image {
-                            Image(uiImage: unwrappedImage)
+//                            Image(uiImage: unwrappedImage)
+                            KFImage(URL(string: user.userImageURLString ?? "defaultProfile"))
+                                .placeholder({
+                                    ProgressView()
+                                })
                                 .resizable()
                                 .frame(width: 120, height: 120)
                                 .cornerRadius(60)
@@ -43,7 +47,13 @@ struct EditProfileView: View {
                                     Circle()
                                         .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
                                 )
+                        } else {
+                            Image(uiImage: UIImage(named: "defaultProfile")!)
+                                .resizable()
+                                .frame(width: 120, height: 120)
+                                .cornerRadius(60)
                         }
+                        
                     }
                     .padding(.vertical)
                 }
@@ -57,7 +67,7 @@ struct EditProfileView: View {
                         .frame(height: 60)
                         .foregroundStyle(Color.LightGray2)
                         .overlay(alignment: .leading) {
-                            Text("\(userStore.currentUser?.nickName ?? "알 수 없음")")
+                            Text("\(UserStore.shared.currentUser?.nickName ?? "알 수 없음")")
                                 .padding()
                                 .foregroundColor(Color.DarkGray1)
                         }
@@ -92,17 +102,17 @@ struct EditProfileView: View {
                             .frame(height: 60)
                             .foregroundColor(Color.LightGray2)
                             .overlay(
-                                Text("\(userStore.currentUser?.dob ?? "생년월일 정보없음")")
+                                Text("\(UserStore.shared.currentUser?.dob ?? "생년월일 정보없음")")
                                     .padding(.horizontal, 16)
                                     .foregroundColor(Color.DarkGray1)
                             )
                             .padding(.vertical, 10)
                         
                         RoundedRectangle(cornerRadius: 7)
-                            .frame(width: 100,height: 60)
+                            .frame(width: 100, height: 60)
                             .foregroundColor(Color.LightGray2)
                             .overlay(
-                                Text("\(userStore.currentUser?.gender ?? "성별없음")")
+                                Text("\(UserStore.shared.currentUser?.gender ?? "성별없음")")
                                     .padding(.horizontal, 16)
                                     .foregroundColor(Color.DarkGray1)
                                 
@@ -167,20 +177,25 @@ struct EditProfileView: View {
             .navigationTitle("프로필 편집")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
-                if let user = userViewModel.currentUser {
+                if let user = UserStore.shared.currentUser {
                     name = user.nickName
                     statusMessage = user.introduce ?? ""
+                }
+            }
+            .refreshable {
+                Task {
+                    try await UserStore.shared.loadUserData()
                 }
             }
         }
     }
     
     func saveProfileChanges() {
-        if var updatedUser = userViewModel.currentUser {
+        if var updatedUser = UserStore.shared.currentUser {
             updatedUser.nickName = name
             updatedUser.introduce = statusMessage
             if let image = image {
-                userViewModel.uploadProfileImage(image) { success in
+                UserStore.shared.uploadProfileImage(image) { success in
                     if success {
                         print("Profile image uploaded successfully!")
                     } else {
@@ -188,11 +203,11 @@ struct EditProfileView: View {
                     }
                 }
             }
-            userViewModel.updateUser(user: updatedUser)
+            UserStore.shared.updateUser(user: updatedUser)
         }
     }
 }
 
 #Preview {
-    EditProfileView(name: "헬롱", statusMessage: "하위", userStore: UserStore(), userViewModel: UserViewModel())
+    EditProfileView(user: UserStore.shared.currentUser!)
 }

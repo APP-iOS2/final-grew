@@ -57,6 +57,26 @@ class GrewViewModel: ObservableObject {
         }
     }
     
+    func updateGrew(_ grew: Grew) {
+        db.collection("grews").whereField("id", isEqualTo: grew.id).getDocuments { snapshot, error in
+            if let error {
+                print("Error: \(error)")
+            } else if let snapshot {
+                for document in snapshot.documents {
+                    self.db.collection("grews").document(document.documentID).updateData([
+                        "currentMembers" : grew.currentMembers
+                    ]) { error in
+                        if let error {
+                            print("Grew Update Error: \(error)")
+                        } else {
+                            self.fetchGrew()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func fetchGrew() {
         db.collection("grews").getDocuments { snapshot, error in
             guard let documents = snapshot?.documents, error == nil else {
@@ -168,6 +188,38 @@ class GrewViewModel: ObservableObject {
         
         let tempList = grewList.sorted(by: { $0.createdAt > $1.createdAt})
         
-        return tempList
+        if tempList.count < 10 {
+            return tempList
+        } else {
+            var resultList: [Grew] = []
+            for index in 0 ..< 10 {
+                resultList.append(tempList[index])
+            }
+            return resultList
+        }
     }
+    
+    func addGrewMember(grewId: String, userId: String) {
+        if var grew = grewList.first(where: { $0.id == grewId }) {
+            grew.currentMembers.append(userId)
+            updateGrew(grew)
+        }
+    }
+}
+
+// static class Method
+extension GrewViewModel {
+    private static let db = Firestore.firestore()
+    
+    static func requestAndReturnGrew(grewId: String) async -> Grew? {
+        let doc = db.collection("grews").document(grewId)
+        do {
+            let grew = try await doc.getDocument(as: Grew.self)
+            return grew
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
 }

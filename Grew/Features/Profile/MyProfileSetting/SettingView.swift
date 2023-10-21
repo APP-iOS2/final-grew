@@ -23,9 +23,9 @@ struct SettingView: View {
                         })
                         
                         NavigationLink {
-                            RemoveAdsView()
+                            PurchaseAdsBannerView()
                         } label: {
-                            Text("광고 제거")
+                            Text("광고 배너 구매")
                             
                         }
                     }.listRowSeparator(.hidden)
@@ -39,8 +39,8 @@ struct SettingView: View {
                                     StumpIntroductionView()
                                 case .stumpRegisterView:
                                     StumpRegisterView()
-                                case .showGTView:
-                                    ShowGTView()
+                                case .showStumpsView:
+                                    ShowStumpsView()
                                 }
                             } label: {
                                 Text(gtViewName.rawValue)
@@ -77,7 +77,7 @@ struct SettingView: View {
                     
                     
                     Section(header: Text("안내")) {
-                        ForEach(InformViewsName.allCases, id:\.self) { informViewName in
+                        ForEach(InformViewsName.allCases, id: \.self) { informViewName in
                             NavigationLink {
                                 switch informViewName {
                                 case .opensourceLicenseView:
@@ -112,13 +112,13 @@ struct SettingView: View {
     enum GTViewsName: String, CaseIterable {
         case stumpIntroductionView = "그루터기 멤버 신청하기"
         case stumpRegisterView = "그루터기 등록하기"
-        case showGTView = "그루터기 보기"
+        case showStumpsView = "그루터기 보기"
         
         static var allCases: [GTViewsName] {
             return [
                 .stumpIntroductionView,
                 .stumpRegisterView,
-                .showGTView,
+                .showStumpsView,
             ]
         }
     }

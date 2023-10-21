@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct GrewSearchView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     @State private var searchText: String = ""
     @State private var searchHistory: [String] = []
     @State private var searchedGrewList: [Grew] = []
     
     @State private var selectedCategory: GrewCategory? = nil
+    @State private var isShowingCategory: Bool = true
     
     @FocusState var isTextFieldFocused: Bool
     
@@ -43,16 +46,29 @@ struct GrewSearchView: View {
                 ScrollView {
                     makeSearchHistoryView()
                     makeCategorySelection()
-                    GrewListView(grewList: searchedGrewList)
+                    GrewSearchListView(grewList: searchedGrewList)
                         .padding(.horizontal, -16)
                 }
             }
             .padding(.horizontal, 16)
             .scrollDismissesKeyboard(.immediately)
             .navigationTitle("Grew 검색")
+            .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 grewViewModel.fetchGrew()
                 searchHistory = UserStore.shared.currentUser?.searchHistory ?? []
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .font(.system(size: 18))
+                        .foregroundStyle(Color.black)
+                }
+                Spacer()
             }
         }
     }
@@ -110,20 +126,20 @@ extension GrewSearchView {
     private func makeCategorySelection() -> some View {
         HStack {
             Button {
-                
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    isShowingCategory.toggle()
+                }
             } label: {
                 HStack {
                     Text("카테고리 선택")
-                        .font(.b1_B)
-                        .foregroundStyle(.black)
-                        .padding(5)
-                    Image(systemName: "chevron.down")
+                    Image(systemName: isShowingCategory ? "chevron.down" : "chevron.forward")
+                        .padding(.bottom, 3)
                 }
+                .font(.b1_B)
+                .foregroundStyle(.black)
+                .padding(5)
             }
 
-//            Text("카테고리 선택")
-//                .font(.b1_B)
-//                .padding(5)
             Spacer()
             if selectedCategory != nil {
                 Button {
@@ -135,35 +151,37 @@ extension GrewSearchView {
             }
         }
         
-        LazyVGrid(columns: gridItems) {
-            ForEach(grewViewModel.categoryArray) { category in
-                VStack {
-                    Image("\(category.imageString)")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 25, height: 25)
-                    
-                    Capsule()
-                        .foregroundColor(.clear)
-                        .overlay(
-                            Text(category.name)
-                                .font(.c1_R)
-                                .foregroundStyle(.black)
-                        )
-                }
-                .foregroundColor(.black)
-                .padding(.vertical)
-                .background(selectedCategory?.id == category.id ? Color(hexCode: "#FF7E00") : .white)
-                .cornerRadius(12)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.gray, lineWidth: 1.5)
-                )
-                .onTapGesture {
-                    if selectedCategory?.id == category.id {
-                        selectedCategory = nil
-                    } else {
-                        selectedCategory = category
+        if isShowingCategory {
+            LazyVGrid(columns: gridItems) {
+                ForEach(grewViewModel.categoryArray) { category in
+                    VStack {
+                        Image("\(category.imageString)")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 25)
+                        
+                        Capsule()
+                            .foregroundColor(.clear)
+                            .overlay(
+                                Text(category.name)
+                                    .font(.c1_R)
+                                    .foregroundStyle(.black)
+                            )
+                    }
+                    .foregroundColor(.black)
+                    .padding(.vertical)
+                    .background(selectedCategory?.id == category.id ? Color(hexCode: "#FF7E00") : .white)
+                    .cornerRadius(12)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.gray, lineWidth: 1.5)
+                    )
+                    .onTapGesture {
+                        if selectedCategory?.id == category.id {
+                            selectedCategory = nil
+                        } else {
+                            selectedCategory = category
+                        }
                     }
                 }
             }
@@ -206,6 +224,8 @@ extension GrewSearchView {
 }
 
 #Preview {
-    GrewSearchView()
-        .environmentObject(GrewViewModel())
+    NavigationStack {
+        GrewSearchView()
+    }
+    .environmentObject(GrewViewModel())
 }

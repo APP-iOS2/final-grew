@@ -15,7 +15,9 @@ final class ChatStore: ObservableObject {
     private var listener: ListenerRegistration?
     private var db = Firestore.firestore()
     
+    // 해당 유저, 그루 값 들고 있기
     var targetUserInfoDict: [String: [User]]
+    var targetGrewInfoDict: [String: Grew]
     
     @Published var newChat: ChatRoom?
     @Published var chatRooms: [ChatRoom]
@@ -24,6 +26,7 @@ final class ChatStore: ObservableObject {
     
     init() {
         targetUserInfoDict = [:]
+        targetGrewInfoDict = [:]
         chatRooms = []
         isDoneFetch = false
     }
@@ -76,16 +79,22 @@ extension ChatStore {
     func fetchChatRooms() async {
         let snapshot = await getChatRoomDocuments()
         
+//        await removeChatRoomsList()
+        
         var newChatRooms: [ChatRoom] = []
         
         if let snapshot {
             for document in snapshot.documents {
                 do {
                     let chatRoom: ChatRoom = try document.data(as: ChatRoom.self)
+                    if let grewId = chatRoom.grewId, let targetGrewInfo = await GrewViewModel.requestAndReturnGrew(grewId: grewId) {
+                        targetGrewInfoDict[grewId] = targetGrewInfo
+                    }
                     if let targetUserInfo = await UserStore.requestAndReturnUsers(userID: chatRoom.otherUserIDs) {
                         newChatRooms.append(chatRoom)
-                        
-                        targetUserInfoDict[chatRoom.id] = targetUserInfo
+                        if !targetUserInfo.isEmpty {
+                            targetUserInfoDict[chatRoom.id] = targetUserInfo
+                        }
                     }
                 } catch {
                     print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
@@ -173,8 +182,9 @@ extension ChatStore {
         let newChatRoom = newChatRoom(change: change)
         
         if let newChatRoom, let targetUserInfo = await UserStore.requestAndReturnUsers(userID: newChatRoom.otherUserIDs) {
-            targetUserInfoDict[newChatRoom.id] = targetUserInfo
-            
+            if !targetUserInfo.isEmpty {
+                targetUserInfoDict[newChatRoom.id] = targetUserInfo
+            }
             await appendAndSortChats(newChatRoom: newChatRoom)
         }
     }
@@ -187,12 +197,14 @@ extension ChatStore {
     }
     
     // 리스너에서 update 처리 ex)채팅방 내부에서 채팅이 입력되어서 채팅방에 마지막 메시지 갱신, 마지막 날짜 갱신, 유저별 안읽은 채팅 개수 갱신
+    @MainActor 
     func listenerUpdateChatRooms(change: QueryDocumentSnapshot) {
         updateChatRooms(change: change)
         sortChatRooms()
     }
     
     // 업데이트
+    @MainActor
     func updateChatRooms(change: QueryDocumentSnapshot) {
         guard let index = chatRooms.firstIndex(where: {
             $0.id == change.documentID}) else {
@@ -201,6 +213,21 @@ extension ChatStore {
         let newChatRoom = newChatRoom(change: change)
         if let newChatRoom {
             chatRooms[safe: index] = newChatRoom
+        }
+    }
+    
+    @MainActor
+    func removeAndSortChats(newChatRoom: ChatRoom) {
+        chatRooms.removeAll(where: {$0.id == newChatRoom.id })
+        sortChatRooms()
+    }
+    
+    func listenerRemoveChatRoom(change: QueryDocumentSnapshot) async {
+        let newChatRoom = newChatRoom(change: change)
+        
+        if let newChatRoom {
+            targetUserInfoDict[newChatRoom.id] = nil
+            await removeAndSortChats(newChatRoom: newChatRoom)
         }
     }
     
@@ -220,18 +247,19 @@ extension ChatStore {
                     case .added:
                         if self.isDoneFetch {
                             Task {
-                                await
-                                self.listenerAddChatRoom(change: diff.document)
+                                await self.listenerAddChatRoom(change: diff.document)
                             }
                         }
                     case .modified:
-                        self.listenerUpdateChatRooms(change: diff.document)
+                        Task {
+                            await self.listenerUpdateChatRooms(change: diff.document)
+                        }
                     case .removed:
-                        _ = 0
+                        Task {
+                            await self.listenerRemoveChatRoom(change: diff.document)
+                        }
                     }
                 }
-                
-                
             })
     }
     func removeListener() {

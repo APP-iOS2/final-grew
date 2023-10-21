@@ -11,6 +11,9 @@ struct MainChatView: View {
     @State private var selectedFilter: ChatSegment = .group
     @Namespace var animation
     
+    @State private var isLoading: Bool = false
+    @EnvironmentObject private var chatStore: ChatStore
+    
     private var filterBarWidth: CGFloat {
         let count = CGFloat(ChatSegment.allCases.count)
         return UIScreen.main.bounds.width / count - 16
@@ -28,37 +31,42 @@ struct MainChatView: View {
             }
             Spacer()
         }
-        /*
-        .highPriorityGesture(
-            DragGesture(minimumDistance: 2, coordinateSpace: .local)
-                .onEnded { value in
-                    if (selectedFilter == .group) && (value.translation.width > 0) {
-                        withAnimation {
-                            selectedFilter = .personal
-                        }
-                    }
-                    else if (selectedFilter == .personal) && (value.translation.width < 0) {
-                        withAnimation {
-                            selectedFilter = .group
-                        }
-                    }
+        .overlay {
+            if isLoading {
+                VStack {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
                 }
-        )
-         */
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.white)
+            }
+        }
+        .task {
+            if !chatStore.isDoneFetch {
+                chatStore.addListener()
+                isLoading = true
+                await chatStore.fetchChatRooms()
+                isLoading = false
+            }
+        }
+        .onDisappear {
+            chatStore.removeListener()
+            chatStore.isDoneFetch = false
+        }
     }
     
     private var segmentBar: some View {
         HStack{
             ForEach(ChatSegment.allCases) { filter in
-                VStack {
+                VStack(spacing: 8) {
                     Text(filter.title)
-                        .font(.subheadline)
-                        .fontWeight(selectedFilter == filter ? .semibold : .regular)
-                    
+                        .font(selectedFilter == filter ? .b2_B : .b2_R)
+                        .padding(.top, 8)
                     if selectedFilter == filter {
                         Rectangle()
                             .foregroundColor(.Main)
-                            .frame(maxWidth: filterBarWidth, maxHeight: 1)
+                            .frame(maxWidth: filterBarWidth, maxHeight: 3)
                             .matchedGeometryEffect(id: "item", in: animation)
                     } else {
                         Rectangle()
@@ -66,6 +74,12 @@ struct MainChatView: View {
                             .frame(maxWidth: filterBarWidth, maxHeight: 1)
                     }
                 }
+                .contentShape(.rect)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(selectedFilter == filter ? Color.Main.opacity(0.1) : Color.Main.opacity(0.03))
+                        .scaleEffect(selectedFilter == filter ? 1 : 0.8)
+                )
                 .onTapGesture {
                     withAnimation(.interactiveSpring()) {
                         selectedFilter = filter
@@ -73,11 +87,5 @@ struct MainChatView: View {
                 }
             }
         }
-    }
-}
-
-#Preview {
-    NavigationStack{
-        MainChatView()
     }
 }

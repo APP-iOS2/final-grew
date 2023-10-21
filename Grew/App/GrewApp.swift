@@ -16,6 +16,15 @@ struct GrewApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    @StateObject private var userStore = UserStore()
+    @StateObject private var chatStore = ChatStore()
+    @StateObject private var messageStore = MessageStore()
+    @StateObject private var vm = LaunchViewModel()
+    @StateObject private var grewViewModel = GrewViewModel()
+    @StateObject private var appState = AppState()
+    @StateObject private var stumpStore = StumpStore()
+    @StateObject private var mapStore = MapStore()
+    
     // 카카오 로그인 키 값
     init() {
         KakaoSDK.initSDK(appKey: "93a5453be087d1c02859e56e80132f73")
@@ -24,10 +33,15 @@ struct GrewApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-
                 LaunchView()
-
             }
+            .environmentObject(userStore)
+            .environmentObject(chatStore)
+            .environmentObject(messageStore)
+            .environmentObject(grewViewModel)
+            .environmentObject(appState)
+            .environmentObject(stumpStore)
+            .environmentObject(mapStore)
         }
     }
 }
