@@ -79,7 +79,7 @@ extension ChatStore {
     func fetchChatRooms() async {
         let snapshot = await getChatRoomDocuments()
         
-        await removeChatRoomsList()
+//        await removeChatRoomsList()
         
         var newChatRooms: [ChatRoom] = []
         

@@ -6,17 +6,20 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct EditProfileView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    @State var image: UIImage? = UIImage(named: "defaultProfile")
-    @State var name: String /*= ""*/
-    @State var statusMessage: String /*= ""*/
-    @State var showModal: Bool = false
-    @State var showCamera: Bool = false
-    @State var showImagePicker: Bool = false
+    let user: User
+    
+    @State private var image: UIImage?
+    @State private var name: String = "" /*= ""*/
+    @State private var statusMessage: String = "" /*= ""*/
+    @State private var showModal: Bool = false
+    @State private var showCamera: Bool = false
+    @State private var showImagePicker: Bool = false
     @State private var openPhoto = false
     
     var body: some View {
@@ -28,15 +31,13 @@ struct EditProfileView: View {
                     ZStack(alignment: .bottomTrailing) {
                         if let unwrappedImage = image {
 //                            Image(uiImage: unwrappedImage)
-                            AsyncImage(url: URL(string: UserStore.shared.currentUser?.userImageURLString ?? "defaultProfile"), content: { image in
-                                image
-                                    .resizable()
-                                    .frame(width: 120, height: 120)
-                                    .cornerRadius(60)
-                            }, placeholder: {
-                                ProgressView()
-                            })
-                                
+                            KFImage(URL(string: user.userImageURLString ?? "defaultProfile"))
+                                .placeholder({
+                                    ProgressView()
+                                })
+                                .resizable()
+                                .frame(width: 120, height: 120)
+                                .cornerRadius(60)
                             
                             Image(systemName: "plus.circle.fill")
                                 .resizable()
@@ -46,7 +47,13 @@ struct EditProfileView: View {
                                     Circle()
                                         .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
                                 )
+                        } else {
+                            Image(uiImage: UIImage(named: "defaultProfile")!)
+                                .resizable()
+                                .frame(width: 120, height: 120)
+                                .cornerRadius(60)
                         }
+                        
                     }
                     .padding(.vertical)
                 }
@@ -202,5 +209,5 @@ struct EditProfileView: View {
 }
 
 #Preview {
-    EditProfileView(name: "헬롱", statusMessage: "하위")
+    EditProfileView(user: UserStore.shared.currentUser!)
 }
