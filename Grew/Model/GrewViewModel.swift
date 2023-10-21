@@ -206,4 +206,16 @@ extension GrewViewModel {
         }
     }
     
+    /*
+    static func requestGrewByUser(user: User) async -> [Grew]? {
+        let doc = db.collection("grews").document()
+        do {
+            let grew = try await doc.getDocument(as: Grew.self)
+            return grew
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+            return nil
+        }
+        
+    }*/
 }

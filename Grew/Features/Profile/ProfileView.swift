@@ -31,7 +31,7 @@ struct ProfileView: View {
                                 
                                 switch selectedFilter {
                                 case .myGroup:
-                                    MyGroupView()
+                                    MyGroupView(user: user)
                                         .background(Color.white)
                                 case .myGroupSchedule:
                                     MyGroupScheduleView()
@@ -41,7 +41,7 @@ struct ProfileView: View {
                                         .background(Color.white)
                                 }
                             } else {
-                                MyGroupView()
+                                MyGroupView(user: user)
                                     .background(Color.white)
                             }
                         } header: {
