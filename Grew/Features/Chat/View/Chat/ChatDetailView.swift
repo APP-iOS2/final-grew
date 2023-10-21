@@ -40,7 +40,6 @@ struct ChatDetailView: View {
             )
             .padding(.bottom, 25)
             .padding(.top, 30)
-            
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
                 
@@ -55,26 +54,25 @@ struct ChatDetailView: View {
                         }
                     }))
                 /* .gesture(DragGesture().onChanged({ (value) in
-                 withAnimation(.easeInOut){
-                 if value.translation.width < 0 {
-                 x = width + value.translation.width
-                 } else if value.translation.width > 0 {
-                 x = value.translation.width
-                 }
-                 }
-                 }).onEnded({ (value) in
-                 withAnimation(.easeInOut) {
-                 if x < width / 2 {
-                 x = 0
-                 } else {
-                 x = width
-                 isMenuOpen = false
-                 }
-                 }
-                 }))*/
+                        withAnimation(.easeInOut){
+                            if value.translation.width < 0 {
+                                x = width + value.translation.width
+                            } else if value.translation.width > 0 {
+                                x = value.translation.width
+                            }
+                        }
+                    }).onEnded({ (value) in
+                        withAnimation(.easeInOut) {
+                            if x < width / 2 {
+                                x = 0
+                            } else {
+                                x = width
+                                isMenuOpen = false
+                            }
+                        }
+                    }))*/
             }
         }
-        
         .alert("채팅방 나가기", isPresented: $isExitButtonAlert) {
             Button("취소", role: .cancel) {}
             Button("확인", role: .destructive) {
@@ -120,7 +118,7 @@ struct ChatDetailView: View {
         .onDisappear {
             Task {
                 await clearUnreadMesageCount()
-//                chatStore.isDoneFetch = false
+                // chatStore.isDoneFetch = false
                 // 리스너 삭제
                 messageStore.removeListener()
             }
@@ -143,8 +141,7 @@ struct ChatDetailView: View {
         
         await chatStore.updateChatRoom(chatRoom)
     }
-    
-    //채팅방 나가기
+    // 채팅방 나가기
     private func exitChatRoom() async {
         // 참여중인 채팅방에서 나가기
         
