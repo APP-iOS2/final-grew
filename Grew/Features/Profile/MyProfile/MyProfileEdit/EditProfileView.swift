@@ -131,7 +131,7 @@ struct EditProfileView: View {
                     .buttonStyle(.plain)
 
                 }
-                .buttonStyle(.plain)
+//                .buttonStyle(.plain)
             }
         }
         .sheet(isPresented: $showModal, content: {
