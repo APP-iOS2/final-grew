@@ -100,17 +100,6 @@ struct ChatMessageListView: View {
                 .shadow(radius: groupDetailConfig.selectedImage != nil ? 0 : 0.5)
         }
         .task {
-            let unreadMessageCount = await getUnReadCount()
-            messageStore.addListener(chatRoomID: chatRoom.id)
-            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
-            
-            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
-            
-            
-            if unreadMessageCount > 0 {
-                // 읽지 않은 메세지 갯수를 0으로 초기화
-                await clearUnreadMesageCount()
-            }
         }
     }
     private func getUnReadCount() async -> Int {
