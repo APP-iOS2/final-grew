@@ -16,7 +16,6 @@ struct GrewApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    @StateObject private var userStore = UserStore()
     @StateObject private var chatStore = ChatStore()
     @StateObject private var messageStore = MessageStore()
     @StateObject private var vm = LaunchViewModel()
@@ -34,7 +33,6 @@ struct GrewApp: App {
             NavigationView {
                 LaunchView()
             }
-            .environmentObject(userStore)
             .environmentObject(chatStore)
             .environmentObject(messageStore)
             .environmentObject(grewViewModel)

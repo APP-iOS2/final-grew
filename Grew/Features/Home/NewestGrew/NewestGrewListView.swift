@@ -9,14 +9,17 @@ import SwiftUI
 
 struct NewestGrewListView: View {
     
+    @EnvironmentObject var router: Router
+    
     let grewList: [Grew]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
                 ForEach(grewList) { grew in
-                    NavigationLink {
-                        GrewDetailView(grew: grew)
+                    Button {
+//                        GrewDetailView(grew: grew)
+                        router.navigate(to: .grewDetail(grew: grew))
                     } label: {
                         NewestGrewCell(grew: grew)
                             .padding(.horizontal, 8)

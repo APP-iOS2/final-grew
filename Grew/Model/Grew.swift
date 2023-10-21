@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Grew: Identifiable, Codable {
+struct Grew: Identifiable, Codable, Hashable {
 
     var id: String = UUID().uuidString
     /// 1차 카테고리

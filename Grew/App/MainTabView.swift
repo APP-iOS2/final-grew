@@ -14,8 +14,9 @@ enum SelectViews {
 struct MainTabView: View {
     @State private var isNewGrewViewPresented = false
     @State private var selection: SelectViews = .home
-    @EnvironmentObject private var userStore: UserStore
     @EnvironmentObject private var chatStore: ChatStore
+    @EnvironmentObject var grewViewModel: GrewViewModel
+    @StateObject var router: Router = Router()
     
     var body: some View {
         
@@ -33,10 +34,28 @@ extension MainTabView {
     var tabView: some View {
         
         TabView(selection: $selection) {
-            
-            HomeView()
-                .tag(SelectViews.home)
-                .setTabBarVisibility(isHidden: true)
+            NavigationStack(path: $router.path) {
+                HomeView()
+                    .tag(SelectViews.home)
+                    .setTabBarVisibility(isHidden: true)
+                    .navigationDestination(for: Router.HomeRoute.self, destination: { home in
+                        switch home {
+//                        case .alert:
+                            
+                        case .category(let grewList, let secondCategory):
+                            CategoryDetailView(grewList: grewList, secondCategory: secondCategory)
+                                .navigationBarBackButtonHidden()
+                        case .grewDetail(let grew):
+                            GrewDetailView(grew: grew)
+                                .navigationBarBackButtonHidden()
+                        case .search:
+                            GrewSearchView()
+                                .navigationBarBackButtonHidden()
+                        }
+                    })
+            }
+            .environmentObject(router)
+                
             
             Text("내 주변")
                 .tag(SelectViews.location)
@@ -58,6 +77,9 @@ extension MainTabView {
             
             /// 탭바 - 홈 버튼
             Button {
+                if selection == .home {
+                    router.reset()
+                }
                 self.selection = .home
             } label: {
                 VStack {
@@ -138,5 +160,4 @@ extension View {
 
 #Preview {
     MainTabView()
-        .environmentObject(UserStore())
 }

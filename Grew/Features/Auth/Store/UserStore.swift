@@ -19,7 +19,7 @@ class UserStore: ObservableObject {
     
     @Published var currentUser: User?
     
-    init() {
+    private init() {
         Task {
             try await loadUserData()
         }
