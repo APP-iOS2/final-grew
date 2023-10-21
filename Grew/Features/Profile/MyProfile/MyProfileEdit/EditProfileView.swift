@@ -24,7 +24,7 @@ struct EditProfileView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .center) {
+            VStack {
                 Button {
                     showModal = true
                 } label: {
@@ -56,6 +56,7 @@ struct EditProfileView: View {
                     }
                 }
                 .padding(.vertical)
+                .padding(.top, 10)
           
                 VStack(alignment: .leading) {
                     
@@ -99,6 +100,7 @@ struct EditProfileView: View {
                             .padding(.leading, 10)
                     }
                 }
+                Spacer()
             }.font(.b2_R)
                 .padding(30)
             //            .frame(maxWidth: .infinity, alignment: .leading)
