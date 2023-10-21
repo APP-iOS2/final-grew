@@ -92,7 +92,17 @@ struct GroupNameView: View {
             
         }//: ScrollView
         .sheet(isPresented: $isShowingSheet, content: {
-            WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $isShowingSheet, location: $viewModel.location, latitude: $viewModel.latitude, longitude: $viewModel.longitude)
+            ZStack{
+                WebView(
+                    request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!),
+                    showingWebSheet: $isShowingSheet,
+                    location: $viewModel.location, latitude: $viewModel.latitude,
+                    longitude: $viewModel.longitude
+                )
+                .padding(.top, 25)
+            }
+            .presentationDetents([.large])
+            .presentationDragIndicator(.visible)
         })
         .onAppear(perform: {
             isAnimating = true

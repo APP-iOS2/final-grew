@@ -21,7 +21,7 @@ struct CreateScheduleMainView: View {
     @State private var latitude: String = ""
     @State private var longitude: String = ""
     @State private var colorPick: String = ""
-
+    
     @State private var isDatePickerVisible: Bool = false
     @State private var showingWebSheet: Bool = false
     @State private var showingFinishAlert: Bool = false
@@ -97,19 +97,21 @@ struct CreateScheduleMainView: View {
                         buttonColor: Color.grewMainColor
                     ) {
                         dismiss()
-//                        finishCreate()
+                        //                        finishCreate()
                     }
-//                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
+                //                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
             }
         }
         .sheet(isPresented: $showingWebSheet, content: {
             ZStack{
                 WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location, latitude: $latitude, longitude: $longitude)
-                /*if isLoading {
-                 ProgressView()
-                 }*/
+                .padding(.top, 25)
             }
-        })
+            .presentationDetents([.large])
+            .presentationDragIndicator(.visible)
+        }
+        )
+        
         .task{
             print(showingWebSheet)
         }
@@ -119,7 +121,7 @@ struct CreateScheduleMainView: View {
     private var submitBtn: some View {
         Button {
             errorCheck()
-    
+            
         } label: {
             Text("일정 생성")
                 .frame(width: 350, height: 45)
