@@ -19,45 +19,48 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
-                ProfileHeaderView(
-                    user: user ?? User.dummyUser
-                )
-                
-                UserContentListView()
-                    .padding(.horizontal, 10)
-            }
-            .toolbar {
-                if user == UserStore.shared.currentUser {
-                    ToolbarItem {
-                        NavigationLink {
-                            SettingView()
-                        } label: {
-                            Image(systemName: "gearshape.fill")
-                        }
-                        .foregroundColor(.black)
-                    }
-                } else {
-                    ToolbarItem {
-                        Button {
-                            //                            SettingView()
-                        } label: {
-                            Image(systemName: "paperplane.fill")
-                        }
-                        .foregroundColor(.black)
-                    }
+            ScrollView{
+                VStack {
+                    ProfileHeaderView(
+                        user: user ?? User.dummyUser
+                    )
                     
+                    UserContentListView()
+                        .padding(.horizontal, 10)
                 }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .alert("확인", isPresented: $isMessageAlert) {
-                Button("취소", role: .cancel) {}
-                Button("확인", role: .destructive) {
+                .toolbar {
+                    if user == UserStore.shared.currentUser {
+                        ToolbarItem {
+                            NavigationLink {
+                                SettingView()
+                            } label: {
+                                Image(systemName: "gearshape.fill")
+                            }
+                            .foregroundColor(.black)
+                        }
+                    } else {
+                        ToolbarItem {
+                            Button {
+                                //                            SettingView()
+                            } label: {
+                                Image(systemName: "paperplane.fill")
+                            }
+                            .foregroundColor(.black)
+                        }
+                        
+                    }
+                }
+                
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .alert("확인", isPresented: $isMessageAlert) {
+                    Button("취소", role: .cancel) {}
+                    Button("확인", role: .destructive) {
                         startMessage()
                         isMessageAlert = false
+                    }
+                } message: {
+                    Text("1:1 채팅방으로 이동합니다.")
                 }
-            } message: {
-                Text("1:1 채팅방으로 이동합니다.")
             }
         }
     }
