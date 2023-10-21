@@ -16,7 +16,7 @@ struct ChatListView: View {
             switch filter {
             case .group:
                 if chatStore.groupChatRooms.isEmpty {
-                    
+                    isEmptyGroup()
                 } else {
                     ForEach(chatStore.groupChatRooms){ chatRoom in
                         NavigationLink {
@@ -39,7 +39,7 @@ struct ChatListView: View {
                 }
             case .personal:
                 if chatStore.personalChatRooms.isEmpty {
-                    
+                    isEmptyGroup()
                 } else {
                     ForEach(chatStore.personalChatRooms){ chatRoom in
                         NavigationLink {
