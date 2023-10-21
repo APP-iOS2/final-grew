@@ -18,7 +18,7 @@ struct NewestGrewListView: View {
                     NavigationLink {
                         GrewDetailView(grew: grew)
                     } label: {
-                        NewestGrewCell(grew: grew)
+                        NewestGrewCellView(grew: grew)
                             .padding(.horizontal, 8)
                     }
                 }
