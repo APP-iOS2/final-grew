@@ -10,7 +10,7 @@ import SwiftUI
 struct CircleImage: View {
     
     var body: some View {
-        AsyncImage(url: URL(string: UserStore.shared.currentUser?.userImageURLString ?? "defaultProfile"), content: { image in
+        AsyncImage(url: URL(string: UserStore.shared.currentUser?.userImageURLString ?? "chatUser"), content: { image in
             image
                 .resizable()
                 .aspectRatio(contentMode: .fit)

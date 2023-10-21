@@ -21,49 +21,49 @@ struct ProfileHeaderView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            VStack {
+            ZStack(alignment: .leading) {
+                RoundSpecificCorners()
+                    .offset(x: 0, y: 50.0)
+                
                 VStack(alignment: .leading) {
-                    ZStack(alignment: .leading) {
-                        RoundSpecificCorners()
-                            .offset(x: 0, y: 60.0)
-                        
-                        HStack(alignment: .bottom) {
-                            CircleImage()
-                            
-                            Spacer()
-                            
-                            NavigationLink {
-                                EditProfileView(name: UserStore.shared.currentUser?.nickName ?? "",
-                                                statusMessage: UserStore.shared.currentUser?.introduce ?? "")
-                            } label: {
-                                Text("프로필 수정")
-                                    .background(RoundedRectangle(cornerRadius: 7)
-                                        .foregroundColor(.LightGray2)
-                                        .frame(width: 101, height: 32)
-                                        .font(.c1_B))
-                            }
-                            .foregroundColor(.white)
-                            .padding()
-                        }
+                    Spacer()
+                    CircleImage()
                         .padding()
-                    }
-                    
-                    Text(UserStore.shared.currentUser?.nickName ?? "이름없음")
-                        .padding(.horizontal)
-                        .bold()
-                    
-                    Text(UserStore.shared.currentUser?.introduce ?? "안녕하세요 \(UserStore.shared.currentUser?.nickName ?? "이름없음")입니다.")
-                        .padding(.horizontal)
-                        .font(.caption)
+                        .padding(.top, 20)
+                   
+                    HStack{
+                        VStack(alignment: .leading){
+                            Text(UserStore.shared.currentUser?.nickName ?? "이름없음")
+                                .font(.b1_R)
+                            Text(UserStore.shared.currentUser?.introduce ?? "안녕하세요 \(UserStore.shared.currentUser?.nickName ?? "이름없음")입니다.")
+                                .font(.b3_L)
+                                .padding(.vertical, 5)
+                        }
+                        Spacer()
+                           
+                        NavigationLink {
+                            EditProfileView(name: UserStore.shared.currentUser?.nickName ?? "",
+                                            statusMessage: UserStore.shared.currentUser?.introduce ?? "")
+                        } label: {
+                            Text("프로필 수정")
+                                .font(.c1_B)
+                                .background(RoundedRectangle(cornerRadius: 7)
+                                    .foregroundColor(.LightGray2)
+                                    .frame(width: 90, height: 28)
+                                )
+                        }
+                        .padding(.trailing, 10)
+                        .foregroundColor(.white)
+                    }.padding(20)
                     
                     Divider()
-                    
-                }
-            }
-            .background(Color.grewMainColor)
-        }
+                }.padding(0)
+                  
+            }.background(Color.grewMainColor)
+        
+     
     }
+    
 }
 
 #Preview {

@@ -27,14 +27,13 @@ struct UserContentListView: View {
                 ForEach(ProfileThreadFilter.allCases) { filter in
                     VStack {
                         Text(filter.title)
-                            .font(.subheadline)
-                            .fontWeight(selectedFilter == filter ? .semibold : .regular)
+                            .font(selectedFilter == filter ? .b2_B : .b2_R)
+                            .padding(.top, 8)
                         
                         if selectedFilter == filter {
                             Rectangle()
                                 .foregroundColor(Color.grewMainColor)
-                                .frame(maxWidth: filterBarWidth, maxHeight: 5)
-                                .cornerRadius(5)
+                                .frame(maxWidth: filterBarWidth, maxHeight: 3)
                                 .matchedGeometryEffect(id: "item", in: animation)
                         } else {
                             Rectangle()
@@ -42,8 +41,13 @@ struct UserContentListView: View {
                                 .frame(maxWidth: filterBarWidth, maxHeight: 1)
                         }
                     }
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(selectedFilter == filter ? Color.Main.opacity(0.1) : Color.Main.opacity(0.03))
+                            .scaleEffect(selectedFilter == filter ? 1 : 0.8)
+                    )
                     .onTapGesture {
-                        withAnimation(.interactiveSpring(response: 0.5)) {
+                        withAnimation(.interactiveSpring()) {
                             selectedFilter = filter
                         }
                     }
