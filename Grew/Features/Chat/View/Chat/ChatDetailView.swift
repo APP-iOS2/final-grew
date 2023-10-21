@@ -40,10 +40,10 @@ struct ChatDetailView: View {
             )
             .padding(.bottom, 25)
             .padding(.top, 30)
-
+            
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
-               
+                
                 ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert, chatRoomName: chatRoom.chatRoomName ?? "\(targetUserInfos[0].nickName)", targetUserInfos: targetUserInfos)
                     .offset(x: x)
                     .transition(isMenuOpen ? .move(edge: .trailing) : .move(edge: .leading))
@@ -55,31 +55,34 @@ struct ChatDetailView: View {
                         }
                     }))
                 /* .gesture(DragGesture().onChanged({ (value) in
-                        withAnimation(.easeInOut){
-                            if value.translation.width < 0 {
-                                x = width + value.translation.width
-                            } else if value.translation.width > 0 {
-                                x = value.translation.width
-                            }
-                        }
-                    }).onEnded({ (value) in
-                        withAnimation(.easeInOut) {
-                            if x < width / 2 {
-                                x = 0
-                            } else {
-                                x = width
-                                isMenuOpen = false
-                            }
-                        }
-                    }))*/
+                 withAnimation(.easeInOut){
+                 if value.translation.width < 0 {
+                 x = width + value.translation.width
+                 } else if value.translation.width > 0 {
+                 x = value.translation.width
+                 }
+                 }
+                 }).onEnded({ (value) in
+                 withAnimation(.easeInOut) {
+                 if x < width / 2 {
+                 x = 0
+                 } else {
+                 x = width
+                 isMenuOpen = false
+                 }
+                 }
+                 }))*/
             }
         }
-       
+        
         .alert("채팅방 나가기", isPresented: $isExitButtonAlert) {
             Button("취소", role: .cancel) {}
             Button("확인", role: .destructive) {
-                isMenuOpen = false
-                presentationMode.wrappedValue.dismiss()
+                Task {
+                    await exitChatRoom()
+                    isMenuOpen = false
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
         } message: {
             Text("채팅 내역이 모두 삭제됩니다.")
@@ -102,10 +105,22 @@ struct ChatDetailView: View {
         //            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
         //        }
         .task {
+            let unreadMessageCount = await getUnReadCount()
+            messageStore.addListener(chatRoomID: chatRoom.id)
+            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
+            
+            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
+            
+            
+            if unreadMessageCount > 0 {
+                // 읽지 않은 메세지 갯수를 0으로 초기화
+                await clearUnreadMesageCount()
+            }
         }
         .onDisappear {
             Task {
                 await clearUnreadMesageCount()
+//                chatStore.isDoneFetch = false
                 // 리스너 삭제
                 messageStore.removeListener()
             }
@@ -127,5 +142,29 @@ struct ChatDetailView: View {
         newChat.unreadMessageCount = newDict
         
         await chatStore.updateChatRoom(chatRoom)
+    }
+    
+    //채팅방 나가기
+    private func exitChatRoom() async {
+        // 참여중인 채팅방에서 나가기
+        
+        var newChatRoom: ChatRoom = chatRoom
+        var newUnreadMessageCountDict: [String: Int] = await chatStore.getUnreadMessageDictionary(chatRoomID: chatRoom.id) ?? [:]
+        
+        for userID in chatRoom.otherUserIDs {
+            newUnreadMessageCountDict[userID, default: 0] += 1
+        }
+        
+        newUnreadMessageCountDict[UserStore.shared.currentUser!.id!] = 0
+        
+        var newMessage = ChatMessage(text: "\(UserStore.shared.currentUser!.nickName)님이 퇴장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+        
+        messageStore.addMessage(newMessage, chatRoomID: chatRoom.id)
+        
+        newChatRoom.lastMessage =  "\(UserStore.shared.currentUser!.nickName)님이 퇴장하셨습니다."
+        newChatRoom.lastMessageDate = .now
+        newChatRoom.unreadMessageCount = newUnreadMessageCountDict
+        
+        await chatStore.updateChatRoom(newChatRoom)
     }
 }
