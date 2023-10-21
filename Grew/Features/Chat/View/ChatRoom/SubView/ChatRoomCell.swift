@@ -38,11 +38,13 @@ struct ChatRoomCell: View {
                     chatMessage: nil, 
                     url: chatGrewInfo.imageURL, 
                     imagesize: .chatRoomList)
+                .padding(.trailing,5)
             } else {
                 CircularProfileImageView(
                     chatMessage: nil,
                     url: targetUserInfos[safe: 0]?.userImageURLString,
                     imagesize: .chatRoomList)
+                .padding(.trailing,5)
             }
                         
             VStack(alignment: .leading){
