@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GrewSearchView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     
     @State private var searchText: String = ""
     @State private var searchHistory: [String] = []
@@ -53,6 +53,7 @@ struct GrewSearchView: View {
             .padding(.horizontal, 16)
             .scrollDismissesKeyboard(.immediately)
             .navigationTitle("Grew 검색")
+            .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 grewViewModel.fetchGrew()
                 searchHistory = UserStore.shared.currentUser?.searchHistory ?? []
@@ -64,7 +65,7 @@ struct GrewSearchView: View {
                     dismiss()
                 } label: {
                     Image(systemName: "chevron.backward")
-                        .font(.system(size: 25))
+                        .font(.system(size: 18))
                         .foregroundStyle(Color.black)
                         .padding()
                 }
@@ -224,6 +225,8 @@ extension GrewSearchView {
 }
 
 #Preview {
-    GrewSearchView()
-        .environmentObject(GrewViewModel())
+    NavigationStack {
+        GrewSearchView()
+    }
+    .environmentObject(GrewViewModel())
 }

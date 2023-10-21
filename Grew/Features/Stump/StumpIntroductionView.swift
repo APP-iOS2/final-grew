@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StumpIntroductionView: View {
+    @Environment(\.dismiss) private var dismiss
     
     @State private var isShowingRequestSheet: Bool = false
     @State private var isShowingAlreadyMemberAlert: Bool = false
@@ -30,12 +31,12 @@ struct StumpIntroductionView: View {
                 순우리말로 이것을 그루터기라고 한답니다.
                 
                 Grew에서는 **🌳그루**는 모임원과 운영진
-                즉, 커뮤니티 유저를 가르키고,
-                **🧑‍🌾그루터기**는 그루들에게 장소를 제공해주는
-                사장님들을 뜻해요.
+                즉, 커뮤니티 유저를 가리키고,
+                **🏠그루터기**는 그루들에게 제공하는 장소를,
+                **🧑‍🌾그루터기 멤버**는 장소를 제공해주는 사장님들을 뜻해요.
                 
-                **그루터기 멤버**가 되어 그루들이 사용할 장소를 제공해보세요!
-                (어쩌구)
+                **🧑‍🌾그루터기 멤버**가 되어 그루들이 사용할 장소를 제공해보세요!
+                
                 
                 """)
                 .font(.b1_L)
@@ -60,6 +61,19 @@ struct StumpIntroductionView: View {
         }
         .navigationTitle("그루터기 신청")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .font(.system(size: 18))
+                        .foregroundStyle(Color.black)
+                }
+                Spacer()
+            }
+        }
         .fullScreenCover(isPresented: $isShowingRequestSheet) {
             StumpMemberRequestView(isShowingRequestSheet: $isShowingRequestSheet)
         }
@@ -75,7 +89,7 @@ struct StumpIntroductionView: View {
         )
         .grewAlert(
             isPresented: $isShowingFaliureAlert,
-            title: "회원 정보를 가져오는 데 실패했습니다.",
+            title: "회원 정보를 가져오는 데\n실패했습니다.",
             secondButtonTitle: nil,
             secondButtonColor: nil,
             secondButtonAction: nil,

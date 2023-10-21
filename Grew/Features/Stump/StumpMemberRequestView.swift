@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StumpMemberRequestView: View {
     
-    @EnvironmentObject var stumpStore: StumpStore
+    @EnvironmentObject private var stumpStore: StumpStore
     
     @Binding var isShowingRequestSheet: Bool
     @State private var name: String = ""
@@ -32,7 +32,7 @@ struct StumpMemberRequestView: View {
         image == nil
     }
     
-    var isBusinessNumberCorrect: Bool {
+    private var isBusinessNumberCorrect: Bool {
         if businessNumber.isEmpty {
             return true
         }
