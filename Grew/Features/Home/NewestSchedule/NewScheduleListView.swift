@@ -35,8 +35,10 @@ struct NewestScheduleListView: View {
     func isEmptySchedule() -> [Schedule] {
         var tempList: [Grew]
         var tempSchedule: [Schedule] = []
+        
         // 스케쥴의 그루 아이디, 그루 전체를 둘러봐야함
         if let currentUserId = UserStore.shared.currentUser?.id {
+            
             // 모든 그루에서 현재 아이디가 가입된 그루를 tempList에 넣었고
             tempList = grewViewModel.grewList.filter {
                 $0.currentMembers.contains(currentUserId)
@@ -46,6 +48,11 @@ struct NewestScheduleListView: View {
                 tempSchedule.append(contentsOf: scheduleStore.schedules.filter {
                     $0.gid == tempList[index].id
                 })
+            }
+            // gid로 정렬
+            tempSchedule.sort { (schedule1, schedule2) in
+                return schedule1.gid < schedule2.gid
+                
             }
             return tempSchedule
         }
