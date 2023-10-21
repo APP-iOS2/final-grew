@@ -26,20 +26,39 @@ struct ProfileView: View {
                     
                     LazyVStack(pinnedViews: [.sectionHeaders])  {
                         Section {
-                            switch selectedFilter {
-                            case .myGroup:
+                            if user == UserStore.shared.currentUser {
+                                
+                                switch selectedFilter {
+                                case .myGroup:
+                                    MyGroupView()
+                                        .background(Color.white)
+                                case .myGroupSchedule:
+                                    MyGroupScheduleView()
+                                        .background(Color.white)
+                                case .savedGrew:
+                                    SavedGrewView()
+                                        .background(Color.white)
+                                }
+                            } else {
                                 MyGroupView()
-                                    .background(Color.white)
-                            case .myGroupSchedule:
-                                MyGroupScheduleView()
-                                    .background(Color.white)
-                            case .savedGrew:
-                                SavedGrewView()
                                     .background(Color.white)
                             }
                         } header: {
-                            UserContentListView( selectedFilter: $selectedFilter)
-                                .padding(.horizontal, 10)
+                            if user == UserStore.shared.currentUser {
+                                UserContentListView( selectedFilter: $selectedFilter)
+                                    .padding(.horizontal, 10)
+                            } else {
+                                VStack{
+                                    HStack {
+                                        Text("가입한 그루")
+                                            .font(.b2_B)
+                                        Spacer()
+                                    }
+                                    .padding()
+                                }
+                                .background(Color.white)
+                            }
+                            
                         }
                     }
                 }
@@ -135,12 +154,14 @@ struct ProfileView: View {
                                 user: user ?? User.dummyUser
                             )
                         } label: {
-                            Text("프로필 수정")
-                                .font(.c1_B)
-                                .background(RoundedRectangle(cornerRadius: 7)
-                                    .foregroundColor(.LightGray2)
-                                    .frame(width: 90, height: 28)
-                                )
+                            if user == UserStore.shared.currentUser {
+                                Text("프로필 수정")
+                                    .font(.c1_B)
+                                    .background(RoundedRectangle(cornerRadius: 7)
+                                        .foregroundColor(.LightGray2)
+                                        .frame(width: 90, height: 28)
+                                    )
+                            }
                         }
                         .padding(10)
                         .foregroundColor(.white)
