@@ -24,7 +24,7 @@ struct EditProfileView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .center) {
+            VStack {
                 Button {
                     showModal = true
                 } label: {
@@ -54,16 +54,11 @@ struct EditProfileView: View {
                                     .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
                             )
                     }
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .frame(width: 27, height: 27)
-                        .foregroundColor(Color.grewMainColor) // 이미지 색상 설정
-                        .overlay(
-                            Circle()
-                                .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
-                        )
+
                 }
                 .padding(.vertical)
+                .padding(.top, 10)
+
           
                 VStack(alignment: .leading) {
                     
@@ -107,6 +102,7 @@ struct EditProfileView: View {
                             .padding(.leading, 10)
                     }
                 }
+                Spacer()
             }.font(.b2_R)
                 .padding(30)
             //            .frame(maxWidth: .infinity, alignment: .leading)
