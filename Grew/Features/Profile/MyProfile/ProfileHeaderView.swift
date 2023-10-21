@@ -28,7 +28,6 @@ struct ProfileHeaderView: View {
                 Spacer()
                 
                 CircleImage()
-                    .padding(50)
                 
                 HStack(alignment: .bottom){
                     
