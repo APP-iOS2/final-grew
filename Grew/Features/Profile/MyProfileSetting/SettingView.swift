@@ -40,7 +40,7 @@ struct SettingView: View {
                                 case .stumpRegisterView:
                                     StumpRegisterView()
                                 case .showStumpsView:
-                                    ShowStumpsView()
+                                    StumpListView()
                                 }
                             } label: {
                                 Text(gtViewName.rawValue)

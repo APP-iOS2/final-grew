@@ -24,6 +24,7 @@ struct OpensourceLicenseView: View {
             self.mode.wrappedValue.dismiss()
         }, label: {
             Image(systemName: "chevron.backward")
+                .font(.system(size: 18))
                 .foregroundColor(.black)
         }))
     }
