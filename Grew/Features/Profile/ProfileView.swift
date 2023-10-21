@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ProfileView: View {
-    var grewViewModel: GrewViewModel
-   
+    @EnvironmentObject private var grewViewModel: GrewViewModel
     @State private var isMyProfile: Bool = true
-    @State var selectedGroup: String = "내 모임"
+    @State private var selectedGroup: String = "내 모임"
+    
+    let user: User
     
     var body: some View {
         ScrollView {
@@ -45,7 +46,6 @@ struct ProfileView: View {
 
 #Preview {
     NavigationStack {
-        ProfileView(grewViewModel: GrewViewModel())
-            .environmentObject(UserStore())
+        ProfileView(user: UserStore.shared.currentUser!)
     }
 }

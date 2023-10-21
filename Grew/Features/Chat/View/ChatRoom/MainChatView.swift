@@ -11,6 +11,9 @@ struct MainChatView: View {
     @State private var selectedFilter: ChatSegment = .group
     @Namespace var animation
     
+    @State private var isLoading: Bool = false
+    @EnvironmentObject private var chatStore: ChatStore
+    
     private var filterBarWidth: CGFloat {
         let count = CGFloat(ChatSegment.allCases.count)
         return UIScreen.main.bounds.width / count - 16
@@ -27,6 +30,29 @@ struct MainChatView: View {
                 ChatListView(filter: .personal)
             }
             Spacer()
+        }
+        .overlay {
+            if isLoading {
+                VStack {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.white)
+            }
+        }
+        .task {
+            if !chatStore.isDoneFetch {
+                chatStore.addListener()
+                isLoading = true
+                await chatStore.fetchChatRooms()
+                isLoading = false
+            }
+        }
+        .onDisappear {
+            chatStore.removeListener()
+            chatStore.isDoneFetch = false
         }
     }
     

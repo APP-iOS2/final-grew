@@ -14,10 +14,11 @@ enum SelectViews {
 struct MainTabView: View {
     @State private var isNewGrewViewPresented = false
     @State private var selection: SelectViews = .home
-    @EnvironmentObject var userStore: UserStore
+    @EnvironmentObject private var userStore: UserStore
+    @EnvironmentObject private var chatStore: ChatStore
     
     var body: some View {
-   
+        
         VStack {
             // 기능으로 사용하는 tabView와
             tabView
@@ -26,7 +27,6 @@ struct MainTabView: View {
         }
     }
 }
-
 
 extension MainTabView {
     
@@ -46,9 +46,10 @@ extension MainTabView {
             MainChatView()
                 .tag(SelectViews.chat)
             
-            ProfileView(grewViewModel: GrewViewModel())
+            ProfileView(user: UserStore.shared.currentUser ?? User.dummyUser)
                 .tag(SelectViews.profile)
         }
+
     }
     
     var bottomTabs: some View {

@@ -30,6 +30,10 @@ struct User: Identifiable, Codable, Equatable {
     var isStumpMember: Bool
 }
 
+extension User {
+    static let dummyUser = User(nickName: "더미", email: "더미", gender: "남", dob: "19900101", searchHistory: [], isStumpMember: false)
+}
+
 // class UserStore: ObservableObject {
 //    @Published var users: [User] = [
 //        User(nickName: "설아", email: "seolah@grew.com", gender: .female, dob: "20000101", userImageURLString: "https://i.pinimg.com/564x/e9/9c/d7/e99cd7e40ebd13170431cfb76588a281.jpg", introduce: "싱싱미역 아니구 심신미약..", searchHistory: []),
