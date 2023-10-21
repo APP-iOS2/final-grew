@@ -62,7 +62,6 @@ struct ProfileHeaderView: View {
             
         }.background(Color.grewMainColor)
             .frame(height: UIScreen.main.bounds.height / 3)
-        
     }
     
 }
