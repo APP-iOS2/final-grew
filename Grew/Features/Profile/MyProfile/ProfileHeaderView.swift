@@ -21,17 +21,16 @@ struct ProfileHeaderView: View {
     }
     
     var body: some View {
-            ZStack(alignment: .leading) {
+            ZStack(alignment: .bottom) {
                 RoundSpecificCorners()
-                    .offset(x: 0, y: 50.0)
-                
+
                 VStack(alignment: .leading) {
                     Spacer()
+                    // 이미지 안떠서 일단 뷰 패딩 안맞춰둠
                     CircleImage()
-                        .padding()
-                        .padding(.top, 20)
+                        .padding(50)
                    
-                    HStack{
+                    HStack(alignment: .bottom){
                         VStack(alignment: .leading){
                             Text(UserStore.shared.currentUser?.nickName ?? "이름없음")
                                 .font(.b1_R)
@@ -40,7 +39,7 @@ struct ProfileHeaderView: View {
                                 .padding(.vertical, 5)
                         }
                         Spacer()
-                           
+                        
                         NavigationLink {
                             EditProfileView(name: UserStore.shared.currentUser?.nickName ?? "",
                                             statusMessage: UserStore.shared.currentUser?.introduce ?? "")
@@ -52,14 +51,16 @@ struct ProfileHeaderView: View {
                                     .frame(width: 90, height: 28)
                                 )
                         }
-                        .padding(.trailing, 10)
+                        .padding(10)
                         .foregroundColor(.white)
-                    }.padding(20)
+                    }.padding(10)
+                        .padding(.horizontal, 10)
                     
                     Divider()
-                }.padding(0)
-                  
+                }
+                   
             }.background(Color.grewMainColor)
+            .frame(height: UIScreen.main.bounds.height/7*2)
         
      
     }

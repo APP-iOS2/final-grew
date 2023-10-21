@@ -20,6 +20,7 @@ struct ProfileView: View {
                                   statusMessage: UserStore.shared.currentUser?.introduce ?? "")
                 
                 UserContentListView()
+                    .padding(.horizontal, 10)
             }
             .toolbar {
 //                if UserStore.shared.currentUser.id != UserStore.shared. {
