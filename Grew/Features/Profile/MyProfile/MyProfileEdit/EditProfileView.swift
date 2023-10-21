@@ -54,14 +54,6 @@ struct EditProfileView: View {
                                     .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
                             )
                     }
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .frame(width: 27, height: 27)
-                        .foregroundColor(Color.grewMainColor) // 이미지 색상 설정
-                        .overlay(
-                            Circle()
-                                .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
-                        )
                 }
                 .padding(.vertical)
           
