@@ -46,7 +46,7 @@ extension MainTabView {
             MainChatView()
                 .tag(SelectViews.chat)
           
-            ProfileView(user: UserStore.shared.currentUser)
+            ProfileView(selection: $selection, user: UserStore.shared.currentUser)
                 .tag(SelectViews.profile)
         }
 
