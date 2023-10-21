@@ -25,7 +25,7 @@ struct CreateScheduleMainView: View {
     @State private var isDatePickerVisible: Bool = false
     @State private var showingWebSheet: Bool = false
     @State private var showingFinishAlert: Bool = false
-    
+    @Environment (\.dismiss) var dismiss
     @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
@@ -53,6 +53,18 @@ struct CreateScheduleMainView: View {
                 }.padding(EdgeInsets(top: 5, leading: 20, bottom: 20, trailing: 20))
             }.navigationTitle("일정 생성")
                 .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "chevron.backward")
+                                .font(.system(size: 18))
+                                .foregroundStyle(Color.black)
+                        }
+                    }
+                }
                 .onAppear{
                     scheduleStore.fetchSchedule()
                 }
@@ -84,6 +96,7 @@ struct CreateScheduleMainView: View {
                         buttonTitle: "확인",
                         buttonColor: Color.grewMainColor
                     ) {
+                        dismiss()
 //                        finishCreate()
                     }
 //                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
