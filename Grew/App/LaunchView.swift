@@ -22,7 +22,6 @@ struct LaunchView: View {
             MainTabView()
                 .environmentObject(grewViewModel)
                 .environmentObject(AppState())
-                .environmentObject(stumpStore)
                 .environmentObject(ScheduleStore())
                 .environmentObject(UserViewModel())
                 .environmentObject(chatStore)

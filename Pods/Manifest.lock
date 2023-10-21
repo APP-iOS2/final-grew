@@ -1,20 +1,24 @@
 PODS:
+  - GeoFire/Utils (5.0.0)
   - NMapsGeometry (1.0.1)
   - NMapsMap (3.17.0):
     - NMapsGeometry
 
 DEPENDENCIES:
+  - GeoFire/Utils
   - NMapsMap
 
 SPEC REPOS:
   trunk:
+    - GeoFire
     - NMapsGeometry
     - NMapsMap
 
 SPEC CHECKSUMS:
+  GeoFire: a579ffdcdcf6fe74ef9efd7f887d4082598d6d1f
   NMapsGeometry: 53c573ead66466681cf123f99f698dc8071a4b83
   NMapsMap: a5b909a31b6f3d27a670f6eb2ddc913c38975474
 
-PODFILE CHECKSUM: 20d9a956a9affc490a139556db5fd90eb2b388aa
+PODFILE CHECKSUM: 0250a785b977bd0ab3d740e2cc5fb69f1574fbf2
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.11.3

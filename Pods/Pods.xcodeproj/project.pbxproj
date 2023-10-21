@@ -24,77 +24,147 @@
 				B521269790554904B95202DE2D5AC59C /* [CP] Copy XCFrameworks */,
 			);
 			dependencies = (
-				258F097AFE79EE06421A954BF7063DC2 /* PBXTargetDependency */,
+				4D7B6AF9A3E67897C9657099FCF3AE76 /* PBXTargetDependency */,
 			);
 			name = NMapsMap;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		66452154FAA6E9086E0135E01196CE53 /* Pods-Grew-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A3A46BA936E4267CBC6113B221395ED /* Pods-Grew-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		90A486E46E37F43B62276FAF271DC4A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		A41A6EEFBC8996308FE9ABFBD44247A9 /* Pods-Grew-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB11EC29BDE1A688C6FB9FF3E2FE2C /* Pods-Grew-dummy.m */; };
+		01E7EB968A1C3D168E2BBC7D77AAFC59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258C9F4C872E3DCF4952859496043CE7 /* Foundation.framework */; };
+		1C632E966CBC58ED0C7C09A43A0B1A28 /* GFGeoHashQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = AB1E52258D3FA6B05D27173BE87DE14D /* GFGeoHashQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		324043A765BA8E857EB5647B3E79CFAB /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 223BFCB06B68F55CC4744CEE244D6E93 /* GFGeoHashQuery.m */; };
+		3929C656316233B7D10BC33601569231 /* GFGeoQueryBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = C74BD53D8DE6545FAD5E0619F01DD740 /* GFGeoQueryBounds.m */; };
+		3BAADC42755CD58B8DEAC3550514A0B5 /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E6771E4422A11EDE48B9A19D78FD458D /* GFBase32Utils.m */; };
+		432032AFF633BD6C63F19D1D2DB2D5CF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93EBFFAF55AAE5502A5CCFF03D6D89B /* CoreLocation.framework */; };
+		5FE7FC05F481499CE06D4BF934061F9E /* GeoFire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B40866EA80247E8AA208D70F16EFB /* GeoFire-dummy.m */; };
+		64CD61AEDE214FB504F943B8209FB17D /* GFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8CAC2C2FC8B27D18A74B621B5E16D /* GFUtils.m */; };
+		775101BA7335C56DAB7FCF0364ADFE05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258C9F4C872E3DCF4952859496043CE7 /* Foundation.framework */; };
+		8BC0C97E9970BBA9AD96FEFA600FC446 /* Pods-Grew-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A3A46BA936E4267CBC6113B221395ED /* Pods-Grew-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E65C80ACC10286CF85C152B4C0878A8 /* GFUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = ABC1E6C2D590E6953C77CFDA143F15D9 /* GFUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		99A879BB4E7A35413F46F6AAB4577F66 /* GFBase32Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E1AFE771780AB2E6F07872F6B8275B2 /* GFBase32Utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E0B89BE9F79EC07A20BA9D46A103FDD /* GFGeoQueryBounds.h in Headers */ = {isa = PBXBuildFile; fileRef = F7AF6C4D2D9EDE72A7EA808AFC5E0137 /* GFGeoQueryBounds.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9EF76265375AC026DEC48FF74D7F436B /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = D102CC9705A43761996877A9BBE46D26 /* GFGeoHash.m */; };
+		9FE74B8A6483AF9F4418A96B78E87208 /* GeoFire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A3CBECD12C59DE7C76FF7B9FA962B2F /* GeoFire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6F2180BE521CC07E6DA4A64A56EBA34 /* GFGeoHash.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B779177A1A68582C7354A7B305F5D2 /* GFGeoHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6B0D8AD01AC04708684387E40A18C44 /* Pods-Grew-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB11EC29BDE1A688C6FB9FF3E2FE2C /* Pods-Grew-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7F00C360A1E47BCFA7970B4BBEC51126 /* PBXContainerItemProxy */ = {
+		42B7AF36D5DF520E903921C964474ED8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A683E1D2568F05EE13B122A5D0FB567D;
+			remoteInfo = GeoFire;
+		};
+		5D78C45EB2B9403E1D91157A2A401F25 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 72E614C823EA09AB1AAE80D5CD8A4C58;
 			remoteInfo = NMapsGeometry;
 		};
-		C213E22D737CE2E861C05148CFAAEBBB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 72E614C823EA09AB1AAE80D5CD8A4C58;
-			remoteInfo = NMapsGeometry;
-		};
-		CDE0A893E728E169946F7185F0D54D63 /* PBXContainerItemProxy */ = {
+		AEA632D05DD85E685A5E6292EC87C484 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8E049F5F4E3BDC647F924FEF22D49D90;
 			remoteInfo = NMapsMap;
 		};
+		F7D5CDD18A31A9660DE9D506F2043A94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72E614C823EA09AB1AAE80D5CD8A4C58;
+			remoteInfo = NMapsGeometry;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0970046F7060534BA9B286629593DA0C /* NMapsMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NMapsMap.debug.xcconfig; sourceTree = "<group>"; };
 		0BAB11EC29BDE1A688C6FB9FF3E2FE2C /* Pods-Grew-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Grew-dummy.m"; sourceTree = "<group>"; };
-		1A326C79B1B897CBCFDC36BFF5174A43 /* NMapsGeometry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NMapsGeometry.debug.xcconfig; sourceTree = "<group>"; };
+		183E840116639FBD5DAB323BC62971C0 /* GeoFire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GeoFire.release.xcconfig; sourceTree = "<group>"; };
+		1A3CBECD12C59DE7C76FF7B9FA962B2F /* GeoFire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GeoFire-umbrella.h"; sourceTree = "<group>"; };
+		223BFCB06B68F55CC4744CEE244D6E93 /* GFGeoHashQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GFGeoHashQuery.m; path = GeoFire/Utils/GFGeoHashQuery.m; sourceTree = "<group>"; };
+		258C9F4C872E3DCF4952859496043CE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		28E8CAC2C2FC8B27D18A74B621B5E16D /* GFUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GFUtils.m; path = GeoFire/Utils/GFUtils.m; sourceTree = "<group>"; };
 		29C193DFB75F6B8C70952A457A715D9B /* Pods-Grew-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Grew-Info.plist"; sourceTree = "<group>"; };
 		2A3A46BA936E4267CBC6113B221395ED /* Pods-Grew-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Grew-umbrella.h"; sourceTree = "<group>"; };
+		3F6B40866EA80247E8AA208D70F16EFB /* GeoFire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GeoFire-dummy.m"; sourceTree = "<group>"; };
+		44C3635BC134A728350CA75A3993FC7B /* NMapsMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NMapsMap.debug.xcconfig; sourceTree = "<group>"; };
 		45DDD63A57D3671E1B73A2C737DF6648 /* Pods-Grew-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Grew-acknowledgements.markdown"; sourceTree = "<group>"; };
-		485FAE6318CCD7779377C7AA4A7B3528 /* NMapsGeometry.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = NMapsGeometry.xcframework; path = framework/NMapsGeometry.xcframework; sourceTree = "<group>"; };
-		4F0C55D25B9900DE7936740E68EFDFCF /* NMapsMap.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = NMapsMap.xcframework; path = framework/NMapsMap.xcframework; sourceTree = "<group>"; };
-		53BB18D8DE6118DEC0AAC01027DBECA8 /* NMapsMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NMapsMap.release.xcconfig; sourceTree = "<group>"; };
+		49DD72D0355EC1D63A2A1AAE97691085 /* NMapsGeometry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NMapsGeometry.debug.xcconfig; sourceTree = "<group>"; };
 		5C1890FDC7F1CC06C8E1958325C2A3F6 /* Pods-Grew-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Grew-acknowledgements.plist"; sourceTree = "<group>"; };
 		69822821761766E7A7B7CF1197F5E10C /* Pods-Grew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Grew.debug.xcconfig"; sourceTree = "<group>"; };
-		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6A60B924BD301EFECA673828D0C4A3E0 /* GeoFire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GeoFire.modulemap; sourceTree = "<group>"; };
+		7225FDF8EEDF302AEA4CA180EFE8CAF6 /* GeoFire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GeoFire-Info.plist"; sourceTree = "<group>"; };
 		7498B5785BB0C9C5200054989ED8D771 /* Pods-Grew-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Grew-frameworks.sh"; sourceTree = "<group>"; };
-		7F89040B8DC7FC773592AA5FE110E9DF /* NMapsGeometry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NMapsGeometry.release.xcconfig; sourceTree = "<group>"; };
-		983FCEF2808419DF12F69DFEBD7685D4 /* NMapsMap-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "NMapsMap-xcframeworks.sh"; sourceTree = "<group>"; };
+		831B09F602FA24000D52FDC89C6F49F0 /* NMapsGeometry-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "NMapsGeometry-xcframeworks.sh"; sourceTree = "<group>"; };
+		8ADC07D49A378C9E3917588D8F8F1260 /* GeoFire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GeoFire-prefix.pch"; sourceTree = "<group>"; };
+		8E1AFE771780AB2E6F07872F6B8275B2 /* GFBase32Utils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GFBase32Utils.h; path = GeoFire/Utils/GFBase32Utils.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E3AF3117B59330854AF518B3E467FA6 /* Pods-Grew.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Grew.modulemap"; sourceTree = "<group>"; };
+		A6B779177A1A68582C7354A7B305F5D2 /* GFGeoHash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GFGeoHash.h; path = GeoFire/Utils/GFGeoHash.h; sourceTree = "<group>"; };
+		AB1E52258D3FA6B05D27173BE87DE14D /* GFGeoHashQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GFGeoHashQuery.h; path = GeoFire/Utils/GFGeoHashQuery.h; sourceTree = "<group>"; };
+		ABBEDA2D48E6651DA5042D1D9752CFDA /* NMapsMap-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "NMapsMap-xcframeworks.sh"; sourceTree = "<group>"; };
+		ABC1E6C2D590E6953C77CFDA143F15D9 /* GFUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GFUtils.h; path = GeoFire/Utils/GFUtils.h; sourceTree = "<group>"; };
+		C3AF181841BEAEE5FB090D3945B0198A /* GeoFire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GeoFire.debug.xcconfig; sourceTree = "<group>"; };
+		C74BD53D8DE6545FAD5E0619F01DD740 /* GFGeoQueryBounds.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GFGeoQueryBounds.m; path = GeoFire/Utils/GFGeoQueryBounds.m; sourceTree = "<group>"; };
+		CF590119C69591ECECEE47413D7F96A9 /* NMapsGeometry.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = NMapsGeometry.xcframework; path = framework/NMapsGeometry.xcframework; sourceTree = "<group>"; };
+		D102CC9705A43761996877A9BBE46D26 /* GFGeoHash.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GFGeoHash.m; path = GeoFire/Utils/GFGeoHash.m; sourceTree = "<group>"; };
+		D449099C9456E9F8C3CDC1324C09DF0B /* GeoFire */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GeoFire; path = GeoFire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D83F1CFD03A6FB302E14E5E2422A9E10 /* NMapsGeometry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NMapsGeometry.release.xcconfig; sourceTree = "<group>"; };
+		D93EBFFAF55AAE5502A5CCFF03D6D89B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		E0EACD7E7AD6C113390C340D9E024A54 /* Pods-Grew */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Grew"; path = Pods_Grew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E101130795B024FC83E4F774AA209B18 /* NMapsGeometry-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "NMapsGeometry-xcframeworks.sh"; sourceTree = "<group>"; };
+		E6771E4422A11EDE48B9A19D78FD458D /* GFBase32Utils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GFBase32Utils.m; path = GeoFire/Utils/GFBase32Utils.m; sourceTree = "<group>"; };
+		E75D0CC70261C38A6FD95C3BB33F25DB /* NMapsMap.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = NMapsMap.xcframework; path = framework/NMapsMap.xcframework; sourceTree = "<group>"; };
 		E9F2447D54798A4F4B5A966D468A1D25 /* Pods-Grew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Grew.release.xcconfig"; sourceTree = "<group>"; };
+		F0B29442801296D2FFCA03C51CA59A4D /* NMapsMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NMapsMap.release.xcconfig; sourceTree = "<group>"; };
+		F7AF6C4D2D9EDE72A7EA808AFC5E0137 /* GFGeoQueryBounds.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GFGeoQueryBounds.h; path = GeoFire/Utils/GFGeoQueryBounds.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FE35546DB21841F2073826C7B54F99E3 /* Frameworks */ = {
+		64819FD35B1C63F99F1E5ECE5F847C75 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A486E46E37F43B62276FAF271DC4A3 /* Foundation.framework in Frameworks */,
+				432032AFF633BD6C63F19D1D2DB2D5CF /* CoreLocation.framework in Frameworks */,
+				775101BA7335C56DAB7FCF0364ADFE05 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		651841CDE3545A1C63CCDEF3402B973B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E7EB968A1C3D168E2BBC7D77AAFC59 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06252CA1A127DF7C6BBDA23A92124D71 /* NMapsMap */ = {
+			isa = PBXGroup;
+			children = (
+				479EB5319E234F54E0FF84E52618B3D1 /* Frameworks */,
+				3FAA8E5A56D65A2999161FBFD3CFFEA2 /* Support Files */,
+			);
+			name = NMapsMap;
+			path = NMapsMap;
+			sourceTree = "<group>";
+		};
+		06558F17B01A52246165180600593175 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				831B09F602FA24000D52FDC89C6F49F0 /* NMapsGeometry-xcframeworks.sh */,
+				49DD72D0355EC1D63A2A1AAE97691085 /* NMapsGeometry.debug.xcconfig */,
+				D83F1CFD03A6FB302E14E5E2422A9E10 /* NMapsGeometry.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/NMapsGeometry";
+			sourceTree = "<group>";
+		};
 		06A7FE1E18FCB6D2D40724F388BB6E52 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,60 +173,93 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		169A894F474781F666BE8D90408D3828 /* Support Files */ = {
+		0D2301DBFB0F9DAF4EFA9023B806CD14 /* GeoFire */ = {
 			isa = PBXGroup;
 			children = (
-				E101130795B024FC83E4F774AA209B18 /* NMapsGeometry-xcframeworks.sh */,
-				1A326C79B1B897CBCFDC36BFF5174A43 /* NMapsGeometry.debug.xcconfig */,
-				7F89040B8DC7FC773592AA5FE110E9DF /* NMapsGeometry.release.xcconfig */,
+				11951B64E1D86B517BEF6541F702166D /* Support Files */,
+				FC43F39C3A7C717E7DAD3106EC44EDEE /* Utils */,
+			);
+			name = GeoFire;
+			path = GeoFire;
+			sourceTree = "<group>";
+		};
+		11951B64E1D86B517BEF6541F702166D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A60B924BD301EFECA673828D0C4A3E0 /* GeoFire.modulemap */,
+				3F6B40866EA80247E8AA208D70F16EFB /* GeoFire-dummy.m */,
+				7225FDF8EEDF302AEA4CA180EFE8CAF6 /* GeoFire-Info.plist */,
+				8ADC07D49A378C9E3917588D8F8F1260 /* GeoFire-prefix.pch */,
+				1A3CBECD12C59DE7C76FF7B9FA962B2F /* GeoFire-umbrella.h */,
+				C3AF181841BEAEE5FB090D3945B0198A /* GeoFire.debug.xcconfig */,
+				183E840116639FBD5DAB323BC62971C0 /* GeoFire.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/NMapsGeometry";
+			path = "../Target Support Files/GeoFire";
 			sourceTree = "<group>";
 		};
-		25B56312D79088C322C5B52238334BCC /* Pods */ = {
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2FE65985C01476131D3AC219F92CC3CF /* NMapsGeometry */,
-				487B37947971C0C75B135158191A5547 /* NMapsMap */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		2ED541A35C7BD1778556550CF4846D2F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4F0C55D25B9900DE7936740E68EFDFCF /* NMapsMap.xcframework */,
+				2BAFBDB83E3D6316966EB82364FA2F7B /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2FE65985C01476131D3AC219F92CC3CF /* NMapsGeometry */ = {
+		2BAFBDB83E3D6316966EB82364FA2F7B /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				DC955F600E602E5041F1000DC79753BB /* Frameworks */,
-				169A894F474781F666BE8D90408D3828 /* Support Files */,
+				D93EBFFAF55AAE5502A5CCFF03D6D89B /* CoreLocation.framework */,
+				258C9F4C872E3DCF4952859496043CE7 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		34E2085EB388C9EEABA56F3219AC7ACA /* NMapsGeometry */ = {
+			isa = PBXGroup;
+			children = (
+				757A58090D7D9E8E97CAD92F0D66309A /* Frameworks */,
+				06558F17B01A52246165180600593175 /* Support Files */,
 			);
 			name = NMapsGeometry;
 			path = NMapsGeometry;
 			sourceTree = "<group>";
 		};
-		487B37947971C0C75B135158191A5547 /* NMapsMap */ = {
+		3FAA8E5A56D65A2999161FBFD3CFFEA2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				2ED541A35C7BD1778556550CF4846D2F /* Frameworks */,
-				A3E28C362EAC5C5A2CCC22EE5E2FDA30 /* Support Files */,
+				ABBEDA2D48E6651DA5042D1D9752CFDA /* NMapsMap-xcframeworks.sh */,
+				44C3635BC134A728350CA75A3993FC7B /* NMapsMap.debug.xcconfig */,
+				F0B29442801296D2FFCA03C51CA59A4D /* NMapsMap.release.xcconfig */,
 			);
-			name = NMapsMap;
-			path = NMapsMap;
+			name = "Support Files";
+			path = "../Target Support Files/NMapsMap";
 			sourceTree = "<group>";
 		};
-		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+		479EB5319E234F54E0FF84E52618B3D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+				E75D0CC70261C38A6FD95C3BB33F25DB /* NMapsMap.xcframework */,
 			);
-			name = iOS;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4E50BBC42F3CC6163621E388E0CECA39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0D2301DBFB0F9DAF4EFA9023B806CD14 /* GeoFire */,
+				34E2085EB388C9EEABA56F3219AC7ACA /* NMapsGeometry */,
+				06252CA1A127DF7C6BBDA23A92124D71 /* NMapsMap */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		757A58090D7D9E8E97CAD92F0D66309A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF590119C69591ECECEE47413D7F96A9 /* NMapsGeometry.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8E3DDB6F90653583C6DCE2C5D5D86BF6 /* Pods-Grew */ = {
@@ -176,20 +279,10 @@
 			path = "Target Support Files/Pods-Grew";
 			sourceTree = "<group>";
 		};
-		A3E28C362EAC5C5A2CCC22EE5E2FDA30 /* Support Files */ = {
+		B6A35BB4028CAA0B9D1CFD6136D53EB4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				983FCEF2808419DF12F69DFEBD7685D4 /* NMapsMap-xcframeworks.sh */,
-				0970046F7060534BA9B286629593DA0C /* NMapsMap.debug.xcconfig */,
-				53BB18D8DE6118DEC0AAC01027DBECA8 /* NMapsMap.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/NMapsMap";
-			sourceTree = "<group>";
-		};
-		CAE7081FFD69E2EDEE254CB19AF83D9F /* Products */ = {
-			isa = PBXGroup;
-			children = (
+				D449099C9456E9F8C3CDC1324C09DF0B /* GeoFire */,
 				E0EACD7E7AD6C113390C340D9E024A54 /* Pods-Grew */,
 			);
 			name = Products;
@@ -199,37 +292,51 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				25B56312D79088C322C5B52238334BCC /* Pods */,
-				CAE7081FFD69E2EDEE254CB19AF83D9F /* Products */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				4E50BBC42F3CC6163621E388E0CECA39 /* Pods */,
+				B6A35BB4028CAA0B9D1CFD6136D53EB4 /* Products */,
 				06A7FE1E18FCB6D2D40724F388BB6E52 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+		FC43F39C3A7C717E7DAD3106EC44EDEE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				578452D2E740E91742655AC8F1636D1F /* iOS */,
+				8E1AFE771780AB2E6F07872F6B8275B2 /* GFBase32Utils.h */,
+				E6771E4422A11EDE48B9A19D78FD458D /* GFBase32Utils.m */,
+				A6B779177A1A68582C7354A7B305F5D2 /* GFGeoHash.h */,
+				D102CC9705A43761996877A9BBE46D26 /* GFGeoHash.m */,
+				AB1E52258D3FA6B05D27173BE87DE14D /* GFGeoHashQuery.h */,
+				223BFCB06B68F55CC4744CEE244D6E93 /* GFGeoHashQuery.m */,
+				F7AF6C4D2D9EDE72A7EA808AFC5E0137 /* GFGeoQueryBounds.h */,
+				C74BD53D8DE6545FAD5E0619F01DD740 /* GFGeoQueryBounds.m */,
+				ABC1E6C2D590E6953C77CFDA143F15D9 /* GFUtils.h */,
+				28E8CAC2C2FC8B27D18A74B621B5E16D /* GFUtils.m */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DC955F600E602E5041F1000DC79753BB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				485FAE6318CCD7779377C7AA4A7B3528 /* NMapsGeometry.xcframework */,
-			);
-			name = Frameworks;
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		D42D79EFC7A2E456B5248C7557485D0E /* Headers */ = {
+		208B8E3F242ED34DB78977278F6F7370 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66452154FAA6E9086E0135E01196CE53 /* Pods-Grew-umbrella.h in Headers */,
+				8BC0C97E9970BBA9AD96FEFA600FC446 /* Pods-Grew-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7301459E3A8AA0DB5B627655F4C6F62F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FE74B8A6483AF9F4418A96B78E87208 /* GeoFire-umbrella.h in Headers */,
+				99A879BB4E7A35413F46F6AAB4577F66 /* GFBase32Utils.h in Headers */,
+				E6F2180BE521CC07E6DA4A64A56EBA34 /* GFGeoHash.h in Headers */,
+				1C632E966CBC58ED0C7C09A43A0B1A28 /* GFGeoHashQuery.h in Headers */,
+				9E0B89BE9F79EC07A20BA9D46A103FDD /* GFGeoQueryBounds.h in Headers */,
+				8E65C80ACC10286CF85C152B4C0878A8 /* GFUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,22 +345,41 @@
 /* Begin PBXNativeTarget section */
 		8F6B657F52B462BFBBFD8396BBA456C7 /* Pods-Grew */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E677C34417C1B64046B2B571CB545D1C /* Build configuration list for PBXNativeTarget "Pods-Grew" */;
+			buildConfigurationList = A19693348B5721D40A365228C785B38D /* Build configuration list for PBXNativeTarget "Pods-Grew" */;
 			buildPhases = (
-				D42D79EFC7A2E456B5248C7557485D0E /* Headers */,
-				C4EDD8B28F3C520950A1AC11735D6AD2 /* Sources */,
-				FE35546DB21841F2073826C7B54F99E3 /* Frameworks */,
-				E69E7C5EFE6EBD79DF366EEE542EEC02 /* Resources */,
+				208B8E3F242ED34DB78977278F6F7370 /* Headers */,
+				12E4736680C9CE85989F2B7BC55EDFEF /* Sources */,
+				651841CDE3545A1C63CCDEF3402B973B /* Frameworks */,
+				0BF86493EE68210E1528C52D358A13A6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				424EB89C04430F9922831BDC2B34FF6B /* PBXTargetDependency */,
-				CBF88AB62D0AE130144554746B8EE9C9 /* PBXTargetDependency */,
+				0E066D535E62D773AC797BE63ACC8F4F /* PBXTargetDependency */,
+				3100959DCE08875DC23AE370575591AB /* PBXTargetDependency */,
+				AEE6BA7FD41E5CB0D103CEA38EF2E5F5 /* PBXTargetDependency */,
 			);
 			name = "Pods-Grew";
 			productName = Pods_Grew;
 			productReference = E0EACD7E7AD6C113390C340D9E024A54 /* Pods-Grew */;
+			productType = "com.apple.product-type.framework";
+		};
+		A683E1D2568F05EE13B122A5D0FB567D /* GeoFire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4451C95216D2712D291CA169FB11B292 /* Build configuration list for PBXNativeTarget "GeoFire" */;
+			buildPhases = (
+				7301459E3A8AA0DB5B627655F4C6F62F /* Headers */,
+				471DE1DAEF6902EB47F14C6FD7D8C853 /* Sources */,
+				64819FD35B1C63F99F1E5ECE5F847C75 /* Frameworks */,
+				46DC8109A8C0DED7DE89D2DEE23D1439 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeoFire;
+			productName = GeoFire;
+			productReference = D449099C9456E9F8C3CDC1324C09DF0B /* GeoFire */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -274,10 +400,11 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = CAE7081FFD69E2EDEE254CB19AF83D9F /* Products */;
+			productRefGroup = B6A35BB4028CAA0B9D1CFD6136D53EB4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				A683E1D2568F05EE13B122A5D0FB567D /* GeoFire */,
 				72E614C823EA09AB1AAE80D5CD8A4C58 /* NMapsGeometry */,
 				8E049F5F4E3BDC647F924FEF22D49D90 /* NMapsMap */,
 				8F6B657F52B462BFBBFD8396BBA456C7 /* Pods-Grew */,
@@ -286,7 +413,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E69E7C5EFE6EBD79DF366EEE542EEC02 /* Resources */ = {
+		0BF86493EE68210E1528C52D358A13A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46DC8109A8C0DED7DE89D2DEE23D1439 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -333,58 +467,60 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C4EDD8B28F3C520950A1AC11735D6AD2 /* Sources */ = {
+		12E4736680C9CE85989F2B7BC55EDFEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A41A6EEFBC8996308FE9ABFBD44247A9 /* Pods-Grew-dummy.m in Sources */,
+				F6B0D8AD01AC04708684387E40A18C44 /* Pods-Grew-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		471DE1DAEF6902EB47F14C6FD7D8C853 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FE7FC05F481499CE06D4BF934061F9E /* GeoFire-dummy.m in Sources */,
+				3BAADC42755CD58B8DEAC3550514A0B5 /* GFBase32Utils.m in Sources */,
+				9EF76265375AC026DEC48FF74D7F436B /* GFGeoHash.m in Sources */,
+				324043A765BA8E857EB5647B3E79CFAB /* GFGeoHashQuery.m in Sources */,
+				3929C656316233B7D10BC33601569231 /* GFGeoQueryBounds.m in Sources */,
+				64CD61AEDE214FB504F943B8209FB17D /* GFUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		258F097AFE79EE06421A954BF7063DC2 /* PBXTargetDependency */ = {
+		0E066D535E62D773AC797BE63ACC8F4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GeoFire;
+			target = A683E1D2568F05EE13B122A5D0FB567D /* GeoFire */;
+			targetProxy = 42B7AF36D5DF520E903921C964474ED8 /* PBXContainerItemProxy */;
+		};
+		3100959DCE08875DC23AE370575591AB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NMapsGeometry;
 			target = 72E614C823EA09AB1AAE80D5CD8A4C58 /* NMapsGeometry */;
-			targetProxy = 7F00C360A1E47BCFA7970B4BBEC51126 /* PBXContainerItemProxy */;
+			targetProxy = F7D5CDD18A31A9660DE9D506F2043A94 /* PBXContainerItemProxy */;
 		};
-		424EB89C04430F9922831BDC2B34FF6B /* PBXTargetDependency */ = {
+		4D7B6AF9A3E67897C9657099FCF3AE76 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NMapsGeometry;
 			target = 72E614C823EA09AB1AAE80D5CD8A4C58 /* NMapsGeometry */;
-			targetProxy = C213E22D737CE2E861C05148CFAAEBBB /* PBXContainerItemProxy */;
+			targetProxy = 5D78C45EB2B9403E1D91157A2A401F25 /* PBXContainerItemProxy */;
 		};
-		CBF88AB62D0AE130144554746B8EE9C9 /* PBXTargetDependency */ = {
+		AEE6BA7FD41E5CB0D103CEA38EF2E5F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NMapsMap;
 			target = 8E049F5F4E3BDC647F924FEF22D49D90 /* NMapsMap */;
-			targetProxy = CDE0A893E728E169946F7185F0D54D63 /* PBXContainerItemProxy */;
+			targetProxy = AEA632D05DD85E685A5E6292EC87C484 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		138EE7F5840AEF4E4028CA5FAAE9EE6E /* Release */ = {
+		0A2EC205559C1CBFA85D3CB5C1CA19D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F89040B8DC7FC773592AA5FE110E9DF /* NMapsGeometry.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		2D17995D8F243E371D337195199C0013 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9F2447D54798A4F4B5A966D468A1D25 /* Pods-Grew.release.xcconfig */;
+			baseConfigurationReference = 69822821761766E7A7B7CF1197F5E10C /* Pods-Grew.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -414,6 +550,58 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		138EE7F5840AEF4E4028CA5FAAE9EE6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D83F1CFD03A6FB302E14E5E2422A9E10 /* NMapsGeometry.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3ED73593817F1879563480FE5EFC8B1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 183E840116639FBD5DAB323BC62971C0 /* GeoFire.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GeoFire/GeoFire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GeoFire/GeoFire-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GeoFire/GeoFire.modulemap";
+				PRODUCT_MODULE_NAME = GeoFire;
+				PRODUCT_NAME = GeoFire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -422,7 +610,7 @@
 		};
 		4122D12474652D4B94029A59C0DC6010 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A326C79B1B897CBCFDC36BFF5174A43 /* NMapsGeometry.debug.xcconfig */;
+			baseConfigurationReference = 49DD72D0355EC1D63A2A1AAE97691085 /* NMapsGeometry.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -502,9 +690,9 @@
 			};
 			name = Debug;
 		};
-		838C551CB7372DC469326C4C86D56D0C /* Debug */ = {
+		E38189317FA3BCCA5AE6B5BC5C1B373F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69822821761766E7A7B7CF1197F5E10C /* Pods-Grew.debug.xcconfig */;
+			baseConfigurationReference = E9F2447D54798A4F4B5A966D468A1D25 /* Pods-Grew.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -534,14 +722,15 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		E683018BA3CA2E27A39E5DF5619B90F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0970046F7060534BA9B286629593DA0C /* NMapsMap.debug.xcconfig */;
+			baseConfigurationReference = 44C3635BC134A728350CA75A3993FC7B /* NMapsMap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -617,9 +806,44 @@
 			};
 			name = Release;
 		};
+		FBD08706F450D872BDA6753A82A8372E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3AF181841BEAEE5FB090D3945B0198A /* GeoFire.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GeoFire/GeoFire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GeoFire/GeoFire-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GeoFire/GeoFire.modulemap";
+				PRODUCT_MODULE_NAME = GeoFire;
+				PRODUCT_NAME = GeoFire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		FE5D137BA104CCBECE001BF38C0AEB3E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53BB18D8DE6118DEC0AAC01027DBECA8 /* NMapsMap.release.xcconfig */;
+			baseConfigurationReference = F0B29442801296D2FFCA03C51CA59A4D /* NMapsMap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -637,6 +861,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4451C95216D2712D291CA169FB11B292 /* Build configuration list for PBXNativeTarget "GeoFire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBD08706F450D872BDA6753A82A8372E /* Debug */,
+				3ED73593817F1879563480FE5EFC8B1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -655,11 +888,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E677C34417C1B64046B2B571CB545D1C /* Build configuration list for PBXNativeTarget "Pods-Grew" */ = {
+		A19693348B5721D40A365228C785B38D /* Build configuration list for PBXNativeTarget "Pods-Grew" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				838C551CB7372DC469326C4C86D56D0C /* Debug */,
-				2D17995D8F243E371D337195199C0013 /* Release */,
+				0A2EC205559C1CBFA85D3CB5C1CA19D5 /* Debug */,
+				E38189317FA3BCCA5AE6B5BC5C1B373F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
