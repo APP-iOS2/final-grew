@@ -80,18 +80,19 @@ extension MainTabView {
                 }
             }
             
-            /// 탭바 - 모임 생성 버튼
-            Image("plus")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 45)
-                .foregroundStyle(Color.DarkGray1)
-                .onTapGesture {
-                    isNewGrewViewPresented = true
+            Button {
+                isNewGrewViewPresented = true
+            } label: {
+                VStack {
+                    Image("plus")
+                        .foregroundStyle(Color.DarkGray1)
+                    Text("내 주변")
+                        .font(.c2_B)
+                        .foregroundStyle(Color.DarkGray1)
                 }
-                .fullScreenCover(isPresented: $isNewGrewViewPresented){
-                    NewGrewView()
-                }
+            }.fullScreenCover(isPresented: $isNewGrewViewPresented){
+                NewGrewView()
+            }
             
             
             /// 탭바 - 채팅 버튼
