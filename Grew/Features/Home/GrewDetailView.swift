@@ -197,9 +197,7 @@ extension GrewDetailView {
                 maximumMembers: 8,
                 currentMembers: ["id1", "id2"],
                 isNeedFee: false,
-                fee: 0,
-                createdAt: Date.now,
-                heartTapped: 0
+                fee: 0
             )
         )
     }

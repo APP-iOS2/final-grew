@@ -109,7 +109,6 @@ struct GrewIntroductionView: View {
 
 #Preview {
     GrewIntroductionView(grew: Grew(
-        id: "id",
         categoryIndex: "게임/오락",
         categorysubIndex: "보드게임",
         title: "멋쟁이 보드게임",
@@ -135,8 +134,6 @@ struct GrewIntroductionView: View {
         maximumMembers: 8,
         currentMembers: ["id1", "id2"],
         isNeedFee: false,
-        fee: 0,
-        createdAt: Date(),
-        heartTapped: 0
+        fee: 0
     ))
 }
