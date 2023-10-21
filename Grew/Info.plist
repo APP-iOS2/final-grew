@@ -40,5 +40,7 @@
 		<string>SCDream5.otf</string>
 		<string>SCDream7.otf</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>위치 동의</string>
 </dict>
 </plist>

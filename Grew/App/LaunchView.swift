@@ -8,11 +8,12 @@ import FirebaseAuth
 import SwiftUI
 
 struct LaunchView: View {
- 
+    @StateObject var viewModel = LaunchViewModel()
+    @StateObject var userViewModel = UserViewModel()
+    @StateObject var chatStore = ChatStore()
+    @StateObject var messageStore = MessageStore()
     @StateObject private var vm = LaunchViewModel()
-    @StateObject private var grewViewModel = GrewViewModel()
-    @StateObject private var appState = AppState()
-    @StateObject var stumpStore = StumpStore()
+    @EnvironmentObject private var grewViewModel : GrewViewModel
     
     var body: some View {
         if vm.authuser == nil {
@@ -23,6 +24,9 @@ struct LaunchView: View {
                 .environmentObject(AppState())
                 .environmentObject(stumpStore)
                 .environmentObject(ScheduleStore())
+                .environmentObject(UserViewModel())
+                .environmentObject(chatStore)
+                .environmentObject(messageStore)
                 .onAppear {
                     grewViewModel.fetchJsonData()
                 }
