@@ -26,7 +26,7 @@ struct ChatMessage: Identifiable, Codable {
     var profileImageURL: String = ""
     /// 사진 첨부(사진 보내기)
     var attachImageURL: String = ""
-    /// 읽음 여부
+//    /// 읽음 여부
 //    var isRead: [String: Bool] = [:]
     /// 시스템 메시지 여부
     var isSystem: Bool = false
@@ -57,9 +57,9 @@ extension ChatMessage {
     static let dummyChat4 = ChatMessage(text: "안녕하세요", uid: "uid123", userName: "이름", profileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/chattest-938f0.appspot.com/o/photos%2FPwqtVpH3GgdyvOCRJ0WIyOzk06O2.png?alt=media&token=799b7831-09fb-4952-b7a2-37736161025a")
 }
 
-//enum ContentType: Int, Codable {
+// enum ContentType: Int, Codable {
 //    case none
 //    case photo
 //    case location
 //    case unknown
-//}
+// }

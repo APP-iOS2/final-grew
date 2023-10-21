@@ -5,10 +5,10 @@
 //  Created by Chloe Chung on 2023/10/10.
 //
 
-import SwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import SwiftUI
 
 struct ProfileHeaderView: View {
     @State var name: String

@@ -35,8 +35,7 @@ struct MainChatView: View {
             ForEach(ChatSegment.allCases) { filter in
                 VStack(spacing: 8) {
                     Text(filter.title)
-                        .font(.subheadline)
-                        .fontWeight(selectedFilter == filter ? .semibold : .regular)
+                        .font(selectedFilter == filter ? .b2_B : .b2_R)
                         .padding(.top, 8)
                     if selectedFilter == filter {
                         Rectangle()
@@ -64,4 +63,3 @@ struct MainChatView: View {
         }
     }
 }
-

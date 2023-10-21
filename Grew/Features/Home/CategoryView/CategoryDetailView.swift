@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CategoryDetailView: View {
     
+    @Environment(\.dismiss) var dismiss
     @State private var selection: Selection = Selection()
     let grewList: [Grew]
     let secondCategory: [SubCategory]
@@ -22,16 +23,30 @@ struct CategoryDetailView: View {
         VStack {
             // 서브뷰로 만들어 넣기 (extention)
             categoryList
-            .padding(.bottom, 12)
+            .padding(.vertical)
             
             ScrollView {
                 // 카테고리 리스트를 새로 만들어야함 기존것을 쓰면 앞에 순위가 붙음
                 CategoryListView(grewList: filterList)
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                            .font(.system(size: 25))
+                            .foregroundStyle(Color.black)
+                            .padding()
+                    }
+                    Spacer()
+                }
+            }
         }
         .onAppear {
             filterList = grewList
         }
+        
     }
 }
 
@@ -91,6 +106,8 @@ extension CategoryDetailView {
 }
 
 #Preview {
-    CategoryDetailView(grewList: [], secondCategory: [])
+    NavigationStack {
+        CategoryDetailView(grewList: [], secondCategory: [])
+    }
 //        .environmentObject(GrewViewModel())
 }

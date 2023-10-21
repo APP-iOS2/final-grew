@@ -25,6 +25,7 @@ struct CategoryListView: View {
                 ForEach(0 ..< grewList.count, id: \.self) { index in
                     NavigationLink {
                         GrewDetailView(grew: grewList[index])
+                            .navigationBarBackButtonHidden(true)
                     } label: {
                         
                         GrewCellView(grew: grewList[index])

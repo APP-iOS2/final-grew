@@ -38,36 +38,15 @@ struct ChatDetailView: View {
                 x: $x,
                 unreadMessageIndex: $unreadMessageIndex
             )
-            .safeAreaInset(edge: .bottom, content: {
-                VStack {
-                    if groupDetailConfig.selectedImage != nil {
-                        HStack {
-                            Text("이만큼 줄어들 예정입니다.")
-                            Spacer()
-                        }
-                    }
-                    ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
-                        .background(Color(.systemBackground).ignoresSafeArea())
-                        .shadow(radius: 0.5)
-                }
-                
-                //
-            })
-            .zIndex(1)
             
-            // 채팅 입력창
-            
-            //            .zIndex(2)
-            
-            // 사이드 메뉴 바
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
-                    .zIndex(3)
-                ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert)
+               
+                ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert, chatRoomName: chatRoom.chatRoomName ?? "\(targetUserInfos[0].nickName)", targetUserInfos: targetUserInfos)
                     .safeAreaPadding(.top, 50)
                     .offset(x: x)
                     .transition(isMenuOpen ? .move(edge: .trailing) : .identity)
-                //                    .navigationBarHidden(isMenuOpen ? true : false)
+                    // .navigationBarHidden(isMenuOpen ? true : false)
                     .gesture(DragGesture().onChanged({ (value) in
                         withAnimation(.easeInOut){
                             if value.translation.width < 0 {
@@ -86,7 +65,6 @@ struct ChatDetailView: View {
                             }
                         }
                     }))
-                    .zIndex(4)
             }
         }
         .alert("채팅방 나가기", isPresented: $isExitButtonAlert) {
@@ -115,9 +93,12 @@ struct ChatDetailView: View {
         //            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
         //            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
         //        }
+        .task {
+        }
         .onDisappear {
             Task {
-                //리스너 삭제
+                await clearUnreadMesageCount()
+                // 리스너 삭제
                 messageStore.removeListener()
             }
         }
@@ -130,16 +111,16 @@ struct ChatDetailView: View {
         return unreadCount
     }
     
-    // 읽지 않은 메시지 개수 0으로 초기화 + 업데이트 (채팅방 입장 시, 퇴장 시)
     private func clearUnreadMesageCount() async {
         var newChat: ChatRoom = chatRoom
         
-        var newDict: [String : Int] = chatRoom.unreadMessageCount
+        var newDict: [String: Int] = chatRoom.unreadMessageCount
         newDict[UserStore.shared.currentUser!.id!] = 0
         newChat.unreadMessageCount = newDict
         
         await chatStore.updateChatRoom(chatRoom)
     }
+    
     
     
 }

@@ -5,8 +5,8 @@
 //  Created by daye on 2023/09/25.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct MessageBubbles: View {
     let chatMessage: ChatMessage
@@ -36,7 +36,7 @@ struct MessageBubbles: View {
         HStack(alignment: .bottom) {
             Spacer()
             Text(chatMessage.createdDateString)
-                .font(.caption)
+                .font(.c2_R)
                 .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
                 .foregroundColor(.gray)
             VStack{
@@ -52,7 +52,7 @@ struct MessageBubbles: View {
                     
                 } else {
                     Text(chatMessage.text)
-                        .font(.callout)
+                        .font(.c1_R)
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15) )
                 }
@@ -67,8 +67,7 @@ struct MessageBubbles: View {
             CircularProfileImageView(chatMessage: chatMessage, url: nil, imagesize: .bubble)
             VStack(alignment: .leading){
                 Text(chatMessage.userName)
-                    .font(.caption)
-                    .bold()
+                    .font(.c1_B)
                     .padding(EdgeInsets(top: 0, leading: 3, bottom: -4, trailing: 0))
                 VStack{
                     // attachment photo URL
@@ -84,9 +83,9 @@ struct MessageBubbles: View {
                         
                     } else {
                         Text(chatMessage.text)
-                            .font(.callout)
+                            .font(.c1_R)
                             .foregroundColor(.black)
-                            .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+                            .padding(EdgeInsets(top: 11, leading: 15, bottom: 10, trailing: 15))
                     }
                 }
                 //                    .background(Color.LightGray2)
@@ -97,17 +96,17 @@ struct MessageBubbles: View {
             }
             
             Text(chatMessage.createdDateString)
-                .font(.caption)
+                .font(.c2_R)
                 .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
                 .foregroundColor(.gray)
             Spacer()
-        }
+        }.padding(.top, 10)
     }
     
     private var systemBubble: some View {
         VStack{
             Text(chatMessage.text)
-                .font(.caption)
+                .font(.c1_R)
                 .foregroundColor(.gray)
                 .bold()
                 .padding(10)
@@ -115,4 +114,3 @@ struct MessageBubbles: View {
         }
     }
 }
-

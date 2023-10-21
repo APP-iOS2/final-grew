@@ -26,6 +26,8 @@ struct User: Identifiable, Codable, Equatable {
     var introduce: String?
     /// 검색 내역
     var searchHistory: [String]
+    /// 그루터기 멤버 여부
+    var isStumpMember: Bool
 }
 
 // class UserStore: ObservableObject {

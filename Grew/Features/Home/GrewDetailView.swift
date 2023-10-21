@@ -87,7 +87,7 @@ struct GrewDetailView: View {
                 }
             )
             Divider()
-                .padding(.bottom)
+                .padding(.bottom, 5)
             
             makeBottomButtons()
         }
@@ -139,6 +139,8 @@ extension GrewDetailView {
                             }
                         }
                     }
+                    .padding(.top)
+                    .contentShape(.rect)
                     .onTapGesture {
                         withAnimation(.interactiveSpring(response: 0.5)) {
                             selectedFilter = segment
@@ -146,7 +148,6 @@ extension GrewDetailView {
                     }
                 }
             }
-            .padding(.top)
             
             Rectangle()
                 .frame(height: 8)
@@ -201,7 +202,7 @@ extension GrewDetailView {
                     Button {
                         isShowingJoinConfirmAlert = true
                     } label: {
-                        Text("참여하기")
+                        Text("그루 참여하기")
                             .frame(width: 260, height: 44)
                     }
                     .grewButtonModifier(

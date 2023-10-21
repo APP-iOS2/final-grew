@@ -102,7 +102,7 @@ struct EditProfileView: View {
                             .padding(.vertical, 10)
                         
                         RoundedRectangle(cornerRadius: 7)
-                            .frame(width: 100,height: 60)
+                            .frame(width: 100, height: 60)
                             .foregroundColor(Color.LightGray2)
                             .overlay(
                                 Text("\(UserStore.shared.currentUser?.gender ?? "성별없음")")
