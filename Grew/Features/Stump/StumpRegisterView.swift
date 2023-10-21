@@ -13,6 +13,7 @@ struct StumpRegisterView: View {
     
     @State private var name: String = ""
     @State private var hours: String = ""
+    @State private var isHoursValid: Bool = true
     @State private var minimumMembers: String = ""
     @State private var maximumMembers: String = ""
     @State private var isNeedDeposit: Bool = false
@@ -37,6 +38,7 @@ struct StumpRegisterView: View {
     private var isRegisterButtonDisabled: Bool {
         name.isEmpty ||
         hours.isEmpty ||
+        !isHoursValid ||
         minimumMembers.isEmpty ||
         maximumMembers.isEmpty ||
         location.isEmpty ||
@@ -52,6 +54,7 @@ struct StumpRegisterView: View {
                 StumpInputView(
                     name: $name,
                     hours: $hours,
+                    isHoursValid: $isHoursValid,
                     minimumMembers: $minimumMembers,
                     maximumMembers: $maximumMembers,
                     isNeedDeposit: $isNeedDeposit,
@@ -66,21 +69,6 @@ struct StumpRegisterView: View {
                 makeRegisterButton()
             }
             .padding(.horizontal, 20)
-        }
-        .navigationTitle("그루터기 등록하기")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.backward")
-                        .font(.system(size: 18))
-                        .foregroundStyle(Color.black)
-                }
-                Spacer()
-            }
         }
         .overlay(
             Group {

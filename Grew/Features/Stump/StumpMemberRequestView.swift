@@ -27,12 +27,12 @@ struct StumpMemberRequestView: View {
     private var isFinishButtonDisabled: Bool {
         name.isEmpty ||
         businessNumber.isEmpty ||
-        !isBusinessNumberCorrect ||
+        !isBusinessNumberValid ||
         phoneNumber.isEmpty ||
         image == nil
     }
     
-    private var isBusinessNumberCorrect: Bool {
+    private var isBusinessNumberValid: Bool {
         if businessNumber.isEmpty {
             return true
         }
@@ -48,21 +48,21 @@ struct StumpMemberRequestView: View {
                 makeInputView()
                 makeImageView()
             }
-            makeFinishButton()
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        Text("그루터기 멤버 신청")
-                    }
-                    
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            isShowingRequestSheet = false
-                        } label: {
-                            Image(systemName: "xmark")
-                                .foregroundStyle(Color.Black)
-                        }
+            VStack {
+                makeFinishButton()
+            }
+            .navigationTitle("그루터기 멤버 신청")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isShowingRequestSheet = false
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundStyle(Color.Black)
                     }
                 }
+            }
         }
         .overlay(
             Group {
@@ -131,6 +131,7 @@ struct StumpMemberRequestView: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("그루터기장 이름(사업자 이름)")
                 .font(.b2_R)
+                .padding(.top)
             GrewTextField(
                 text: $name,
                 isWrongText: false,
@@ -144,14 +145,14 @@ struct StumpMemberRequestView: View {
                 .font(.b2_R)
             GrewTextField(
                 text: $businessNumber,
-                isWrongText: !isBusinessNumberCorrect,
+                isWrongText: !isBusinessNumberValid,
                 isTextfieldDisabled: false,
                 placeholderText: "000-00-0000",
                 isSearchBar: false
             )
-            .padding(.bottom, isBusinessNumberCorrect ? 18 : 0)
+            .padding(.bottom, isBusinessNumberValid ? 18 : 0)
             
-            if !isBusinessNumberCorrect {
+            if !isBusinessNumberValid {
                 HStack {
                     Spacer()
                     Text("양식에 맞게 입력해주세요.")

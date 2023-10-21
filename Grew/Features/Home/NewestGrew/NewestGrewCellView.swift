@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewestGrewCell: View {
+struct NewestGrewCellView: View {
     
     @EnvironmentObject var grewViewModel: GrewViewModel
     let grew: Grew
@@ -52,7 +52,7 @@ struct NewestGrewCell: View {
 }
 
 #Preview {
-    NewestGrewCell(grew: Grew(
+    NewestGrewCellView(grew: Grew(
         id: "id",
         categoryIndex: "소개팅",
         categorysubIndex: "802",
