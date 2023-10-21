@@ -20,4 +20,3 @@ struct Stump: Identifiable, Codable {
     let phoneNumber: String
     let imageURLs: [String]
 }
-

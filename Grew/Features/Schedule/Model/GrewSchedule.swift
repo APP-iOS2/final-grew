@@ -15,7 +15,7 @@ struct GrewSchedule: Identifiable {
     var scheduleName: String
     var date: Date
     var guestNumber: Int
-    var fee: String //?
+    var fee: String // ?
     var location: String
     var color: Color
 }

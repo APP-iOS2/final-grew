@@ -45,16 +45,18 @@ struct CircularProfileImageView: View {
         if let profilePhotoURL = chatMessage.displayProfilePhotoURL {
             KFImage.url(profilePhotoURL)
                 .placeholder { _ in
-                    Image(systemName: "person.crop.circle")
+                    Image("chatUser")
                         .font(.system(size: imagesize.size.width))
                 }
                 .resizable()
-                .frame(width: imagesize.size.width, height: imagesize.size.height)
+               
                 .clipShape(Circle())
         } else {
-            Image(systemName: "person.crop.circle")
-                .opacity(0.5)
-                .font(.system(size: imagesize.size.width))
+            Image("chatUser")
+                .resizable()
+                .frame(width: imagesize.size.width, height: imagesize.size.height)
+               
+               
         }
     }
     
@@ -63,15 +65,17 @@ struct CircularProfileImageView: View {
         if let url {
             KFImage.url(URL(string: url))
                 .placeholder { _ in
-                    Image(systemName: "person.crop.circle")
+                    Image("chatUser")
                         .font(.system(size: imagesize.size.width))
                 }
                 .resizable()
                 .frame(width: imagesize.size.width, height: imagesize.size.height)
                 .clipShape(Circle())
         } else {
-            Image(systemName: "person.crop.circle")
-                .font(.system(size: imagesize.size.width))
+            Image("chatUser")
+                .resizable()
+                .frame(width: imagesize.size.width, height: imagesize.size.height)
+            
         }
     }
     

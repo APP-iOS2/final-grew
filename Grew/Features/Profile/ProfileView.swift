@@ -8,49 +8,67 @@
 import SwiftUI
 
 struct ProfileView: View {
-    var userStore: UserStore
-    var grewViewModel: GrewViewModel
-   
-    @State private var isMyProfile: Bool = true
-    @State var selectedGroup: String = "내 모임"
+    @EnvironmentObject private var grewViewModel: GrewViewModel
+    @EnvironmentObject private var chatStore: ChatStore
+    @EnvironmentObject private var messageStore: MessageStore
     
-    @EnvironmentObject var userViewModel: UserViewModel
+    @State private var isMessageAlert: Bool = false
+    @State private var selectedGroup: String = "내 모임"
+    
+    let user: User?
     
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-                ProfileHeaderView(name: userViewModel.currentUser?.nickName ?? "",
-                                  statusMessage: userViewModel.currentUser?.introduce ?? "",
-                                  userStore: userStore,
-                                  userViewModel: userViewModel,
-                                  grewViewModel: grewViewModel)
+                ProfileHeaderView(
+                    user: user ?? User.dummyUser
+                )
                 
                 UserContentListView()
+                    .padding(.horizontal, 10)
             }
             .toolbar {
-                ToolbarItem {
-                    NavigationLink {
-                        SettingView()
-                    } label: {
-                        Image(systemName: "gearshape.fill")
+                if user == UserStore.shared.currentUser {
+                    ToolbarItem {
+                        NavigationLink {
+                            SettingView()
+                        } label: {
+                            Image(systemName: "gearshape.fill")
+                        }
+                        .foregroundColor(.black)
                     }
-                    .foregroundColor(.black)
+                } else {
+                    ToolbarItem {
+                        Button {
+                            //                            SettingView()
+                        } label: {
+                            Image(systemName: "paperplane.fill")
+                        }
+                        .foregroundColor(.black)
+                    }
+                    
                 }
             }
-        }
-        .onAppear {
-            guard let currentUserId = UserDefaults.standard.string(forKey: "userId") else {
-                return
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .alert("확인", isPresented: $isMessageAlert) {
+                Button("취소", role: .cancel) {}
+                Button("확인", role: .destructive) {
+                        startMessage()
+                        isMessageAlert = false
+                }
+            } message: {
+                Text("1:1 채팅방으로 이동합니다.")
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    // 1:1 메시지 생성
+    private func startMessage() {
         
     }
 }
 
 #Preview {
     NavigationStack {
-        ProfileView(userStore: UserStore(), grewViewModel: GrewViewModel())
-            .environmentObject(UserViewModel())
+        ProfileView(user: UserStore.shared.currentUser!)
     }
 }

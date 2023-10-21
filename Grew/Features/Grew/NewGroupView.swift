@@ -46,7 +46,8 @@ struct NewGrewView: View {
                             } label: {
                                 Image(systemName: "chevron.backward")
                                     .font(.system(size: 25))
-                                    .foregroundColor(.gray)
+                                    .foregroundStyle(Color.black)
+                                    .padding()
                             }
                         }
                     }
@@ -57,7 +58,8 @@ struct NewGrewView: View {
                             } label: {
                                 Image(systemName: "xmark")
                                     .font(.system(size: 25))
-                                    .foregroundColor(.gray)
+                                    .foregroundStyle(Color.black)
+                                    .padding()
                             }
                         }
                     }
@@ -136,8 +138,8 @@ extension NewGrewView {
                 } label: {
                     Text("다음")
                         .grewButtonModifier(
-                            width: 343,
-                            height: 60,
+                            width: 330,
+                            height: 50, // 회원가입뷰(AuthRegisterEmailView) => 45
                             buttonColor:
                                 currentViewIndex == 1 && (!isCategoryValid || !isSubCategoryValid) ||
                             currentViewIndex == 2 && ((!isNameValid && viewModel.isOnline) || (!viewModel.isOnline && !isLocationValid)) ||

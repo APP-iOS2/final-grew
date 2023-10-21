@@ -9,7 +9,11 @@ import SwiftUI
 
 struct PurchaseAdsBannerView: View {
     var body: some View {
-        Text("RemoveAdsView")
+        ZStack {
+            Image("grewbanner")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }
     }
 }
 

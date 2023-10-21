@@ -15,7 +15,7 @@ final class ChatStore: ObservableObject {
     private var listener: ListenerRegistration?
     private var db = Firestore.firestore()
     
-    //해당 유저, 그루 값 들고 있기
+    // 해당 유저, 그루 값 들고 있기
     var targetUserInfoDict: [String: [User]]
     var targetGrewInfoDict: [String: Grew]
     
@@ -78,6 +78,8 @@ extension ChatStore {
     // 채팅방 fetch하면서 연관된 User정보 값 가지고 있기
     func fetchChatRooms() async {
         let snapshot = await getChatRoomDocuments()
+        
+//        await removeChatRoomsList()
         
         var newChatRooms: [ChatRoom] = []
         

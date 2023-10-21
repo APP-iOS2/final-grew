@@ -6,23 +6,37 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CircleImage: View {
-    @State var userViewModel: UserViewModel
-    
     var body: some View {
-        Image(userViewModel.currentUser?.userImageURLString ?? "defaultProfile")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 115) // 100
-            .clipShape(Circle())
-            .overlay {
-                Circle().stroke(.white, lineWidth: 7)
-            }
-//            .shadow(radius: )
+        if let imageString = UserStore.shared.currentUser?.userImageURLString {
+            KFImage(URL(string: imageString))
+                .placeholder({
+                    ProgressView()
+                })
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100) // 100
+                .clipShape(Circle())
+                .overlay {
+                    Circle().stroke(.white, lineWidth: 7)
+                }
+                .padding(.leading, 20)
+        } else {
+            Image("chatUser")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100) // 100
+                .clipShape(Circle())
+                .overlay {
+                    Circle().stroke(.white, lineWidth: 7)
+                }
+                .padding(.leading, 20)
+        }
     }
 }
 
 #Preview {
-    CircleImage(userViewModel: UserViewModel())
+    CircleImage()
 }

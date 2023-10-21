@@ -5,8 +5,8 @@
 //  Created by daye on 2023/09/25.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct MessageBubbles: View {
     let chatMessage: ChatMessage
@@ -35,10 +35,13 @@ struct MessageBubbles: View {
     private var myBubble: some View {
         HStack(alignment: .bottom) {
             Spacer()
-            Text(chatMessage.createdDateString)
-                .font(.c2_R)
-                .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
-                .foregroundColor(.gray)
+            VStack{
+                Spacer()
+                Text(chatMessage.createdDateString)
+                    .font(.c2_R)
+                    .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
+                    .foregroundColor(.gray)
+            }
             VStack{
                 if !chatMessage.attachImageURL.isEmpty {
                     KFImage.url(URL(string: chatMessage.attachImageURL))
@@ -52,19 +55,23 @@ struct MessageBubbles: View {
                     
                 } else {
                     Text(chatMessage.text)
-                         .font(.c1_R)
+                        .font(.c1_R)
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15) )
                 }
             }
             .background(Color.Main)
             .cornerRadius(15)
+
         }
     }
     
     private var otherBubble: some View {
         HStack{
-            CircularProfileImageView(chatMessage: chatMessage, url: nil, imagesize: .bubble)
+            VStack{
+                CircularProfileImageView(chatMessage: chatMessage, url: nil, imagesize: .bubble)
+                Spacer()
+            }
             VStack(alignment: .leading){
                 Text(chatMessage.userName)
                     .font(.c1_B)
@@ -79,6 +86,7 @@ struct MessageBubbles: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
+
                     if chatMessage.text.isEmpty {
                         
                     } else {
@@ -94,11 +102,13 @@ struct MessageBubbles: View {
                         .stroke(Color.LightGray2, lineWidth: 1)
                 )
             }
-            
-            Text(chatMessage.createdDateString)
-                .font(.c2_R)
-                .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
-                .foregroundColor(.gray)
+            VStack{
+                Spacer()
+                Text(chatMessage.createdDateString)
+                    .font(.c2_R)
+                    .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
+                    .foregroundColor(.gray)
+            }
             Spacer()
         }.padding(.top, 10)
     }
@@ -114,4 +124,3 @@ struct MessageBubbles: View {
         }
     }
 }
-

@@ -55,7 +55,6 @@ struct ScheduleOptionMenu: View {
                         .cornerRadius(8)
                 }
             }
-            
            if(hasOption && menuName == "참가비") {
                ZStack{
                    TextField(menuName, text: $option)
@@ -102,7 +101,7 @@ struct ScheduleOptionMenu: View {
                 }
             }
             
-           else if(hasOption && menuName == "위치") {
+            else if (hasOption && menuName == "위치") {
                 ZStack(alignment: .leading){
                     Rectangle()
                         .frame(height: 45)
