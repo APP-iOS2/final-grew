@@ -31,12 +31,12 @@ struct EditProfileView: View {
                     ZStack(alignment: .bottomTrailing) {
                         if let unwrappedImage = image {
 //                            Image(uiImage: unwrappedImage)
-                            KFImage(URL(string: user.userImageURLString ?? "defaultProfile"))
+                            KFImage(URL(string: user.userImageURLString ?? "chatUser"))
                                 .placeholder({
                                     ProgressView()
                                 })
                                 .resizable()
-                                .frame(width: 120, height: 120)
+                                .frame(width: 100, height: 100)
                                 .cornerRadius(60)
                             
                             Image(systemName: "plus.circle.fill")
@@ -48,9 +48,9 @@ struct EditProfileView: View {
                                         .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
                                 )
                         } else {
-                            Image(uiImage: UIImage(named: "defaultProfile")!)
+                            Image(uiImage: UIImage(named: "chatUser")!)
                                 .resizable()
-                                .frame(width: 120, height: 120)
+                                .frame(width: 100, height: 100)
                                 .cornerRadius(60)
                         }
                         
@@ -59,70 +59,55 @@ struct EditProfileView: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("이름")
-                        .bold()
-                        .font(.title3)
                     
-                    RoundedRectangle(cornerRadius: 7)
-                        .frame(height: 60)
-                        .foregroundStyle(Color.LightGray2)
-                        .overlay(alignment: .leading) {
-                            Text("\(UserStore.shared.currentUser?.nickName ?? "알 수 없음")")
-                                .padding()
-                                .foregroundColor(Color.DarkGray1)
-                        }
+                 
+                        Text("이름")
+                        .padding(.top, 20)
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(height: 43)
+                            .foregroundStyle(Color.LightGray2)
+                            .overlay(alignment: .leading) {
+                                Text("\(UserStore.shared.currentUser?.nickName ?? "알 수 없음")")
+                                    .padding()
+                                    .foregroundColor(Color.DarkGray1)
+                            }
+                   
                     
-                    
-                }
-                .padding(.vertical)
-                
-                VStack(alignment: .leading) {
-                    Text("상태 메세지")
-                        .bold()
-                        .font(.title3)
-                      
-                    RoundedRectangle(cornerRadius: 7)
-                        .frame(height: 60)
-                        .foregroundColor(Color.BackgroundGray)
-                        .overlay(
-                            TextField("상태 메세지를 입력하세요", text: $statusMessage)
-                                .padding(.horizontal, 16)
-                                
-                        )
+                  
+                        Text("상태 메세지")
+                        .padding(.top, 20)
+                    GrewTextField(text: $statusMessage, isWrongText: false, isTextfieldDisabled: false, placeholderText: "상태 메세지를 입력하세요", isSearchBar: false)
                         .padding(.horizontal, 1)
-                        .padding(.vertical, 4)
                     
                     Text("생년월일 및 성별")
-                        .bold()
-                        .font(.title3)
-                        .padding(.vertical, 5)
-                    
+                        .padding(.top, 20)
                     HStack {
-                        RoundedRectangle(cornerRadius: 7)
-                            .frame(height: 60)
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(height: 43)
                             .foregroundColor(Color.LightGray2)
                             .overlay(
                                 Text("\(UserStore.shared.currentUser?.dob ?? "생년월일 정보없음")")
                                     .padding(.horizontal, 16)
                                     .foregroundColor(Color.DarkGray1)
                             )
-                            .padding(.vertical, 10)
+                            .padding(.horizontal, 1)
                         
-                        RoundedRectangle(cornerRadius: 7)
-                            .frame(width: 100, height: 60)
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(width: 100, height: 43)
                             .foregroundColor(Color.LightGray2)
                             .overlay(
                                 Text("\(UserStore.shared.currentUser?.gender ?? "성별없음")")
                                     .padding(.horizontal, 16)
                                     .foregroundColor(Color.DarkGray1)
-                                
                             )
-                            .padding(.horizontal, 10)
+                            .padding(.leading, 10)
                     }
+                    
                     
                     Spacer()
                 }
-            }
+            }.font(.b2_R)
+            .padding(30)
 //            .frame(maxWidth: .infinity, alignment: .leading)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: Button(action: {
@@ -131,7 +116,6 @@ struct EditProfileView: View {
                 Image(systemName: "chevron.backward")
                     .foregroundColor(Color.black)
             }))
-            .padding()
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -140,52 +124,52 @@ struct EditProfileView: View {
                         dismiss()
                     } label: {
                         Text("저장")
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(Color.grewMainColor)
-                            .cornerRadius(5)
+                            .foregroundColor(Color.grewMainColor)
+                            .font(.b2_B)
+                         
                     }
                     .buttonStyle(.plain)
+
                 }
+                .buttonStyle(.plain)
             }
-            .sheet(isPresented: $showModal, content: {
-                ImageEditModalView(showModal: $showModal) { form in
-                    switch form {
-                    case .camera:
-                        showModal = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            showCamera = true
-                        }
-                    case .picker:
-                        showModal = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            showImagePicker = true
-                        }
+        }
+        .sheet(isPresented: $showModal, content: {
+            ImageEditModalView(showModal: $showModal) { form in
+                switch form {
+                case .camera:
+                    showModal = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        showCamera = true
+                    }
+                case .picker:
+                    showModal = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        showImagePicker = true
                     }
                 }
-                .presentationDetents([.height(120), .height(120)])
-            })
-            .sheet(isPresented: $showImagePicker, content: {
-                ImagePicker(image: $image)
-            })
-            .sheet(isPresented: $showCamera, content: {
-                CameraView(isPresented: $showImagePicker) { uiImage in
-                    image = uiImage
-                }
-            })
-            .navigationTitle("프로필 편집")
-            .navigationBarTitleDisplayMode(.inline)
-            .onAppear {
-                if let user = UserStore.shared.currentUser {
-                    name = user.nickName
-                    statusMessage = user.introduce ?? ""
-                }
             }
-            .refreshable {
-                Task {
-                    try await UserStore.shared.loadUserData()
-                }
+            .presentationDetents([.height(120), .height(120)])
+        })
+        .sheet(isPresented: $showImagePicker, content: {
+            ImagePicker(image: $image)
+        })
+        .sheet(isPresented: $showCamera, content: {
+            CameraView(isPresented: $showImagePicker) { uiImage in
+                image = uiImage
+            }
+        })
+        .navigationTitle("프로필 편집")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            if let user = UserStore.shared.currentUser {
+                name = user.nickName
+                statusMessage = user.introduce ?? ""
+            }
+        }
+        .refreshable {
+            Task {
+                try await UserStore.shared.loadUserData()
             }
         }
     }

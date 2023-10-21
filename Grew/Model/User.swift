@@ -9,7 +9,8 @@ import Firebase
 import FirebaseFirestoreSwift
 import Foundation
 
-struct User: Identifiable, Codable, Equatable {
+struct User: Identifiable, Codable, Equatable, Hashable {
+
     /// 유저의 Auth 고유 아이디.
     @DocumentID var id: String? /*= UUID().uuidString*/
     /// 유저 이름
