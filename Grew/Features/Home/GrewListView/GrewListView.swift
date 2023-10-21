@@ -17,6 +17,7 @@ struct GrewListView: View {
                 // 그루 디테일 뷰
                 NavigationLink{
                     GrewDetailView(grew: grewList[index])
+                        .navigationBarBackButtonHidden(true)
                 } label: {
                     HStack {
                         

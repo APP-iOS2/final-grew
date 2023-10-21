@@ -11,8 +11,8 @@
 import SwiftUI
 
 struct CreateScheduleMainView: View {
-    @ObservedObject var scheduleStore: ScheduleStore
-    
+    @EnvironmentObject var scheduleStore: ScheduleStore
+    let gid: String
     @State private var scheduleName: String = ""
     @State private var date = Date()
     @State private var maximumMenbers: String = ""
@@ -106,6 +106,7 @@ struct CreateScheduleMainView: View {
     private var submitBtn: some View {
         Button {
             errorCheck()
+    
         } label: {
             Text("일정 생성")
                 .frame(width: 350, height: 45)
@@ -143,6 +144,7 @@ struct CreateScheduleMainView: View {
                 isLocationError = true
                 return
             }
+            createSchedule()
             showingFinishAlert.toggle()
         }
     }
@@ -152,7 +154,7 @@ struct CreateScheduleMainView: View {
         do{
             let newSchedule = Schedule(
                 id: id,
-                gid: "그루 아이디 넣어야행",
+                gid: gid,
                 scheduleName: scheduleName,
                 date: date,
                 maximumMember: Int(maximumMenbers) ?? 2,
@@ -172,6 +174,7 @@ struct CreateScheduleMainView: View {
 
 #Preview {
     NavigationStack{
-        CreateScheduleMainView(scheduleStore: ScheduleStore())
+        CreateScheduleMainView(gid: "")
+            .environmentObject(ScheduleStore())
     }
 }

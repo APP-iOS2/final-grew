@@ -17,6 +17,7 @@ struct NewestGrewListView: View {
                 ForEach(grewList) { grew in
                     NavigationLink {
                         GrewDetailView(grew: grew)
+                            .navigationBarBackButtonHidden(true)
                     } label: {
                         NewestGrewCell(grew: grew)
                             .padding(.horizontal, 8)
