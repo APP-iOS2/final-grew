@@ -135,6 +135,7 @@
 		3E185AF32ADCC66B00F7FC46 /* ScheduleDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185AF22ADCC66B00F7FC46 /* ScheduleDatePicker.swift */; };
 		3E185AF52ADCC69500F7FC46 /* ScheduleColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185AF42ADCC69500F7FC46 /* ScheduleColorPicker.swift */; };
 		3E185B242ADDB35D00F7FC46 /* KakaoWebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */; };
+		3E46B9052AE3EE1800AF1BAB /* GrewListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46B9042AE3EE1800AF1BAB /* GrewListItemView.swift */; };
 		3EC0F0582ADE597100D07009 /* TextFieldErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F0572ADE597100D07009 /* TextFieldErrorModifier.swift */; };
 		3EC0F05B2ADE6E1700D07009 /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05A2ADE6E1700D07009 /* ScheduleStore.swift */; };
 		3EC0F05D2ADE6E2900D07009 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05C2ADE6E2900D07009 /* Schedule.swift */; };
@@ -296,6 +297,7 @@
 		3E185AF22ADCC66B00F7FC46 /* ScheduleDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePicker.swift; sourceTree = "<group>"; };
 		3E185AF42ADCC69500F7FC46 /* ScheduleColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleColorPicker.swift; sourceTree = "<group>"; };
 		3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoWebController.swift; sourceTree = "<group>"; };
+		3E46B9042AE3EE1800AF1BAB /* GrewListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewListItemView.swift; sourceTree = "<group>"; };
 		3EC0F0572ADE597100D07009 /* TextFieldErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldErrorModifier.swift; sourceTree = "<group>"; };
 		3EC0F05A2ADE6E1700D07009 /* ScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStore.swift; sourceTree = "<group>"; };
 		3EC0F05C2ADE6E2900D07009 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				21C1F1B22ACFEEC10029E436 /* MyGroupView.swift */,
 				21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */,
 				21F32A722ADEB9A800B3E1C5 /* SavedGrewView.swift */,
+				3E46B9042AE3EE1800AF1BAB /* GrewListItemView.swift */,
 				215709602AD53484006ABE35 /* MyProfileEdit */,
 			);
 			path = MyProfile;
@@ -1247,6 +1250,7 @@
 				CE9292D12ADF6966005052AF /* StumpMemberRequestView.swift in Sources */,
 				312E98E42ACD2EAA00E38626 /* Image+Extensions.swift in Sources */,
 				2157096A2AD68960006ABE35 /* ImageEditModalView.swift in Sources */,
+				3E46B9052AE3EE1800AF1BAB /* GrewListItemView.swift in Sources */,
 				2157096C2AD69246006ABE35 /* CameraView.swift in Sources */,
 				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,

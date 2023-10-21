@@ -14,36 +14,23 @@ struct ProfileView: View {
     @State var selectedGroup: String = "내 모임"
     
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading) {
-                ProfileHeaderView(name: UserStore.shared.currentUser?.nickName ?? "",
-                                  statusMessage: UserStore.shared.currentUser?.introduce ?? "")
-                
-                UserContentListView()
-                    .padding(.horizontal, 10)
-            }
-            .toolbar {
-//                if UserStore.shared.currentUser.id != UserStore.shared. {
-                    ToolbarItem {
-                        NavigationLink {
-                            SettingView()
-                        } label: {
-                            Image(systemName: "gearshape.fill")
-                        }
-                        .foregroundColor(.black)
-                    }
-//                    ToolbarItem {
-//                        NavigationLink {
-////                            SettingView()
-//                        } label: {
-//                            Image(systemName: "paperplane.fill")
-//                        }
-//                        .foregroundColor(.black)
-//                    }
-
-//                } else {
-//                    
-//                }
+        ScrollView {
+            ProfileHeaderView(name: UserStore.shared.currentUser?.nickName ?? "",
+                              statusMessage: UserStore.shared.currentUser?.introduce ?? "")
+            UserContentListView()
+                .padding(.horizontal, 10)
+            
+        }
+        .ignoresSafeArea()
+        .toolbar {
+            //                if UserStore.shared.currentUser.id != UserStore.shared. {
+            ToolbarItem {
+                NavigationLink {
+                    SettingView()
+                } label: {
+                    Image(systemName: "gearshape.fill")
+                }
+                .foregroundColor(.black)
             }
         }
         .onAppear {

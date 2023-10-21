@@ -27,7 +27,7 @@ struct UserContentListView: View {
                 ForEach(ProfileThreadFilter.allCases) { filter in
                     VStack {
                         Text(filter.title)
-                            .font(selectedFilter == filter ? .b2_B : .b2_R)
+                            .font(selectedFilter == filter ? .b3_B : .b3_R)
                             .padding(.top, 8)
                         
                         if selectedFilter == filter {
