@@ -9,15 +9,17 @@ import SwiftUI
 
 struct ScheduleListView: View {
     
-    private var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    @EnvironmentObject var scheduleStore: ScheduleStore
+    let gid: String
+    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isShowingScheduleSheet: Bool = false
     @State private var isShowingEditSheet: Bool = false
     @State var detentHeight: CGFloat = 0
     
     var body: some View {
         VStack {
-            Button {
-                
+            NavigationLink {
+                CreateScheduleMainView(gid: gid)
             } label: {
                 Text("+ 새 일정 만들기")
             }
@@ -28,8 +30,9 @@ struct ScheduleListView: View {
                 .padding(.vertical, 10)
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach((0...19), id: \.self) { _ in
-                        ScheduleCellView()
+                    let schedules = getSchedules()
+                    ForEach(0 ..< schedules.count) { index in
+                        ScheduleCellView(index: index, schedule: schedules[index])
                             .onTapGesture(perform: {
                                 isShowingEditSheet = false
                                 isShowingScheduleSheet = true
@@ -56,6 +59,13 @@ struct ScheduleListView: View {
                 }
                 .presentationDetents([.height(self.detentHeight)])
         })
+    }
+    func getSchedules() -> [Schedule] {
+        
+        let schedules = scheduleStore.schedules.filter {
+            $0.gid == gid
+        }
+        return schedules
     }
 }
 
@@ -88,5 +98,6 @@ extension View {
 }
 
 #Preview {
-    ScheduleListView()
+    ScheduleListView(gid: "")
+        .environmentObject(ScheduleStore())
 }

@@ -59,12 +59,10 @@ struct ProfileHeaderView: View {
                 
                 Divider()
             }
-            
-        }
-        .background(Color.grewMainColor)
-        .ignoresSafeArea()
-        .frame(height: UIScreen.main.bounds.height/3)
-        
+
+        }.background(Color.grewMainColor)
+            .frame(height: UIScreen.main.bounds.height / 3)
+
     }
     
 }

@@ -129,45 +129,47 @@ struct EditProfileView: View {
                          
                     }
                     .buttonStyle(.plain)
+
                 }
+                .buttonStyle(.plain)
             }
-            .sheet(isPresented: $showModal, content: {
-                ImageEditModalView(showModal: $showModal) { form in
-                    switch form {
-                    case .camera:
-                        showModal = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            showCamera = true
-                        }
-                    case .picker:
-                        showModal = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            showImagePicker = true
-                        }
+        }
+        .sheet(isPresented: $showModal, content: {
+            ImageEditModalView(showModal: $showModal) { form in
+                switch form {
+                case .camera:
+                    showModal = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        showCamera = true
+                    }
+                case .picker:
+                    showModal = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        showImagePicker = true
                     }
                 }
-                .presentationDetents([.height(120), .height(120)])
-            })
-            .sheet(isPresented: $showImagePicker, content: {
-                ImagePicker(image: $image)
-            })
-            .sheet(isPresented: $showCamera, content: {
-                CameraView(isPresented: $showImagePicker) { uiImage in
-                    image = uiImage
-                }
-            })
-            .navigationTitle("프로필 편집")
-            .navigationBarTitleDisplayMode(.inline)
-            .onAppear {
-                if let user = UserStore.shared.currentUser {
-                    name = user.nickName
-                    statusMessage = user.introduce ?? ""
-                }
             }
-            .refreshable {
-                Task {
-                    try await UserStore.shared.loadUserData()
-                }
+            .presentationDetents([.height(120), .height(120)])
+        })
+        .sheet(isPresented: $showImagePicker, content: {
+            ImagePicker(image: $image)
+        })
+        .sheet(isPresented: $showCamera, content: {
+            CameraView(isPresented: $showImagePicker) { uiImage in
+                image = uiImage
+            }
+        })
+        .navigationTitle("프로필 편집")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            if let user = UserStore.shared.currentUser {
+                name = user.nickName
+                statusMessage = user.introduce ?? ""
+            }
+        }
+        .refreshable {
+            Task {
+                try await UserStore.shared.loadUserData()
             }
         }
     }

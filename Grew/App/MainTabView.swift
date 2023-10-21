@@ -38,7 +38,7 @@ extension MainTabView {
                 .tag(SelectViews.home)
                 .setTabBarVisibility(isHidden: true)
             
-            Text("내 주변")
+            MapView()
                 .tag(SelectViews.location)
             
             // Text("추가")
@@ -120,8 +120,8 @@ extension MainTabView {
             
             
         }
-        // 현재 사이즈 or 피그마의 90 사이즈
-        //        .frame(height: 90)
+        .frame(height: 60)
+        .border(height: 0.5, edges: [.top], color: .LightGray1)
     }
     
 }
@@ -133,8 +133,51 @@ extension View {
             tabBar.isHidden = true
         }))
     }
+    
+    func border(height: CGFloat, edges: [Edge], color: SwiftUI.Color) -> some View {
+        overlay(EdgeBorder(height: height, edges: edges).foregroundColor(color))
+    }
 }
 
+struct EdgeBorder: Shape {
+    var height: CGFloat
+    var edges: [Edge]
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        for edge in edges {
+            var x: CGFloat {
+                switch edge {
+                case .top, .bottom, .leading: return rect.minX
+                case .trailing: return rect.maxX
+                }
+            }
+
+            var y: CGFloat {
+                switch edge {
+                case .top, .leading, .trailing: return rect.minY
+                case .bottom: return rect.maxY
+                }
+            }
+
+            var w: CGFloat {
+                switch edge {
+                case .top, .bottom: return rect.width
+                case .leading, .trailing: return rect.width
+                }
+            }
+
+            var h: CGFloat {
+                switch edge {
+                case .top, .bottom: return self.height
+                case .leading, .trailing: return rect.height
+                }
+            }
+            path.addPath(Path(CGRect(x: x, y: y, width: w, height: h)))
+        }
+        return path
+    }
+}
 
 #Preview {
     MainTabView()

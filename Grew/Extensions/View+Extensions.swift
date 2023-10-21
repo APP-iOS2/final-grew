@@ -38,15 +38,15 @@ extension View {
         font: Font,
         fontColor: Color,
         cornerRadius: CGFloat) -> some View {
-        modifier(
-            GrewButtonModifier(
-                width: width,
-                height: height,
-                buttonColor: buttonColor,
-                font: font,
-                fontColor: fontColor,
-                cornerRadius: cornerRadius))
-    }
+            modifier(
+                GrewButtonModifier(
+                    width: width,
+                    height: height,
+                    buttonColor: buttonColor,
+                    font: font,
+                    fontColor: fontColor,
+                    cornerRadius: cornerRadius))
+        }
     
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
@@ -57,5 +57,37 @@ extension View {
             #selector(UIResponder.resignFirstResponder),
             to: nil, from: nil, for: nil
         )
+    }
+}
+
+
+extension View {
+    func navigationBarBackground(_ background: Color = .orange) -> some View {
+        return self
+            .modifier(ColoredNavigationBar(background: background))
+    }
+}
+
+struct ColoredNavigationBar: ViewModifier {
+    var background: Color
+    
+    init(background: Color) {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.shadowColor = .clear
+        navBarAppearance.shadowImage = UIImage()
+        
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().compactAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        self.background = background
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .toolbarBackground(
+                background,
+                for: .navigationBar
+            )
+            .toolbarBackground(.visible, for: .navigationBar)
     }
 }
