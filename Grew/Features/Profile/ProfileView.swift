@@ -19,76 +19,78 @@ struct ProfileView: View {
     let user: User?
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack {
-                headerView()
-                
-                LazyVStack(pinnedViews: [.sectionHeaders])  {
-                    Section {
-                        switch selectedFilter {
-                        case .myGroup:
-                            MyGroupView()
-                                .background(Color.white)
-                        case .myGroupSchedule:
-                            MyGroupScheduleView()
-                                .background(Color.white)
-                        case .savedGrew:
-                            SavedGrewView()
-                                .background(Color.white)
-                        }
-                    } header: {
-                        UserContentListView( selectedFilter: $selectedFilter)
-                            .padding(.horizontal, 10)
-                    }
-                }
-            }
-            .background(Color.white)
-            .toolbar {
-                if user == UserStore.shared.currentUser {
-                    ToolbarItem {
-                        NavigationLink {
-                            SettingView()
-                        } label: {
-                            Image(systemName: "gearshape.fill")
-                        }
-                        .foregroundColor(.black)
-                    }
-                } else {
-                    ToolbarItem {
-                        Button {
-                            //                            SettingView()
-                        } label: {
-                            Image(systemName: "paperplane.fill")
-                                .foregroundStyle(Color.white)
-                        }
-                        .foregroundColor(.black)
-                    }
+        NavigationStack {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    headerView()
                     
+                    LazyVStack(pinnedViews: [.sectionHeaders])  {
+                        Section {
+                            switch selectedFilter {
+                            case .myGroup:
+                                MyGroupView()
+                                    .background(Color.white)
+                            case .myGroupSchedule:
+                                MyGroupScheduleView()
+                                    .background(Color.white)
+                            case .savedGrew:
+                                SavedGrewView()
+                                    .background(Color.white)
+                            }
+                        } header: {
+                            UserContentListView( selectedFilter: $selectedFilter)
+                                .padding(.horizontal, 10)
+                        }
+                    }
+                }
+                .background(Color.white)
+                .toolbar {
+                    if user == UserStore.shared.currentUser {
+                        ToolbarItem {
+                            NavigationLink {
+                                SettingView()
+                            } label: {
+                                Image(systemName: "gearshape.fill")
+                            }
+                            .foregroundColor(.black)
+                        }
+                    } else {
+                        ToolbarItem {
+                            Button {
+                                //                            SettingView()
+                            } label: {
+                                Image(systemName: "paperplane.fill")
+                                    .foregroundStyle(Color.white)
+                            }
+                            .foregroundColor(.black)
+                        }
+                        
+                    }
+                }
+                .navigationBarBackground(.Main)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .coordinateSpace(name: "SCROLL")
+                //            .ignoresSafeArea(.container, edges: .vertical)
+                .alert("확인", isPresented: $isMessageAlert) {
+                    Button("취소", role: .cancel) {}
+                    Button("확인", role: .destructive) {
+                        startMessage()
+                        isMessageAlert = false
+                    }
+                } message: {
+                    Text("1:1 채팅방으로 이동합니다.")
                 }
             }
-            .navigationBarBackground(.Main)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .coordinateSpace(name: "SCROLL")
-//            .ignoresSafeArea(.container, edges: .vertical)
-            .alert("확인", isPresented: $isMessageAlert) {
-                Button("취소", role: .cancel) {}
-                Button("확인", role: .destructive) {
-                    startMessage()
-                    isMessageAlert = false
-                }
-            } message: {
-                Text("1:1 채팅방으로 이동합니다.")
+            .background(alignment: .bottom) {
+                Rectangle()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 475)
+                    .foregroundStyle(Color.white)
+                    .ignoresSafeArea()
+                    .offset(y: 100)
             }
+            .background(Color.Main)
         }
-        .background(alignment: .bottom) {
-            Rectangle()
-                .frame(maxWidth: .infinity)
-                .frame(height: 475)
-                .foregroundStyle(Color.white)
-                .ignoresSafeArea()
-                .offset(y: 100)
-        }
-        .background(Color.Main)
     }
     // 1:1 메시지 생성
     private func startMessage() {
@@ -152,8 +154,6 @@ struct ProfileView: View {
         }
         .frame(height: UIScreen.main.bounds.height / 3)
     }
-    
-    
 }
 
 #Preview {
