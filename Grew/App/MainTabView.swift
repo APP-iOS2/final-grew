@@ -14,7 +14,7 @@ enum SelectViews {
 struct MainTabView: View {
     @State private var isNewGrewViewPresented = false
     @State private var selection: SelectViews = .home
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var userStore: UserStore
     
     var body: some View {
    
@@ -46,7 +46,7 @@ extension MainTabView {
             MainChatView()
                 .tag(SelectViews.chat)
             
-            ProfileView(userStore: UserStore(), grewViewModel: GrewViewModel(), userViewModel: _userViewModel)
+            ProfileView(grewViewModel: GrewViewModel())
                 .tag(SelectViews.profile)
         }
     }
@@ -137,5 +137,5 @@ extension View {
 
 #Preview {
     MainTabView()
-        .environmentObject(UserViewModel())
+        .environmentObject(UserStore())
 }

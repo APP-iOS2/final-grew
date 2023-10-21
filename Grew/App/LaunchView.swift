@@ -11,7 +11,6 @@ struct LaunchView: View {
  
     @StateObject private var vm = LaunchViewModel()
     @StateObject private var grewViewModel = GrewViewModel()
-    @StateObject private var userViewModel = UserViewModel()
     @StateObject private var appState = AppState()
     
     var body: some View {
@@ -20,7 +19,6 @@ struct LaunchView: View {
         } else {
             MainTabView()
                 .environmentObject(grewViewModel)
-                .environmentObject(UserViewModel())
                 .environmentObject(AppState())
                 .onAppear {
                     grewViewModel.fetchJsonData()

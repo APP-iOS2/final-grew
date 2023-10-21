@@ -16,6 +16,7 @@ struct GrewApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    @StateObject private var userStore = UserStore()
     @StateObject private var chatStore = ChatStore()
     @StateObject private var messageStore = MessageStore()
     // 카카오 로그인 키 값
@@ -28,6 +29,7 @@ struct GrewApp: App {
             NavigationView {
                 LaunchView()
             }
+            .environmentObject(userStore)
             .environmentObject(chatStore)
             .environmentObject(messageStore)
         }

@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct CircleImage: View {
-    @State var userViewModel: UserViewModel
     
     var body: some View {
-        Image(userViewModel.currentUser?.userImageURLString ?? "defaultProfile")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 115) // 100
-            .clipShape(Circle())
-            .overlay {
-                Circle().stroke(.white, lineWidth: 7)
-            }
-//            .shadow(radius: )
+        AsyncImage(url: URL(string: UserStore.shared.currentUser?.userImageURLString ?? "defaultProfile"), content: { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 150) // 100
+                .clipShape(Circle())
+                .overlay {
+                    Circle().stroke(.white, lineWidth: 7)
+                }
+        }, placeholder: {
+            ProgressView()
+        })
+        //            .shadow(radius: )
     }
 }
 
 #Preview {
-    CircleImage(userViewModel: UserViewModel())
+    CircleImage()
 }
