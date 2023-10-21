@@ -17,11 +17,11 @@ enum ImageConstants {
     var size: (width: CGFloat, height: CGFloat) {
         switch self {
         case .bubble:
-            (Constants.bubble, Constants.bubble)
+            (Constant.bubble, Constant.bubble)
         case .chatRoomList:
-            (Constants.chatRoomList, Constants.chatRoomList)
+            (Constant.chatRoomList, Constant.chatRoomList)
         case .profile:
-            (Constants.profilePageImage, Constants.profilePageImage)
+            (Constant.profilePageImage, Constant.profilePageImage)
         }
     }
 }

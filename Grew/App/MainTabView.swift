@@ -43,7 +43,7 @@ extension MainTabView {
             
             // Text("추가")
             
-            Text("채팅")
+            MainChatView()
                 .tag(SelectViews.chat)
             
             ProfileView(userStore: UserStore(), grewViewModel: GrewViewModel(), userViewModel: _userViewModel)

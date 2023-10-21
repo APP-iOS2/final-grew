@@ -11,68 +11,101 @@ struct GroupNameView: View {
     @EnvironmentObject var viewModel: GrewViewModel
     @State private var isNextView = false
     @State private var isAnimating = false
+    @State private var groupNameView = false
+    @Binding var isNameValid: Bool
+    @Binding var isLocationValid: Bool
+    @State var isShowingSheet = false
     
+    @State private var isWrongname: Bool = false
+    @State private var isWrongdob: Bool = false
+    @State private var isMeetingTextfieldDisabled: Bool = false
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("모임이름을 적어볼까요?")
-                    .font(.title2).fontWeight(.semibold)
+                Text("모임이름을 입력해주세요")
+                    .font(.b1_R).fontWeight(.semibold)
                     .padding(.bottom, 10)
-                HStack(spacing: 15) {
-                    TextField("모임이름을 입력해주세요", text: $viewModel.meetingTitle)
-                        .keyboardType(.namePhonePad)
+                VStack(alignment: .leading) {
+                    GrewTextField(text: $viewModel.meetingTitle, isWrongText: isWrongname, isTextfieldDisabled: isMeetingTextfieldDisabled, placeholderText: "모임이름을 입력해주세요", isSearchBar: false)
+                        .onChange(of: viewModel.meetingTitle){ oldValue, newValue in
+                            isNameValid = !newValue.isEmpty
+                        }
                 }
-                .padding(10)
-                .overlay{
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.gray, lineWidth: 2)
-                }
-                .cornerRadius(5)
             }//: VStack
             .padding()
             .animationModifier(isAnimating: isAnimating, delay: 0)
+            
             VStack(alignment: .leading) {
-                Text("주로 어디에서 활동하세요?")
-                    .font(.title2).fontWeight(.semibold)
+                Text("활동방법을 선택해주세요")
+                    .font(.b1_R).fontWeight(.semibold)
                     .padding(.bottom, 0)
                 HStack(spacing: 40) {
                     Spacer()
-                    Button(action: { viewModel.isOnline = true }, label: {
+                    Button {
+                        viewModel.isOnline = true
+                    } label: {
                         Text("온라인")
-                            .font(.title2.bold())
-                            .frame(width: 100, height: 50)
-                            .foregroundColor(.white)
-                            .background(viewModel.isOnline ? Color.green : Color.gray)
-                            .cornerRadius(10)
-                    })
-
+                            .grewButtonModifier(width: 90, height: 50, buttonColor: viewModel.isOnline ? Color.Sub : Color.BackgroundGray, font: .b2_B, fontColor: .white, cornerRadius: 10)
+                    }
+                    
                     Button(action: {
                         viewModel.isOnline = false
                         isNextView = true
                     }, label: {
                         Text("오프라인")
-                            .font(.title2.bold())
-                            .frame(width: 100, height: 50)
-                            .foregroundColor(.white)
-                            .background(viewModel.isOnline ? Color.gray : Color.green)
-                            .cornerRadius(10)
+                            .grewButtonModifier(width: 90, height: 50, buttonColor: viewModel.isOnline ? Color.BackgroundGray : Color.Sub, font: .b2_B, fontColor: .white, cornerRadius: 10)
                     })
                     Spacer()
+                    
                 }//: HStack
+                
             }//: VStack
             .padding()
             .animationModifier(isAnimating: isAnimating, delay: 1)
+            
+            if !viewModel.isOnline {
+                VStack(alignment: .leading) {
+                    Divider()
+                    HStack {
+                        Image(systemName: "location.circle.fill")
+                        Text("장소")
+                    }
+                    Button {
+                        isShowingSheet = true
+                    } label: {
+                        if viewModel.location.isEmpty {
+                            Image(systemName: "magnifyingglass")
+                            Text("장소를 입력해주세요")
+                        } else {
+                            Text(viewModel.location)
+                        }
+                    }.grewButtonModifier(width: 343, height: 40, buttonColor: .LightGray1, font: .b3_R, fontColor: .black, cornerRadius: 10)
+                        .onChange(of: viewModel.location) { _, newValue in
+                            isLocationValid = !newValue.isEmpty
+                        }
+                }.padding()
+                    .animationModifier(isAnimating: groupNameView, delay: 0)
+                    .onAppear {
+                        groupNameView = true
+                    }
+            }
+            
         }//: ScrollView
+        .sheet(isPresented: $isShowingSheet, content: {
+            WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $isShowingSheet, location: $viewModel.location, latitude: $viewModel.latitude, longitude: $viewModel.longitude)
+        })
         .onAppear(perform: {
             isAnimating = true
+            
+            if !isNameValid {
+                viewModel.meetingTitle = ""
+                viewModel.location = ""
+            }
         })
-        .fullScreenCover(isPresented: $isNextView){
-            LocationView()
-        }
     }//: body
 }
 
 #Preview {
-    GroupNameView()
+    GroupNameView(isNameValid: .constant(true), isLocationValid: .constant(true))
         .environmentObject(GrewViewModel())
 }
