@@ -54,9 +54,11 @@ struct EditProfileView: View {
                                     .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
                             )
                     }
+
                 }
                 .padding(.vertical)
                 .padding(.top, 10)
+
           
                 VStack(alignment: .leading) {
                     
