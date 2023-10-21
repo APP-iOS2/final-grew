@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestoreSwift
 
 struct MapListItemView: View {
+    
+    var item: Grew
+    @State var users: [User] = []
+    
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: "https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/1563685899/B.jpg?108000000"), content: { image in
+            AsyncImage(url: URL(string: item.imageURL), content: { image in
                 image
                     .resizable()
             }, placeholder: {
@@ -22,47 +28,79 @@ struct MapListItemView: View {
             Spacer(minLength: 12)
             
             VStack(alignment: .leading) {
-                CategoryView(isSmall: true, text: "문화예술", handleAction: {
+                CategoryView(isSmall: true, isSelectable: false, category: item.indexForCategory, handleAction: {
                     
                 })
-                Text("보드게임")
+                Text(item.title)
                     .font(.b2_B)
                     .foregroundColor(Color.Black)
-                Text("멋쟁이보드게임")
+                Text(item.description)
                     .font(.c2_B)
                     .foregroundColor(Color.DarkGray1)
                 HStack {
                     Group {
-                        ForEach(0..<5, content: { index in
-                            AsyncImage(url: URL(string: "https://image.news1.kr/system/photos/2019/9/6/3810898/article.jpg/dims/quality/80/optimize"), content: { image in
-                                image
-                                    .resizable()
-                            }, placeholder: {
-                                ProgressView()
-                            })
-                            .frame(width: 24, height: 24)
-                            .clipShape(.capsule)
-                        }).padding(.horizontal, -5)
+                        ForEach(users, id: \.self) { user in
+                            VStack {
+                                if user.userImageURLString == nil {
+                                    Image("defaultUserProfile")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .clipShape(.capsule)
+                                } else {
+                                    AsyncImage(url: URL(string: user.userImageURLString ?? ""), content: { image in
+                                        image
+                                            .resizable()
+                                    }, placeholder: {
+                                        ProgressView()
+                                    })
+                                    .frame(width: 24, height: 24)
+                                    .clipShape(.capsule)
+                                }
+                            }
+                            .padding(.horizontal, -5)
+                        }
                     }
-                    
                     Spacer()
                     
                     Group {
                         Image(systemName: "person.2.fill")
                             .font(Font.custom("SF Pro", size: 10))
                             .foregroundColor(Color.DarkGray1)
-                        Text("5/20")
+                        Text("\(item.currentMembers.count)/\(item.maximumMembers)")
                             .font(.c2_B)
                             .foregroundColor(Color.DarkGray1)
                     }
                 }
             }
         }.padding(.horizontal, 16)
-        .padding(.vertical, 12)
+            .padding(.vertical, 12)
+            .onAppear(perform: {
+                fetchUsers()
+            })
+    }
+    
+    func fetchUsers() {
+        Firestore.firestore().collection("users").whereField("id", in: [item.currentMembers]).getDocuments() {
+            snapshot, error in
+            
+            guard let documents = snapshot?.documents else {
+                return
+            }
+            
+            for document in documents {
+                do {
+                    let user = try document.data(as: User.self)
+                    users.append(user)
+                } catch {
+                    print("Can't decoding user")
+                }
+                
+            }
+        }
     }
 }
 
 
 #Preview {
-    MapListItemView()
+    MapListItemView(item: Grew.defaultGrew)
 }

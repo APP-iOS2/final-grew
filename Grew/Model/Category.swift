@@ -69,4 +69,33 @@ enum GrewMainCategory: CaseIterable, Identifiable {
             return "외국어"
         }
     }
+    
+    var categoryForIndex: String {
+        switch self {
+        case .artsAndCulture:
+            return "100"
+        case .activity:
+            return "200"
+        case .travel:
+            return "300"
+        case .cookingAndCrafting:
+            return "400"
+        case .foodAndDrinking:
+            return "500"
+        case .gamingAndEntertainment:
+            return "600"
+        case .musicAndInstruments:
+            return "700"
+        case .carAndMotorcycle:
+            return "800"
+        case .photographyAndVideo:
+            return "900"
+        case .neighborhoodAndSocial:
+            return "1000"
+        case .study:
+            return "1100"
+        case .languages:
+            return "1200"
+        }
+    }
 }

@@ -7,6 +7,7 @@
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
+import GeoFire
 
 class GrewViewModel: ObservableObject {
     @Published var grewList: [Grew] = []
@@ -33,6 +34,21 @@ class GrewViewModel: ObservableObject {
     private let db = Firestore.firestore()
     
     func addGrew(_ grew: Grew) {
+        var grew = grew
+        grew.geoHash = {
+            guard let latitude = grew.latitude,
+                  let longitude = grew.longitude else {
+                return nil
+            }
+            
+            if let doubleLatitude = Double(latitude),
+               let doubleLongitude = Double(longitude) {
+                return GFUtils.geoHash(forLocation: CLLocationCoordinate2D(latitude: doubleLatitude, longitude: doubleLongitude))
+            }
+            
+            return nil
+        }()
+        
         do {
             _ = try db.collection("grews").addDocument(from: grew)
             fetchGrew()

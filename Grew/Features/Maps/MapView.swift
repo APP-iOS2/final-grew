@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct MapView: View {
-//    private let scrollViewHeight: CGFloat = 120
-    
-    @State private var expandList: Bool = false
+    @EnvironmentObject var viewModel: MapStore
+
     @State private var yDragTranslation: CGFloat = 0
     
     var body: some View {
@@ -19,13 +18,13 @@ struct MapView: View {
                 NaverMapView()
                 MainMapOverTopView()
                 MainMapOverSheetView(handleAction: {
-                    self.expandList.toggle()
+                    self.viewModel.expandList.toggle()
                 }).frame(height: 800)
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .offset(
                     x: 0,
-                    y: geometry.size.height - (expandList ? 400 : -20)
+                    y: geometry.size.height - (viewModel.expandList ? 400 : -20)
                 )
                 .offset(x: 0, y: self.yDragTranslation)
                 .animation(.spring(), value: 1)
@@ -33,7 +32,7 @@ struct MapView: View {
                     DragGesture().onChanged { value in
                         self.yDragTranslation = value.translation.height
                     }.onEnded { value in
-                        self.expandList = (value.translation.height < -80)
+                        self.viewModel.expandList = (value.translation.height < -80)
                         self.yDragTranslation = 0
                     }
                 )

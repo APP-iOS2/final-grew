@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct MainMapOverTopView: View {
-    private let mainCategories: [GrewMainCategory] = GrewMainCategory.allCases
+    @EnvironmentObject var viewModel: MapStore
     
     var body: some View {
         VStack {
             Spacer()
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(mainCategories) { mainCategory in
-                        CategoryView(isSmall: false, text: mainCategory.categoryForKorean, handleAction: {
-                            
+                    ForEach(viewModel.mainCategories) { mainCategory in
+                        CategoryView(isSmall: false, category: mainCategory, handleAction: {
+                            viewModel.toggleCategory(category: mainCategory)
                         })
                     }
                 }
