@@ -15,37 +15,23 @@ struct ProfileView: View {
     let user: User
     
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading) {
-                ProfileHeaderView(
-                    user: user
-                )
-                
-                UserContentListView()
-                    .padding(.horizontal, 10)
-            }
-            .toolbar {
-                //                if UserStore.shared.currentUser.id != UserStore.shared. {
-                ToolbarItem {
-                    NavigationLink {
-                        SettingView()
-                    } label: {
-                        Image(systemName: "gearshape.fill")
-                    }
-                    .foregroundColor(.black)
+        ScrollView {
+            ProfileHeaderView(name: UserStore.shared.currentUser?.nickName ?? "",
+                              statusMessage: UserStore.shared.currentUser?.introduce ?? "")
+            UserContentListView()
+                .padding(.horizontal, 10)
+            
+        }
+        .ignoresSafeArea()
+        .toolbar {
+            //                if UserStore.shared.currentUser.id != UserStore.shared. {
+            ToolbarItem {
+                NavigationLink {
+                    SettingView()
+                } label: {
+                    Image(systemName: "gearshape.fill")
                 }
-                //                    ToolbarItem {
-                //                        NavigationLink {
-                ////                            SettingView()
-                //                        } label: {
-                //                            Image(systemName: "paperplane.fill")
-                //                        }
-                //                        .foregroundColor(.black)
-                //                    }
-                
-                //                } else {
-                //
-                //                }
+                .foregroundColor(.black)
             }
         }
         .onAppear {

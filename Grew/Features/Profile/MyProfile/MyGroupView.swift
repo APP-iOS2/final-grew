@@ -2,7 +2,7 @@
 //  MyGroup.swift
 //  Grew
 //
-//  Created by Chloe Chung on 2023/09/22.
+//  Created by daye on 2023/10/21.
 //
 
 import SwiftUI
@@ -10,11 +10,13 @@ import SwiftUI
 struct MyGroupView: View {
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                Text("My Group View")
+        VStack{
+            ForEach(0..<10){ i in
+                GrewListItemView()
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
             }
-        }
+        }.padding(.bottom, 30)
     }
 }
 
