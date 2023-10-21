@@ -22,6 +22,7 @@ struct LaunchView: View {
                 .environmentObject(grewViewModel)
                 .environmentObject(AppState())
                 .environmentObject(stumpStore)
+                .environmentObject(ScheduleStore())
                 .onAppear {
                     grewViewModel.fetchJsonData()
                 }
