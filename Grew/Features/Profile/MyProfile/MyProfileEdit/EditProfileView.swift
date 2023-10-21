@@ -53,13 +53,19 @@ struct EditProfileView: View {
                                 Circle()
                                     .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
                             )
-                        
                     }
-                    .padding(.vertical)
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: 27, height: 27)
+                        .foregroundColor(Color.grewMainColor) // 이미지 색상 설정
+                        .overlay(
+                            Circle()
+                                .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
+                        )
                 }
-                
+                .padding(.vertical)
+          
                 VStack(alignment: .leading) {
-                    
                     
                     Text("이름")
                         .padding(.top, 20)
@@ -71,8 +77,6 @@ struct EditProfileView: View {
                                 .padding()
                                 .foregroundColor(Color.DarkGray1)
                         }
-                    
-                    
                     
                     Text("상태 메세지")
                         .padding(.top, 20)
@@ -102,9 +106,6 @@ struct EditProfileView: View {
                             )
                             .padding(.leading, 10)
                     }
-                    
-                    
-                    Spacer()
                 }
             }.font(.b2_R)
                 .padding(30)
@@ -131,6 +132,7 @@ struct EditProfileView: View {
                         .buttonStyle(.plain)
                     }
                 }
+
         }
         .sheet(isPresented: $showModal, content: {
             ImageEditModalView(showModal: $showModal) { form in
