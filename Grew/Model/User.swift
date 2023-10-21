@@ -60,8 +60,8 @@ enum ProfileThreadFilter: Int, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .myGroup: return "내 모임"
-        case .myGroupSchedule: return "내 모임 일정"
+        case .myGroup: return "내 그루"
+        case .myGroupSchedule: return "내 그루 일정"
         case .savedGrew: return "찜한 그루"
         }
     }
