@@ -740,6 +740,7 @@
 				215709612AD534AC006ABE35 /* MyProfileSetting */,
 				216315682ADFA62F00208CB4 /* Inform */,
 				312E98ED2ACD30AF00E38626 /* Search */,
+				3E65D84F2AE591EC00035E44 /* ProfileStore.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

@@ -2,7 +2,7 @@
 //  ProfileStore.swift
 //  Grew
 //
-//  Created by daye on 10/22/23.
+//  Created by Queen daye on 10/22/23.
 //
 
 import Foundation
@@ -172,7 +172,4 @@ class ProfileStore: ObservableObject {
         // 로그인 된 유저이면 마이 페이지 이기때문에 마저 조회
         await fetchSchedule(grews: myGrews)
     }
-    
-    
-    
 }

@@ -13,8 +13,6 @@ struct MyGroupScheduleView: View {
     var body: some View {
         VStack{
             //ProfileGrewDataEmptyView(systemImage: "calendar", message: "그루 일정이 없어요.")
-
-
             LazyVGrid(columns: columns) {
                 ForEach((0..<10), id: \.self) { i in
                         // Home - GrewDetail 폴더
@@ -35,7 +33,6 @@ struct MyGroupScheduleView: View {
 
                 }
         }.padding(.bottom, 30)
-
     }
 }
 
