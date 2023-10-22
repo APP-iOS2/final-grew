@@ -50,7 +50,7 @@ struct GrewDetailView: View {
                         case .schedule:
                             ScheduleListView(gid: grew.id)
                         case .groot:
-                            GrootListView()
+                            GrootListView(grew: grew)
                         }
                     } header: {
                         makeHeaderFilterView()
