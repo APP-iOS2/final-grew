@@ -126,7 +126,6 @@ struct ScheduleOptionMenu: View {
                             .font(.b2_R)
                             .padding(.leading, 15)
                     }
-                    
                 }
                 if isOptionError {
                     ErrorText(errorMessage: "위치를 선택해주세요.")

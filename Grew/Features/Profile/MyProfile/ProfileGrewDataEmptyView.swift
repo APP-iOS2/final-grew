@@ -4,7 +4,10 @@
 //
 //  Created by daye on 10/22/23.
 //
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0204374 (Feat: 채팅버블 및 스케쥴생성뷰 수정, ProfileEmptyDataView 추가, Profile 뷰모델 생성)
 import SwiftUI
 
 struct ProfileGrewDataEmptyView: View {

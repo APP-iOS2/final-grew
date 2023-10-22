@@ -13,7 +13,10 @@ struct MyGroupScheduleView: View {
     var body: some View {
         VStack{
             //ProfileGrewDataEmptyView(systemImage: "calendar", message: "그루 일정이 없어요.")
+<<<<<<< HEAD
             
+=======
+>>>>>>> 0204374 (Feat: 채팅버블 및 스케쥴생성뷰 수정, ProfileEmptyDataView 추가, Profile 뷰모델 생성)
             LazyVGrid(columns: columns) {
                 ForEach((0..<10), id: \.self) { i in
                         // Home - GrewDetail 폴더
@@ -31,9 +34,15 @@ struct MyGroupScheduleView: View {
                             .padding(.bottom, 30)
 
                     }
+<<<<<<< HEAD
                 }.padding(.bottom, 30)
         }
         
+=======
+                }
+        }.padding(.bottom, 30)
+       
+>>>>>>> 0204374 (Feat: 채팅버블 및 스케쥴생성뷰 수정, ProfileEmptyDataView 추가, Profile 뷰모델 생성)
     }
 }
 

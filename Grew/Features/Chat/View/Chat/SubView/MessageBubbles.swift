@@ -112,6 +112,7 @@ struct MessageBubbles: View {
                         .stroke(Color.LightGray2, lineWidth: 1)
                 )
             }
+            
             VStack{
                 Spacer()
                 Text(chatMessage.createdDateString)
