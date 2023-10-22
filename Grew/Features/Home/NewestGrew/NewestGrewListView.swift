@@ -19,7 +19,7 @@ struct NewestGrewListView: View {
                         GrewDetailView(grew: grew)
                             .navigationBarBackButtonHidden(true)
                     } label: {
-                        NewestGrewCell(grew: grew)
+                        NewestGrewCellView(grew: grew)
                             .padding(.horizontal, 8)
                     }
                 }

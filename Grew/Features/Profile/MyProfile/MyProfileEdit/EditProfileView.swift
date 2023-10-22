@@ -2,7 +2,7 @@
 //  EditProfileView.swift
 //  Grew
 //
-//  Created by Chloe Chung on 2023/09/21.
+//  Created by da-hye on 2023/10/21
 //
 
 import SwiftUI
@@ -24,13 +24,13 @@ struct EditProfileView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .center) {
+            VStack {
                 Button {
                     showModal = true
                 } label: {
                     ZStack(alignment: .bottomTrailing) {
                         if let unwrappedImage = image {
-//                            Image(uiImage: unwrappedImage)
+                            //                            Image(uiImage: unwrappedImage)
                             KFImage(URL(string: user.userImageURLString ?? "chatUser"))
                                 .placeholder({
                                     ProgressView()
@@ -38,15 +38,6 @@ struct EditProfileView: View {
                                 .resizable()
                                 .frame(width: 100, height: 100)
                                 .cornerRadius(60)
-                            
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 27, height: 27)
-                                .foregroundColor(Color.grewMainColor) // 이미지 색상 설정
-                                .overlay(
-                                    Circle()
-                                        .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
-                                )
                         } else {
                             Image(uiImage: UIImage(named: "chatUser")!)
                                 .resizable()
@@ -54,27 +45,35 @@ struct EditProfileView: View {
                                 .cornerRadius(60)
                         }
                         
+                        Image(systemName: "pencil.circle.fill")
+                            .resizable()
+                            .frame(width: 27, height: 27)
+                            .foregroundColor(Color.grewMainColor) // 이미지 색상 설정
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
+                            )
                     }
-                    .padding(.vertical)
+
                 }
-                
+                .padding(.vertical)
+                .padding(.top, 10)
+
+          
                 VStack(alignment: .leading) {
                     
-                 
-                        Text("이름")
+                    Text("이름")
                         .padding(.top, 20)
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(height: 43)
-                            .foregroundStyle(Color.LightGray2)
-                            .overlay(alignment: .leading) {
-                                Text("\(UserStore.shared.currentUser?.nickName ?? "알 수 없음")")
-                                    .padding()
-                                    .foregroundColor(Color.DarkGray1)
-                            }
-                   
+                    RoundedRectangle(cornerRadius: 8)
+                        .frame(height: 43)
+                        .foregroundStyle(Color.LightGray2)
+                        .overlay(alignment: .leading) {
+                            Text("\(UserStore.shared.currentUser?.nickName ?? "알 수 없음")")
+                                .padding()
+                                .foregroundColor(Color.DarkGray1)
+                        }
                     
-                  
-                        Text("상태 메세지")
+                    Text("상태 메세지")
                         .padding(.top, 20)
                     GrewTextField(text: $statusMessage, isWrongText: false, isTextfieldDisabled: false, placeholderText: "상태 메세지를 입력하세요", isSearchBar: false)
                         .padding(.horizontal, 1)
@@ -102,37 +101,34 @@ struct EditProfileView: View {
                             )
                             .padding(.leading, 10)
                     }
-                    
-                    
-                    Spacer()
                 }
+                Spacer()
             }.font(.b2_R)
-            .padding(30)
-//            .frame(maxWidth: .infinity, alignment: .leading)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: Button(action: {
-                self.mode.wrappedValue.dismiss()
-            }, label: {
-                Image(systemName: "chevron.backward")
-                    .foregroundColor(Color.black)
-            }))
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        // 프로필 편집
-                        saveProfileChanges()
-                        dismiss()
-                    } label: {
-                        Text("저장")
-                            .foregroundColor(Color.grewMainColor)
-                            .font(.b2_B)
-                         
+                .padding(30)
+            //            .frame(maxWidth: .infinity, alignment: .leading)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: Button(action: {
+                    self.mode.wrappedValue.dismiss()
+                }, label: {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(Color.black)
+                }))
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            // 프로필 편집
+                            saveProfileChanges()
+                            dismiss()
+                        } label: {
+                            Text("저장")
+                                .foregroundColor(Color.grewMainColor)
+                                .font(.b2_B)
+                            
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
-
                 }
-//                .buttonStyle(.plain)
-            }
+
         }
         .sheet(isPresented: $showModal, content: {
             ImageEditModalView(showModal: $showModal) { form in
