@@ -13,7 +13,7 @@ struct ChatMessageListView: View {
     @EnvironmentObject private var messageStore: MessageStore
     let chatRoom: ChatRoom
     let targetUserInfos: [User]
-    //targetGrewInfoDict
+    // targetGrewInfoDict
     @Binding var groupDetailConfig: GroupDetailConfig
     @Binding var isMenuOpen: Bool
     @Binding var x: CGFloat
