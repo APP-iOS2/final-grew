@@ -23,7 +23,7 @@ struct EditProfileView: View {
     @State private var openPhoto = false
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 Button {
                     showModal = true
@@ -129,7 +129,7 @@ struct EditProfileView: View {
                     }
                 }
 
-        }
+//        }
         .sheet(isPresented: $showModal, content: {
             ImageEditModalView(showModal: $showModal) { form in
                 switch form {

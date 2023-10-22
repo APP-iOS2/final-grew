@@ -53,6 +53,7 @@ class HomeRouter: ObservableObject {
 class ProfileRouter: ObservableObject {
     enum ProfileRoute: Hashable {
         case banner
+        case edit(user: User)
         case setting
     }
     

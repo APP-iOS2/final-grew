@@ -73,6 +73,8 @@ extension MainTabView {
                         case .banner:
                             PurchaseAdsBannerView()
                                 .navigationBarBackButtonHidden()
+                        case .edit(let user):
+                            EditProfileView(user: user)
                         case .setting:
                             SettingView()
                                 .navigationBarBackButtonHidden()

@@ -148,10 +148,11 @@ struct ProfileView: View {
                         }
                         Spacer()
                         
-                        NavigationLink {
-                            EditProfileView(
-                                user: user ?? User.dummyUser
-                            )
+                        Button {
+//                            EditProfileView(
+//                                user: user ?? User.dummyUser
+//                            )
+                            router.profileNavigate(to: .edit(user: user ?? User.dummyUser))
                         } label: {
                             if user == UserStore.shared.currentUser {
                                 Text("프로필 수정")
