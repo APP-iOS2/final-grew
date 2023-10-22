@@ -11,7 +11,7 @@ import SwiftUI
 struct NewestScheduleListView: View {
     @EnvironmentObject var grewViewModel: GrewViewModel
     @EnvironmentObject var scheduleStore: ScheduleStore
-  
+    
     @State private var isShowingSheet: Bool = false
     let deviceWidth = UIScreen.main.bounds.size.width
     let quote: String = "\""
@@ -79,18 +79,18 @@ extension NewestScheduleListView {
             .foregroundStyle(.white)
             .padding(.top, 40)
             .padding(.horizontal)
-
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 let schedules = isEmptySchedule()
                 HStack(spacing: 20) {
                     Spacer(minLength: deviceWidth / 2 - 140 / 2 - 20)
-
+                    
                     ForEach(0 ..< schedules.count) { index in
                         GeometryReader { proxy in
                             let scale = getScale(proxy: proxy)
-
-                                // Home - GrewDetail 폴더
-                                ScheduleCellView(index: index, schedule: schedules[index])
+                            
+                            // Home - GrewDetail 폴더
+                            ScheduleCellView(index: index, schedule: schedules[index])
                                 .scaledToFill()
                                 .shadow(radius: 6)
                                 .padding(.vertical, 10)
@@ -99,9 +99,9 @@ extension NewestScheduleListView {
                                 }
                                 .scaleEffect(.init(width: scale, height: scale))
                                 .animation(.easeOut(duration: 0.5))
-                                    .onTapGesture {
-                                        isShowingSheet = true
-                                    }
+                                .onTapGesture {
+                                    isShowingSheet = true
+                                }
                             
                         } // GeometryReader
                         // 지오메트리 자체에 프레임을 주는 것
@@ -158,20 +158,14 @@ extension NewestScheduleListView {
     var noScheduleView: some View {
         VStack {
             VStack(alignment: .leading) {
-                HStack {
-                    Text("새로운 일정이 아직 없어요...")
-                        .font(.h2_B)
-                    Spacer()
-                }
-                HStack {
-                    Text("직접 그루를 생성하고 일정을 만들어봐요!")
-                        .font(.h2_B)
-                    Spacer()
-                }
+                Text("새로운 일정이 아직 없어요...")
+                    .font(.h2_B)
+                    .padding(.bottom, 5)
+                Text("직접 그루를 생성하고 일정을 만들어봐요!")
+                    .font(.h2_B)
             }
             .foregroundStyle(.white)
             .padding(.top, 40)
-            .padding(.horizontal)
             // 이미지
             Image("newest")
                 .resizable()

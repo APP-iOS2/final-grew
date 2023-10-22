@@ -27,17 +27,17 @@ extension Font {
 
     /// headline2_light
     static var h2_L: Font {
-        return Font.custom("S-CoreDream-3Light", size: 20)
+        return Font.custom("S-CoreDream-3Light", size: 18)
     }
     
     /// headline2_regular
     static var h2_R: Font {
-        return Font.custom("S-CoreDream-5Medium", size: 20)
+        return Font.custom("S-CoreDream-5Medium", size: 18)
     }
     
     /// headline2_bold
     static var h2_B: Font {
-        return Font.custom("S-CoreDream-7ExtraBold", size: 20)
+        return Font.custom("S-CoreDream-7ExtraBold", size: 18)
     }
     
     /// body1_light
