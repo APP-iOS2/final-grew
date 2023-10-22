@@ -10,14 +10,15 @@ import SwiftUI
 struct GrewListView: View {
     
     let grewList: [Grew]
+    @EnvironmentObject var router: Router
     
     var body: some View {
         VStack {
             ForEach(0 ..< grewList.count, id: \.self) { index in
                 // 그루 디테일 뷰
-                NavigationLink{
-                    GrewDetailView(grew: grewList[index])
-                        .navigationBarBackButtonHidden(true)
+                Button {
+//                    GrewDetailView(grew: grewList[index])
+                    router.navigate(to: .grewDetail(grew: grewList[index]))
                 } label: {
                     HStack {
                         
