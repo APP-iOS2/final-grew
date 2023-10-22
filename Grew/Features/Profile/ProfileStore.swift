@@ -68,8 +68,10 @@ class ProfileStore: ObservableObject {
         if user != UserStore.shared.currentUser {
             return
         }
-        // 로그인 된 유저이면 마이 페이지 이기때문에 마저 조회
+        // 로그인 된 유저이면 마이 페이지 이기때문에 스케쥴, 찜한 그루 조회
         await fetchSchedule(grews: myGrews)
+        
+        await fetchLikedGrew(user: user)
     }
     
     func getUserSchedule(grews: [Grew]?) async -> QuerySnapshot? {
@@ -148,7 +150,7 @@ class ProfileStore: ObservableObject {
     
     
     func fetchLikedGrew(user: User?) async {
-        var snapshot = await getUserLikedGrew(user: user)
+        let snapshot = await getUserLikedGrew(user: user)
         
         var myGrews: [Grew] = []
         print("@@@@@@@@@@@@@@@@@@@@@@프로필 찜한 그루 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@")
@@ -164,12 +166,6 @@ class ProfileStore: ObservableObject {
                 }
             }
         }
-        await allocateMyGrew(grews: myGrews)
-        // 유저 조회 시 로그인 된 회원이 아닐 경우 (프로필 조회)
-        if user != UserStore.shared.currentUser {
-            return
-        }
-        // 로그인 된 유저이면 마이 페이지 이기때문에 마저 조회
-        await fetchSchedule(grews: myGrews)
+        await allocateMyLikedGrew(grews: myGrews)
     }
 }
