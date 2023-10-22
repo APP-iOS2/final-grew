@@ -16,28 +16,38 @@ struct GrewEditSheetView: View {
     var body: some View {
         VStack {
             if grew.hostID == UserStore.shared.currentUser?.id ?? "" {
-                HStack {
+                Button {
+                    //
+                } label: {
                     Text("그루트 관리")
                     Spacer()
                     Image(systemName: "pencil")
                 }
                 .padding(.vertical, 8)
+                .foregroundStyle(Color.Black)
                 Divider()
-                HStack {
+                Button {
+                    //
+                } label: {
                     Text("그루 해체하기")
                     Spacer()
                     Image(systemName: "trash")
                 }
                 .padding(.vertical, 8)
-                .foregroundColor(.Error)
+                .foregroundStyle(Color.Error)
             } else {
                 HStack {
-                    Text("탈퇴하기")
-                    Spacer()
-                    Image(systemName: "trash")
+                    Button {
+                        //
+                    } label: {
+                        Text("탈퇴하기")
+                        Spacer()
+                        Image(systemName: "trash")
+                    }
+                    .padding(.vertical, 8)
+                    .foregroundStyle(Color.Error)
                 }
-                .padding(.vertical, 8)
-                .foregroundColor(.Error)
+                
             }
         }
         .font(.b2_R)
@@ -65,6 +75,7 @@ struct GrewEditSheetView: View {
         currentMembers: ["id1", "id2"],
         isNeedFee: false,
         fee: 0
-        )
     )
+    )
+    .environmentObject(UserViewModel())
 }
