@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import SwiftUI
 
-class Profile: ObservableObject {
+class ProfileStore: ObservableObject {
     @Published var myGrew: [Grew]
     @Published var mySchedule: [Schedule]
     @Published var savedGrew: [Grew] // ?0? 멍미 찜한 그루
@@ -22,7 +22,7 @@ class Profile: ObservableObject {
     }
     
     let db = Firestore.firestore()
-   
+    
     func getUserGrew(user: User?) async -> QuerySnapshot? {
         do {
             print(user)
@@ -32,7 +32,6 @@ class Profile: ObservableObject {
             let snapshot = try await db
                 .collection("grews")
                 .whereField("currentMembers", arrayContains: user.id ?? "")
-                .order(by: "lastMessageDate", descending: true)
                 .getDocuments()
             return snapshot
         } catch {
@@ -52,7 +51,7 @@ class Profile: ObservableObject {
         
         var myGrews: [Grew] = []
         print("@@@@@@@@@@@@@@@@@@@@@@프로필 그루 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-
+        
         if let snapshot {
             for document in snapshot.documents {
                 do {
@@ -88,7 +87,7 @@ class Profile: ObservableObject {
             
             let snapshot = try await db
                 .collection("schedule")
-                .whereField("gid", arrayContainsAny: tempGrewsId)
+                .whereField("gid", in: tempGrewsId)
                 .order(by: "date", descending: false)
                 .getDocuments()
             return snapshot
@@ -108,7 +107,7 @@ class Profile: ObservableObject {
         
         var mySchedule: [Schedule] = []
         print("@@@@@@@@@@@@@@@@@@@@@@프로필 스케줄 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-
+        
         if let snapshot {
             for document in snapshot.documents {
                 do {
@@ -121,5 +120,51 @@ class Profile: ObservableObject {
             }
         }
         await allocateMySchedule(schedules: mySchedule)
+    }
+    
+    func getMyLikeGrew(user: User?) async -> QuerySnapshot? {
+        do {
+            print(user)
+            guard let user else {
+                return nil
+            }
+            let snapshot = try await db
+                .collection("grews")
+                .getDocuments()
+            return snapshot
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    @MainActor
+    func allocateMyLikedGrew(grews: [Grew]) {
+        self.savedGrew = grews
+    }
+    
+    
+    func fetchProfileLikeGrew(user: User?) async {
+        var snapshot = await getMyLikeGrew(user: user)
+        
+        var myGrews: [Grew] = []
+        print("@@@@@@@@@@@@@@@@@@@@@@프로필 찜한 그루 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        
+        if let snapshot {
+            for document in snapshot.documents {
+                do {
+                    let temp = try document.data(as: Grew.self)
+                    if let result = temp.heartUserDictionary?[UserStore.shared.currentUser!.id!] {
+                        if result {
+                            myGrews.append(temp)
+                        }
+                    }
+                } catch {
+                    print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+                }
+            }
+            print("\(myGrews)")
+        }
+        await allocateMyLikedGrew(grews: myGrews)
     }
 }
