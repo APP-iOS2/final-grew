@@ -20,6 +20,7 @@ struct ScheduleListView: View {
         VStack {
             NavigationLink {
                 CreateScheduleMainView(gid: gid)
+                    .padding(2)
             } label: {
                 Text("+ 새 일정 만들기")
             }

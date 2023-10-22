@@ -15,6 +15,7 @@ struct MyGroupView: View {
     
     var body: some View {
         VStack {
+            //ProfileGrewDataEmptyView(systemImage: "person.2", message: "아직 그루가 없어요.")
             ForEach(0..<10){ i in
                 GrewListItemView()
                     .padding(.horizontal, 10)

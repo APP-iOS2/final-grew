@@ -114,10 +114,19 @@ struct ScheduleOptionMenu: View {
                         }
                         .modifier(RectangleModifier(isError: $isOptionError))
                         .padding(1)
-                    Text("\(option)")
-                        .foregroundColor(Color.gray)
-                        .font(.b2_R)
-                        .padding(.leading, 15)
+                    if option.isEmpty{
+                        HStack{
+                            Image(systemName: "magnifyingglass")
+                                .padding(.leading, 10)
+                            Text("주소 찾기").font(.b2_R)
+                        }.padding(.leading, 5)
+                    } else{
+                        Text("\(option)")
+                            .foregroundColor(Color.gray)
+                            .font(.b2_R)
+                            .padding(.leading, 15)
+                    }
+                    
                 }
                 if isOptionError {
                     ErrorText(errorMessage: "위치를 선택해주세요.")
