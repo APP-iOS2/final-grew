@@ -118,6 +118,12 @@ struct ProfileView: View {
             }
             .background(Color.Main)
             .navigationBarBackground(.Main)
+            .onAppear{
+                if let user = UserStore.shared.currentUser {
+                   profile.fetchProfileGrew()
+                    // fetch일정도 해줘야됨
+                }
+            }
         }
 //    }
     @ViewBuilder

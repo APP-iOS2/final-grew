@@ -732,8 +732,9 @@
 		312E98EC2ACD30AB00E38626 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				21C1F1AA2ACFEE670029E436 /* ProfileView.swift */,
+				3E65D84A2AE54D6400035E44 /* ProfileViewModel */,
 				21C1F1AC2ACFEE810029E436 /* UserContentListView.swift */,
+				21C1F1AA2ACFEE670029E436 /* ProfileView.swift */,
 				21C1F1AE2ACFEE980029E436 /* RoundSpecificCorners.swift */,
 				2157095D2AD530CE006ABE35 /* MyProfile */,
 				215709612AD534AC006ABE35 /* MyProfileSetting */,
@@ -868,6 +869,14 @@
 				3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */,
 			);
 			path = SubView;
+			sourceTree = "<group>";
+		};
+		3E65D84A2AE54D6400035E44 /* ProfileViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3E65D84B2AE54D9C00035E44 /* ProfileStore.swift */,
+			);
+			path = ProfileViewModel;
 			sourceTree = "<group>";
 		};
 		3EC0F0592ADE6D6F00D07009 /* ViewModel */ = {

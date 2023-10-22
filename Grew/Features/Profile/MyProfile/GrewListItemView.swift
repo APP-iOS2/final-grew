@@ -77,8 +77,8 @@ struct GrewListItemView: View {
                         .foregroundStyle(Color.DarkGray1)
                     }
                     
-                }.padding(.top, 10)
-                    .padding(.leading, 10)
+                }
+
             }
             Spacer()
         }.padding(.horizontal, 5)
@@ -86,7 +86,3 @@ struct GrewListItemView: View {
     }
 }
 
-/*
-#Preview {
-    GrewListItemView()
-}*/
