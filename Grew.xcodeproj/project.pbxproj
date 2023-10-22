@@ -137,6 +137,8 @@
 		3E185AF52ADCC69500F7FC46 /* ScheduleColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185AF42ADCC69500F7FC46 /* ScheduleColorPicker.swift */; };
 		3E185B242ADDB35D00F7FC46 /* KakaoWebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */; };
 		3E46B9052AE3EE1800AF1BAB /* GrewListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46B9042AE3EE1800AF1BAB /* GrewListItemView.swift */; };
+		3E65D84E2AE58FA100035E44 /* ProfileGrewDataEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E65D84D2AE58FA100035E44 /* ProfileGrewDataEmptyView.swift */; };
+		3E65D8502AE591EC00035E44 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E65D84F2AE591EC00035E44 /* ProfileStore.swift */; };
 		3EC0F0582ADE597100D07009 /* TextFieldErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F0572ADE597100D07009 /* TextFieldErrorModifier.swift */; };
 		3EC0F05B2ADE6E1700D07009 /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05A2ADE6E1700D07009 /* ScheduleStore.swift */; };
 		3EC0F05D2ADE6E2900D07009 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0F05C2ADE6E2900D07009 /* Schedule.swift */; };
@@ -302,6 +304,8 @@
 		3E185AF42ADCC69500F7FC46 /* ScheduleColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleColorPicker.swift; sourceTree = "<group>"; };
 		3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoWebController.swift; sourceTree = "<group>"; };
 		3E46B9042AE3EE1800AF1BAB /* GrewListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewListItemView.swift; sourceTree = "<group>"; };
+		3E65D84D2AE58FA100035E44 /* ProfileGrewDataEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGrewDataEmptyView.swift; sourceTree = "<group>"; };
+		3E65D84F2AE591EC00035E44 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		3EC0F0572ADE597100D07009 /* TextFieldErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldErrorModifier.swift; sourceTree = "<group>"; };
 		3EC0F05A2ADE6E1700D07009 /* ScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStore.swift; sourceTree = "<group>"; };
 		3EC0F05C2ADE6E2900D07009 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 				21C1F1B52ACFEEDD0029E436 /* MyGroupScheduleView.swift */,
 				21F32A722ADEB9A800B3E1C5 /* SavedGrewView.swift */,
 				3E46B9042AE3EE1800AF1BAB /* GrewListItemView.swift */,
+				3E65D84D2AE58FA100035E44 /* ProfileGrewDataEmptyView.swift */,
 				215709602AD53484006ABE35 /* MyProfileEdit */,
 			);
 			path = MyProfile;
@@ -734,6 +739,7 @@
 				215709612AD534AC006ABE35 /* MyProfileSetting */,
 				216315682ADFA62F00208CB4 /* Inform */,
 				312E98ED2ACD30AF00E38626 /* Search */,
+				3E65D84F2AE591EC00035E44 /* ProfileStore.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1178,6 +1184,7 @@
 				21C1F1B82ACFEEEC0029E436 /* SettingView.swift in Sources */,
 				215709662AD67625006ABE35 /* UserViewModel.swift in Sources */,
 				3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */,
+				3E65D84E2AE58FA100035E44 /* ProfileGrewDataEmptyView.swift in Sources */,
 				311097A62AD41882000D85AD /* AppState.swift in Sources */,
 				311097722AD4180F000D85AD /* GroupCheckFeeView.swift in Sources */,
 				21C1F1B32ACFEEC10029E436 /* MyGroupView.swift in Sources */,
@@ -1288,6 +1295,7 @@
 				319757562ADEF36600696FF9 /* ChatMessageListView.swift in Sources */,
 				311097622AD417FD000D85AD /* ChatMessage.swift in Sources */,
 				311097B62AD41897000D85AD /* LoadingView.swift in Sources */,
+				3E65D8502AE591EC00035E44 /* ProfileStore.swift in Sources */,
 				2157095F2AD530F8006ABE35 /* ProfileHeaderView.swift in Sources */,
 				3A6D59E02AE0351900627179 /* MapStore.swift in Sources */,
 				3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */,
