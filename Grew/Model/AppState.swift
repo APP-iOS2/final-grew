@@ -31,7 +31,7 @@ class AppState: ObservableObject {
     @Published var routes: [Route] = []
 }
 
-class Router: ObservableObject {
+class HomeRouter: ObservableObject {
     enum HomeRoute: Hashable {
 //        case alert
         case category(grewList: [Grew], secondCategory: [SubCategory])
@@ -39,13 +39,30 @@ class Router: ObservableObject {
         case search
     }
     
-    @Published var path = NavigationPath()
+    @Published var homePath = NavigationPath()
     
     func reset() {
-        path.removeLast(path.count)
+        homePath.removeLast(homePath.count)
     }
     
-    func navigate(to route: HomeRoute) {
-        path.append(route)
+    func homeNavigate(to route: HomeRoute) {
+        homePath.append(route)
+    }
+}
+
+class ProfileRouter: ObservableObject {
+    enum ProfileRoute: Hashable {
+        case banner
+        case setting
+    }
+    
+    @Published var profilePath = NavigationPath()
+    
+    func reset() {
+        profilePath.removeLast(profilePath.count)
+    }
+    
+    func profileNavigate(to route: ProfileRoute) {
+        profilePath.append(route)
     }
 }

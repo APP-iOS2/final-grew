@@ -10,7 +10,7 @@ import SwiftUI
 struct GrewListView: View {
     
     let grewList: [Grew]
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: HomeRouter
     
     var body: some View {
         VStack {
@@ -18,7 +18,7 @@ struct GrewListView: View {
                 // 그루 디테일 뷰
                 Button {
 //                    GrewDetailView(grew: grewList[index])
-                    router.navigate(to: .grewDetail(grew: grewList[index]))
+                    router.homeNavigate(to: .grewDetail(grew: grewList[index]))
                 } label: {
                     HStack {
                         

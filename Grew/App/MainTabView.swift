@@ -16,7 +16,8 @@ struct MainTabView: View {
     @State private var selection: SelectViews = .home
     @EnvironmentObject private var chatStore: ChatStore
     @EnvironmentObject var grewViewModel: GrewViewModel
-    @StateObject var router: Router = Router()
+    @StateObject var homeRouter: HomeRouter = HomeRouter()
+    @StateObject var profileRouter: ProfileRouter = ProfileRouter()
     
     var body: some View {
         
@@ -34,11 +35,10 @@ extension MainTabView {
     var tabView: some View {
         
         TabView(selection: $selection) {
-            NavigationStack(path: $router.path) {
+            NavigationStack(path: $homeRouter.homePath) {
                 HomeView()
-                    .tag(SelectViews.home)
                     .setTabBarVisibility(isHidden: true)
-                    .navigationDestination(for: Router.HomeRoute.self, destination: { home in
+                    .navigationDestination(for: HomeRouter.HomeRoute.self, destination: { home in
                         switch home {
 //                        case .alert:
                             
@@ -54,7 +54,8 @@ extension MainTabView {
                         }
                     })
             }
-            .environmentObject(router)
+            .tag(SelectViews.home)
+            .environmentObject(homeRouter)
                 
             
             MapView()
@@ -64,9 +65,22 @@ extension MainTabView {
             
             MainChatView()
                 .tag(SelectViews.chat)
-          
-            ProfileView(selection: $selection, user: UserStore.shared.currentUser)
-                .tag(SelectViews.profile)
+            
+            NavigationStack(path: $profileRouter.profilePath) {
+                ProfileView(selection: $selection, user: UserStore.shared.currentUser)
+                    .navigationDestination(for: ProfileRouter.ProfileRoute.self, destination: { profile in
+                        switch profile {
+                        case .banner:
+                            PurchaseAdsBannerView()
+                                .navigationBarBackButtonHidden()
+                        case .setting:
+                            SettingView()
+                                .navigationBarBackButtonHidden()
+                        }
+                    })
+            }
+            .tag(SelectViews.profile)
+            .environmentObject(profileRouter)
         }
 
     }
@@ -78,7 +92,7 @@ extension MainTabView {
             /// 탭바 - 홈 버튼
             Button {
                 if selection == .home {
-                    router.reset()
+                    homeRouter.reset()
                 }
                 self.selection = .home
             } label: {
@@ -131,6 +145,9 @@ extension MainTabView {
             
             /// 탭바 - 프로필 버튼
             Button {
+                if selection == .profile {
+                    profileRouter.reset()
+                }
                 self.selection = .profile
             } label: {
                 VStack {

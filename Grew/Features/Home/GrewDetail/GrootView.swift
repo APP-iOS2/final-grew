@@ -16,7 +16,7 @@ struct GrootView: View {
     var body: some View {
         HStack {
             NavigationLink {
-                ProfileView(user: userViewModel.currentUser)
+//                ProfileView(user: userViewModel.currentUser)
             } label: {
                 AsyncImage(url: URL(string: userViewModel.currentUser?.userImageURLString ?? "")) { image in
                     image

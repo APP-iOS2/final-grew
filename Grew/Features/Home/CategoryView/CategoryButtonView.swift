@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoryButtonView: View {
     
     @EnvironmentObject var grewViewModel: GrewViewModel
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: HomeRouter
     
     private let gridItems: [GridItem] = [
 //        GridItem(.adaptive(minimum: 60))
@@ -39,7 +39,7 @@ struct CategoryButtonView: View {
 //                            .navigationTitle(category.name)
 //                            .navigationBarTitleDisplayMode(.inline)
 //                            .navigationBarBackButtonHidden(true)
-                        router.navigate(to: .category(grewList: grewViewModel.grewList.filter {
+                        router.homeNavigate(to: .category(grewList: grewViewModel.grewList.filter {
                             $0.categoryIndex == category.id
                         }, secondCategory: category.subCategories))
                     } label: {
