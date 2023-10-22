@@ -12,110 +12,136 @@ struct ProfileView: View {
     @EnvironmentObject private var chatStore: ChatStore
     @EnvironmentObject private var messageStore: MessageStore
     @EnvironmentObject var router: ProfileRouter
+    @EnvironmentObject var profileStore: ProfileStore
     @Binding var selection: SelectViews
     
     @State private var isMessageAlert: Bool = false
     @State private var selectedGroup: String = "내 모임"
     @State private var selectedFilter: ProfileThreadFilter = .myGroup
+    @State private var isLoading: Bool = false
     
     let user: User?
     
     var body: some View {
-//        NavigationStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack {
-                    headerView()
-                    
-                    LazyVStack(pinnedViews: [.sectionHeaders])  {
-                        Section {
-                            if user == UserStore.shared.currentUser {
-                                
-                                switch selectedFilter {
-                                case .myGroup:
-                                    MyGroupView(user: user)
-                                        .background(Color.white)
-                                case .myGroupSchedule:
-                                    MyGroupScheduleView()
-                                        .background(Color.white)
-                                        .padding()
-                                case .savedGrew:
-                                    SavedGrewView()
-                                        .background(Color.white)
-                                }
-                            } else {
-                                MyGroupView(user: user)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                headerView()
+                
+                LazyVStack(pinnedViews: [.sectionHeaders])  {
+                    Section {
+                        if user == UserStore.shared.currentUser {
+                            
+                            switch selectedFilter {
+                            case .myGroup:
+                                MyGroupView(user: user, grews: profileStore.myGrew)
+                                    .background(Color.white)
+                            case .myGroupSchedule:
+                                MyGroupScheduleView()
+                                    .background(Color.white)
+                                    .padding()
+                            case .savedGrew:
+                                SavedGrewView()
                                     .background(Color.white)
                             }
-                        } header: {
-                            if user == UserStore.shared.currentUser {
-                                UserContentListView( selectedFilter: $selectedFilter)
-                                    .padding(.horizontal, 10)
-                            } else {
-                                VStack{
-                                    HStack {
-                                        Text("가입한 그루")
-                                            .font(.b2_B)
-                                        Spacer()
-                                    }
-                                    .padding()
-                                }
+                        } else {
+                            MyGroupView(user: user, grews: profileStore.myGrew)
                                 .background(Color.white)
+                        }
+                    } header: {
+                        if user == UserStore.shared.currentUser {
+                            UserContentListView( selectedFilter: $selectedFilter)
+                                .padding(.horizontal, 10)
+                        } else {
+                            VStack{
+                                HStack {
+                                    Text("가입한 그루")
+                                        .font(.b2_B)
+                                    Spacer()
+                                }
+                                .padding()
                             }
+                            .background(Color.white)
                         }
                     }
-                }
-                .background(Color.white)
-                .toolbar {
-                    if user == UserStore.shared.currentUser {
-                        ToolbarItem {
-                            Button {
-//                                SettingView()
-                                router.profileNavigate(to: .setting)
-                            } label: {
-                                Image(systemName: "gearshape.fill")
-                            }
-                            .foregroundColor(.black)
-                        }
-                    } else {
-                        ToolbarItem {
-                            Button {
-                                //                            SettingView()
-                            } label: {
-                                Image(systemName: "paperplane.fill")
-                                    .foregroundStyle(Color.white)
-                            }
-                            .foregroundColor(.black)
-                        }
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .coordinateSpace(name: "SCROLL")
-                //            .ignoresSafeArea(.container, edges: .vertical)
-                .alert("채팅방 이동", isPresented: $isMessageAlert) {
-                    Button("취소", role: .cancel) {}
-                    Button("확인", role: .destructive) {
-                        Task {
-                            await startMessage()
-                            isMessageAlert = false
-                            selection = .chat
-                        }
-                    }
-                } message: {
-                    Text("1:1 채팅방으로 이동합니다.")
                 }
             }
-            .background(alignment: .bottom) {
-                Rectangle()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 475)
-                    .foregroundStyle(Color.white)
-                    .ignoresSafeArea()
-                    .offset(y: 100)
+            .background(Color.white)
+            .toolbar {
+                if user == UserStore.shared.currentUser {
+                    ToolbarItem {
+                        Button {
+                            //                                SettingView()
+                            router.profileNavigate(to: .setting)
+                        } label: {
+                            Image(systemName: "gearshape.fill")
+                        }
+                        .foregroundColor(.black)
+                    }
+                } else {
+                    ToolbarItem {
+                        Button {
+                            isMessageAlert = true
+                            //                            SettingView()
+                        } label: {
+                            Image(systemName: "paperplane.fill")
+                                .foregroundStyle(Color.white)
+                        }
+                        .foregroundColor(.black)
+                    }
+                }
             }
-            .background(Color.Main)
-            .navigationBarBackground(.Main)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .coordinateSpace(name: "SCROLL")
+            //            .ignoresSafeArea(.container, edges: .vertical)
+            .alert("채팅방 이동", isPresented: $isMessageAlert) {
+                Button("취소", role: .cancel) {}
+                Button("확인", role: .destructive) {
+                    Task {
+                        await startMessage()
+                        isMessageAlert = false
+                        selection = .chat
+                    }
+                }
+            } message: {
+                Text("1:1 채팅방으로 이동합니다.")
+            }
         }
-//    }
+        .background(alignment: .bottom) {
+            Rectangle()
+                .frame(maxWidth: .infinity)
+                .frame(height: 475)
+                .foregroundStyle(Color.white)
+                .ignoresSafeArea()
+                .offset(y: 100)
+        }
+        .background(Color.Main)
+        .overlay(
+            Group {
+                if isLoading {
+                    Color.black.opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                        .scaleEffect(2)
+                        .frame(
+                            width: UIScreen.screenWidth,
+                            height: UIScreen.screenHeight
+                        )
+                }
+            }
+        )
+        .navigationBarBackground(.Main)
+        .task { // 댑악 멋져. 휴
+            isLoading = true
+            if let currentUser = UserStore.shared.currentUser, user == currentUser {
+                await profileStore.fetchProfileData(user: user)
+            } else {
+                await profileStore.fetchProfileData(user: user)
+            }
+            isLoading = false
+        }
+    }
+    //    }
     @ViewBuilder
     private func headerView() -> some View {
         var backgroundHeight: CGFloat {
@@ -192,7 +218,7 @@ extension ProfileView {
         let chatRoom = await makeChatRoomForNewRoom()
         await chatStore.addChatRoom(chatRoom)
         // 2. 시스템 메시지를 추가한다.
-        var newMessage = ChatMessage(text: "\(user?.nickName) 님과 \(UserStore.shared.currentUser?.nickName)의 대화가 시작되었습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+        let newMessage = ChatMessage(text: "\(user!.nickName) 님과 \(UserStore.shared.currentUser!.nickName)의 대화가 시작되었습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
         
         messageStore.addMessage(newMessage, chatRoomID: chatRoom.id)
         
@@ -203,7 +229,7 @@ extension ProfileView {
             id: UUID().uuidString,
             members: [user!.id!, UserStore.shared.currentUser!.id!],
             createdDate: Date(),
-            lastMessage: "\(user?.nickName) 님과 \(UserStore.shared.currentUser?.nickName)의 대화가 시작되었습니다.",
+            lastMessage: "\(user!.nickName) 님과 \(UserStore.shared.currentUser!.nickName)의 대화가 시작되었습니다.",
             lastMessageDate: Date(),
             unreadMessageCount: [:])
         return newChatRoom

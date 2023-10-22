@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyGroupScheduleView: View {
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    
     var body: some View {
         VStack{
             //ProfileGrewDataEmptyView(systemImage: "calendar", message: "그루 일정이 없어요.")
@@ -29,9 +30,9 @@ struct MyGroupScheduleView: View {
                             .padding(.bottom, 30)
 
                     }
+
                 }
         }.padding(.bottom, 30)
-       
     }
 }
 
