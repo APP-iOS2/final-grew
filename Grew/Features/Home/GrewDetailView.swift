@@ -27,9 +27,13 @@ enum GrewDetailFilter: Int, CaseIterable, Identifiable {
 struct GrewDetailView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var grewViewModel: GrewViewModel
+    @EnvironmentObject private var chatStore: ChatStore
     @State private var selectedFilter: GrewDetailFilter = .introduction
     @State private var isShowingJoinConfirmAlert: Bool = false
     @State private var isShowingJoinFinishAlert: Bool = false
+    @State private var isShowingToolBarSheet: Bool = false
+    @State private var isLoading: Bool = false
+    @State var detentHeight: CGFloat = 0
     
     @Namespace private var animation
     
@@ -50,7 +54,7 @@ struct GrewDetailView: View {
                         case .schedule:
                             ScheduleListView(gid: grew.id)
                         case .groot:
-                            GrootListView()
+                            GrootListView(grew: grew)
                         }
                     } header: {
                         makeHeaderFilterView()
@@ -103,6 +107,28 @@ struct GrewDetailView: View {
                 .padding(.bottom, 5)
             
             makeBottomButtons()
+        }
+        .sheet(isPresented: $isShowingToolBarSheet, content: {
+            GrewEditSheetView(grew: grew)
+                .readHeight()
+                .onPreferenceChange(HeightPreferenceKey.self) { height in
+                    if let height {
+                        self.detentHeight = height
+                    }
+                }
+                .presentationDetents([.height(self.detentHeight)])
+        })
+        .task {
+            if !chatStore.isDoneFetch {
+                chatStore.addListener()
+                isLoading = true
+                await chatStore.fetchChatRooms()
+                isLoading = false
+            }
+        }
+        .onDisappear {
+            chatStore.removeListener()
+            chatStore.isDoneFetch = false
         }
     }
     
@@ -175,7 +201,7 @@ extension GrewDetailView {
             // 모임장: 모임 삭제(alert), user 구조체
             // 모임원: 탈퇴하기
             Button {
-                
+                isShowingToolBarSheet = true
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundStyle(.black)
@@ -197,8 +223,11 @@ extension GrewDetailView {
             
             if let currentUserId = UserStore.shared.currentUser?.id {
                 if grew.currentMembers.contains(currentUserId) {
-                    Button {
-                        
+                    NavigationLink {
+//                        ChatDetailView(
+//                            chatRoom: chatStore.groupChatRooms.first!,
+//                            targetUserInfos: chatStore.targetUserInfoDict[chatStore.groupChatRooms.first!.id] ?? []
+//                        )
                     } label: {
                         Text("채팅 참여하기")
                             .frame(width: 260, height: 44)

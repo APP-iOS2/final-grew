@@ -102,9 +102,6 @@
 		3137A2822AD62ED1000E9ADF /* GrewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */; };
 		3137A2832AD62ED1000E9ADF /* GrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2802AD62ED1000E9ADF /* GrewCellView.swift */; };
 		3137A2852AD62EEE000E9ADF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137A2842AD62EEE000E9ADF /* MapView.swift */; };
-		3A6D59E02AE0351900627179 /* MapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D59DF2AE0351900627179 /* MapStore.swift */; };
-		3A8FAAE52ACD4D00008C8CA3 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */; };
-		3AA913C92ADCD9A000157973 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA913C82ADCD9A000157973 /* CategoryView.swift */; };
 		319757422ADE552500696FF9 /* MessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757412ADE552500696FF9 /* MessageStore.swift */; };
 		319757512ADEF36600696FF9 /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757442ADEF36500696FF9 /* ChatDetailView.swift */; };
 		319757522ADEF36600696FF9 /* SideBarShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757462ADEF36500696FF9 /* SideBarShadowView.swift */; };
@@ -167,6 +164,7 @@
 		99BC42622ADF77E1005B70A0 /* NewestGrewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC42612ADF77E1005B70A0 /* NewestGrewListView.swift */; };
 		99D2C6422ACD4332001FEC20 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6412ACD4332001FEC20 /* MainTabView.swift */; };
 		99D2C6442ACD4913001FEC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2C6432ACD4913001FEC20 /* HomeView.swift */; };
+		9F4C1C1B2AE4B50F00C665AE /* GrewEditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C1C1A2AE4B50F00C665AE /* GrewEditSheetView.swift */; };
 		9FD050692ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD050662ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift */; };
 		9FD0506A2ADF5CAA00A8735A /* ProfileCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */; };
 		9FD0506B2ADF5CAA00A8735A /* ScheduleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD050682ADF5CAA00A8735A /* ScheduleCellView.swift */; };
@@ -269,9 +267,6 @@
 		3137A27F2AD62ED1000E9ADF /* GrewImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewImageView.swift; sourceTree = "<group>"; };
 		3137A2802AD62ED1000E9ADF /* GrewCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrewCellView.swift; sourceTree = "<group>"; };
 		3137A2842AD62EEE000E9ADF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		3A6D59DF2AE0351900627179 /* MapStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStore.swift; sourceTree = "<group>"; };
-		3A8FAAE42ACD4D00008C8CA3 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
-		3AA913C82ADCD9A000157973 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		319757412ADE552500696FF9 /* MessageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStore.swift; sourceTree = "<group>"; };
 		319757442ADEF36500696FF9 /* ChatDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
 		319757462ADEF36500696FF9 /* SideBarShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarShadowView.swift; sourceTree = "<group>"; };
@@ -334,6 +329,7 @@
 		99BC42612ADF77E1005B70A0 /* NewestGrewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestGrewListView.swift; sourceTree = "<group>"; };
 		99D2C6412ACD4332001FEC20 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99D2C6432ACD4913001FEC20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9F4C1C1A2AE4B50F00C665AE /* GrewEditSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewEditSheetView.swift; sourceTree = "<group>"; };
 		9FD050662ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCellEditSheetView.swift; sourceTree = "<group>"; };
 		9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCircleImageView.swift; sourceTree = "<group>"; };
 		9FD050682ADF5CAA00A8735A /* ScheduleCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCellView.swift; sourceTree = "<group>"; };
@@ -758,14 +754,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		3A6D59DE2AE0350700627179 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3A6D59DF2AE0351900627179 /* MapStore.swift */,
-			);
-			path = ViewModel;
-            sourceTree = "<group>";
-        };
 		319757432ADEF36500696FF9 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -953,6 +941,7 @@
 		9FD050652ADF5C9300A8735A /* GrewDetail */ = {
 			isa = PBXGroup;
 			children = (
+				9F4C1C1A2AE4B50F00C665AE /* GrewEditSheetView.swift */,
 				9FD050702ADFBA2900A8735A /* GrootView.swift */,
 				9FD050722ADFBD9700A8735A /* GrootListView.swift */,
 				9FD050672ADF5CAA00A8735A /* ProfileCircleImageView.swift */,
@@ -1282,8 +1271,6 @@
 				2157096C2AD69246006ABE35 /* CameraView.swift in Sources */,
 				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
-				311097C42AD41982000D85AD /* ChatUserContentListView.swift in Sources */,
-				311097742AD4180F000D85AD /* LocationView.swift in Sources */,
 				3AA913C92ADCD9A000157973 /* CategoryView.swift in Sources */,
 				311097A52AD41882000D85AD /* Category.swift in Sources */,
 				311097AA2AD41882000D85AD /* ImagePicker.swift in Sources */,
@@ -1305,6 +1292,7 @@
 				3A6D59E02AE0351900627179 /* MapStore.swift in Sources */,
 				3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */,
 				311097A82AD41882000D85AD /* Grew.swift in Sources */,
+				9F4C1C1B2AE4B50F00C665AE /* GrewEditSheetView.swift in Sources */,
 				21709BFC2AE1191E00FDA43D /* StumpCellView.swift in Sources */,
 				3EC0F05B2ADE6E1700D07009 /* ScheduleStore.swift in Sources */,
 				CE36B52F2ADE2A23004D2BC3 /* NewestGrewCellView.swift in Sources */,

@@ -11,6 +11,7 @@ import GeoFire
 struct Grew: Identifiable, Codable, Hashable {
 
     var id: String = UUID().uuidString
+    var hostID: String = "\(UserStore.shared.currentUser?.id ?? "hostID Input Error")"
     /// 1차 카테고리
     let categoryIndex: String
     /// 2차 카테고리
@@ -51,7 +52,7 @@ struct Grew: Identifiable, Codable, Hashable {
     /// 최대 인원 수
     var maximumMembers: Int // 키보드타입 number ,textField -> 정규식 검사 Int인지 확인
     /// 멤버
-    var currentMembers: [String] = []
+    var currentMembers: [String] = ["\(UserStore.shared.currentUser?.id ?? "hostID Input Error")"]
     /// 활동비 여부
     var isNeedFee: Bool
     /// 활동비

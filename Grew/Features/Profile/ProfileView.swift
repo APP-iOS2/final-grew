@@ -11,6 +11,7 @@ struct ProfileView: View {
     @EnvironmentObject private var grewViewModel: GrewViewModel
     @EnvironmentObject private var chatStore: ChatStore
     @EnvironmentObject private var messageStore: MessageStore
+    @EnvironmentObject var router: ProfileRouter
     @Binding var selection: SelectViews
     
     @State private var isMessageAlert: Bool = false
@@ -20,7 +21,7 @@ struct ProfileView: View {
     let user: User?
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     headerView()
@@ -36,6 +37,7 @@ struct ProfileView: View {
                                 case .myGroupSchedule:
                                     MyGroupScheduleView()
                                         .background(Color.white)
+                                        .padding()
                                 case .savedGrew:
                                     SavedGrewView()
                                         .background(Color.white)
@@ -66,8 +68,9 @@ struct ProfileView: View {
                 .toolbar {
                     if user == UserStore.shared.currentUser {
                         ToolbarItem {
-                            NavigationLink {
-                                SettingView()
+                            Button {
+//                                SettingView()
+                                router.profileNavigate(to: .setting)
                             } label: {
                                 Image(systemName: "gearshape.fill")
                             }
@@ -112,7 +115,7 @@ struct ProfileView: View {
             .background(Color.Main)
             .navigationBarBackground(.Main)
         }
-    }
+//    }
     @ViewBuilder
     private func headerView() -> some View {
         var backgroundHeight: CGFloat {

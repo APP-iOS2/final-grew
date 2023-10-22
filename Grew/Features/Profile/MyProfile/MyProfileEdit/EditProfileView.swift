@@ -24,7 +24,7 @@ struct EditProfileView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .center) {
+            VStack {
                 Button {
                     showModal = true
                 } label: {
@@ -53,13 +53,14 @@ struct EditProfileView: View {
                                 Circle()
                                     .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
                             )
-                        
                     }
-                    .padding(.vertical)
+
                 }
-                
+                .padding(.vertical)
+                .padding(.top, 10)
+
+          
                 VStack(alignment: .leading) {
-                    
                     
                     Text("이름")
                         .padding(.top, 20)
@@ -71,8 +72,6 @@ struct EditProfileView: View {
                                 .padding()
                                 .foregroundColor(Color.DarkGray1)
                         }
-                    
-                    
                     
                     Text("상태 메세지")
                         .padding(.top, 20)
@@ -102,10 +101,8 @@ struct EditProfileView: View {
                             )
                             .padding(.leading, 10)
                     }
-                    
-                    
-                    Spacer()
                 }
+                Spacer()
             }.font(.b2_R)
                 .padding(30)
             //            .frame(maxWidth: .infinity, alignment: .leading)
@@ -131,6 +128,7 @@ struct EditProfileView: View {
                         .buttonStyle(.plain)
                     }
                 }
+
         }
         .sheet(isPresented: $showModal, content: {
             ImageEditModalView(showModal: $showModal) { form in

@@ -10,10 +10,11 @@ import SwiftUI
 struct SettingView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @EnvironmentObject var router: ProfileRouter
     @State var isAlertOn: Bool = true
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack {
                 List {
                     Section(header: Text("앱 설정")){
@@ -22,8 +23,9 @@ struct SettingView: View {
                                 .listRowSeparator(.visible)
                         })
                         
-                        NavigationLink {
-                            PurchaseAdsBannerView()
+                        Button {
+//                            PurchaseAdsBannerView()
+                            router.profileNavigate(to: .banner)
                         } label: {
                             Text("광고 배너 구매")
                             
@@ -106,7 +108,7 @@ struct SettingView: View {
                 Image(systemName: "chevron.backward")
                     .foregroundColor(.black)
             }))
-        }
+//        }
     }
     
     enum GTViewsName: String, CaseIterable {

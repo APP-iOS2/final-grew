@@ -12,7 +12,7 @@ struct GrewCategory: Identifiable, Codable {
     let subCategories: [SubCategory]
 }
 
-struct SubCategory: Identifiable, Codable {
+struct SubCategory: Identifiable, Codable, Hashable {
     let id, name: String
 }
 
