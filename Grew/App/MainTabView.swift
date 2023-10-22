@@ -27,6 +27,7 @@ struct MainTabView: View {
             // 버튼으로 사용하는 tabBar
             bottomTabs
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
