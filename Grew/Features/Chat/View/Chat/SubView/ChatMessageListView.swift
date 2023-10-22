@@ -13,7 +13,7 @@ struct ChatMessageListView: View {
     @EnvironmentObject private var messageStore: MessageStore
     let chatRoom: ChatRoom
     let targetUserInfos: [User]
-    //targetGrewInfoDict
+    // targetGrewInfoDict
     @Binding var groupDetailConfig: GroupDetailConfig
     @Binding var isMenuOpen: Bool
     @Binding var x: CGFloat
@@ -91,10 +91,10 @@ struct ChatMessageListView: View {
             .navigationTitle(isMenuOpen ? "" : chatRoomName)
             .navigationBarBackButtonHidden(isMenuOpen ? true : false)
             .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 280 :UIScreen.main.bounds.height - 180)
-
-           if groupDetailConfig.selectedImage != nil {
+            
+            if groupDetailConfig.selectedImage != nil {
                 chatImagePicked
-           }
+            }
             ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
                 .background(Color(.systemBackground).ignoresSafeArea())
                 .shadow(radius: groupDetailConfig.selectedImage != nil ? 0 : 0.5)

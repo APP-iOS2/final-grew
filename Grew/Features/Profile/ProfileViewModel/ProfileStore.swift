@@ -13,7 +13,7 @@ import SwiftUI
 class Profile: ObservableObject {
     @Published var myGrew: [Grew]
     @Published var mySchedule: [Schedule]
-    @Published var savedGrew: [Grew] // ?0? 멍미
+    @Published var savedGrew: [Grew] // ?0? 멍미 찜한 그루
     
     init(){
         myGrew = []
@@ -23,58 +23,103 @@ class Profile: ObservableObject {
     
     let db = Firestore.firestore()
    
-    func fetchProfileGrew() {
-        if let user = UserStore.shared.currentUser {
-            db.collection("grews")
+    func getUserGrew(user: User?) async -> QuerySnapshot? {
+        do {
+            print(user)
+            guard let user else {
+                return nil
+            }
+            let snapshot = try await db
+                .collection("grews")
                 .whereField("currentMembers", arrayContains: user.id ?? "")
-                .getDocuments { snapshot, error in
-                    guard let documents = snapshot?.documents, error == nil else {
-                        if let error = error { print(error) }
-                        return
-                    }
-                    
-                    var fetchData: [Grew] = []
-                    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@프로필 그루 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-                    for document in documents {
-                        do {
-                            let temp = try document.data(as: Grew.self)
-                            fetchData.append(temp)
-                            print(temp)
-                        } catch {
-                            print("fetch Profile Grew Error\(error)")
-                        }
-                    }
-                    
-                    self.myGrew = fetchData
-                }
-        }else {
-            print("로그인 오류")
+                .order(by: "lastMessageDate", descending: true)
+                .getDocuments()
+            return snapshot
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
         }
+        return nil
     }
     
-    func fetchProfileSchedule() {
-        db.collection("schedule").getDocuments { snapshot, error in
-                guard let documents = snapshot?.documents, error == nil else {
-                    if let error = error { print(error) }
-                    return
-                }
-            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@프로필 스케쥴 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-            var fetchData: [Schedule] = []
-            for document in documents {
+    @MainActor
+    func allocateMyGrew(grews: [Grew]) {
+        self.myGrew = grews
+    }
+    
+    
+    func fetchProfileData(user: User?) async {
+        var snapshot = await getUserGrew(user: user)
+        
+        var myGrews: [Grew] = []
+        print("@@@@@@@@@@@@@@@@@@@@@@프로필 그루 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+
+        if let snapshot {
+            for document in snapshot.documents {
                 do {
-                    let temp = try document.data(as: Schedule.self)
-                    for grew in self.myGrew {
-                        if temp.gid == grew.id {
-                            fetchData.append(temp)
-                            print(temp)
-                        }
-                    }
+                    let temp = try document.data(as: Grew.self)
+                    myGrews.append(temp)
+                    print(temp)
                 } catch {
-                    print("fetch Profile Schedule Error\(error)")
+                    print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
                 }
             }
-            
-            self.mySchedule = fetchData
         }
+        await allocateMyGrew(grews: myGrews)
+        // 유저 조회 시 로그인 된 회원이 아닐 경우 (프로필 조회)
+        if user != UserStore.shared.currentUser {
+            return
+        }
+        // 로그인 된 유저이면 마이 페이지 이기때문에 마저 조회
+        await fetchSchedule(grews: myGrews)
+    }
+    
+    func getUserSchedule(grews: [Grew]?) async -> QuerySnapshot? {
+        do {
+            print(grews)
+            guard let grews else {
+                return nil
+            }
+            let tempGrewsId = grews.map { grew in
+                grew.id
+            }
+            if tempGrewsId.isEmpty {
+                return nil
+            }
+            
+            let snapshot = try await db
+                .collection("schedule")
+                .whereField("gid", arrayContainsAny: tempGrewsId)
+                .order(by: "date", descending: false)
+                .getDocuments()
+            return snapshot
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    @MainActor
+    func allocateMySchedule(schedules: [Schedule]) {
+        self.mySchedule = schedules
+    }
+    
+    func fetchSchedule(grews: [Grew]) async {
+        let snapshot = await getUserSchedule(grews: grews)
+        
+        var mySchedule: [Schedule] = []
+        print("@@@@@@@@@@@@@@@@@@@@@@프로필 스케줄 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+
+        if let snapshot {
+            for document in snapshot.documents {
+                do {
+                    let temp = try document.data(as: Schedule.self)
+                    mySchedule.append(temp)
+                    print(temp)
+                } catch {
+                    print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+                }
+            }
+        }
+        await allocateMySchedule(schedules: mySchedule)
     }
 }

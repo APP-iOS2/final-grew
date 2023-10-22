@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct GrewListItemView: View {
-    //참여한 유저 이미지 매핑해야함 ㅎ...............
+    // 참여한 유저 이미지 매핑해야함
     let grew: Grew
     
     var body: some View {
         HStack {
             ZStack {
-                AsyncImage(url: URL(string: grew.imageURL ), content: { image in
+                AsyncImage(url: URL(string: grew.imageURL), content: { image in
                     image
                         .resizable()
                 }, placeholder: {

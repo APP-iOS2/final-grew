@@ -5,8 +5,8 @@
 //  Created by Chloe Chung on 2023/10/17.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct CircleImage: View {
     var body: some View {

@@ -75,7 +75,7 @@ struct ChatInputView: View {
     
     private func sendMessageAndPhoto() async {
         var newPhotoMessage = makeMessage(config: groupDetailConfig)
-        var newMessage = makeMessage(config: groupDetailConfig)
+        let newMessage = makeMessage(config: groupDetailConfig)
         let newChat = await makeChatRoomForSend()
         
         if let image = groupDetailConfig.selectedImage {

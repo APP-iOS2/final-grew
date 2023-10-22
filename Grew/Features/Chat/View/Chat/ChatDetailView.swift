@@ -154,7 +154,7 @@ struct ChatDetailView: View {
         
         newUnreadMessageCountDict[UserStore.shared.currentUser!.id!] = 0
         
-        var newMessage = ChatMessage(text: "\(UserStore.shared.currentUser!.nickName)님이 퇴장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+        let newMessage = ChatMessage(text: "\(UserStore.shared.currentUser!.nickName)님이 퇴장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
         
         messageStore.addMessage(newMessage, chatRoomID: chatRoom.id)
         
