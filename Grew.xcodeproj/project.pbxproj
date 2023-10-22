@@ -305,7 +305,7 @@
 		3E185B232ADDB35D00F7FC46 /* KakaoWebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoWebController.swift; sourceTree = "<group>"; };
 		3E46B9042AE3EE1800AF1BAB /* GrewListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewListItemView.swift; sourceTree = "<group>"; };
 		3E65D84D2AE58FA100035E44 /* ProfileGrewDataEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGrewDataEmptyView.swift; sourceTree = "<group>"; };
-		3E65D84F2AE591EC00035E44 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
+		3E65D84F2AE591EC00035E44 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileStore.swift; path = ../ProfileStore.swift; sourceTree = "<group>"; };
 		3EC0F0572ADE597100D07009 /* TextFieldErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldErrorModifier.swift; sourceTree = "<group>"; };
 		3EC0F05A2ADE6E1700D07009 /* ScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStore.swift; sourceTree = "<group>"; };
 		3EC0F05C2ADE6E2900D07009 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -740,7 +740,6 @@
 				215709612AD534AC006ABE35 /* MyProfileSetting */,
 				216315682ADFA62F00208CB4 /* Inform */,
 				312E98ED2ACD30AF00E38626 /* Search */,
-				3E65D84F2AE591EC00035E44 /* ProfileStore.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -874,7 +873,7 @@
 		3E65D84A2AE54D6400035E44 /* ProfileViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3E65D84B2AE54D9C00035E44 /* ProfileStore.swift */,
+				3E65D84F2AE591EC00035E44 /* ProfileStore.swift */,
 			);
 			path = ProfileViewModel;
 			sourceTree = "<group>";
