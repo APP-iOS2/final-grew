@@ -16,7 +16,7 @@ struct ChatInputView: View {
     @FocusState var isChatTextFieldFocused: Bool
     
     var body: some View {
-        HStack{
+        HStack {
             Button {
                 groupDetailConfig.showOptions = true
             } label: {
@@ -47,7 +47,7 @@ struct ChatInputView: View {
                     .foregroundColor(!groupDetailConfig.isValid ? .gray : Color.Main)
             }
             .disabled(!groupDetailConfig.isValid)
-        }.padding()
+        }
     }
     
     private func clearFields() {
