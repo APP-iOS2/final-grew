@@ -37,15 +37,15 @@ class Profile: ObservableObject {
                             print("fetch Profile Grew Error\(error)")
                         }
                     }
-
                     self.myGrew = fetchData
+                    self.fetchProfileSchedule(self.myGrew)
                 }
         }else {
             print("로그인 오류")
         }
     }
 
-    func fetchProfileSchedule() {
+    func fetchProfileSchedule(_ grews: [Grew]) {
         db.collection("schedule").getDocuments { snapshot, error in
                 guard let documents = snapshot?.documents, error == nil else {
                     if let error = error { print(error) }
@@ -56,7 +56,7 @@ class Profile: ObservableObject {
             for document in documents {
                 do {
                     let temp = try document.data(as: Schedule.self)
-                    for grew in self.myGrew {
+                    for grew in grews {
                         if temp.gid == grew.id {
                             fetchData.append(temp)
                             print(temp)

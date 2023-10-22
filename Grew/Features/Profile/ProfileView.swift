@@ -19,6 +19,7 @@ struct ProfileView: View {
     @State private var selectedFilter: ProfileThreadFilter = .myGroup
     
     let user: User?
+    @StateObject var profile: Profile = Profile()
     
     var body: some View {
 //        NavigationStack {
@@ -32,7 +33,7 @@ struct ProfileView: View {
                                 
                                 switch selectedFilter {
                                 case .myGroup:
-                                    MyGroupView(user: user)
+                                    MyGroupView(user: user, grews: profile.myGrew)
                                         .background(Color.white)
                                 case .myGroupSchedule:
                                     MyGroupScheduleView()
@@ -43,7 +44,7 @@ struct ProfileView: View {
                                         .background(Color.white)
                                 }
                             } else {
-                                MyGroupView(user: user)
+                                MyGroupView(user: user, grews: profile.myGrew)
                                     .background(Color.white)
                             }
                         } header: {
@@ -103,6 +104,9 @@ struct ProfileView: View {
                 } message: {
                     Text("1:1 채팅방으로 이동합니다.")
                 }
+            }
+            .onAppear{
+                profile.fetchProfileGrew()
             }
             .background(alignment: .bottom) {
                 Rectangle()
