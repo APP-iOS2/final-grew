@@ -22,7 +22,6 @@ class ProfileStore: ObservableObject {
     }
     
     let db = Firestore.firestore()
-    
     func getUserGrew(user: User?) async -> QuerySnapshot? {
         do {
             print(user)
@@ -51,7 +50,6 @@ class ProfileStore: ObservableObject {
         
         var myGrews: [Grew] = []
         print("@@@@@@@@@@@@@@@@@@@@@@프로필 그루 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        
         if let snapshot {
             for document in snapshot.documents {
                 do {
@@ -107,7 +105,6 @@ class ProfileStore: ObservableObject {
         
         var mySchedule: [Schedule] = []
         print("@@@@@@@@@@@@@@@@@@@@@@프로필 스케줄 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        
         if let snapshot {
             for document in snapshot.documents {
                 do {
