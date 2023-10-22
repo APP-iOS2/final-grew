@@ -38,13 +38,13 @@ struct ChatRoomCell: View {
                     chatMessage: nil, 
                     url: chatGrewInfo.imageURL, 
                     imagesize: .chatRoomList)
-                .padding(.trailing,5)
+                .padding(.trailing, 5)
             } else {
                 CircularProfileImageView(
                     chatMessage: nil,
                     url: targetUserInfos[safe: 0]?.userImageURLString,
                     imagesize: .chatRoomList)
-                .padding(.trailing,5)
+                .padding(.trailing, 5)
             }
                         
             VStack(alignment: .leading){
@@ -62,14 +62,16 @@ struct ChatRoomCell: View {
                     .foregroundColor(.gray)
                     .font(.c1_R)
                 if let unCount = chatRoom.unreadMessageCount[UserStore.shared.currentUser!.id!] {
-                    ZStack{
-                        Text("\(unCount)")
-                            .foregroundColor(.white)
-                            .font(.caption)
-                            .bold()
-                            .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
-                            .background(.red)
-                            .cornerRadius(10)
+                    if unCount != 0 {
+                        ZStack{
+                            Text("\(unCount)")
+                                .foregroundColor(.white)
+                                .font(.caption)
+                                .bold()
+                                .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+                                .background(.red)
+                                .cornerRadius(10)
+                        }
                     }
                 }
             }

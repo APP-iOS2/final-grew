@@ -5,8 +5,8 @@
 //  Created by da-hye on 2023/10/21
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct EditProfileView: View {
     @Environment(\.dismiss) private var dismiss

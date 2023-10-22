@@ -9,7 +9,7 @@ import Foundation
 import GeoFire
 
 struct Grew: Identifiable, Codable, Hashable {
-
+    
     var id: String = UUID().uuidString
     var hostID: String = "\(UserStore.shared.currentUser?.id ?? "hostID Input Error")"
     /// 1차 카테고리
@@ -63,84 +63,22 @@ struct Grew: Identifiable, Codable, Hashable {
     var createdAtString: String {
         DateService.shared.grewFormat(createdAt)
     }
+    /// 사용자id : bool 처리
+    var heartUserDictionary: [String: Bool]?
     /// 좋아요 눌린 횟수
-    var heartTapped: Int = 0
-    
-//    init(categoryIndex: String, categorysubIndex: String, 
-//         title: String, description: String,
-//         imageURL: String, isOnline: Bool,
-//         location: String, gender: Gender,
-//         minimumAge: Int, maximumAge: Int,
-//         maximumMembers: Int, currentMembers: [String],
-//         isNeedFee: Bool, fee: Int) {
-//        self.categoryIndex = categoryIndex
-//        self.categorysubIndex = categorysubIndex
-//        self.title = title
-//        self.description = description
-//        self.imageURL = imageURL
-//        self.isOnline = isOnline
-//        self.location = location
-//        self.gender = gender
-//        self.minimumAge = minimumAge
-//        self.maximumAge = maximumAge
-//        self.maximumMembers = maximumMembers
-//        self.currentMembers = currentMembers
-//        self.isNeedFee = isNeedFee
-//        self.fee = fee
-//    }
-//    
-//    init(categoryIndex: String, categorysubIndex: String, 
-//         title: String, description: String,
-//         isOnline: Bool, location: String,
-//         latitude: String? = nil, longitude: String? = nil,
-//         gender: Gender, minimumAge: Int,
-//         maximumAge: Int, maximumMembers: Int,
-//         isNeedFee: Bool, fee: Int) {
-//        self.categoryIndex = categoryIndex
-//        self.categorysubIndex = categorysubIndex
-//        self.title = title
-//        self.description = description
-//        self.isOnline = isOnline
-//        self.location = location
-//        self.latitude = latitude
-//        self.longitude = longitude
-//        self.gender = gender
-//        self.minimumAge = minimumAge
-//        self.maximumAge = maximumAge
-//        self.maximumMembers = maximumMembers
-//        self.isNeedFee = isNeedFee
-//        self.fee = fee
-//    }
-//    
-//    init(id: String, categoryIndex: String, 
-//         categorysubIndex: String, title: String,
-//         description: String, imageURL: String,
-//         isOnline: Bool, location: String,
-//         latitude: String? = nil, longitude: String? = nil,
-//         geoHash: String? = nil, gender: Gender,
-//         minimumAge: Int, maximumAge: Int,
-//         maximumMembers: Int, currentMembers: [String],
-//         isNeedFee: Bool, fee: Int) {
-//        self.id = id
-//        self.categoryIndex = categoryIndex
-//        self.categorysubIndex = categorysubIndex
-//        self.title = title
-//        self.description = description
-//        self.imageURL = imageURL
-//        self.isOnline = isOnline
-//        self.location = location
-//        self.latitude = latitude
-//        self.longitude = longitude
-//        self.geoHash = geoHash
-//        self.gender = gender
-//        self.minimumAge = minimumAge
-//        self.maximumAge = maximumAge
-//        self.maximumMembers = maximumMembers
-//        self.currentMembers = currentMembers
-//        self.isNeedFee = isNeedFee
-//        self.fee = fee
-//    }
-//    
+  
+    var heartTapped: Int {
+        var count = 0
+        if let heartUserDictionary {
+            for dict in heartUserDictionary {
+                if dict.value {
+                    count += 1
+                }
+            }
+        }
+        return count
+    }
+
     var indexForCategory: GrewMainCategory {
         switch self.categoryIndex {
         case "100":
@@ -175,13 +113,14 @@ struct Grew: Identifiable, Codable, Hashable {
 
 extension Grew {
     static var defaultGrew: Grew {
-        return Grew(categoryIndex: "100", 
-                    categorysubIndex: "1100", 
-                    title: "",
-                    description: "",
-                    imageURL: "",
-                    isOnline: true,
-                    location: "",
-                    gender: .any, minimumAge: 12, maximumAge: 20, maximumMembers: 10, currentMembers: [], isNeedFee: false, fee: 0)
+        return Grew(
+            categoryIndex: "100",
+            categorysubIndex: "1100",
+            title: "",
+            description: "",
+            imageURL: "",
+            isOnline: true,
+            location: "",
+            gender: .any, minimumAge: 12, maximumAge: 20, maximumMembers: 10, currentMembers: [], isNeedFee: false, fee: 0)
     }
 }

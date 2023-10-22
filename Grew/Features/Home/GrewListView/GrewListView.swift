@@ -21,9 +21,7 @@ struct GrewListView: View {
                     router.homeNavigate(to: .grewDetail(grew: grewList[index]))
                 } label: {
                     HStack {
-                        
                         VStack {
-                            
                             if index < 3 {
                                 Image(indexToImage(rank: index))
                                     .resizable()

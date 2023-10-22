@@ -47,6 +47,20 @@ struct ChatMessageListView: View {
                     Text("")
                         .id("bottom")
                 }
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                .safeAreaInset(edge: .bottom) {
+                    VStack {
+                        if groupDetailConfig.selectedImage != nil {
+                            chatImagePicked
+                        }
+                        ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
+                            .padding(10)
+                            .background(Color(.systemBackground).ignoresSafeArea())
+                            .shadow(radius: groupDetailConfig.selectedImage != nil ? 0 : 0.5)
+                            
+                    }
+                }
+                
                 // 안 읽은 메시지 개수 확인해서 해당 뷰로 스크롤
                 .onChange(of: unreadMessageIndex) { state, newState in
                     DispatchQueue.main.async {
@@ -71,8 +85,8 @@ struct ChatMessageListView: View {
                 .onTapGesture {
                     self.endTextEditing()
                 }
+                
             }
-            .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10))
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
@@ -90,16 +104,10 @@ struct ChatMessageListView: View {
             }
             .navigationTitle(isMenuOpen ? "" : chatRoomName)
             .navigationBarBackButtonHidden(isMenuOpen ? true : false)
-            .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 280 :UIScreen.main.bounds.height - 180)
 
-           if groupDetailConfig.selectedImage != nil {
-                chatImagePicked
-           }
-            ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
-                .background(Color(.systemBackground).ignoresSafeArea())
-                .shadow(radius: groupDetailConfig.selectedImage != nil ? 0 : 0.5)
         }
         .task {
+            
         }
     }
     private func getUnReadCount() async -> Int {
