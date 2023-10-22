@@ -47,18 +47,18 @@ struct ChatMessageListView: View {
                     Text("")
                         .id("bottom")
                 }
-                .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10))
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                 .safeAreaInset(edge: .bottom) {
                     VStack {
                         if groupDetailConfig.selectedImage != nil {
                             chatImagePicked
                         }
                         ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
+                            .padding(10)
                             .background(Color(.systemBackground).ignoresSafeArea())
                             .shadow(radius: groupDetailConfig.selectedImage != nil ? 0 : 0.5)
                             
                     }
-                    .offset(y: 15)
                 }
                 
                 // 안 읽은 메시지 개수 확인해서 해당 뷰로 스크롤
@@ -136,7 +136,7 @@ struct ChatMessageListView: View {
                             .resizable()
                             .frame(width: 70, height: 70)
                             .cornerRadius(8)
-                            .padding(.vertical, 15)
+                            .padding(.top, 15)
                             .padding(.leading, 20)
                         Image(systemName: "xmark.circle.fill")
                             .font(.title3)
