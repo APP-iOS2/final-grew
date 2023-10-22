@@ -29,7 +29,11 @@ class GrewViewModel: ObservableObject {
     @Published var maximumMembers = ""
     @Published var fee = ""
     @Published var isNeedFee = false
-
+    
+    @Published var editGrew: EditGrew = EditGrew.defaultGrew
+    @Published var showingSheet: Bool = false
+    @Published var sheetContent: GrewEditContent = .grewEdit
+    @Published var isShowingToolBarSheet: Bool = false
     
     private let db = Firestore.firestore()
     
@@ -55,6 +59,10 @@ class GrewViewModel: ObservableObject {
         } catch {
             print("Error: \(error)")
         }
+    }
+    
+    func editGrew(_ grew: Grew) {
+        
     }
     
     func updateGrew(_ grew: Grew) {

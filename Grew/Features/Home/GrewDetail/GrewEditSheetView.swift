@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GrewEditSheetView: View {
-    
+    @EnvironmentObject var grewViewModel: GrewViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     
     let grew: Grew
@@ -16,6 +16,20 @@ struct GrewEditSheetView: View {
     var body: some View {
         VStack {
             if grew.hostID == UserStore.shared.currentUser?.id ?? "" {
+                Button(action: {
+                    grewViewModel.isShowingToolBarSheet = false
+                    grewViewModel.showingSheet = true
+                    grewViewModel.sheetContent = .grewEdit
+                }, label: {
+                    HStack {
+                        Text("그루 수정")
+                        Spacer()
+                        Image(systemName: "pencil")
+                    }
+                })
+                .padding(.vertical, 8)
+                .foregroundStyle(Color.Black)
+                Divider()
                 Button {
                     //
                 } label: {

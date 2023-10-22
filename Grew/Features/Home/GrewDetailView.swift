@@ -31,7 +31,7 @@ struct GrewDetailView: View {
     @State private var selectedFilter: GrewDetailFilter = .introduction
     @State private var isShowingJoinConfirmAlert: Bool = false
     @State private var isShowingJoinFinishAlert: Bool = false
-    @State private var isShowingToolBarSheet: Bool = false
+
     @State private var isLoading: Bool = false
     @State var detentHeight: CGFloat = 0
     
@@ -108,7 +108,7 @@ struct GrewDetailView: View {
             
             makeBottomButtons()
         }
-        .sheet(isPresented: $isShowingToolBarSheet, content: {
+        .sheet(isPresented: $grewViewModel.isShowingToolBarSheet, content: {
             GrewEditSheetView(grew: grew)
                 .readHeight()
                 .onPreferenceChange(HeightPreferenceKey.self) { height in
@@ -118,6 +118,14 @@ struct GrewDetailView: View {
                 }
                 .presentationDetents([.height(self.detentHeight)])
         })
+        .fullScreenCover(isPresented: $grewViewModel.showingSheet) {
+            switch grewViewModel.sheetContent {
+            case .grewEdit:
+                GrewEditView()
+            default:
+                fatalError("There is no View")
+            }
+        }
         .task {
             if !chatStore.isDoneFetch {
                 chatStore.addListener()
@@ -201,7 +209,7 @@ extension GrewDetailView {
             // 모임장: 모임 삭제(alert), user 구조체
             // 모임원: 탈퇴하기
             Button {
-                isShowingToolBarSheet = true
+                grewViewModel.isShowingToolBarSheet = true
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundStyle(.black)

@@ -17,7 +17,7 @@ struct Grew: Identifiable, Codable, Hashable {
     /// 2차 카테고리
     let categorysubIndex: String
     /// 모임 이름
-    let title: String
+    var title: String
     /// 모임 설명
     var description: String = ""
     /// 모임 썸네일 이미지
@@ -66,81 +66,81 @@ struct Grew: Identifiable, Codable, Hashable {
     /// 좋아요 눌린 횟수
     var heartTapped: Int = 0
     
-    init(categoryIndex: String, categorysubIndex: String, 
-         title: String, description: String,
-         imageURL: String, isOnline: Bool,
-         location: String, gender: Gender,
-         minimumAge: Int, maximumAge: Int,
-         maximumMembers: Int, currentMembers: [String],
-         isNeedFee: Bool, fee: Int) {
-        self.categoryIndex = categoryIndex
-        self.categorysubIndex = categorysubIndex
-        self.title = title
-        self.description = description
-        self.imageURL = imageURL
-        self.isOnline = isOnline
-        self.location = location
-        self.gender = gender
-        self.minimumAge = minimumAge
-        self.maximumAge = maximumAge
-        self.maximumMembers = maximumMembers
-        self.currentMembers = currentMembers
-        self.isNeedFee = isNeedFee
-        self.fee = fee
-    }
-    
-    init(categoryIndex: String, categorysubIndex: String, 
-         title: String, description: String,
-         isOnline: Bool, location: String,
-         latitude: String? = nil, longitude: String? = nil,
-         gender: Gender, minimumAge: Int,
-         maximumAge: Int, maximumMembers: Int,
-         isNeedFee: Bool, fee: Int) {
-        self.categoryIndex = categoryIndex
-        self.categorysubIndex = categorysubIndex
-        self.title = title
-        self.description = description
-        self.isOnline = isOnline
-        self.location = location
-        self.latitude = latitude
-        self.longitude = longitude
-        self.gender = gender
-        self.minimumAge = minimumAge
-        self.maximumAge = maximumAge
-        self.maximumMembers = maximumMembers
-        self.isNeedFee = isNeedFee
-        self.fee = fee
-    }
-    
-    init(id: String, categoryIndex: String, 
-         categorysubIndex: String, title: String,
-         description: String, imageURL: String,
-         isOnline: Bool, location: String,
-         latitude: String? = nil, longitude: String? = nil,
-         geoHash: String? = nil, gender: Gender,
-         minimumAge: Int, maximumAge: Int,
-         maximumMembers: Int, currentMembers: [String],
-         isNeedFee: Bool, fee: Int) {
-        self.id = id
-        self.categoryIndex = categoryIndex
-        self.categorysubIndex = categorysubIndex
-        self.title = title
-        self.description = description
-        self.imageURL = imageURL
-        self.isOnline = isOnline
-        self.location = location
-        self.latitude = latitude
-        self.longitude = longitude
-        self.geoHash = geoHash
-        self.gender = gender
-        self.minimumAge = minimumAge
-        self.maximumAge = maximumAge
-        self.maximumMembers = maximumMembers
-        self.currentMembers = currentMembers
-        self.isNeedFee = isNeedFee
-        self.fee = fee
-    }
-    
+//    init(categoryIndex: String, categorysubIndex: String, 
+//         title: String, description: String,
+//         imageURL: String, isOnline: Bool,
+//         location: String, gender: Gender,
+//         minimumAge: Int, maximumAge: Int,
+//         maximumMembers: Int, currentMembers: [String],
+//         isNeedFee: Bool, fee: Int) {
+//        self.categoryIndex = categoryIndex
+//        self.categorysubIndex = categorysubIndex
+//        self.title = title
+//        self.description = description
+//        self.imageURL = imageURL
+//        self.isOnline = isOnline
+//        self.location = location
+//        self.gender = gender
+//        self.minimumAge = minimumAge
+//        self.maximumAge = maximumAge
+//        self.maximumMembers = maximumMembers
+//        self.currentMembers = currentMembers
+//        self.isNeedFee = isNeedFee
+//        self.fee = fee
+//    }
+//    
+//    init(categoryIndex: String, categorysubIndex: String, 
+//         title: String, description: String,
+//         isOnline: Bool, location: String,
+//         latitude: String? = nil, longitude: String? = nil,
+//         gender: Gender, minimumAge: Int,
+//         maximumAge: Int, maximumMembers: Int,
+//         isNeedFee: Bool, fee: Int) {
+//        self.categoryIndex = categoryIndex
+//        self.categorysubIndex = categorysubIndex
+//        self.title = title
+//        self.description = description
+//        self.isOnline = isOnline
+//        self.location = location
+//        self.latitude = latitude
+//        self.longitude = longitude
+//        self.gender = gender
+//        self.minimumAge = minimumAge
+//        self.maximumAge = maximumAge
+//        self.maximumMembers = maximumMembers
+//        self.isNeedFee = isNeedFee
+//        self.fee = fee
+//    }
+//    
+//    init(id: String, categoryIndex: String, 
+//         categorysubIndex: String, title: String,
+//         description: String, imageURL: String,
+//         isOnline: Bool, location: String,
+//         latitude: String? = nil, longitude: String? = nil,
+//         geoHash: String? = nil, gender: Gender,
+//         minimumAge: Int, maximumAge: Int,
+//         maximumMembers: Int, currentMembers: [String],
+//         isNeedFee: Bool, fee: Int) {
+//        self.id = id
+//        self.categoryIndex = categoryIndex
+//        self.categorysubIndex = categorysubIndex
+//        self.title = title
+//        self.description = description
+//        self.imageURL = imageURL
+//        self.isOnline = isOnline
+//        self.location = location
+//        self.latitude = latitude
+//        self.longitude = longitude
+//        self.geoHash = geoHash
+//        self.gender = gender
+//        self.minimumAge = minimumAge
+//        self.maximumAge = maximumAge
+//        self.maximumMembers = maximumMembers
+//        self.currentMembers = currentMembers
+//        self.isNeedFee = isNeedFee
+//        self.fee = fee
+//    }
+//    
     var indexForCategory: GrewMainCategory {
         switch self.categoryIndex {
         case "100":
