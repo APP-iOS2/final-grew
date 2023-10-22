@@ -129,6 +129,21 @@ extension ChatStore {
         }
     }
     
+    func updateChatRoomForExit(_ chatRoom: ChatRoom) async {
+        do {
+            try await db.collection("chatrooms")
+                .document(chatRoom.id)
+                .updateData([
+                    "members": chatRoom.members,
+                    "lastMessageDate": chatRoom.lastMessageDate,
+                    "lastMessage": chatRoom.lastMessage,
+                    "unreadMessageCount" : chatRoom.unreadMessageCount
+                ])
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+        }
+    }
+    
     func removeChatRoom(_ chatRoom: ChatRoom) async {
         do {
             try await db.collection("chatrooms")

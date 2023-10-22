@@ -146,6 +146,7 @@ struct ChatDetailView: View {
         // 참여중인 채팅방에서 나가기
         
         var newChatRoom: ChatRoom = chatRoom
+        let newMember = chatRoom.members.filter { $0 != UserStore.shared.currentUser!.id! }
         var newUnreadMessageCountDict: [String: Int] = await chatStore.getUnreadMessageDictionary(chatRoomID: chatRoom.id) ?? [:]
         
         for userID in chatRoom.otherUserIDs {
@@ -158,10 +159,11 @@ struct ChatDetailView: View {
         
         messageStore.addMessage(newMessage, chatRoomID: chatRoom.id)
         
+        newChatRoom.members = newMember
         newChatRoom.lastMessage =  "\(UserStore.shared.currentUser!.nickName)님이 퇴장하셨습니다."
         newChatRoom.lastMessageDate = .now
         newChatRoom.unreadMessageCount = newUnreadMessageCountDict
         
-        await chatStore.updateChatRoom(newChatRoom)
+        await chatStore.updateChatRoomForExit(newChatRoom)
     }
 }
