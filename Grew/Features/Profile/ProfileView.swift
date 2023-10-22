@@ -80,6 +80,7 @@ struct ProfileView: View {
                 } else {
                     ToolbarItem {
                         Button {
+                            isMessageAlert = true
                             //                            SettingView()
                         } label: {
                             Image(systemName: "paperplane.fill")
@@ -217,7 +218,7 @@ extension ProfileView {
         let chatRoom = await makeChatRoomForNewRoom()
         await chatStore.addChatRoom(chatRoom)
         // 2. 시스템 메시지를 추가한다.
-        var newMessage = ChatMessage(text: "\(user?.nickName) 님과 \(UserStore.shared.currentUser?.nickName)의 대화가 시작되었습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+        let newMessage = ChatMessage(text: "\(user!.nickName) 님과 \(UserStore.shared.currentUser!.nickName)의 대화가 시작되었습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
         
         messageStore.addMessage(newMessage, chatRoomID: chatRoom.id)
         
@@ -228,7 +229,7 @@ extension ProfileView {
             id: UUID().uuidString,
             members: [user!.id!, UserStore.shared.currentUser!.id!],
             createdDate: Date(),
-            lastMessage: "\(user?.nickName) 님과 \(UserStore.shared.currentUser?.nickName)의 대화가 시작되었습니다.",
+            lastMessage: "\(user!.nickName) 님과 \(UserStore.shared.currentUser!.nickName)의 대화가 시작되었습니다.",
             lastMessageDate: Date(),
             unreadMessageCount: [:])
         return newChatRoom
