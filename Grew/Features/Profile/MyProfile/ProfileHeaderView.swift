@@ -35,8 +35,7 @@ struct ProfileHeaderView: View {
                             
                             if UserStore.shared.isCurrentUserProfile() {
                                 NavigationLink {
-                                    EditProfileView(name: UserStore.shared.currentUser?.nickName ?? "",
-                                                    statusMessage: UserStore.shared.currentUser?.introduce ?? "")
+                                    EditProfileView(user: UserStore.shared.currentUser!)
                                 } label: {
                                     Text("프로필 수정")
                                         .background(RoundedRectangle(cornerRadius: 7)

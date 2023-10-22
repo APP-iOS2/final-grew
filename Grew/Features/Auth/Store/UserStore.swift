@@ -19,7 +19,7 @@ class UserStore: ObservableObject {
     
     @Published var currentUser: User?
     
-    private init() {
+    public init() {
         Task {
             try await loadUserData()
         }
@@ -82,53 +82,6 @@ class UserStore: ObservableObject {
     
     func isCurrentUserProfile() -> Bool {
         return currentUser?.id == UserStore.shared.currentUser?.id
-    }
-}
-
-
-extension UserStore {
-    func uploadProfileImage(_ image: UIImage, completion: @escaping (Bool) -> Void) {
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-            completion(false)
-            return
-        }
-        
-        guard let userId = currentUser?.id else {
-            completion(false)
-            return
-        }
-        
-        let storageRef = Storage.storage().reference().child("userImageURLString/\(userId).jpg")
-        
-        storageRef.putData(imageData, metadata: nil) { (metadata, error) in
-            if let error = error {
-                print("Error uploading image: \(error)")
-                completion(false)
-                return
-            }
-            
-            storageRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    print("Error download URL: \(error?.localizedDescription ?? "No error description.")")
-                    completion(false)
-                    return
-                }
-                
-                self.currentUser?.userImageURLString = downloadURL.absoluteString
-            }
-        }
-    }
-    
-    func fetchProfileImage(userId: String, completion: @escaping (URL?) -> Void) {
-        let storageRef = Storage.storage().reference().child("userImageURLString/\(userId).jpg")
-        storageRef.downloadURL { (url, error) in
-            if let error = error {
-                print("Error fetching profile image: \(error)")
-                completion(nil)
-            } else {
-                completion(url)
-            }
-        }
     }
 }
 
