@@ -122,7 +122,7 @@ extension MainTabView {
                 VStack {
                     Image("plus")
                         .foregroundStyle(Color.DarkGray1)
-                    Text("내 주변")
+                    Text("그루 생성")
                         .font(.c2_B)
                         .foregroundStyle(Color.DarkGray1)
                 }
