@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct GrewListItemView: View {
-    // 참여한 유저 이미지 매핑해야함
+    
     let grew: Grew
+    @EnvironmentObject var grewViewModel: GrewViewModel
     
     var body: some View {
         HStack {
@@ -30,10 +31,10 @@ struct GrewListItemView: View {
                 .padding(.trailing, 10)
             
             VStack(alignment: .leading) {
-                Text(grew.categoryIndex)
-                    .font(.c2_L)
+                Text(grewViewModel.subCategoryName(grew.categoryIndex, grew.categorysubIndex))
+                    .font(.c2_R)
                     .padding(.horizontal, 10)
-                    .padding(.vertical, 3)
+                    .padding(.vertical, 4)
                     .background(Color.LightGray1)
                     .cornerRadius(20)
                     
@@ -47,6 +48,7 @@ struct GrewListItemView: View {
                     .padding(.top, 1)
                 
                 HStack {
+                    /*
                     Group {
                         ForEach(0..<5, content: { index in
                             AsyncImage(url: URL(string: ""), content: { image in
@@ -55,23 +57,41 @@ struct GrewListItemView: View {
                                 ProgressView()
                             })
                         }).padding(.horizontal, -10)
-                    }
+                    }*/
                     Spacer()
                     Group {
+                        // 모임 이미지
                         Image(systemName: "person.2.fill")
-                        Text("\(grew.currentMembers.count)/\(grew.maximumMembers)")
-                    }.font(.c2_R)
-                }.padding(.top, 1)
-                    .padding(.leading, 10)
+                            .padding(.trailing, -5)
+                            .font(.c2_B)
+                            .foregroundStyle(Color.DarkGray1)
+                        // 모임 정원
+                        HStack {
+                            Text("\(grew.currentMembers.count)")
+                            Text("/")
+                                .padding(.horizontal, -5)
+                            Text("\(grew.maximumMembers)")
+                                .padding(.leading, -5)
+                        }
+                        .font(.c2_B)
+                        .foregroundStyle(Color.DarkGray1)
+                    }
+                    
+                }
+                .padding(.top, 10)
+                .padding(.leading, 10)
             }
-                
-            
             Spacer()
-        }
+        }.padding(.horizontal, 5)
+            .padding(.vertical, 2)
     }
 }
 
 /*
 #Preview {
+<<<<<<< HEAD
     GrewListItemView(grew: Grew(from: <#Decoder#>))
+=======
+    GrewListItemView()
+>>>>>>> 12d6088 (Feat: Profile 내 그루 데이터 연결)
 }*/

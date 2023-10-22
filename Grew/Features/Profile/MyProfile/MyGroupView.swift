@@ -15,21 +15,23 @@ struct MyGroupView: View {
     let grews: [Grew]
     
     var body: some View {
-        //ProfileGrewDataEmptyView(systemImage: "person.2", message: "아직 그루가 없어요.")
-        VStack {
-            //ProfileGrewDataEmptyView(systemImage: "person.2", message: "아직 그루가 없어요.")
-            ForEach(grews){ grew in
-                GrewListItemView(grew: grew)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-            }
-        }.padding(.bottom, 30)
+        if grews.isEmpty{
+            ProfileGrewDataEmptyView(systemImage: "person.2", message: "아직 그루가 없어요.")
+        }else{
+            VStack {
+                ForEach(grews){ grew in
+                    GrewListItemView(grew: grew)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                }
+            }.padding(.bottom, 30)
+        }
     }
 }
 
 /*
 #Preview {
     NavigationStack {
-        MyGroupView(user: User.dummyUser)
+        MyGroupView(user: User.dummyUser, profile: )
     }
 }*/

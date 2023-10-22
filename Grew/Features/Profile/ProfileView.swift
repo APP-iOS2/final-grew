@@ -105,6 +105,9 @@ struct ProfileView: View {
                     Text("1:1 채팅방으로 이동합니다.")
                 }
             }
+            .onAppear{
+                profile.fetchProfileGrew()
+            }
             .background(alignment: .bottom) {
                 Rectangle()
                     .frame(maxWidth: .infinity)
