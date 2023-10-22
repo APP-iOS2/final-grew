@@ -9,22 +9,25 @@ import SwiftUI
 
 struct GrootView: View {
     
-    @EnvironmentObject var userViewModel: UserViewModel
+    @ObservedObject private var userViewModel = UserViewModel()
     
     let memberID: String
     
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: userViewModel.currentUser?.userImageURLString ?? "")) { image in
-                image
-                    .rounded(width: 44, height: 44)
-                    .padding(.trailing, 1)
-            } placeholder: {
-                Image(.defaultProfile)
-                    .rounded(width: 44, height: 44)
-                    .padding(.trailing, 1)
+            NavigationLink {
+                ProfileView(user: userViewModel.currentUser)
+            } label: {
+                AsyncImage(url: URL(string: userViewModel.currentUser?.userImageURLString ?? "")) { image in
+                    image
+                        .rounded(width: 44, height: 44)
+                        .padding(.trailing, 1)
+                } placeholder: {
+                    Image(.defaultProfile)
+                        .rounded(width: 44, height: 44)
+                        .padding(.trailing, 1)
+                }
             }
-
             VStack(alignment: .leading) {
                 HStack {
                     Text("\(userViewModel.currentUser?.nickName ?? "닉네임이 없다고..?")")
