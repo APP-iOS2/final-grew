@@ -32,7 +32,6 @@ class ProfileStore: ObservableObject {
             let snapshot = try await db
                 .collection("grews")
                 .whereField("currentMembers", arrayContains: user.id ?? "")
-                .order(by: "lastMessageDate", descending: true)
                 .getDocuments()
             return snapshot
         } catch {
@@ -75,7 +74,7 @@ class ProfileStore: ObservableObject {
     
     func getUserSchedule(grews: [Grew]?) async -> QuerySnapshot? {
         do {
-            print(grews)
+            
             guard let grews else {
                 return nil
             }
@@ -88,7 +87,7 @@ class ProfileStore: ObservableObject {
             
             let snapshot = try await db
                 .collection("schedule")
-                .whereField("gid", arrayContainsAny: tempGrewsId)
+                .whereField("gid", in: tempGrewsId)
                 .order(by: "date", descending: false)
                 .getDocuments()
             return snapshot
@@ -101,6 +100,7 @@ class ProfileStore: ObservableObject {
     @MainActor
     func allocateMySchedule(schedules: [Schedule]) {
         self.mySchedule = schedules
+        print(schedules)
     }
     
     func fetchSchedule(grews: [Grew]) async {
@@ -122,4 +122,57 @@ class ProfileStore: ObservableObject {
         }
         await allocateMySchedule(schedules: mySchedule)
     }
+    
+    func getUserLikedGrew(user: User?) async -> QuerySnapshot? {
+        do {
+            print(user)
+            guard let user else {
+                return nil
+            }
+            let snapshot = try await db
+                .collection("grews")
+                .whereField("currentMembers", arrayContains: user.id ?? "")
+                .order(by: "lastMessageDate", descending: true)
+                .getDocuments()
+            return snapshot
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    @MainActor
+    func allocateMyLikedGrew(grews: [Grew]) {
+        self.savedGrew = grews
+    }
+    
+    
+    func fetchLikedGrew(user: User?) async {
+        var snapshot = await getUserLikedGrew(user: user)
+        
+        var myGrews: [Grew] = []
+        print("@@@@@@@@@@@@@@@@@@@@@@프로필 찜한 그루 패치!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+
+        if let snapshot {
+            for document in snapshot.documents {
+                do {
+                    let temp = try document.data(as: Grew.self)
+                    myGrews.append(temp)
+                    print(temp)
+                } catch {
+                    print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+                }
+            }
+        }
+        await allocateMyGrew(grews: myGrews)
+        // 유저 조회 시 로그인 된 회원이 아닐 경우 (프로필 조회)
+        if user != UserStore.shared.currentUser {
+            return
+        }
+        // 로그인 된 유저이면 마이 페이지 이기때문에 마저 조회
+        await fetchSchedule(grews: myGrews)
+    }
+    
+    
+    
 }
