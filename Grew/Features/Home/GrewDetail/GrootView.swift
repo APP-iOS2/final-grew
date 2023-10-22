@@ -9,14 +9,14 @@ import SwiftUI
 
 struct GrootView: View {
     
-    @ObservedObject private var userViewModel = UserViewModel()
-    
-    let memberID: String
+    @EnvironmentObject private var userViewModel: UserViewModel
+    let user: User?
+    @Binding var selection: SelectViews
     
     var body: some View {
         HStack {
             NavigationLink {
-                ProfileView(user: userViewModel.currentUser)
+                ProfileView(selection: $selection, user: userViewModel.currentUser)
             } label: {
                 AsyncImage(url: URL(string: userViewModel.currentUser?.userImageURLString ?? "")) { image in
                     image
@@ -43,12 +43,12 @@ struct GrootView: View {
             Spacer()
         }
         .onAppear(perform: {
-            userViewModel.fetchUser(userId: memberID)
+            userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
         })
     }
 }
 
 #Preview {
-    GrootView(memberID: "NCMfi6uQagTFffYQhzQWHo7W6A52")
+    GrootView(user: User.dummyUser, selection: .constant(.profile))
         .environmentObject(UserViewModel())
 }
