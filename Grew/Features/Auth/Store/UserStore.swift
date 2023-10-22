@@ -79,6 +79,10 @@ class UserStore: ObservableObject {
             }
         }
     }
+    
+    func isCurrentUserProfile() -> Bool {
+        return currentUser?.id == UserStore.shared.currentUser?.id
+    }
 }
 
 

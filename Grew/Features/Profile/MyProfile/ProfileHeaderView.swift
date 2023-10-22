@@ -33,18 +33,20 @@ struct ProfileHeaderView: View {
                             
                             Spacer()
                             
-                            NavigationLink {
-                                EditProfileView(name: UserStore.shared.currentUser?.nickName ?? "",
-                                                statusMessage: UserStore.shared.currentUser?.introduce ?? "")
-                            } label: {
-                                Text("프로필 수정")
-                                    .background(RoundedRectangle(cornerRadius: 7)
-                                        .foregroundColor(.LightGray2)
-                                        .frame(width: 101, height: 32)
-                                        .font(.c1_B))
+                            if UserStore.shared.isCurrentUserProfile() {
+                                NavigationLink {
+                                    EditProfileView(name: UserStore.shared.currentUser?.nickName ?? "",
+                                                    statusMessage: UserStore.shared.currentUser?.introduce ?? "")
+                                } label: {
+                                    Text("프로필 수정")
+                                        .background(RoundedRectangle(cornerRadius: 7)
+                                            .foregroundColor(.LightGray2)
+                                            .frame(width: 101, height: 32)
+                                            .font(.c1_B))
+                                }
+                                .foregroundColor(.white)
+                                .padding()
                             }
-                            .foregroundColor(.white)
-                            .padding()
                         }
                         .padding()
                     }
