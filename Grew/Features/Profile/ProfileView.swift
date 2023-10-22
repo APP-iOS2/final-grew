@@ -19,7 +19,7 @@ struct ProfileView: View {
     @State private var selectedFilter: ProfileThreadFilter = .myGroup
     
     let user: User?
-    @StateObject var profile: Profile = Profile()
+    @StateObject var profile: ProfileStore = ProfileStore()
     
     var body: some View {
 //        NavigationStack {
@@ -105,9 +105,6 @@ struct ProfileView: View {
                     Text("1:1 채팅방으로 이동합니다.")
                 }
             }
-            .onAppear{
-                profile.fetchProfileGrew()
-            }
             .background(alignment: .bottom) {
                 Rectangle()
                     .frame(maxWidth: .infinity)
@@ -118,10 +115,9 @@ struct ProfileView: View {
             }
             .background(Color.Main)
             .navigationBarBackground(.Main)
-            .onAppear{
+            .task{ //댑악 멋져. 휴
                 if let user = UserStore.shared.currentUser {
-                   profile.fetchProfileGrew()
-                    // fetch일정도 해줘야됨
+                    await profile.fetchProfileData(user: user)
                 }
             }
         }
