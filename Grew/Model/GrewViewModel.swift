@@ -98,23 +98,6 @@ class GrewViewModel: ObservableObject {
         }
     }
     
-    // 선택된 1차 카테고리 이름 가져오기
-        func selectedCategoryName() -> String {
-            if let category = categoryArray.first(where: { $0.id == selectedCategoryId }) {
-                return category.name
-            }
-            return ""
-        }
-    // 선택된 2차 카테고리 이름 가져오기
-        func selectedSubCategoryName() -> String {
-            if let category = categoryArray.first(where: { $0.id == selectedCategoryId }) {
-                if let subCategory = category.subCategories.first(where: { $0.id == selectedSubCategoryId }) {
-                    return subCategory.name
-                }
-            }
-            return ""
-        }
-    
     /// NewestGrewCell에 사용할 카테고리 이름 가져오기
     func categoryName(_ categoryIndex: String) -> String {
         

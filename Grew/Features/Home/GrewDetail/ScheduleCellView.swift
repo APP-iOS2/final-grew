@@ -14,14 +14,14 @@ struct ScheduleCellView: View {
         VStack {
             HStack {
                 Spacer()
-                Text("# \(index)")
+                Text("# \(index + 1)")
                     .font(.b1_B)
                     .padding()
                     .foregroundColor(.white)
             }//: HStack
             .frame(height: 40)
             .background(Color.grewMainColor)
-            ProfileCircleImageView()
+            CircleImage()
                 .offset(x: -38, y: -32)
                 .padding(.bottom, -32)
             HStack {
@@ -36,7 +36,7 @@ struct ScheduleCellView: View {
                 .font(.c1_R)
                 Spacer()
                 VStack(alignment: .trailing) {
-                    Text("\(schedule.date)")
+                    Text("\(schedule.grewCellDateString)")
                         .padding(.vertical, 1)
                     Text("\(schedule.participants.count)/\(schedule.maximumMember)")
                         .padding(.vertical, 1)

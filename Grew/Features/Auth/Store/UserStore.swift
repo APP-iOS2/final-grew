@@ -19,7 +19,7 @@ class UserStore: ObservableObject {
     
     @Published var currentUser: User?
     
-    private init() {
+    public init() {
         Task {
             try await loadUserData()
         }
@@ -78,6 +78,10 @@ class UserStore: ObservableObject {
                 print("Error updating user: \(error)")
             }
         }
+    }
+    
+    func isCurrentUserProfile() -> Bool {
+        return currentUser?.id == UserStore.shared.currentUser?.id
     }
 }
 

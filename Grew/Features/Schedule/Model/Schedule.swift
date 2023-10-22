@@ -29,4 +29,8 @@ struct Schedule: Identifiable, Decodable, Encodable {
     var longitude: String?
     /// hex
     var color: String
+    
+    var grewCellDateString: String {
+        DateService.shared.grewCellDateFormat(date)
+    }
 }
