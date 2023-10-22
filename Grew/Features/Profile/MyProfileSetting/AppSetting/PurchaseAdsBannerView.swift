@@ -12,13 +12,13 @@ struct PurchaseAdsBannerView: View {
     @Environment (\.dismiss) var dismiss
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView {
                 Image("grewbanner")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
-        }
+//        }
         .navigationTitle("광고 배너 구매")
         .navigationBarBackButtonHidden(true)
         .toolbar {

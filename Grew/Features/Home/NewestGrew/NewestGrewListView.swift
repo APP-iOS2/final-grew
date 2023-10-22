@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewestGrewListView: View {
     
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: HomeRouter
     
     let grewList: [Grew]
     
@@ -19,7 +19,7 @@ struct NewestGrewListView: View {
                 ForEach(grewList) { grew in
                     Button {
 //                        GrewDetailView(grew: grew)
-                        router.navigate(to: .grewDetail(grew: grew))
+                        router.homeNavigate(to: .grewDetail(grew: grew))
                     } label: {
                         NewestGrewCellView(grew: grew)
                             .padding(.horizontal, 8)

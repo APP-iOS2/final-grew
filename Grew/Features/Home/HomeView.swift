@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var grewViewModel: GrewViewModel
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: HomeRouter
     
     var body: some View {
 //        NavigationStack {
@@ -77,7 +77,7 @@ struct HomeView: View {
                     Button {
 //                        GrewSearchView()
 //                            .navigationBarBackButtonHidden(true)
-                        router.navigate(to: .search)
+                        router.homeNavigate(to: .search)
                     } label: {
                         Image("search")
                             .font(.title2)
