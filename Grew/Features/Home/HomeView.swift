@@ -9,9 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var grewViewModel: GrewViewModel
+    @EnvironmentObject var router: HomeRouter
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView {
                 VStack {
                     // 최신 일정
@@ -22,7 +23,7 @@ struct HomeView: View {
                         .padding(.horizontal, 5)
                         .padding(.top)
                         .background(.white)
-                        .cornerRadius(20, corners: [.topRight, .topLeft])
+                        .cornerRadius(44, corners: [.topRight, .topLeft])
                 }
                 .background(Color.Main)
                 
@@ -73,9 +74,10 @@ struct HomeView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink {
-                        GrewSearchView()
-                            .navigationBarBackButtonHidden(true)
+                    Button {
+//                        GrewSearchView()
+//                            .navigationBarBackButtonHidden(true)
+                        router.homeNavigate(to: .search)
                     } label: {
                         Image("search")
                             .font(.title2)
@@ -84,11 +86,11 @@ struct HomeView: View {
                     }
                 }
             }
+            .onAppear {
+                grewViewModel.fetchGrew()
+            }
         }
-        .onAppear {
-            grewViewModel.fetchGrew()
-        }
-    } // NavigationStack
+//    } // NavigationStack
 }
 
 #Preview {

@@ -9,7 +9,7 @@ import Firebase
 import FirebaseFirestoreSwift
 import Foundation
 
-struct User: Identifiable, Codable, Equatable {
+struct User: Identifiable, Codable, Equatable, Hashable {
     /// 유저의 Auth 고유 아이디.
     @DocumentID var id: String? /*= UUID().uuidString*/
     /// 유저 이름
@@ -28,6 +28,10 @@ struct User: Identifiable, Codable, Equatable {
     var searchHistory: [String]
     /// 그루터기 멤버 여부
     var isStumpMember: Bool
+}
+
+extension User {
+    static let dummyUser = User(nickName: "더미", email: "더미", gender: "남", dob: "19900101", searchHistory: [], isStumpMember: false)
 }
 
 // class UserStore: ObservableObject {
@@ -56,8 +60,8 @@ enum ProfileThreadFilter: Int, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .myGroup: return "내 모임"
-        case .myGroupSchedule: return "내 모임 일정"
+        case .myGroup: return "내 그루"
+        case .myGroupSchedule: return "내 그루 일정"
         case .savedGrew: return "찜한 그루"
         }
     }

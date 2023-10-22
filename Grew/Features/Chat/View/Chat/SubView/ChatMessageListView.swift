@@ -13,7 +13,7 @@ struct ChatMessageListView: View {
     @EnvironmentObject private var messageStore: MessageStore
     let chatRoom: ChatRoom
     let targetUserInfos: [User]
-    // targetGrewInfoDict
+    //targetGrewInfoDict
     @Binding var groupDetailConfig: GroupDetailConfig
     @Binding var isMenuOpen: Bool
     @Binding var x: CGFloat
@@ -90,28 +90,16 @@ struct ChatMessageListView: View {
             }
             .navigationTitle(isMenuOpen ? "" : chatRoomName)
             .navigationBarBackButtonHidden(isMenuOpen ? true : false)
-            .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 300 :UIScreen.main.bounds.height - 200)
-            
-            if groupDetailConfig.selectedImage != nil {
+            .frame(height: groupDetailConfig.selectedImage != nil ? UIScreen.main.bounds.height - 280 :UIScreen.main.bounds.height - 180)
+
+           if groupDetailConfig.selectedImage != nil {
                 chatImagePicked
-            }
-            
+           }
             ChatInputView(chatRoom: chatRoom, groupDetailConfig: $groupDetailConfig)
                 .background(Color(.systemBackground).ignoresSafeArea())
                 .shadow(radius: groupDetailConfig.selectedImage != nil ? 0 : 0.5)
         }
         .task {
-            let unreadMessageCount = await getUnReadCount()
-            messageStore.addListener(chatRoomID: chatRoom.id)
-            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
-            
-            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
-            
-            
-            if unreadMessageCount > 0 {
-                // 읽지 않은 메세지 갯수를 0으로 초기화
-                await clearUnreadMesageCount()
-            }
         }
     }
     private func getUnReadCount() async -> Int {
@@ -119,7 +107,6 @@ struct ChatMessageListView: View {
         let unreadCount = dict?[UserStore.shared.currentUser!.id! ] ?? 0
         return unreadCount
     }
-    
     // 읽지 않은 메시지 개수 0으로 초기화 + 업데이트 (채팅방 입장 시, 퇴장 시)
     private func clearUnreadMesageCount() async {
         var newChat: ChatRoom = chatRoom

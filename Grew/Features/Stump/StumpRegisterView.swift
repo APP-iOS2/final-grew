@@ -9,10 +9,11 @@ import SwiftUI
 
 struct StumpRegisterView: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var stumpStore: StumpStore
+    @EnvironmentObject private var stumpStore: StumpStore
     
     @State private var name: String = ""
     @State private var hours: String = ""
+    @State private var isHoursValid: Bool = true
     @State private var minimumMembers: String = ""
     @State private var maximumMembers: String = ""
     @State private var isNeedDeposit: Bool = false
@@ -28,6 +29,8 @@ struct StumpRegisterView: View {
     @State private var isShowingPhotoLibrary: Bool = false
     @State private var isShowingSuccessAlert: Bool = false
     @State private var isShowingFailureAlert: Bool = false
+    @State private var isShowingNotStumpMemberAlert: Bool = false
+    @State private var isShowingUserFailureAlert: Bool = false
     @State private var isLoading = false
     
     let imagesLength: Int = 3
@@ -35,6 +38,7 @@ struct StumpRegisterView: View {
     private var isRegisterButtonDisabled: Bool {
         name.isEmpty ||
         hours.isEmpty ||
+        !isHoursValid ||
         minimumMembers.isEmpty ||
         maximumMembers.isEmpty ||
         location.isEmpty ||
@@ -46,14 +50,26 @@ struct StumpRegisterView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                makeInputView()
+//                makeInputView()
+                StumpInputView(
+                    name: $name,
+                    hours: $hours,
+                    isHoursValid: $isHoursValid,
+                    minimumMembers: $minimumMembers,
+                    maximumMembers: $maximumMembers,
+                    isNeedDeposit: $isNeedDeposit,
+                    deposit: $deposit,
+                    location: $location,
+                    phoneNumber: $phoneNumber,
+                    isAllTextFieldDisabled: false
+                )
+                
                 makeAddImageView()
+                
                 makeRegisterButton()
             }
             .padding(.horizontal, 20)
         }
-        .navigationTitle("그루터기 등록하기")
-        .navigationBarTitleDisplayMode(.inline)
         .overlay(
             Group {
                 if isLoading {
@@ -69,6 +85,15 @@ struct StumpRegisterView: View {
                 }
             }
         )
+        .onAppear {
+            if UserStore.shared.currentUser == nil {
+                isShowingUserFailureAlert = true
+            } else if let isStumpMember = UserStore.shared.currentUser?.isStumpMember, !isStumpMember {
+                isShowingNotStumpMemberAlert = true
+            } else {
+                isShowingNotStumpMemberAlert = false
+            }
+        }
         .sheet(isPresented: $isShowingPhotoSelectionSheet) {
             ImageEditModalView(showModal: $isShowingPhotoSelectionSheet) { form in
                 switch form {
@@ -111,10 +136,9 @@ struct StumpRegisterView: View {
             secondButtonColor: nil,
             secondButtonAction: nil,
             buttonTitle: "확인",
-            buttonColor: .Main
-        ) {
-            dismiss()
-        }
+            buttonColor: .Main,
+            action: { dismiss() }
+        )
         .grewAlert(
             isPresented: $isShowingFailureAlert,
             title: "그루터기 등록에 실패했습니다.",
@@ -125,130 +149,31 @@ struct StumpRegisterView: View {
             buttonColor: .Error,
             action: {}
         )
+        .grewAlert(
+            isPresented: $isShowingNotStumpMemberAlert,
+            title: "그루터기 멤버가 아닙니다.\n먼저 그루터기 멤버가\n되어주세요!",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Main,
+            action: { dismiss() }
+        )
+        .grewAlert(
+            isPresented: $isShowingUserFailureAlert,
+            title: "유저 정보를 가져오는 데 실패했습니다.",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Error,
+            action: { dismiss() }
+        )
     }
 }
 
 // 뷰 반환 함수
 extension StumpRegisterView {
-    // 입력 텍스트빌드 뷰
-    @ViewBuilder
-    private func makeInputView() -> some View {
-        Text("그루터기 이름")
-            .font(.b2_R)
-            .padding(.top)
-        GrewTextField(
-            text: $name,
-            isWrongText: false,
-            isTextfieldDisabled: false,
-            placeholderText: "이름",
-            isSearchBar: false
-        )
-        .padding(.bottom, 18)
-        
-        HStack {
-            Image(systemName: "stopwatch")
-                .font(.b2_R)
-            Text("운영 시간")
-                .font(.b2_R)
-            GrewTextField(
-                text: $hours,
-                isWrongText: false,
-                isTextfieldDisabled: false,
-                placeholderText: "00:00 ~ 00:00",
-                isSearchBar: false
-            )
-        }
-        .padding(.bottom, 18)
-        
-        HStack {
-            Image(systemName: "person.2.fill")
-                .font(.b2_R)
-            Text("적정 인원")
-                .font(.b2_R)
-            GrewTextField(
-                text: $minimumMembers,
-                isWrongText: false,
-                isTextfieldDisabled: false,
-                placeholderText: "최소 인원",
-                isSearchBar: false
-            )
-            GrewTextField(
-                text: $maximumMembers,
-                isWrongText: false,
-                isTextfieldDisabled: false,
-                placeholderText: "최대 인원",
-                isSearchBar: false
-            )
-        }
-        .padding(.bottom, 18)
-        
-        HStack {
-            Text("보증금")
-                .font(.b2_R)
-            Spacer()
-            Button {
-                isNeedDeposit = true
-            } label: {
-                Text("있음")
-                    .frame(width: 100, height: 32)
-            }
-            .grewButtonModifier(
-                width: 100,
-                height: 32,
-                buttonColor: isNeedDeposit ? .Sub : .BackgroundGray,
-                font: .b2_R,
-                fontColor: isNeedDeposit ? .white : .DarkGray1,
-                cornerRadius: 8
-            )
-            
-            Button {
-                isNeedDeposit = false
-            } label: {
-                Text("없음")
-                    .frame(width: 100, height: 32)
-            }
-            .grewButtonModifier(
-                width: 100,
-                height: 32,
-                buttonColor: !isNeedDeposit ? .Sub : .BackgroundGray,
-                font: .b2_R,
-                fontColor: !isNeedDeposit ? .white : .DarkGray1,
-                cornerRadius: 8
-            )
-        }
-        GrewTextField(
-            text: $deposit,
-            isWrongText: false,
-            isTextfieldDisabled: isNeedDeposit ? false : true,
-            placeholderText: "예: 50,000원",
-            isSearchBar: false
-        )
-        .padding(.bottom, 18)
-        
-        Text("위치")
-            .font(.b2_R)
-        GrewTextField(
-            text: $location,
-            isWrongText: false,
-            isTextfieldDisabled: false,
-            placeholderText: "00시 00구 00로 00길 00",
-            isSearchBar: false
-        )
-        .padding(.bottom, 18)
-        
-        Text("그루터기 전화번호")
-            .font(.b2_R)
-        GrewTextField(
-            text: $phoneNumber,
-            isWrongText: false,
-            isTextfieldDisabled: false,
-            placeholderText: "전화번호",
-            isSearchBar: false
-        )
-        .padding(.bottom, 18)
-        
-    }
-    
     // 사진 추가 뷰
     @ViewBuilder
     private func makeAddImageView() -> some View {
@@ -325,7 +250,11 @@ extension StumpRegisterView {
         .padding(.vertical)
         .disabled(isRegisterButtonDisabled)
     }
-    
+}
+
+// 기능 함수
+extension StumpRegisterView {
+    /// 그루터기 등록 함수
     private func stumpRegister() {
         isLoading = true
         

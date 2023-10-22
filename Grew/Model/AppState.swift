@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
  
 // 로딩 상태 열거형
 enum LoadingState: Hashable, Identifiable {
@@ -28,4 +29,40 @@ enum Route: Hashable {
 class AppState: ObservableObject {
     @Published var loadingState: LoadingState = .idle
     @Published var routes: [Route] = []
+}
+
+class HomeRouter: ObservableObject {
+    enum HomeRoute: Hashable {
+//        case alert
+        case category(grewList: [Grew], secondCategory: [SubCategory])
+        case grewDetail(grew: Grew)
+        case search
+    }
+    
+    @Published var homePath = NavigationPath()
+    
+    func reset() {
+        homePath.removeLast(homePath.count)
+    }
+    
+    func homeNavigate(to route: HomeRoute) {
+        homePath.append(route)
+    }
+}
+
+class ProfileRouter: ObservableObject {
+    enum ProfileRoute: Hashable {
+        case banner
+        case setting
+    }
+    
+    @Published var profilePath = NavigationPath()
+    
+    func reset() {
+        profilePath.removeLast(profilePath.count)
+    }
+    
+    func profileNavigate(to route: ProfileRoute) {
+        profilePath.append(route)
+    }
 }

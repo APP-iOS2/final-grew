@@ -10,6 +10,7 @@ import SwiftUI
 struct CategoryButtonView: View {
     
     @EnvironmentObject var grewViewModel: GrewViewModel
+    @EnvironmentObject var router: HomeRouter
     
     private let gridItems: [GridItem] = [
 //        GridItem(.adaptive(minimum: 60))
@@ -24,19 +25,23 @@ struct CategoryButtonView: View {
             Text("새로운 그루를 찾아보세요!")
                 .font(.b1_B)
                 .foregroundStyle(Color.black)
-                .padding()
+                .padding(.top, 40)
+                .padding(.bottom, 25)
+                .padding(.horizontal)
             
             LazyVGrid(columns: gridItems) {
                 ForEach(grewViewModel.categoryArray) { category in
                     
-                    NavigationLink {
-                        CategoryDetailView(grewList: grewViewModel.grewList.filter {
+                    Button {
+//                        CategoryDetailView(grewList: grewViewModel.grewList.filter {
+//                            $0.categoryIndex == category.id
+//                        }, secondCategory: category.subCategories)
+//                            .navigationTitle(category.name)
+//                            .navigationBarTitleDisplayMode(.inline)
+//                            .navigationBarBackButtonHidden(true)
+                        router.homeNavigate(to: .category(grewList: grewViewModel.grewList.filter {
                             $0.categoryIndex == category.id
-                        }, secondCategory: category.subCategories)
-                            .navigationTitle(category.name)
-                            .navigationBarTitleDisplayMode(.inline)
-                            .navigationBarBackButtonHidden(true)
-                        
+                        }, secondCategory: category.subCategories))
                     } label: {
                         VStack {
                             Image("\(category.imageString)")
@@ -55,7 +60,7 @@ struct CategoryButtonView: View {
                                 
                         }
                         .foregroundColor(.black)
-                        .padding(.vertical)
+                        .padding(.bottom, 15)
                         .background(.white)
                         .cornerRadius(12)
 //                        .overlay(
@@ -63,13 +68,15 @@ struct CategoryButtonView: View {
 //                                .stroke(Color.gray, lineWidth: 1.5)
 //                        )
                     }
+//                    .navigationTitle(category.name)
+//                    .navigationBarTitleDisplayMode(.inline)
                 }
                 .padding(.horizontal)
             } //: LazyGrid
-            
+            .padding(.bottom, 25)
             // 배너
             PagingBannerView()
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
                 .frame(height: 100)
                 .padding(.horizontal)
         }

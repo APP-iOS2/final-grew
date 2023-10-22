@@ -11,8 +11,8 @@ import FirebaseFirestoreSwift
 import SwiftUI
 
 struct ProfileHeaderView: View {
-    @State var name: String
-    @State var statusMessage: String
+    
+    let user: User
     
     private var backgroundHeight: CGFloat {
         //        let count = CGFloat(ProfileThreadFilter.allCases.count)
@@ -61,15 +61,34 @@ struct ProfileHeaderView: View {
                     
                     Divider()
                     
-                }
+                    NavigationLink {
+                        EditProfileView(
+                            user: user
+                        )
+                    } label: {
+                        Text("프로필 수정")
+                            .font(.c1_B)
+                            .background(RoundedRectangle(cornerRadius: 7)
+                                .foregroundColor(.LightGray2)
+                                .frame(width: 90, height: 28)
+                            )
+                    }
+                    .padding(10)
+                    .foregroundColor(.white)
+                }.padding(10)
+                    .padding(.horizontal, 10)
+                
+                Divider()
             }
-            .background(Color.grewMainColor)
-        }
+
+        }.background(Color.grewMainColor)
+            .frame(height: UIScreen.main.bounds.height / 3)
     }
+    
 }
 
 #Preview {
     NavigationStack {
-        ProfileHeaderView(name: "헬롱", statusMessage: "하위")
+        ProfileHeaderView(user: UserStore.shared.currentUser!)
     }
 }

@@ -8,28 +8,47 @@
 import SwiftUI
 
 struct GrootView: View {
+    
+    @EnvironmentObject private var userViewModel: UserViewModel
+    let user: User?
+    @Binding var selection: SelectViews
+    
     var body: some View {
         HStack {
-            Image(.defaultProfile)
-                .rounded(width: 44, height: 44)
-                .padding(.trailing, 1)
+            NavigationLink {
+                ProfileView(selection: $selection, user: userViewModel.currentUser)
+            } label: {
+                AsyncImage(url: URL(string: userViewModel.currentUser?.userImageURLString ?? "")) { image in
+                    image
+                        .rounded(width: 44, height: 44)
+                        .padding(.trailing, 1)
+                } placeholder: {
+                    Image(.defaultProfile)
+                        .rounded(width: 44, height: 44)
+                        .padding(.trailing, 1)
+                }
+            }
             VStack(alignment: .leading) {
                 HStack {
-                    Text("이승준")
+                    Text("\(userViewModel.currentUser?.nickName ?? "닉네임이 없다고..?")")
                         .font(.b3_B)
                         .padding([.trailing, .bottom], 1)
-                    Text("NEW")
+                    Text("")
                         .font(.c2_B)
                         .foregroundStyle(Color.Sub)
                 }
-                Text("잘 부탁드립니다. 가입 문의는 DM 주세요!")
+                Text("\(userViewModel.currentUser?.introduce ?? "자기소개를 작성해주세요.")")
                     .font(.c1_L)
             }
             Spacer()
         }
+        .onAppear(perform: {
+            userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
+        })
     }
 }
 
 #Preview {
-    GrootView()
+    GrootView(user: User.dummyUser, selection: .constant(.profile))
+        .environmentObject(UserViewModel())
 }
