@@ -105,13 +105,14 @@ struct MessageBubbles: View {
                         .foregroundColor(.black)
                         .padding(EdgeInsets(top: 11, leading: 15, bottom: 10, trailing: 15))
                     }
-                }
+                }.cornerRadius(15)
                 //                    .background(Color.LightGray2)
                 .overlay(
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(Color.LightGray2, lineWidth: 1)
                 )
             }
+            
             VStack{
                 Spacer()
                 Text(chatMessage.createdDateString)
