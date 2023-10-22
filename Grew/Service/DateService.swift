@@ -50,4 +50,10 @@ final class DateService {
         
         return dateFormatter.string(from: date)
     }
+    func grewCellDateFormat(_ date: Date) -> String {
+        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        return dateFormatter.string(from: date)
+    }
 }

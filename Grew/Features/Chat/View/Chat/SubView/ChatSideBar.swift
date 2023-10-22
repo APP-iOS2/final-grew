@@ -83,5 +83,5 @@ struct ChatSideBar: View {
 }
 
 #Preview {
-    ChatSideBar(isMenuOpen: .constant(true), isExitButtonAlert: .constant(true),chatRoomName: "감자탕 모임", targetUserInfos: [User]())
+    ChatSideBar(isMenuOpen: .constant(true), isExitButtonAlert: .constant(true), chatRoomName: "감자탕 모임", targetUserInfos: [User]())
 }

@@ -10,11 +10,11 @@ import SwiftUI
 struct GrootListView: View {
     
     let grew: Grew
-    
+    @State var selection: SelectViews = SelectViews.profile
     var body: some View {
         LazyVStack(spacing: 16, content: {
             ForEach(0..<grew.currentMembers.count, id: \.self) { index in
-                GrootView(memberID: grew.currentMembers[index])
+                GrootView(user: UserStore.shared.currentUser, selection: $selection)
             }
         })
         .padding(20)
