@@ -16,38 +16,38 @@ struct ChatInputView: View {
     @FocusState var isChatTextFieldFocused: Bool
     
     var body: some View {
-        HStack{
-            Button {
-                groupDetailConfig.showOptions = true
-            } label: {
-                Image(systemName: "plus.circle.fill")
-                    .font(.title2)
-                    .foregroundColor(Color.Main)
-            }
-            TextMaster(text: $groupDetailConfig.chatText, isFocused: $isChatTextFieldFocused, maxLine: 5, fontSize: 15)
-                .padding(.horizontal, 10)
-                .overlay(
-                    Capsule()
-                        .stroke(isChatTextFieldFocused ? Color.grewMainColor : Color.gray, lineWidth: 1)
-                )
-                .font(.c1_R)
-            //            TextField("메세지 보내기", text: $groupDetailConfig.chatText)
-            //                .focused($isChatTextFieldFocused)
-            Button {
-                Task {
-                    if groupDetailConfig.selectedImage != nil, !groupDetailConfig.chatText.isEmptyOrWhiteSpace {
-                        await sendMessageAndPhoto()
-                    } else {
-                        await sendMessage()
-                    }
+            HStack {
+                Button {
+                    groupDetailConfig.showOptions = true
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                        .font(.title2)
+                        .foregroundColor(Color.Main)
                 }
-            } label: {
-                Image(systemName: "arrow.up.circle.fill")
-                    .font(.title2)
-                    .foregroundColor(!groupDetailConfig.isValid ? .gray : Color.Main)
+                TextMaster(text: $groupDetailConfig.chatText, isFocused: $isChatTextFieldFocused, maxLine: 5, fontSize: 15)
+                    .padding(.horizontal, 10)
+                    .overlay(
+                        Capsule()
+                            .stroke(isChatTextFieldFocused ? Color.grewMainColor : Color.gray, lineWidth: 1)
+                    )
+                    .font(.c1_R)
+                //            TextField("메세지 보내기", text: $groupDetailConfig.chatText)
+                //                .focused($isChatTextFieldFocused)
+                Button {
+                    Task {
+                        if groupDetailConfig.selectedImage != nil, !groupDetailConfig.chatText.isEmptyOrWhiteSpace {
+                            await sendMessageAndPhoto()
+                        } else {
+                            await sendMessage()
+                        }
+                    }
+                } label: {
+                    Image(systemName: "arrow.up.circle.fill")
+                        .font(.title2)
+                        .foregroundColor(!groupDetailConfig.isValid ? .gray : Color.Main)
+                }
+                .disabled(!groupDetailConfig.isValid)
             }
-            .disabled(!groupDetailConfig.isValid)
-        }.padding()
     }
     
     private func clearFields() {
