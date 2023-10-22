@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct GrewListItemView: View {
+    //참여한 유저 이미지 매핑해야함 ㅎ...............
+    let grew: Grew
+    
     var body: some View {
         HStack {
             ZStack {
-                AsyncImage(url: URL(string: "https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/1563685899/B.jpg?108000000"), content: { image in
+                AsyncImage(url: URL(string: grew.imageURL ), content: { image in
                     image
                         .resizable()
                 }, placeholder: {
@@ -27,7 +30,7 @@ struct GrewListItemView: View {
                 .padding(.trailing, 10)
             
             VStack(alignment: .leading) {
-                Text("소개팅")
+                Text(grew.categoryIndex)
                     .font(.c2_L)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 3)
@@ -35,10 +38,10 @@ struct GrewListItemView: View {
                     .cornerRadius(20)
                     
                     
-                Text("아날로그 소지품 소개팅")
+                Text(grew.title)
                     .font(.b2_B)
                     .padding(.top, 1)
-                Text("아날로그 소지품 소개팅")
+                Text(grew.description)
                     .font(.c2_B)
                     .foregroundColor(.gray)
                     .padding(.top, 1)
@@ -56,7 +59,7 @@ struct GrewListItemView: View {
                     Spacer()
                     Group {
                         Image(systemName: "person.2.fill")
-                        Text("5/20")
+                        Text("\(grew.currentMembers.count)/\(grew.maximumMembers)")
                     }.font(.c2_R)
                 }.padding(.top, 1)
                     .padding(.leading, 10)
@@ -68,6 +71,7 @@ struct GrewListItemView: View {
     }
 }
 
+/*
 #Preview {
-    GrewListItemView()
-}
+    GrewListItemView(grew: Grew(from: <#Decoder#>))
+}*/

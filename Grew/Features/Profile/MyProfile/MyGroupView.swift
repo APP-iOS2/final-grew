@@ -12,12 +12,13 @@ struct MyGroupView: View {
     @EnvironmentObject var grewViewModel: GrewViewModel
     
     let user: User?
+    let grews: [Grew]
     
     var body: some View {
         VStack {
             //ProfileGrewDataEmptyView(systemImage: "person.2", message: "아직 그루가 없어요.")
-            ForEach(0..<10){ i in
-                GrewListItemView()
+            ForEach(grews){ grew in
+                GrewListItemView(grew: grew)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 5)
             }
@@ -25,8 +26,9 @@ struct MyGroupView: View {
     }
 }
 
+/*
 #Preview {
     NavigationStack {
         MyGroupView(user: User.dummyUser)
     }
-}
+}*/
