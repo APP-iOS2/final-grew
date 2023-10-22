@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct GrewIntroductionView: View {
+    @ObservedObject private var userViewModel = UserViewModel()
     
     let grew: Grew
     
     // 호스트 이미지, 호스트 이름 추가하기
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
-            AsyncImage(url: URL(string: "https://images.unsplash.com/photo-1696757020926-d627b01c41cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=900&q=60")) { image in
+            AsyncImage(url: URL(string: "\(userViewModel.currentUser?.userImageURLString ?? "")")) { image in
                 image
                     .resizable()
                     .rounded(width: 52, height: 52)
@@ -54,7 +55,7 @@ struct GrewIntroductionView: View {
                     .font(.b2_B)
                     .padding(.bottom, 2)
                 
-                Text("호스트 kangho")
+                Text("호스트 \(userViewModel.currentUser?.nickName ?? "닉네임이 없다고..?")")
                     .font(.c1_B)
                     .padding(.bottom, 3)
                 
@@ -101,6 +102,9 @@ struct GrewIntroductionView: View {
             Spacer()
         }
         .padding(EdgeInsets(top: 15, leading: 20, bottom: 15, trailing: 20))
+        .onAppear(perform: {
+            userViewModel.fetchUser(userId: grew.hostID)
+        })
         
         Divider()
         
@@ -142,7 +146,6 @@ struct GrewIntroductionView: View {
 
 #Preview {
     GrewIntroductionView(grew: Grew(
-        id: "id",
         categoryIndex: "게임/오락",
         categorysubIndex: "보드게임",
         title: "멋쟁이 보드게임",
@@ -156,8 +159,6 @@ struct GrewIntroductionView: View {
         maximumMembers: 8,
         currentMembers: ["id1", "id2"],
         isNeedFee: false,
-        fee: 0,
-        createdAt: Date(),
-        heartTapped: 0
+        fee: 0
     ))
 }

@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ScheduleCellView: View {
+    let index: Int
+    let schedule: Schedule
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                Text("# 1")
+                Text("# \(index)")
                     .font(.b1_B)
                     .padding()
                     .foregroundColor(.white)
@@ -34,11 +36,11 @@ struct ScheduleCellView: View {
                 .font(.c1_R)
                 Spacer()
                 VStack(alignment: .trailing) {
-                    Text("2023-10-25")
+                    Text("\(schedule.date)")
                         .padding(.vertical, 1)
-                    Text("17/25")
+                    Text("\(schedule.participants.count)/\(schedule.maximumMember)")
                         .padding(.vertical, 1)
-                    Text("온라인")
+                    Text("\(schedule.location == nil ? "온라인" : "오프라인")")
                         .padding(.vertical, 1)
                 }//: VStack
                 .font(.c1_B)
@@ -54,5 +56,5 @@ struct ScheduleCellView: View {
 }
 
 #Preview {
-    ScheduleCellView()
+    ScheduleCellView(index: 0, schedule: Schedule(id: "", gid: "", scheduleName: "", date: Date(), maximumMember: 0, participants: [], fee: "", location: "", latitude: "", longitude: "", color: ""))
 }

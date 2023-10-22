@@ -9,8 +9,12 @@ import SwiftUI
 
 struct MyGroupView: View {
     
+    @EnvironmentObject var grewViewModel: GrewViewModel
+    
+    let user: User?
+    
     var body: some View {
-        VStack{
+        VStack {
             ForEach(0..<10){ i in
                 GrewListItemView()
                     .padding(.horizontal, 10)
@@ -22,6 +26,6 @@ struct MyGroupView: View {
 
 #Preview {
     NavigationStack {
-        MyGroupView()
+        MyGroupView(user: User.dummyUser)
     }
 }

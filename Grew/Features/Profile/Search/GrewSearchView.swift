@@ -67,7 +67,6 @@ struct GrewSearchView: View {
                     Image(systemName: "chevron.backward")
                         .font(.system(size: 18))
                         .foregroundStyle(Color.black)
-                        .padding()
                 }
                 Spacer()
             }

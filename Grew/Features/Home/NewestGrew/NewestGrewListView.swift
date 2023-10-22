@@ -21,7 +21,7 @@ struct NewestGrewListView: View {
 //                        GrewDetailView(grew: grew)
                         router.navigate(to: .grewDetail(grew: grew))
                     } label: {
-                        NewestGrewCell(grew: grew)
+                        NewestGrewCellView(grew: grew)
                             .padding(.horizontal, 8)
                     }
                 }
