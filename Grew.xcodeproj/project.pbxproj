@@ -723,8 +723,7 @@
 				99D2C6432ACD4913001FEC20 /* HomeView.swift */,
 				99BC42602ADF77B6005B70A0 /* NewestGrew */,
 				9989DA962ADF683600AC4917 /* NewestSchedule */,
-				CE5129412AD8D66700CE77C5 /* GrewDetailView.swift */,
-				CE5A27B32AD9B0590014BE09 /* GrewIntroductionView.swift */,
+				312E98ED2ACD30AF00E38626 /* Search */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -739,7 +738,6 @@
 				2157095D2AD530CE006ABE35 /* MyProfile */,
 				215709612AD534AC006ABE35 /* MyProfileSetting */,
 				216315682ADFA62F00208CB4 /* Inform */,
-				312E98ED2ACD30AF00E38626 /* Search */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -955,6 +953,8 @@
 		9FD050652ADF5C9300A8735A /* GrewDetail */ = {
 			isa = PBXGroup;
 			children = (
+				CE5129412AD8D66700CE77C5 /* GrewDetailView.swift */,
+				CE5A27B32AD9B0590014BE09 /* GrewIntroductionView.swift */,
 				9F4C1C1A2AE4B50F00C665AE /* GrewEditSheetView.swift */,
 				9FD050702ADFBA2900A8735A /* GrootView.swift */,
 				9FD050722ADFBD9700A8735A /* GrootListView.swift */,
@@ -975,16 +975,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE9292CD2ADF61E9005052AF /* Stump */ = {
+		CE916AFD2AE5FC97006FF6BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE9292D82AE20B2B005052AF /* ViewModel */,
 				CE9292CE2ADF62EF005052AF /* StumpIntroductionView.swift */,
 				CE9292D02ADF6966005052AF /* StumpMemberRequestView.swift */,
 				CE9292D22ADFADBC005052AF /* StumpRegisterView.swift */,
 				21709BFB2AE1191E00FDA43D /* StumpCellView.swift */,
 				CE48FAD72AE3C9A600712DD5 /* StumpInputView.swift */,
 				CE48FAD92AE4163400712DD5 /* StumpListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE9292CD2ADF61E9005052AF /* Stump */ = {
+			isa = PBXGroup;
+			children = (
+				CE916AFD2AE5FC97006FF6BD /* Views */,
+				CE9292D82AE20B2B005052AF /* ViewModel */,
 			);
 			path = Stump;
 			sourceTree = "<group>";
