@@ -8,24 +8,34 @@
 import SwiftUI
 
 struct MyGroupView: View {
-    
-    @EnvironmentObject var grewViewModel: GrewViewModel
-    
+
     let user: User?
+    let grews: [Grew]
     
     var body: some View {
-        VStack {
-            ForEach(0..<10){ i in
-                GrewListItemView()
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-            }
-        }.padding(.bottom, 30)
+        if grews.isEmpty{
+            ProfileGrewDataEmptyView(systemImage: "person.2", message: "아직 그루가 없어요.")
+        }else{
+            VStack {
+                ForEach(grews){ grew in
+                    NavigationLink{
+                        GrewDetailView(grew: grew)
+                    }label: {
+                        GrewCellView(grew: grew)
+                            .padding(.trailing, 5)
+
+                            .foregroundColor(.black)
+                    }
+                }
+            }.padding(.top, 5)
+            .padding(.bottom, 30)
+        }
     }
 }
 
+/*
 #Preview {
     NavigationStack {
-        MyGroupView(user: User.dummyUser)
+        MyGroupView(user: User.dummyUser, profile: )
     }
-}
+}*/

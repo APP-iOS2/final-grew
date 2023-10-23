@@ -14,38 +14,37 @@ struct GrewListView: View {
     
     var body: some View {
         VStack {
-            ForEach(0 ..< grewList.count, id: \.self) { index in
-                // 그루 디테일 뷰
-                Button {
-//                    GrewDetailView(grew: grewList[index])
-                    router.homeNavigate(to: .grewDetail(grew: grewList[index]))
-                } label: {
-                    HStack {
-                        
-                        VStack {
-                            
-                            if index < 3 {
-                                Image(indexToImage(rank: index))
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 44, height: 44)
-                                    .padding(.vertical)
-                            } else {
+            if !grewList.isEmpty {
+                ForEach(0 ..< grewList.count, id: \.self) { index in
+                    if let grew = grewList[safe: index] {
+                        Button {
+                            // GrewDetailView(grew: grewList[index])
+                            router.homeNavigate(to: .grewDetail(grew: grew))
+                        } label: {
+                            HStack {
+                                VStack {
+                                    if index < 3 {
+                                        Image(indexToImage(rank: index))
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 44, height: 44)
+                                            .padding(.vertical)
+                                    } else {
+                                        
+                                        Text("\(index + 1)")
+                                            .font(.b1_B)
+                                            .foregroundStyle(Color.black)
+                                            .padding()
+                                    }
+                                }
+                                .padding(.leading, 16)
                                 
-                                Text("\(index + 1)")
-                                    .font(.b1_B)
-                                    .foregroundStyle(Color.black)
-                                    .padding()
-                                
+                                GrewCellView(grew: grew)
+                                    .padding(.trailing, 16)
+                                    .padding(.bottom, 12)
+                                    .foregroundColor(.black)
                             }
-                            
                         }
-                        .padding(.leading, 16)
-                        
-                        GrewCellView(grew: grewList[index])
-                            .padding(.trailing, 16)
-                            .padding(.bottom, 12)
-                            .foregroundColor(.black)
                     }
                 }
             }

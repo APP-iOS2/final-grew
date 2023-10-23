@@ -11,6 +11,10 @@ struct GrewEditSheetView: View {
     @EnvironmentObject var grewViewModel: GrewViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     
+    @Binding var isShowingWithdrawConfirmAlert: Bool
+    @Binding var isShowingToolBarSheet: Bool
+    
+    
     let grew: Grew
     
     var body: some View {
@@ -63,22 +67,34 @@ struct GrewEditSheetView: View {
                             .padding(.vertical, 8)
                             .foregroundStyle(Color.Error)
                         }
-                        
+                        Image(systemName: "pencil")
+                            .padding(.vertical, 8)
+                            .foregroundStyle(Color.Black)
+                        Divider()
+                        Button {
+                            //
+                        } label: {
+                            Text("그루 해체하기")
+                            Spacer()
+                            Image(systemName: "trash")
+                        }
+                        .padding(.vertical, 8)
+                        .foregroundStyle(Color.Error)
                     }
                 }
                 .font(.b2_R)
                 .padding(20)
-                .background(Color.white)
-            }.onAppear(perform: {
-                userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
-            })
-            .ignoresSafeArea(.all)
+            }
         }
+        .ignoresSafeArea(.all)
+        .onAppear(perform: {
+            userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
+        })
     }
 }
 
 #Preview {
-    GrewEditSheetView(grew: Grew(
+    GrewEditSheetView(isShowingWithdrawConfirmAlert: .constant(false), isShowingToolBarSheet: .constant(true), grew: Grew(
         id: "id",
         categoryIndex: "게임/오락",
         categorysubIndex: "보드게임",

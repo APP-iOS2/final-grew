@@ -64,6 +64,10 @@ struct StumpMemberRequestView: View {
                 }
             }
         }
+        .scrollDismissesKeyboard(.immediately)
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
         .overlay(
             Group {
                 if isLoading {

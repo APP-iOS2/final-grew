@@ -202,7 +202,7 @@ struct GrewEditView: View {
                     }
                     Group {
                         DefaultMainButton(action: {
-                            
+                            viewModel.updateGrew()
                         }, text: "수정 완료")
                         Spacer(minLength: 40)
                     }

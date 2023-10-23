@@ -166,14 +166,14 @@ struct CreateScheduleMainView: View {
     
     func createSchedule() {
         let id = UUID().uuidString
-        do{
+        if let user = UserStore.shared.currentUser {
             let newSchedule = Schedule(
                 id: id,
                 gid: gid,
                 scheduleName: scheduleName,
                 date: date,
                 maximumMember: Int(maximumMenbers) ?? 2,
-                participants: [],
+                participants: [user.id ?? ""],
                 fee: (hasFee ? fee : nil),
                 location: (hasLocation ? location : nil),
                 latitude: (hasLocation ? latitude : nil),
@@ -181,11 +181,12 @@ struct CreateScheduleMainView: View {
                 color: colorPick
             )
             scheduleStore.addSchedule(newSchedule)
-        } catch let error {
-            print(error.localizedDescription)
+        }else {
+            print("생성자 로그인 정보 없음")
         }
     }
 }
+
 
 #Preview {
     NavigationStack{

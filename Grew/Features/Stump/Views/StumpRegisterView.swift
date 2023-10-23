@@ -70,6 +70,10 @@ struct StumpRegisterView: View {
             }
             .padding(.horizontal, 20)
         }
+        .scrollDismissesKeyboard(.immediately)
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
         .overlay(
             Group {
                 if isLoading {
@@ -161,7 +165,7 @@ struct StumpRegisterView: View {
         )
         .grewAlert(
             isPresented: $isShowingUserFailureAlert,
-            title: "유저 정보를 가져오는 데 실패했습니다.",
+            title: "유저 정보를 가져오는 데\n실패했습니다.",
             secondButtonTitle: nil,
             secondButtonColor: nil,
             secondButtonAction: nil,

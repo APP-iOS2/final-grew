@@ -38,8 +38,8 @@ struct ChatDetailView: View {
                 x: $x,
                 unreadMessageIndex: $unreadMessageIndex
             )
-            .padding(.bottom, 25)
-            .padding(.top, 30)
+//            .padding(.bottom, 25)
+//            .padding(.top, 30)
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
                 
@@ -128,7 +128,7 @@ struct ChatDetailView: View {
     // 안 읽은 메시지 개수 구하기
     private func getUnReadCount() async -> Int {
         let dict = await chatStore.getUnreadMessageDictionary(chatRoomID: chatRoom.id)
-        let unreadCount = dict?[UserStore.shared.currentUser!.id! ] ?? 0
+        let unreadCount = dict?[UserStore.shared.currentUser!.id!] ?? 0
         return unreadCount
     }
     
@@ -139,13 +139,14 @@ struct ChatDetailView: View {
         newDict[UserStore.shared.currentUser!.id!] = 0
         newChat.unreadMessageCount = newDict
         
-        await chatStore.updateChatRoom(chatRoom)
+        await chatStore.updateChatRoom(newChat)
     }
     // 채팅방 나가기
     private func exitChatRoom() async {
         // 참여중인 채팅방에서 나가기
         
         var newChatRoom: ChatRoom = chatRoom
+        let newMember = chatRoom.members.filter { $0 != UserStore.shared.currentUser!.id! }
         var newUnreadMessageCountDict: [String: Int] = await chatStore.getUnreadMessageDictionary(chatRoomID: chatRoom.id) ?? [:]
         
         for userID in chatRoom.otherUserIDs {
@@ -154,14 +155,15 @@ struct ChatDetailView: View {
         
         newUnreadMessageCountDict[UserStore.shared.currentUser!.id!] = 0
         
-        var newMessage = ChatMessage(text: "\(UserStore.shared.currentUser!.nickName)님이 퇴장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+        let newMessage = ChatMessage(text: "\(UserStore.shared.currentUser!.nickName)님이 퇴장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
         
         messageStore.addMessage(newMessage, chatRoomID: chatRoom.id)
         
+        newChatRoom.members = newMember
         newChatRoom.lastMessage =  "\(UserStore.shared.currentUser!.nickName)님이 퇴장하셨습니다."
         newChatRoom.lastMessageDate = .now
         newChatRoom.unreadMessageCount = newUnreadMessageCountDict
         
-        await chatStore.updateChatRoom(newChatRoom)
+        await chatStore.updateChatRoomForExit(newChatRoom)
     }
 }

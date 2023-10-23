@@ -45,10 +45,10 @@ struct MainChatView: View {
         .task {
             if !chatStore.isDoneFetch {
                 chatStore.addListener()
-                isLoading = true
-                await chatStore.fetchChatRooms()
-                isLoading = false
             }
+            isLoading = true
+            await chatStore.fetchChatRooms()
+            isLoading = false
         }
         .onDisappear {
             chatStore.removeListener()

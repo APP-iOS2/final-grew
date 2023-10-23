@@ -156,8 +156,8 @@ class GrewViewModel: ObservableObject {
     
     func popularFilter(grewList: [Grew]) -> [Grew] {
         
-        let tempList = grewList.sorted(by: {$0.heartTapped > $1.heartTapped})
-        
+        let tempList = grewList.sorted(by: {$0.heartCount > $1.heartCount})
+
         if tempList.count < 5 {
             return tempList
         } else {
@@ -190,6 +190,73 @@ class GrewViewModel: ObservableObject {
             joinGrew(grew)
         }
     }
+    
+    func withdrawGrewMember(grewId: String, userId: String) {
+        if var grew = grewList.first(where: { $0.id == grewId }) {
+            if let index = grew.currentMembers.firstIndex(of: userId) {
+                grew.currentMembers.remove(at: index)
+                joinGrew(grew)
+            }
+        }
+    }
+    
+    // 그루 아이디는 동일 했다 근데 업데이트가 안됐다
+    func heartTapping(gid: String) {
+    
+        let flag = UserStore.shared.checkFavorit(gid: gid)
+        
+        for grew in grewList {
+            if grew.id == gid {
+                var currentGrew = grew
+                if flag {
+                    currentGrew.heartCount -= 1
+                } else {
+                    currentGrew.heartCount += 1
+                }
+                heartUpdateGrew(currentGrew)
+                break
+            }
+        }
+    }
+    
+    func heartUpdateGrew(_ grew: Grew) {
+        db.collection("grews").whereField("id", isEqualTo: grew.id).getDocuments { snapshot, error in
+            if let error {
+                print("Error: \(error)")
+            } else if let snapshot {
+                for document in snapshot.documents {
+                    self.db.collection("grews").document(document.documentID).updateData([
+                        "heartCount" : grew.heartCount
+                    ]) { error in
+                        if let error {
+                            print("Grew Update Error: \(error)")
+                        } else {
+                            self.fetchGrew()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    /// 프로필에서 사용할 현재 유저의 찜한 그루 가져오기
+    func favoritGrew() -> [Grew] {
+        var resultList: [Grew] = []
+        if let currentUser = UserStore.shared.currentUser {
+           
+            for gid in currentUser.favoritGrew {
+                let grew = grewList.filter {
+                    $0.id == gid
+                }
+                resultList.append(contentsOf: grew)
+            }
+            return resultList
+        }
+        return resultList
+    }
+    
+    
+    
 }
 
 // static class Method

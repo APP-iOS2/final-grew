@@ -31,15 +31,20 @@ struct GrewDetailView: View {
     @State private var selectedFilter: GrewDetailFilter = .introduction
     @State private var isShowingJoinConfirmAlert: Bool = false
     @State private var isShowingJoinFinishAlert: Bool = false
-
+    
+    @State var isShowingToolBarSheet: Bool = false
+    @State var isShowingWithdrawConfirmAlert: Bool = false
+    @State private var isShowingWithdrawFinishAlert: Bool = false
+    
     @State private var isLoading: Bool = false
     @State var detentHeight: CGFloat = 0
-    
+    @State var heartState: Bool = false
+    @State var isChatViewButton: Bool = false
     @Namespace private var animation
     
     private let headerHeight: CGFloat = 180
     
-    let grew: Grew
+    var grew: Grew
     
     var body: some View {
         VStack {
@@ -52,7 +57,7 @@ struct GrewDetailView: View {
                         case .introduction:
                             GrewIntroductionView(grew: grew)
                         case .schedule:
-                            ScheduleListView(gid: grew.id)
+                            ScheduleListView(grew: grew)
                         case .groot:
                             GrootListView(grew: grew)
                         }
@@ -72,12 +77,12 @@ struct GrewDetailView: View {
                     }
                     Spacer()
                 }
-            }
-            .toolbar {
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     makeToolbarButtons()
                 }
             }
+            .toolbarBackground(.hidden, for: .navigationBar)
             .grewAlert(
                 isPresented: $isShowingJoinFinishAlert,
                 title: "\(grew.title)에 참여 완료!",
@@ -86,7 +91,9 @@ struct GrewDetailView: View {
                 secondButtonAction: nil,
                 buttonTitle: "확인",
                 buttonColor: .Main,
-                action: { }
+                action: {
+                    isChatViewButton = true
+                }
             )
             .grewAlert(
                 isPresented: $isShowingJoinConfirmAlert,
@@ -108,9 +115,37 @@ struct GrewDetailView: View {
             
             makeBottomButtons()
         }
+        
         .onAppear(perform: {
             grewViewModel.selectedGrew = grew
         })
+        .grewAlert(
+            isPresented: $isShowingWithdrawConfirmAlert,
+            title: "\(grew.title)에 탈퇴하시겠습니까?",
+            secondButtonTitle: "취소",
+            secondButtonColor: .Main,
+            secondButtonAction: { },
+            buttonTitle: "탈퇴",
+            buttonColor: .red,
+            action: {
+                if let userId = UserStore.shared.currentUser?.id {
+                    grewViewModel.withdrawGrewMember(grewId: grew.id, userId: userId)
+                    isShowingWithdrawFinishAlert = true
+                }
+            }
+        )
+        .grewAlert(
+            isPresented: $isShowingWithdrawFinishAlert,
+            title: "\(grew.title)에 탈퇴 완료!",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Main,
+            action: {
+                dismiss()
+            }
+        )
         .task {
             if !chatStore.isDoneFetch {
                 chatStore.addListener()
@@ -119,16 +154,20 @@ struct GrewDetailView: View {
                 isLoading = false
             }
         }
+        .onAppear {
+            heartState = UserStore.shared.checkFavorit(gid: grew.id)
+        }
         .onDisappear {
             chatStore.removeListener()
             chatStore.isDoneFetch = false
         }
+        
         .fullScreenCover(isPresented: $grewViewModel.showingSheet) {
             switch grewViewModel.sheetContent {
             case .grewEdit:
                 GrewEditView()
             case .setting:
-                GrewEditSheetView(grew: grew)
+                GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, isShowingToolBarSheet: $isShowingToolBarSheet, grew: grew)
                     .readHeight()
                     .onPreferenceChange(HeightPreferenceKey.self) { height in
                         if let height {
@@ -140,6 +179,7 @@ struct GrewDetailView: View {
                 fatalError("There is no View")
             }
         }
+        .navigationBarBackButtonHidden()
     }
     
 }
@@ -159,9 +199,14 @@ extension GrewDetailView {
                     )
                     .clipped()
                     .offset(y: -geometry.frame(in: .global).minY)
-                
             } placeholder: {
-                ProgressView()
+                Image("logo")
+                    .frame(
+                        width: geometry.size.width,
+                        height: headerHeight + geometry.frame(in: .global).minY > 0 ? headerHeight + geometry.frame(in: .global).minY : 0
+                    )
+                    .clipped()
+                    .offset(y: -geometry.frame(in: .global).minY)
             }
         }
         .frame(height: headerHeight)
@@ -224,48 +269,61 @@ extension GrewDetailView {
     private func makeBottomButtons() -> some View {
         HStack(spacing: 20) {
             Button {
-                
+                if UserStore.shared.addFavorit(gid: grew.id) {
+                    heartState = true
+                } else {
+                    heartState = false
+                }
+                grewViewModel.heartTapping(gid: grew.id)
             } label: {
-                Image(systemName: "heart")
+                Image(systemName: heartState ? "heart.fill" : "heart")
                     .resizable()
                     .foregroundStyle(.red)
             }
             .frame(width: 27, height: 24.19)
             
+            // 현재 사용자가 이미 그룹의 구성원인지 확인
             if let currentUserId = UserStore.shared.currentUser?.id {
-                if grew.currentMembers.contains(currentUserId) {
+                if grew.currentMembers.contains(currentUserId) && grew.currentMembers.count < grew.maximumMembers || isChatViewButton == true {
                     NavigationLink {
-//                        ChatDetailView(
-//                            chatRoom: chatStore.groupChatRooms.first!,
-//                            targetUserInfos: chatStore.targetUserInfoDict[chatStore.groupChatRooms.first!.id] ?? []
-//                        )
+                        //                        ChatDetailView(
+                        //                            chatRoom: chatStore.groupChatRooms.first!,
+                        //                            targetUserInfos: chatStore.targetUserInfoDict[chatStore.groupChatRooms.first!.id] ?? []
+                        //                        )
                     } label: {
                         Text("채팅 참여하기")
-                            .frame(width: 260, height: 44)
+                            .grewButtonModifier(
+                                width: 260,
+                                height: 44,
+                                buttonColor: .white,
+                                font: .b1_B,
+                                fontColor: .Main,
+                                cornerRadius: 0
+                            )
                     }
-                    .grewButtonModifier(
-                        width: 260,
-                        height: 44,
-                        buttonColor: .Main,
-                        font: .b1_B,
-                        fontColor: .white,
-                        cornerRadius: 8
+                    
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.Main, lineWidth: 1)
                     )
+                    .padding(.bottom, 2)
                 } else {
                     Button {
-                        isShowingJoinConfirmAlert = true
+                        if grew.currentMembers.count < grew.maximumMembers {
+                            isShowingJoinConfirmAlert = true
+                        }
                     } label: {
-                        Text("그루 참여하기")
-                            .frame(width: 260, height: 44)
-                    }
-                    .grewButtonModifier(
-                        width: 260,
-                        height: 44,
-                        buttonColor: .Main,
-                        font: .b1_B,
-                        fontColor: .white,
-                        cornerRadius: 8
-                    )
+                        Text(grew.currentMembers.count >= grew.maximumMembers ? "그루 마감" : "그루 참여하기")
+                            .grewButtonModifier(
+                                width: 260,
+                                height: 44,
+                                buttonColor: grew.currentMembers.count >= grew.maximumMembers ? .LightGray2 : .Main,
+                                font: .b1_B,
+                                fontColor: .white,
+                                cornerRadius: 8
+                            )
+                    }.disabled(grew.currentMembers.count >= grew.maximumMembers)
+                        .padding(.bottom, 2)
                 }
             }
         }
@@ -298,4 +356,5 @@ extension GrewDetailView {
         )
     }
     .environmentObject(GrewViewModel())
+    .environmentObject(ChatStore())
 }

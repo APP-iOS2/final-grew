@@ -32,6 +32,16 @@ struct MessageBubbles: View {
         }
     }
     
+    var usersImageUrl: String? {
+        for targetUserInfo in targetUserInfos {
+            if targetUserInfo.id == chatMessage.uid {
+                return targetUserInfo.userImageURLString
+            }
+        }
+        return nil
+    }
+    
+    
     private var myBubble: some View {
         HStack(alignment: .bottom) {
             Spacer()
@@ -69,7 +79,7 @@ struct MessageBubbles: View {
     private var otherBubble: some View {
         HStack{
             VStack{
-                CircularProfileImageView(chatMessage: chatMessage, url: nil, imagesize: .bubble)
+                CircularProfileImageView(chatMessage: nil, url: usersImageUrl, imagesize: .bubble)
                 Spacer()
             }
             VStack(alignment: .leading){
@@ -95,13 +105,14 @@ struct MessageBubbles: View {
                         .foregroundColor(.black)
                         .padding(EdgeInsets(top: 11, leading: 15, bottom: 10, trailing: 15))
                     }
-                }
+                }.cornerRadius(15)
                 //                    .background(Color.LightGray2)
                 .overlay(
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(Color.LightGray2, lineWidth: 1)
                 )
             }
+            
             VStack{
                 Spacer()
                 Text(chatMessage.createdDateString)

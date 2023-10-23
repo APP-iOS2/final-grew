@@ -33,7 +33,7 @@ struct UserContentListView: View {
                         if selectedFilter == filter {
                             Rectangle()
                                 .foregroundColor(Color.grewMainColor)
-                                .frame(maxWidth: filterBarWidth, maxHeight: 3)
+                                .frame(height: 3)
                                 .matchedGeometryEffect(id: "item", in: animation)
                         } else {
                             Rectangle()

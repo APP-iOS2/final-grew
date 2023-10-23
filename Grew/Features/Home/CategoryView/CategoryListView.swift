@@ -13,7 +13,7 @@ struct CategoryListView: View {
     
     var body: some View {
         VStack {
-            if grewList.count < 1 {
+            if grewList.isEmpty {
                 Group {
                     Text("해당 카테고리에는 그루가 없습니다.")
                     Text("새로운 그루를 생성해보세요!")
@@ -23,15 +23,17 @@ struct CategoryListView: View {
                 
             } else {
                 ForEach(0 ..< grewList.count, id: \.self) { index in
-                    NavigationLink {
-                        GrewDetailView(grew: grewList[index])
-                            .navigationBarBackButtonHidden(true)
-                    } label: {
-                        
-                        GrewCellView(grew: grewList[index])
-                            .padding(.trailing, 16)
-                            .padding(.bottom, 12)
-                            .foregroundColor(.black)
+                    if let grew = grewList[safe: index] {
+                        NavigationLink {
+                            GrewDetailView(grew: grew)
+                                .navigationBarBackButtonHidden(true)
+                        } label: {
+                            
+                            GrewCellView(grew: grew)
+                                .padding(.trailing, 16)
+                                .padding(.bottom, 12)
+                                .foregroundColor(.black)
+                        }
                     }
                 }
             }

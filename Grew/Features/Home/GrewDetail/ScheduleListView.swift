@@ -10,44 +10,69 @@ import SwiftUI
 struct ScheduleListView: View {
     
     @EnvironmentObject var scheduleStore: ScheduleStore
-    let gid: String
-    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isShowingScheduleSheet: Bool = false
     @State private var isShowingEditSheet: Bool = false
     @State var detentHeight: CGFloat = 0
+    @State private var selectedScheduleId: String = ""
+    
+    let grew: Grew
+    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    
+    private var isGrewHost: Bool {
+        if let userId = UserStore.shared.currentUser?.id, userId == grew.hostID {
+            return true
+        }
+        return false
+    }
     
     var body: some View {
-        VStack {
-            NavigationLink {
-                CreateScheduleMainView(gid: gid)
-            } label: {
-                Text("+ 새 일정 만들기")
-            }
-            .grewButtonModifier(width: UIScreen.screenWidth - 40, height: 44, buttonColor: .clear, font: .b1_B, fontColor: .DarkGray1, cornerRadius: 8)
-            .border(Color.DarkGray1, width: 4)
-            .cornerRadius(8)
-            Divider()
-                .padding(.vertical, 10)
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    let schedules = getSchedules()
-                    ForEach(0 ..< schedules.count) { index in
-                        ScheduleCellView(index: index, schedule: schedules[index])
-                            .onTapGesture(perform: {
-                                isShowingEditSheet = false
-                                isShowingScheduleSheet = true
-                            })
-                            .onLongPressGesture {
-                                isShowingScheduleSheet = false
-                                isShowingEditSheet = true
-                            }
-                    }
+        VStack{
+            if isGrewHost {
+                NavigationLink {
+                    CreateScheduleMainView(gid: grew.id)
+                        .padding(3)
+                } label: {
+                    Image(systemName: "plus")
+                    Text("새 일정 만들기")
                 }
+                .grewButtonModifier(width: UIScreen.screenWidth - 40, height: 44, buttonColor: .clear, font: .b1_B, fontColor: .DarkGray1, cornerRadius: 8)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.DarkGray1)
+                )
+                Divider()
+                    .padding(.vertical, 10)
+            }
+            ScrollView{
+                let schedules = getSchedules()
+                if !schedules.isEmpty {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(0 ..< schedules.count) { index in
+                            ScheduleCellView(index: index, schedule: schedules[index])
+                                .onTapGesture(perform: {
+                                    selectedScheduleId = schedules[index].id
+                                    isShowingEditSheet = false
+                                    isShowingScheduleSheet = true
+                                })
+                                .onLongPressGesture {
+                                    isShowingScheduleSheet = false
+                                    isShowingEditSheet = true
+                                }
+                                .padding(.bottom, 5)
+                        }
+                    }
+                } else {
+                    ProfileGrewDataEmptyView(systemImage: "calendar", message: "일정이 없습니다.")
+                }
+                
             }
         }//: VStack
+        .onAppear{
+            print()
+        }
         .padding(20)
         .sheet(isPresented: $isShowingScheduleSheet, content: {
-            ScheduleDetailView()
+            ScheduleDetailView(scheduleId: selectedScheduleId)
         })
         .sheet(isPresented: $isShowingEditSheet, content: {
             ScheduleCellEditSheetView()
@@ -63,7 +88,7 @@ struct ScheduleListView: View {
     func getSchedules() -> [Schedule] {
         
         let schedules = scheduleStore.schedules.filter {
-            $0.gid == gid
+            $0.gid == grew.id
         }
         return schedules
     }
@@ -98,6 +123,30 @@ extension View {
 }
 
 #Preview {
-    ScheduleListView(gid: "")
-        .environmentObject(ScheduleStore())
+    ScheduleListView(
+        grew: Grew(
+            id: "",
+            hostID: "",
+            categoryIndex: "",
+            categorysubIndex: "",
+            title: "",
+            description: "",
+            imageURL: "",
+            isOnline: false,
+            location: "",
+            latitude: "nil",
+            longitude: "nil",
+            geoHash: "nil",
+            gender: .any,
+            minimumAge: 1,
+            maximumAge: 10,
+            maximumMembers: 10,
+            currentMembers: [],
+            isNeedFee: false,
+            fee: 0,
+            createdAt: Date(),
+            heartUserDictionary: [:]
+        )
+    )
+    .environmentObject(ScheduleStore())
 }
