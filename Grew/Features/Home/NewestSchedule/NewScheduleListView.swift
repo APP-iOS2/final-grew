@@ -13,6 +13,7 @@ struct NewestScheduleListView: View {
     @EnvironmentObject var scheduleStore: ScheduleStore
     
     @State private var isShowingSheet: Bool = false
+    @State private var selectedSchedule: Schedule?
     let deviceWidth = UIScreen.main.bounds.size.width
     let quote: String = "\""
     
@@ -27,7 +28,7 @@ struct NewestScheduleListView: View {
         .frame(height: 300)
         .background(Color.Main)
         .sheet(isPresented: $isShowingSheet, content: {
-            ScheduleDetailView()
+            ScheduleDetailView(schedule: selectedSchedule)
         })
         
     } //: body
@@ -124,9 +125,6 @@ extension NewestScheduleListView {
         } //: VStack
         .frame(height: 300)
         .background(Color.Main)
-        .sheet(isPresented: $isShowingSheet, content: {
-            ScheduleDetailView()
-        })
         
         
     } //: body

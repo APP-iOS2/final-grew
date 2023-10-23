@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct GrewListItemView: View {
+    
+    let grew: Grew
+    @EnvironmentObject var grewViewModel: GrewViewModel
+    
     var body: some View {
         HStack {
             ZStack {
-                AsyncImage(url: URL(string: "https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/1563685899/B.jpg?108000000"), content: { image in
+                AsyncImage(url: URL(string: grew.imageURL), content: { image in
                     image
                         .resizable()
                 }, placeholder: {
@@ -27,23 +31,24 @@ struct GrewListItemView: View {
                 .padding(.trailing, 10)
             
             VStack(alignment: .leading) {
-                Text("소개팅")
-                    .font(.c2_L)
+                Text(grewViewModel.subCategoryName(grew.categoryIndex, grew.categorysubIndex))
+                    .font(.c2_R)
                     .padding(.horizontal, 10)
-                    .padding(.vertical, 3)
+                    .padding(.vertical, 4)
                     .background(Color.LightGray1)
                     .cornerRadius(20)
                     
                     
-                Text("아날로그 소지품 소개팅")
+                Text(grew.title)
                     .font(.b2_B)
                     .padding(.top, 1)
-                Text("아날로그 소지품 소개팅")
+                Text(grew.description)
                     .font(.c2_B)
                     .foregroundColor(.gray)
                     .padding(.top, 1)
                 
                 HStack {
+                    /*
                     Group {
                         ForEach(0..<5, content: { index in
                             AsyncImage(url: URL(string: ""), content: { image in
@@ -52,22 +57,32 @@ struct GrewListItemView: View {
                                 ProgressView()
                             })
                         }).padding(.horizontal, -10)
-                    }
+                    }*/
                     Spacer()
                     Group {
+                        // 모임 이미지
                         Image(systemName: "person.2.fill")
-                        Text("5/20")
-                    }.font(.c2_R)
-                }.padding(.top, 1)
-                    .padding(.leading, 10)
+                            .padding(.trailing, -5)
+                            .font(.c2_B)
+                            .foregroundStyle(Color.DarkGray1)
+                        // 모임 정원
+                        HStack {
+                            Text("\(grew.currentMembers.count)")
+                            Text("/")
+                                .padding(.horizontal, -5)
+                            Text("\(grew.maximumMembers)")
+                                .padding(.leading, -5)
+                        }
+                        .font(.c2_B)
+                        .foregroundStyle(Color.DarkGray1)
+                    }
+                    
+                }
+
             }
-                
-            
             Spacer()
-        }
+        }.padding(.horizontal, 5)
+            .padding(.vertical, 2)
     }
 }
 
-#Preview {
-    GrewListItemView()
-}

@@ -133,6 +133,16 @@ class UserStore: ObservableObject {
         }
         return flag
     }
+    
+    func findUser(id: String) async throws -> User? {
+        let db = Firestore.firestore()
+        let document = try await db.collection("users").document(id).getDocument()
+        if document.exists {
+            return try document.data(as: User.self)
+        } else {
+            return nil
+        }
+    }
 }
 
 

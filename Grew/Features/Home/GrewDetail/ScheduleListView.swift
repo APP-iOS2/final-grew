@@ -16,10 +16,13 @@ struct ScheduleListView: View {
     @State private var isShowingEditSheet: Bool = false
     @State var detentHeight: CGFloat = 0
     
+    @State private var selectedSchedule: Schedule?
+    
     var body: some View {
         VStack {
             NavigationLink {
                 CreateScheduleMainView(gid: gid)
+                    .padding(3)
             } label: {
                 Text("+ 새 일정 만들기")
             }
@@ -51,7 +54,7 @@ struct ScheduleListView: View {
         }//: VStack
         .padding(20)
         .sheet(isPresented: $isShowingScheduleSheet, content: {
-            ScheduleDetailView()
+            ScheduleDetailView(schedule: selectedSchedule)
         })
         .sheet(isPresented: $isShowingEditSheet, content: {
             ScheduleCellEditSheetView()

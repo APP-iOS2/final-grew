@@ -166,7 +166,7 @@ struct CreateScheduleMainView: View {
     
     func createSchedule() {
         let id = UUID().uuidString
-        do{
+        do {
             let newSchedule = Schedule(
                 id: id,
                 gid: gid,
