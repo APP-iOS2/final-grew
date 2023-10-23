@@ -14,6 +14,7 @@ struct ScheduleListView: View {
     @State private var isShowingEditSheet: Bool = false
     @State var detentHeight: CGFloat = 0
     @State private var selectedScheduleId: String = ""
+    @State private var scheduleId: String = ""
     
     let grew: Grew
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
@@ -72,6 +73,9 @@ struct ScheduleListView: View {
         .sheet(isPresented: $isShowingScheduleSheet, content: {
             ScheduleDetailView(scheduleId: selectedScheduleId)
         })
+        .onChange(of: selectedScheduleId) { oldValue, newValue in
+            scheduleId = selectedScheduleId
+        }
         .sheet(isPresented: $isShowingEditSheet, content: {
             ScheduleCellEditSheetView()
                 .readHeight()
