@@ -60,6 +60,9 @@ struct GrewEditSheetView: View {
                     } else {
                         HStack {
                             Button {
+                                Task {
+                                    await exitChatRoom()
+                                }
                                 //
                             } label: {
                                 Text("탈퇴하기")
@@ -75,6 +78,9 @@ struct GrewEditSheetView: View {
                         Divider()
                         Button {
                             //
+                            Task {
+                                await removeChatRoom()
+                            }
                         } label: {
                             Text("그루 해체하기")
                             Spacer()
@@ -145,6 +151,16 @@ extension GrewEditSheetView {
             newChatRoom.unreadMessageCount = newUnreadMessageCountDict
             
             await chatStore.updateChatRoomForExit(newChatRoom)
+        }
+    }
+    
+    private func removeChatRoom() async {
+        guard let user = UserStore.shared.currentUser else {
+            return
+        }
+        
+        if let chatRoom = await ChatStore.getChatRoomFromGID(gid: grew.id) {
+            await chatStore.removeChatRoom(chatRoom)
         }
     }
 }
