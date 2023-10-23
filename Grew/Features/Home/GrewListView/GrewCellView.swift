@@ -13,13 +13,12 @@ struct GrewCellView: View {
     /// 즐겨찾기? 버튼이 유저, Grew 각각 들어가야함
     @EnvironmentObject var grewViewModel: GrewViewModel
 
-    
-    var heartButton: Bool {
-        if let dict = grew.heartUserDictionary {
-            return dict[UserStore.shared.currentUser!.id!] ?? false
-        }
-        return false
-    }
+//    var heartButton: Bool {
+//        if let dict = grew.heartUserDictionary {
+//            return dict[UserStore.shared.currentUser!.id!] ?? false
+//        }
+//        return false
+//    }
     
     var body: some View {
         
@@ -30,7 +29,7 @@ struct GrewCellView: View {
                     .padding(.bottom, 13)
                     .padding(.leading, 13)
                 
-            }
+            
             
             VStack(alignment: .leading) {
                 
@@ -92,10 +91,6 @@ struct GrewCellView: View {
         //                .stroke(Color.gray, lineWidth: 1.5)
         //                .opacity(0.3)
         //        )
-        
-        
-        
-        
     }
 }
 

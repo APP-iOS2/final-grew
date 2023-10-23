@@ -197,9 +197,9 @@ class GrewViewModel: ObservableObject {
             if grew.id == gid {
                 var currentGrew = grew
                 if flag {
-                    currentGrew.heartTapped -= 1
+                    currentGrew.heartCount -= 1
                 } else {
-                    currentGrew.heartTapped += 1
+                    currentGrew.heartCount += 1
                 }
                 heartUpdateGrew(currentGrew)
                 break
@@ -214,7 +214,7 @@ class GrewViewModel: ObservableObject {
             } else if let snapshot {
                 for document in snapshot.documents {
                     self.db.collection("grews").document(document.documentID).updateData([
-                        "heartTapped" : grew.heartTapped
+                        "heartCount" : grew.heartCount
                     ]) { error in
                         if let error {
                             print("Grew Update Error: \(error)")
