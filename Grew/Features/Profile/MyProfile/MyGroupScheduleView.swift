@@ -10,6 +10,8 @@ import SwiftUI
 struct MyGroupScheduleView: View {
     
     @State private var isShowingSheet: Bool = false
+    @State private var selectedScheduleId: String = ""
+    
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     let schedules: [Schedule]
     
@@ -29,13 +31,15 @@ struct MyGroupScheduleView: View {
                             .padding(.bottom, 30)
                             .onTapGesture {
                                 isShowingSheet = true
+                                selectedScheduleId = schedule.id
                             }
                     }
                 }
             }.sheet(isPresented: $isShowingSheet, content: {
-                ScheduleDetailView()
+               ScheduleDetailView(scheduleId: selectedScheduleId)
             })
             .padding(.bottom, 30)
+            .padding()
         }
     }
 }
