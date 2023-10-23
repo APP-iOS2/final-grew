@@ -39,6 +39,7 @@ struct GrewTextField: View {
                     .font(.b2_R)
                     .disabled(isTextfieldDisabled)
                     .padding(.leading, isSearchBar ? 0 : 10)
+                    .textInputAutocapitalization(.never)
                 
                 if !text.isEmpty && isTextFieldFocused {
                     Button {

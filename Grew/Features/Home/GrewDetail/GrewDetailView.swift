@@ -31,7 +31,9 @@ struct GrewDetailView: View {
     @State private var selectedFilter: GrewDetailFilter = .introduction
     @State private var isShowingJoinConfirmAlert: Bool = false
     @State private var isShowingJoinFinishAlert: Bool = false
-    @State private var isShowingToolBarSheet: Bool = false
+    @State var isShowingToolBarSheet: Bool = false
+    @State var isShowingWithdrawConfirmAlert: Bool = false
+    @State private var isShowingWithdrawFinishAlert: Bool = false
     @State private var isLoading: Bool = false
     @State var detentHeight: CGFloat = 0
     @State var heartState: Bool = false
@@ -112,7 +114,7 @@ struct GrewDetailView: View {
             makeBottomButtons()
         }
         .sheet(isPresented: $isShowingToolBarSheet, content: {
-            GrewEditSheetView(grew: grew)
+            GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, isShowingToolBarSheet: $isShowingToolBarSheet, grew: grew)
                 .readHeight()
                 .onPreferenceChange(HeightPreferenceKey.self) { height in
                     if let height {
@@ -121,6 +123,33 @@ struct GrewDetailView: View {
                 }
                 .presentationDetents([.height(self.detentHeight)])
         })
+        .grewAlert(
+            isPresented: $isShowingWithdrawConfirmAlert,
+            title: "\(grew.title)에 탈퇴하시겠습니까?",
+            secondButtonTitle: "취소",
+            secondButtonColor: .Main,
+            secondButtonAction: { },
+            buttonTitle: "탈퇴",
+            buttonColor: .red,
+            action: {
+                if let userId = UserStore.shared.currentUser?.id {
+                    grewViewModel.withdrawGrewMember(grewId: grew.id, userId: userId)
+                    isShowingWithdrawFinishAlert = true
+                }
+            }
+        )
+        .grewAlert(
+            isPresented: $isShowingWithdrawFinishAlert,
+            title: "\(grew.title)에 탈퇴 완료!",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Main,
+            action: {
+                dismiss()
+            }
+        )
         .task {
             if !chatStore.isDoneFetch {
                 chatStore.addListener()
