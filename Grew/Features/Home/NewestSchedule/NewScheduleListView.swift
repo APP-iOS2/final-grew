@@ -46,9 +46,11 @@ struct NewestScheduleListView: View {
             }
             // 가입된 그루를 처음부터 끝까지 하나하나 일정에 같은 아이디가 있다면 넣어라
             for index in 0 ..< tempList.count {
-                tempSchedule.append(contentsOf: scheduleStore.schedules.filter {
-                    $0.gid == tempList[index].id
-                })
+                if let temp = tempList[safe: index] {
+                    tempSchedule.append(contentsOf: scheduleStore.schedules.filter {
+                        $0.gid == temp.id
+                    })
+                }
             }
             // gid로 정렬
             tempSchedule.sort { (schedule1, schedule2) in
@@ -85,7 +87,7 @@ extension NewestScheduleListView {
                 let schedules = isEmptySchedule()
                 HStack(spacing: 20) {
                     Spacer(minLength: deviceWidth / 2 - 140 / 2 - 20)
-                    
+
                     ForEach(0 ..< schedules.count) { index in
                         GeometryReader { proxy in
                             let scale = getScale(proxy: proxy)

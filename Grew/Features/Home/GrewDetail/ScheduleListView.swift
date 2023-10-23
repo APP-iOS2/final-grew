@@ -61,7 +61,7 @@ struct ScheduleListView: View {
                                     isShowingScheduleSheet = false
                                     isShowingEditSheet = true
                                 }
-                        }
+
                     }
                 }
             }
