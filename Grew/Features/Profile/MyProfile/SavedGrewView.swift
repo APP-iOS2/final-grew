@@ -12,11 +12,12 @@ struct SavedGrewView: View {
     let grewList: [Grew]
     
     var body: some View {
-        VStack {
-            if grewList.isEmpty {
-                ProfileGrewDataEmptyView(systemImage: "heart", message: "그루를 찜해보세요!", isSavedView: true)
-                
-            } else {
+        
+        if grewList.isEmpty {
+            ProfileGrewDataEmptyView(systemImage: "heart", message: "그루를 찜해보세요!", isSavedView: true)
+            
+        } else {
+            VStack {
                 ForEach(0 ..< grewList.count, id: \.self) { index in
                     if let grew = grewList[safe: index] {
                         NavigationLink {
@@ -26,12 +27,12 @@ struct SavedGrewView: View {
                             
                             GrewCellView(grew: grew)
                                 .padding(.trailing, 16)
-                                .padding(.bottom, 12)
+                                .padding(.bottom, 5)
                                 .foregroundColor(.black)
                         }
                     }
                 }
-            }
+            }.padding(.top, 5)
         }
     }
 }
