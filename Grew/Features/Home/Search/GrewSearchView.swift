@@ -59,6 +59,9 @@ struct GrewSearchView: View {
                 searchHistory = UserStore.shared.currentUser?.searchHistory ?? []
             }
         }
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
@@ -137,7 +140,6 @@ extension GrewSearchView {
                 }
                 .font(.b1_B)
                 .foregroundStyle(.black)
-                .padding(5)
             }
 
             Spacer()
@@ -150,6 +152,7 @@ extension GrewSearchView {
                 }
             }
         }
+        .padding(5)
         
         if isShowingCategory {
             LazyVGrid(columns: gridItems) {

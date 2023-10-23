@@ -16,6 +16,8 @@ struct ScheduleListView: View {
     @State private var isShowingEditSheet: Bool = false
     @State var detentHeight: CGFloat = 0
     
+    @State private var selectedSchedule: Schedule?
+    
     var body: some View {
         VStack {
             NavigationLink {
@@ -32,23 +34,27 @@ struct ScheduleListView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     let schedules = getSchedules()
-                    ForEach(0 ..< schedules.count) { index in
-                        ScheduleCellView(index: index, schedule: schedules[index])
-                            .onTapGesture(perform: {
-                                isShowingEditSheet = false
-                                isShowingScheduleSheet = true
-                            })
-                            .onLongPressGesture {
-                                isShowingScheduleSheet = false
-                                isShowingEditSheet = true
+                    if !schedules.isEmpty {
+                        ForEach(0 ..< schedules.count, id: \.self) { index in
+                            if let schedule = schedules[safe: index] {
+                                ScheduleCellView(index: index, schedule: schedule)
+                                    .onTapGesture(perform: {
+                                        isShowingEditSheet = false
+                                        isShowingScheduleSheet = true
+                                    })
+                                    .onLongPressGesture {
+                                        isShowingScheduleSheet = false
+                                        isShowingEditSheet = true
+                                    }
                             }
+                        }
                     }
                 }
             }
         }//: VStack
         .padding(20)
         .sheet(isPresented: $isShowingScheduleSheet, content: {
-            ScheduleDetailView()
+            ScheduleDetailView(schedule: selectedSchedule)
         })
         .sheet(isPresented: $isShowingEditSheet, content: {
             ScheduleCellEditSheetView()

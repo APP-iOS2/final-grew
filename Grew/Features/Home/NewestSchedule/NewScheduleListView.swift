@@ -13,6 +13,7 @@ struct NewestScheduleListView: View {
     @EnvironmentObject var scheduleStore: ScheduleStore
     
     @State private var isShowingSheet: Bool = false
+    @State private var selectedSchedule: Schedule?
     let deviceWidth = UIScreen.main.bounds.size.width
     let quote: String = "\""
     
@@ -27,7 +28,7 @@ struct NewestScheduleListView: View {
         .frame(height: 300)
         .background(Color.Main)
         .sheet(isPresented: $isShowingSheet, content: {
-            ScheduleDetailView()
+            ScheduleDetailView(schedule: selectedSchedule)
         })
         
     } //: body
@@ -45,9 +46,11 @@ struct NewestScheduleListView: View {
             }
             // 가입된 그루를 처음부터 끝까지 하나하나 일정에 같은 아이디가 있다면 넣어라
             for index in 0 ..< tempList.count {
-                tempSchedule.append(contentsOf: scheduleStore.schedules.filter {
-                    $0.gid == tempList[index].id
-                })
+                if let temp = tempList[safe: index] {
+                    tempSchedule.append(contentsOf: scheduleStore.schedules.filter {
+                        $0.gid == temp.id
+                    })
+                }
             }
             // gid로 정렬
             tempSchedule.sort { (schedule1, schedule2) in
@@ -84,31 +87,34 @@ extension NewestScheduleListView {
                 let schedules = isEmptySchedule()
                 HStack(spacing: 20) {
                     Spacer(minLength: deviceWidth / 2 - 140 / 2 - 20)
-                    
-                    ForEach(0 ..< schedules.count) { index in
-                        GeometryReader { proxy in
-                            let scale = getScale(proxy: proxy)
-                            
-                            // Home - GrewDetail 폴더
-                            ScheduleCellView(index: index, schedule: schedules[index])
-                                .scaledToFill()
-                                .shadow(radius: 6)
-                                .padding(.vertical, 10)
-                                .onTapGesture {
-                                    isShowingSheet = true
-                                }
-                                .scaleEffect(.init(width: scale, height: scale))
-                                .animation(.easeOut(duration: 0.5))
-                                .onTapGesture {
-                                    isShowingSheet = true
-                                }
-                            
-                        } // GeometryReader
-                        // 지오메트리 자체에 프레임을 주는 것
-                        // 하나 하나 지오메트리를 넣어 크기를준다
-                        .frame(width: 140, height: 120)
-                        .padding(.trailing, 10)
-                    } // ForEach
+                    if !schedules.isEmpty {
+                        ForEach(0 ..< schedules.count, id: \.self) { index in
+                            if let schedule = schedules[safe: index] {
+                                GeometryReader { proxy in
+                                    let scale = getScale(proxy: proxy)
+                                    
+                                    // Home - GrewDetail 폴더
+                                    ScheduleCellView(index: index, schedule: schedule)
+                                        .scaledToFill()
+                                        .shadow(radius: 6)
+                                        .padding(.vertical, 10)
+                                        .onTapGesture {
+                                            isShowingSheet = true
+                                        }
+                                        .scaleEffect(.init(width: scale, height: scale))
+                                        .animation(.easeOut(duration: 0.5))
+                                        .onTapGesture {
+                                            isShowingSheet = true
+                                        }
+                                    
+                                } // GeometryReader
+                                // 지오메트리 자체에 프레임을 주는 것
+                                // 하나 하나 지오메트리를 넣어 크기를준다
+                                .frame(width: 140, height: 120)
+                                .padding(.trailing, 10)
+                            }
+                        } // ForEach
+                    }
                     Spacer(minLength: deviceWidth / 2 - 140 / 2 - 20)
                 } // HStack
                 Spacer()
@@ -119,9 +125,6 @@ extension NewestScheduleListView {
         } //: VStack
         .frame(height: 300)
         .background(Color.Main)
-        .sheet(isPresented: $isShowingSheet, content: {
-            ScheduleDetailView()
-        })
         
         
     } //: body

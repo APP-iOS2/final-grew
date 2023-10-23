@@ -34,12 +34,13 @@ struct GrewDetailView: View {
     @State private var isShowingToolBarSheet: Bool = false
     @State private var isLoading: Bool = false
     @State var detentHeight: CGFloat = 0
+    @State var heartState: Bool = false
     
     @Namespace private var animation
     
     private let headerHeight: CGFloat = 180
     
-    let grew: Grew
+    var grew: Grew
     
     var body: some View {
         VStack {
@@ -61,6 +62,7 @@ struct GrewDetailView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
@@ -72,8 +74,7 @@ struct GrewDetailView: View {
                     }
                     Spacer()
                 }
-            }
-            .toolbar {
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     makeToolbarButtons()
                 }
@@ -127,6 +128,9 @@ struct GrewDetailView: View {
                 isLoading = false
             }
         }
+        .onAppear {
+            heartState = UserStore.shared.checkFavorit(gid: grew.id)
+        }
         .onDisappear {
             chatStore.removeListener()
             chatStore.isDoneFetch = false
@@ -150,9 +154,14 @@ extension GrewDetailView {
                     )
                     .clipped()
                     .offset(y: -geometry.frame(in: .global).minY)
-                
             } placeholder: {
-                ProgressView()
+                Image("logo")
+                    .frame(
+                        width: geometry.size.width,
+                        height: headerHeight + geometry.frame(in: .global).minY > 0 ? headerHeight + geometry.frame(in: .global).minY : 0
+                    )
+                    .clipped()
+                    .offset(y: -geometry.frame(in: .global).minY)
             }
         }
         .frame(height: headerHeight)
@@ -214,9 +223,14 @@ extension GrewDetailView {
     private func makeBottomButtons() -> some View {
         HStack(spacing: 20) {
             Button {
-                
+                if UserStore.shared.addFavorit(gid: grew.id) {
+                    heartState = true
+                } else {
+                    heartState = false
+                }
+                grewViewModel.heartTapping(gid: grew.id)
             } label: {
-                Image(systemName: "heart")
+                Image(systemName: heartState ? "heart.fill" : "heart")
                     .resizable()
                     .foregroundStyle(.red)
             }
@@ -236,11 +250,16 @@ extension GrewDetailView {
                     .grewButtonModifier(
                         width: 260,
                         height: 44,
-                        buttonColor: .Main,
+                        buttonColor: .white,
                         font: .b1_B,
-                        fontColor: .white,
-                        cornerRadius: 8
+                        fontColor: .Main,
+                        cornerRadius: 0
                     )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.Main, lineWidth: 1)
+                    )
+                    .padding(.bottom, 2)
                 } else {
                     Button {
                         isShowingJoinConfirmAlert = true
@@ -256,6 +275,7 @@ extension GrewDetailView {
                         fontColor: .white,
                         cornerRadius: 8
                     )
+                    .padding(.bottom, 2)
                 }
             }
         }
@@ -288,4 +308,5 @@ extension GrewDetailView {
         )
     }
     .environmentObject(GrewViewModel())
+    .environmentObject(ChatStore())
 }
