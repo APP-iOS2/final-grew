@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct MyGroupView: View {
-    
-    @EnvironmentObject var grewViewModel: GrewViewModel
-    @EnvironmentObject var router: ProfileRouter
-    
+  
     let user: User?
     let grews: [Grew]
     

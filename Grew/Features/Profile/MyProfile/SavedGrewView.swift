@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct SavedGrewView: View {
+    
+    let grews: [Grew]
+    
     var body: some View {
-        ProfileGrewDataEmptyView(systemImage: "heart", message: "그루를 찜해보세요!", isSavedView: true)
+        if grews.isEmpty {
+            ProfileGrewDataEmptyView(systemImage: "heart", message: "그루를 찜해보세요!", isSavedView: true)
+        }else {
+            VStack{
+                Text("찜그루 있다.")
+            }
+        }
     }
 }
 
+/*
 #Preview {
     NavigationStack {
-        SavedGrewView()
+        //SavedGrewView(grews:
     }
 }
+*/
