@@ -83,6 +83,16 @@ class UserStore: ObservableObject {
     func isCurrentUserProfile() -> Bool {
         return currentUser?.id == UserStore.shared.currentUser?.id
     }
+    
+    func findUser(id: String) async throws -> User? {
+        let db = Firestore.firestore()
+        let document = try await db.collection("users").document(id).getDocument()
+        if document.exists {
+            return try document.data(as: User.self)
+        } else {
+            return nil
+        }
+    }
 }
 
 

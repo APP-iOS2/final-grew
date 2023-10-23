@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct GrewIntroductionView: View {
-    @ObservedObject private var userViewModel = UserViewModel()
-    
+    @State private var hostUser: User?
     let grew: Grew
     
     // 호스트 이미지, 호스트 이름 추가하기
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
-            AsyncImage(url: URL(string: "\(userViewModel.currentUser?.userImageURLString ?? "")")) { image in
+            AsyncImage(url: URL(string: "\(hostUser?.userImageURLString ?? "")")) { image in
                 image
                     .resizable()
                     .rounded(width: 52, height: 52)
@@ -55,7 +54,7 @@ struct GrewIntroductionView: View {
                     .font(.b2_B)
                     .padding(.bottom, 2)
                 
-                Text("호스트 \(userViewModel.currentUser?.nickName ?? "닉네임이 없다고..?")")
+                Text("호스트 \(hostUser?.nickName ?? "No Name")")
                     .font(.c1_B)
                     .padding(.bottom, 3)
                 
@@ -102,9 +101,14 @@ struct GrewIntroductionView: View {
             Spacer()
         }
         .padding(EdgeInsets(top: 15, leading: 20, bottom: 15, trailing: 20))
-        .onAppear(perform: {
-            userViewModel.fetchUser(userId: grew.hostID)
-        })
+//        .onAppear(perform: {
+//            userViewModel.fetchUser(userId: grew.hostID)
+//        })
+        .onAppear {
+            Task {
+                hostUser = try await UserStore.shared.findUser(id: grew.hostID)
+            }
+        }
         
         Divider()
         
