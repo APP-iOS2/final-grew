@@ -236,8 +236,9 @@ extension GrewDetailView {
             }
             .frame(width: 27, height: 24.19)
             
+            // 현재 사용자가 이미 그룹의 구성원인지 확인
             if let currentUserId = UserStore.shared.currentUser?.id {
-                if grew.currentMembers.contains(currentUserId) {
+                if grew.currentMembers.contains(currentUserId) && grew.currentMembers.count < grew.maximumMembers  {
                     NavigationLink {
 //                        ChatDetailView(
 //                            chatRoom: chatStore.groupChatRooms.first!,
@@ -245,16 +246,16 @@ extension GrewDetailView {
 //                        )
                     } label: {
                         Text("채팅 참여하기")
-                            .frame(width: 260, height: 44)
+                            .grewButtonModifier(
+                                width: 260,
+                                height: 44,
+                                buttonColor: .white,
+                                font: .b1_B,
+                                fontColor: .Main,
+                                cornerRadius: 0
+                            )
                     }
-                    .grewButtonModifier(
-                        width: 260,
-                        height: 44,
-                        buttonColor: .white,
-                        font: .b1_B,
-                        fontColor: .Main,
-                        cornerRadius: 0
-                    )
+                    
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.Main, lineWidth: 1)
@@ -262,19 +263,21 @@ extension GrewDetailView {
                     .padding(.bottom, 2)
                 } else {
                     Button {
-                        isShowingJoinConfirmAlert = true
+                        if grew.currentMembers.count < grew.maximumMembers {
+                            isShowingJoinConfirmAlert = true
+                        }
                     } label: {
-                        Text("그루 참여하기")
-                            .frame(width: 260, height: 44)
-                    }
-                    .grewButtonModifier(
-                        width: 260,
-                        height: 44,
-                        buttonColor: .Main,
-                        font: .b1_B,
-                        fontColor: .white,
-                        cornerRadius: 8
-                    )
+                        Text(grew.currentMembers.count >= grew.maximumMembers ? "그루 마감" : "그루 참여하기")
+                            .grewButtonModifier(
+                                width: 260,
+                                height: 44,
+                                buttonColor: grew.currentMembers.count >= grew.maximumMembers ? .LightGray2 : .Main,
+                                font: .b1_B,
+                                fontColor: .white,
+                                cornerRadius: 8
+                            )
+                    }.disabled(grew.currentMembers.count >= grew.maximumMembers)
+                    
                     .padding(.bottom, 2)
                 }
             }
