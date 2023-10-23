@@ -35,7 +35,7 @@ struct GrewDetailView: View {
     @State private var isLoading: Bool = false
     @State var detentHeight: CGFloat = 0
     @State var heartState: Bool = false
-    
+    @State var isChatViewButton: Bool = false
     @Namespace private var animation
     
     private let headerHeight: CGFloat = 180
@@ -87,7 +87,9 @@ struct GrewDetailView: View {
                 secondButtonAction: nil,
                 buttonTitle: "확인",
                 buttonColor: .Main,
-                action: { }
+                action: { 
+                    isChatViewButton = true
+                }
             )
             .grewAlert(
                 isPresented: $isShowingJoinConfirmAlert,
@@ -238,7 +240,7 @@ extension GrewDetailView {
             
             // 현재 사용자가 이미 그룹의 구성원인지 확인
             if let currentUserId = UserStore.shared.currentUser?.id {
-                if grew.currentMembers.contains(currentUserId) && grew.currentMembers.count < grew.maximumMembers  {
+                if grew.currentMembers.contains(currentUserId) && grew.currentMembers.count < grew.maximumMembers || isChatViewButton == true {
                     NavigationLink {
 //                        ChatDetailView(
 //                            chatRoom: chatStore.groupChatRooms.first!,
@@ -277,7 +279,6 @@ extension GrewDetailView {
                                 cornerRadius: 8
                             )
                     }.disabled(grew.currentMembers.count >= grew.maximumMembers)
-                    
                     .padding(.bottom, 2)
                 }
             }
