@@ -20,7 +20,7 @@ struct ScheduleCellView: View {
                     .foregroundColor(.white)
             }//: HStack
             .frame(height: 40)
-            .background(Color(hexCode: schedule.color))
+            .background(Color.grewMainColor)
             CircleImage()
                 .offset(x: -38, y: -32)
                 .padding(.bottom, -32)

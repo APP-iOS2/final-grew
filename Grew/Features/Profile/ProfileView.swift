@@ -36,7 +36,7 @@ struct ProfileView: View {
                                 MyGroupView(user: user, grews: profileStore.myGrew)
                                     .background(Color.white)
                             case .myGroupSchedule:
-                                MyGroupScheduleView(schedules: profileStore.mySchedule)
+                                MyGroupScheduleView()
                                     .background(Color.white)
                                     .padding()
                             case .savedGrew:
