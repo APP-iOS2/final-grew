@@ -188,6 +188,49 @@ class GrewViewModel: ObservableObject {
             updateGrew(grew)
         }
     }
+    // 그루 아이디는 동일 했다 근데 업데이트가 안됐다
+    func heartTapping(gid: String) {
+        // checkFavorit에서 Bool값을 전달해줌 있으면 true
+        let flag = UserStore.shared.checkFavorit(gid: gid)
+        
+        for grew in grewList {
+            if grew.id == gid {
+                var currentGrew = grew
+                if flag {
+                    currentGrew.heartTapped -= 1
+                } else {
+                    currentGrew.heartTapped += 1
+                }
+                heartUpdateGrew(currentGrew)
+                break
+            }
+        }
+    }
+    
+    func heartUpdateGrew(_ grew: Grew) {
+        db.collection("grews").whereField("id", isEqualTo: grew.id).getDocuments { snapshot, error in
+            if let error {
+                print("Error: \(error)")
+            } else if let snapshot {
+                for document in snapshot.documents {
+                    self.db.collection("grews").document(document.documentID).updateData([
+                        "heartTapped" : grew.heartTapped
+                    ]) { error in
+                        if let error {
+                            print("Grew Update Error: \(error)")
+                        } else {
+                            self.fetchGrew()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
 }
 
 // static class Method

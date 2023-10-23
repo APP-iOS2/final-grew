@@ -11,29 +11,15 @@ struct GrewCellView: View {
     
     let grew: Grew
     /// 즐겨찾기? 버튼이 유저, Grew 각각 들어가야함
-    @State private var heartButton: Bool = false
     @EnvironmentObject var grewViewModel: GrewViewModel
+    @State private var heartState: Bool = false
     
     var body: some View {
         
         HStack {
             
-            ZStack(alignment: .bottomLeading){
+            GrewImageView(image: grew.imageURL)
                 
-                GrewImageView(image: grew.imageURL)
-                
-                Button {
-                    heartButton.toggle()
-                } label: {
-                    Image(systemName: heartButton ? "heart.fill" : "heart")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                }
-                .padding(.bottom, 13)
-                .padding(.leading, 13)
-            }
-            
             VStack(alignment: .leading) {
                 
                 // 모임 카테고리

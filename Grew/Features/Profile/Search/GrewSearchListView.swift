@@ -15,15 +15,17 @@ struct GrewSearchListView: View {
         VStack {
             
             ForEach(0 ..< grewList.count, id: \.self) { index in
-                NavigationLink {
-                    GrewDetailView(grew: grewList[index])
-                        .navigationBarBackButtonHidden(true)
-                } label: {
-                    
-                    GrewCellView(grew: grewList[index])
-                        .padding(.trailing, 16)
-                        .padding(.bottom, 12)
-                        .foregroundColor(.black)
+                if let grew = grewList[safe: index] {
+                    NavigationLink {
+                        GrewDetailView(grew: grew)
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
+                        
+                        GrewCellView(grew: grew)
+                            .padding(.trailing, 16)
+                            .padding(.bottom, 12)
+                            .foregroundColor(.black)
+                    }
                 }
             }
         }
