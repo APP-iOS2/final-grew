@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MyGroupView: View {
-    
     @EnvironmentObject var grewViewModel: GrewViewModel
     
     let user: User?
@@ -20,9 +19,14 @@ struct MyGroupView: View {
         }else{
             VStack {
                 ForEach(grews){ grew in
-                    GrewListItemView(grew: grew)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
+                    NavigationLink{
+                        GrewDetailView(grew: grew)
+                    }label: {
+                        GrewListItemView(grew: grew)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .foregroundColor(.black)
+                    }
                 }
             }.padding(.bottom, 30)
         }
