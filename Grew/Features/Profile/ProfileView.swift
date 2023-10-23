@@ -39,7 +39,8 @@ struct ProfileView: View {
                                 MyGroupScheduleView(schedules: profileStore.mySchedule)
                                     .background(Color.white)
                             case .savedGrew:
-                                SavedGrewView()
+                              
+                                SavedGrewView(grewList: grewViewModel.favoritGrew())
                                     .background(Color.white)
                             }
                         } else {

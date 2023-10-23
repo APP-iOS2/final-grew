@@ -59,18 +59,8 @@ struct HomeView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Image("logo_white")
-                    .foregroundStyle(Color.white)
             }
             
-            ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink {
-                    Text("알림")
-                } label: {
-                    Image("alert")
-                        .font(.title2)
-                }
-                .foregroundStyle(Color.white)
-            }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     //                        GrewSearchView()
@@ -82,7 +72,6 @@ struct HomeView: View {
                         .padding(.trailing, 5)
                     
                 }
-                .foregroundStyle(Color.white)
             }
         }
         .onAppear {
