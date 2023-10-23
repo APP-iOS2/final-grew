@@ -52,9 +52,9 @@ struct GrewEditSheetView: View {
         }
         .font(.b2_R)
         .padding(20)
-        .onAppear(perform: {
-            userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
-        })
+//        .onAppear(perform: {
+//            userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
+//        })
     }
 }
 

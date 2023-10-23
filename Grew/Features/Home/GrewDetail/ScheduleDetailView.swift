@@ -9,17 +9,34 @@ import SwiftUI
 
 struct ScheduleDetailView: View {
     @EnvironmentObject private var grewViewModel: GrewViewModel
+    @EnvironmentObject private var scheduleStore: ScheduleStore
     @State private var hostName: String = ""
-    let schedule: Schedule?
-    private var tempSchedule: Schedule {
-        if let schedule {
-            return schedule
-        } else {
-            return Schedule(gid: "", scheduleName: "", date: Date(), maximumMember: 1, participants: [], color: "")
-        }
-    }
-
+    
+    let scheduleId: String
+    @State private var schedule: Schedule = Schedule(gid: "", scheduleName: "", date: Date(), maximumMember: 0, participants: [], color: "")
+    @State private var participants: [User] = []
+    
+    @State private var isShowingSuccessAlert: Bool = false
+    @State private var isShowingFailureAlert: Bool = false
+    
     var rows: [GridItem] = Array(repeating: .init(.fixed(44)), count: 1)
+    
+    private var isScheduleParticipant: Bool {
+        if let userId = UserStore.shared.currentUser?.id, schedule.participants.contains(userId) {
+            return true
+        }
+        return false
+    }
+    
+    private var isGrewMember: Bool {
+        if let grewMembers =
+            grewViewModel.grewList.first(where: { $0.id == schedule.gid })?.currentMembers {
+            if let userId = UserStore.shared.currentUser?.id, schedule.participants.contains(userId) {
+                return grewMembers.contains(userId)
+            }
+        }
+        return false
+    }
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -28,30 +45,29 @@ struct ScheduleDetailView: View {
                 .frame(width: UIScreen.screenWidth, height: 120)
                 .background(Color.grewMainColor)
                 
-//                if let schedule {
                     VStack(alignment: .leading) {
                         HStack {
                             Spacer()
                             HStack{
                                 Text("그루:")
                                     .font(.b3_B)
-                                Text(getGrewTitle(gid: tempSchedule.gid))
+                                Text(getGrewTitle(gid: schedule.gid))
                                     .font(.b3_R)
                             }//: HStack
                         }//: HStack
-                        Text(tempSchedule.scheduleName)
+                        Text(schedule.scheduleName)
                             .font(.b1_B)
                             .padding(.vertical, 20)
                         Text("날짜, 시간")
                             .font(.b3_B)
                             .padding(.bottom, 5)
-                        Text(tempSchedule.grewCellDateString)
+                        Text(schedule.grewCellDateString)
                             .font(.b3_R)
                             .padding(.bottom, 20)
                         Text("참여비")
                             .font(.b3_B)
                             .padding(.bottom, 5)
-                        Text(tempSchedule.fee ?? "없음")
+                        Text(schedule.fee ?? "없음")
                             .font(.b3_R)
                             .padding(.bottom)
                         HStack {
@@ -62,14 +78,14 @@ struct ScheduleDetailView: View {
 //                                .font(.b3_R)
                         }
                         .padding(.bottom, 5)
-                        Text(tempSchedule.location ?? "")
+                        Text(schedule.location ?? "")
                             .font(.b3_R)
                             .padding(.bottom)
                         HStack {
                             Text("참여 인원")
                                 .font(.b3_B)
                             Spacer()
-                            Text("\(tempSchedule.participants.count)/\(tempSchedule.maximumMember) 명 참여 중")
+                            Text("\(schedule.participants.count)/\(schedule.maximumMember) 명 참여 중")
                                 .font(.b3_R)
                         }
                         .padding(.bottom, 5)
@@ -78,43 +94,89 @@ struct ScheduleDetailView: View {
                     .padding(.horizontal, 20)
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: rows, content: {
-                            ForEach(0...10, id: \.self) { _ in
-                                Image(.defaultProfile)
-                                    .rounded(width: 44, height: 44)
+                            ForEach(participants, id: \.self) { participant in
+                                AsyncImage(url: URL(string: participant.userImageURLString ?? "")) { image in
+                                    image
+                                        .resizable()
+                                        .rounded(width: 44, height: 44)
+                                } placeholder: {
+                                    Image("defaultProfile")
+                                        .rounded(width: 44, height: 44)
+                                }
+                                    
                             }
                         })//: LazyHGrid
                         .padding(.horizontal, 20)
                     }//: ScrollView
                     .frame(height: 44)
-//                } else {
-//                    Text("Not Found")
-//                }
                 Spacer()
+                // 그루에 먼저 참여하고 나서 일정에 참여할 수 있도록!
                 Button {
-                    
+                    if let userId = UserStore.shared.currentUser?.id {
+                        schedule.participants.append(userId)
+                        scheduleStore.updateParticipants(schedule.participants, scheduleId: schedule.id)
+                        isShowingSuccessAlert = true
+                    }
                 } label: {
-                    Text("참여하기")
+                    if !isGrewMember {
+                        Text("그루에 가입해주세요!")
+                    } else if isScheduleParticipant {
+                        Text("일정 참여 중")
+                    } else if schedule.participants.count >= schedule.maximumMember {
+                        Text("일정 모집 마감")
+                    } else {
+                        Text("참여하기")
+                    }
                 }
-                .grewButtonModifier(width: UIScreen.screenWidth - 40, height: 44, buttonColor: .grewMainColor, font: .b1_B, fontColor: .white, cornerRadius: 8)
+                .grewButtonModifier(
+                    width: UIScreen.screenWidth - 40,
+                    height: 44,
+                    buttonColor: !isGrewMember || isScheduleParticipant || schedule.participants.count >= schedule.maximumMember ? .DarkGray1 : .grewMainColor,
+                    font: .b1_B,
+                    fontColor: .white,
+                    cornerRadius: 8
+                )
+                .disabled(!isGrewMember || isScheduleParticipant || schedule.participants.count >= schedule.maximumMember)
             }//: VStack
             ProfileCircleImageView(size: 80)
                 .offset(x: 20, y: 80)
         }//: ZStack
-        .onAppear {
-            print(schedule)
-        }
         .presentationDragIndicator(.visible)
+        .onChange(of: schedule, { oldValue, newValue in
+            Task {
+                await withTaskGroup(of: Void.self) { group in
+                    for participantId in schedule.participants {
+                        group.addTask {
+                            do {
+                                if let participant = try await UserStore.shared.findUser(id: participantId) {
+                                    DispatchQueue.main.async {
+                                        participants.append(participant)
+                                    }
+                                }
+                            } catch {
+                                print("Error finding user: \(error)")
+                            }
+                        }
+                    }
+                }
+            }
+        })
+        .onAppear {
+            if let tempSchedule = scheduleStore.schedules.first(where: { $0.id == scheduleId }) {
+                schedule = tempSchedule
+            }
+        }
+        .grewAlert(
+            isPresented: $isShowingSuccessAlert,
+            title: "일정에 참여되었습니다.",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Main,
+            action: { }
+        )
     }
-    
-//    private func getHostName(gid: String) -> String {
-//        var hostName = "뭐지"
-//        grewViewModel.getHost(gid: gid) { user in
-//            hostName = user?.nickName ?? "이름 없음"
-//            print(user)
-//            print(hostName)
-//        }
-//        return hostName
-//    }
     
     private func getGrewTitle(gid: String) -> String {
         if let grewTitle = grewViewModel.grewList.first(where: { $0.id == gid })?.title {
@@ -127,19 +189,8 @@ struct ScheduleDetailView: View {
 
 #Preview {
     ScheduleDetailView(
-        schedule: Schedule(
-            id: "aa",
-            gid: "",
-            scheduleName: "5시 농구",
-            date: Date(),
-            maximumMember: 10,
-            participants: ["", ""],
-            fee: nil,
-            location: nil,
-            latitude: nil,
-            longitude: nil,
-            color: "color"
-        )
+        scheduleId: ""
+
     )
     .environmentObject(GrewViewModel())
 }

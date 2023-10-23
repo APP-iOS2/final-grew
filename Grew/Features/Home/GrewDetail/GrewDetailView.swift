@@ -53,7 +53,7 @@ struct GrewDetailView: View {
                         case .introduction:
                             GrewIntroductionView(grew: grew)
                         case .schedule:
-                            ScheduleListView(gid: grew.id)
+                            ScheduleListView(grew: grew)
                         case .groot:
                             GrootListView(grew: grew)
                         }
@@ -62,7 +62,6 @@ struct GrewDetailView: View {
                     }
                 }
             }
-            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
@@ -79,6 +78,7 @@ struct GrewDetailView: View {
                     makeToolbarButtons()
                 }
             }
+            .toolbarBackground(.hidden, for: .navigationBar)
             .grewAlert(
                 isPresented: $isShowingJoinFinishAlert,
                 title: "\(grew.title)에 참여 완료!",
