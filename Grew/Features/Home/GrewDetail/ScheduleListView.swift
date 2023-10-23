@@ -10,17 +10,14 @@ import SwiftUI
 struct ScheduleListView: View {
     
     @EnvironmentObject var scheduleStore: ScheduleStore
-    let grew: Grew
-    
-    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isShowingScheduleSheet: Bool = false
     @State private var isShowingEditSheet: Bool = false
     @State var detentHeight: CGFloat = 0
-    
     @State private var selectedScheduleId: String = ""
-    private var gid: String {
-        grew.id
-    }
+    
+    let grew: Grew
+    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    
     private var isGrewHost: Bool {
         if let userId = UserStore.shared.currentUser?.id, userId == grew.hostID {
             return true
@@ -32,7 +29,7 @@ struct ScheduleListView: View {
         VStack{
             if isGrewHost {
                 NavigationLink {
-                    CreateScheduleMainView(gid: gid)
+                    CreateScheduleMainView(gid: grew.id)
                         .padding(3)
                 } label: {
                     Image(systemName: "plus")
@@ -91,7 +88,7 @@ struct ScheduleListView: View {
     func getSchedules() -> [Schedule] {
         
         let schedules = scheduleStore.schedules.filter {
-            $0.gid == gid
+            $0.gid == grew.id
         }
         return schedules
     }

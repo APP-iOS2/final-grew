@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MyGroupView: View {
-  
+
     let user: User?
     let grews: [Grew]
     
@@ -23,6 +23,7 @@ struct MyGroupView: View {
                     }label: {
                         GrewCellView(grew: grew)
                             .padding(.trailing, 5)
+
                             .foregroundColor(.black)
                     }
                 }
