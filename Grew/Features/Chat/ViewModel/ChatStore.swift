@@ -14,6 +14,7 @@ final class ChatStore: ObservableObject {
     
     private var listener: ListenerRegistration?
     private var db = Firestore.firestore()
+    static let db = Firestore.firestore()
     
     // 해당 유저, 그루 값 들고 있기
     var targetUserInfoDict: [String: [User]]
@@ -79,7 +80,7 @@ extension ChatStore {
     func fetchChatRooms() async {
         let snapshot = await getChatRoomDocuments()
         
-//        await removeChatRoomsList()
+        //        await removeChatRoomsList()
         
         var newChatRooms: [ChatRoom] = []
         
@@ -212,7 +213,7 @@ extension ChatStore {
     }
     
     // 리스너에서 update 처리 ex)채팅방 내부에서 채팅이 입력되어서 채팅방에 마지막 메시지 갱신, 마지막 날짜 갱신, 유저별 안읽은 채팅 개수 갱신
-    @MainActor 
+    @MainActor
     func listenerUpdateChatRooms(change: QueryDocumentSnapshot) {
         updateChatRooms(change: change)
         sortChatRooms()
@@ -282,5 +283,27 @@ extension ChatStore {
             return
         }
         listener.remove()
+    }
+}
+
+extension ChatStore {
+    static func getChatRoomFromGID(gid: String) async -> ChatRoom? {
+        do {
+            print(UserStore.shared.currentUser)
+            print(gid)
+            let snapshot = try await db
+                .collection("chatrooms")
+                .whereField("grewId", isEqualTo: gid)
+                .getDocuments()
+            var newChatRoom: ChatRoom?
+            
+            for document in snapshot.documents {
+                newChatRoom = try document.data(as: ChatRoom.self)
+            }
+            return newChatRoom
+        } catch {
+            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+        }
+        return nil
     }
 }

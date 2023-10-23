@@ -10,6 +10,8 @@ import SwiftUI
 struct GrewEditSheetView: View {
     @EnvironmentObject var grewViewModel: GrewViewModel
     @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var chatStore: ChatStore
+    @EnvironmentObject var messageStore: MessageStore
     
     @Binding var isShowingWithdrawConfirmAlert: Bool
     @Binding var isShowingToolBarSheet: Bool
@@ -113,4 +115,36 @@ struct GrewEditSheetView: View {
     )
     )
     .environmentObject(UserViewModel())
+}
+
+extension GrewEditSheetView {
+    private func exitChatRoom() async {
+        // 이 그루의 채팅방에서 나가기
+        guard let user = UserStore.shared.currentUser else {
+            return
+        }
+        
+        if let chatRoom = await ChatStore.getChatRoomFromGID(gid: grew.id) {
+            var newChatRoom = chatRoom
+            let newMember = chatRoom.members.filter { $0 != user.id! }
+            var newUnreadMessageCountDict: [String: Int] = await chatStore.getUnreadMessageDictionary(chatRoomID: chatRoom.id) ?? [:]
+            
+            for userID in chatRoom.otherUserIDs {
+                newUnreadMessageCountDict[userID, default: 0] += 1
+            }
+            
+            newUnreadMessageCountDict[user.id!] = 0
+            
+            let newMessage = ChatMessage(text: "\(user.nickName)님이 퇴장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+            
+            messageStore.addMessage(newMessage, chatRoomID: chatRoom.id)
+            
+            newChatRoom.members = newMember
+            newChatRoom.lastMessage =  "\(user.nickName)님이 퇴장하셨습니다."
+            newChatRoom.lastMessageDate = .now
+            newChatRoom.unreadMessageCount = newUnreadMessageCountDict
+            
+            await chatStore.updateChatRoomForExit(newChatRoom)
+        }
+    }
 }
