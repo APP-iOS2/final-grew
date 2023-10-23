@@ -217,7 +217,13 @@ struct GrewEditView: View {
             })
             .sheet(isPresented: $isShowingSheet, content: {
                 ZStack{
-                    WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $isShowingSheet, location: $viewModel.editGrew.location, latitude: $viewModel.editGrew.latitude, longitude: $viewModel.editGrew.longitude)
+                    WebView(
+                        request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!),
+                        showingWebSheet: $isShowingSheet,
+                        location: $viewModel.editGrew.location,
+                        latitude: $viewModel.editGrew.latitude,
+                        longitude: $viewModel.editGrew.longitude
+                    )
                         .padding(.top, 25)
                 }
                 .presentationDetents([.large])
