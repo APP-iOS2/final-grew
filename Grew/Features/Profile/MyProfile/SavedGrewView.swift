@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SavedGrewView: View {
-    
+
     let grewList: [Grew]
     
     var body: some View {
@@ -36,7 +36,9 @@ struct SavedGrewView: View {
     }
 }
 
+/*
 #Preview {
+
     SavedGrewView(grewList: [Grew(categoryIndex: "123",
     categorysubIndex: "456",
     title: "123",
@@ -65,4 +67,6 @@ struct SavedGrewView: View {
     currentMembers: ["1", "2"],
     isNeedFee: true,
     fee: 0)])
+
 }
+*/
