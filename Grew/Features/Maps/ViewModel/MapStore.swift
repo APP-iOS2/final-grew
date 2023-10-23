@@ -71,8 +71,7 @@ final class MapStore: ObservableObject {
             do {
                 let grew = try Firestore.Decoder().decode(Grew.self, from: document.data())
                 
-                if let lat = grew.latitude, let lng = grew.longitude,
-                   let lat = Double(lat), let lng = Double(lng) {
+                if let lat = Double(grew.latitude), let lng = Double(grew.longitude) {
                     let coordinates = CLLocation(latitude: lat, longitude: lng)
                     let distance = GFUtils.distance(from: currentLocation, to: coordinates)
                     if distance <= radiusInM {

@@ -27,11 +27,11 @@ struct Grew: Identifiable, Codable, Hashable {
     /// 오프라인 주소
     var location: String = ""
     /// 위도
-    var latitude: String?
+    var latitude: String = ""
     /// 경도
-    var longitude: String?
+    var longitude: String = ""
     /// geohash
-    var geoHash: String?
+    var geoHash: String = ""
     /// 활동 지역 (ex: 구로구, 수원시)
     var district: String {
         let locationArray = location.split(separator: " ")

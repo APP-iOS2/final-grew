@@ -28,10 +28,8 @@ struct NaverMapView: UIViewRepresentable {
         }
 
         for items in viewModel.filteredListItems {
-            if let latitude = items.latitude,
-               let longitude = items.longitude,
-               let latitude = Double(latitude),
-               let longitude = Double(longitude) {
+            if let latitude = Double(items.latitude),
+               let longitude = Double(items.longitude) {
                 let marker = NMFMarker()
                 marker.position = NMGLatLng(lat: latitude, lng: longitude)
                 marker.captionText = items.title

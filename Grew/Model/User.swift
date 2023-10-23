@@ -51,6 +51,17 @@ enum Gender: String, CaseIterable, Codable {
     case any = "누구나"
     case female = "여자"
     case male = "남자"
+    
+    var genderIndex: Int {
+        switch self {
+        case .any:
+            return 0
+        case .female:
+            return 1
+        case .male:
+            return 2
+        }
+    }
 }
 enum ProfileThreadFilter: Int, CaseIterable, Identifiable {
     case myGroup

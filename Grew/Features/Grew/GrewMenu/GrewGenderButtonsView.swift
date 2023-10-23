@@ -9,8 +9,8 @@ import SwiftUI
 
 struct GrewGenderButtonsView: View {
     @State var isSelectedGenders: [Bool] = [false, false, false]
-    
     @Binding var selectedGender: Gender
+    
     var body: some View {
         HStack {
             DefaultSelectedButton(isSelected: $isSelectedGenders[0], isBig: true, action: {

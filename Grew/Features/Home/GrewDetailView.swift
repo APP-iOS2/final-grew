@@ -108,24 +108,9 @@ struct GrewDetailView: View {
             
             makeBottomButtons()
         }
-        .sheet(isPresented: $grewViewModel.isShowingToolBarSheet, content: {
-            GrewEditSheetView(grew: grew)
-                .readHeight()
-                .onPreferenceChange(HeightPreferenceKey.self) { height in
-                    if let height {
-                        self.detentHeight = height
-                    }
-                }
-                .presentationDetents([.height(self.detentHeight)])
+        .onAppear(perform: {
+            grewViewModel.selectedGrew = grew
         })
-        .fullScreenCover(isPresented: $grewViewModel.showingSheet) {
-            switch grewViewModel.sheetContent {
-            case .grewEdit:
-                GrewEditView()
-            default:
-                fatalError("There is no View")
-            }
-        }
         .task {
             if !chatStore.isDoneFetch {
                 chatStore.addListener()
@@ -137,6 +122,23 @@ struct GrewDetailView: View {
         .onDisappear {
             chatStore.removeListener()
             chatStore.isDoneFetch = false
+        }
+        .fullScreenCover(isPresented: $grewViewModel.showingSheet) {
+            switch grewViewModel.sheetContent {
+            case .grewEdit:
+                GrewEditView()
+            case .setting:
+                GrewEditSheetView(grew: grew)
+                    .readHeight()
+                    .onPreferenceChange(HeightPreferenceKey.self) { height in
+                        if let height {
+                            self.detentHeight = height
+                        }
+                    }
+                    .presentationDetents([.height(self.detentHeight)])
+            default:
+                fatalError("There is no View")
+            }
         }
     }
     
@@ -209,7 +211,8 @@ extension GrewDetailView {
             // 모임장: 모임 삭제(alert), user 구조체
             // 모임원: 탈퇴하기
             Button {
-                grewViewModel.isShowingToolBarSheet = true
+                grewViewModel.sheetContent = .setting
+                grewViewModel.showingSheet = true
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundStyle(.black)

@@ -4,9 +4,11 @@
 //
 //  Created by KangHo Kim on 2023/10/05.
 //
+import Foundation
+
 import FirebaseFirestore
 import FirebaseFirestoreSwift
-import Foundation
+import FirebaseStorage
 import GeoFire
 
 class GrewViewModel: ObservableObject {
@@ -30,6 +32,7 @@ class GrewViewModel: ObservableObject {
     @Published var fee = ""
     @Published var isNeedFee = false
     
+    @Published var selectedGrew: Grew = Grew.defaultGrew
     @Published var editGrew: EditGrew = EditGrew.defaultGrew
     @Published var showingSheet: Bool = false
     @Published var sheetContent: GrewEditContent = .grewEdit
@@ -40,17 +43,12 @@ class GrewViewModel: ObservableObject {
     func addGrew(_ grew: Grew) {
         var grew = grew
         grew.geoHash = {
-            guard let latitude = grew.latitude,
-                  let longitude = grew.longitude else {
-                return nil
-            }
-            
-            if let doubleLatitude = Double(latitude),
-               let doubleLongitude = Double(longitude) {
+            if let doubleLatitude = Double(grew.latitude),
+               let doubleLongitude = Double(grew.longitude) {
                 return GFUtils.geoHash(forLocation: CLLocationCoordinate2D(latitude: doubleLatitude, longitude: doubleLongitude))
             }
             
-            return nil
+            return ""
         }()
         
         do {
@@ -61,11 +59,7 @@ class GrewViewModel: ObservableObject {
         }
     }
     
-    func editGrew(_ grew: Grew) {
-        
-    }
-    
-    func updateGrew(_ grew: Grew) {
+    func joinGrew(_ grew: Grew) {
         db.collection("grews").whereField("id", isEqualTo: grew.id).getDocuments { snapshot, error in
             if let error {
                 print("Error: \(error)")
@@ -134,7 +128,7 @@ class GrewViewModel: ObservableObject {
             print("Error Occured")
         }
     }
-
+    
     // JSON파일의 이름을 넣어서 GrewCategory타입으로 디코딩 하는 함수 JSON -> Swift (디코딩)
     func loadJson(_ filename: String) throws -> [GrewCategory] {
         let data: Data
@@ -163,7 +157,7 @@ class GrewViewModel: ObservableObject {
     func popularFilter(grewList: [Grew]) -> [Grew] {
         
         let tempList = grewList.sorted(by: {$0.heartTapped > $1.heartTapped})
-       
+        
         if tempList.count < 5 {
             return tempList
         } else {
@@ -193,7 +187,7 @@ class GrewViewModel: ObservableObject {
     func addGrewMember(grewId: String, userId: String) {
         if var grew = grewList.first(where: { $0.id == grewId }) {
             grew.currentMembers.append(userId)
-            updateGrew(grew)
+            joinGrew(grew)
         }
     }
 }
@@ -214,15 +208,95 @@ extension GrewViewModel {
     }
     
     /*
-    static func requestGrewByUser(user: User) async -> [Grew]? {
-        let doc = db.collection("grews").document()
-        do {
-            let grew = try await doc.getDocument(as: Grew.self)
-            return grew
-        } catch {
-            print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
-            return nil
+     static func requestGrewByUser(user: User) async -> [Grew]? {
+     let doc = db.collection("grews").document()
+     do {
+     let grew = try await doc.getDocument(as: Grew.self)
+     return grew
+     } catch {
+     print("Error-\(#file)-\(#function) : \(error.localizedDescription)")
+     return nil
+     }
+     
+     }*/
+}
+
+// 그루 수정하기
+extension GrewViewModel {
+    func makeEditGrew() {
+        var isOnline: OnOff {
+            if selectedGrew.isOnline {
+                return .online
+            } else {
+                return .offline
+            }
         }
         
-    }*/
+        var fee: Fee {
+            if selectedGrew.isNeedFee {
+                return .exist
+            } else {
+                return .free
+            }
+        }
+        
+        self.editGrew = .init(id: selectedGrew.id, title: selectedGrew.title, description: selectedGrew.description, imageURL: selectedGrew.imageURL, isOnline: isOnline, location: selectedGrew.location, latitude: selectedGrew.latitude, longitude: selectedGrew.longitude, geoHash: selectedGrew.geoHash, gender: selectedGrew.gender, minimumAge: String(selectedGrew.minimumAge), maximumAge: String(selectedGrew.maximumAge), maximumMembers: String(selectedGrew.maximumMembers), isNeedFee: fee, fee: String(selectedGrew.fee))
+    }
+    
+    func updateGrew() {
+        var geoHash: String
+           if let latitude = CLLocationDegrees(latitude),
+           let longitude = CLLocationDegrees(longitude) {
+            geoHash = GFUtils.geoHash(forLocation: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+        } else {
+            geoHash = ""
+        }
+
+        db.collection("grews").document(selectedGrew.id).updateData([
+            "title": editGrew.title,
+            "description": editGrew.description,
+            "isOnline": editGrew.isOnline.onOffBool,
+            "location": editGrew.location,
+            "gender": editGrew.gender.rawValue,
+            "minimumAge": editGrew.minimumAge as? Int ?? 0,
+            "maximumAge": editGrew.maximumAge as? Int ?? 100,
+            "maximumMembers": editGrew.maximumMembers as? Int ?? 100,
+            "isNeedFee": editGrew.isNeedFee.feeBool,
+            "fee": editGrew.fee as? Int ?? 0,
+            "imageURL": editGrew.imageURL,
+            "latitude": editGrew.latitude,
+            "longitude": editGrew.longitude,
+            "geoHash": geoHash
+        ])
+    }
+    
+    /// 이미지를 Firestore Storage의 원하는 경로로 업로드
+    func uploadImage(image: UIImage, path: String, completion: @escaping (String?) -> Void) {
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        
+        if let imageData = image.jpegData(compressionQuality: 0.5) {
+            let imageName = UUID().uuidString
+            
+            let imageRef = storageRef.child(path).child("\(imageName).jpg")
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            imageRef.putData(imageData, metadata: metadata) { (metadata, error) in
+                if error != nil {
+                    completion(nil)
+                } else {
+                    imageRef.downloadURL { (url, error) in
+                        if let downloadURL = url?.absoluteString {
+                            completion(downloadURL)
+                        } else {
+                            completion(nil)
+                        }
+                    }
+                }
+            }
+        } else {
+            completion(nil)
+        }
+    }
 }

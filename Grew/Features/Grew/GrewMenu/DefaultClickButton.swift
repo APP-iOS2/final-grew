@@ -10,6 +10,7 @@ import SwiftUI
 struct DefaultClickButton: View {
     var action: () -> ()
     @Binding var text: String
+    @Binding var isDisabled: Bool
     var placeholder: String?
 
     var body: some View {
@@ -26,13 +27,14 @@ struct DefaultClickButton: View {
         .frame(maxWidth: .infinity)
         .frame(height: 44)
         .foregroundStyle(placeholder != nil ? Color.init(hexCode: "c4c4c4") : Color.DarkGray1)
-        .background(Color.BackgroundGray)
+        .background(isDisabled ? Color.BackgroundGray : Color.DarkGray1)
         .clipShape(RoundedRectangle(cornerRadius: 8))
+        .disabled(isDisabled)
     }
 }
 
 #Preview {
     DefaultClickButton(action: {
         
-    }, text: .constant("선택"))
+    }, text: .constant("선택"), isDisabled: .constant(false))
 }

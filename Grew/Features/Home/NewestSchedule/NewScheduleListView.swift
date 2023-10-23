@@ -168,9 +168,7 @@ extension NewestScheduleListView {
             .padding(.top, 40)
             // 이미지
             Image("newest")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .offset(y: 50)
+                .offset(y: 70)
         }
     }
 }
