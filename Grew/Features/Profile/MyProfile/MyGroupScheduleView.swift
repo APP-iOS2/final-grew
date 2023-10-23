@@ -8,36 +8,40 @@
 import SwiftUI
 
 struct MyGroupScheduleView: View {
+    
+    @State private var isShowingSheet: Bool = false
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    let schedules: [Schedule]
     
     var body: some View {
-        VStack{
-            //ProfileGrewDataEmptyView(systemImage: "calendar", message: "그루 일정이 없어요.")
-            LazyVGrid(columns: columns) {
-                ForEach((0..<10), id: \.self) { i in
-                        // Home - GrewDetail 폴더
-                    ScheduleCellView(index: i, 
-                                     schedule: Schedule(
-                                        gid: "750CFF84-E36B-4C31-A795-A83FF4A95CA4",
-                                        scheduleName: "엽떡 탐방",
-                                        date: Date(),
-                                        maximumMember: 2,
-                                        participants: [],
-                                        color: "7CDCAE"))
+        
+        if schedules.isEmpty{
+            ProfileGrewDataEmptyView(systemImage: "calendar", message: "그루 일정이 없어요.")
+        } else{
+            VStack{
+                LazyVGrid(columns: columns) {
+                    
+                    ForEach(Array(schedules.enumerated()), id: \.element.id) { index, schedule in
+                        ScheduleCellView(index: index, schedule: schedule)
                             .scaledToFill()
                             .frame(width: 160, height: 160)
                             .shadow(radius: 2)
                             .padding(.bottom, 30)
-
+                            .onTapGesture {
+                                isShowingSheet = true
+                            }
                     }
-
                 }
-        }.padding(.bottom, 30)
+            }.sheet(isPresented: $isShowingSheet, content: {
+                ScheduleDetailView()
+            })
+            .padding(.bottom, 30)
+        }
     }
 }
 
 #Preview {
     NavigationStack {
-        MyGroupScheduleView()
+        MyGroupScheduleView(schedules: [Schedule]())
     }
 }
