@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct Schedule: Identifiable, Decodable, Encodable {
+struct Schedule: Identifiable, Decodable, Encodable, Equatable {
     /// 스케쥴 아이디
     var id: String = UUID().uuidString
     /// 그루아이디

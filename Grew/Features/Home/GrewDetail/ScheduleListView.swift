@@ -10,27 +10,42 @@ import SwiftUI
 struct ScheduleListView: View {
     
     @EnvironmentObject var scheduleStore: ScheduleStore
-    let gid: String
+    let grew: Grew
+    
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isShowingScheduleSheet: Bool = false
     @State private var isShowingEditSheet: Bool = false
     @State var detentHeight: CGFloat = 0
     
-    @State private var selectedSchedule: Schedule?
+    @State private var selectedScheduleId: String = ""
+    private var gid: String {
+        grew.id
+    }
+    private var isGrewHost: Bool {
+        if let userId = UserStore.shared.currentUser?.id, userId == grew.hostID {
+            return true
+        }
+        return false
+    }
     
     var body: some View {
         VStack {
-            NavigationLink {
-                CreateScheduleMainView(gid: gid)
-                    .padding(3)
-            } label: {
-                Text("+ 새 일정 만들기")
+            if isGrewHost {
+                NavigationLink {
+                    CreateScheduleMainView(gid: gid)
+                        .padding(3)
+                } label: {
+                    Image(systemName: "plus")
+                    Text("새 일정 만들기")
+                }
+                .grewButtonModifier(width: UIScreen.screenWidth - 40, height: 44, buttonColor: .clear, font: .b1_B, fontColor: .DarkGray1, cornerRadius: 8)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.DarkGray1)
+                )
+                Divider()
+                    .padding(.vertical, 10)
             }
-            .grewButtonModifier(width: UIScreen.screenWidth - 40, height: 44, buttonColor: .clear, font: .b1_B, fontColor: .DarkGray1, cornerRadius: 8)
-            .border(Color.DarkGray1, width: 4)
-            .cornerRadius(8)
-            Divider()
-                .padding(.vertical, 10)
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     let schedules = getSchedules()
@@ -38,7 +53,7 @@ struct ScheduleListView: View {
                         ForEach(0 ..< schedules.count) { index in
                             ScheduleCellView(index: index, schedule: schedules[index])
                                 .onTapGesture(perform: {
-                                    selectedSchedule = schedules[index]
+                                    selectedScheduleId = schedules[index].id
                                     isShowingEditSheet = false
                                     isShowingScheduleSheet = true
                                 })
@@ -53,7 +68,7 @@ struct ScheduleListView: View {
         }//: VStack
         .padding(20)
         .sheet(isPresented: $isShowingScheduleSheet, content: {
-            ScheduleDetailView(schedule: selectedSchedule)
+            ScheduleDetailView(scheduleId: selectedScheduleId)
         })
         .sheet(isPresented: $isShowingEditSheet, content: {
             ScheduleCellEditSheetView()
@@ -104,6 +119,30 @@ extension View {
 }
 
 #Preview {
-    ScheduleListView(gid: "")
-        .environmentObject(ScheduleStore())
+    ScheduleListView(
+        grew: Grew(
+            id: "",
+            hostID: "",
+            categoryIndex: "",
+            categorysubIndex: "",
+            title: "",
+            description: "",
+            imageURL: "",
+            isOnline: false,
+            location: "",
+            latitude: nil,
+            longitude: nil,
+            geoHash: nil,
+            gender: .any,
+            minimumAge: 1,
+            maximumAge: 10,
+            maximumMembers: 10,
+            currentMembers: [],
+            isNeedFee: false,
+            fee: 0,
+            createdAt: Date(),
+            heartUserDictionary: [:]
+        )
+    )
+    .environmentObject(ScheduleStore())
 }

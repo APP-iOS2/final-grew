@@ -13,7 +13,7 @@ struct NewestScheduleListView: View {
     @EnvironmentObject var scheduleStore: ScheduleStore
     
     @State private var isShowingSheet: Bool = false
-    @State private var selectedSchedule: Schedule?
+    @State private var selectedScheduleId: String = ""
     let deviceWidth = UIScreen.main.bounds.size.width
     let quote: String = "\""
     
@@ -28,7 +28,7 @@ struct NewestScheduleListView: View {
         .frame(height: 300)
         .background(Color.Main)
         .sheet(isPresented: $isShowingSheet, content: {
-            ScheduleDetailView(schedule: selectedSchedule)
+            ScheduleDetailView(scheduleId: selectedScheduleId)
         })
         
     } //: body
@@ -96,7 +96,7 @@ extension NewestScheduleListView {
                                 .shadow(radius: 6)
                                 .padding(.vertical, 10)
                                 .onTapGesture {
-                                    selectedSchedule = schedules[index]
+                                    selectedScheduleId = schedules[index].id
                                     isShowingSheet = true
                                 }
                                 .scaleEffect(.init(width: scale, height: scale))
