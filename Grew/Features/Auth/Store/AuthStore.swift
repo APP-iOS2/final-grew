@@ -279,7 +279,7 @@ class AuthStore: ObservableObject {
     // 유저정보 Firebase에 업데이트
     @MainActor
     func uploadUserData(uid: String, email: String, nickName: String, gender: String, dob: String) async {
-        let user = User(id: uid, nickName: nickName, email: email, gender: gender, dob: dob, searchHistory: [], isStumpMember: false)
+        let user = User(id: uid, nickName: nickName, email: email, gender: gender, dob: dob, searchHistory: [], isStumpMember: false, favoritGrew: [])
         
         let userDict = [
             "id": user.id,
@@ -288,7 +288,8 @@ class AuthStore: ObservableObject {
             "gender": user.gender,
             "dob": user.dob,
             "searchHistory": user.searchHistory,
-            "isStumpMember": user.isStumpMember
+            "isStumpMember": user.isStumpMember,
+            "favoritGrew" : user.favoritGrew
         ] as [String: Any]
         
         try? await Firestore.firestore().collection("users").document(user.id ?? "").setData(userDict)

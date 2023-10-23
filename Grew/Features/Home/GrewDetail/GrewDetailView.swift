@@ -34,12 +34,13 @@ struct GrewDetailView: View {
     @State private var isShowingToolBarSheet: Bool = false
     @State private var isLoading: Bool = false
     @State var detentHeight: CGFloat = 0
+    @State var heartState: Bool = false
     
     @Namespace private var animation
     
     private let headerHeight: CGFloat = 180
     
-    let grew: Grew
+    var grew: Grew
     
     var body: some View {
         VStack {
@@ -125,6 +126,9 @@ struct GrewDetailView: View {
                 await chatStore.fetchChatRooms()
                 isLoading = false
             }
+        }
+        .onAppear {
+            heartState = UserStore.shared.checkFavorit(gid: grew.id)
         }
         .onDisappear {
             chatStore.removeListener()
@@ -218,9 +222,14 @@ extension GrewDetailView {
     private func makeBottomButtons() -> some View {
         HStack(spacing: 20) {
             Button {
-                
+                if UserStore.shared.addFavorit(gid: grew.id) {
+                    heartState = true
+                } else {
+                    heartState = false
+                }
+                grewViewModel.heartTapping(gid: grew.id)
             } label: {
-                Image(systemName: "heart")
+                Image(systemName: heartState ? "heart.fill" : "heart")
                     .resizable()
                     .foregroundStyle(.red)
             }

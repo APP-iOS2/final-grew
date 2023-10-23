@@ -28,10 +28,12 @@ struct User: Identifiable, Codable, Equatable, Hashable {
     var searchHistory: [String]
     /// 그루터기 멤버 여부
     var isStumpMember: Bool
+    /// 찜한 그루 배열 Grew id 삽입
+    var favoritGrew: [String]
 }
 
 extension User {
-    static let dummyUser = User(nickName: "더미", email: "더미", gender: "남", dob: "19900101", searchHistory: [], isStumpMember: false)
+    static let dummyUser = User(nickName: "더미", email: "더미", gender: "남", dob: "19900101", searchHistory: [], isStumpMember: false, favoritGrew: [""])
 }
 
 // class UserStore: ObservableObject {

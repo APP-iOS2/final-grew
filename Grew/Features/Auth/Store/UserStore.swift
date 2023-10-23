@@ -84,6 +84,56 @@ class UserStore: ObservableObject {
         return currentUser?.id == UserStore.shared.currentUser?.id
     }
     
+    func checkFavorit(gid: String) -> Bool {
+        let favoritGrew: [String] = UserStore.shared.currentUser?.favoritGrew ?? []
+        // 유저안에 그루가 있으면 true
+        if favoritGrew.contains(gid) {
+            return true
+        } else {
+            // 유저안에 그루가 없으면 false
+            return false
+        }
+    }
+    
+    func addFavorit(gid: String) -> Bool  {
+        var flag: Bool = true
+        var favoritGrew: [String] = UserStore.shared.currentUser?.favoritGrew ?? []
+        
+        if checkFavorit(gid: gid) {
+            // 유저안에 그루가 있으면 true
+            // 유저안에 그루를 삭제
+            var index: Int = 0
+            for grewID in favoritGrew {
+                if grewID == gid {
+                    favoritGrew.remove(at: index)
+                    break
+                }
+                index += 1
+            }
+            flag = false
+            
+        } else {
+            // 유저안에 그루가 없으면 false
+            // 그루가 없어서 추가
+            favoritGrew += [gid]
+        }
+        
+        if let userID = currentUser?.id {
+            let userRef = UserStore.db.collection("users").document(userID)
+            userRef.updateData([
+                "favoritGrew" : favoritGrew
+            ]) { err in
+                if let err = err {
+                    print("\(err.localizedDescription)")
+                } else { print("") }
+            }
+            Task {
+                try await loadUserData()
+            }
+        }
+        return flag
+    }
+    
     func findUser(id: String) async throws -> User? {
         let db = Firestore.firestore()
         let document = try await db.collection("users").document(id).getDocument()

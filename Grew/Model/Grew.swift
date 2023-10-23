@@ -77,6 +77,10 @@ struct Grew: Identifiable, Codable, Hashable {
         }
         return count
     }
+    /// 좋아요
+    var heartCount: Int = 0
+    
+    
     var indexForCategory: GrewMainCategory {
         switch self.categoryIndex {
         case "100":
