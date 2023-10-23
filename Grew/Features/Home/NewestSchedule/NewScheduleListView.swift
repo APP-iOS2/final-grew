@@ -14,6 +14,7 @@ struct NewestScheduleListView: View {
     
     @State private var isShowingSheet: Bool = false
     @State private var selectedScheduleId: String = ""
+    @State private var scheduleId: String = ""
     let deviceWidth = UIScreen.main.bounds.size.width
     let quote: String = "\""
     
@@ -28,8 +29,11 @@ struct NewestScheduleListView: View {
         .frame(height: 300)
         .background(Color.Main)
         .sheet(isPresented: $isShowingSheet, content: {
-            ScheduleDetailView(scheduleId: selectedScheduleId)
+            ScheduleDetailView(scheduleId: scheduleId)
         })
+        .onChange(of: selectedScheduleId) { oldValue, newValue in
+            scheduleId = selectedScheduleId
+        }
         
     } //: body
     
