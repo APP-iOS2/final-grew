@@ -33,7 +33,6 @@ struct CreateScheduleMainView: View {
             ScrollView{
                 VStack{
                     // 일정 이름
-                    
                     ScheduleNameField(isScheduleNameError: $isScheduleNameError, scheduleName: $scheduleName)
                     
                     // 날짜, 시간
@@ -104,7 +103,7 @@ struct CreateScheduleMainView: View {
             }
         }
         .sheet(isPresented: $showingWebSheet, content: {
-            VStack{
+            ZStack{
                 WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location, latitude: $latitude, longitude: $longitude)
                 .padding(.top, 25)
             }
@@ -142,7 +141,6 @@ struct CreateScheduleMainView: View {
     @State private var hasFee: Bool = false
     @State private var hasLocation: Bool = false
     
-    //포커스인곳 처리
     func errorCheck() {
         withAnimation(.easeOut){
             if scheduleName.isEmpty {
