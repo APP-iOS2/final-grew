@@ -33,6 +33,7 @@ struct GrewSecureField: View {
                     .font(.b2_R)
                     .disabled(isTextfieldDisabled)
                     .padding(.leading, 10)
+                    .textInputAutocapitalization(.never)
                 
                 if !text.isEmpty {
                     Button {
