@@ -35,17 +35,18 @@ struct ScheduleListView: View {
                 LazyVGrid(columns: columns, spacing: 20) {
                     let schedules = getSchedules()
                     if !schedules.isEmpty {
-                        ForEach(0 ..< schedules.count) { index in
-                            ScheduleCellView(index: index, schedule: schedules[index])
-                                .onTapGesture(perform: {
-                                    selectedSchedule = schedules[index]
-                                    isShowingEditSheet = false
-                                    isShowingScheduleSheet = true
-                                })
-                                .onLongPressGesture {
-                                    isShowingScheduleSheet = false
-                                    isShowingEditSheet = true
-                                }
+                        ForEach(0 ..< schedules.count, id: \.self) { index in
+                            if let schedule = schedules[safe: index] {
+                                ScheduleCellView(index: index, schedule: schedule)
+                                    .onTapGesture(perform: {
+                                        isShowingEditSheet = false
+                                        isShowingScheduleSheet = true
+                                    })
+                                    .onLongPressGesture {
+                                        isShowingScheduleSheet = false
+                                        isShowingEditSheet = true
+                                    }
+                            }
                         }
                     }
                 }

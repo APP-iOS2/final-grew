@@ -10,43 +10,26 @@ import SwiftUI
 struct GrewCellView: View {
     
     let grew: Grew
-    // 즐겨찾기? 버튼이 유저, Grew 각각 들어가야함
-    // @State private var heartButton: Bool = false
+    /// 즐겨찾기? 버튼이 유저, Grew 각각 들어가야함
     @EnvironmentObject var grewViewModel: GrewViewModel
-    
-    var heartButton: Bool {
-        if let dict = grew.heartUserDictionary {
-            return dict[UserStore.shared.currentUser!.id!] ?? false
-        }
-        return false
-    }
+
+//    var heartButton: Bool {
+//        if let dict = grew.heartUserDictionary {
+//            return dict[UserStore.shared.currentUser!.id!] ?? false
+//        }
+//        return false
+//    }
     
     var body: some View {
         
         HStack {
             
-            ZStack(alignment: .bottomLeading){
-                
-                GrewImageView(image: grew.imageURL)
-                
-                Image(systemName: heartButton ? "heart.fill" : "heart")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
+            GrewImageView(image: grew.imageURL)
                 
                     .padding(.bottom, 13)
                     .padding(.leading, 13)
-                //                Button {
-                //                    heartImage.toggle()
-                //                } label: {
-                //                    Image(systemName: heartButton ? "heart.fill" : "heart")
-                //                        .font(.title3)
-                //                        .fontWeight(.bold)
-                //                        .foregroundColor(.white)
-                //                }
-                //                .padding(.bottom, 13)
-                //                .padding(.leading, 13)
-            }
+                
+            
             
             VStack(alignment: .leading) {
                 
@@ -108,10 +91,6 @@ struct GrewCellView: View {
         //                .stroke(Color.gray, lineWidth: 1.5)
         //                .opacity(0.3)
         //        )
-        
-        
-        
-        
     }
 }
 
