@@ -17,7 +17,7 @@ struct Grew: Identifiable, Codable, Hashable {
     /// 2차 카테고리
     let categorysubIndex: String
     /// 모임 이름
-    let title: String
+    var title: String
     /// 모임 설명
     var description: String = ""
     /// 모임 썸네일 이미지
@@ -27,11 +27,11 @@ struct Grew: Identifiable, Codable, Hashable {
     /// 오프라인 주소
     var location: String = ""
     /// 위도
-    var latitude: String?
+    var latitude: String = ""
     /// 경도
-    var longitude: String?
+    var longitude: String = ""
     /// geohash
-    var geoHash: String?
+    var geoHash: String = ""
     /// 활동 지역 (ex: 구로구, 수원시)
     var district: String {
         let locationArray = location.split(separator: " ")
@@ -79,8 +79,7 @@ struct Grew: Identifiable, Codable, Hashable {
     }
     /// 좋아요
     var heartCount: Int = 0
-    
-    
+
     var indexForCategory: GrewMainCategory {
         switch self.categoryIndex {
         case "100":

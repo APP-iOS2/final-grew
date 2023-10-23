@@ -31,9 +31,11 @@ struct GrewDetailView: View {
     @State private var selectedFilter: GrewDetailFilter = .introduction
     @State private var isShowingJoinConfirmAlert: Bool = false
     @State private var isShowingJoinFinishAlert: Bool = false
+    
     @State var isShowingToolBarSheet: Bool = false
     @State var isShowingWithdrawConfirmAlert: Bool = false
     @State private var isShowingWithdrawFinishAlert: Bool = false
+    
     @State private var isLoading: Bool = false
     @State var detentHeight: CGFloat = 0
     @State var heartState: Bool = false
@@ -89,7 +91,7 @@ struct GrewDetailView: View {
                 secondButtonAction: nil,
                 buttonTitle: "확인",
                 buttonColor: .Main,
-                action: { 
+                action: {
                     isChatViewButton = true
                 }
             )
@@ -113,15 +115,9 @@ struct GrewDetailView: View {
             
             makeBottomButtons()
         }
-        .sheet(isPresented: $isShowingToolBarSheet, content: {
-            GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, isShowingToolBarSheet: $isShowingToolBarSheet, grew: grew)
-                .readHeight()
-                .onPreferenceChange(HeightPreferenceKey.self) { height in
-                    if let height {
-                        self.detentHeight = height
-                    }
-                }
-                .presentationDetents([.height(self.detentHeight)])
+        
+        .onAppear(perform: {
+            grewViewModel.selectedGrew = grew
         })
         .grewAlert(
             isPresented: $isShowingWithdrawConfirmAlert,
@@ -164,6 +160,24 @@ struct GrewDetailView: View {
         .onDisappear {
             chatStore.removeListener()
             chatStore.isDoneFetch = false
+        }
+        
+        .fullScreenCover(isPresented: $grewViewModel.showingSheet) {
+            switch grewViewModel.sheetContent {
+            case .grewEdit:
+                GrewEditView()
+            case .setting:
+                GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, isShowingToolBarSheet: $isShowingToolBarSheet, grew: grew)
+                    .readHeight()
+                    .onPreferenceChange(HeightPreferenceKey.self) { height in
+                        if let height {
+                            self.detentHeight = height
+                        }
+                    }
+                    .presentationDetents([.height(self.detentHeight)])
+            default:
+                fatalError("There is no View")
+            }
         }
         .navigationBarBackButtonHidden()
     }
@@ -242,7 +256,8 @@ extension GrewDetailView {
             // 모임장: 모임 삭제(alert), user 구조체
             // 모임원: 탈퇴하기
             Button {
-                isShowingToolBarSheet = true
+                grewViewModel.sheetContent = .setting
+                grewViewModel.showingSheet = true
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundStyle(.black)
@@ -271,10 +286,10 @@ extension GrewDetailView {
             if let currentUserId = UserStore.shared.currentUser?.id {
                 if grew.currentMembers.contains(currentUserId) && grew.currentMembers.count < grew.maximumMembers || isChatViewButton == true {
                     NavigationLink {
-//                        ChatDetailView(
-//                            chatRoom: chatStore.groupChatRooms.first!,
-//                            targetUserInfos: chatStore.targetUserInfoDict[chatStore.groupChatRooms.first!.id] ?? []
-//                        )
+                        //                        ChatDetailView(
+                        //                            chatRoom: chatStore.groupChatRooms.first!,
+                        //                            targetUserInfos: chatStore.targetUserInfoDict[chatStore.groupChatRooms.first!.id] ?? []
+                        //                        )
                     } label: {
                         Text("채팅 참여하기")
                             .grewButtonModifier(
@@ -308,7 +323,7 @@ extension GrewDetailView {
                                 cornerRadius: 8
                             )
                     }.disabled(grew.currentMembers.count >= grew.maximumMembers)
-                    .padding(.bottom, 2)
+                        .padding(.bottom, 2)
                 }
             }
         }

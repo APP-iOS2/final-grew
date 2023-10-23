@@ -8,56 +8,88 @@
 import SwiftUI
 
 struct GrewEditSheetView: View {
-    
     @EnvironmentObject var grewViewModel: GrewViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     @Binding var isShowingWithdrawConfirmAlert: Bool
     @Binding var isShowingToolBarSheet: Bool
+    
     
     let grew: Grew
     
     var body: some View {
-        VStack {
-            if grew.hostID == UserStore.shared.currentUser?.id ?? "" {
-                Button {
-                    //
-                } label: {
-                    Text("그루트 관리")
+        NavigationStack {
+            ZStack {
+                Color(red: 0, green: 0, blue: 0, opacity: 0.3)
+                VStack {
                     Spacer()
-                    Image(systemName: "pencil")
-                }
-                .padding(.vertical, 8)
-                .foregroundStyle(Color.Black)
-                Divider()
-                Button {
-                    //
-                } label: {
-                    Text("그루 해체하기")
-                    Spacer()
-                    Image(systemName: "trash")
-                }
-                .padding(.vertical, 8)
-                .foregroundStyle(Color.Error)
-            } else {
-                HStack {
-                    Button {
-                        isShowingWithdrawConfirmAlert = true
-                        isShowingToolBarSheet = false
-                    } label: {
-                        Text("탈퇴하기")
-                        Spacer()
-                        Image(systemName: "trash")
+                    if grew.hostID == UserStore.shared.currentUser?.id ?? "" {
+                        NavigationLink(destination: {
+                            GrewEditView()
+                        }, label: {
+                            HStack {
+                                Text("그루 수정")
+                                Spacer()
+                                Image(systemName: "pencil")
+                            }
+                        })
+                        .padding(.vertical, 8)
+                        .foregroundStyle(Color.Black)
+                        Divider()
+                        Button {
+                            //
+                        } label: {
+                            Text("그루트 관리")
+                            Spacer()
+                            Image(systemName: "pencil")
+                        }
+                        .padding(.vertical, 8)
+                        .foregroundStyle(Color.Black)
+                        Divider()
+                        Button {
+                            //
+                        } label: {
+                            Text("그루 해체하기")
+                            Spacer()
+                            Image(systemName: "trash")
+                        }
+                        .padding(.vertical, 8)
+                        .foregroundStyle(Color.Error)
+                    } else {
+                        HStack {
+                            Button {
+                                //
+                            } label: {
+                                Text("탈퇴하기")
+                                Spacer()
+                                Image(systemName: "trash")
+                            }
+                            .padding(.vertical, 8)
+                            .foregroundStyle(Color.Error)
+                        }
+                        Image(systemName: "pencil")
+                            .padding(.vertical, 8)
+                            .foregroundStyle(Color.Black)
+                        Divider()
+                        Button {
+                            //
+                        } label: {
+                            Text("그루 해체하기")
+                            Spacer()
+                            Image(systemName: "trash")
+                        }
+                        .padding(.vertical, 8)
+                        .foregroundStyle(Color.Error)
                     }
-                    .padding(.vertical, 8)
-                    .foregroundStyle(Color.Error)
                 }
-                
+                .font(.b2_R)
+                .padding(20)
             }
         }
-        .font(.b2_R)
-        .padding(20)
-//        .onAppear(perform: {
-//            userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
-//        })
+        .ignoresSafeArea(.all)
+        .onAppear(perform: {
+            userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
+        })
     }
 }
 
