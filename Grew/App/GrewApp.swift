@@ -19,11 +19,12 @@ struct GrewApp: App {
     @StateObject private var userStore = UserStore()
     @StateObject private var chatStore = ChatStore()
     @StateObject private var messageStore = MessageStore()
-    @StateObject private var vm = LaunchViewModel()
     @StateObject private var grewViewModel = GrewViewModel()
     @StateObject private var appState = AppState()
     @StateObject private var stumpStore = StumpStore()
     @StateObject private var mapStore = MapStore()
+    @StateObject private var scheduleStore = ScheduleStore()
+    @StateObject private var profileStore = ProfileStore()
     
     // 카카오 로그인 키 값
     init() {
@@ -42,6 +43,8 @@ struct GrewApp: App {
             .environmentObject(appState)
             .environmentObject(stumpStore)
             .environmentObject(mapStore)
+            .environmentObject(scheduleStore)
+            .environmentObject(profileStore)
         }
     }
 }
