@@ -13,6 +13,7 @@ struct NewestScheduleListView: View {
     @EnvironmentObject var scheduleStore: ScheduleStore
     
     @State private var isShowingSheet: Bool = false
+    @State private var selectedSchedule: Schedule?
     let deviceWidth = UIScreen.main.bounds.size.width
     let quote: String = "\""
     
@@ -27,7 +28,7 @@ struct NewestScheduleListView: View {
         .frame(height: 300)
         .background(Color.Main)
         .sheet(isPresented: $isShowingSheet, content: {
-            ScheduleDetailView()
+            ScheduleDetailView(schedule: selectedSchedule)
         })
         
     } //: body
@@ -95,13 +96,14 @@ extension NewestScheduleListView {
                                 .shadow(radius: 6)
                                 .padding(.vertical, 10)
                                 .onTapGesture {
+                                    selectedSchedule = schedules[index]
                                     isShowingSheet = true
                                 }
                                 .scaleEffect(.init(width: scale, height: scale))
                                 .animation(.easeOut(duration: 0.5))
-                                .onTapGesture {
-                                    isShowingSheet = true
-                                }
+//                                .onTapGesture {
+//                                    isShowingSheet = true
+//                                }
                             
                         } // GeometryReader
                         // 지오메트리 자체에 프레임을 주는 것
@@ -119,9 +121,6 @@ extension NewestScheduleListView {
         } //: VStack
         .frame(height: 300)
         .background(Color.Main)
-        .sheet(isPresented: $isShowingSheet, content: {
-            ScheduleDetailView()
-        })
         
         
     } //: body
