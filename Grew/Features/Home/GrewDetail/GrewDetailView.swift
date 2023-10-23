@@ -28,12 +28,16 @@ struct GrewDetailView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var grewViewModel: GrewViewModel
     @EnvironmentObject private var chatStore: ChatStore
+    @EnvironmentObject private var messageStore: MessageStore
+    
     @State private var selectedFilter: GrewDetailFilter = .introduction
     @State private var isShowingJoinConfirmAlert: Bool = false
     @State private var isShowingJoinFinishAlert: Bool = false
+    
     @State var isShowingToolBarSheet: Bool = false
     @State var isShowingWithdrawConfirmAlert: Bool = false
     @State private var isShowingWithdrawFinishAlert: Bool = false
+    
     @State private var isLoading: Bool = false
     @State var detentHeight: CGFloat = 0
     @State var heartState: Bool = false
@@ -43,7 +47,7 @@ struct GrewDetailView: View {
     
     private let headerHeight: CGFloat = 180
     
-    var grew: Grew
+    let grew: Grew
     
     var body: some View {
         VStack {
@@ -108,10 +112,14 @@ struct GrewDetailView: View {
                 buttonTitle: "확인",
                 buttonColor: .Main,
                 action: {
-                    if let userId = UserStore.shared.currentUser?.id {
-                        grewViewModel.addGrewMember(grewId: grew.id, userId: userId)
+                    Task {
+                        if let userId = UserStore.shared.currentUser?.id {
+                            grewViewModel.addGrewMember(grewId: grew.id, userId: userId)
+                        }
+                        await startMessage()
+                        
+                        isShowingJoinFinishAlert = true
                     }
-                    isShowingJoinFinishAlert = true
                 }
             )
             Divider()
@@ -119,15 +127,9 @@ struct GrewDetailView: View {
             
             makeBottomButtons()
         }
-        .sheet(isPresented: $isShowingToolBarSheet, content: {
-            GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, isShowingToolBarSheet: $isShowingToolBarSheet, grew: grew)
-                .readHeight()
-                .onPreferenceChange(HeightPreferenceKey.self) { height in
-                    if let height {
-                        self.detentHeight = height
-                    }
-                }
-                .presentationDetents([.height(self.detentHeight)])
+        
+        .onAppear(perform: {
+            grewViewModel.selectedGrew = grew
         })
         .grewAlert(
             isPresented: $isShowingWithdrawConfirmAlert,
@@ -170,6 +172,24 @@ struct GrewDetailView: View {
         .onDisappear {
             chatStore.removeListener()
             chatStore.isDoneFetch = false
+        }
+        
+        .fullScreenCover(isPresented: $grewViewModel.showingSheet) {
+            switch grewViewModel.sheetContent {
+            case .grewEdit:
+                GrewEditView()
+            case .setting:
+                GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, isShowingToolBarSheet: $isShowingToolBarSheet, grew: grew)
+                    .readHeight()
+                    .onPreferenceChange(HeightPreferenceKey.self) { height in
+                        if let height {
+                            self.detentHeight = height
+                        }
+                    }
+                    .presentationDetents([.height(self.detentHeight)])
+            default:
+                fatalError("There is no View")
+            }
         }
         .navigationBarBackButtonHidden()
     }
@@ -248,7 +268,8 @@ extension GrewDetailView {
             // 모임장: 모임 삭제(alert), user 구조체
             // 모임원: 탈퇴하기
             Button {
-                isShowingToolBarSheet = true
+                grewViewModel.sheetContent = .setting
+                grewViewModel.showingSheet = true
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundStyle(.black)
@@ -319,6 +340,46 @@ extension GrewDetailView {
             }
         }
         .padding(.horizontal)
+    }
+    
+    private func startMessage() async {
+        // 1. gid에 해당하는 채팅방이 있는지 조회한다.
+        guard let user = UserStore.shared.currentUser else {
+            return
+        }
+        // 1-1. 있으면 있는 방을 조회 해서 chatRoom을 가져와서 인원을 넣는다.
+        if let chatRoom = await ChatStore.getChatRoomFromGID(gid: grew.id) {
+            var newChatRoom = chatRoom
+            newChatRoom.members += [user.id!]
+            newChatRoom.lastMessage =  "\(user.nickName)님이 입장하셨습니다."
+            newChatRoom.lastMessageDate = .now
+            
+            await chatStore.updateChatRoomForExit(newChatRoom)
+            
+            // 2. 시스템 메시지를 추가한다.
+            let newMessage = ChatMessage(text: "\(user.nickName)님이 입장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+            
+            messageStore.addMessage(newMessage, chatRoomID: newChatRoom.id)
+            
+        } else {
+            // 1-2. 없으면 새로운 방을 생성해서 인원을 넣는다.
+            var newChatRoom: ChatRoom = ChatRoom(
+                id: UUID().uuidString,
+                grewId: grew.id,
+                chatRoomName: grew.title,
+                members: [user.id!],
+                createdDate: Date(),
+                lastMessage: "\(user.nickName)님이 입장하셨습니다.",
+                lastMessageDate: Date(),
+                unreadMessageCount: [:])
+            await chatStore.addChatRoom(newChatRoom)
+            
+            // 2. 시스템 메시지를 추가한다.
+            let newMessage = ChatMessage(text: "\(user.nickName)님이 입장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+            
+            messageStore.addMessage(newMessage, chatRoomID: newChatRoom.id)
+        }
+        
     }
 }
 

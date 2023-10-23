@@ -8,56 +8,96 @@
 import SwiftUI
 
 struct GrewEditSheetView: View {
-    
     @EnvironmentObject var grewViewModel: GrewViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var chatStore: ChatStore
+    @EnvironmentObject var messageStore: MessageStore
+    
     @Binding var isShowingWithdrawConfirmAlert: Bool
     @Binding var isShowingToolBarSheet: Bool
+    
     
     let grew: Grew
     
     var body: some View {
-        VStack {
-            if grew.hostID == UserStore.shared.currentUser?.id ?? "" {
-                Button {
-                    //
-                } label: {
-                    Text("그루트 관리")
+        NavigationStack {
+            ZStack {
+                Color(red: 0, green: 0, blue: 0, opacity: 0.3)
+                VStack {
                     Spacer()
-                    Image(systemName: "pencil")
-                }
-                .padding(.vertical, 8)
-                .foregroundStyle(Color.Black)
-                Divider()
-                Button {
-                    //
-                } label: {
-                    Text("그루 해체하기")
-                    Spacer()
-                    Image(systemName: "trash")
-                }
-                .padding(.vertical, 8)
-                .foregroundStyle(Color.Error)
-            } else {
-                HStack {
-                    Button {
-                        isShowingWithdrawConfirmAlert = true
-                        isShowingToolBarSheet = false
-                    } label: {
-                        Text("탈퇴하기")
-                        Spacer()
-                        Image(systemName: "trash")
+                    if grew.hostID == UserStore.shared.currentUser?.id ?? "" {
+                        NavigationLink(destination: {
+                            GrewEditView()
+                        }, label: {
+                            HStack {
+                                Text("그루 수정")
+                                Spacer()
+                                Image(systemName: "pencil")
+                            }
+                        })
+                        .padding(.vertical, 8)
+                        .foregroundStyle(Color.Black)
+                        Divider()
+                        Button {
+                            //
+                        } label: {
+                            Text("그루트 관리")
+                            Spacer()
+                            Image(systemName: "pencil")
+                        }
+                        .padding(.vertical, 8)
+                        .foregroundStyle(Color.Black)
+                        Divider()
+                        Button {
+                            //
+                        } label: {
+                            Text("그루 해체하기")
+                            Spacer()
+                            Image(systemName: "trash")
+                        }
+                        .padding(.vertical, 8)
+                        .foregroundStyle(Color.Error)
+                    } else {
+                        HStack {
+                            Button {
+                                Task {
+                                    await exitChatRoom()
+                                }
+                                //
+                            } label: {
+                                Text("탈퇴하기")
+                                Spacer()
+                                Image(systemName: "trash")
+                            }
+                            .padding(.vertical, 8)
+                            .foregroundStyle(Color.Error)
+                        }
+                        Image(systemName: "pencil")
+                            .padding(.vertical, 8)
+                            .foregroundStyle(Color.Black)
+                        Divider()
+                        Button {
+                            //
+                            Task {
+                                await removeChatRoom()
+                            }
+                        } label: {
+                            Text("그루 해체하기")
+                            Spacer()
+                            Image(systemName: "trash")
+                        }
+                        .padding(.vertical, 8)
+                        .foregroundStyle(Color.Error)
                     }
-                    .padding(.vertical, 8)
-                    .foregroundStyle(Color.Error)
                 }
-                
+                .font(.b2_R)
+                .padding(20)
             }
         }
-        .font(.b2_R)
-        .padding(20)
-//        .onAppear(perform: {
-//            userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
-//        })
+        .ignoresSafeArea(.all)
+        .onAppear(perform: {
+            userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
+        })
     }
 }
 
@@ -81,4 +121,46 @@ struct GrewEditSheetView: View {
     )
     )
     .environmentObject(UserViewModel())
+}
+
+extension GrewEditSheetView {
+    private func exitChatRoom() async {
+        // 이 그루의 채팅방에서 나가기
+        guard let user = UserStore.shared.currentUser else {
+            return
+        }
+        
+        if let chatRoom = await ChatStore.getChatRoomFromGID(gid: grew.id) {
+            var newChatRoom = chatRoom
+            let newMember = chatRoom.members.filter { $0 != user.id! }
+            var newUnreadMessageCountDict: [String: Int] = await chatStore.getUnreadMessageDictionary(chatRoomID: chatRoom.id) ?? [:]
+            
+            for userID in chatRoom.otherUserIDs {
+                newUnreadMessageCountDict[userID, default: 0] += 1
+            }
+            
+            newUnreadMessageCountDict[user.id!] = 0
+            
+            let newMessage = ChatMessage(text: "\(user.nickName)님이 퇴장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+            
+            messageStore.addMessage(newMessage, chatRoomID: chatRoom.id)
+            
+            newChatRoom.members = newMember
+            newChatRoom.lastMessage =  "\(user.nickName)님이 퇴장하셨습니다."
+            newChatRoom.lastMessageDate = .now
+            newChatRoom.unreadMessageCount = newUnreadMessageCountDict
+            
+            await chatStore.updateChatRoomForExit(newChatRoom)
+        }
+    }
+    
+    private func removeChatRoom() async {
+        guard let user = UserStore.shared.currentUser else {
+            return
+        }
+        
+        if let chatRoom = await ChatStore.getChatRoomFromGID(gid: grew.id) {
+            await chatStore.removeChatRoom(chatRoom)
+        }
+    }
 }

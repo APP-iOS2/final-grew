@@ -122,6 +122,14 @@
 		319757802AE1853A00696FF9 /* Storage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */; };
 		319757822AE187AB00696FF9 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319757812AE187AB00696FF9 /* ImageUploader.swift */; };
 		3A6D59E02AE0351900627179 /* MapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D59DF2AE0351900627179 /* MapStore.swift */; };
+		3A7A10122AE54DBE008CB496 /* GrewEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7A10112AE54DBE008CB496 /* GrewEditView.swift */; };
+		3A7A10152AE55145008CB496 /* GrewGenderButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7A10142AE55145008CB496 /* GrewGenderButtonsView.swift */; };
+		3A7A10172AE5517C008CB496 /* DefaultSelectedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7A10162AE5517C008CB496 /* DefaultSelectedButton.swift */; };
+		3A7A101A2AE557A6008CB496 /* GrewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7A10192AE557A6008CB496 /* GrewModel.swift */; };
+		3A7A101C2AE55A6F008CB496 /* DefaultClickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7A101B2AE55A6F008CB496 /* DefaultClickButton.swift */; };
+		3A7A101E2AE55E27008CB496 /* DefaultPlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7A101D2AE55E27008CB496 /* DefaultPlusButton.swift */; };
+		3A7A10202AE56083008CB496 /* DefaultMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7A101F2AE56083008CB496 /* DefaultMainButton.swift */; };
+		3A7A10222AE57171008CB496 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7A10212AE57171008CB496 /* DefaultTextField.swift */; };
 		3AA913C92ADCD9A000157973 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA913C82ADCD9A000157973 /* CategoryView.swift */; };
 		3AF1D49A2AD3F9FE00ECE1A8 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */; };
 		3AF1D49C2AD3F9FE00ECE1A8 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */; };
@@ -287,6 +295,14 @@
 		3197577F2AE1853A00696FF9 /* Storage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage+Extensions.swift"; sourceTree = "<group>"; };
 		319757812AE187AB00696FF9 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		3A6D59DF2AE0351900627179 /* MapStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStore.swift; sourceTree = "<group>"; };
+		3A7A10112AE54DBE008CB496 /* GrewEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewEditView.swift; sourceTree = "<group>"; };
+		3A7A10142AE55145008CB496 /* GrewGenderButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewGenderButtonsView.swift; sourceTree = "<group>"; };
+		3A7A10162AE5517C008CB496 /* DefaultSelectedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSelectedButton.swift; sourceTree = "<group>"; };
+		3A7A10192AE557A6008CB496 /* GrewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrewModel.swift; sourceTree = "<group>"; };
+		3A7A101B2AE55A6F008CB496 /* DefaultClickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClickButton.swift; sourceTree = "<group>"; };
+		3A7A101D2AE55E27008CB496 /* DefaultPlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPlusButton.swift; sourceTree = "<group>"; };
+		3A7A101F2AE56083008CB496 /* DefaultMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMainButton.swift; sourceTree = "<group>"; };
+		3A7A10212AE57171008CB496 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
 		3AA913C82ADCD9A000157973 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		3AF1D4902AD3F9FD00ECE1A8 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		3AF1D4922AD3F9FE00ECE1A8 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
@@ -619,7 +635,7 @@
 				3110979F2AD41881000D85AD /* Grew.swift */,
 				CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */,
 				647462BA2ADFB1960054DA6D /* GrewSecureField.swift */,
-				3110979E2AD41881000D85AD /* GrewViewModel.swift */,
+				311097A02AD41882000D85AD /* SettingStore.swift */,
 				311097A32AD41882000D85AD /* User.swift */,
 				215709652AD67625006ABE35 /* UserViewModel.swift */,
 				CE9292D42AE209A7005052AF /* Stump.swift */,
@@ -696,6 +712,7 @@
 		312E98EA2ACD30A600E38626 /* Grew */ = {
 			isa = PBXGroup;
 			children = (
+				3A7A10102AE54D9F008CB496 /* GrewMenu */,
 				995095332ADCFBFA003A822E /* GrewCategoryView */,
 				311097632AD4180E000D85AD /* GrewProgressViewStyle.swift */,
 				311097672AD4180E000D85AD /* GroupAlertView.swift */,
@@ -798,6 +815,38 @@
 				3A6D59DF2AE0351900627179 /* MapStore.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3A7A10102AE54D9F008CB496 /* GrewMenu */ = {
+			isa = PBXGroup;
+			children = (
+				3A7A10182AE5579E008CB496 /* Model */,
+				3A7A10132AE54EAE008CB496 /* ViewModel */,
+				3A7A10112AE54DBE008CB496 /* GrewEditView.swift */,
+				3A7A10142AE55145008CB496 /* GrewGenderButtonsView.swift */,
+				3A7A10162AE5517C008CB496 /* DefaultSelectedButton.swift */,
+				3A7A101B2AE55A6F008CB496 /* DefaultClickButton.swift */,
+				3A7A101F2AE56083008CB496 /* DefaultMainButton.swift */,
+				3A7A10212AE57171008CB496 /* DefaultTextField.swift */,
+			);
+			path = GrewMenu;
+			sourceTree = "<group>";
+		};
+		3A7A10132AE54EAE008CB496 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3110979E2AD41881000D85AD /* GrewViewModel.swift */,
+				3A7A101D2AE55E27008CB496 /* DefaultPlusButton.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3A7A10182AE5579E008CB496 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A7A10192AE557A6008CB496 /* GrewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3AF1D4A42AD41F3A00ECE1A8 /* Font */ = {
@@ -1218,6 +1267,7 @@
 				3197576E2ADFAAD800696FF9 /* Font+Extensions.swift in Sources */,
 				CE48FADA2AE4163400712DD5 /* StumpListView.swift in Sources */,
 				3AF1D4AF2AD4D75A00ECE1A8 /* MapListItemView.swift in Sources */,
+				3A7A101C2AE55A6F008CB496 /* DefaultClickButton.swift in Sources */,
 				3EC0F0582ADE597100D07009 /* TextFieldErrorModifier.swift in Sources */,
 				64D54B9A2ADD0E4B007753B2 /* AgreeLocationView.swift in Sources */,
 				311097B12AD4188E000D85AD /* FirestoreService.swift in Sources */,
@@ -1241,6 +1291,7 @@
 				311097C02AD418C1000D85AD /* AnimationModifier.swift in Sources */,
 				311097602AD417FD000D85AD /* ChatRoom.swift in Sources */,
 				CEB6CBB92AD682DE00515EEA /* GrewTextField.swift in Sources */,
+				3A7A10172AE5517C008CB496 /* DefaultSelectedButton.swift in Sources */,
 				3E185B242ADDB35D00F7FC46 /* KakaoWebController.swift in Sources */,
 				3110976F2AD4180F000D85AD /* NewGroupView.swift in Sources */,
 				319757742ADFAB5A00696FF9 /* CategoryButtonView.swift in Sources */,
@@ -1248,12 +1299,14 @@
 				319757592ADEF36600696FF9 /* ChatListView.swift in Sources */,
 				311097BA2AD418A6000D85AD /* Constant.swift in Sources */,
 				CE467ADD2AD5316500143213 /* GrewAlertModifier.swift in Sources */,
+				3A7A10202AE56083008CB496 /* DefaultMainButton.swift in Sources */,
 				3110976E2AD4180F000D85AD /* GroupCategoryView.swift in Sources */,
 				64877CB22AD5145100192DB4 /* AuthAgreeView.swift in Sources */,
 				3197577E2AE16DD100696FF9 /* TextMaster.swift in Sources */,
 				3E185AF12ADCC64400F7FC46 /* ScheduleOptionMenu.swift in Sources */,
 				CE9292D52AE209A7005052AF /* Stump.swift in Sources */,
 				2163156B2ADFA68000208CB4 /* PurchaseAdsBannerView.swift in Sources */,
+				3A7A10122AE54DBE008CB496 /* GrewEditView.swift in Sources */,
 				319757582ADEF36600696FF9 /* MainChatView.swift in Sources */,
 				311097B52AD41897000D85AD /* CircularProfileImageView.swift in Sources */,
 				311097BE2AD418B3000D85AD /* FireCodable.swift in Sources */,
@@ -1261,9 +1314,12 @@
 				2163156E2ADFA6B100208CB4 /* OpensourceLicenseView.swift in Sources */,
 				64877CB82AD5BF8E00192DB4 /* AuthRegisterEmailView.swift in Sources */,
 				311097B22AD4188E000D85AD /* DateService.swift in Sources */,
+				3A7A10222AE57171008CB496 /* DefaultTextField.swift in Sources */,
+				3A7A10152AE55145008CB496 /* GrewGenderButtonsView.swift in Sources */,
 				319757822AE187AB00696FF9 /* ImageUploader.swift in Sources */,
 				9FD050712ADFBA2900A8735A /* GrootView.swift in Sources */,
 				3110975F2AD417FD000D85AD /* ChatSegment.swift in Sources */,
+				3A7A101A2AE557A6008CB496 /* GrewModel.swift in Sources */,
 				311097612AD417FD000D85AD /* Bubble.swift in Sources */,
 				312E98E32ACD2EAA00E38626 /* UIImage+Extensions.swift in Sources */,
 				9FD050752ADFC25800A8735A /* ScheduleListView.swift in Sources */,
@@ -1286,6 +1342,7 @@
 				3E46B9052AE3EE1800AF1BAB /* GrewListItemView.swift in Sources */,
 				2157096C2AD69246006ABE35 /* CameraView.swift in Sources */,
 				3AF1D4A92AD4D60700ECE1A8 /* MainMapOverTopView.swift in Sources */,
+				3A7A101E2AE55E27008CB496 /* DefaultPlusButton.swift in Sources */,
 				21C1F1B62ACFEEDD0029E436 /* MyGroupScheduleView.swift in Sources */,
 				3AA913C92ADCD9A000157973 /* CategoryView.swift in Sources */,
 				311097A52AD41882000D85AD /* Category.swift in Sources */,
