@@ -134,6 +134,7 @@ struct GrewDetailView: View {
             chatStore.removeListener()
             chatStore.isDoneFetch = false
         }
+        .navigationBarBackButtonHidden()
     }
     
 }
