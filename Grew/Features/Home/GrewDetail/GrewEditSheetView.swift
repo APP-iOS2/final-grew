@@ -9,7 +9,9 @@ import SwiftUI
 
 struct GrewEditSheetView: View {
     
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var grewViewModel: GrewViewModel
+    @Binding var isShowingWithdrawConfirmAlert: Bool
+    @Binding var isShowingToolBarSheet: Bool
     
     let grew: Grew
     
@@ -38,7 +40,8 @@ struct GrewEditSheetView: View {
             } else {
                 HStack {
                     Button {
-                        //
+                        isShowingWithdrawConfirmAlert = true
+                        isShowingToolBarSheet = false
                     } label: {
                         Text("탈퇴하기")
                         Spacer()
@@ -59,7 +62,7 @@ struct GrewEditSheetView: View {
 }
 
 #Preview {
-    GrewEditSheetView(grew: Grew(
+    GrewEditSheetView(isShowingWithdrawConfirmAlert: .constant(false), isShowingToolBarSheet: .constant(true), grew: Grew(
         id: "id",
         categoryIndex: "게임/오락",
         categorysubIndex: "보드게임",

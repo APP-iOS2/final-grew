@@ -188,6 +188,16 @@ class GrewViewModel: ObservableObject {
             updateGrew(grew)
         }
     }
+    
+    func withdrawGrewMember(grewId: String, userId: String) {
+        if var grew = grewList.first(where: { $0.id == grewId }) {
+            if let index = grew.currentMembers.firstIndex(of: userId) {
+                grew.currentMembers.remove(at: index)
+                updateGrew(grew)
+            }
+        }
+    }
+    
     // 그루 아이디는 동일 했다 근데 업데이트가 안됐다
     func heartTapping(gid: String) {
         // checkFavorit에서 Bool값을 전달해줌 있으면 true
