@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MyGroupScheduleView: View {
+    
+    @State private var isShowingSheet: Bool = false
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     let schedules: [Schedule]
     
@@ -25,9 +27,15 @@ struct MyGroupScheduleView: View {
                             .frame(width: 160, height: 160)
                             .shadow(radius: 2)
                             .padding(.bottom, 30)
+                            .onTapGesture {
+                                isShowingSheet = true
+                            }
                     }
                 }
-            }.padding(.bottom, 30)
+            }.sheet(isPresented: $isShowingSheet, content: {
+                ScheduleDetailView()
+            })
+            .padding(.bottom, 30)
         }
     }
 }

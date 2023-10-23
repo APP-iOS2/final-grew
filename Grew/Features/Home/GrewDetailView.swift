@@ -108,6 +108,7 @@ struct GrewDetailView: View {
             
             makeBottomButtons()
         }
+        .navigationBarBackButtonHidden()
         .sheet(isPresented: $isShowingToolBarSheet, content: {
             GrewEditSheetView(grew: grew)
                 .readHeight()

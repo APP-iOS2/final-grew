@@ -33,6 +33,7 @@ struct CreateScheduleMainView: View {
             ScrollView{
                 VStack{
                     // 일정 이름
+                    
                     ScheduleNameField(isScheduleNameError: $isScheduleNameError, scheduleName: $scheduleName)
                     
                     // 날짜, 시간
@@ -101,16 +102,16 @@ struct CreateScheduleMainView: View {
                     }
                 //                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
             }
-        }/*
+        }
         .sheet(isPresented: $showingWebSheet, content: {
-            ZStack{
+            VStack{
                 WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location, latitude: $latitude, longitude: $longitude)
                 .padding(.top, 25)
             }
             .presentationDetents([.large])
             .presentationDragIndicator(.visible)
         }
-        )*/
+        )
         
         .task{
             print(showingWebSheet)
