@@ -101,7 +101,7 @@ struct CreateScheduleMainView: View {
                     }
                 //                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
             }
-        }
+        }/*
         .sheet(isPresented: $showingWebSheet, content: {
             ZStack{
                 WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location, latitude: $latitude, longitude: $longitude)
@@ -110,7 +110,7 @@ struct CreateScheduleMainView: View {
             .presentationDetents([.large])
             .presentationDragIndicator(.visible)
         }
-        )
+        )*/
         
         .task{
             print(showingWebSheet)
@@ -141,6 +141,7 @@ struct CreateScheduleMainView: View {
     @State private var hasFee: Bool = false
     @State private var hasLocation: Bool = false
     
+    //포커스인곳 처리
     func errorCheck() {
         withAnimation(.easeOut){
             if scheduleName.isEmpty {
