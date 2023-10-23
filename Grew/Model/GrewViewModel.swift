@@ -154,7 +154,7 @@ class GrewViewModel: ObservableObject {
     
     func popularFilter(grewList: [Grew]) -> [Grew] {
         
-        let tempList = grewList.sorted(by: {$0.heartTapped > $1.heartTapped})
+        let tempList = grewList.sorted(by: {$0.heartCount > $1.heartCount})
        
         if tempList.count < 5 {
             return tempList
