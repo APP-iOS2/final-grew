@@ -52,7 +52,23 @@ struct EditGrew: Identifiable {
 
 extension EditGrew {
     static var defaultGrew: EditGrew {
-        return EditGrew(id: "", title: "", description: "", imageURL: "", isOnline: .online, location: "", latitude: "", longitude: "", geoHash: "", gender: .any, minimumAge: "", maximumAge: "", maximumMembers: "", isNeedFee: .free, fee: "")
+        return EditGrew(
+            id: "",
+            title: "",
+            description: "",
+            imageURL: "",
+            isOnline: .online,
+            location: "",
+            latitude: "",
+            longitude: "",
+            geoHash: "",
+            gender: .any,
+            minimumAge: "",
+            maximumAge: "",
+            maximumMembers: "",
+            isNeedFee: .free,
+            fee: ""
+        )
     }
 }
 

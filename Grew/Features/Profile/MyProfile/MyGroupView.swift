@@ -22,13 +22,14 @@ struct MyGroupView: View {
                         GrewDetailView(grew: grew)
                     }label: {
                         GrewCellView(grew: grew)
-                            .padding(.trailing, 5)
+                            .padding(.trailing, 16)
+                            .padding(.bottom, 5)
 
                             .foregroundColor(.black)
                     }
                 }
             }.padding(.top, 5)
-            .padding(.bottom, 30)
+            
         }
     }
 }

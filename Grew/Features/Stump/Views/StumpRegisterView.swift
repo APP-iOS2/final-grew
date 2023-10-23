@@ -116,7 +116,7 @@ struct StumpRegisterView: View {
             .presentationDetents([.height(120), .height(120)])
         }
         .sheet(isPresented: $isShowingPhotoLibrary) {
-            ImagePicker(image: $image)
+            ImagePicker(imageString: .constant(""), image: $image)
         }
         .sheet(isPresented: $isShowingCamera) {
             CameraView(isPresented: $isShowingCamera) { uiImage in

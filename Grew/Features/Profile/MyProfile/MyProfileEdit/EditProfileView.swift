@@ -148,7 +148,7 @@ struct EditProfileView: View {
             .presentationDetents([.height(120), .height(120)])
         })
         .sheet(isPresented: $showImagePicker, content: {
-            ImagePicker(image: $image)
+            ImagePicker(imageString: .constant(""), image: $image)
         })
         .sheet(isPresented: $showCamera, content: {
             CameraView(isPresented: $showImagePicker) { uiImage in

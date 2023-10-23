@@ -27,7 +27,7 @@ struct DefaultClickButton: View {
         .frame(maxWidth: .infinity)
         .frame(height: 44)
         .foregroundStyle(placeholder != nil ? Color.init(hexCode: "c4c4c4") : Color.DarkGray1)
-        .background(isDisabled ? Color.BackgroundGray : Color.DarkGray1)
+        .background(isDisabled ? Color.BackgroundGray : Color.LightGray2)
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .disabled(isDisabled)
     }

@@ -10,16 +10,15 @@ import SwiftUI
 struct GrewEditView: View {
     @EnvironmentObject var viewModel: GrewViewModel
 
+    @State var image: UIImage?
+    @State var isAddress: Bool = false
+    
+    @State var isShowingAlert: Bool = false
     @State var isShowingSheet: Bool = false
     @State var isSelectedLocations: [Bool] = [false, false]
     @State var isSelectedFees: [Bool] = [false, false]
     
     @State var grewNameErrorMessage: String = ""
-    @State var grewMaxiumumMemberErrorMessage: String = ""
-    @State var grewAgeErrorMessage: String = ""
-    @State var grewLocationErrorMessage: String = ""
-    @State var grewFeeErrorMessage: String = ""
-    @State var grewDescriptionMessage: String = ""
     
     var body: some View {
         VStack {
@@ -133,8 +132,9 @@ struct GrewEditView: View {
                                 }, text: "온라인")
                             }
                             DefaultClickButton(action: {
+                                isAddress = true
                                 isShowingSheet = true
-                            }, text: .constant("주소 검색"), isDisabled: $isSelectedLocations[1], placeholder: "주소 검색")
+                            }, text: .constant("주소 검색"), isDisabled: $isSelectedLocations[0], placeholder: "주소 검색")
                             HStack {
                                 Spacer()
                                 Text(grewNameErrorMessage)
@@ -192,17 +192,25 @@ struct GrewEditView: View {
                                 Spacer()
                             }
                             DefaultPlusButton(action: {
+                                isAddress = false
                                 isShowingSheet = true
-                            }, text: "+ 사진 추가하기")
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.DarkGray1, lineWidth: 1)
-                                .frame(height: 140)
+                            }, text: "+ 사진 변경하기")
+                            AsyncImage(url: URL(string: viewModel.editGrew.imageURL), content: { image in
+                                image
+                                    .resizable()
+                            }, placeholder: {
+                                ProgressView()
+                            })
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .frame(height: 140)
                         }
                         Spacer(minLength: 80)
                     }
                     Group {
                         DefaultMainButton(action: {
-                            viewModel.updateGrew()
+                            viewModel.updateGrew() {
+                                isShowingAlert = true
+                            }
                         }, text: "수정 완료")
                         Spacer(minLength: 40)
                     }
@@ -210,15 +218,40 @@ struct GrewEditView: View {
                     .onTapGesture(perform: {
                         self.endTextEditing()
                     })
-            }.onAppear(perform: {
+            }
+            .modifier(
+                GrewAlertModifier(
+                    isPresented: $isShowingAlert,
+                    title: "수정이 완료되었습니다!",
+                    buttonTitle: "확인",
+                    buttonColor: .Main,
+                    action: {
+                        viewModel.showingSheet = false
+                    },
+                    secondButtonTitle: nil,
+                    secondButtonColor: nil,
+                    secondButtonAction: nil
+                )
+            )
+            .onAppear(perform: {
                 viewModel.makeEditGrew()
                 self.isSelectedLocations[viewModel.editGrew.isOnline.locationIndex] = true
                 self.isSelectedFees[viewModel.editGrew.isNeedFee.feeIndex] = true
             })
             .sheet(isPresented: $isShowingSheet, content: {
                 ZStack{
-                    WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $isShowingSheet, location: $viewModel.editGrew.location, latitude: $viewModel.editGrew.latitude, longitude: $viewModel.editGrew.longitude)
+                    if isAddress {
+                        WebView(
+                            request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!),
+                            showingWebSheet: $isShowingSheet,
+                            location: $viewModel.editGrew.location,
+                            latitude: $viewModel.editGrew.latitude,
+                            longitude: $viewModel.editGrew.longitude
+                        )
                         .padding(.top, 25)
+                    } else {
+                        ImagePicker(imageString: $viewModel.editGrew.imageURL, image: $image)
+                    }
                 }
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)

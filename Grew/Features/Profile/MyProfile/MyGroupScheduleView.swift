@@ -11,6 +11,7 @@ struct MyGroupScheduleView: View {
     
     @State private var isShowingSheet: Bool = false
     @State private var selectedScheduleId: String = ""
+    @State private var scheduleId: String = ""
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     let schedules: [Schedule]
@@ -38,6 +39,9 @@ struct MyGroupScheduleView: View {
             }.sheet(isPresented: $isShowingSheet, content: {
                ScheduleDetailView(scheduleId: selectedScheduleId)
             })
+            .onChange(of: selectedScheduleId) { oldValue, newValue in
+                scheduleId = selectedScheduleId
+            }
             .padding(.bottom, 30)
             .padding()
         }
