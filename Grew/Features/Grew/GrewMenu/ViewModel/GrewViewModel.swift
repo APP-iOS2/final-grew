@@ -307,7 +307,23 @@ extension GrewViewModel {
             }
         }
         
-        self.editGrew = .init(id: selectedGrew.id, title: selectedGrew.title, description: selectedGrew.description, imageURL: selectedGrew.imageURL, isOnline: isOnline, location: selectedGrew.location, latitude: selectedGrew.latitude, longitude: selectedGrew.longitude, geoHash: selectedGrew.geoHash, gender: selectedGrew.gender, minimumAge: String(selectedGrew.minimumAge), maximumAge: String(selectedGrew.maximumAge), maximumMembers: String(selectedGrew.maximumMembers), isNeedFee: fee, fee: String(selectedGrew.fee))
+        self.editGrew = .init(
+            id: selectedGrew.id,
+            title: selectedGrew.title,
+            description: selectedGrew.description,
+            imageURL: selectedGrew.imageURL,
+            isOnline: isOnline,
+            location: selectedGrew.location,
+            latitude: selectedGrew.latitude,
+            longitude: selectedGrew.longitude,
+            geoHash: selectedGrew.geoHash, 
+            gender: selectedGrew.gender,
+            minimumAge: String(selectedGrew.minimumAge),
+            maximumAge: String(selectedGrew.maximumAge),
+            maximumMembers: String(selectedGrew.maximumMembers),
+            isNeedFee: fee,
+            fee: String(selectedGrew.fee)
+        )
     }
     
     func updateGrew() {

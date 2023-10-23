@@ -14,7 +14,6 @@ struct CreateScheduleMainView: View {
     @EnvironmentObject var scheduleStore: ScheduleStore
     let gid: String
     @State private var scheduleName: String = ""
-    @State private var date = Date()
     @State private var maximumMenbers: String = ""
     @State private var fee: String = ""
     @State private var location: String = ""
@@ -36,8 +35,8 @@ struct CreateScheduleMainView: View {
                     ScheduleNameField(isScheduleNameError: $isScheduleNameError, scheduleName: $scheduleName)
                     
                     // 날짜, 시간
-                    ScheduleDatePicker(titleName: "날짜", isDatePickerVisible: $isDatePickerVisible, date: $date)
-                    ScheduleDatePicker(titleName: "시간", isDatePickerVisible: $isDatePickerVisible, date: $date)
+                    ScheduleDatePicker(titleName: "날짜", isDatePickerVisible: $isDatePickerVisible, date: $scheduleStore.date)
+                    ScheduleDatePicker(titleName: "시간", isDatePickerVisible: $isDatePickerVisible, date: $scheduleStore.date)
                     
                     // 정원
                     GuestNumField(isGuestNumError: $isGuestNumError, maximumMenbers: $maximumMenbers)
@@ -81,7 +80,7 @@ struct CreateScheduleMainView: View {
             
             // DatePicker
             if isDatePickerVisible {
-                DateForm(isDatePickerVisible: $isDatePickerVisible, date: $date)
+                DateForm(isDatePickerVisible: $isDatePickerVisible, date: $scheduleStore.date)
             }
             
             // alert
@@ -171,7 +170,7 @@ struct CreateScheduleMainView: View {
                 id: id,
                 gid: gid,
                 scheduleName: scheduleName,
-                date: date,
+                date: scheduleStore.date,
                 maximumMember: Int(maximumMenbers) ?? 2,
                 participants: [user.id ?? ""],
                 fee: (hasFee ? fee : nil),
