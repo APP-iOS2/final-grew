@@ -31,7 +31,7 @@ struct ScheduleDetailView: View {
     private var isGrewMember: Bool {
         if let grewMembers =
             grewViewModel.grewList.first(where: { $0.id == schedule.gid })?.currentMembers {
-            if let userId = UserStore.shared.currentUser?.id, schedule.participants.contains(userId) {
+            if let userId = UserStore.shared.currentUser?.id {
                 return grewMembers.contains(userId)
             }
         }
