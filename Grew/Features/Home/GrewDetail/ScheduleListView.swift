@@ -10,17 +10,14 @@ import SwiftUI
 struct ScheduleListView: View {
     
     @EnvironmentObject var scheduleStore: ScheduleStore
-    let grew: Grew
-    
-    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     @State private var isShowingScheduleSheet: Bool = false
     @State private var isShowingEditSheet: Bool = false
     @State var detentHeight: CGFloat = 0
-    
     @State private var selectedScheduleId: String = ""
-    private var gid: String {
-        grew.id
-    }
+    
+    let grew: Grew
+    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    
     private var isGrewHost: Bool {
         if let userId = UserStore.shared.currentUser?.id, userId == grew.hostID {
             return true
@@ -29,10 +26,10 @@ struct ScheduleListView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack{
             if isGrewHost {
                 NavigationLink {
-                    CreateScheduleMainView(gid: gid)
+                    CreateScheduleMainView(gid: grew.id)
                         .padding(3)
                 } label: {
                     Image(systemName: "plus")
@@ -46,10 +43,10 @@ struct ScheduleListView: View {
                 Divider()
                     .padding(.vertical, 10)
             }
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    let schedules = getSchedules()
-                    if !schedules.isEmpty {
+            ScrollView{
+                let schedules = getSchedules()
+                if !schedules.isEmpty {
+                    LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(0 ..< schedules.count) { index in
                             ScheduleCellView(index: index, schedule: schedules[index])
                                 .onTapGesture(perform: {
@@ -61,11 +58,18 @@ struct ScheduleListView: View {
                                     isShowingScheduleSheet = false
                                     isShowingEditSheet = true
                                 }
+                                .padding(.bottom, 5)
                         }
                     }
+                } else {
+                    ProfileGrewDataEmptyView(systemImage: "calendar", message: "일정이 없습니다.")
                 }
+                
             }
         }//: VStack
+        .onAppear{
+            print()
+        }
         .padding(20)
         .sheet(isPresented: $isShowingScheduleSheet, content: {
             ScheduleDetailView(scheduleId: selectedScheduleId)
@@ -84,7 +88,7 @@ struct ScheduleListView: View {
     func getSchedules() -> [Schedule] {
         
         let schedules = scheduleStore.schedules.filter {
-            $0.gid == gid
+            $0.gid == grew.id
         }
         return schedules
     }

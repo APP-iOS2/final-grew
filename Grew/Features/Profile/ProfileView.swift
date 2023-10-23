@@ -39,7 +39,9 @@ struct ProfileView: View {
                                 MyGroupScheduleView(schedules: profileStore.mySchedule)
                                     .background(Color.white)
                             case .savedGrew:
-                                SavedGrewView()
+                              
+                                SavedGrewView(grewList: grewViewModel.favoritGrew())
+
                                     .background(Color.white)
                             }
                         } else {
@@ -132,7 +134,9 @@ struct ProfileView: View {
         .navigationBarBackground(.Main)
         .task { // 댑악 멋져. 휴
             isLoading = true
+            
             if let currentUser = UserStore.shared.currentUser, user == currentUser {
+                UserStore.shared.fetchCurrentUser(user!)
                 await profileStore.fetchProfileData(user: user)
             } else {
                 await profileStore.fetchProfileData(user: user)

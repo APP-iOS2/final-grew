@@ -154,7 +154,7 @@ class GrewViewModel: ObservableObject {
     
     func popularFilter(grewList: [Grew]) -> [Grew] {
         
-        let tempList = grewList.sorted(by: {$0.heartTapped > $1.heartTapped})
+        let tempList = grewList.sorted(by: {$0.heartCount > $1.heartCount})
        
         if tempList.count < 5 {
             return tempList
@@ -200,7 +200,7 @@ class GrewViewModel: ObservableObject {
     
     // 그루 아이디는 동일 했다 근데 업데이트가 안됐다
     func heartTapping(gid: String) {
-        // checkFavorit에서 Bool값을 전달해줌 있으면 true
+    
         let flag = UserStore.shared.checkFavorit(gid: gid)
         
         for grew in grewList {
@@ -237,7 +237,21 @@ class GrewViewModel: ObservableObject {
         }
     }
     
-    
+    /// 프로필에서 사용할 현재 유저의 찜한 그루 가져오기
+    func favoritGrew() -> [Grew] {
+        var resultList: [Grew] = []
+        if let currentUser = UserStore.shared.currentUser {
+           
+            for gid in currentUser.favoritGrew {
+                let grew = grewList.filter {
+                    $0.id == gid
+                }
+                resultList.append(contentsOf: grew)
+            }
+            return resultList
+        }
+        return resultList
+    }
     
     
     
