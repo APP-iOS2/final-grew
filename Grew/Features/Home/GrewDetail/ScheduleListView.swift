@@ -26,7 +26,7 @@ struct ScheduleListView: View {
     }
     
     var body: some View {
-        VStack{
+        VStack {
             if isGrewHost {
                 NavigationLink {
                     CreateScheduleMainView(gid: grew.id)
@@ -43,33 +43,31 @@ struct ScheduleListView: View {
                 Divider()
                     .padding(.vertical, 10)
             }
-            ScrollView{
+            
+            if getSchedules().isEmpty {
+                Text("현재 모집 중인 일정이 없습니다.")
+                    .font(.b1_B)
+            }
+            
+            
+            LazyVGrid(columns: columns, spacing: 20) {
                 let schedules = getSchedules()
                 if !schedules.isEmpty {
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(0 ..< schedules.count) { index in
-                            ScheduleCellView(index: index, schedule: schedules[index])
-                                .onTapGesture(perform: {
-                                    selectedScheduleId = schedules[index].id
-                                    isShowingEditSheet = false
-                                    isShowingScheduleSheet = true
-                                })
-                                .onLongPressGesture {
-                                    isShowingScheduleSheet = false
-                                    isShowingEditSheet = true
-                                }
-                                .padding(.bottom, 5)
-                        }
+                    ForEach(0 ..< schedules.count) { index in
+                        ScheduleCellView(index: index, schedule: schedules[index])
+                            .onTapGesture(perform: {
+                                selectedScheduleId = schedules[index].id
+                                isShowingEditSheet = false
+                                isShowingScheduleSheet = true
+                            })
+                            .onLongPressGesture {
+                                isShowingScheduleSheet = false
+                                isShowingEditSheet = true
+                            }
                     }
-                } else {
-                    ProfileGrewDataEmptyView(systemImage: "calendar", message: "일정이 없습니다.")
                 }
-                
             }
         }//: VStack
-        .onAppear{
-            print()
-        }
         .padding(20)
         .sheet(isPresented: $isShowingScheduleSheet, content: {
             ScheduleDetailView(scheduleId: selectedScheduleId)
@@ -96,7 +94,7 @@ struct ScheduleListView: View {
 
 struct HeightPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat?
-
+    
     static func reduce(value: inout CGFloat?, nextValue: () -> CGFloat?) {
         guard let nextValue = nextValue() else { return }
         value = nextValue
@@ -109,7 +107,7 @@ private struct ReadHeightModifier: ViewModifier {
             Color.clear.preference(key: HeightPreferenceKey.self, value: geometry.size.height)
         }
     }
-
+    
     func body(content: Content) -> some View {
         content.background(sizeView)
     }

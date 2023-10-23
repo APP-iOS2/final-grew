@@ -38,6 +38,7 @@ struct GrewDetailView: View {
     @State var detentHeight: CGFloat = 0
     @State var heartState: Bool = false
     @State var isChatViewButton: Bool = false
+    @State private var isScrollDown: Bool = true
     @Namespace private var animation
     
     private let headerHeight: CGFloat = 180
@@ -80,7 +81,12 @@ struct GrewDetailView: View {
                     makeToolbarButtons()
                 }
             }
-            .toolbarBackground(.hidden, for: .navigationBar)
+            .simultaneousGesture(
+                DragGesture().onChanged { value in
+                    isScrollDown = 0 < value.translation.height
+                }
+            )
+            .toolbarBackground(isScrollDown ? .hidden : .visible, for: .navigationBar)
             .grewAlert(
                 isPresented: $isShowingJoinFinishAlert,
                 title: "\(grew.title)에 참여 완료!",
@@ -89,7 +95,7 @@ struct GrewDetailView: View {
                 secondButtonAction: nil,
                 buttonTitle: "확인",
                 buttonColor: .Main,
-                action: { 
+                action: {
                     isChatViewButton = true
                 }
             )
@@ -271,10 +277,10 @@ extension GrewDetailView {
             if let currentUserId = UserStore.shared.currentUser?.id {
                 if grew.currentMembers.contains(currentUserId) && grew.currentMembers.count < grew.maximumMembers || isChatViewButton == true {
                     NavigationLink {
-//                        ChatDetailView(
-//                            chatRoom: chatStore.groupChatRooms.first!,
-//                            targetUserInfos: chatStore.targetUserInfoDict[chatStore.groupChatRooms.first!.id] ?? []
-//                        )
+                        //                        ChatDetailView(
+                        //                            chatRoom: chatStore.groupChatRooms.first!,
+                        //                            targetUserInfos: chatStore.targetUserInfoDict[chatStore.groupChatRooms.first!.id] ?? []
+                        //                        )
                     } label: {
                         Text("채팅 참여하기")
                             .grewButtonModifier(
@@ -308,7 +314,7 @@ extension GrewDetailView {
                                 cornerRadius: 8
                             )
                     }.disabled(grew.currentMembers.count >= grew.maximumMembers)
-                    .padding(.bottom, 2)
+                        .padding(.bottom, 2)
                 }
             }
         }
