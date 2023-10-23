@@ -44,6 +44,27 @@ class ScheduleStore: ObservableObject {
         fetchSchedule()
     }
     
+    func updateParticipants(_ participants: [String], scheduleId: String) {
+        print("===================\(participants)")
+        dbRef.whereField("id", isEqualTo: scheduleId).getDocuments { snapshot, error in
+            if let error {
+                print("Error: \(error)")
+            } else if let snapshot {
+                for document in snapshot.documents {
+                    self.dbRef.document(document.documentID).updateData([
+                        "participants" : participants
+                    ]) { error in
+                        if let error {
+                            print("Grew Update Error: \(error)")
+                        } else {
+                            self.fetchSchedule()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func removeSchedule(_ schedule: Schedule) {
         dbRef.document(schedule.id).delete()
         fetchSchedule()

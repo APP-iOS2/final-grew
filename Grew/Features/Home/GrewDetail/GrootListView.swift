@@ -13,8 +13,8 @@ struct GrootListView: View {
     @State var selection: SelectViews = SelectViews.profile
     var body: some View {
         LazyVStack(spacing: 16, content: {
-            ForEach(0..<grew.currentMembers.count, id: \.self) { index in
-                GrootView(user: UserStore.shared.currentUser, selection: $selection)
+            ForEach(grew.currentMembers, id: \.self) { memberId in
+                GrootView(memberId: memberId, selection: $selection)
             }
         })
         .padding(20)
