@@ -21,13 +21,13 @@ struct MyGroupView: View {
                     NavigationLink{
                         GrewDetailView(grew: grew)
                     }label: {
-                        GrewListItemView(grew: grew)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
+                        GrewCellView(grew: grew)
+                            .padding(.trailing, 5)
                             .foregroundColor(.black)
                     }
                 }
-            }.padding(.bottom, 30)
+            }.padding(.top, 5)
+            .padding(.bottom, 30)
         }
     }
 }
