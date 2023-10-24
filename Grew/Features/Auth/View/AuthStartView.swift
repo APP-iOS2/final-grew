@@ -97,12 +97,20 @@ struct AuthStartView: View {
                 Spacer()
                 
             }
+            .scrollDismissesKeyboard(.immediately)
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
             .navigationDestination(isPresented: $navigate) {
                 AuthRegisterEmailView()
                     .environmentObject(viewModel)
                     .navigationBarBackButtonHidden()
             }
             .padding()
+        }
+        .scrollDismissesKeyboard(.immediately)
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
 }
