@@ -109,16 +109,18 @@ extension NewestScheduleListView {
                             let scale = getScale(proxy: proxy)
                             
                             // Home - GrewDetail 폴더
-                            ScheduleCellView(index: index, schedule: schedules[index])
-                                .scaledToFill()
-                                .shadow(radius: 6)
-                                .padding(.vertical, 10)
-                                .onTapGesture {
-                                    selectedScheduleId = schedules[index].id
-                                    isShowingSheet = true
-                                }
-                                .scaleEffect(.init(width: scale, height: scale))
-                                .animation(.easeOut(duration: 0.5))
+                            if let schedule = schedules[safe: index] {
+                                ScheduleCellView(index: index, schedule: schedule)
+                                    .scaledToFill()
+                                    .shadow(radius: 6)
+                                    .padding(.vertical, 10)
+                                    .onTapGesture {
+                                        selectedScheduleId = schedule.id
+                                        isShowingSheet = true
+                                    }
+                                    .scaleEffect(.init(width: scale, height: scale))
+                                    .animation(.easeOut(duration: 0.5))
+                            }
 //                                .onTapGesture {
 //                                    isShowingSheet = true
 //                                }
