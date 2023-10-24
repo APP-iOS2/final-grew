@@ -71,9 +71,6 @@ struct DateForm: View {
                     .cornerRadius(8)
                     .shadow(radius: 5)
             }
-            .task {
-                print(date)
-            }
             .padding()
     }
 }

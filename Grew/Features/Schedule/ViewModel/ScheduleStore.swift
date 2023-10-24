@@ -29,7 +29,6 @@ class ScheduleStore: ObservableObject {
                 do {
                     let temp = try document.data(as: Schedule.self)
                     fetchData.append(temp)
-                    print(temp)
                 } catch {
                     print("*** error ***\(error)")
                 }
@@ -46,7 +45,6 @@ class ScheduleStore: ObservableObject {
     }
     
     func updateParticipants(_ participants: [String], scheduleId: String) {
-        print("===================\(participants)")
         dbRef.whereField("id", isEqualTo: scheduleId).getDocuments { snapshot, error in
             if let error {
                 print("Error: \(error)")

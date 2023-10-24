@@ -53,6 +53,10 @@ struct CreateScheduleMainView: View {
             }.navigationTitle("일정 생성")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
+                .scrollDismissesKeyboard(.immediately)
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button {
@@ -104,16 +108,12 @@ struct CreateScheduleMainView: View {
         .sheet(isPresented: $showingWebSheet, content: {
             ZStack{
                 WebView(request: URLRequest(url: URL(string: "https://da-hye0.github.io/Kakao-Postcode/")!), showingWebSheet: $showingWebSheet, location: $location, latitude: $latitude, longitude: $longitude)
-                .padding(.top, 25)
+                    .padding(.top, 25)
             }
             .presentationDetents([.large])
             .presentationDragIndicator(.visible)
         }
         )
-        
-        .task{
-            print(showingWebSheet)
-        }
     }
     
     // 일정 생성 버튼
@@ -180,7 +180,7 @@ struct CreateScheduleMainView: View {
                 color: colorPick
             )
             scheduleStore.addSchedule(newSchedule)
-        }else {
+        } else {
             print("생성자 로그인 정보 없음")
         }
     }

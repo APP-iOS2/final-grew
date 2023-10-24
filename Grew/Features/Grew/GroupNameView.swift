@@ -43,14 +43,17 @@ struct GroupNameView: View {
                     Spacer()
                     Button {
                         viewModel.isOnline = true
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     } label: {
                         Text("온라인")
                             .grewButtonModifier(width: 90, height: 50, buttonColor: viewModel.isOnline ? Color.Sub : Color.BackgroundGray, font: .b2_B, fontColor: .white, cornerRadius: 10)
                     }
                     
+                    
                     Button(action: {
                         viewModel.isOnline = false
                         isNextView = true
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     }, label: {
                         Text("오프라인")
                             .grewButtonModifier(width: 90, height: 50, buttonColor: viewModel.isOnline ? Color.BackgroundGray : Color.Sub, font: .b2_B, fontColor: .white, cornerRadius: 10)
@@ -91,6 +94,10 @@ struct GroupNameView: View {
             }
             
         }//: ScrollView
+        .scrollDismissesKeyboard(.immediately)
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
         .sheet(isPresented: $isShowingSheet, content: {
             ZStack{
                 WebView(
