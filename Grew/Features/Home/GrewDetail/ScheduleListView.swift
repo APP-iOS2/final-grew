@@ -54,7 +54,7 @@ struct ScheduleListView: View {
             LazyVGrid(columns: columns, spacing: 20) {
                 let schedules = getSchedules()
                 if !schedules.isEmpty {
-                    ForEach(0 ..< schedules.count) { index in
+                    ForEach(0 ..< schedules.count, id: \.self) { index in
                         ScheduleCellView(index: index, schedule: schedules[index])
                             .onTapGesture(perform: {
                                 selectedScheduleId = schedules[index].id
