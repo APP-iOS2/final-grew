@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct GrewEditSheetView: View {
-    @EnvironmentObject var grewViewModel: GrewViewModel
-    @EnvironmentObject var userViewModel: UserStore
-    @EnvironmentObject var chatStore: ChatStore
-    @EnvironmentObject var messageStore: MessageStore
+    @EnvironmentObject private var grewViewModel: GrewViewModel
+    @EnvironmentObject private var userViewModel: UserStore
+    @EnvironmentObject private var chatStore: ChatStore
+    @EnvironmentObject private var messageStore: MessageStore
+    @EnvironmentObject private var scheduleStore: ScheduleStore
     
+    @State private var isGrewRemoveAlert: Bool = false
     @Binding var isShowingWithdrawConfirmAlert: Bool
+    @Binding var isGrewRemoved: Bool
     
     let grew: Grew
     
@@ -48,10 +51,7 @@ struct GrewEditSheetView: View {
                             .foregroundStyle(Color.Black)
                             Divider()
                             Button {
-                                Task {
-                                    await removeChatRoom()
-                                }
-                                grewViewModel.showingSheet = false
+                                isGrewRemoveAlert = true
                             } label: {
                                 Text("그루 해체하기")
                                 Spacer()
@@ -103,11 +103,27 @@ struct GrewEditSheetView: View {
                 .font(.b2_R)
             }.ignoresSafeArea(.all)
         }
+        .grewAlert(
+            isPresented: $isGrewRemoveAlert,
+            title: "정말 해체하시겠습니까?\n해체하면 복구할 수 없습니다.",
+            secondButtonTitle: "취소",
+            secondButtonColor: .DarkGray1,
+            secondButtonAction: { },
+            buttonTitle: "해체하기",
+            buttonColor: .Error,
+            action: {
+                Task {
+                    await removeChatRoom()
+                    await removeGrew()
+                }
+                grewViewModel.showingSheet = false
+            }
+        )
     }
 }
 
 #Preview {
-    GrewEditSheetView(isShowingWithdrawConfirmAlert: .constant(false), grew: Grew(
+    GrewEditSheetView(isShowingWithdrawConfirmAlert: .constant(false), isGrewRemoved: .constant(false), grew: Grew(
         id: "id",
         categoryIndex: "게임/오락",
         categorysubIndex: "보드게임",
@@ -160,12 +176,20 @@ extension GrewEditSheetView {
     }
     
     private func removeChatRoom() async {
-        guard let user = UserStore.shared.currentUser else {
+        guard UserStore.shared.currentUser != nil else {
             return
         }
         
         if let chatRoom = await ChatStore.getChatRoomFromGID(gid: grew.id) {
             await chatStore.removeChatRoom(chatRoom)
+        }
+    }
+    
+    private func removeGrew() async {
+        do {
+            await scheduleStore.removeSchedule(gid: grew.id)
+            await grewViewModel.removeGrew(gid: grew.id)
+            isGrewRemoved = true
         }
     }
 }

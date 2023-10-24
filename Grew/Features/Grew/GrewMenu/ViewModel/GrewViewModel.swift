@@ -59,6 +59,17 @@ class GrewViewModel: ObservableObject {
         }
     }
     
+    func removeGrew(gid: String) async {
+        do {
+            let snapshot = try await db.collection("grews").whereField("id", isEqualTo: gid).getDocuments()
+            for document in snapshot.documents {
+                try await document.reference.delete()
+            }
+        } catch {
+            print("Remove grew error: \(error)")
+        }
+    }
+    
     func joinGrew(_ grew: Grew) {
         db.collection("grews").whereField("id", isEqualTo: grew.id).getDocuments { snapshot, error in
             if let error {
@@ -254,8 +265,6 @@ class GrewViewModel: ObservableObject {
         }
         return resultList
     }
-    
-    
     
 }
 

@@ -42,6 +42,7 @@ struct GrewDetailView: View {
     @State var heartState: Bool = false
     @State var isChatViewButton: Bool = false
     @State private var isScrollDown: Bool = true
+    @State private var isGrewRemoved: Bool = false
     @Namespace private var animation
     
     private let headerHeight: CGFloat = 180
@@ -170,7 +171,7 @@ struct GrewDetailView: View {
             case .grewEdit:
                 GrewEditView()
             case .setting:
-                GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, grew: grew)
+                GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, isGrewRemoved: $isGrewRemoved, grew: grew)
                     .readHeight()
                     .onPreferenceChange(HeightPreferenceKey.self) { height in
                         if let height {
@@ -183,6 +184,9 @@ struct GrewDetailView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .onChange(of: isGrewRemoved, { oldValue, newValue in
+            dismiss()
+        })
     }
     
 }

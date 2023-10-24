@@ -44,6 +44,7 @@ class ScheduleStore: ObservableObject {
         fetchSchedule()
     }
     
+    
     func updateParticipants(_ participants: [String], scheduleId: String) {
         dbRef.whereField("id", isEqualTo: scheduleId).getDocuments { snapshot, error in
             if let error {
@@ -67,5 +68,16 @@ class ScheduleStore: ObservableObject {
     func removeSchedule(_ schedule: Schedule) {
         dbRef.document(schedule.id).delete()
         fetchSchedule()
+    }
+    
+    func removeSchedule(gid: String) async {
+        do {
+            let snapshot = try await dbRef.whereField("gid", isEqualTo: gid).getDocuments()
+            for document in snapshot.documents {
+                try await document.reference.delete()
+            }
+        } catch {
+            print("Remove schedule error: \(error)")
+        }
     }
 }
