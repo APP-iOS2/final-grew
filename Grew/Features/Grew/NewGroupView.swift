@@ -9,6 +9,9 @@ import SwiftUI
 
 struct NewGrewView: View {
     @EnvironmentObject var viewModel: GrewViewModel
+    @EnvironmentObject var chatStore: ChatStore
+    @EnvironmentObject var messageStore: MessageStore
+    
     @State private var currentViewIndex: Int = 1
     @State private var progressBarValue: Double = 0
     @State private var progressBarTotal: Double = 100
@@ -137,6 +140,9 @@ extension NewGrewView {
                                 isNeedFee: viewModel.fee.isEmpty ? false : true,
                                 fee: Int(viewModel.fee) ?? 0)
                             viewModel.addGrew(grew)
+                            Task {
+                                await startMessage(grew: grew)
+                            }
                             print("\(grew)")
                         }
                     } label: {
@@ -158,6 +164,48 @@ extension NewGrewView {
                 }
             }
         }
+    }
+}
+
+extension NewGrewView {
+    private func startMessage(grew: Grew) async {
+        // 1. gid에 해당하는 채팅방이 있는지 조회한다.
+        guard let user = UserStore.shared.currentUser else {
+            return
+        }
+        // 1-1. 있으면 있는 방을 조회 해서 chatRoom을 가져와서 인원을 넣는다.
+        if let chatRoom = await ChatStore.getChatRoomFromGID(gid: grew.id) {
+            var newChatRoom = chatRoom
+            newChatRoom.members += [user.id!]
+            newChatRoom.lastMessage =  "\(user.nickName)님이 입장하셨습니다."
+            newChatRoom.lastMessageDate = .now
+            
+            await chatStore.updateChatRoomForExit(newChatRoom)
+            
+            // 2. 시스템 메시지를 추가한다.
+            let newMessage = ChatMessage(text: "\(user.nickName)님이 입장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+            
+            messageStore.addMessage(newMessage, chatRoomID: newChatRoom.id)
+            
+        } else {
+            // 1-2. 없으면 새로운 방을 생성해서 인원을 넣는다.
+            var newChatRoom: ChatRoom = ChatRoom(
+                id: UUID().uuidString,
+                grewId: grew.id,
+                chatRoomName: grew.title,
+                members: [user.id!],
+                createdDate: Date(),
+                lastMessage: "\(user.nickName)님이 입장하셨습니다.",
+                lastMessageDate: Date(),
+                unreadMessageCount: [:])
+            await chatStore.addChatRoom(newChatRoom)
+            
+            // 2. 시스템 메시지를 추가한다.
+            let newMessage = ChatMessage(text: "\(user.nickName)님이 입장하셨습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
+            
+            messageStore.addMessage(newMessage, chatRoomID: newChatRoom.id)
+        }
+        
     }
 }
 

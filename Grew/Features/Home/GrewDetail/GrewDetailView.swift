@@ -47,6 +47,7 @@ struct GrewDetailView: View {
     private let headerHeight: CGFloat = 180
     
     let grew: Grew
+    @State private var chatRoom: ChatRoom = ChatRoom(id: "", members: [], createdDate: Date(), lastMessage: "", lastMessageDate: Date(), unreadMessageCount: [:])
     
     var body: some View {
         VStack {
@@ -154,19 +155,14 @@ struct GrewDetailView: View {
             }
         )
         .task {
-            if !chatStore.isDoneFetch {
-                chatStore.addListener()
-                isLoading = true
-                await chatStore.fetchChatRooms()
-                isLoading = false
-            }
+            await chatStore.fetchChatRooms()
+            chatRoom = await ChatStore.getChatRoomFromGID(gid: grew.id) ?? ChatRoom(id: "", members: [], createdDate: Date(), lastMessage: "", lastMessageDate: Date(), unreadMessageCount: [:])
         }
         .onAppear {
             grewViewModel.selectedGrew = grew
             heartState = UserStore.shared.checkFavorit(gid: grew.id)
         }
         .onDisappear {
-            chatStore.removeListener()
             chatStore.isDoneFetch = false
         }
         .fullScreenCover(isPresented: $grewViewModel.showingSheet) {
@@ -293,10 +289,10 @@ extension GrewDetailView {
             if let currentUserId = UserStore.shared.currentUser?.id {
                 if grew.currentMembers.contains(currentUserId) && grew.currentMembers.count < grew.maximumMembers || isChatViewButton == true {
                     NavigationLink {
-                        //                        ChatDetailView(
-                        //                            chatRoom: chatStore.groupChatRooms.first!,
-                        //                            targetUserInfos: chatStore.targetUserInfoDict[chatStore.groupChatRooms.first!.id] ?? []
-                        //                        )
+                        ChatDetailView(
+                            chatRoom: chatRoom,
+                            targetUserInfos: chatStore.targetUserInfoDict[chatRoom.id] ?? []
+                        )
                     } label: {
                         Text("채팅 참여하기")
                             .grewButtonModifier(
