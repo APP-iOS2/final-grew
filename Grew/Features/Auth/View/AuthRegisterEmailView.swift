@@ -54,48 +54,7 @@ struct AuthRegisterEmailView: View {
                         .frame(height: 50)
                 }
                 ZStack {
-                    VStack {
-                        if signIndex == 1 {
-                            AuthAgreeView(isButton1: $isButton1)
-                            Button {
-                                signIndex += 1
-                            } label: {
-                                Text("다음")
-                                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: isButton1 ? .grewMainColor : Color.gray, font: Font.b2_B, fontColor: .white, cornerRadius: 10))
-                                    .padding(.bottom, 50)
-                            }
-                            .disabled(!isButton1)
-                            .onAppear(perform: {
-                                progressBarValue = (100 / 3) * 1
-                            })
-                        } else if signIndex == 2 {
-                            AuthAddMainInfoView(isButton2: $isButton2)
-                            Button {
-                                signIndex += 1
-                            } label: {
-                                Text("다음")
-                                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: isButton2 ? .grewMainColor : Color.gray, font: Font.b2_B, fontColor: .white, cornerRadius: 10))
-                                    .padding(.bottom, 50)
-                            }
-                            .disabled(!isButton2)
-                            .onAppear(perform: {
-                                progressBarValue = (100 / 3) * 2
-                            })
-                        } else if signIndex == 3 {
-                            AuthAddDetailInfoView(isButton3: $isButton3)
-                            Button {
-                                isAlert.toggle()
-                            } label: {
-                                Text("회원가입 완료")
-                                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: isButton3 ? .grewMainColor : Color.gray, font: Font.b2_B, fontColor: .white, cornerRadius: 10))
-                                    .padding(.bottom, 50)
-                            }
-                            .disabled(!isButton3)
-                            .onAppear(perform: {
-                                progressBarValue = (100 / 3) * 3
-                            })
-                        }
-                    }
+                    button
                 }
             }
         }
@@ -117,6 +76,51 @@ struct AuthRegisterEmailView: View {
                 }
             } else if signtype == "facebook" {
                 viewModel.facebookCreateUser()
+            }
+        }
+    }
+}
+extension AuthRegisterEmailView {
+    var button: some View {
+        NavigationStack {
+            VStack {
+                if signIndex == 1 {
+                    AuthAgreeView(isButton1: $isButton1)
+                        .onAppear(perform: {
+                            progressBarValue = (100 / 3) * 1
+                        })
+                } else if signIndex == 2 {
+                    AuthAddMainInfoView(isButton2: $isButton2)
+                        .onAppear(perform: {
+                            progressBarValue = (100 / 3) * 2
+                        })
+                } else if signIndex == 3 {
+                    AuthAddDetailInfoView(isButton3: $isButton3)
+                        .onAppear(perform: {
+                            progressBarValue = (100 / 3) * 3
+                        })
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    
+                    Button{
+                        if signIndex < 3 {
+                            signIndex += 1
+                        } else {
+                            isAlert.toggle()
+                        }
+                    } label: {
+                        Text(signIndex == 3 ? "회원가입 완료" : "닫기")
+                            .modifier(GrewButtonModifier(width: 330, height: 45,
+                                                         buttonColor: signIndex == 1 && !isButton1 ||
+                                                         signIndex == 2 && !isButton2 ||
+                                                         signIndex == 3 && !isButton3 ? .LightGray2 : .Main,
+                                                         font: Font.b2_B, fontColor: .white, cornerRadius: 10))
+                    }
+                    .disabled(signIndex == 1 && !isButton1 || signIndex == 2 && !isButton2 || signIndex == 3 && !isButton3)
+                    
+                }
             }
         }
     }
