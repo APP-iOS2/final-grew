@@ -16,15 +16,20 @@ struct NewestScheduleListView: View {
     @State private var selectedScheduleId: String = ""
     @State private var scheduleId: String = ""
     @State private var user: User? = UserStore.shared.currentUser
+    @State private var isLoading: Bool = true
     let deviceWidth = UIScreen.main.bounds.size.width
     let quote: String = "\""
     
     var body: some View {
         VStack {
-            if !isEmptySchedule().isEmpty {
-                yesScheduleView
+            if isLoading {
+                ProgressView()
             } else {
-                noScheduleView
+                if !isEmptySchedule().isEmpty {
+                    yesScheduleView
+                } else {
+                    noScheduleView
+                }
             }
         } //: VStack
         .frame(height: 300)
@@ -39,6 +44,7 @@ struct NewestScheduleListView: View {
             Task {
                 try await UserStore.shared.loadUserData()
                 user = UserStore.shared.currentUser
+                isLoading = false
             }
         })
     } //: body
