@@ -58,6 +58,10 @@ struct AuthRegisterEmailView: View {
                 }
             }
         }
+        .scrollDismissesKeyboard(.immediately)
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
         .grewAlert(
             isPresented: $isAlert,
             title: "회원가입이 완료되었습니다! 🎉",
