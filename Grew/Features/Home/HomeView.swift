@@ -65,8 +65,6 @@ struct HomeView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    //                        GrewSearchView()
-                    //                            .navigationBarBackButtonHidden(true)
                     router.homeNavigate(to: .search)
                 } label: {
                     Image("search")
@@ -78,16 +76,11 @@ struct HomeView: View {
         }
         .onAppear {
             grewViewModel.fetchGrew()
-            UIScrollView.appearance().bounces = false
         }
-        .onDisappear {
-            UIScrollView.appearance().bounces = true
+        .refreshable {
+            grewViewModel.fetchGrew()
         }
         .navigationBarBackground(.Main)
-//        .toolbarBackground(
-//            Color.Main,
-//            for: .navigationBar)
-//        .toolbarBackground(.visible, for: .navigationBar)
     }
     
 }
