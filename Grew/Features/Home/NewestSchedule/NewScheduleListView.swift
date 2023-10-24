@@ -171,9 +171,10 @@ extension NewestScheduleListView {
             }
             .foregroundStyle(.white)
             .padding(.top, 40)
+            Spacer()
             // 이미지
             Image("newest")
-                .offset(y: 70)
+                .offset(y: 30)
         }
     }
 }

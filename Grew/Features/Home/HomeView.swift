@@ -24,6 +24,7 @@ struct HomeView: View {
                     .padding(.top)
                     .background(.white)
                     .cornerRadius(44, corners: [.topRight, .topLeft])
+                    .shadow(color: .black.opacity(0.15), radius: 4)
             }
             .background(Color.Main)
             
@@ -54,8 +55,9 @@ struct HomeView: View {
                     .padding(.leading, 16)
                 GrewListView(grewList: grewViewModel.popularFilter(grewList: grewViewModel.grewList))
             }
+            .background(Color.white)
         } // ScrollView
-        
+        .scrollIndicators(.hidden)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Image("logo_white")
@@ -76,6 +78,10 @@ struct HomeView: View {
         }
         .onAppear {
             grewViewModel.fetchGrew()
+            UIScrollView.appearance().bounces = false
+        }
+        .onDisappear {
+            UIScrollView.appearance().bounces = true
         }
         .navigationBarBackground(.Main)
 //        .toolbarBackground(

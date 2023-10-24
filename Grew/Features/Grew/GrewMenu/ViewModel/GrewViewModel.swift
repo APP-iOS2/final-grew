@@ -157,7 +157,7 @@ class GrewViewModel: ObservableObject {
     func popularFilter(grewList: [Grew]) -> [Grew] {
         
         let tempList = grewList.sorted(by: {$0.heartCount > $1.heartCount})
-
+        
         if tempList.count < 5 {
             return tempList
         } else {
@@ -202,7 +202,7 @@ class GrewViewModel: ObservableObject {
     
     // 그루 아이디는 동일 했다 근데 업데이트가 안됐다
     func heartTapping(gid: String) {
-    
+        
         let flag = UserStore.shared.checkFavorit(gid: gid)
         
         for grew in grewList {
@@ -243,7 +243,7 @@ class GrewViewModel: ObservableObject {
     func favoritGrew() -> [Grew] {
         var resultList: [Grew] = []
         if let currentUser = UserStore.shared.currentUser {
-           
+            
             for gid in currentUser.favoritGrew {
                 let grew = grewList.filter {
                     $0.id == gid
@@ -316,7 +316,7 @@ extension GrewViewModel {
             location: selectedGrew.location,
             latitude: selectedGrew.latitude,
             longitude: selectedGrew.longitude,
-            geoHash: selectedGrew.geoHash, 
+            geoHash: selectedGrew.geoHash,
             gender: selectedGrew.gender,
             minimumAge: String(selectedGrew.minimumAge),
             maximumAge: String(selectedGrew.maximumAge),
@@ -326,60 +326,48 @@ extension GrewViewModel {
         )
     }
     
-    func updateGrew() {
+    func updateGrew(completion: @escaping() -> Void) {
         var geoHash: String
-           if let latitude = CLLocationDegrees(latitude),
+        if let latitude = CLLocationDegrees(latitude),
            let longitude = CLLocationDegrees(longitude) {
             geoHash = GFUtils.geoHash(forLocation: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
         } else {
             geoHash = ""
         }
-
-        db.collection("grews").document(selectedGrew.id).updateData([
-            "title": editGrew.title,
-            "description": editGrew.description,
-            "isOnline": editGrew.isOnline.onOffBool,
-            "location": editGrew.location,
-            "gender": editGrew.gender.rawValue,
-            "minimumAge": editGrew.minimumAge as? Int ?? 0,
-            "maximumAge": editGrew.maximumAge as? Int ?? 100,
-            "maximumMembers": editGrew.maximumMembers as? Int ?? 100,
-            "isNeedFee": editGrew.isNeedFee.feeBool,
-            "fee": editGrew.fee as? Int ?? 0,
-            "imageURL": editGrew.imageURL,
-            "latitude": editGrew.latitude,
-            "longitude": editGrew.longitude,
-            "geoHash": geoHash
-        ])
-    }
-    
-    /// 이미지를 Firestore Storage의 원하는 경로로 업로드
-    func uploadImage(image: UIImage, path: String, completion: @escaping (String?) -> Void) {
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
         
-        if let imageData = image.jpegData(compressionQuality: 0.5) {
-            let imageName = UUID().uuidString
-            
-            let imageRef = storageRef.child(path).child("\(imageName).jpg")
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jpeg"
-            
-            imageRef.putData(imageData, metadata: metadata) { (metadata, error) in
-                if error != nil {
-                    completion(nil)
-                } else {
-                    imageRef.downloadURL { (url, error) in
-                        if let downloadURL = url?.absoluteString {
-                            completion(downloadURL)
+        
+        db.collection("grews").whereField("id", isEqualTo: editGrew.id).getDocuments { snapshot, error in
+            if let error {
+                print("Error: \(error)")
+                completion()
+            } else if let snapshot {
+                for document in snapshot.documents {
+                    self.db.collection("grews").document(document.documentID).updateData([
+                        "title": self.editGrew.title,
+                        "description": self.editGrew.description,
+                        "isOnline": self.editGrew.isOnline.onOffBool,
+                        "location": self.editGrew.location,
+                        "gender": self.editGrew.gender.rawValue,
+                        "minimumAge": self.editGrew.minimumAge as? Int ?? 0,
+                        "maximumAge": self.editGrew.maximumAge as? Int ?? 100,
+                        "maximumMembers": self.editGrew.maximumMembers as? Int ?? 100,
+                        "isNeedFee": self.editGrew.isNeedFee.feeBool,
+                        "fee": self.editGrew.fee as? Int ?? 0,
+                        "imageURL": self.editGrew.imageURL,
+                        "latitude": self.editGrew.latitude,
+                        "longitude": self.editGrew.longitude,
+                        "geoHash": geoHash
+                    ]) { error in
+                        if let error {
+                            print("Grew Update Error: \(error)")
+                            completion()
                         } else {
-                            completion(nil)
+                            completion()
                         }
                     }
                 }
             }
-        } else {
-            completion(nil)
+            
         }
     }
 }

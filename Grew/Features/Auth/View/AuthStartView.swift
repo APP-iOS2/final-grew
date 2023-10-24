@@ -33,10 +33,13 @@ struct AuthStartView: View {
                             .environmentObject(viewModel)
                             .navigationBarBackButtonHidden()
                     } label: {
-                        Text("이메일로 로그인 하기")
-                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: .grewMainColor, font: Font.b2_R, fontColor: .white, cornerRadius: 10))
-                            .padding(.top, 10)
+                        HStack {
+                            Image("email")
+                            Text("이메일로 로그인 하기")
+                        }
                     }
+                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: .grewMainColor, font: Font.b2_R, fontColor: .white, cornerRadius: 8))
+                    .padding(.top, 10)
                     Button {
                         AuthStore.shared.facebookSignIn {
                             if AuthStore.shared.signState == .signUp {
@@ -45,10 +48,13 @@ struct AuthStartView: View {
                             }
                         }
                     } label: {
-                        Text("Facebook으로 로그인 하기")
-                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(hex: 0x1877F2), font: Font.b2_R, fontColor: .white, cornerRadius: 10))
-                            .padding(.top, 10)
+                        HStack {
+                            Image("facebook")
+                            Text("Facebook으로 로그인 하기")
+                        }
                     }
+                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(hex: 0x1877F2), font: Font.b2_R, fontColor: .white, cornerRadius: 8))
+                    .padding(.top, 10)
                     Button {
                         AuthStore.shared.kakaoSignIn {
                             if AuthStore.shared.signState == .signUp {
@@ -57,31 +63,34 @@ struct AuthStartView: View {
                             }
                         }
                     } label: {
-                        Text("Kakao로 로그인 하기")
-                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(hex: 0xFFD233), font: Font.b2_R, fontColor: .black, cornerRadius: 10))
-//                            .padding(.top, 10)
+                        HStack {
+                            Image("kakao")
+                            Text("Kakao로 로그인 하기")
+                        }
                     }
-//                    Button {
-//                        //
-//                    } label: {
-//                        Text("Apple로 로그인 하기")
-//                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(.black), font: Font.b2_R, fontColor: .white))
-//                            .padding(.top, 10)
-//                    }
-//                    
-//                    Button {
-//                        //
-//                    } label: {
-//                        ZStack {
-//                            Rectangle()
-//                                .stroke(.blue.opacity(0.5), lineWidth: 4)
-//                                .frame(width: 330, height: 45)
-//                                .cornerRadius(10)
-//                                .foregroundColor(Color(.white))
-//                            Text("Google로 로그인 하기")
-//                                .modifier(GrewButtonModifier(width: 320, height: 35, buttonColor: Color(.white), font: Font.b2_R, fontColor: .black))
-//                        }
-//                    }
+                    .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(hex: 0xFFD233), font: Font.b2_R, fontColor: .black, cornerRadius: 8))
+                    .padding(.top, 10)
+                    //                    Button {
+                    //                        //
+                    //                    } label: {
+                    //                        Text("Apple로 로그인 하기")
+                    //                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(.black), font: Font.b2_R, fontColor: .white))
+                    //                            .padding(.top, 10)
+                    //                    }
+                    //                    
+                    //                    Button {
+                    //                        //
+                    //                    } label: {
+                    //                        ZStack {
+                    //                            Rectangle()
+                    //                                .stroke(.blue.opacity(0.5), lineWidth: 4)
+                    //                                .frame(width: 330, height: 45)
+                    //                                .cornerRadius(10)
+                    //                                .foregroundColor(Color(.white))
+                    //                            Text("Google로 로그인 하기")
+                    //                                .modifier(GrewButtonModifier(width: 320, height: 35, buttonColor: Color(.white), font: Font.b2_R, fontColor: .black))
+                    //                        }
+                    //                    }
                     .padding(.top, 10)
                 }
                 

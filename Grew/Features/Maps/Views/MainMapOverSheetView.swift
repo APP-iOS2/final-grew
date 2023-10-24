@@ -18,7 +18,13 @@ struct MainMapOverSheetView: View {
                 ScrollView {
                     VStack {
                         ForEach(Array(viewModel.filteredListItems)) { item in
-                            MapListItemView(item: item)
+
+                            NavigationLink {
+                                GrewDetailView(grew: item)
+                            } label: {
+                                GrewCellView(grew: item)
+                            }
+//                            MapListItemView(item: item)
                         }
                     }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
