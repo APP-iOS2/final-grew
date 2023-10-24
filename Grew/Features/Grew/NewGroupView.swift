@@ -73,82 +73,89 @@ struct NewGrewView: View {
 extension NewGrewView {
     
     var newGrewView: some View {
-        VStack {
-            if currentViewIndex == 1 {
-                GroupMainCategoryView(isCategoryValid: $isCategoryValid, isSubCategoryValid: $isSubCategoryValid)
-                    .onAppear(perform: {
-                        progressBarValue = (100 / 5) * 1
-                    })
-            } else if currentViewIndex == 2 {
-                GroupNameView(isNameValid: $isNameValid, isLocationValid: $isLocationValid)
-                    .onAppear(perform: {
-                        progressBarValue = (100 / 5) * 2
-                    })
-            } else if currentViewIndex == 3 {
-                GroupMembersEditView(isMaximumMembersValid: $isMaximumMembersValid)
-                    .onAppear(perform: {
-                        progressBarValue = (100 / 5) * 3
-                    })
-            } else if currentViewIndex == 4 {
-                GroupCheckFeeView(isFeeValid: $isFeeValid, isNeedFeeValid: $isNeedFeeValid)
-                    .onAppear(perform: {
-                        progressBarValue = (100 / 5) * 4
-                    })
-            } else if currentViewIndex == 5 {
-                GroupAlertView()
-                    .onAppear(perform: {
-                        progressBarValue = (100 / 5) * 5
-                    })
+        NavigationStack {
+            VStack {
+                if currentViewIndex == 1 {
+                    GroupMainCategoryView(isCategoryValid: $isCategoryValid, isSubCategoryValid: $isSubCategoryValid)
+                        .onAppear(perform: {
+                            progressBarValue = (100 / 5) * 1
+                        })
+                } else if currentViewIndex == 2 {
+                    GroupNameView(isNameValid: $isNameValid, isLocationValid: $isLocationValid)
+                        .onAppear(perform: {
+                            progressBarValue = (100 / 5) * 2
+                        })
+                } else if currentViewIndex == 3 {
+                    GroupMembersEditView(isMaximumMembersValid: $isMaximumMembersValid)
+                        .onAppear(perform: {
+                            progressBarValue = (100 / 5) * 3
+                        })
+                } else if currentViewIndex == 4 {
+                    GroupCheckFeeView(isFeeValid: $isFeeValid, isNeedFeeValid: $isNeedFeeValid)
+                        .onAppear(perform: {
+                            progressBarValue = (100 / 5) * 4
+                        })
+                } else if currentViewIndex == 5 {
+                    GroupAlertView()
+                        .onAppear(perform: {
+                            progressBarValue = (100 / 5) * 5
+                        })
+                }
+                
+               
             }
-            
-            if currentViewIndex < 5 {
-                Button {
-                    currentViewIndex += 1
-                    if currentViewIndex == 1 && (isCategoryValid && isSubCategoryValid) {
+        }
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                if currentViewIndex < 5 {
+                    Button {
                         currentViewIndex += 1
-                    } else if currentViewIndex == 2 && (isNameValid || !viewModel.isOnline) && isLocationValid {
-                        currentViewIndex += 1
-                    } else if currentViewIndex == 3 && isMaximumMembersValid {
-                        currentViewIndex += 1
-                    } else if currentViewIndex == 4 && (isFeeValid || !viewModel.isNeedFee) && isFeeValid {
-                        currentViewIndex += 1
-                    }
-                    
-                    if currentViewIndex == 5 {
-                        let grew = Grew(
-                            categoryIndex: viewModel.selectedCategoryId,
-                            categorysubIndex: viewModel.selectedSubCategoryId,
-                            title: viewModel.meetingTitle,
-                            description: "",
-                            isOnline: viewModel.isOnline,
-                            location: viewModel.isOnline ? "" : viewModel.location,
-                            latitude: viewModel.latitude,
-                            longitude: viewModel.longitude,
-                            gender: viewModel.gender,
-                            minimumAge: viewModel.minimumAge,
-                            maximumAge: viewModel.maximumAge,
-                            maximumMembers: Int(viewModel.maximumMembers) ?? 0,
-                            isNeedFee: viewModel.fee.isEmpty ? false : true,
-                            fee: Int(viewModel.fee) ?? 0)
-                        viewModel.addGrew(grew)
-                        print("\(grew)")
-                    }
-                } label: {
-                    Text("다음")
-                        .grewButtonModifier(
-                            width: 330,
-                            height: 50, // 회원가입뷰(AuthRegisterEmailView) => 45
-                            buttonColor:
-                                currentViewIndex == 1 && (!isCategoryValid || !isSubCategoryValid) ||
-                            currentViewIndex == 2 && ((!isNameValid && viewModel.isOnline) || (!viewModel.isOnline && !isLocationValid)) ||
-                            currentViewIndex == 3 && !isMaximumMembersValid && !isFeeValid ||
-                            currentViewIndex == 4 && ((!isFeeValid && viewModel.isNeedFee) || (!viewModel.isNeedFee && isNeedFeeValid)) ? .LightGray2 : .Main,
-                            font: .b1_B, fontColor: .white, cornerRadius: 8)
-                }.disabled(
-                    currentViewIndex == 1 && (!isCategoryValid || !isSubCategoryValid) ||
-                    currentViewIndex == 2 && !isNameValid ||
-                    currentViewIndex == 3 && !isMaximumMembersValid ||
-                    currentViewIndex == 4 && !isFeeValid && viewModel.isNeedFee)
+                        if currentViewIndex == 1 && (isCategoryValid && isSubCategoryValid) {
+                            currentViewIndex += 1
+                        } else if currentViewIndex == 2 && (isNameValid || !viewModel.isOnline) && isLocationValid {
+                            currentViewIndex += 1
+                        } else if currentViewIndex == 3 && isMaximumMembersValid {
+                            currentViewIndex += 1
+                        } else if currentViewIndex == 4 && (isFeeValid || !viewModel.isNeedFee) && isFeeValid {
+                            currentViewIndex += 1
+                        }
+                        
+                        if currentViewIndex == 5 {
+                            let grew = Grew(
+                                categoryIndex: viewModel.selectedCategoryId,
+                                categorysubIndex: viewModel.selectedSubCategoryId,
+                                title: viewModel.meetingTitle,
+                                description: "",
+                                isOnline: viewModel.isOnline,
+                                location: viewModel.isOnline ? "" : viewModel.location,
+                                latitude: viewModel.latitude,
+                                longitude: viewModel.longitude,
+                                gender: viewModel.gender,
+                                minimumAge: viewModel.minimumAge,
+                                maximumAge: viewModel.maximumAge,
+                                maximumMembers: Int(viewModel.maximumMembers) ?? 0,
+                                isNeedFee: viewModel.fee.isEmpty ? false : true,
+                                fee: Int(viewModel.fee) ?? 0)
+                            viewModel.addGrew(grew)
+                            print("\(grew)")
+                        }
+                    } label: {
+                        Text("다음")
+                            .grewButtonModifier(
+                                width: 330,
+                                height: 50,
+                                buttonColor:
+                                    currentViewIndex == 1 && (!isCategoryValid || !isSubCategoryValid) ||
+                                currentViewIndex == 2 && ((!isNameValid && viewModel.isOnline) || (!viewModel.isOnline && !isLocationValid)) ||
+                                currentViewIndex == 3 && !isMaximumMembersValid && !isFeeValid ||
+                                currentViewIndex == 4 && ((!isFeeValid && viewModel.isNeedFee) || (!viewModel.isNeedFee && isNeedFeeValid)) ? .LightGray2 : .Main,
+                                font: .b1_B, fontColor: .white, cornerRadius: 8)
+                    }.disabled(
+                        currentViewIndex == 1 && (!isCategoryValid || !isSubCategoryValid) ||
+                        currentViewIndex == 2 && !isNameValid ||
+                        currentViewIndex == 3 && !isMaximumMembersValid ||
+                        currentViewIndex == 4 && !isFeeValid && viewModel.isNeedFee)
+                }
             }
         }
     }
