@@ -47,8 +47,8 @@
 |김종찬                | 정석호                          |정설아                         |정다혜                | 
 |----------------|-------------------------------|-----------------------------|----------------|
 | <img src = "https://github.com/APPSCHOOL3-iOS/final-grew/assets/74649209/986257f3-b6c1-48f2-bc28-0f3b89aaaaec" width="600"> |<img src = "https://github.com/APPSCHOOL3-iOS/final-grew/assets/74649209/62b475e0-dfe4-4db6-8b66-28df0c1caf99" width="600"> | <img src = "https://github.com/APPSCHOOL3-iOS/final-grew/assets/74649209/f3266959-af9c-4be4-aaa9-0082ec7de0f1" width="600"> | <img src = "https://github.com/APPSCHOOL3-iOS/final-grew/assets/74649209/412fafc6-311d-421d-93ac-2a155f30887f" width="600"> |
-|뚱.이.          | 404 Future Not Found            | (건강한 신체) -> (건강한 코드)            | TBD          |
-|[종짠](https://github.com/JCxxn) |[서코](https://github.com/seokhoho) |[설아](https://github.com/seolahchloe) | [다혜](https://github.com/da-hye0)          |
+|"??? : 누구세요~" <br/> "사랑해요~" <br/> (쿵)          | 404 Future Not Found            | (건강한 신체) -> (건강한 코드)            | TBD          |
+|[종짠](https://github.com/JCxxn) |[서코](https://github.com/seokhoho) |[클로이](https://github.com/seolahchloe) | [다혜](https://github.com/da-hye0)          |
 
 
 
