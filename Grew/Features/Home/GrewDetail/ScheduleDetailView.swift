@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ScheduleDetailView: View {
+    
+    @Environment(\.dismiss) var dismiss
     @EnvironmentObject private var grewViewModel: GrewViewModel
     @EnvironmentObject private var scheduleStore: ScheduleStore
     @State private var hostName: String = ""
@@ -18,6 +20,8 @@ struct ScheduleDetailView: View {
     
     @State private var isShowingSuccessAlert: Bool = false
     @State private var isShowingFailureAlert: Bool = false
+    @State private var isShowingCancelAlert: Bool = false
+    @State private var isShowingCancelSuccessAlert: Bool = false
     
     var rows: [GridItem] = Array(repeating: .init(.fixed(44)), count: 1)
     
@@ -112,16 +116,20 @@ struct ScheduleDetailView: View {
                 Spacer()
                 // 그루에 먼저 참여하고 나서 일정에 참여할 수 있도록!
                 Button {
-                    if let userId = UserStore.shared.currentUser?.id {
-                        schedule.participants.append(userId)
-                        scheduleStore.updateParticipants(schedule.participants, scheduleId: schedule.id)
-                        isShowingSuccessAlert = true
+                    if isScheduleParticipant {
+                        isShowingCancelAlert = true
+                    } else {
+                        if let userId = UserStore.shared.currentUser?.id {
+                            schedule.participants.append(userId)
+                            scheduleStore.updateParticipants(schedule.participants, scheduleId: schedule.id)
+                            isShowingSuccessAlert = true
+                        }
                     }
                 } label: {
                     if !isGrewMember {
                         Text("그루에 가입해주세요!")
                     } else if isScheduleParticipant {
-                        Text("일정 참여 중")
+                        Text("일정 취소하기")
                     } else if schedule.participants.count >= schedule.maximumMember {
                         Text("일정 모집 마감")
                     } else {
@@ -136,7 +144,7 @@ struct ScheduleDetailView: View {
                     fontColor: .white,
                     cornerRadius: 8
                 )
-                .disabled(!isGrewMember || isScheduleParticipant || schedule.participants.count >= schedule.maximumMember)
+                .disabled(!isGrewMember || (!isScheduleParticipant && schedule.participants.count >= schedule.maximumMember))
             }//: VStack
             ProfileCircleImageView(size: 80)
                 .offset(x: 20, y: 80)
@@ -175,6 +183,38 @@ struct ScheduleDetailView: View {
             buttonTitle: "확인",
             buttonColor: .Main,
             action: { }
+        )
+        .grewAlert(
+            isPresented: $isShowingCancelAlert,
+            title: "일정을 취소하시겠습니까?",
+            secondButtonTitle: "닫기",
+            secondButtonColor: .LightGray2,
+            secondButtonAction: { },
+            buttonTitle: "일정 취소",
+            buttonColor: .Error,
+            action: {
+                if let userId = UserStore.shared.currentUser?.id {
+                    if let user = schedule.participants.first(where: { $0 == userId }) {
+                        if let index = schedule.participants.firstIndex(of: userId) {
+                            schedule.participants.remove(at: index)
+                            scheduleStore.updateParticipants(schedule.participants, scheduleId: schedule.id)
+                            isShowingCancelSuccessAlert = true
+                        }
+                    }
+                }
+            }
+        )
+        .grewAlert(
+            isPresented: $isShowingCancelSuccessAlert,
+            title: "일정이 취소되었습니다.",
+            secondButtonTitle: nil,
+            secondButtonColor: nil,
+            secondButtonAction: nil,
+            buttonTitle: "확인",
+            buttonColor: .Main,
+            action: { 
+                dismiss()
+            }
         )
     }
     

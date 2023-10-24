@@ -20,7 +20,7 @@ struct GrewEditSheetView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(red: 0, green: 0, blue: 0, opacity: 0.3)
+//                Color(red: 0, green: 0, blue: 0, opacity: 0.3)
                 VStack {
                     Spacer()
                     VStack {
