@@ -93,6 +93,7 @@ struct StumpInputView: View {
                 Spacer()
                 Button {
                     isNeedDeposit = true
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 } label: {
                     Text("있음")
                         .frame(width: 100, height: 32)
@@ -109,6 +110,7 @@ struct StumpInputView: View {
                 
                 Button {
                     isNeedDeposit = false
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 } label: {
                     Text("없음")
                         .frame(width: 100, height: 32)
@@ -134,16 +136,9 @@ struct StumpInputView: View {
             
             Text("위치")
                 .font(.b2_R)
-//            GrewTextField(
-//                text: $location,
-//                isWrongText: false,
-//                isTextfieldDisabled: isAllTextFieldDisabled ? true : false,
-//                placeholderText: "00시 00구 00로 00길 00",
-//                isSearchBar: false
-//            )
-//            .padding(.bottom, 18)
             Button {
                 isShowingLocationSheet = true
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             } label: {
                 if location.isEmpty {
                     Image(systemName: "magnifyingglass")

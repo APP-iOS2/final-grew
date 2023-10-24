@@ -196,6 +196,7 @@ extension StumpRegisterView {
         .font(.b2_R)
         Button {
             isShowingPhotoSelectionSheet = true
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         } label: {
             HStack {
                 Spacer()
