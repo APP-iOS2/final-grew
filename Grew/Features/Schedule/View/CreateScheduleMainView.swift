@@ -48,7 +48,9 @@ struct CreateScheduleMainView: View {
                     // 배너 색상 선택
                     ScheduleColorPicker(colorPick: $colorPick)
                     
-                    
+                    submitBtn
+                        .padding(.top, 50)
+                        .background(Color.white.opacity(0.8))
                 }.padding(EdgeInsets(top: 5, leading: 20, bottom: 20, trailing: 20))
             }.navigationTitle("일정 생성")
                 .navigationBarTitleDisplayMode(.inline)
@@ -68,10 +70,6 @@ struct CreateScheduleMainView: View {
                         }
                     }
                     
-                    ToolbarItem(placement: .bottomBar) {
-                        submitBtn
-                            .background(Color.white.opacity(0.8))
-                    }
                 }
                 .onAppear{
                     scheduleStore.fetchSchedule()

@@ -35,6 +35,7 @@ struct ScheduleListView: View {
                 } label: {
                     Image(systemName: "plus")
                     Text("새 일정 만들기")
+                        .frame(width: UIScreen.screenWidth - 40, height: 44)
                 }
                 .grewButtonModifier(width: UIScreen.screenWidth - 40, height: 44, buttonColor: .clear, font: .b1_B, fontColor: .DarkGray1, cornerRadius: 8)
                 .background(
