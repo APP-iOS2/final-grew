@@ -10,9 +10,11 @@ import SwiftUI
 struct CategoryDetailView: View {
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var grewViewModel: GrewViewModel
     @State private var selection: Selection = Selection()
-    let grewList: [Grew]
-    let secondCategory: [SubCategory]
+    @State private var grewList: [Grew] = []
+//    let secondCategory: [SubCategory]
+    let category: GrewCategory
     
     // 선택된 카테고리
     
@@ -27,9 +29,8 @@ struct CategoryDetailView: View {
             
             ScrollView {
                 // 카테고리 리스트를 새로 만들어야함 기존것을 쓰면 앞에 순위가 붙음
-                CategoryListView(grewList: filterList)
-            }
-            .toolbar {
+                CategoryListView(category: category)
+            }            .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
                         dismiss()
@@ -43,9 +44,18 @@ struct CategoryDetailView: View {
             }
         }
         .onAppear {
-            filterList = grewList
+            fetchGrewList()
         }
+        .onReceive(grewViewModel.grewList.publisher, perform: { _ in
+            fetchGrewList()
+        })
         
+    }
+    
+    private func fetchGrewList() {
+        grewList = grewViewModel.grewList.filter {
+            $0.categoryIndex == category.id
+        }
     }
 }
 
@@ -72,7 +82,7 @@ extension CategoryDetailView {
                 )
                 .padding(.trailing, 5)
                 
-                ForEach(secondCategory) { category in
+                ForEach(category.subCategories) { category in
                     let isSelected = selection.subCategoryID == category.id
                     Button {
                         filterList = grewList.filter {
@@ -106,7 +116,14 @@ extension CategoryDetailView {
 
 #Preview {
     NavigationStack {
-        CategoryDetailView(grewList: [], secondCategory: [])
+        CategoryDetailView(
+            category: GrewCategory(
+                id: "",
+                name: "",
+                imageString: "",
+                subCategories: []
+            )
+        )
     }
-//        .environmentObject(GrewViewModel())
+        .environmentObject(GrewViewModel())
 }

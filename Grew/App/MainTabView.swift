@@ -43,8 +43,8 @@ extension MainTabView {
                         switch home {
 //                        case .alert:
                             
-                        case .category(let grewList, let secondCategory):
-                            CategoryDetailView(grewList: grewList, secondCategory: secondCategory)
+                        case .category(let category):
+                            CategoryDetailView(category: category)
                                 .navigationBarBackButtonHidden()
                         case .grewDetail(let grew):
                             GrewDetailView(grew: grew)

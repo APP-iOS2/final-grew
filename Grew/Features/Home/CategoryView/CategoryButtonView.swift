@@ -39,9 +39,7 @@ struct CategoryButtonView: View {
 //                            .navigationTitle(category.name)
 //                            .navigationBarTitleDisplayMode(.inline)
 //                            .navigationBarBackButtonHidden(true)
-                        router.homeNavigate(to: .category(grewList: grewViewModel.grewList.filter {
-                            $0.categoryIndex == category.id
-                        }, secondCategory: category.subCategories))
+                        router.homeNavigate(to: .category(category: category))
                     } label: {
                         VStack {
                             Image("\(category.imageString)")

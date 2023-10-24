@@ -9,7 +9,11 @@ import SwiftUI
 
 struct CategoryListView: View {
     
-    let grewList: [Grew]
+    @EnvironmentObject private var grewViewModel: GrewViewModel
+//    let grewList: [Grew]
+    @State private var grewList: [Grew] = []
+    
+    let category: GrewCategory
     
     var body: some View {
         VStack {
@@ -38,36 +42,56 @@ struct CategoryListView: View {
                 }
             }
         }
+        .onAppear {
+            fetchGrewList()
+        }
+        .onReceive(grewViewModel.grewList.publisher, perform: { _ in
+            fetchGrewList()
+        })
+    }
+    
+    private func fetchGrewList() {
+        grewList = grewViewModel.grewList.filter {
+            $0.categoryIndex == category.id
+        }
     }
 }
 
 #Preview {
-    CategoryListView(grewList: [Grew(categoryIndex: "123",
-    categorysubIndex: "456",
-    title: "123",
-    description: "123",
-    imageURL: "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg",
-    isOnline: true,
-    location: "123",
-    gender: .male,
-    minimumAge: 12,
-    maximumAge: 12,
-    maximumMembers: 12,
-    currentMembers: ["1", "2"],
-    isNeedFee: true,
-    fee: 0),
-    Grew(categoryIndex: "123",
-    categorysubIndex: "456",
-    title: "123",
-    description: "123",
-    imageURL: "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg",
-    isOnline: true,
-    location: "123",
-    gender: .male,
-    minimumAge: 12,
-    maximumAge: 12,
-    maximumMembers: 12,
-    currentMembers: ["1", "2"],
-    isNeedFee: true,
-    fee: 0)])
+//    CategoryListView(grewList: [Grew(categoryIndex: "123",
+//    categorysubIndex: "456",
+//    title: "123",
+//    description: "123",
+//    imageURL: "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg",
+//    isOnline: true,
+//    location: "123",
+//    gender: .male,
+//    minimumAge: 12,
+//    maximumAge: 12,
+//    maximumMembers: 12,
+//    currentMembers: ["1", "2"],
+//    isNeedFee: true,
+//    fee: 0),
+//    Grew(categoryIndex: "123",
+//    categorysubIndex: "456",
+//    title: "123",
+//    description: "123",
+//    imageURL: "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg",
+//    isOnline: true,
+//    location: "123",
+//    gender: .male,
+//    minimumAge: 12,
+//    maximumAge: 12,
+//    maximumMembers: 12,
+//    currentMembers: ["1", "2"],
+//    isNeedFee: true,
+//    fee: 0)])
+    CategoryListView(
+        category: GrewCategory(
+            id: "",
+            name: "",
+            imageString: "",
+            subCategories: []
+        )
+    )
 }
