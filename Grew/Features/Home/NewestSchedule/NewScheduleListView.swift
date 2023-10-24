@@ -70,7 +70,7 @@ struct NewestScheduleListView: View {
             }
             // gid로 정렬
             tempSchedule.sort { (schedule1, schedule2) in
-                return schedule1.gid < schedule2.gid
+                return schedule1.date < schedule2.date
                 
             }
             return tempSchedule

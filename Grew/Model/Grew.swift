@@ -21,7 +21,7 @@ struct Grew: Identifiable, Codable, Hashable {
     /// 모임 설명
     var description: String = ""
     /// 모임 썸네일 이미지
-    var imageURL: String = "https://image.newsis.com/2023/05/25/NISI20230525_0001274814_web.jpg"
+    var imageURL: String = "https://firebasestorage.googleapis.com:443/v0/b/forrest-grew.appspot.com/o/AA5308C2-48F0-4FD0-8ABF-D06D646C9C18.jpg?alt=media&token=dca6e51f-a5e4-4acb-bdb8-fe4a9960c44d"
     /// 온라인, 오프라인 여부
     var isOnline: Bool
     /// 오프라인 주소
