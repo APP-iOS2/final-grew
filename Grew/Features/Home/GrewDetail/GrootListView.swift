@@ -12,7 +12,7 @@ struct GrootListView: View {
     let grew: Grew
     @State var selection: SelectViews = SelectViews.profile
     var body: some View {
-        LazyVStack(spacing: 16, content: {
+        VStack(spacing: 16, content: {
             ForEach(grew.currentMembers, id: \.self) { memberId in
                 GrootView(memberId: memberId, selection: $selection)
             }

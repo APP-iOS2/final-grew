@@ -23,7 +23,7 @@ struct ScheduleDetailView: View {
     @State private var isShowingCancelAlert: Bool = false
     @State private var isShowingCancelSuccessAlert: Bool = false
     
-    var rows: [GridItem] = Array(repeating: .init(.fixed(44)), count: 1)
+    var rows: [GridItem] = Array(repeating: .init(.fixed(60)), count: 1)
     
     private var isScheduleParticipant: Bool {
         if let userId = UserStore.shared.currentUser?.id, schedule.participants.contains(userId) {
@@ -99,22 +99,25 @@ struct ScheduleDetailView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: rows, content: {
                             ForEach(participants, id: \.self) { participant in
-                                AsyncImage(url: URL(string: participant.userImageURLString ?? "")) { image in
-                                    image
-                                        .resizable()
-                                        .rounded(width: 44, height: 44)
-                                } placeholder: {
-                                    Image("defaultProfile")
-                                        .rounded(width: 44, height: 44)
+                                VStack {
+                                    AsyncImage(url: URL(string: participant.userImageURLString ?? "")) { image in
+                                        image
+                                            .resizable()
+                                            .rounded(width: 44, height: 44)
+                                    } placeholder: {
+                                        Image("defaultProfile")
+                                            .rounded(width: 44, height: 44)
+                                    }
+                                    Text(participant.nickName)
+                                        .font(.c2_L)
                                 }
-                                    
                             }
                         })//: LazyHGrid
                         .padding(.horizontal, 20)
                     }//: ScrollView
                     .frame(height: 44)
                 Spacer()
-                // 그루에 먼저 참여하고 나서 일정에 참여할 수 있도록!
+                
                 Button {
                     if isScheduleParticipant {
                         isShowingCancelAlert = true

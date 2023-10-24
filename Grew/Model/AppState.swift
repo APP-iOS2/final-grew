@@ -34,7 +34,7 @@ class AppState: ObservableObject {
 class HomeRouter: ObservableObject {
     enum HomeRoute: Hashable {
 //        case alert
-        case category(grewList: [Grew], secondCategory: [SubCategory])
+        case category(category: GrewCategory)
         case grewDetail(grew: Grew)
         case search
     }

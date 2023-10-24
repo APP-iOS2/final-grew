@@ -245,7 +245,7 @@ extension StumpRegisterView {
             Text("등록하기")
         }
         .grewButtonModifier(
-            width: 343,
+            width: UIScreen.screenWidth - 40,
             height: 50,
             buttonColor: isRegisterButtonDisabled ? .LightGray2 : .Main,
             font: .b1_B,

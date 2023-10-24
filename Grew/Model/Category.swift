@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GrewCategory: Identifiable, Codable {
+struct GrewCategory: Identifiable, Codable, Hashable {
     let id, name, imageString: String
     let subCategories: [SubCategory]
 }
