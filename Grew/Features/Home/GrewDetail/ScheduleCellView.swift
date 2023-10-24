@@ -26,22 +26,26 @@ struct ScheduleCellView: View {
                 .padding(.bottom, -32)
             HStack {
                 VStack(alignment: .leading) {
+                    Text("제목")
+                        .padding(.vertical, 1)
                     Text("날짜")
                         .padding(.vertical, 1)
                     Text("인원")
                         .padding(.vertical, 1)
-                    Text("장소")
-                        .padding(.vertical, 1)
+//                    Text("장소")
+//                        .padding(.vertical, 1)
                 }//: VStack
                 .font(.c1_R)
                 Spacer()
                 VStack(alignment: .trailing) {
+                    Text("\(schedule.scheduleName)")
+                        .padding(.vertical, 1)
                     Text("\(schedule.grewCellDateString)")
                         .padding(.vertical, 1)
                     Text("\(schedule.participants.count)/\(schedule.maximumMember)")
                         .padding(.vertical, 1)
-                    Text("\(schedule.location == nil ? "온라인" : "오프라인")")
-                        .padding(.vertical, 1)
+//                    Text("\(schedule.location == nil ? "온라인" : "오프라인")")
+//                        .padding(.vertical, 1)
                 }//: VStack
                 .font(.c1_B)
             }//: HStack
