@@ -12,7 +12,7 @@ enum ChatSegment: Int, CaseIterable, Identifiable {
     
     var title: String {
         switch self {
-        case .group: return "그룹"
+        case .group: return "그루"
         case .personal: return "개인"
         }
     }
