@@ -9,13 +9,11 @@ import SwiftUI
 
 struct GrewEditSheetView: View {
     @EnvironmentObject var grewViewModel: GrewViewModel
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var userViewModel: UserStore
     @EnvironmentObject var chatStore: ChatStore
     @EnvironmentObject var messageStore: MessageStore
     
     @Binding var isShowingWithdrawConfirmAlert: Bool
-    @Binding var isShowingToolBarSheet: Bool
-    
     
     let grew: Grew
     
@@ -25,45 +23,59 @@ struct GrewEditSheetView: View {
                 Color(red: 0, green: 0, blue: 0, opacity: 0.3)
                 VStack {
                     Spacer()
-                    if grew.hostID == UserStore.shared.currentUser?.id ?? "" {
-                        NavigationLink(destination: {
-                            GrewEditView()
-                        }, label: {
-                            HStack {
-                                Text("그루 수정")
+                    VStack {
+                        if grew.hostID == UserStore.shared.currentUser?.id ?? "" {
+                            NavigationLink(destination: {
+                                GrewEditView()
+                            }, label: {
+                                HStack {
+                                    Text("그루 수정")
+                                    Spacer()
+                                    Image(systemName: "pencil")
+                                }
+                            })
+                            .padding(.vertical, 8)
+                            .foregroundStyle(Color.Black)
+                            Divider()
+                            Button {
+                                //
+                            } label: {
+                                Text("그루트 관리")
                                 Spacer()
                                 Image(systemName: "pencil")
                             }
-                        })
-                        .padding(.vertical, 8)
-                        .foregroundStyle(Color.Black)
-                        Divider()
-                        Button {
-                            //
-                        } label: {
-                            Text("그루트 관리")
-                            Spacer()
-                            Image(systemName: "pencil")
-                        }
-                        .padding(.vertical, 8)
-                        .foregroundStyle(Color.Black)
-                        Divider()
-                        Button {
-                            //
-                        } label: {
-                            Text("그루 해체하기")
-                            Spacer()
-                            Image(systemName: "trash")
-                        }
-                        .padding(.vertical, 8)
-                        .foregroundStyle(Color.Error)
-                    } else {
-                        HStack {
+                            .padding(.vertical, 8)
+                            .foregroundStyle(Color.Black)
+                            Divider()
+                            Button {
+                                Task {
+                                    await removeChatRoom()
+                                }
+                                grewViewModel.showingSheet = false
+                            } label: {
+                                Text("그루 해체하기")
+                                Spacer()
+                                Image(systemName: "trash")
+                            }
+                            .padding(.vertical, 8)
+                            .foregroundStyle(Color.Error)
+                            Divider()
+                            Button {
+                                grewViewModel.showingSheet = false
+                            } label: {
+                                Text("닫기")
+                                Spacer()
+                                Image(systemName: "xmark")
+                            }
+                            .padding(.vertical, 8)
+                            .foregroundStyle(Color.Error)
+                        } else {
                             Button {
                                 Task {
                                     await exitChatRoom()
                                 }
-                                //
+                                grewViewModel.showingSheet = false
+                                isShowingWithdrawConfirmAlert = true
                             } label: {
                                 Text("탈퇴하기")
                                 Spacer()
@@ -71,38 +83,31 @@ struct GrewEditSheetView: View {
                             }
                             .padding(.vertical, 8)
                             .foregroundStyle(Color.Error)
-                        }
-                        Image(systemName: "pencil")
-                            .padding(.vertical, 8)
-                            .foregroundStyle(Color.Black)
-                        Divider()
-                        Button {
-                            //
-                            Task {
-                                await removeChatRoom()
+                            Divider()
+                            Button {
+                                grewViewModel.showingSheet = false
+                            } label: {
+                                Text("닫기")
+                                Spacer()
+                                Image(systemName: "xmark")
                             }
-                        } label: {
-                            Text("그루 해체하기")
-                            Spacer()
-                            Image(systemName: "trash")
+                            .padding(.vertical, 8)
+                            .foregroundStyle(Color.Error)
                         }
-                        .padding(.vertical, 8)
-                        .foregroundStyle(Color.Error)
                     }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 30)
+                    .background(Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
                 .font(.b2_R)
-                .padding(20)
-            }
+            }.ignoresSafeArea(.all)
         }
-        .ignoresSafeArea(.all)
-        .onAppear(perform: {
-            userViewModel.fetchUser(userId: UserStore.shared.currentUser?.id ?? "")
-        })
     }
 }
 
 #Preview {
-    GrewEditSheetView(isShowingWithdrawConfirmAlert: .constant(false), isShowingToolBarSheet: .constant(true), grew: Grew(
+    GrewEditSheetView(isShowingWithdrawConfirmAlert: .constant(false), grew: Grew(
         id: "id",
         categoryIndex: "게임/오락",
         categorysubIndex: "보드게임",

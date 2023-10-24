@@ -34,7 +34,6 @@ struct GrewDetailView: View {
     @State private var isShowingJoinConfirmAlert: Bool = false
     @State private var isShowingJoinFinishAlert: Bool = false
     
-    @State var isShowingToolBarSheet: Bool = false
     @State var isShowingWithdrawConfirmAlert: Bool = false
     @State private var isShowingWithdrawFinishAlert: Bool = false
     
@@ -107,10 +106,10 @@ struct GrewDetailView: View {
                 isPresented: $isShowingJoinConfirmAlert,
                 title: "\(grew.title)에 참여하시겠습니까?",
                 secondButtonTitle: "취소",
-                secondButtonColor: .red,
+                secondButtonColor: .LightGray2,
                 secondButtonAction: { },
                 buttonTitle: "확인",
-                buttonColor: .Main,
+                buttonColor: .Error,
                 action: {
                     Task {
                         if let userId = UserStore.shared.currentUser?.id {
@@ -127,18 +126,14 @@ struct GrewDetailView: View {
             
             makeBottomButtons()
         }
-        
-        .onAppear(perform: {
-            grewViewModel.selectedGrew = grew
-        })
         .grewAlert(
             isPresented: $isShowingWithdrawConfirmAlert,
             title: "\(grew.title)에 탈퇴하시겠습니까?",
             secondButtonTitle: "취소",
-            secondButtonColor: .Main,
+            secondButtonColor: .LightGray2,
             secondButtonAction: { },
             buttonTitle: "탈퇴",
-            buttonColor: .red,
+            buttonColor: .Error,
             action: {
                 if let userId = UserStore.shared.currentUser?.id {
                     grewViewModel.withdrawGrewMember(grewId: grew.id, userId: userId)
@@ -167,19 +162,19 @@ struct GrewDetailView: View {
             }
         }
         .onAppear {
+            grewViewModel.selectedGrew = grew
             heartState = UserStore.shared.checkFavorit(gid: grew.id)
         }
         .onDisappear {
             chatStore.removeListener()
             chatStore.isDoneFetch = false
         }
-        
         .fullScreenCover(isPresented: $grewViewModel.showingSheet) {
             switch grewViewModel.sheetContent {
             case .grewEdit:
                 GrewEditView()
             case .setting:
-                GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, isShowingToolBarSheet: $isShowingToolBarSheet, grew: grew)
+                GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, grew: grew)
                     .readHeight()
                     .onPreferenceChange(HeightPreferenceKey.self) { height in
                         if let height {
