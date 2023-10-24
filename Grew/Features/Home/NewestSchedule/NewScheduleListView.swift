@@ -15,6 +15,7 @@ struct NewestScheduleListView: View {
     @State private var isShowingSheet: Bool = false
     @State private var selectedScheduleId: String = ""
     @State private var scheduleId: String = ""
+    @State private var user: User? = UserStore.shared.currentUser
     let deviceWidth = UIScreen.main.bounds.size.width
     let quote: String = "\""
     
@@ -34,7 +35,12 @@ struct NewestScheduleListView: View {
         .onChange(of: selectedScheduleId) { oldValue, newValue in
             scheduleId = selectedScheduleId
         }
-        
+        .onReceive(AuthStore.shared.currentUser.publisher, perform: { userPublisher in
+            Task {
+                try await UserStore.shared.loadUserData()
+                user = UserStore.shared.currentUser
+            }
+        })
     } //: body
     
     func isEmptySchedule() -> [Schedule] {
@@ -42,7 +48,7 @@ struct NewestScheduleListView: View {
         var tempSchedule: [Schedule] = []
         
         // 스케쥴의 그루 아이디, 그루 전체를 둘러봐야함
-        if let currentUserId = UserStore.shared.currentUser?.id {
+        if let currentUserId = user?.id {
             
             // 모든 그루에서 현재 아이디가 가입된 그루를 tempList에 넣었고
             tempList = grewViewModel.grewList.filter {

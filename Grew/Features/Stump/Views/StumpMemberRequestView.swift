@@ -48,9 +48,6 @@ struct StumpMemberRequestView: View {
                 makeInputView()
                 makeImageView()
             }
-            VStack {
-                makeFinishButton()
-            }
             .navigationTitle("그루터기 멤버 신청")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -61,6 +58,9 @@ struct StumpMemberRequestView: View {
                         Image(systemName: "xmark")
                             .foregroundStyle(Color.Black)
                     }
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    makeFinishButton()
                 }
             }
         }

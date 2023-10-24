@@ -67,14 +67,19 @@ struct CreateScheduleMainView: View {
                                 .foregroundStyle(Color.black)
                         }
                     }
+                    
+                    ToolbarItem(placement: .bottomBar) {
+                        submitBtn
+                            .background(Color.white.opacity(0.8))
+                    }
                 }
                 .onAppear{
                     scheduleStore.fetchSchedule()
                 }
-                .safeAreaInset(edge: .bottom) {
-                    submitBtn
-                        .background(Color.white.opacity(0.8))
-                }
+//                .safeAreaInset(edge: .bottom) {
+//                    submitBtn
+//                        .background(Color.white.opacity(0.8))
+//                }
                 .disabled(isDatePickerVisible)
                 .onTapGesture {
                     if isDatePickerVisible {
