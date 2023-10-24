@@ -109,7 +109,7 @@ struct GrewDetailView: View {
                 secondButtonColor: .LightGray2,
                 secondButtonAction: { },
                 buttonTitle: "확인",
-                buttonColor: .Error,
+                buttonColor: .Main,
                 action: {
                     Task {
                         if let userId = UserStore.shared.currentUser?.id {
