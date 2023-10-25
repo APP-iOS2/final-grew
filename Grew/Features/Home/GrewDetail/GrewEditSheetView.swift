@@ -70,20 +70,22 @@ struct GrewEditSheetView: View {
                             .padding(.vertical, 8)
                             .foregroundStyle(Color.Error)
                         } else {
-                            Button {
-                                Task {
-                                    await exitChatRoom()
+                            if let userId = UserStore.shared.currentUser?.id, grew.currentMembers.contains(userId) {
+                                Button {
+                                    Task {
+                                        await exitChatRoom()
+                                    }
+                                    grewViewModel.showingSheet = false
+                                    isShowingWithdrawConfirmAlert = true
+                                } label: {
+                                    Text("탈퇴하기")
+                                    Spacer()
+                                    Image(systemName: "trash")
                                 }
-                                grewViewModel.showingSheet = false
-                                isShowingWithdrawConfirmAlert = true
-                            } label: {
-                                Text("탈퇴하기")
-                                Spacer()
-                                Image(systemName: "trash")
+                                .padding(.vertical, 8)
+                                .foregroundStyle(Color.Error)
+                                Divider()
                             }
-                            .padding(.vertical, 8)
-                            .foregroundStyle(Color.Error)
-                            Divider()
                             Button {
                                 grewViewModel.showingSheet = false
                             } label: {

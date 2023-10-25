@@ -29,6 +29,7 @@ struct GrewDetailView: View {
     @EnvironmentObject var grewViewModel: GrewViewModel
     @EnvironmentObject private var chatStore: ChatStore
     @EnvironmentObject private var messageStore: MessageStore
+    @EnvironmentObject private var scheduleStore: ScheduleStore
     
     @State private var selectedFilter: GrewDetailFilter = .introduction
     @State private var isShowingJoinConfirmAlert: Bool = false
@@ -150,6 +151,15 @@ struct GrewDetailView: View {
             action: {
                 if let userId = UserStore.shared.currentUser?.id {
                     grewViewModel.withdrawGrewMember(grewId: updatedGrew.id, userId: userId)
+                    var grewSchedules = scheduleStore.schedules.filter {
+                        $0.gid == grew.id
+                    }
+                    for index in grewSchedules.indices {
+                        grewSchedules[index].participants.removeAll {
+                            $0 == userId
+                        }
+                        scheduleStore.updateParticipants(grewSchedules[index].participants, scheduleId: grewSchedules[index].id)
+                    }
                     isShowingWithdrawFinishAlert = true
                 }
             }
