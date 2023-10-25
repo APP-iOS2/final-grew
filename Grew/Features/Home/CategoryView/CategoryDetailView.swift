@@ -20,6 +20,7 @@ struct CategoryDetailView: View {
     
     // 선택되어 필터링 된 리스트
     @State var filterList: [Grew] = []
+    @State private var subCategory: SubCategory?
     
     var body: some View {
         VStack {
@@ -29,7 +30,7 @@ struct CategoryDetailView: View {
             
             ScrollView {
                 // 카테고리 리스트를 새로 만들어야함 기존것을 쓰면 앞에 순위가 붙음
-                CategoryListView(category: category)
+                CategoryListView(category: category, subCategory: subCategory)
             }            .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
@@ -69,6 +70,7 @@ extension CategoryDetailView {
                 Button {
                     filterList = grewList
                     selection.subCategoryID = nil
+                    subCategory = nil
                 } label: {
                     Text("전체")
                         .foregroundStyle(selection.subCategoryID == nil ? Color.white : Color.Black)
@@ -85,9 +87,11 @@ extension CategoryDetailView {
                 ForEach(category.subCategories) { category in
                     let isSelected = selection.subCategoryID == category.id
                     Button {
+                        subCategory = category
                         filterList = grewList.filter {
                             $0.categorysubIndex == category.id
                         }
+                        print(filterList)
                         selection.subCategoryID = category.id
                         
                     } label: {

@@ -12,12 +12,14 @@ struct CategoryListView: View {
     @EnvironmentObject private var grewViewModel: GrewViewModel
 //    let grewList: [Grew]
     @State private var grewList: [Grew] = []
+    @State private var filterList: [Grew] = []
     
     let category: GrewCategory
+    let subCategory: SubCategory?
     
     var body: some View {
         VStack {
-            if grewList.isEmpty {
+            if filterList.isEmpty {
                 Group {
                     Text("해당 카테고리에는 그루가 없습니다.")
                     Text("새로운 그루를 생성해보세요!")
@@ -26,8 +28,8 @@ struct CategoryListView: View {
                 .foregroundStyle(Color.Black)
                 
             } else {
-                ForEach(0 ..< grewList.count, id: \.self) { index in
-                    if let grew = grewList[safe: index] {
+                ForEach(0 ..< filterList.count, id: \.self) { index in
+                    if let grew = filterList[safe: index] {
                         NavigationLink {
                             GrewDetailView(grew: grew)
                                 .navigationBarBackButtonHidden(true)
@@ -51,8 +53,16 @@ struct CategoryListView: View {
     }
     
     private func fetchGrewList() {
+        grewViewModel.fetchGrew()
         grewList = grewViewModel.grewList.filter {
             $0.categoryIndex == category.id
+        }
+        if let subCategory {
+            filterList = grewList.filter {
+                $0.categorysubIndex == subCategory.id
+            }
+        } else {
+            filterList = grewList
         }
     }
 }
@@ -92,6 +102,10 @@ struct CategoryListView: View {
             name: "",
             imageString: "",
             subCategories: []
+        ),
+        subCategory: SubCategory(
+            id: "",
+            name: ""
         )
     )
 }
