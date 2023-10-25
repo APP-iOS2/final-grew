@@ -14,101 +14,97 @@ struct SettingView: View {
     @State var isAlertOn: Bool = true
     
     var body: some View {
-//        NavigationStack {
-            VStack {
-                List {
-                    Section(header: Text("앱 설정")){
-                        Toggle(isOn: $isAlertOn, label: {
-                            Text("푸시 알림")
-                                .listRowSeparator(.visible)
-                        })
+        VStack {
+            List {
+                Section(header: Text("앱 설정")){
+                    Toggle(isOn: $isAlertOn, label: {
+                        Text("푸시 알림")
+                            .listRowSeparator(.visible)
+                    })
+                    
+                    Button {
+                        router.profileNavigate(to: .banner)
+                    } label: {
+                        Text("광고 배너 구매")
                         
-                        Button {
-//                            PurchaseAdsBannerView()
-                            router.profileNavigate(to: .banner)
-                        } label: {
-                            Text("광고 배너 구매")
-                            
-                        }
-                    }.listRowSeparator(.hidden)
-                    
-                    Section(header: Text("그루터기")){
-                        ForEach(GTViewsName.allCases, id: \.self) { gtViewName in
-                            
-                            NavigationLink {
-                                switch gtViewName {
-                                case .stumpIntroductionView:
-                                    StumpIntroductionView()
-                                case .stumpRegisterView:
-                                    StumpRegisterView()
-                                case .showStumpsView:
-                                    StumpListView()
-                                }
-                            } label: {
-                                Text(gtViewName.rawValue)
-                            }
-                            
-                        }
-                    }.listRowSeparator(.hidden)
-                    
-                    // TODO: 로그인 연동하기
-                    Section(header: Text("계정 설정")){
-                        Button {
-                            AuthStore.shared.signOut()
-                        } label: {
-                            HStack {
-                                Text("로그아웃")
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .font(.system(size: 14))
-                                    .foregroundColor(.gray)
-                            }
-                        }
+                    }
+                }.listRowSeparator(.hidden)
+                
+                Section(header: Text("그루터기")){
+                    ForEach(GTViewsName.allCases, id: \.self) { gtViewName in
                         
                         NavigationLink {
-                            
+                            switch gtViewName {
+                            case .stumpIntroductionView:
+                                StumpIntroductionView()
+                            case .stumpRegisterView:
+                                StumpRegisterView()
+                            case .showStumpsView:
+                                StumpListView()
+                            }
                         } label: {
-                            Text("회원 탈퇴")
-                                .foregroundStyle(.red)
+                            Text(gtViewName.rawValue)
                         }
                         
-                        
-                    }.listRowSeparator(.hidden)
-                    
-                    
-                    Section(header: Text("안내")) {
-                        ForEach(InformViewsName.allCases, id: \.self) { informViewName in
-                            NavigationLink {
-                                switch informViewName {
-                                case .opensourceLicenseView:
-                                    OpensourceLicenseView()
-                                case .developersView:
-                                    DevelopersView()
-                                case .inquireyView:
-                                    InquiryView()
-                                }
-                            } label: {
-                                Text(informViewName.rawValue)
-                                
-                            }.listRowSeparator(.hidden)
+                    }
+                }.listRowSeparator(.hidden)
+                
+                Section(header: Text("계정 설정")){
+                    Button {
+                        AuthStore.shared.signOut()
+                    } label: {
+                        HStack {
+                            Text("로그아웃")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 14))
+                                .foregroundColor(.gray)
                         }
                     }
                     
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("회원 탈퇴")
+                            .foregroundStyle(.red)
+                    }
+                    
+                    
+                }.listRowSeparator(.hidden)
+                
+                
+                Section(header: Text("안내")) {
+                    ForEach(InformViewsName.allCases, id: \.self) { informViewName in
+                        NavigationLink {
+                            switch informViewName {
+                            case .opensourceLicenseView:
+                                OpensourceLicenseView()
+                            case .developersView:
+                                DevelopersView()
+                            case .inquireyView:
+                                InquiryView()
+                            }
+                        } label: {
+                            Text(informViewName.rawValue)
+                            
+                        }.listRowSeparator(.hidden)
+                    }
                 }
-                .listStyle(.plain)
+                
             }
-            .navigationTitle("설정")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: Button(action: {
-                self.mode.wrappedValue.dismiss()
-            }, label: {
-                Image(systemName: "chevron.backward")
-                    .foregroundColor(.black)
-            }))
-//        }
+            .listStyle(.plain)
+        }
+        .navigationTitle("설정")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            self.mode.wrappedValue.dismiss()
+        }, label: {
+            Image(systemName: "chevron.backward")
+                .foregroundColor(.black)
+        }))
     }
     
     enum GTViewsName: String, CaseIterable {

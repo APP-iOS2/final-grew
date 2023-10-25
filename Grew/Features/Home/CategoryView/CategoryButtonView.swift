@@ -13,7 +13,6 @@ struct CategoryButtonView: View {
     @EnvironmentObject var router: HomeRouter
     
     private let gridItems: [GridItem] = [
-//        GridItem(.adaptive(minimum: 60))
         .init(.flexible()),
         .init(.flexible()),
         .init(.flexible()),
@@ -33,12 +32,6 @@ struct CategoryButtonView: View {
                 ForEach(grewViewModel.categoryArray) { category in
                     
                     Button {
-//                        CategoryDetailView(grewList: grewViewModel.grewList.filter {
-//                            $0.categoryIndex == category.id
-//                        }, secondCategory: category.subCategories)
-//                            .navigationTitle(category.name)
-//                            .navigationBarTitleDisplayMode(.inline)
-//                            .navigationBarBackButtonHidden(true)
                         router.homeNavigate(to: .category(category: category))
                     } label: {
                         VStack {
@@ -61,18 +54,12 @@ struct CategoryButtonView: View {
                         .padding(.bottom, 15)
                         .background(.white)
                         .cornerRadius(12)
-//                        .overlay(
-//                            RoundedRectangle(cornerRadius: 12)
-//                                .stroke(Color.gray, lineWidth: 1.5)
-//                        )
                     }
-//                    .navigationTitle(category.name)
-//                    .navigationBarTitleDisplayMode(.inline)
                 }
                 .padding(.horizontal)
-            } //: LazyGrid
+            }
             .padding(.bottom, 25)
-            // 배너
+            
             PagingBannerView()
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .frame(height: 100)

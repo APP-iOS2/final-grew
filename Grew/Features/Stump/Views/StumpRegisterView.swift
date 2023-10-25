@@ -50,7 +50,6 @@ struct StumpRegisterView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-//                makeInputView()
                 StumpInputView(
                     name: $name,
                     hours: $hours,
@@ -176,9 +175,9 @@ struct StumpRegisterView: View {
     }
 }
 
-// 뷰 반환 함수
+/// 뷰 반환 함수
 extension StumpRegisterView {
-    // 사진 추가 뷰
+    /// 사진 추가 뷰
     @ViewBuilder
     private func makeAddImageView() -> some View {
         HStack {
@@ -237,7 +236,7 @@ extension StumpRegisterView {
         }
     }
     
-    // 등록 버튼 View
+    /// 등록 버튼 View
     private func makeRegisterButton() -> some View {
         Button {
             stumpRegister()
@@ -257,7 +256,7 @@ extension StumpRegisterView {
     }
 }
 
-// 기능 함수
+/// 기능 함수
 extension StumpRegisterView {
     /// 그루터기 등록 함수
     private func stumpRegister() {

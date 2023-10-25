@@ -18,7 +18,6 @@ struct GrewListView: View {
                 ForEach(0 ..< grewList.count, id: \.self) { index in
                     if let grew = grewList[safe: index] {
                         Button {
-                            // GrewDetailView(grew: grewList[index])
                             router.homeNavigate(to: .grewDetail(grew: grew))
                         } label: {
                             HStack {

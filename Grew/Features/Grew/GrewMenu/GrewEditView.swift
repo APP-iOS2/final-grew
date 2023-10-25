@@ -36,7 +36,7 @@ struct GrewEditView: View {
                         .foregroundStyle(Color.Black)
                 })
                 .frame(width: 32, height: 32)
-            }.frame(height:60)
+            }.frame(height: 60)
             ScrollView {
                 VStack {
                     Group {

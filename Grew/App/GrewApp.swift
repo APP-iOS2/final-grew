@@ -13,7 +13,7 @@ import SwiftUI
 
 @main
 struct GrewApp: App {
-    // register app delegate for Firebase setup
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @StateObject private var userStore = UserStore()
@@ -27,7 +27,7 @@ struct GrewApp: App {
     @StateObject private var profileStore = ProfileStore()
     @StateObject private var userViewModel = UserViewModel()
     
-    // 카카오 로그인 키 값
+    /// 카카오 로그인 키 값
     init() {
         KakaoSDK.initSDK(appKey: "93a5453be087d1c02859e56e80132f73")
     }
@@ -82,7 +82,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
-// Facebook 로그인창을 위한 SceneDelegate
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let url = URLContexts.first?.url else {

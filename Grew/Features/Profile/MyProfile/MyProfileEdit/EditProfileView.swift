@@ -15,8 +15,8 @@ struct EditProfileView: View {
     let user: User
     
     @State private var image: UIImage?
-    @State private var name: String = "" /*= ""*/
-    @State private var statusMessage: String = "" /*= ""*/
+    @State private var name: String = ""
+    @State private var statusMessage: String = ""
     @State private var showModal: Bool = false
     @State private var showCamera: Bool = false
     @State private var showImagePicker: Bool = false
@@ -30,7 +30,6 @@ struct EditProfileView: View {
                 } label: {
                     ZStack(alignment: .bottomTrailing) {
                         if let unwrappedImage = image {
-                            //                            Image(uiImage: unwrappedImage)
                             KFImage(URL(string: user.userImageURLString ?? "chatUser"))
                                 .placeholder({
                                     ProgressView()
@@ -48,10 +47,10 @@ struct EditProfileView: View {
                         Image(systemName: "pencil.circle.fill")
                             .resizable()
                             .frame(width: 27, height: 27)
-                            .foregroundColor(Color.grewMainColor) // 이미지 색상 설정
+                            .foregroundColor(Color.grewMainColor)
                             .overlay(
                                 Circle()
-                                    .stroke(Color.white, lineWidth: 2) // 원형 보더 설정
+                                    .stroke(Color.white, lineWidth: 2)
                             )
                     }
 
@@ -105,7 +104,6 @@ struct EditProfileView: View {
                 Spacer()
             }.font(.b2_R)
                 .padding(30)
-            //            .frame(maxWidth: .infinity, alignment: .leading)
                 .navigationBarBackButtonHidden(true)
                 .navigationBarItems(leading: Button(action: {
                     self.mode.wrappedValue.dismiss()
@@ -116,7 +114,6 @@ struct EditProfileView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
-                            // 프로필 편집
                             saveProfileChanges()
                             dismiss()
                         } label: {
@@ -177,9 +174,9 @@ struct EditProfileView: View {
             if let image = image {
                 UserStore.shared.uploadProfileImage(image) { success in
                     if success {
-                        print("Profile image uploaded successfully!")
+
                     } else {
-                        print("Failed to upload profile image.")
+
                     }
                 }
             }

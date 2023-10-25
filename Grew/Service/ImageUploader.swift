@@ -21,7 +21,6 @@ struct ImageUploader {
         do {
             let _ = try await ref.putDataAsync(imageData)
             let url = try await ref.downloadURL()
-            print(url)
             return url.absoluteString
         } catch let error {
             print(error.localizedDescription)

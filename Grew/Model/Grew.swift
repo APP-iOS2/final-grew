@@ -46,11 +46,11 @@ struct Grew: Identifiable, Codable, Hashable {
     /// 멤버 성별
     var gender: Gender
     /// 멤버 최소 나이
-    var minimumAge: Int // pickerStyle(.wheel)
+    var minimumAge: Int
     /// 멤버 최대 나이
-    var maximumAge: Int // pickerStyle(.wheel)
+    var maximumAge: Int
     /// 최대 인원 수
-    var maximumMembers: Int // 키보드타입 number ,textField -> 정규식 검사 Int인지 확인
+    var maximumMembers: Int
     /// 멤버
     var currentMembers: [String] = ["\(UserStore.shared.currentUser?.id ?? "hostID Input Error")"]
     /// 활동비 여부

@@ -15,8 +15,6 @@ struct ProfileHeaderView: View {
     let user: User
     
     private var backgroundHeight: CGFloat {
-        //        let count = CGFloat(ProfileThreadFilter.allCases.count)
-        //        return UIScreen.main.bounds.height / count - 100
         return UIScreen.main.bounds.height / 5
     }
     

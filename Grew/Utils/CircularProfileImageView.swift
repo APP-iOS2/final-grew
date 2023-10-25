@@ -8,7 +8,7 @@
 import Kingfisher
 import SwiftUI
 
-// 이미지 열거형
+/// 이미지 열거형
 enum ImageConstants {
     case bubble
     case chatRoomList

@@ -17,7 +17,7 @@ struct CircleImage: View {
                 })
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 100) // 100
+                .frame(width: 100)
                 .clipShape(Circle())
                 .overlay {
                     Circle().stroke(.white, lineWidth: 7)
@@ -27,7 +27,7 @@ struct CircleImage: View {
             Image("chatUser")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 100) // 100
+                .frame(width: 100)
                 .clipShape(Circle())
                 .overlay {
                     Circle().stroke(.white, lineWidth: 7)

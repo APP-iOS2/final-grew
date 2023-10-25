@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// firstButtonTitle, firstButtonColor, firstButtonAction, secondButtonTitle, secondButtonColor, secondButtonAction, isSecondButtonVisible
 struct GrewAlertModifier: ViewModifier {
     @Binding var isPresented: Bool
     let title: String
@@ -104,29 +103,4 @@ struct GrewAlertModifier: ViewModifier {
                 secondButtonAction: { }
             )
         )
-    
-//        .modifier(
-//            GrewAlertModifier(
-//                isPresented: .constant(true),
-//                title: "회원가입이 완료되었습니다! 🎉",
-//                buttonTitle: "확인",
-//                buttonColor: .grewMainColor,
-//                action: { },
-//                secondButtonTitle: nil,
-//                secondButtonColor: nil,
-//                secondButtonAction: nil
-//            )
-//        )
-    
-    //    Text("Alert Test")
-    //        .modifier(
-    //            GrewAlertModifier(
-    //                ispresented: .constant(true),
-    //                title: "존재하지 않는 계정입니다.",
-    //                buttonTitle: "확인",
-    //                buttonColor: Color(hexCode: "F05650"),
-    //                action: { }
-    //            )
-    //        )
-
 }

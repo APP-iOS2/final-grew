@@ -6,7 +6,6 @@
 //
 import SwiftUI
 
-// TabView에 쓰일 각 뷰들을 enum으로 정의
 enum SelectViews {
     case home, location, chat, profile
 }
@@ -22,9 +21,9 @@ struct MainTabView: View {
     var body: some View {
         
         VStack {
-            // 기능으로 사용하는 tabView와
+            
             tabView
-            // 버튼으로 사용하는 tabBar
+            
             bottomTabs
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
@@ -41,8 +40,6 @@ extension MainTabView {
                     .setTabBarVisibility(isHidden: true)
                     .navigationDestination(for: HomeRouter.HomeRoute.self, destination: { home in
                         switch home {
-//                        case .alert:
-                            
                         case .category(let category):
                             CategoryDetailView(category: category)
                                 .navigationBarBackButtonHidden()
@@ -61,8 +58,6 @@ extension MainTabView {
             
             MapView()
                 .tag(SelectViews.location)
-            
-            // Text("추가")
             
             MainChatView()
                 .tag(SelectViews.chat)

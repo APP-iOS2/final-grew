@@ -69,7 +69,7 @@ struct ScheduleListView: View {
                     }
                 }
             }
-        }//: VStack
+        }
         .padding(20)
         .sheet(isPresented: $isShowingScheduleSheet, content: {
             ScheduleDetailView(scheduleId: selectedScheduleId)

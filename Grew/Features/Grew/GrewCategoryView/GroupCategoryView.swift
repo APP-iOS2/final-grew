@@ -14,7 +14,6 @@ struct GroupCategoryView: View {
     @Binding var isCategoryValid: Bool
     
     private let gridItems: [GridItem] = [
-        //        GridItem(.adaptive(minimum: 60))
         .init(.flexible()),
         .init(.flexible()),
         .init(.flexible())

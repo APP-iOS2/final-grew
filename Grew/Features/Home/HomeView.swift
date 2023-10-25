@@ -12,13 +12,11 @@ struct HomeView: View {
     @EnvironmentObject var router: HomeRouter
     
     var body: some View {
-        //        NavigationStack {
         ScrollView {
             VStack {
-                // 최신 일정
+
                 NewestScheduleListView()
                 
-                // 카테고리 버튼
                 CategoryButtonView()
                     .padding(.horizontal, 5)
                     .padding(.top)
@@ -49,14 +47,13 @@ struct HomeView: View {
                     .padding(.vertical)
                     .background(.white)
                 
-                // 인기 모임
                 Text("인기 그루")
                     .font(.b1_B)
                     .padding(.leading, 16)
                 GrewListView(grewList: grewViewModel.popularFilter(grewList: grewViewModel.grewList))
             }
             .background(Color.white)
-        } // ScrollView
+        }
         .scrollIndicators(.hidden)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

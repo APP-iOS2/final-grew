@@ -195,7 +195,7 @@ extension GrewSearchView {
     }
 }
 
-// 기능 함수
+/// 기능 함수
 extension GrewSearchView {
     
     /// Grew 검색 함수

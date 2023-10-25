@@ -34,7 +34,7 @@ struct TextMaster: View {
         
         let font = UIFont.systemFont(ofSize: fontSize)
         self.font = font
-        _dynamicHeight = State(initialValue: font.lineHeight * CGFloat(minLine) + 16) // textContainerInset 디폴트 값은 top, bottom 으로 각각 패딩 8 씩 들어감
+        _dynamicHeight = State(initialValue: font.lineHeight * CGFloat(minLine) + 16)
     }
     
     var body: some View {
@@ -48,7 +48,6 @@ struct TextMaster: View {
             becomeFirstResponder: becomeFirstResponder)
         .frame(height: dynamicHeight)
         .focused(isFocused)
-//        .border(isFocused.wrappedValue ? Color.grewMainColor : Color.gray, width: 1)
     }
 }
 
@@ -80,7 +79,7 @@ fileprivate struct UITextViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<UITextViewRepresentable>) {
-        guard uiView.text == self.text else { // 외부에서 주입되는 텍스트에 대한 반응을 위해 필요
+        guard uiView.text == self.text else {
             uiView.text = self.text
             return
         }
@@ -137,21 +136,15 @@ fileprivate struct UITextViewRepresentable: UIViewRepresentable {
             
             let newSize = textView.sizeThatFits(.init(width: textView.frame.width, height: .greatestFiniteMagnitude))
             
-//            print("\n🔽최대 높이 -> \(maxHeight)")
-//            print("❤️NEW SIZE -> \(newSize.height) / lineHeight -> \(textView.font!.lineHeight)")
-//            print("🔼최소 높이 -> \(minHeight)")
-            
-            if newSize.height < maxHeight, textView.isScrollEnabled { // 최대 높이 미만으로 줄어들면서, 스크롤이 true 라면...
+            if newSize.height < maxHeight, textView.isScrollEnabled {
                 textView.isScrollEnabled = false
-                print("📜 스크롤 뷰 꺼짐!")
-            } else if newSize.height > maxHeight, !textView.isScrollEnabled { // 최대 높이 초과로 커지면서, 스크롤이 false 라면...
+            } else if newSize.height > maxHeight, !textView.isScrollEnabled {
                 textView.isScrollEnabled = true
                 textView.flashScrollIndicators()
-                print("🦋 스크롤 뷰 켜짐!")
             }
             
             guard newSize.height > minHeight, newSize.height < maxHeight else { return }
-            dynamicHeight = newSize.height // 텍스트뷰의 동적 높이 조절
+            dynamicHeight = newSize.height
         }
     }
 }

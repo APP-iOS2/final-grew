@@ -37,14 +37,14 @@ struct ScheduleDatePicker: View {
         }.padding(.vertical, 5)
     }
     
-    // 날짜 포맷
+    /// 날짜 포맷
     func dateStringFromDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월 d일"
         return dateFormatter.string(from: date)
     }
     
-    // 시간 포맷
+    /// 시간 포맷
     func dateStringFormTime(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h시 m분"
@@ -52,7 +52,7 @@ struct ScheduleDatePicker: View {
     }
 }
 
-// DatePicker
+/// DatePicker
 struct DateForm: View {
     
     @Binding var isDatePickerVisible: Bool

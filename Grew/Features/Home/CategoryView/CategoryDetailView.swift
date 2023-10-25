@@ -13,23 +13,19 @@ struct CategoryDetailView: View {
     @EnvironmentObject private var grewViewModel: GrewViewModel
     @State private var selection: Selection = Selection()
     @State private var grewList: [Grew] = []
-//    let secondCategory: [SubCategory]
     let category: GrewCategory
     
-    // 선택된 카테고리
-    
-    // 선택되어 필터링 된 리스트
+    /// 선택되어 필터링 된 리스트
     @State var filterList: [Grew] = []
     @State private var subCategory: SubCategory?
     
     var body: some View {
         VStack {
-            // 서브뷰로 만들어 넣기 (extention)
+
             categoryList
             .padding(.vertical)
             
             ScrollView {
-                // 카테고리 리스트를 새로 만들어야함 기존것을 쓰면 앞에 순위가 붙음
                 CategoryListView(category: category, subCategory: subCategory)
             }            .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -60,7 +56,7 @@ struct CategoryDetailView: View {
     }
 }
 
-// 카테고리 리스트 정의
+/// 카테고리 리스트 정의
 extension CategoryDetailView {
     
     var categoryList: some View {
@@ -91,7 +87,6 @@ extension CategoryDetailView {
                         filterList = grewList.filter {
                             $0.categorysubIndex == category.id
                         }
-                        print(filterList)
                         selection.subCategoryID = category.id
                         
                     } label: {
@@ -107,12 +102,11 @@ extension CategoryDetailView {
                     )
                     .padding(.trailing, 5)
                 }
-            } //: HStack
+            }
             .padding(.horizontal)
             
-        } //: ScrollView
+        }
         .scrollIndicators(.hidden)
-//        .padding(.horizontal, 12)
     }
     
     

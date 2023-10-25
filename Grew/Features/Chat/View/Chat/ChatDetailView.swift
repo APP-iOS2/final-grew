@@ -10,9 +10,9 @@ import FirebaseStorage
 import SwiftUI
 
 struct ChatDetailView: View {
-    // 채팅방 데이터
+    /// 채팅방 데이터
     let chatRoom: ChatRoom
-    // 나를 제외한 유저 목록
+    /// 나를 제외한 유저 목록
     let targetUserInfos: [User]
     
     @EnvironmentObject private var appState: AppState
@@ -29,7 +29,6 @@ struct ChatDetailView: View {
     
     var body: some View {
         ZStack {
-            // 채팅
             ChatMessageListView(
                 chatRoom: chatRoom,
                 targetUserInfos: targetUserInfos,
@@ -38,39 +37,18 @@ struct ChatDetailView: View {
                 x: $x,
                 unreadMessageIndex: $unreadMessageIndex
             )
-//            .padding(.bottom, 25)
-//            .padding(.top, 30)
             if isMenuOpen {
                 SideBarShadowView(isMenuOpen: $isMenuOpen)
                 
                 ChatSideBar(isMenuOpen: $isMenuOpen, isExitButtonAlert: $isExitButtonAlert, chatRoomName: chatRoom.chatRoomName ?? "\(targetUserInfos[0].nickName)", targetUserInfos: targetUserInfos)
                     .offset(x: x)
                     .transition(isMenuOpen ? .move(edge: .trailing) : .move(edge: .leading))
-                //  .navigationBarHidden(isMenuOpen ? true : false)
                     .safeAreaPadding(.top, 50)
                     .gesture(DragGesture().onEnded({ (value) in
                         if value.translation.width > 0{
                             isMenuOpen = false
                         }
                     }))
-                /* .gesture(DragGesture().onChanged({ (value) in
-                        withAnimation(.easeInOut){
-                            if value.translation.width < 0 {
-                                x = width + value.translation.width
-                            } else if value.translation.width > 0 {
-                                x = value.translation.width
-                            }
-                        }
-                    }).onEnded({ (value) in
-                        withAnimation(.easeInOut) {
-                            if x < width / 2 {
-                                x = 0
-                            } else {
-                                x = width
-                                isMenuOpen = false
-                            }
-                        }
-                    }))*/
             }
         }
         .alert("채팅방 나가기", isPresented: $isExitButtonAlert) {
@@ -96,12 +74,6 @@ struct ChatDetailView: View {
         .sheet(item: $groupDetailConfig.sourceType, content: { sourceType in
             ChatImagePicker(image: $groupDetailConfig.selectedImage, sourceType: sourceType)
         })
-        //        .task {
-        //            let unreadMessageCount = await getUnReadCount()
-        //            messageStore.addListener(chatRoomID: chatRoom.id)
-        //            await messageStore.fetchMessages(chatID: chatRoom.id, unreadMessageCount: unreadMessageCount)
-        //            unreadMessageIndex = messageStore.messages.count - unreadMessageCount
-        //        }
         .task {
             let unreadMessageCount = await getUnReadCount()
             messageStore.addListener(chatRoomID: chatRoom.id)
@@ -111,21 +83,18 @@ struct ChatDetailView: View {
             
             
             if unreadMessageCount > 0 {
-                // 읽지 않은 메세지 갯수를 0으로 초기화
                 await clearUnreadMesageCount()
             }
         }
         .onDisappear {
             Task {
                 await clearUnreadMesageCount()
-                // chatStore.isDoneFetch = false
-                // 리스너 삭제
                 messageStore.removeListener()
             }
         }
     }
     
-    // 안 읽은 메시지 개수 구하기
+    /// 안 읽은 메시지 개수 구하기
     private func getUnReadCount() async -> Int {
         let dict = await chatStore.getUnreadMessageDictionary(chatRoomID: chatRoom.id)
         let unreadCount = dict?[UserStore.shared.currentUser!.id!] ?? 0
@@ -141,9 +110,8 @@ struct ChatDetailView: View {
         
         await chatStore.updateChatRoom(newChat)
     }
-    // 채팅방 나가기
+    /// 채팅방 나가기
     private func exitChatRoom() async {
-        // 참여중인 채팅방에서 나가기
         
         var newChatRoom: ChatRoom = chatRoom
         let newMember = chatRoom.members.filter { $0 != UserStore.shared.currentUser!.id! }

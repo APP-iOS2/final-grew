@@ -33,7 +33,7 @@ struct ChatSideBar: View {
                             Spacer()
                         }.font(.b2_R)
                             .padding(.vertical, 15)
-                        // 나
+
                         HStack{
                             CircularProfileImageView(
                                 chatMessage: nil,
@@ -42,7 +42,7 @@ struct ChatSideBar: View {
                             Text("\(UserStore.shared.currentUser?.nickName ?? "login error")").font(.b3_B).padding(3)
                             Spacer()
                         }
-                        // 딴사람
+
                         ForEach(targetUserInfos) { i in
                             HStack {
                                 CircularProfileImageView(

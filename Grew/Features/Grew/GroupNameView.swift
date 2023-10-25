@@ -31,7 +31,7 @@ struct GroupNameView: View {
                             isNameValid = !newValue.isEmpty
                         }
                 }
-            }//: VStack
+            }
             .padding()
             .animationModifier(isAnimating: isAnimating, delay: 0)
             
@@ -60,9 +60,9 @@ struct GroupNameView: View {
                     })
                     Spacer()
                     
-                }//: HStack
+                }
                 
-            }//: VStack
+            }
             .padding()
             .animationModifier(isAnimating: isAnimating, delay: 1)
             
@@ -93,7 +93,7 @@ struct GroupNameView: View {
                     }
             }
             
-        }//: ScrollView
+        }
         .scrollDismissesKeyboard(.immediately)
         .onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -119,7 +119,7 @@ struct GroupNameView: View {
                 viewModel.location = ""
             }
         })
-    }//: body
+    }
 }
 
 #Preview {

@@ -70,28 +70,6 @@ struct AuthStartView: View {
                     }
                     .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(hex: 0xFFD233), font: Font.b2_R, fontColor: .black, cornerRadius: 8))
                     .padding(.top, 10)
-                    //                    Button {
-                    //                        //
-                    //                    } label: {
-                    //                        Text("Apple로 로그인 하기")
-                    //                            .modifier(GrewButtonModifier(width: 330, height: 45, buttonColor: Color(.black), font: Font.b2_R, fontColor: .white))
-                    //                            .padding(.top, 10)
-                    //                    }
-                    //                    
-                    //                    Button {
-                    //                        //
-                    //                    } label: {
-                    //                        ZStack {
-                    //                            Rectangle()
-                    //                                .stroke(.blue.opacity(0.5), lineWidth: 4)
-                    //                                .frame(width: 330, height: 45)
-                    //                                .cornerRadius(10)
-                    //                                .foregroundColor(Color(.white))
-                    //                            Text("Google로 로그인 하기")
-                    //                                .modifier(GrewButtonModifier(width: 320, height: 35, buttonColor: Color(.white), font: Font.b2_R, fontColor: .black))
-                    //                        }
-                    //                    }
-                    .padding(.top, 10)
                 }
                 
                 Spacer()

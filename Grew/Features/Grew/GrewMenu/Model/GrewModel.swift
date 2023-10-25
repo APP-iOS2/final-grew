@@ -26,7 +26,6 @@ struct EditGrew: Identifiable {
     var geoHash: String
     /// 활동 지역 (ex: 구로구, 수원시)
     var district: String? {
-//        guard let location = location else { return nil }
         let locationArray = location.split(separator: " ")
         if locationArray.count > 1 {
             return String(locationArray[1])
@@ -114,7 +113,7 @@ enum Fee {
         case .exist:
             return true
         case . free:
-           return false
+            return false
         }
     }
 }
