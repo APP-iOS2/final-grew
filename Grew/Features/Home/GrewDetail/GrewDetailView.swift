@@ -48,6 +48,17 @@ struct GrewDetailView: View {
     private let headerHeight: CGFloat = 180
     
     let grew: Grew
+    @State private var updatedGrew: Grew = Grew(
+        categoryIndex: "",
+        categorysubIndex: "",
+        title: "",
+        isOnline: false,
+        gender: .any,
+        minimumAge: 20,
+        maximumAge: 20,
+        maximumMembers: 10,
+        isNeedFee: false
+    )
     @State private var chatRoom: ChatRoom = ChatRoom(id: "", members: [], createdDate: Date(), lastMessage: "", lastMessageDate: Date(), unreadMessageCount: [:])
     
     var body: some View {
@@ -59,11 +70,11 @@ struct GrewDetailView: View {
                     Section {
                         switch selectedFilter {
                         case .introduction:
-                            GrewIntroductionView(grew: grew)
+                            GrewIntroductionView(grew: updatedGrew)
                         case .schedule:
-                            ScheduleListView(grew: grew)
+                            ScheduleListView(grew: updatedGrew)
                         case .groot:
-                            GrootListView(grew: grew)
+                            GrootListView(grew: updatedGrew)
                         }
                     } header: {
                         makeHeaderFilterView()
@@ -94,7 +105,7 @@ struct GrewDetailView: View {
             .toolbarBackground(isScrollDown ? .hidden : .visible, for: .navigationBar)
             .grewAlert(
                 isPresented: $isShowingJoinFinishAlert,
-                title: "\(grew.title)에 참여 완료!",
+                title: "\(updatedGrew.title)에 참여 완료!",
                 secondButtonTitle: nil,
                 secondButtonColor: nil,
                 secondButtonAction: nil,
@@ -106,7 +117,7 @@ struct GrewDetailView: View {
             )
             .grewAlert(
                 isPresented: $isShowingJoinConfirmAlert,
-                title: "\(grew.title)에 참여하시겠습니까?",
+                title: "\(updatedGrew.title)에 참여하시겠습니까?",
                 secondButtonTitle: "취소",
                 secondButtonColor: .LightGray2,
                 secondButtonAction: { },
@@ -115,7 +126,7 @@ struct GrewDetailView: View {
                 action: {
                     Task {
                         if let userId = UserStore.shared.currentUser?.id {
-                            grewViewModel.addGrewMember(grewId: grew.id, userId: userId)
+                            grewViewModel.addGrewMember(grewId: updatedGrew.id, userId: userId)
                         }
                         await startMessage()
                         
@@ -130,7 +141,7 @@ struct GrewDetailView: View {
         }
         .grewAlert(
             isPresented: $isShowingWithdrawConfirmAlert,
-            title: "\(grew.title)에 탈퇴하시겠습니까?",
+            title: "\(updatedGrew.title)에 탈퇴하시겠습니까?",
             secondButtonTitle: "취소",
             secondButtonColor: .LightGray2,
             secondButtonAction: { },
@@ -138,14 +149,14 @@ struct GrewDetailView: View {
             buttonColor: .Error,
             action: {
                 if let userId = UserStore.shared.currentUser?.id {
-                    grewViewModel.withdrawGrewMember(grewId: grew.id, userId: userId)
+                    grewViewModel.withdrawGrewMember(grewId: updatedGrew.id, userId: userId)
                     isShowingWithdrawFinishAlert = true
                 }
             }
         )
         .grewAlert(
             isPresented: $isShowingWithdrawFinishAlert,
-            title: "\(grew.title)에 탈퇴 완료!",
+            title: "\(updatedGrew.title)에 탈퇴 완료!",
             secondButtonTitle: nil,
             secondButtonColor: nil,
             secondButtonAction: nil,
@@ -160,7 +171,8 @@ struct GrewDetailView: View {
             chatRoom = await ChatStore.getChatRoomFromGID(gid: grew.id) ?? ChatRoom(id: "", members: [], createdDate: Date(), lastMessage: "", lastMessageDate: Date(), unreadMessageCount: [:])
         }
         .onAppear {
-            grewViewModel.selectedGrew = grew
+            updatedGrew = grew
+            grewViewModel.selectedGrew = updatedGrew
             heartState = UserStore.shared.checkFavorit(gid: grew.id)
         }
         .onDisappear {
@@ -171,7 +183,7 @@ struct GrewDetailView: View {
             case .grewEdit:
                 GrewEditView()
             case .setting:
-                GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, isGrewRemoved: $isGrewRemoved, grew: grew)
+                GrewEditSheetView(isShowingWithdrawConfirmAlert: $isShowingWithdrawConfirmAlert, isGrewRemoved: $isGrewRemoved, grew: updatedGrew)
                     .readHeight()
                     .onPreferenceChange(HeightPreferenceKey.self) { height in
                         if let height {
@@ -187,6 +199,11 @@ struct GrewDetailView: View {
         .onChange(of: isGrewRemoved, { oldValue, newValue in
             dismiss()
         })
+        .onReceive(grewViewModel.grewList.publisher, perform: { _ in
+            if let updatedGrew = grewViewModel.grewList.first(where: { $0.id == grew.id }) {
+                self.updatedGrew = updatedGrew
+            }
+        })
     }
     
 }
@@ -196,7 +213,7 @@ extension GrewDetailView {
     /// 헤더 이미지뷰
     private func makeHeaderImageView() -> some View {
         GeometryReader { geometry in
-            AsyncImage(url: URL(string: grew.imageURL)) { image in
+            AsyncImage(url: URL(string: updatedGrew.imageURL)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -276,12 +293,12 @@ extension GrewDetailView {
     private func makeBottomButtons() -> some View {
         HStack(spacing: 20) {
             Button {
-                if UserStore.shared.addFavorit(gid: grew.id) {
+                if UserStore.shared.addFavorit(gid: updatedGrew.id) {
                     heartState = true
                 } else {
                     heartState = false
                 }
-                grewViewModel.heartTapping(gid: grew.id)
+                grewViewModel.heartTapping(gid: updatedGrew.id)
             } label: {
                 Image(systemName: heartState ? "heart.fill" : "heart")
                     .resizable()
@@ -291,7 +308,7 @@ extension GrewDetailView {
             
             // 현재 사용자가 이미 그룹의 구성원인지 확인
             if let currentUserId = UserStore.shared.currentUser?.id {
-                if grew.currentMembers.contains(currentUserId) && grew.currentMembers.count < grew.maximumMembers || isChatViewButton == true {
+                if updatedGrew.currentMembers.contains(currentUserId) && updatedGrew.currentMembers.count < updatedGrew.maximumMembers || isChatViewButton == true {
                     NavigationLink {
                         ChatDetailView(
                             chatRoom: chatRoom,
@@ -316,20 +333,20 @@ extension GrewDetailView {
                     .padding(.bottom, 2)
                 } else {
                     Button {
-                        if grew.currentMembers.count < grew.maximumMembers {
+                        if updatedGrew.currentMembers.count < updatedGrew.maximumMembers {
                             isShowingJoinConfirmAlert = true
                         }
                     } label: {
-                        Text(grew.currentMembers.count >= grew.maximumMembers ? "그루 마감" : "그루 참여하기")
+                        Text(updatedGrew.currentMembers.count >= updatedGrew.maximumMembers ? "그루 마감" : "그루 참여하기")
                             .grewButtonModifier(
                                 width: 260,
                                 height: 44,
-                                buttonColor: grew.currentMembers.count >= grew.maximumMembers ? .LightGray2 : .Main,
+                                buttonColor: updatedGrew.currentMembers.count >= updatedGrew.maximumMembers ? .LightGray2 : .Main,
                                 font: .b1_B,
                                 fontColor: .white,
                                 cornerRadius: 8
                             )
-                    }.disabled(grew.currentMembers.count >= grew.maximumMembers)
+                    }.disabled(updatedGrew.currentMembers.count >= updatedGrew.maximumMembers)
                         .padding(.bottom, 2)
                 }
             }
