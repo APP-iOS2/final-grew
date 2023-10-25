@@ -21,7 +21,6 @@ struct DefaultSelectedButton: View {
             Text(text)
                 .font(.b2_R)
         })
-//        .frame(maxWidth: .infinity)
         .frame(height: isBig ? 44 : 32)
         .foregroundStyle(isSelected ? Color.white : Color.DarkGray1)
         .padding(.horizontal, isBig ? 20 :24)

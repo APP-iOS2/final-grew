@@ -47,8 +47,10 @@ final class MapStore: ObservableObject {
     
     func fetchNearGrew() {
         let currentLocation = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
-        let queryBounds = GFUtils.queryBounds(forLocation: currentLocation,
-                                              withRadius: radiusInM)
+        let queryBounds = GFUtils.queryBounds(
+            forLocation: currentLocation,
+            withRadius: radiusInM
+        )
         let queries = queryBounds.map { bound -> Query in
             return Firestore.firestore().collection("grews")
                 .order(by: "geoHash")

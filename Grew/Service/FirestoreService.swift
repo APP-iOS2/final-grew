@@ -10,14 +10,14 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class FirestoreService {
-    // 리스너 생성
+    /// 리스너 생성
     private var listener: ListenerRegistration?
     
     func configure() {
         FirebaseApp.configure()
     }
     
-    // 리스너 연결 + 쿼리 처리 + 레퍼런스 생성 값 가져오기
+    /// 리스너 연결 + 쿼리 처리 + 레퍼런스 생성 값 가져오기
     func objects<T: FireCodable>(_ object: T.Type, reference: Reference, parameter: DataQuery? = nil) async throws -> [T] {
         guard let parameter else {
             let snapshot = try await reference.reference().getDocuments()
@@ -76,34 +76,6 @@ class FirestoreService {
     deinit {
         listener?.remove()
     }
-    
-    /*
-    func delete<T>(_ objects: T.Type, reference: Reference, parameter: DataQuery, completion: @escaping CompletionObject<FirestoreResponse>) where T: FireCodable {
-        let queryReference: Query
-        switch parameter.mode {
-        case .equal:
-            queryReference = reference.reference().whereField(parameter.key, isEqualTo: parameter.value)
-        case .lessThan:
-            queryReference = reference.reference().whereField(parameter.key, isLessThan: parameter.value)
-        case .moreThan:
-            queryReference = reference.reference().whereField(parameter.key, isGreaterThan: parameter.value)
-        case .contains:
-            queryReference = reference.reference().whereField(parameter.key, arrayContains: parameter.value)
-        }
-        queryReference.getDocuments { (snap, error) in
-            guard error.isNone else { completion(.failure); return }
-            let batch = reference.reference().firestore.batch()
-            snap?.documents.forEach({ (document) in
-                batch.deleteDocument(document.reference)
-            })
-            batch.commit(completion: { (err) in
-                guard err == nil else { completion(.failure); return }
-                completion(.success)
-            })
-        }
-    }
-     */
-    
 }
 
 extension FirestoreService {

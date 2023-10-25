@@ -21,7 +21,6 @@ struct UserContentListView: View {
     private let headerHeight: CGFloat = 262
     
     var body: some View {
-        // user content list view
         VStack {
             HStack{
                 ForEach(ProfileThreadFilter.allCases) { filter in
@@ -56,8 +55,6 @@ struct UserContentListView: View {
         }
         .frame(height: 50, alignment: .center)
         .background(Color.white)
-        
-        
     }
 }
 

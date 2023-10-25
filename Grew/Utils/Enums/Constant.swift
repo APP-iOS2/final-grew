@@ -7,7 +7,7 @@
 
 import Foundation
 
-// 상수 값 설정
+/// 상수 값 설정
 public enum Constant {
     static let bubble: CGFloat = 40
     static let chatRoomList: CGFloat = 50

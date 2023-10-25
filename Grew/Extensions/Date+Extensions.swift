@@ -7,7 +7,6 @@
 
 import Foundation
 
-//
 extension Date {
     public func toFormattedString(format: String) -> String {
         let dateFormatter = DateFormatter()
@@ -31,7 +30,7 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    // 2023-07-01 타입 형태로 오래 간직할 숏스 조회
+    /// 2023-07-01 타입 형태로 오래 간직할 숏스 조회
     public func toFormattedTargetDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"
@@ -42,7 +41,7 @@ extension Date {
         return "\(formattedTargetDate)-01"
     }
     
-    // 기준 월의 이전 월
+    /// 기준 월의 이전 월
     public func minusMonth() -> Date {
         guard let month = Calendar.current.date(byAdding: .month, value: -1, to: self) else {
             return Date()
@@ -50,7 +49,7 @@ extension Date {
         return month
     }
     
-    // 기준 월의 이후 월
+    /// 기준 월의 이후 월
     public func plusMonth() -> Date {
         guard let month = Calendar.current.date(byAdding: .month, value: 1, to: self) else {
             return Date()
@@ -58,7 +57,7 @@ extension Date {
         return month
     }
     
-    // 기준 월의 첫번째 날짜 출력
+    /// 기준 월의 첫번째 날짜 출력
     public func firstDayOfMonth() -> Date {
         let components = Calendar.current.dateComponents([.year, .month], from: self)
         

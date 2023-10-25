@@ -71,7 +71,6 @@ struct ProfileView: View {
                 if user == UserStore.shared.currentUser {
                     ToolbarItem {
                         Button {
-                            //                                SettingView()
                             router.profileNavigate(to: .setting)
                         } label: {
                             Image(systemName: "gearshape.fill")
@@ -82,7 +81,6 @@ struct ProfileView: View {
                     ToolbarItem {
                         Button {
                             isMessageAlert = true
-                            //                            SettingView()
                         } label: {
                             Image(systemName: "paperplane.fill")
                                 .foregroundStyle(Color.white)
@@ -93,7 +91,6 @@ struct ProfileView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .coordinateSpace(name: "SCROLL")
-            //            .ignoresSafeArea(.container, edges: .vertical)
             .alert("채팅방 이동", isPresented: $isMessageAlert) {
                 Button("취소", role: .cancel) {}
                 Button("확인", role: .destructive) {
@@ -132,7 +129,7 @@ struct ProfileView: View {
             }
         )
         .navigationBarBackground(.Main)
-        .task { // 댑악 멋져. 휴
+        .task {
             isLoading = true
             
             if let currentUser = UserStore.shared.currentUser, user == currentUser {
@@ -144,12 +141,9 @@ struct ProfileView: View {
             isLoading = false
         }
     }
-    //    }
     @ViewBuilder
     private func headerView() -> some View {
         var backgroundHeight: CGFloat {
-            //        let count = CGFloat(ProfileThreadFilter.allCases.count)
-            //        return UIScreen.main.bounds.height / count - 100
             return UIScreen.main.bounds.height / 5
         }
         GeometryReader { proxy in
@@ -215,12 +209,11 @@ struct ProfileView: View {
 
 extension ProfileView {
     
-    // 1:1 메시지 생성
     private func startMessage() async {
-        // 1. 채팅방을 생성하고 인원을 넣는다.
+
         let chatRoom = await makeChatRoomForNewRoom()
         await chatStore.addChatRoom(chatRoom)
-        // 2. 시스템 메시지를 추가한다.
+
         let newMessage = ChatMessage(text: "\(user!.nickName) 님과 \(UserStore.shared.currentUser!.nickName)의 대화가 시작되었습니다.", uid: "system", userName: "시스템 메시지", isSystem: true)
         
         messageStore.addMessage(newMessage, chatRoomID: chatRoom.id)

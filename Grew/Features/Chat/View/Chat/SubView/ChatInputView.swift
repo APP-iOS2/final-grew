@@ -31,8 +31,6 @@ struct ChatInputView: View {
                         .stroke(isChatTextFieldFocused ? Color.grewMainColor : Color.gray, lineWidth: 1)
                 )
                 .font(.c1_R)
-            //            TextField("메세지 보내기", text: $groupDetailConfig.chatText)
-            //                .focused($isChatTextFieldFocused)
             Button {
                 Task {
                     if groupDetailConfig.selectedImage != nil, !groupDetailConfig.chatText.isEmptyOrWhiteSpace {
@@ -52,7 +50,6 @@ struct ChatInputView: View {
     
     private func clearFields() {
         groupDetailConfig.clearForm()
-        //        appState.loadingState = .idle
     }
     
     private func sendMessage() async {
@@ -103,7 +100,6 @@ struct ChatInputView: View {
         return newMessage
     }
     
-    //
     private func makeChatRoomForSend() async -> ChatRoom {
         var newChatRoom: ChatRoom = chatRoom
         var newUnreadMessageCountDict: [String: Int] = await chatStore.getUnreadMessageDictionary(chatRoomID: chatRoom.id) ?? [:]

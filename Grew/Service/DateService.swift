@@ -11,7 +11,6 @@ final class DateService {
     static let shared = DateService()
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        // 여기 커스텀 + 하단의 포맷 여러개 생성해서 생성 비용 줄이도록 싱글톤 처리
         return formatter
     }()
     

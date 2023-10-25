@@ -8,14 +8,6 @@
 import SwiftUI
 import WebKit
 
-/*
- jibunAddress : 지번주소
- roadAddress : 도로명주소
- zonecode : 우편번호
- x(latitude) : 위도
- y(longitude) : 경도
-*/
-
 class KakaoWebController: NSObject, WKScriptMessageHandler {
     @Binding var showingWebSheet: Bool
     @Binding var location: String
@@ -29,18 +21,10 @@ class KakaoWebController: NSObject, WKScriptMessageHandler {
         self._longitude = longitude
     }
     
-    // didReceive, 데이터 받아옴
+    /// didReceive, 데이터 받아옴
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         
         if message.name == "callBackHandler", let data = message.body as? [String: Any] {
-            print("message name : \(message.name)")
-            print("post Message : \(message.body)")
-            
-            print(data["jibunAddress"] as Any)
-            print(data["roadAddress"] as Any)
-            print(data["x"] as Any)
-            print(data["y"] as Any)
-            print(data["zonecode"] as Any)
         
             if let roadAddress = (data["roadAddress"]) as? String{
                 location = roadAddress
@@ -51,10 +35,6 @@ class KakaoWebController: NSObject, WKScriptMessageHandler {
             if let roadLongitude = (data["y"]) as? String{
                 longitude = roadLongitude
             }
-            
-            print("Binding lacation: \(String(describing: location))")
-            print("Binding latitude: \(String(describing: latitude))")
-            print("Binding longitude: \(String(describing: longitude))")
             showingWebSheet.toggle()
         }
     }
@@ -114,8 +94,7 @@ extension WebView {
                 print("It's void function")
                 return
             }
-            
-            print("Received Data \(result ?? "")")
+
         }
     }
 }

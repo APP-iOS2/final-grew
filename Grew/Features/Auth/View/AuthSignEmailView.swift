@@ -39,12 +39,23 @@ struct AuthSignEmailView: View {
                 VStack(alignment: .leading) {
                     Text("이메일(아이디)")
                         .font(Font.b2_L)
-                    GrewTextField(text: $email, isWrongText: isWrongText, isTextfieldDisabled: isTextfieldDisabled, placeholderText: "이메일", isSearchBar: false)
+                    GrewTextField(
+                        text: $email,
+                        isWrongText: isWrongText,
+                        isTextfieldDisabled: isTextfieldDisabled,
+                        placeholderText: "이메일",
+                        isSearchBar: false
+                    )
                     
                     Text("비밀번호")
                         .font(Font.b2_L)
                         .padding(.top, 15)
-                    GrewSecureField(text: $password, isWrongText: $isWrongText, isTextfieldDisabled: $isTextfieldDisabled, placeholderText: "비밀번호")
+                    GrewSecureField(
+                        text: $password,
+                        isWrongText: $isWrongText,
+                        isTextfieldDisabled: $isTextfieldDisabled,
+                        placeholderText: "비밀번호"
+                    )
                 }
                 .padding()
                 

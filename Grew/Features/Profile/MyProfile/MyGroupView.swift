@@ -33,10 +33,3 @@ struct MyGroupView: View {
         }
     }
 }
-
-/*
-#Preview {
-    NavigationStack {
-        MyGroupView(user: User.dummyUser, profile: )
-    }
-}*/

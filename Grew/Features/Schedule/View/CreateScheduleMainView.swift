@@ -5,9 +5,6 @@
 //  Created by daye on 10/16/23.
 //
 
-// TODO
-// 참가비 콤마 추가
-
 import SwiftUI
 
 struct CreateScheduleMainView: View {
@@ -31,21 +28,17 @@ struct CreateScheduleMainView: View {
         ZStack {
             ScrollView{
                 VStack{
-                    // 일정 이름
+
                     ScheduleNameField(isScheduleNameError: $isScheduleNameError, scheduleName: $scheduleName)
-                    
-                    // 날짜, 시간
+
                     ScheduleDatePicker(titleName: "날짜", isDatePickerVisible: $isDatePickerVisible, date: $scheduleStore.date)
                     ScheduleDatePicker(titleName: "시간", isDatePickerVisible: $isDatePickerVisible, date: $scheduleStore.date)
-                    
-                    // 정원
+
                     GuestNumField(isGuestNumError: $isGuestNumError, maximumMenbers: $maximumMenbers)
-                    
-                    // 선택 메뉴
+
                     ScheduleOptionMenu(menuName: "참가비", option: $fee, isOptionError: $isFeeError, hasOption: $hasFee, isShowingWebSheet: $showingWebSheet)
                     ScheduleOptionMenu(menuName: "위치", option: $location, isOptionError: $isLocationError, hasOption: $hasLocation, isShowingWebSheet: $showingWebSheet )
                     
-                    // 배너 색상 선택
                     ScheduleColorPicker(colorPick: $colorPick)
                     
                     submitBtn
@@ -74,10 +67,6 @@ struct CreateScheduleMainView: View {
                 .onAppear{
                     scheduleStore.fetchSchedule()
                 }
-//                .safeAreaInset(edge: .bottom) {
-//                    submitBtn
-//                        .background(Color.white.opacity(0.8))
-//                }
                 .disabled(isDatePickerVisible)
                 .onTapGesture {
                     if isDatePickerVisible {
@@ -85,12 +74,10 @@ struct CreateScheduleMainView: View {
                     }
                 }
             
-            // DatePicker
             if isDatePickerVisible {
                 DateForm(isDatePickerVisible: $isDatePickerVisible, date: $scheduleStore.date)
             }
             
-            // alert
             if showingFinishAlert {
                 Color.clear
                     .grewAlert(
@@ -103,9 +90,7 @@ struct CreateScheduleMainView: View {
                         buttonColor: Color.grewMainColor
                     ) {
                         dismiss()
-                        //                        finishCreate()
                     }
-                //                    .modifier(GrewAlertModifier(isPresented: $showingFinishAlert, title: "일정 생성 완료!", buttonTitle: "확인", buttonColor: Color.grewMainColor, action: finishCreate))
             }
         }
         .sheet(isPresented: $showingWebSheet, content: {
@@ -119,7 +104,7 @@ struct CreateScheduleMainView: View {
         )
     }
     
-    // 일정 생성 버튼
+    /// 일정 생성 버튼
     private var submitBtn: some View {
         Button {
             errorCheck()
@@ -183,9 +168,7 @@ struct CreateScheduleMainView: View {
                 color: colorPick
             )
             scheduleStore.addSchedule(newSchedule)
-        } else {
-            print("생성자 로그인 정보 없음")
-        }
+        } 
     }
 }
 

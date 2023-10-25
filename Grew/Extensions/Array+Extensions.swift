@@ -7,7 +7,6 @@
 
 import Foundation
 
-// 안전하게 추출
 extension Array {
     public subscript(safe index: Int) -> Element? {
         get {

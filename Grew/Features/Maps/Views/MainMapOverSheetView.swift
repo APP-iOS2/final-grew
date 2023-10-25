@@ -24,7 +24,6 @@ struct MainMapOverSheetView: View {
                             } label: {
                                 GrewCellView(grew: item)
                             }
-//                            MapListItemView(item: item)
                         }
                     }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 }

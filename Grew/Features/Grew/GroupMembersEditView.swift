@@ -73,7 +73,7 @@ struct GroupMembersEditView: View {
             }
             .padding()
             .animationModifier(isAnimating: isAnimating, delay: 1)
-        }//: ScrollView
+        }
         .scrollDismissesKeyboard(.immediately)
         .onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -84,7 +84,7 @@ struct GroupMembersEditView: View {
                 viewModel.maximumMembers = ""
             }
         })
-    }//: body
+    }
 }
 
 #Preview {

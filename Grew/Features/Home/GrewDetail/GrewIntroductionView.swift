@@ -11,7 +11,6 @@ struct GrewIntroductionView: View {
     @State private var hostUser: User?
     let grew: Grew
     
-    // 호스트 이미지, 호스트 이름 추가하기
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
             AsyncImage(url: URL(string: "\(hostUser?.userImageURLString ?? "")")) { image in
@@ -101,9 +100,6 @@ struct GrewIntroductionView: View {
             Spacer()
         }
         .padding(EdgeInsets(top: 15, leading: 20, bottom: 15, trailing: 20))
-//        .onAppear(perform: {
-//            userViewModel.fetchUser(userId: grew.hostID)
-//        })
         .onAppear {
             Task {
                 hostUser = try await UserStore.shared.findUser(id: grew.hostID)

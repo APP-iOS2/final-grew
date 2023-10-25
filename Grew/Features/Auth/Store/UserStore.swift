@@ -13,7 +13,6 @@ import Foundation
 
 class UserStore: ObservableObject {
     
-    // 싱글톤 패턴
     static let shared = UserStore()
     private static let db = Firestore.firestore()
     
@@ -28,10 +27,9 @@ class UserStore: ObservableObject {
     @MainActor
     func fetchCurrentUser(_ user: User) {
         self.currentUser = user
-        print(self.currentUser!)
     }
     
-    // Firebase에 있는 유저정보 불러오기
+    /// Firebase에 있는 유저정보 불러오기
     func loadUserData() async throws {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
@@ -42,7 +40,7 @@ class UserStore: ObservableObject {
         await fetchCurrentUser(currentUser)
     }
     
-    // 검색기록 user 데이터에 업로드
+    /// 검색기록 user 데이터에 업로드
     func updateSearchHistory(searchHistory: [String]) {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
@@ -55,7 +53,6 @@ class UserStore: ObservableObject {
     }
     
     static func requestAndReturnUsers(userID: [String]) async -> [User]? {
-//        if userID.isEmpty { return nil }
         var newUser: [User] = []
         for user in userID {
             let doc = db.collection("users").document(user)
@@ -86,11 +83,9 @@ class UserStore: ObservableObject {
     
     func checkFavorit(gid: String) -> Bool {
         let favoritGrew: [String] = UserStore.shared.currentUser?.favoritGrew ?? []
-        // 유저안에 그루가 있으면 true
         if favoritGrew.contains(gid) {
             return true
         } else {
-            // 유저안에 그루가 없으면 false
             return false
         }
     }
@@ -100,8 +95,6 @@ class UserStore: ObservableObject {
         var favoritGrew: [String] = UserStore.shared.currentUser?.favoritGrew ?? []
         
         if checkFavorit(gid: gid) {
-            // 유저안에 그루가 있으면 true
-            // 유저안에 그루를 삭제
             var index: Int = 0
             for grewID in favoritGrew {
                 if grewID == gid {
@@ -113,8 +106,6 @@ class UserStore: ObservableObject {
             flag = false
             
         } else {
-            // 유저안에 그루가 없으면 false
-            // 그루가 없어서 추가
             favoritGrew += [gid]
         }
         

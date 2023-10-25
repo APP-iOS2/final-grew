@@ -86,8 +86,7 @@ struct MessageBubbles: View {
                 Text(chatMessage.userName)
                     .font(.c1_B)
                     .padding(EdgeInsets(top: 0, leading: 3, bottom: -4, trailing: 0))
-                VStack{
-                    // attachment photo URL
+                VStack {
                     if !chatMessage.attachImageURL.isEmpty {
                         KFImage.url(URL(string: chatMessage.attachImageURL))
                             .placeholder({ _ in
@@ -100,13 +99,12 @@ struct MessageBubbles: View {
                     if chatMessage.text.isEmpty {
                         
                     } else {
-                         Text(chatMessage.text)
-                        .font(.c1_R)
-                        .foregroundColor(.black)
-                        .padding(EdgeInsets(top: 11, leading: 15, bottom: 10, trailing: 15))
+                        Text(chatMessage.text)
+                            .font(.c1_R)
+                            .foregroundColor(.black)
+                            .padding(EdgeInsets(top: 11, leading: 15, bottom: 10, trailing: 15))
                     }
                 }.cornerRadius(15)
-                //                    .background(Color.LightGray2)
                 .overlay(
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(Color.LightGray2, lineWidth: 1)

@@ -48,24 +48,12 @@ struct GrewListItemView: View {
                     .padding(.top, 1)
                 
                 HStack {
-                    /*
-                    Group {
-                        ForEach(0..<5, content: { index in
-                            AsyncImage(url: URL(string: ""), content: { image in
-                                image
-                            }, placeholder: {
-                                ProgressView()
-                            })
-                        }).padding(.horizontal, -10)
-                    }*/
                     Spacer()
                     Group {
-                        // 모임 이미지
                         Image(systemName: "person.2.fill")
                             .padding(.trailing, -5)
                             .font(.c2_B)
                             .foregroundStyle(Color.DarkGray1)
-                        // 모임 정원
                         HStack {
                             Text("\(grew.currentMembers.count)")
                             Text("/")
@@ -85,4 +73,3 @@ struct GrewListItemView: View {
             .padding(.vertical, 2)
     }
 }
-

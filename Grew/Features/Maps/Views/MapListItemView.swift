@@ -5,9 +5,9 @@
 //  Created by 마경미 on 10.10.23.
 //
 
-import SwiftUI
 import Firebase
 import FirebaseFirestoreSwift
+import SwiftUI
 
 struct MapListItemView: View {
     

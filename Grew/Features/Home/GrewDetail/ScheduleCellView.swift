@@ -18,7 +18,7 @@ struct ScheduleCellView: View {
                     .font(.b1_B)
                     .padding()
                     .foregroundColor(.white)
-            }//: HStack
+            }
             .frame(height: 40)
             .background(Color(hexCode: schedule.color))
             CircleImage()
@@ -32,9 +32,7 @@ struct ScheduleCellView: View {
                         .padding(.vertical, 1)
                     Text("인원")
                         .padding(.vertical, 1)
-//                    Text("장소")
-//                        .padding(.vertical, 1)
-                }//: VStack
+                }
                 .font(.c1_R)
                 Spacer()
                 VStack(alignment: .trailing) {
@@ -44,14 +42,12 @@ struct ScheduleCellView: View {
                         .padding(.vertical, 1)
                     Text("\(schedule.participants.count)/\(schedule.maximumMember)")
                         .padding(.vertical, 1)
-//                    Text("\(schedule.location == nil ? "온라인" : "오프라인")")
-//                        .padding(.vertical, 1)
-                }//: VStack
+                }
                 .font(.c1_B)
-            }//: HStack
+            }
             .foregroundStyle(.black)
             .padding(EdgeInsets(top: 8, leading: 16, bottom: 16, trailing: 16))
-        }//: VStack
+        }
         .background(Color.white)
         .cornerRadius(6)
         .frame(width: 160, height: 160)

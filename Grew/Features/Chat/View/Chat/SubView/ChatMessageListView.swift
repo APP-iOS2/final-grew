@@ -13,16 +13,12 @@ struct ChatMessageListView: View {
     @EnvironmentObject private var messageStore: MessageStore
     let chatRoom: ChatRoom
     let targetUserInfos: [User]
-    // targetGrewInfoDict
     @Binding var groupDetailConfig: GroupDetailConfig
     @Binding var isMenuOpen: Bool
     @Binding var x: CGFloat
     @Binding var unreadMessageIndex: Int?
     
     var chatRoomName: String {
-        // 바꿀것
-        //        if let chatGrewInfo {
-        //            return chatGrewInfo.title
         if let chatRoomName = chatRoom.chatRoomName {
             return chatRoomName
         } else {
@@ -61,7 +57,7 @@ struct ChatMessageListView: View {
                     }
                 }
                 
-                // 안 읽은 메시지 개수 확인해서 해당 뷰로 스크롤
+                /// 안 읽은 메시지 개수 확인해서 해당 뷰로 스크롤
                 .onChange(of: unreadMessageIndex) { state, newState in
                     DispatchQueue.main.async {
                         Task {
@@ -76,7 +72,7 @@ struct ChatMessageListView: View {
                 .onChange(of: groupDetailConfig.selectedImage) { state, newState in
                     proxy.scrollTo("bottom", anchor: .bottomTrailing)
                 }
-                // 새로운 메시지 추가 여부 (보내거나, 받거나) 확인하여 최하단의 뷰로 스크롤 진행
+                /// 새로운 메시지 추가 여부 (보내거나, 받거나) 확인하여 최하단의 뷰로 스크롤 진행
                 .onChange(of: messageStore.isMessageAdded) { state, newState in
                     if messageStore.isFetchMessageDone {
                         proxy.scrollTo("bottom", anchor: .bottomTrailing)
@@ -115,7 +111,7 @@ struct ChatMessageListView: View {
         let unreadCount = dict?[UserStore.shared.currentUser!.id! ] ?? 0
         return unreadCount
     }
-    // 읽지 않은 메시지 개수 0으로 초기화 + 업데이트 (채팅방 입장 시, 퇴장 시)
+    /// 읽지 않은 메시지 개수 0으로 초기화 + 업데이트 (채팅방 입장 시, 퇴장 시)
     private func clearUnreadMesageCount() async {
         var newChat: ChatRoom = chatRoom
         
@@ -154,7 +150,3 @@ struct ChatMessageListView: View {
         }
     }
 }
-//
-// #Preview {
-//    ChatMessageListView(isMenuOpen: .constant(true), x: .constant(450))
-// }

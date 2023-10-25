@@ -23,7 +23,6 @@ struct GrewEditSheetView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-//                Color(red: 0, green: 0, blue: 0, opacity: 0.3)
                 VStack {
                     Spacer()
                     VStack {
@@ -41,7 +40,7 @@ struct GrewEditSheetView: View {
                             .foregroundStyle(Color.Black)
                             Divider()
                             Button {
-                                //
+                                
                             } label: {
                                 Text("그루트 관리")
                                 Spacer()
@@ -148,7 +147,6 @@ struct GrewEditSheetView: View {
 
 extension GrewEditSheetView {
     private func exitChatRoom() async {
-        // 이 그루의 채팅방에서 나가기
         guard let user = UserStore.shared.currentUser else {
             return
         }

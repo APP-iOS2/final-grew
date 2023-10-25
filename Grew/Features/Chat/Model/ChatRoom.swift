@@ -29,9 +29,9 @@ struct ChatRoom: Identifiable, Codable, Equatable {
     var unreadMessageCount: [String: Int]
 }
 
-// 연산 프로퍼티를 나누기 위한 익스텐션
+/// 연산 프로퍼티를 나누기 위한 익스텐션
 extension ChatRoom {
-    // 로그인한 유저를 제외한 나머지 채팅방의 인원을 반환하는 연산 프로퍼티
+    /// 로그인한 유저를 제외한 나머지 채팅방의 인원을 반환하는 연산 프로퍼티
     var otherUserIDs: [String] {
         if members.count == 1 { return [] }
         if let currentUser = UserStore.shared.currentUser {
@@ -40,17 +40,17 @@ extension ChatRoom {
         return []
     }
     
-    // 생성일 (년 월 일 시 분 초)
+    /// 생성일 (년 월 일 시 분 초)
     var createDateString: String {
         DateService.shared.createDateFormat(createdDate)
     }
     
-    // 년 월 일
+    /// 년 월 일
     var lastMessageDateString: String {
         DateService.shared.lastMessageDateFormat(lastMessageDate)
     }
     
-    // 시:분
+    /// 시:분
     var lastMessageTimeString: String {
         DateService.shared.lastMessageFormat(lastMessageDate)
     }

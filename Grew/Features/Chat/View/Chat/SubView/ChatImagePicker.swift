@@ -55,6 +55,4 @@ struct ChatImagePicker: UIViewControllerRepresentable {
         }
         
     }
-    
-    
 }

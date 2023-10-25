@@ -37,7 +37,7 @@ struct MyGroupScheduleView: View {
                     }
                 }
             }.sheet(isPresented: $isShowingSheet, content: {
-               ScheduleDetailView(scheduleId: selectedScheduleId)
+                ScheduleDetailView(scheduleId: selectedScheduleId)
             })
             .onChange(of: selectedScheduleId) { oldValue, newValue in
                 scheduleId = selectedScheduleId

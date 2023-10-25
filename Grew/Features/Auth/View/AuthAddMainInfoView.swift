@@ -31,21 +31,37 @@ struct AuthAddMainInfoView: View {
             VStack(alignment: .leading) {
                 Text("이메일(아이디)")
                     .font(Font.b2_L)
-                GrewTextField(text: $viewModel.email, isWrongText: isWrongEmail, isTextfieldDisabled: isTextfieldDisabled, placeholderText: "이메일", isSearchBar: false)
+                GrewTextField(
+                    text: $viewModel.email,
+                    isWrongText: isWrongEmail,
+                    isTextfieldDisabled: isTextfieldDisabled,
+                    placeholderText: "이메일",
+                    isSearchBar: false
+                )
                     .onChange(of: viewModel.email) {
                         isWrongEmail = !(viewModel.isValidEmail(viewModel.email))
                     }
                 
                 Text("비밀번호")
                     .font(Font.b2_L)
-                GrewSecureField(text: $viewModel.password, isWrongText: $isWrongPassword, isTextfieldDisabled: $isTextfieldDisabled, placeholderText: "비밀번호")
+                GrewSecureField(
+                    text: $viewModel.password,
+                    isWrongText: $isWrongPassword,
+                    isTextfieldDisabled: $isTextfieldDisabled,
+                    placeholderText: "비밀번호"
+                )
                     .onChange(of: viewModel.password) {
                         isWrongPassword = !(viewModel.isValidPassword(viewModel.password))
                     }
                 
                 Text("비밀번호 확인")
                     .font(Font.b2_L)
-                GrewSecureField(text: $viewModel.checkPassword, isWrongText: $isSamePassword, isTextfieldDisabled: $isTextfieldDisabled, placeholderText: "비밀번호 확인")
+                GrewSecureField(
+                    text: $viewModel.checkPassword,
+                    isWrongText: $isSamePassword,
+                    isTextfieldDisabled: $isTextfieldDisabled,
+                    placeholderText: "비밀번호 확인"
+                )
                     .onChange(of: viewModel.checkPassword) {
                         isSamePassword = viewModel.isSamePassword(viewModel.password, viewModel.checkPassword)
                     }

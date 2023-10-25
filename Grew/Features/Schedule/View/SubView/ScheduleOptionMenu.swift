@@ -55,53 +55,53 @@ struct ScheduleOptionMenu: View {
                         .cornerRadius(8)
                 }
             }
-           if(hasOption && menuName == "참가비") {
-               ZStack{
-                   TextField(menuName, text: $option)
-                       .keyboardType(.decimalPad)
-                       .font(.b2_R)
-                       .padding(12)
-                       .cornerRadius(8)
-                       .focused($isTextFieldFocused)
-                       .onChange(of: isTextFieldFocused){ focus in
-                           withAnimation(.easeIn){
-                               if !focus {
-                                   if (option.isEmpty){
-                                       isOptionError = true
-                                       errorMessage = "참가비를 입력해주세요."
-                                   }
-                                   if let intValue = Int(option) {
-                                       isOptionError = false
-                                   }else{
-                                       isOptionError = true
-                                       errorMessage = "숫자만 입력해주세요."
-                                   }
-                               }else {
-                                   isOptionError = false
-                               }
-                           }
-                       }
-                       .modifier(TextFieldErrorModifier(isError: $isOptionError, isTextFieldFocused: _isTextFieldFocused))
-                   
-                   if isTextFieldFocused && !isOptionError{
-                       HStack{
-                           Spacer()
-                           Button {
-                               option = ""
-                           } label: {
-                               Image(systemName: "xmark.circle.fill")
-                                   .foregroundColor(.Main)
-                                   .padding()
-                           }
-                       }
-                   }
-               }
+            if hasOption && menuName == "참가비" {
+                ZStack{
+                    TextField(menuName, text: $option)
+                        .keyboardType(.decimalPad)
+                        .font(.b2_R)
+                        .padding(12)
+                        .cornerRadius(8)
+                        .focused($isTextFieldFocused)
+                        .onChange(of: isTextFieldFocused){ focus in
+                            withAnimation(.easeIn){
+                                if !focus {
+                                    if option.isEmpty {
+                                        isOptionError = true
+                                        errorMessage = "참가비를 입력해주세요."
+                                    }
+                                    if let intValue = Int(option) {
+                                        isOptionError = false
+                                    }else{
+                                        isOptionError = true
+                                        errorMessage = "숫자만 입력해주세요."
+                                    }
+                                }else {
+                                    isOptionError = false
+                                }
+                            }
+                        }
+                        .modifier(TextFieldErrorModifier(isError: $isOptionError, isTextFieldFocused: _isTextFieldFocused))
+                    
+                    if isTextFieldFocused && !isOptionError{
+                        HStack{
+                            Spacer()
+                            Button {
+                                option = ""
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.Main)
+                                    .padding()
+                            }
+                        }
+                    }
+                }
                 if isOptionError {
                     ErrorText(errorMessage: errorMessage)
                 }
             }
             
-            else if (hasOption && menuName == "위치") {
+            else if hasOption && menuName == "위치" {
                 ZStack(alignment: .leading){
                     Rectangle()
                         .frame(height: 45)
@@ -110,7 +110,6 @@ struct ScheduleOptionMenu: View {
                         .onTapGesture {
                             isShowingWebSheet = true
                             isOptionError = false
-                            print(isShowingWebSheet)
                         }
                         .modifier(RectangleModifier(isError: $isOptionError))
                         .padding(1)

@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage {
     
-    // StackOverFlow:
+    /// StackOverFlow:
     func resize(to size: CGSize = CGSize(width: 300, height: 300)) -> UIImage? {
         
         let widthRatio  = size.width  / size.width

@@ -8,8 +8,8 @@
 import SwiftUI
 
 import CoreLocation
-import NMapsMap
 import GeoFire
+import NMapsMap
 
 struct NaverMapView: UIViewRepresentable {
     @EnvironmentObject var viewModel: MapStore
@@ -39,7 +39,6 @@ struct NaverMapView: UIViewRepresentable {
                     viewModel.clickedSymbol(title: items.title)
                     return true
                 }
-                
                 viewModel.markers.append(marker)
             }
         }
@@ -68,16 +67,6 @@ struct NaverMapView: UIViewRepresentable {
             parentMapView.viewModel.fetchNearGrew()
         }
 
-//        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//            if let location = locations.first {
-//                myLocation = location
-//                
-//                let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: myLocation.coordinate.latitude, lng: myLocation.coordinate.longitude), zoomTo: 14)
-//                view.moveCamera(cameraUpdate)
-//                cameraUpdate.animation = .easeIn
-//            }
-//        }
-        
         func mapView(_ mapView: NMFMapView, cameraDidChangeByReason reason: Int, animated: Bool) {
             let changedLocation = CLLocation(latitude: view.cameraPosition.target.lat, longitude: view.cameraPosition.target.lng)
             let distance = GFUtils.distance(from: changedLocation, to: parentMapView.viewModel.currentLocation)

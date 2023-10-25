@@ -16,7 +16,7 @@ final class ChatStore: ObservableObject {
     private var db = Firestore.firestore()
     static let db = Firestore.firestore()
     
-    // 해당 유저, 그루 값 들고 있기
+    /// 해당 유저, 그루 값 들고 있기
     var targetUserInfoDict: [String: [User]]
     var targetGrewInfoDict: [String: Grew]
     
@@ -41,12 +41,11 @@ final class ChatStore: ObservableObject {
     }
 }
 
-// CRUD 작업
+/// CRUD 작업
 extension ChatStore {
-    // 채팅방 목록 가져오기
+    /// 채팅방 목록 가져오기
     func getChatRoomDocuments() async -> QuerySnapshot? {
         do {
-            print(UserStore.shared.currentUser)
             guard let currentUser = UserStore.shared.currentUser else {
                 return nil
             }
@@ -63,24 +62,22 @@ extension ChatStore {
     }
     
     
-    // fetching만 빼기
+    /// fetching만 빼기
     @MainActor
     func allocateChatRooms(chatRooms: [ChatRoom]) {
         self.chatRooms = chatRooms
         self.isDoneFetch = true
     }
     
-    // 채팅룸 목록 삭제하기
+    /// 채팅룸 목록 삭제하기
     @MainActor
     func removeChatRoomsList() {
         chatRooms.removeAll()
     }
     
-    // 채팅방 fetch하면서 연관된 User정보 값 가지고 있기
+    /// 채팅방 fetch하면서 연관된 User정보 값 가지고 있기
     func fetchChatRooms() async {
         let snapshot = await getChatRoomDocuments()
-        
-        //        await removeChatRoomsList()
         
         var newChatRooms: [ChatRoom] = []
         
@@ -172,17 +169,17 @@ extension ChatStore {
     }
 }
 
-// 리스너 관리
+/// 리스너 관리
 
 extension ChatStore {
-    // 최신 메시지 온 순으로 정렬
+    /// 최신 메시지 온 순으로 정렬
     func sortChatRooms() {
         chatRooms.sort {
             $0.lastMessageDate > $1.lastMessageDate
         }
     }
     
-    // 리스너에서 스냅샷 데이터로 채팅방 인스턴스를 만드는 메서드
+    /// 리스너에서 스냅샷 데이터로 채팅방 인스턴스를 만드는 메서드
     func newChatRoom(change: QueryDocumentSnapshot) -> ChatRoom? {
         do {
             let newChatRoom = try change.data(as: ChatRoom.self)
@@ -193,7 +190,7 @@ extension ChatStore {
         return nil
     }
     
-    // 리스너에서 type = .added 처리
+    /// 리스너에서 type = .added 처리
     func listenerAddChatRoom(change: QueryDocumentSnapshot) async {
         let newChatRoom = newChatRoom(change: change)
         
@@ -205,21 +202,21 @@ extension ChatStore {
         }
     }
     
-    // 채팅방 정렬
+    /// 채팅방 정렬
     @MainActor
     func appendAndSortChats(newChatRoom: ChatRoom) {
         chatRooms.append(newChatRoom)
         sortChatRooms()
     }
     
-    // 리스너에서 update 처리 ex)채팅방 내부에서 채팅이 입력되어서 채팅방에 마지막 메시지 갱신, 마지막 날짜 갱신, 유저별 안읽은 채팅 개수 갱신
+    /// 리스너에서 update 처리 ex)채팅방 내부에서 채팅이 입력되어서 채팅방에 마지막 메시지 갱신, 마지막 날짜 갱신, 유저별 안읽은 채팅 개수 갱신
     @MainActor
     func listenerUpdateChatRooms(change: QueryDocumentSnapshot) {
         updateChatRooms(change: change)
         sortChatRooms()
     }
     
-    // 업데이트
+    /// 업데이트
     @MainActor
     func updateChatRooms(change: QueryDocumentSnapshot) {
         guard let index = chatRooms.firstIndex(where: {
@@ -289,8 +286,6 @@ extension ChatStore {
 extension ChatStore {
     static func getChatRoomFromGID(gid: String) async -> ChatRoom? {
         do {
-            print(UserStore.shared.currentUser)
-            print(gid)
             let snapshot = try await db
                 .collection("chatrooms")
                 .whereField("grewId", isEqualTo: gid)

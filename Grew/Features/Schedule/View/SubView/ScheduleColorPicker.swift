@@ -31,7 +31,7 @@ struct ScheduleColorPicker: View {
                             }
                             .padding(3)
                         
-                        if (colorIndex == i) {
+                        if colorIndex == i {
                             Image(systemName: "checkmark")
                                 .font(.title)
                                 .bold()

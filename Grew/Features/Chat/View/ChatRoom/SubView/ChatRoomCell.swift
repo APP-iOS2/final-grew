@@ -11,14 +11,11 @@ struct ChatRoomCell: View {
     let chatRoom: ChatRoom
     var chatGrewInfo: Grew?
     
-    // 나를 제외한 유저 목록
+    /// 나를 제외한 유저 목록
     let targetUserInfos: [User]
     @EnvironmentObject private var chatStore: ChatStore
     
     var chatRoomName: String {
-        // 바꿀것
-//        if let chatGrewInfo {
-//            return chatGrewInfo.title
         if let chatRoomName = chatRoom.chatRoomName {
             return chatRoomName
         } else {
@@ -78,11 +75,3 @@ struct ChatRoomCell: View {
         }
     }
 }
-
-/*
-struct ChatRoomCell_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatRoomCell()
-    }
-}
-*/

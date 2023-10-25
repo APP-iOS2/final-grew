@@ -18,15 +18,14 @@ struct NewestGrewListView: View {
             LazyHStack {
                 ForEach(grewList) { grew in
                     Button {
-//                        GrewDetailView(grew: grew)
                         router.homeNavigate(to: .grewDetail(grew: grew))
                     } label: {
                         NewestGrewCellView(grew: grew)
                             .padding(.horizontal, 8)
                     }
                 }
-            } //: LazyHStack
-        } //: ScrollView
+            }
+        }
     }
 }
 

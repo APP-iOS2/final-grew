@@ -14,7 +14,6 @@ struct GroupSubCategoryView: View {
     @Binding var isSubCategoryValid: Bool
     
     private let gridItems: [GridItem] = [
-        //        GridItem(.adaptive(minimum: 60))
         .init(.flexible()),
         .init(.flexible()),
         .init(.flexible())
@@ -66,14 +65,3 @@ struct GroupSubCategoryView: View {
     GroupSubCategoryView(selection: .constant(Selection(categoryID: "", subCategoryID: "")), isSubCategoryValid: .constant(true))
         .environmentObject(GrewViewModel())
 }
-
-/*
- RoundedRectangle(cornerRadius: 20)
- .foregroundStyle(isSelected ? Color.Sub : Color.BackgroundGray)
- .cornerRadius(12)
- .overlay(
- Text(subcategory.name)
- .font(.b3_B)
- .foregroundStyle(isSelected ? Color.white : Color.black)
- )
- */

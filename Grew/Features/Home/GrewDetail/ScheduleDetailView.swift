@@ -45,7 +45,7 @@ struct ScheduleDetailView: View {
     var body: some View {
         ZStack(alignment: .topLeading) {
             VStack {
-                VStack {}//: VStack
+                VStack {}
                 .frame(width: UIScreen.screenWidth, height: 120)
                 .background(Color.grewMainColor)
                 
@@ -57,8 +57,8 @@ struct ScheduleDetailView: View {
                                     .font(.b3_B)
                                 Text(getGrewTitle(gid: schedule.gid))
                                     .font(.b3_R)
-                            }//: HStack
-                        }//: HStack
+                            }
+                        }
                         Text(schedule.scheduleName)
                             .font(.b1_B)
                             .padding(.vertical, 20)
@@ -78,8 +78,6 @@ struct ScheduleDetailView: View {
                             Text("장소")
                                 .font(.b3_B)
                             Spacer()
-//                            Text("\(Image(systemName: "map.fill")) 지도 보기")
-//                                .font(.b3_R)
                         }
                         .padding(.bottom, 5)
                         Text(schedule.location ?? "")
@@ -93,7 +91,7 @@ struct ScheduleDetailView: View {
                                 .font(.b3_R)
                         }
                         .padding(.bottom, 5)
-                    }//: VStack
+                    }
                     .padding(.top, 20)
                     .padding(.horizontal, 20)
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -112,9 +110,9 @@ struct ScheduleDetailView: View {
                                         .font(.c2_L)
                                 }
                             }
-                        })//: LazyHGrid
+                        })
                         .padding(.horizontal, 20)
-                    }//: ScrollView
+                    }
                     .frame(height: 44)
                 Spacer()
                 
@@ -148,10 +146,10 @@ struct ScheduleDetailView: View {
                     cornerRadius: 8
                 )
                 .disabled(!isGrewMember || (!isScheduleParticipant && schedule.participants.count >= schedule.maximumMember))
-            }//: VStack
+            }
             ProfileCircleImageView(size: 80)
                 .offset(x: 20, y: 80)
-        }//: ZStack
+        }
         .presentationDragIndicator(.visible)
         .onChange(of: schedule, { oldValue, newValue in
             Task {

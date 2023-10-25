@@ -28,7 +28,6 @@
 		311097322AD41722000D85AD /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097312AD41722000D85AD /* LaunchView.swift */; };
 		3110973A2AD417A1000D85AD /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097382AD417A1000D85AD /* UserStore.swift */; };
 		3110973B2AD417A1000D85AD /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097392AD417A1000D85AD /* AuthStore.swift */; };
-		311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110973E2AD417AD000D85AD /* AuthCompleteView.swift */; };
 		311097452AD417AD000D85AD /* AuthSignEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110973F2AD417AD000D85AD /* AuthSignEmailView.swift */; };
 		311097462AD417AD000D85AD /* AuthStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311097402AD417AD000D85AD /* AuthStartView.swift */; };
 		3110974E2AD417DB000D85AD /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110974D2AD417DB000D85AD /* ChatStore.swift */; };
@@ -222,7 +221,6 @@
 		311097312AD41722000D85AD /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		311097382AD417A1000D85AD /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		311097392AD417A1000D85AD /* AuthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
-		3110973E2AD417AD000D85AD /* AuthCompleteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCompleteView.swift; sourceTree = "<group>"; };
 		3110973F2AD417AD000D85AD /* AuthSignEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthSignEmailView.swift; sourceTree = "<group>"; };
 		311097402AD417AD000D85AD /* AuthStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStartView.swift; sourceTree = "<group>"; };
 		3110974D2AD417DB000D85AD /* ChatStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
@@ -479,7 +477,6 @@
 				64D54B942ADD0DCE007753B2 /* Agree */,
 				64877CB12AD5145100192DB4 /* AuthAgreeView.swift */,
 				64877CB32AD51A7100192DB4 /* AuthAgreeCheckView.swift */,
-				3110973E2AD417AD000D85AD /* AuthCompleteView.swift */,
 				319757702ADFAB1000696FF9 /* AuthAddDetailInfoView.swift */,
 				3197576F2ADFAB1000696FF9 /* AuthAddMainInfoView.swift */,
 				64877CB52AD5B2BD00192DB4 /* AuthProgressBar.swift */,
@@ -635,7 +632,6 @@
 				3110979F2AD41881000D85AD /* Grew.swift */,
 				CEB6CBB82AD682DE00515EEA /* GrewTextField.swift */,
 				647462BA2ADFB1960054DA6D /* GrewSecureField.swift */,
-				311097A02AD41882000D85AD /* SettingStore.swift */,
 				311097A32AD41882000D85AD /* User.swift */,
 				215709652AD67625006ABE35 /* UserViewModel.swift */,
 				CE9292D42AE209A7005052AF /* Stump.swift */,
@@ -1330,7 +1326,6 @@
 				CE5A27B42AD9B0590014BE09 /* GrewIntroductionView.swift in Sources */,
 				CE48FAD82AE3C9A600712DD5 /* StumpInputView.swift in Sources */,
 				311097712AD4180F000D85AD /* GroupAlertView.swift in Sources */,
-				311097442AD417AD000D85AD /* AuthCompleteView.swift in Sources */,
 				995095322ADCD6D3003A822E /* GroupMainCategoryView.swift in Sources */,
 				9FD050692ADF5CAA00A8735A /* ScheduleCellEditSheetView.swift in Sources */,
 				64AB27D62AD6683E004DE65F /* LaunchViewModel.swift in Sources */,

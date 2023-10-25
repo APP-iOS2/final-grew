@@ -25,7 +25,7 @@ struct GroupCheckFeeView: View {
                     .padding(.bottom, 10)
                 HStack(spacing: 40) {
                     Spacer()
-                    // 있으면 금액 입력
+
                     Button {
                         viewModel.isNeedFee = true
                     } label: {
@@ -72,7 +72,7 @@ struct GroupCheckFeeView: View {
                     }
                 }
             }
-        }//: ScrollView
+        }
         .scrollDismissesKeyboard(.immediately)
         .onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -80,7 +80,7 @@ struct GroupCheckFeeView: View {
         .onAppear(perform: {
             isAnimating = true
         })
-    }//: body
+    }
 }
 
 #Preview {

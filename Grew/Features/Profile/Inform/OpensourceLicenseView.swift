@@ -10,8 +10,8 @@ import SwiftUI
 
 struct OpensourceLicenseView: View {
      
-     @Environment(\.dismiss) private var dismiss
-     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
     var body: some View {
         VStack {
@@ -37,7 +37,7 @@ struct LicenseView: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // No update needed
+
     }
 }
 
